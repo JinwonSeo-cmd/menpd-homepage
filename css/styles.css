@@ -591,6 +591,56 @@ section {
   gap: var(--spacing-16);
 }
 
+/* ---------- Dynamic book section ---------- */
+
+.dynamic-book-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-24);
+}
+
+.dynamic-book-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-cards);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+}
+
+.dynamic-book-cover {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 15%;
+  transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.dynamic-book-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.32);
+  transition: background-color 0.3s ease;
+}
+
+.dynamic-book-btn {
+  position: relative;
+  z-index: 1;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 6px 20px 0px;
+}
+
+.dynamic-book-card:hover .dynamic-book-cover {
+  transform: scale(1.04);
+}
+
+.dynamic-book-card:hover .dynamic-book-overlay {
+  background: rgba(0, 0, 0, 0.42);
+}
+
 /* ---------- Portfolio video examples section ---------- */
 
 .portfolio-video-grid {
@@ -1041,6 +1091,10 @@ section {
   }
 
   .portfolio-video-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dynamic-book-grid {
     grid-template-columns: 1fr;
   }
 
