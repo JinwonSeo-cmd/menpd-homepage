@@ -201,6 +201,15 @@ section {
   background: #ffd400;
 }
 
+.btn-dark {
+  background: var(--color-carbon);
+  color: #ffffff;
+}
+
+.btn-dark:hover {
+  background: #000000;
+}
+
 .btn-ghost {
   background: transparent;
   color: var(--color-link-blue);
