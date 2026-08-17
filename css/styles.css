@@ -1047,6 +1047,14 @@ section {
   }
 }
 
+@media (max-width: 768px) {
+  /* 공개자료/제한자료 카드를 가로 2열에서 세로 스택으로 전환.
+     각 카드는 100% 너비를 차지하고, 카드 간 간격은 grid gap(세로 방향)으로 처리됩니다. */
+  .resource-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 720px) {
   .nav-links {
     display: none;
@@ -1100,20 +1108,6 @@ section {
 
   .gate-form {
     flex-direction: column;
-  }
-
-  .resource-columns {
-    grid-template-columns: none;
-    grid-auto-flow: column;
-    grid-auto-columns: 86%;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    padding-bottom: var(--spacing-8);
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .resource-col {
-    scroll-snap-align: start;
   }
 
   .kakao-float span {
