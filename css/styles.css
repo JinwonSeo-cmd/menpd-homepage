@@ -94,12 +94,45 @@ section {
 }
 
 .eyebrow {
-  font-size: 14px;
+  display: inline-block;
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: -0.224px;
-  color: var(--color-apple-blue);
+  color: #ffffff;
+  background: var(--color-carbon);
   text-transform: uppercase;
+  padding: 4px 14px;
+  border-radius: var(--radius-buttons);
   margin: 0 0 var(--spacing-12);
+}
+
+.section-title-row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-12);
+  margin: 0 0 var(--spacing-16);
+}
+
+.section-title-row .section-heading {
+  margin: 0;
+}
+
+.section-title-row h3 {
+  margin: 0;
+  font-size: 21px;
+  font-weight: 600;
+}
+
+.section-icon {
+  flex: none;
+  width: 30px;
+  height: 30px;
+  color: var(--color-carbon);
+}
+
+.section-icon.section-icon-sm {
+  width: 22px;
+  height: 22px;
 }
 
 .section-heading {
@@ -157,6 +190,15 @@ section {
 
 .btn-outline:hover {
   background: rgba(0, 102, 204, 0.06);
+}
+
+.btn-kakao {
+  background: var(--color-kakao);
+  color: var(--color-kakao-text);
+}
+
+.btn-kakao:hover {
+  background: #ffd400;
 }
 
 .btn-ghost {
@@ -256,7 +298,7 @@ section {
   display: flex;
   align-items: stretch;
   padding: 0;
-  background: var(--color-frost);
+  background: var(--color-ice);
 }
 
 .hero-portrait {
@@ -320,39 +362,39 @@ section {
 
 .contact-card {
   display: block;
-  border: 1px solid var(--color-hairline);
+  border: 1px solid var(--color-onyx);
   border-radius: var(--radius-cards);
   padding: var(--spacing-16);
-  background: #ffffff;
+  background: var(--color-onyx);
   min-height: 128px;
 }
 
 .contact-card .contact-icon {
   width: 22px;
   height: 22px;
-  color: var(--color-apple-blue);
+  color: #ffffff;
   margin-bottom: var(--spacing-8);
 }
 
 .contact-card .contact-label {
   font-size: 12px;
-  color: var(--color-ash);
+  color: rgba(255, 255, 255, 0.65);
   margin: 0 0 4px;
 }
 
 .contact-card .contact-value {
   font-size: 14px;
-  color: var(--color-carbon);
+  color: #ffffff;
   font-weight: 400;
   word-break: break-all;
 }
 
 .contact-card a.contact-value:hover {
-  color: var(--color-link-blue);
+  color: var(--color-signal-blue);
 }
 
 .contact-value-muted {
-  color: var(--color-mist);
+  color: rgba(255, 255, 255, 0.45);
   font-style: italic;
 }
 
@@ -451,18 +493,16 @@ section {
 }
 
 .book-covers {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: var(--spacing-16);
-  align-items: end;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.book-cover-main {
+  width: 78%;
+  max-width: 360px;
 }
 
 .book-cover-main .media-frame {
-  aspect-ratio: 3 / 4;
-  box-shadow: var(--shadow-xl);
-}
-
-.book-cover-sub .media-frame {
   aspect-ratio: 3 / 4;
   box-shadow: var(--shadow-xl);
 }
@@ -547,41 +587,20 @@ section {
 }
 
 .video-card {
+  display: flex;
+  justify-content: center;
   border: 1px solid var(--color-hairline);
   border-radius: var(--radius-cards);
   overflow: hidden;
   background: #ffffff;
-}
-
-.video-frame {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  background: var(--color-carbon);
-}
-
-.video-frame iframe {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  border: none;
-}
-
-.video-caption {
   padding: var(--spacing-16);
 }
 
-.video-caption h4 {
-  font-size: 17px;
-  font-weight: 600;
-  margin: 0 0 4px;
-}
-
-.video-caption p {
-  font-size: 14px;
-  color: var(--color-ash);
-  margin: 0;
+.video-card iframe.instagram-media,
+.video-card .instagram-media {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
 }
 
 /* ---------- Resources section ---------- */
@@ -646,7 +665,7 @@ section {
   width: 32px;
   height: 32px;
   flex: none;
-  color: var(--color-apple-blue);
+  color: var(--color-carbon);
 }
 
 .resource-item .res-icon.locked {
@@ -672,6 +691,19 @@ section {
   font-size: 12px;
   color: var(--color-ash);
   margin: 0;
+}
+
+.res-open-btn {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-carbon);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: var(--radius-buttons);
 }
 
 .gate-box {
@@ -745,17 +777,17 @@ section {
 }
 
 .review-card {
-  border: 1px solid var(--color-hairline);
+  border: 1px solid var(--color-onyx);
   border-radius: var(--radius-cards);
   padding: var(--spacing-24);
-  background: #ffffff;
+  background: var(--color-onyx);
   display: flex;
   flex-direction: column;
 }
 
 .review-quote {
   font-size: 17px;
-  color: var(--color-carbon);
+  color: #ffffff;
   margin: 0 0 var(--spacing-24);
   flex: 1;
 }
@@ -765,18 +797,19 @@ section {
   align-items: center;
   gap: var(--spacing-12);
   padding-top: var(--spacing-16);
-  border-top: 1px solid var(--color-hairline);
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .review-org-name {
   font-size: 14px;
   font-weight: 600;
+  color: #ffffff;
   margin: 0;
 }
 
 .review-org-role {
   font-size: 12px;
-  color: var(--color-ash);
+  color: rgba(255, 255, 255, 0.6);
   margin: 0;
 }
 
