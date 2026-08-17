@@ -908,12 +908,25 @@ section {
 
 .portfolio-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--spacing-16);
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-16) var(--spacing-16);
+}
+
+.gallery-item {
+  display: flex;
+  flex-direction: column;
 }
 
 .portfolio-grid .media-frame {
   aspect-ratio: 4 / 3;
+}
+
+.gallery-caption {
+  margin: var(--spacing-8) 0 0;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--color-graphite);
+  text-align: center;
 }
 
 /* ---------- Footer ---------- */
@@ -1035,6 +1048,10 @@ section {
 
   .contact-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .portfolio-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .footer-top {
