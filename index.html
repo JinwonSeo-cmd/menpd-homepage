@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>서진원(멘피디) | 와이컨텐츠</title>
+<meta name="description" content="와이컨텐츠 대표 서진원(멘피디)의 강의, 저서, 자료실 페이지">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="site-nav" id="siteNav">
+  <div class="nav-inner">
+    <a href="#home" class="nav-brand">멘피디 서진원 <span>와이컨텐츠</span></a>
+    <ul class="nav-links">
+      <li><a href="#home">홈</a></li>
+      <li><a href="#book">책·강의자료</a></li>
+      <li><a href="#video">영상</a></li>
+      <li><a href="#resources">자료실</a></li>
+      <li><a href="#reviews">강의후기</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#contact" class="btn btn-outline btn-sm">문의하기</a>
+      <button class="nav-toggle" id="navToggle" aria-label="메뉴 열기">☰</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ 1. HOME / HERO ============ -->
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <div class="hero-portrait">
+      <div class="media-frame" data-label="images/profile.jpg 파일을 추가하세요 (얼굴 사진, 정방형 권장)">
+        <img src="images/profile.jpg" alt="서진원(멘피디) 프로필 사진"
+             onerror="this.style.display='none'; this.closest('.media-frame').classList.add('img-missing')">
+      </div>
+    </div>
+
+    <div class="hero-content">
+      <h1 class="hero-name">서진원</h1>
+      <p class="hero-title"><strong>멘피디</strong> · 와이컨텐츠 대표</p>
+      <p class="hero-bio">
+        [여기에 한 줄 소개 문구를 입력하세요. 예: AI 활용 교육과 콘텐츠 제작을 통해
+        현장에 바로 쓰이는 강의를 만듭니다.]
+      </p>
+
+      <div class="stat-row">
+        <div class="stat-item">
+          <span class="stat-num">300+</span>
+          <span class="stat-label">누적 강의 횟수</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">[N]</span>
+          <span class="stat-label">출간 도서</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">[N]</span>
+          <span class="stat-label">파트너 기관·기업</span>
+        </div>
+      </div>
+
+      <p class="hero-orgs">
+        <strong>주요 강의 기관</strong> · 코레일, 국토교통부, 농협인재개발원 외 다수
+        [추가 기관명을 입력하세요]
+      </p>
+
+      <div id="contact" class="contact-grid">
+        <div class="contact-card">
+          <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C7 2 3 5.6 3 10c0 2.9 1.9 5.5 4.7 6.9-.2.9-.8 3-1 3.5-.2.5.2.5.4.4.2-.1 2.9-2 4.1-2.8.6.1 1.2.1 1.8.1 5 0 9-3.6 9-8s-4-8-9-8z"/></svg>
+          <p class="contact-label">카카오톡 채널 / 오픈채팅</p>
+          <a class="contact-value" href="#" target="_blank" rel="noopener">[오픈채팅 링크를 입력하세요]</a>
+        </div>
+        <div class="contact-card">
+          <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          <p class="contact-label">이메일</p>
+          <a class="contact-value" href="mailto:example@ycontents.co.kr">[이메일 주소를 입력하세요]</a>
+        </div>
+        <div class="contact-card">
+          <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2z"/></svg>
+          <p class="contact-label">전화</p>
+          <a class="contact-value" href="tel:01000000000">[전화번호를 입력하세요]</a>
+        </div>
+        <div class="contact-card">
+          <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          <p class="contact-label">강의 문의 (구글폼)</p>
+          <a class="contact-value" href="#" target="_blank" rel="noopener">[구글폼 링크를 입력하세요]</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2. 책 + 강의자료 ============ -->
+<section class="book-section reveal" id="book">
+  <div class="section-inner">
+    <p class="eyebrow">Book &amp; Materials</p>
+    <h2 class="section-heading">책 &amp; 강의자료</h2>
+    <p class="section-sub">[책과 강의자료에 대한 한 줄 소개를 입력하세요.]</p>
+
+    <div class="book-layout">
+      <div class="book-info">
+        <p class="eyebrow" style="margin-bottom:4px;">저서 안내</p>
+        <h3>인스타그램 릴스 &amp; 알고리즘 공략법 <span class="book-year">(2026년도 출판)</span></h3>
+        <p>누구나 10만 팔로워 가능! 기획부터 운영, 페널티 전략까지 — 100만 조회수를 만드는 인스타그램 릴스 실전 가이드입니다.</p>
+
+        <ul class="book-highlights">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <span>예스24 베스트셀러 (경제/경영)</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <span>인스타그램 알고리즘 노하우 총정리</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <span>최대 800만 조회수 릴스 보유 (100만회 이상 릴스 30회 가량)</span>
+          </li>
+        </ul>
+
+        <ul class="book-meta">
+          <li><span>지은이</span><span>서진원</span></li>
+          <li><span>출판사</span><span>이은북</span></li>
+        </ul>
+
+        <div class="book-actions">
+          <a href="https://www.yes24.com/product/goods/184570770" class="btn btn-filled" target="_blank" rel="noopener">책 구매하기</a>
+          <a href="#" class="btn btn-outline" target="_blank" rel="noopener">동적교재(인터랙티브) 데모 보기</a>
+        </div>
+      </div>
+
+      <div class="book-covers">
+        <div class="book-cover-main">
+          <div class="media-frame" data-label="images/book-cover-1.jpg 파일을 추가하세요 (메인 표지)">
+            <img src="images/book-cover-1.jpg" alt="책 표지 메인"
+                 onerror="this.style.display='none'; this.closest('.media-frame').classList.add('img-missing')">
+          </div>
+        </div>
+        <div class="book-cover-sub">
+          <div class="media-frame" data-label="images/book-cover-2.jpg 파일을 추가하세요 (보조 표지)">
+            <img src="images/book-cover-2.jpg" alt="책 표지 보조"
+                 onerror="this.style.display='none'; this.closest('.media-frame').classList.add('img-missing')">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. 영상 ============ -->
+<section id="video" class="reveal">
+  <div class="section-inner">
+    <p class="eyebrow">Videos</p>
+    <h2 class="section-heading">영상</h2>
+    <p class="section-sub">강의·데모 영상을 모아두었습니다.</p>
+
+    <!-- 영상 카드는 이 구조를 복사해서 계속 추가할 수 있습니다.
+         iframe src의 VIDEO_ID_n 부분을 실제 유튜브 영상 ID로 교체하세요. -->
+    <div class="video-grid reveal-stagger">
+      <div class="video-card">
+        <div class="video-frame">
+          <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" title="영상 제목 1"
+                  loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="video-caption">
+          <h4>[영상 제목 1]</h4>
+          <p>[한 줄 설명]</p>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-frame">
+          <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" title="영상 제목 2"
+                  loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="video-caption">
+          <h4>[영상 제목 2]</h4>
+          <p>[한 줄 설명]</p>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-frame">
+          <iframe src="https://www.youtube.com/embed/VIDEO_ID_3" title="영상 제목 3"
+                  loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="video-caption">
+          <h4>[영상 제목 3]</h4>
+          <p>[한 줄 설명]</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4. 자료실 ============ -->
+<section id="resources" class="reveal" style="background: var(--color-ice);">
+  <div class="section-inner">
+    <p class="eyebrow">Resources</p>
+    <h2 class="section-heading">자료실</h2>
+    <p class="section-sub">공개 자료는 바로 받을 수 있고, 강의 참가자 전용 자료는 안내받은 코드를 입력해야 열람할 수 있습니다.</p>
+
+    <div class="resource-columns reveal-stagger">
+      <!-- 공개 자료 -->
+      <div class="resource-col">
+        <span class="resource-col-badge">공개 자료 · 누구나 다운로드</span>
+        <p class="resource-col-desc">별도 인증 없이 바로 내려받을 수 있는 자료입니다.</p>
+        <div class="resource-list">
+          <a class="resource-item" href="downloads/public/sample-1.pdf" download>
+            <svg class="res-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+            <span class="res-body">
+              <span class="res-title">[공개 자료 1 파일명.pdf]</span>
+              <span class="res-meta">[자료 설명 · 용량]</span>
+            </span>
+          </a>
+          <a class="resource-item" href="downloads/public/sample-2.pdf" download>
+            <svg class="res-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+            <span class="res-body">
+              <span class="res-title">[공개 자료 2 파일명.pdf]</span>
+              <span class="res-meta">[자료 설명 · 용량]</span>
+            </span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 제한 자료 -->
+      <div class="resource-col resource-col-locked" id="restrictedBlock">
+        <span class="resource-col-badge badge-locked">제한 자료 · 코드 필요</span>
+        <p class="resource-col-desc">강의 중 안내받은 공용 코드를 입력하면 목록이 열립니다.</p>
+
+        <div class="gate-box">
+          <p>강의 참가자에게 공지된 코드를 입력하세요.</p>
+          <form class="gate-form" id="gateForm">
+            <input type="password" class="gate-input" id="gateInput" placeholder="참가자 코드 입력" autocomplete="off">
+            <button type="submit" class="btn btn-filled btn-sm">열기</button>
+          </form>
+          <p class="gate-message" id="gateMessage"></p>
+        </div>
+
+        <div class="resource-list" id="restrictedList" hidden>
+          <a class="resource-item" href="downloads/restricted/sample-1.pdf" download>
+            <svg class="res-icon locked" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+            <span class="res-body">
+              <span class="res-title">[제한 자료 1 파일명.pdf]</span>
+              <span class="res-meta">[자료 설명 · 용량]</span>
+            </span>
+          </a>
+          <a class="resource-item" href="downloads/restricted/sample-2.pdf" download>
+            <svg class="res-icon locked" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+            <span class="res-body">
+              <span class="res-title">[제한 자료 2 파일명.pdf]</span>
+              <span class="res-meta">[자료 설명 · 용량]</span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5. 강의후기 ============ -->
+<section id="reviews" class="reveal">
+  <div class="section-inner">
+    <p class="eyebrow">Reviews</p>
+    <h2 class="section-heading">강의후기</h2>
+    <p class="section-sub">함께한 기관·기업의 후기입니다.</p>
+
+    <div class="review-grid reveal-stagger">
+      <div class="review-card">
+        <p class="review-quote">"[후기 인용문을 입력하세요. 강의의 어떤 점이 좋았는지 구체적으로 담아주세요.]"</p>
+        <div class="review-org">
+          <div>
+            <p class="review-org-name">[기관/기업명 1]</p>
+            <p class="review-org-role">[담당자 직함 또는 과정명]</p>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <p class="review-quote">"[후기 인용문을 입력하세요.]"</p>
+        <div class="review-org">
+          <div>
+            <p class="review-org-name">[기관/기업명 2]</p>
+            <p class="review-org-role">[담당자 직함 또는 과정명]</p>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <p class="review-quote">"[후기 인용문을 입력하세요.]"</p>
+        <div class="review-org">
+          <div>
+            <p class="review-org-name">[기관/기업명 3]</p>
+            <p class="review-org-role">[담당자 직함 또는 과정명]</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="eyebrow">Photo Portfolio</p>
+    <h3 style="font-size:21px; font-weight:600; margin: 0 0 16px;">현장 사진</h3>
+    <div class="portfolio-grid reveal-stagger">
+      <div class="media-frame" data-label="images/review-1.jpg 파일을 추가하세요">
+        <img src="images/review-1.jpg" alt="강의 현장 사진 1" onerror="this.style.display='none'; this.closest('.media-frame').classList.add('img-missing')">
+      </div>
+      <div class="media-frame" data-label="images/review-2.jpg 파일을 추가하세요">
+        <img src="images/review-2.jpg" alt="강의 현장 사진 2" onerror="this.style.display='none'; this.closest('.media-frame').classList.add('img-missing')">
+      </div>
+      <div class="media-frame" data-label="images/review-3.jpg 파일을 추가하세요">
+        <img src="images/review-3.jpg" alt="강의 현장 사진 3" onerror="this.style.display='none'; this.closest('.media-frame').classList.add('img-missing')">
+      </div>
+      <div class="media-frame" data-label="images/review-4.jpg 파일을 추가하세요">
+        <img src="images/review-4.jpg" alt="강의 현장 사진 4" onerror="this.style.display='none'; this.closest('.media-frame').classList.add('img-missing')">
+      </div>
+      <div class="media-frame" data-label="images/review-5.jpg 파일을 추가하세요">
+        <img src="images/review-5.jpg" alt="강의 현장 사진 5" onerror="this.style.display='none'; this.closest('.media-frame').classList.add('img-missing')">
+      </div>
+      <div class="media-frame" data-label="images/review-6.jpg 파일을 추가하세요">
+        <img src="images/review-6.jpg" alt="강의 현장 사진 6" onerror="this.style.display='none'; this.closest('.media-frame').classList.add('img-missing')">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer reveal">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        멘피디 서진원
+        <p>와이컨텐츠 대표 · [사업자등록번호 등 필요 시 입력]</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h5>바로가기</h5>
+          <a href="#book">책·강의자료</a>
+          <a href="#video">영상</a>
+          <a href="#resources">자료실</a>
+          <a href="#reviews">강의후기</a>
+        </div>
+        <div class="footer-col">
+          <h5>문의</h5>
+          <a href="#">카카오톡 채널</a>
+          <a href="mailto:example@ycontents.co.kr">이메일</a>
+          <a href="#">강의 문의 구글폼</a>
+        </div>
+      </div>
+    </div>
+    <p class="footer-fine">© 2026 와이컨텐츠 · 서진원. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- ============ 플로팅 카카오톡 문의 버튼 ============ -->
+<a href="#" target="_blank" rel="noopener" class="kakao-float" id="kakaoFloat">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.5 3 2 6.6 2 11c0 2.8 1.8 5.3 4.6 6.7-.2.8-.7 2.7-.8 3.1 0 0-.1.3.1.4.2.1.4 0 .4 0 .5-.1 2.9-1.9 4-2.7.6.1 1.1.1 1.7.1 5.5 0 10-3.6 10-8S17.5 3 12 3z"/></svg>
+  <span>카카오톡 문의</span>
+</a>
+
+<script src="js/main.js"></script>
+</body>
+</html>
