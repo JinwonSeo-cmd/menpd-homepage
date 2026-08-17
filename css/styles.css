@@ -310,42 +310,6 @@ section {
   margin: 0 0 var(--spacing-24);
 }
 
-.stat-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--spacing-40);
-  margin: var(--spacing-24) 0;
-  padding: var(--spacing-24) 0;
-  border-top: 1px solid var(--color-hairline);
-  border-bottom: 1px solid var(--color-hairline);
-}
-
-.stat-item .stat-num {
-  font-family: var(--font-display);
-  font-size: 28px;
-  font-weight: 600;
-  color: var(--color-apple-blue);
-  letter-spacing: 0.196px;
-  display: block;
-}
-
-.stat-item .stat-label {
-  font-size: 12px;
-  color: var(--color-ash);
-  letter-spacing: -0.264px;
-}
-
-.hero-orgs {
-  font-size: 14px;
-  color: var(--color-ash);
-  margin: 0 0 var(--spacing-24);
-}
-
-.hero-orgs strong {
-  color: var(--color-smoke);
-  font-weight: 400;
-}
-
 /* ---------- Contact block ---------- */
 
 .contact-grid {
@@ -355,10 +319,12 @@ section {
 }
 
 .contact-card {
+  display: block;
   border: 1px solid var(--color-hairline);
   border-radius: var(--radius-cards);
   padding: var(--spacing-16);
   background: #ffffff;
+  min-height: 128px;
 }
 
 .contact-card .contact-icon {
@@ -383,6 +349,51 @@ section {
 
 .contact-card a.contact-value:hover {
   color: var(--color-link-blue);
+}
+
+.contact-value-muted {
+  color: var(--color-mist);
+  font-style: italic;
+}
+
+/* ---------- Contact card flip (email / phone) ---------- */
+
+.contact-card-flip {
+  padding: 0;
+  cursor: pointer;
+  perspective: 1000px;
+}
+
+.contact-card-flip .flip-inner {
+  position: relative;
+  width: 100%;
+  min-height: 128px;
+  transition: transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+  transform-style: preserve-3d;
+}
+
+.contact-card-flip.flipped .flip-inner {
+  transform: rotateY(180deg);
+}
+
+.contact-card-flip .flip-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  padding: var(--spacing-16);
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-card-flip .flip-back {
+  transform: rotateY(180deg);
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.contact-card-flip .flip-back .contact-value {
+  word-break: break-word;
 }
 
 /* ---------- Media frame / image fallback ---------- */
@@ -911,8 +922,7 @@ section {
 }
 
 @media (max-width: 720px) {
-  .nav-links,
-  .nav-cta .btn-filled {
+  .nav-links {
     display: none;
   }
 
@@ -944,10 +954,6 @@ section {
 
   .section-heading {
     font-size: 28px;
-  }
-
-  .stat-row {
-    gap: var(--spacing-24);
   }
 
   .contact-grid {
@@ -1023,6 +1029,10 @@ section {
   .reveal-stagger > * {
     opacity: 1 !important;
     transform: none !important;
+    transition: none !important;
+  }
+
+  .contact-card-flip .flip-inner {
     transition: none !important;
   }
 }
