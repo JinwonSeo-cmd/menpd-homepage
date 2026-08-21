@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>강의 자료실 | 멘피디 AI</title>
+<link rel="stylesheet" href="css/styles.css">
+<style>
+:root{
+  /* ── 기존 사이트(css/styles.css) 팔레트에 맞춘 3색 ── */
+  --accent:#0071e3;          /* 브랜드 포인트 색 = --color-apple-blue */
+  --ink:#1d1d1f;             /* 본문 글자색 = --color-carbon */
+  --wash:#f5f5f7;            /* 페이지 배경 = --color-frost */
+
+  --paper:#FFFFFF;
+  --line:#E4E6EB;
+  --muted:#767C88;
+  --radius:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:var(--font-text);
+  background:var(--wash); color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+  padding:64px 20px 120px;
+}
+.wrap{max-width:760px;margin:0 auto}
+
+/* 헤더 */
+.eyebrow{
+  font-size:12px;font-weight:700;letter-spacing:.14em;
+  color:var(--accent);text-transform:uppercase;margin-bottom:14px;
+}
+h1{font-size:clamp(30px,5vw,42px);font-weight:800;letter-spacing:-.03em;line-height:1.2}
+.lede{margin-top:14px;color:var(--muted);font-size:15px;line-height:1.65;max-width:52ch}
+
+/* 컨트롤 */
+.controls{margin:40px 0 20px;display:flex;flex-direction:column;gap:14px}
+.search{
+  width:100%;padding:13px 16px;font:inherit;font-size:15px;
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+  color:var(--ink);transition:border-color .18s,box-shadow .18s;
+}
+.search::placeholder{color:#A8AEB8}
+.search:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(0,113,227,.14)}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip{
+  font:inherit;font-size:13px;font-weight:600;padding:7px 13px;cursor:pointer;
+  background:transparent;border:1px solid var(--line);border-radius:999px;color:var(--muted);
+  transition:all .16s;
+}
+.chip:hover{border-color:#C9CDD4;color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+
+/* 목록 */
+.count{font-size:13px;color:var(--muted);margin-bottom:12px}
+.list{list-style:none;display:flex;flex-direction:column;gap:10px}
+.item{
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+  overflow:hidden;transition:border-color .18s,box-shadow .18s;
+  animation:rise .4s cubic-bezier(.2,.7,.3,1) both;
+}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.item:hover{border-color:#CFD3DA}
+.item.open{border-color:var(--ink);box-shadow:0 6px 24px -12px rgba(20,24,32,.28)}
+
+.head{
+  width:100%;display:block;text-align:left;cursor:pointer;
+  background:none;border:0;font:inherit;color:inherit;padding:20px 22px;
+  position:relative;
+}
+.head:focus-visible{outline:2px solid var(--accent);outline-offset:-3px}
+.meta{display:flex;align-items:center;gap:9px;margin-bottom:8px}
+.date{font-size:12px;font-weight:600;color:var(--muted);font-variant-numeric:tabular-nums}
+.cat{
+  font-size:11px;font-weight:700;letter-spacing:.02em;padding:3px 8px;border-radius:5px;
+  background:rgba(0,113,227,.1);color:var(--accent);
+}
+.title{font-size:17px;font-weight:700;letter-spacing:-.02em;line-height:1.4;padding-right:28px}
+.summary{margin-top:6px;font-size:14px;color:var(--muted);line-height:1.6}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.badge{
+  font-size:11px;font-weight:700;letter-spacing:.04em;
+  font-family:ui-monospace,'SF Mono',Menlo,monospace;
+  padding:3px 7px;border-radius:4px;background:var(--wash);color:#5A616D;
+}
+.badge.lock{background:rgba(0,113,227,.1);color:var(--accent)}
+.chev{
+  position:absolute;top:22px;right:22px;width:11px;height:11px;
+  border-right:2px solid #B4B9C2;border-bottom:2px solid #B4B9C2;
+  transform:rotate(45deg);transition:transform .22s cubic-bezier(.2,.7,.3,1);
+}
+.item.open .chev{transform:rotate(225deg);border-color:var(--ink)}
+
+/* 펼침 영역 */
+.panel{display:none;padding:0 22px 22px;border-top:1px solid var(--line);margin-top:2px}
+.item.open .panel{display:block;animation:rise .26s ease both}
+.body{font-size:14px;line-height:1.75;color:#3C424D;white-space:pre-wrap;padding-top:18px}
+.files{list-style:none;display:flex;flex-direction:column;gap:8px;padding-top:18px}
+.file{
+  display:flex;align-items:center;gap:12px;padding:13px 15px;
+  border:1px solid var(--line);border-radius:10px;text-decoration:none;color:inherit;
+  transition:all .16s;
+}
+.file:hover{border-color:var(--accent);background:rgba(0,113,227,.04)}
+.ext{
+  font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10px;font-weight:700;
+  letter-spacing:.05em;color:#fff;background:var(--ink);
+  padding:5px 6px;border-radius:5px;flex:none;min-width:44px;text-align:center;
+}
+.file .fname{font-size:14px;font-weight:600;flex:1;word-break:break-all}
+.file .fsize{font-size:12px;color:var(--muted);flex:none;font-variant-numeric:tabular-nums}
+
+/* 잠금 */
+.gate{padding-top:18px}
+.gate p{font-size:13px;color:var(--muted);margin-bottom:10px}
+.gate-row{display:flex;gap:8px}
+.gate input{
+  flex:1;padding:11px 14px;font:inherit;font-size:14px;
+  border:1px solid var(--line);border-radius:10px;background:var(--wash);color:var(--ink);
+}
+.gate input:focus{outline:none;border-color:var(--accent);background:#fff}
+.gate button{
+  font:inherit;font-size:14px;font-weight:700;padding:11px 20px;cursor:pointer;
+  background:var(--ink);color:#fff;border:0;border-radius:10px;
+}
+.gate .err{color:#D93025;font-size:13px;margin-top:8px;display:none}
+
+.empty{
+  text-align:center;padding:72px 24px;background:var(--paper);
+  border:1px dashed var(--line);border-radius:var(--radius);
+}
+.empty strong{display:block;font-size:16px;margin-bottom:8px}
+.empty span{font-size:14px;color:var(--muted)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="site-nav" id="siteNav">
+  <div class="nav-inner">
+    <a href="index.html#home" class="nav-brand">멘피디 서진원 <span>와이컨텐츠</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html#home">홈</a></li>
+      <li><a href="board.html">자료실</a></li>
+      <li><a href="index.html#photos">현장사진</a></li>
+      <li><a href="index.html#book">저서</a></li>
+      <li><a href="index.html#portfolio-videos">작업물 예시</a></li>
+      <li><a href="index.html#dynamic-book">동적교재</a></li>
+      <li><a href="index.html#video">영상</a></li>
+      <li><a href="index.html#reviews">강의후기</a></li>
+    </ul>
+    <div class="nav-cta">
+      <button class="nav-toggle" id="navToggle" aria-label="메뉴 열기">☰</button>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+  <header>
+    <p class="eyebrow">멘피디 AI · 강의 자료실</p>
+    <h1>강의 자료 내려받기</h1>
+    <p class="lede">강의에서 다룬 실습 파일과 참고 링크를 모아둡니다. 자료는 강의가 끝난 뒤 순차적으로 올라갑니다.</p>
+  </header>
+
+  <div class="controls">
+    <input class="search" id="q" type="search" placeholder="강의명이나 자료명으로 찾기" autocomplete="off">
+    <div class="chips" id="chips"></div>
+  </div>
+
+  <p class="count" id="count"></p>
+  <ul class="list" id="list"></ul>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer reveal">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        멘피디 서진원
+        <p>와이컨텐츠 대표 · [사업자등록번호 등 필요 시 입력]</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h5>바로가기</h5>
+          <a href="board.html">자료실</a>
+          <a href="index.html#photos">현장사진</a>
+          <a href="index.html#book">저서</a>
+          <a href="index.html#portfolio-videos">작업물 예시</a>
+          <a href="index.html#dynamic-book">동적교재</a>
+          <a href="index.html#video">영상</a>
+          <a href="index.html#reviews">강의후기</a>
+        </div>
+        <div class="footer-col">
+          <h5>문의</h5>
+          <a href="http://pf.kakao.com/_xniQiX/chat" target="_blank" rel="noopener">카카오톡 채널</a>
+          <a href="mailto:example@ycontents.co.kr">이메일</a>
+          <a href="#">강의 문의 구글폼</a>
+        </div>
+      </div>
+    </div>
+    <p class="footer-fine">© 2026 와이컨텐츠 · 서진원. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- ============ 플로팅 카카오톡 문의 버튼 ============ -->
+<a href="http://pf.kakao.com/_xniQiX/chat" target="_blank" rel="noopener" class="kakao-float" id="kakaoFloat">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.5 3 2 6.6 2 11c0 2.8 1.8 5.3 4.6 6.7-.2.8-.7 2.7-.8 3.1 0 0-.1.3.1.4.2.1.4 0 .4 0 .5-.1 2.9-1.9 4-2.7.6.1 1.1.1 1.7.1 5.5 0 10-3.6 10-8S17.5 3 12 3z"/></svg>
+</a>
+
+<script src="js/main.js"></script>
+<script>
+const POSTS_URL = 'data/posts.json';   // admin.html이 저장하는 경로와 같아야 합니다
+let POSTS = [], cat = '전체', kw = '';
+
+function ext(name){ const m = name.split('.').pop(); return (m && m.length<=5 ? m : 'FILE').toUpperCase(); }
+function size(b){ if(!b && b!==0) return ''; if(b<1024) return b+' B';
+  if(b<1048576) return (b/1024).toFixed(0)+' KB'; return (b/1048576).toFixed(1)+' MB'; }
+function esc(s){ return String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+
+function render(){
+  const list = document.getElementById('list');
+  const shown = POSTS.filter(p => !p.hidden)
+    .filter(p => cat==='전체' || p.category===cat)
+    .filter(p => {
+      if(!kw) return true;
+      const hay = (p.title+' '+(p.summary||'')+' '+(p.category||'')+' '+(p.files||[]).map(f=>f.name).join(' ')).toLowerCase();
+      return hay.includes(kw.toLowerCase());
+    })
+    .sort((a,b)=> (b.date||'').localeCompare(a.date||''));
+
+  document.getElementById('count').textContent = shown.length ? `자료 ${shown.length}건` : '';
+
+  if(!shown.length){
+    list.innerHTML = `<div class="empty"><strong>${kw||cat!=='전체' ? '조건에 맞는 자료가 없습니다' : '아직 등록된 자료가 없습니다'}</strong>
+      <span>${kw||cat!=='전체' ? '검색어나 분류를 바꿔서 다시 찾아보세요.' : '강의가 끝나면 이곳에 자료가 올라갑니다.'}</span></div>`;
+    return;
+  }
+
+  list.innerHTML = shown.map((p,i)=>{
+    const files = p.files||[], links = p.links||[];
+    const badges = [];
+    const byExt = {};
+    files.forEach(f => { const e = ext(f.name); byExt[e]=(byExt[e]||0)+1; });
+    Object.keys(byExt).forEach(e => badges.push(`<span class="badge">${e}${byExt[e]>1?' ×'+byExt[e]:''}</span>`));
+    if(links.length) badges.push(`<span class="badge">LINK ×${links.length}</span>`);
+    if(p.lock) badges.push(`<span class="badge lock">🔒 비밀번호</span>`);
+
+    return `<li class="item" data-i="${i}" style="animation-delay:${Math.min(i*40,320)}ms">
+      <button class="head" aria-expanded="false">
+        <span class="meta">
+          <span class="date">${esc((p.date||'').replace(/-/g,'.'))}</span>
+          ${p.category?`<span class="cat">${esc(p.category)}</span>`:''}
+        </span>
+        <span class="title">${esc(p.title)}</span>
+        ${p.summary?`<span class="summary">${esc(p.summary)}</span>`:''}
+        ${badges.length?`<span class="badges">${badges.join('')}</span>`:''}
+        <span class="chev"></span>
+      </button>
+      <div class="panel">
+        ${p.body?`<div class="body">${esc(p.body)}</div>`:''}
+        ${p.lock ? `<div class="gate">
+            <p>이 자료는 강의 참석자에게 안내된 비밀번호가 필요합니다.</p>
+            <div class="gate-row">
+              <input type="password" placeholder="비밀번호" autocomplete="off">
+              <button type="button">확인</button>
+            </div>
+            <p class="err">비밀번호가 맞지 않습니다.</p>
+          </div>
+          <div class="vault" hidden>${assets(files,links)}</div>`
+          : assets(files,links)}
+      </div>
+    </li>`;
+  }).join('');
+
+  bind(shown);
+}
+
+function assets(files,links){
+  const f = files.map(x=>`<li><a class="file" href="${esc(x.path)}" download>
+      <span class="ext">${ext(x.name)}</span>
+      <span class="fname">${esc(x.name)}</span>
+      <span class="fsize">${size(x.size)}</span></a></li>`).join('');
+  const l = links.map(x=>`<li><a class="file" href="${esc(x.url)}" target="_blank" rel="noopener">
+      <span class="ext">LINK</span>
+      <span class="fname">${esc(x.label||x.url)}</span>
+      <span class="fsize">열기 ↗</span></a></li>`).join('');
+  return (f||l) ? `<ul class="files">${f}${l}</ul>` : '';
+}
+
+function bind(shown){
+  document.querySelectorAll('.item').forEach(el=>{
+    const head = el.querySelector('.head');
+    head.addEventListener('click', ()=>{
+      const open = el.classList.toggle('open');
+      head.setAttribute('aria-expanded', open);
+    });
+    const gate = el.querySelector('.gate');
+    if(!gate) return;
+    const p = shown[+el.dataset.i];
+    const input = gate.querySelector('input'), btn = gate.querySelector('button'), err = gate.querySelector('.err');
+    const tryOpen = ()=>{
+      if(input.value === p.lock){
+        gate.remove();
+        el.querySelector('.vault').hidden = false;
+      } else { err.style.display='block'; input.select(); }
+    };
+    btn.addEventListener('click', tryOpen);
+    input.addEventListener('keydown', e=>{ if(e.key==='Enter') tryOpen(); });
+  });
+}
+
+function chips(){
+  const cats = ['전체', ...new Set(POSTS.filter(p=>!p.hidden).map(p=>p.category).filter(Boolean))];
+  document.getElementById('chips').innerHTML = cats.map(c=>
+    `<button class="chip" aria-pressed="${c===cat}">${esc(c)}</button>`).join('');
+  document.querySelectorAll('.chip').forEach(b=>b.addEventListener('click',()=>{
+    cat = b.textContent; chips(); render();
+  }));
+}
+
+document.getElementById('q').addEventListener('input', e=>{ kw = e.target.value.trim(); render(); });
+
+fetch(POSTS_URL + '?t=' + Date.now())
+  .then(r => r.ok ? r.json() : [])
+  .then(d => { POSTS = Array.isArray(d) ? d : []; chips(); render(); })
+  .catch(()=>{ POSTS=[]; chips(); render(); });
+</script>
+</body>
+</html>
