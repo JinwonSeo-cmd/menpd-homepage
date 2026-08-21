@@ -4,17 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>자료실 관리자</title>
+<title>관리자</title>
 <link rel="stylesheet" href="css/styles.css">
 <style>
 :root{
   /* ── 기존 사이트(css/styles.css) 팔레트에 맞춘 3색 ── */
   --accent:#0071e3; --ink:#1d1d1f; --wash:#f5f5f7;
-  --paper:#fff; --line:#E4E6EB; --muted:#767C88; --danger:#D93025;
-}
+  --paper:#fff; --line:#E4E6EB; --muted:#767C88; --danger:#D93025;}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:var(--font-text);background:var(--wash);color:var(--ink);
-  -webkit-font-smoothing:antialiased;padding:40px 20px 120px;font-size:15px}
+body{font-family:var(--font-text,'Pretendard',system-ui,sans-serif);background:var(--wash);
+  color:var(--ink);-webkit-font-smoothing:antialiased;padding:40px 20px 120px;font-size:15px}
 .wrap{max-width:820px;margin:0 auto}
 h1{font-size:26px;font-weight:800;letter-spacing:-.03em}
 .sub{color:var(--muted);font-size:14px;margin-top:6px}
@@ -24,10 +23,9 @@ label{display:block;font-size:13px;font-weight:700;margin-bottom:6px}
 .hint{font-size:12px;color:var(--muted);font-weight:500;margin-top:5px;line-height:1.5}
 input[type=text],input[type=password],input[type=date],textarea,select{
   width:100%;padding:11px 13px;font:inherit;font-size:14px;background:var(--wash);
-  border:1px solid var(--line);border-radius:9px;color:var(--ink);
-}
+  border:1px solid var(--line);border-radius:9px;color:var(--ink)}
 input:focus,textarea:focus,select:focus{outline:none;border-color:var(--accent);background:#fff}
-textarea{min-height:96px;resize:vertical;line-height:1.6}
+textarea{min-height:150px;resize:vertical;line-height:1.7}
 .field{margin-bottom:16px}
 .row{display:flex;gap:12px}
 .row>*{flex:1}
@@ -38,6 +36,15 @@ button{font:inherit;font-weight:700;cursor:pointer;border:0;border-radius:9px;pa
 .ghost:hover{border-color:#C9CDD4;color:var(--ink)}
 .danger{background:transparent;color:var(--danger);border:1px solid #F3C9C6}
 .actions{display:flex;gap:8px;align-items:center;margin-top:8px}
+
+.tabs{display:flex;gap:8px;margin-top:22px}
+.tab{flex:1;padding:14px;border-radius:11px;border:1px solid var(--line);background:var(--paper);
+  color:var(--muted);text-align:center;transition:.16s}
+.tab strong{display:block;font-size:15px;margin-bottom:3px}
+.tab span{font-size:12px;font-weight:500}
+.tab[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.tab[aria-pressed="true"] span{color:rgba(255,255,255,.7)}
+
 .drop{border:1.5px dashed var(--line);border-radius:11px;padding:22px;text-align:center;
   color:var(--muted);font-size:14px;cursor:pointer;transition:.16s}
 .drop:hover,.drop.over{border-color:var(--accent);background:rgba(0,113,227,.04);color:var(--ink)}
@@ -71,7 +78,8 @@ button{font:inherit;font-weight:700;cursor:pointer;border:0;border-radius:9px;pa
     <a href="index.html#home" class="nav-brand">멘피디 서진원 <span>와이컨텐츠</span></a>
     <ul class="nav-links">
       <li><a href="index.html#home">홈</a></li>
-      <li><a href="board.html">자료실</a></li>
+      <li><a href="board.html">게시판</a></li>
+      <li><a href="resources.html">자료실</a></li>
       <li><a href="index.html#photos">현장사진</a></li>
       <li><a href="index.html#book">저서</a></li>
       <li><a href="index.html#portfolio-videos">작업물 예시</a></li>
@@ -86,27 +94,24 @@ button{font:inherit;font-weight:700;cursor:pointer;border:0;border-radius:9px;pa
 </nav>
 
 <div class="wrap">
-  <h1>자료실 관리자</h1>
+  <h1>관리자</h1>
   <p class="sub">여기서 저장하면 GitHub에 바로 반영되고, 1~2분 뒤 홈페이지에 나타납니다.</p>
 
-  <!-- 설정 -->
   <section class="card" id="setup">
     <div class="bar"><h2 style="margin:0">연결 설정</h2>
       <button class="ghost" id="toggleSetup" type="button">접기</button></div>
     <div id="setupBody">
       <div class="row field">
-        <div><label>GitHub 아이디</label><input type="text" id="owner" placeholder="예: menpd"></div>
-        <div><label>저장소 이름</label><input type="text" id="repo" placeholder="예: menpd-homepage"></div>
+        <div><label>GitHub 아이디</label><input type="text" id="owner" placeholder="JinwonSeo-cmd"></div>
+        <div><label>저장소 이름</label><input type="text" id="repo" placeholder="menpd-homepage"></div>
       </div>
-      <div class="row field">
-        <div><label>브랜치</label><input type="text" id="branch" value="main"></div>
-        <div><label>자료 목록 파일</label><input type="text" id="postsPath" value="data/posts.json"></div>
+      <div class="field" style="max-width:50%">
+        <label>브랜치</label><input type="text" id="branch" value="main">
       </div>
       <div class="field">
         <label>액세스 토큰</label>
         <input type="password" id="token" placeholder="github_pat_...">
-        <p class="hint">GitHub → Settings → Developer settings → Fine-grained tokens에서 발급하세요.
-          저장소는 이 홈페이지 하나만, 권한은 <b>Contents: Read and write</b>만 주면 됩니다.
+        <p class="hint">Fine-grained token · 저장소 1개 · 권한은 <b>Contents: Read and write</b>.
           토큰은 이 브라우저에만 저장되고 어디로도 전송되지 않습니다.</p>
       </div>
       <div class="actions">
@@ -117,28 +122,39 @@ button{font:inherit;font-weight:700;cursor:pointer;border:0;border-radius:9px;pa
     <div class="status" id="setupStatus"></div>
   </section>
 
-  <!-- 글 작성 -->
+  <div class="tabs hide" id="tabs">
+    <button class="tab" data-mode="board" type="button" aria-pressed="true">
+      <strong>게시판</strong><span>글 · 링크 · 인스타그램</span></button>
+    <button class="tab" data-mode="res" type="button" aria-pressed="false">
+      <strong>자료실</strong><span>파일 · 드라이브 링크</span></button>
+  </div>
+
   <section class="card hide" id="editor">
-    <div class="bar"><h2 style="margin:0" id="editorTitle">새 자료 등록</h2>
+    <div class="bar"><h2 style="margin:0" id="editorTitle">새 글 등록</h2>
       <button class="ghost hide" id="cancelEdit" type="button">새 글로 전환</button></div>
 
-    <div class="field"><label>제목</label>
-      <input type="text" id="title" placeholder="예: 코레일 AI 활용 실습 자료 (8월 28일)"></div>
+    <div class="field"><label>제목</label><input type="text" id="title"></div>
 
     <div class="row field">
       <div><label>날짜</label><input type="date" id="date"></div>
-      <div><label>분류</label><input type="text" id="category" list="cats" placeholder="예: 코레일">
+      <div><label>분류</label><input type="text" id="category" list="cats" placeholder="예: 강의노트">
         <datalist id="cats"></datalist></div>
     </div>
 
-    <div class="field"><label>한 줄 설명</label>
-      <input type="text" id="summary" placeholder="목록에 함께 보이는 짧은 안내">
-      <p class="hint">비워도 됩니다.</p></div>
+    <div class="field"><label>한 줄 설명</label><input type="text" id="summary" placeholder="비우면 본문 앞부분이 자동으로 쓰입니다">
+      <p class="hint" id="summaryHint">목록에 함께 보이는 짧은 안내입니다.</p></div>
 
-    <div class="field"><label>본문 안내</label>
-      <textarea id="body" placeholder="자료 사용법이나 유의사항을 적어두세요."></textarea></div>
+    <div class="field"><label id="bodyLabel">본문</label>
+      <textarea id="body"></textarea>
+      <p class="hint" id="bodyHint">줄바꿈은 그대로 유지됩니다. 유튜브 임베드 같은 HTML 코드를 붙여넣어도 그대로 표시됩니다.</p></div>
 
-    <div class="field">
+    <div class="field" id="igField">
+      <label>인스타그램 게시물 주소</label>
+      <input type="text" id="instagram" placeholder="https://www.instagram.com/p/...">
+      <p class="hint">게시물이나 릴스 주소만 붙여넣으면 글 아래에 자동으로 붙습니다. 비워도 됩니다.</p>
+    </div>
+
+    <div class="field" id="fileField">
       <label>첨부 파일</label>
       <div class="drop" id="drop">파일을 끌어다 놓거나 눌러서 선택하세요<br>
         <span class="small">개당 20MB 이하 권장. 더 큰 파일은 구글 드라이브 링크로 거세요.</span></div>
@@ -157,7 +173,7 @@ button{font:inherit;font-weight:700;cursor:pointer;border:0;border-radius:9px;pa
     </div>
 
     <div class="row field">
-      <div><label>열람 비밀번호</label><input type="text" id="lock" placeholder="비우면 누구나 열람">
+      <div id="lockField"><label>열람 비밀번호</label><input type="text" id="lock" placeholder="비우면 누구나 열람">
         <p class="hint">가벼운 잠금입니다. 대외비 파일은 올리지 마세요.</p></div>
       <div><label>공개 여부</label>
         <select id="hidden"><option value="">목록에 공개</option><option value="1">숨김(임시 저장)</option></select></div>
@@ -170,9 +186,8 @@ button{font:inherit;font-weight:700;cursor:pointer;border:0;border-radius:9px;pa
     <div class="status" id="saveStatus"></div>
   </section>
 
-  <!-- 등록된 글 -->
   <section class="card hide" id="listCard">
-    <h2>등록된 자료</h2>
+    <h2 id="listTitle">등록된 글</h2>
     <ul class="posts" id="posts"></ul>
   </section>
 </div>
@@ -188,7 +203,8 @@ button{font:inherit;font-weight:700;cursor:pointer;border:0;border-radius:9px;pa
       <div class="footer-links">
         <div class="footer-col">
           <h5>바로가기</h5>
-          <a href="board.html">자료실</a>
+          <a href="board.html">게시판</a>
+          <a href="resources.html">자료실</a>
           <a href="index.html#photos">현장사진</a>
           <a href="index.html#book">저서</a>
           <a href="index.html#portfolio-videos">작업물 예시</a>
@@ -208,132 +224,178 @@ button{font:inherit;font-weight:700;cursor:pointer;border:0;border-radius:9px;pa
   </div>
 </footer>
 
+<!-- ============ 플로팅 카카오톡 문의 버튼 ============ -->
+<a href="http://pf.kakao.com/_xniQiX/chat" target="_blank" rel="noopener" class="kakao-float" id="kakaoFloat">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.5 3 2 6.6 2 11c0 2.8 1.8 5.3 4.6 6.7-.2.8-.7 2.7-.8 3.1 0 0-.1.3.1.4.2.1.4 0 .4 0 .5-.1 2.9-1.9 4-2.7.6.1 1.1.1 1.7.1 5.5 0 10-3.6 10-8S17.5 3 12 3z"/></svg>
+</a>
+
 <script src="js/main.js"></script>
 <script>
-const S = {}, LS = 'menpd_board_cfg';
-let posts = [], postsSha = null, editingId = null;
-let pendingFiles = [], links = [];
+const LS = 'menpd_admin_cfg';
+const PATHS = { board:'data/board.json', res:'data/resources.json' };
+const WORDS = { board:{one:'글', new:'새 글 등록', edit:'글 수정', list:'등록된 글'},
+                res:{one:'자료', new:'새 자료 등록', edit:'자료 수정', list:'등록된 자료'} };
+let MODE = 'board';
+let posts = [], editingId = null, pendingFiles = [], links = [];
 const $ = id => document.getElementById(id);
+const sleep = ms => new Promise(r=>setTimeout(r,ms));
 
-/* ── 저장된 설정 불러오기 ── */
+/* ── 설정 ── */
 (function boot(){
-  const cfg = JSON.parse(localStorage.getItem(LS) || '{}');
-  ['owner','repo','branch','postsPath','token'].forEach(k => { if(cfg[k]) $(k).value = cfg[k]; });
+  const c = JSON.parse(localStorage.getItem(LS) || '{}');
+  ['owner','repo','branch','token'].forEach(k => { if(c[k]) $(k).value = c[k]; });
   $('date').value = new Date().toISOString().slice(0,10);
-  if(cfg.token && cfg.owner && cfg.repo) connect();
+  if(c.token && c.owner && c.repo) connect();
 })();
-
-function cfg(){
-  return { owner:$('owner').value.trim(), repo:$('repo').value.trim(),
-    branch:$('branch').value.trim()||'main', postsPath:$('postsPath').value.trim()||'data/posts.json',
-    token:$('token').value.trim() };
-}
-function msg(el, text, kind){ const e=$(el); e.className='status on '+kind; e.innerHTML=text; }
+function cfg(){ return { owner:$('owner').value.trim(), repo:$('repo').value.trim(),
+  branch:$('branch').value.trim()||'main', token:$('token').value.trim() }; }
+function msg(el,text,kind){ const e=$(el); e.className='status on '+kind; e.textContent=text; }
 function clearMsg(el){ $(el).className='status'; }
 
-/* ── GitHub API ── */
+/* ── GitHub ── */
 function api(path){ const c=cfg();
   return `https://api.github.com/repos/${c.owner}/${c.repo}/contents/${path.split('/').map(encodeURIComponent).join('/')}`; }
-function headers(){ return { Authorization:'Bearer '+cfg().token, Accept:'application/vnd.github+json' }; }
-
+function headers(){ return { Authorization:'Bearer '+cfg().token, Accept:'application/vnd.github+json',
+  'Cache-Control':'no-cache' }; }
 function b64(bytes){ let s=''; const n=0x8000;
-  for(let i=0;i<bytes.length;i+=n) s+=String.fromCharCode.apply(null,bytes.subarray(i,i+n));
-  return btoa(s); }
+  for(let i=0;i<bytes.length;i+=n) s+=String.fromCharCode.apply(null,bytes.subarray(i,i+n)); return btoa(s); }
+function enc(str){ return b64(new TextEncoder().encode(str)); }
 function fromB64(t){ const bin=atob(t.replace(/\s/g,''));
   return new TextDecoder().decode(Uint8Array.from(bin,c=>c.charCodeAt(0))); }
 
-async function getJson(){
-  const r = await fetch(api(cfg().postsPath)+'?ref='+encodeURIComponent(cfg().branch), {headers:headers()});
+async function readJson(path){
+  const url = api(path)+'?ref='+encodeURIComponent(cfg().branch)+'&t='+Date.now();
+  const r = await fetch(url,{headers:headers(),cache:'no-store'});
   if(r.status===404) return {data:[], sha:null};
-  if(!r.ok) throw new Error(r.status===401?'토큰이 올바르지 않습니다.':r.status===403?'토큰 권한이 부족합니다. Contents 권한을 확인하세요.':'목록을 불러오지 못했습니다 ('+r.status+')');
+  if(!r.ok) throw new Error(r.status===401?'토큰이 올바르지 않습니다.'
+    :r.status===403?'토큰 권한이 부족합니다. Contents 권한을 확인하세요.'
+    :r.status===404?'저장소를 찾을 수 없습니다.':'불러오지 못했습니다 ('+r.status+')');
   const j = await r.json();
-  let data = []; try{ data = JSON.parse(fromB64(j.content)) }catch(e){}
+  let data=[]; try{ data = JSON.parse(fromB64(j.content)) }catch(e){}
   return {data:Array.isArray(data)?data:[], sha:j.sha};
 }
-async function putFile(path, contentB64, message, sha){
-  const r = await fetch(api(path), { method:'PUT', headers:{...headers(),'Content-Type':'application/json'},
-    body: JSON.stringify({message, content:contentB64, branch:cfg().branch, ...(sha?{sha}:{})}) });
-  if(!r.ok){ const e = await r.json().catch(()=>({}));
-    throw new Error(e.message || '업로드 실패 ('+r.status+')'); }
+
+/* 충돌이 나면 최신 상태를 다시 읽어 재시도한다 */
+async function writeJson(path, message, mutate){
+  let last='';
+  for(let i=0;i<5;i++){
+    const cur = await readJson(path);
+    const next = mutate(cur.data.slice());
+    const r = await fetch(api(path), { method:'PUT',
+      headers:{...headers(),'Content-Type':'application/json'},
+      body: JSON.stringify({ message, content:enc(JSON.stringify(next,null,2)),
+        branch:cfg().branch, ...(cur.sha?{sha:cur.sha}:{}) }) });
+    if(r.ok){ return next; }
+    const e = await r.json().catch(()=>({}));
+    last = e.message || ('저장 실패 ('+r.status+')');
+    if(r.status===409 || /does not match|sha/i.test(last)){ await sleep(600+i*400); continue; }
+    throw new Error(last);
+  }
+  throw new Error('저장이 계속 충돌합니다. 잠시 뒤 다시 시도해 주세요.');
+}
+
+async function putBinary(path, contentB64, message){
+  const r = await fetch(api(path), { method:'PUT',
+    headers:{...headers(),'Content-Type':'application/json'},
+    body: JSON.stringify({message, content:contentB64, branch:cfg().branch}) });
+  if(!r.ok){ const e=await r.json().catch(()=>({})); throw new Error(e.message||'업로드 실패 ('+r.status+')'); }
   return r.json();
 }
 
 /* ── 연결 ── */
 async function connect(){
   const c = cfg();
-  if(!c.owner || !c.repo || !c.token){ msg('setupStatus','아이디, 저장소, 토큰을 모두 채워주세요.','err'); return; }
+  if(!c.owner||!c.repo||!c.token){ msg('setupStatus','아이디, 저장소, 토큰을 모두 채워주세요.','err'); return; }
   msg('setupStatus','연결하는 중…','busy');
   try{
-    const {data, sha} = await getJson();
-    posts = data; postsSha = sha;
+    const {data} = await readJson(PATHS[MODE]);
+    posts = data;
     localStorage.setItem(LS, JSON.stringify(c));
-    msg('setupStatus', `연결됨 · ${c.owner}/${c.repo} · 자료 ${posts.length}건`, 'ok');
-    $('editor').classList.remove('hide'); $('listCard').classList.remove('hide');
-    $('setupBody').classList.add('hide'); $('toggleSetup').textContent = '펼치기';
-    renderPosts(); renderCats();
+    msg('setupStatus', `연결됨 · ${c.owner}/${c.repo}`, 'ok');
+    $('tabs').classList.remove('hide'); $('editor').classList.remove('hide'); $('listCard').classList.remove('hide');
+    $('setupBody').classList.add('hide'); $('toggleSetup').textContent='펼치기';
+    applyMode(); renderPosts(); renderCats();
   }catch(e){ msg('setupStatus', e.message, 'err'); }
 }
 $('connect').onclick = connect;
-$('toggleSetup').onclick = () => {
-  const b = $('setupBody'); b.classList.toggle('hide');
-  $('toggleSetup').textContent = b.classList.contains('hide') ? '펼치기' : '접기';
-};
-$('logout').onclick = () => { localStorage.removeItem(LS); $('token').value='';
+$('toggleSetup').onclick = ()=>{ const b=$('setupBody'); b.classList.toggle('hide');
+  $('toggleSetup').textContent = b.classList.contains('hide')?'펼치기':'접기'; };
+$('logout').onclick = ()=>{ localStorage.removeItem(LS); $('token').value='';
   msg('setupStatus','토큰을 지웠습니다.','busy'); };
 
-/* ── 첨부 ── */
-$('drop').onclick = () => $('picker').click();
-$('drop').ondragover = e => { e.preventDefault(); $('drop').classList.add('over'); };
-$('drop').ondragleave = () => $('drop').classList.remove('over');
-$('drop').ondrop = e => { e.preventDefault(); $('drop').classList.remove('over'); addFiles(e.dataTransfer.files); };
-$('picker').onchange = e => addFiles(e.target.files);
+/* ── 탭 ── */
+document.querySelectorAll('.tab').forEach(t => t.onclick = async () => {
+  if(MODE === t.dataset.mode) return;
+  MODE = t.dataset.mode;
+  document.querySelectorAll('.tab').forEach(x=>x.setAttribute('aria-pressed', x.dataset.mode===MODE));
+  resetForm(); clearMsg('saveStatus'); applyMode();
+  $('posts').innerHTML = '<li class="small" style="border:0;padding:4px">불러오는 중…</li>';
+  try{ posts = (await readJson(PATHS[MODE])).data; renderPosts(); renderCats(); }
+  catch(e){ msg('saveStatus', e.message, 'err'); }
+});
 
-function addFiles(fl){ [...fl].forEach(f => pendingFiles.push({file:f, name:f.name, size:f.size}));
+function applyMode(){
+  const w = WORDS[MODE], isBoard = MODE==='board';
+  $('igField').classList.toggle('hide', !isBoard);
+  $('fileField').classList.toggle('hide', isBoard);
+  $('lockField').classList.toggle('hide', isBoard);
+  $('bodyLabel').textContent = isBoard ? '본문' : '본문 안내';
+  $('bodyHint').textContent = isBoard
+    ? '줄바꿈은 그대로 유지됩니다. 유튜브 임베드 같은 HTML 코드를 붙여넣어도 그대로 표시됩니다.'
+    : '자료 사용법이나 유의사항을 적어두세요.';
+  $('editorTitle').textContent = editingId ? w.edit : w.new;
+  $('listTitle').textContent = w.list;
+  $('title').placeholder = isBoard ? '예: 코레일 강의를 마치고' : '예: 코레일 AI 활용 실습 자료 (8월 28일)';
+}
+
+/* ── 첨부 ── */
+$('drop').onclick = ()=>$('picker').click();
+$('drop').ondragover = e=>{ e.preventDefault(); $('drop').classList.add('over'); };
+$('drop').ondragleave = ()=>$('drop').classList.remove('over');
+$('drop').ondrop = e=>{ e.preventDefault(); $('drop').classList.remove('over'); addFiles(e.dataTransfer.files); };
+$('picker').onchange = e=>addFiles(e.target.files);
+function addFiles(fl){ [...fl].forEach(f=>pendingFiles.push({file:f,name:f.name,size:f.size}));
   renderFiles(); $('picker').value=''; }
+function fmt(b){ return b<1024?b+' B':b<1048576?(b/1024).toFixed(0)+' KB':(b/1048576).toFixed(1)+' MB'; }
 function renderFiles(){
   $('fileList').innerHTML = pendingFiles.map((f,i)=>
     `<li><span class="nm">${f.name}</span><span class="small">${fmt(f.size)}</span>
       <button class="x" data-i="${i}" type="button">×</button></li>`).join('');
   $('fileList').querySelectorAll('.x').forEach(b=>b.onclick=()=>{ pendingFiles.splice(+b.dataset.i,1); renderFiles(); });
 }
-function fmt(b){ return b<1024?b+' B':b<1048576?(b/1024).toFixed(0)+' KB':(b/1048576).toFixed(1)+' MB'; }
-
-$('addLink').onclick = () => {
+$('addLink').onclick = ()=>{
   const url = $('linkUrl').value.trim(); if(!url) return;
   links.push({label:$('linkLabel').value.trim()||url, url});
   $('linkLabel').value=''; $('linkUrl').value=''; renderLinks();
 };
 function renderLinks(){
   $('linkList').innerHTML = links.map((l,i)=>
-    `<li><span class="nm">${l.label}</span><span class="small">${l.url.slice(0,36)}…</span>
+    `<li><span class="nm">${l.label}</span><span class="small">${l.url.slice(0,34)}…</span>
       <button class="x" data-i="${i}" type="button">×</button></li>`).join('');
   $('linkList').querySelectorAll('.x').forEach(b=>b.onclick=()=>{ links.splice(+b.dataset.i,1); renderLinks(); });
 }
 
 /* ── 저장 ── */
-function slug(name){
-  const dot = name.lastIndexOf('.');
-  const ext = dot>0 ? name.slice(dot).toLowerCase() : '';
-  return Date.now() + '-' + Math.random().toString(36).slice(2,7) + ext;
-}
+function slug(name){ const d=name.lastIndexOf('.'); const e=d>0?name.slice(d).toLowerCase():'';
+  return Date.now()+'-'+Math.random().toString(36).slice(2,7)+e; }
+
 $('save').onclick = async () => {
   if(!$('title').value.trim()){ msg('saveStatus','제목을 입력해주세요.','err'); return; }
   $('save').disabled = true;
-  const dir = 'data/files';
   try{
     const uploaded = [];
-    for(let i=0;i<pendingFiles.length;i++){
-      const f = pendingFiles[i];
-      if(f.path){ uploaded.push({name:f.name, path:f.path, size:f.size}); continue; }
-      msg('saveStatus', `파일 올리는 중 (${i+1}/${pendingFiles.length}) · ${f.name}`, 'busy');
-      const buf = new Uint8Array(await f.file.arrayBuffer());
-      const path = `${dir}/${slug(f.name)}`;
-      await putFile(path, b64(buf), `자료 파일 추가: ${f.name}`);
-      uploaded.push({name:f.name, path, size:f.size});
+    if(MODE === 'res'){
+      for(let i=0;i<pendingFiles.length;i++){
+        const f = pendingFiles[i];
+        if(f.path){ uploaded.push({name:f.name,path:f.path,size:f.size}); continue; }
+        msg('saveStatus', `파일 올리는 중 (${i+1}/${pendingFiles.length}) · ${f.name}`,'busy');
+        const buf = new Uint8Array(await f.file.arrayBuffer());
+        const path = `data/files/${slug(f.name)}`;
+        await putBinary(path, b64(buf), `자료 파일 추가: ${f.name}`);
+        uploaded.push({name:f.name, path, size:f.size});
+      }
     }
-
     msg('saveStatus','목록 업데이트 중…','busy');
-    const fresh = await getJson(); posts = fresh.data; postsSha = fresh.sha;
 
     const post = {
       id: editingId || ('p'+Date.now()),
@@ -341,21 +403,21 @@ $('save').onclick = async () => {
       date: $('date').value,
       category: $('category').value.trim(),
       summary: $('summary').value.trim(),
-      body: $('body').value.trim(),
-      files: uploaded, links,
-      lock: $('lock').value.trim(),
+      body: $('body').value,
+      links,
       hidden: $('hidden').value === '1'
     };
-    const idx = posts.findIndex(p => p.id === post.id);
-    if(idx >= 0) posts[idx] = post; else posts.unshift(post);
-    posts.sort((a,b)=>(b.date||'').localeCompare(a.date||''));
+    if(MODE === 'board') post.instagram = $('instagram').value.trim();
+    else { post.files = uploaded; post.lock = $('lock').value.trim(); }
 
-    const json = JSON.stringify(posts, null, 2);
-    const res = await putFile(cfg().postsPath, b64(new TextEncoder().encode(json)),
-      (editingId?'자료 수정: ':'자료 등록: ')+post.title, postsSha);
-    postsSha = res.content.sha;
+    posts = await writeJson(PATHS[MODE], (editingId?'수정: ':'등록: ')+post.title, arr => {
+      const i = arr.findIndex(x => x.id === post.id);
+      if(i >= 0) arr[i] = post; else arr.unshift(post);
+      arr.sort((a,b)=>(b.date||'').localeCompare(a.date||''));
+      return arr;
+    });
 
-    msg('saveStatus', `저장했습니다. 1~2분 뒤 홈페이지에 반영됩니다.`, 'ok');
+    msg('saveStatus','저장했습니다. 1~2분 뒤 홈페이지에 반영됩니다.','ok');
     resetForm(); renderPosts(); renderCats();
   }catch(e){ msg('saveStatus', e.message, 'err'); }
   finally{ $('save').disabled = false; }
@@ -363,54 +425,53 @@ $('save').onclick = async () => {
 
 function resetForm(){
   editingId = null; pendingFiles = []; links = [];
-  ['title','summary','body','lock','category'].forEach(k => $(k).value='');
+  ['title','summary','body','lock','category','instagram'].forEach(k=>$(k).value='');
   $('date').value = new Date().toISOString().slice(0,10);
   $('hidden').value=''; renderFiles(); renderLinks();
-  $('editorTitle').textContent = '새 자료 등록';
+  $('editorTitle').textContent = WORDS[MODE].new;
   $('cancelEdit').classList.add('hide'); $('editingHint').textContent='';
 }
-$('cancelEdit').onclick = () => { resetForm(); clearMsg('saveStatus'); };
+$('cancelEdit').onclick = ()=>{ resetForm(); clearMsg('saveStatus'); };
 
 /* ── 목록 ── */
 function renderPosts(){
-  if(!posts.length){ $('posts').innerHTML = '<li class="small" style="border:0;padding:4px">아직 등록된 자료가 없습니다.</li>'; return; }
-  $('posts').innerHTML = posts.map(p =>
+  if(!posts.length){ $('posts').innerHTML =
+    `<li class="small" style="border:0;padding:4px">아직 등록된 ${WORDS[MODE].one}이 없습니다.</li>`; return; }
+  $('posts').innerHTML = posts.map(p=>
     `<li><span class="d">${(p.date||'').replace(/-/g,'.')}</span>
       <span class="t">${p.title}${p.hidden?' <span class="tag">숨김</span>':''}${p.lock?' <span class="tag">🔒</span>':''}</span>
       <button class="ghost" data-edit="${p.id}" type="button">수정</button>
       <button class="danger" data-del="${p.id}" type="button">삭제</button></li>`).join('');
-  $('posts').querySelectorAll('[data-edit]').forEach(b => b.onclick = () => edit(b.dataset.edit));
-  $('posts').querySelectorAll('[data-del]').forEach(b => b.onclick = () => del(b.dataset.del));
+  $('posts').querySelectorAll('[data-edit]').forEach(b=>b.onclick=()=>edit(b.dataset.edit));
+  $('posts').querySelectorAll('[data-del]').forEach(b=>b.onclick=()=>del(b.dataset.del));
 }
 function renderCats(){
   $('cats').innerHTML = [...new Set(posts.map(p=>p.category).filter(Boolean))]
     .map(c=>`<option value="${c}">`).join('');
 }
 function edit(id){
-  const p = posts.find(x => x.id === id); if(!p) return;
+  const p = posts.find(x=>x.id===id); if(!p) return;
   editingId = id;
-  $('title').value = p.title||''; $('date').value = p.date||'';
-  $('category').value = p.category||''; $('summary').value = p.summary||'';
-  $('body').value = p.body||''; $('lock').value = p.lock||'';
-  $('hidden').value = p.hidden ? '1' : '';
-  pendingFiles = (p.files||[]).map(f => ({...f}));
-  links = (p.links||[]).map(l => ({...l}));
+  $('title').value=p.title||''; $('date').value=p.date||'';
+  $('category').value=p.category||''; $('summary').value=p.summary||'';
+  $('body').value=p.body||''; $('lock').value=p.lock||'';
+  $('instagram').value=p.instagram||'';
+  $('hidden').value = p.hidden?'1':'';
+  pendingFiles = (p.files||[]).map(f=>({...f}));
+  links = (p.links||[]).map(l=>({...l}));
   renderFiles(); renderLinks();
-  $('editorTitle').textContent = '자료 수정';
+  $('editorTitle').textContent = WORDS[MODE].edit;
   $('cancelEdit').classList.remove('hide');
   $('editingHint').textContent = '수정 중';
   clearMsg('saveStatus');
-  window.scrollTo({top:0, behavior:'smooth'});
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 async function del(id){
-  const p = posts.find(x => x.id === id);
-  if(!confirm(`"${p.title}" 을 목록에서 지웁니다. 계속할까요?\n(업로드된 파일 자체는 저장소에 남습니다)`)) return;
+  const p = posts.find(x=>x.id===id);
+  if(!confirm(`"${p.title}" 을 목록에서 지웁니다. 계속할까요?`)) return;
   try{
     msg('saveStatus','삭제하는 중…','busy');
-    const fresh = await getJson(); posts = fresh.data.filter(x => x.id !== id); postsSha = fresh.sha;
-    const res = await putFile(cfg().postsPath, b64(new TextEncoder().encode(JSON.stringify(posts,null,2))),
-      '자료 삭제: '+p.title, postsSha);
-    postsSha = res.content.sha;
+    posts = await writeJson(PATHS[MODE], '삭제: '+p.title, arr => arr.filter(x=>x.id!==id));
     msg('saveStatus','삭제했습니다.','ok'); renderPosts(); renderCats();
   }catch(e){ msg('saveStatus', e.message, 'err'); }
 }

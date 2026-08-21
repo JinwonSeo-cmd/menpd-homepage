@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>게시판 | 멘피디 AI</title>
+<title>자료실 | 멘피디 AI</title>
 <link rel="stylesheet" href="css/styles.css">
 <style>
 :root{
@@ -15,7 +15,7 @@
 body{font-family:var(--font-text,'Pretendard',system-ui,-apple-system,sans-serif);
   background:var(--wash);color:var(--ink);-webkit-font-smoothing:antialiased;
   padding:64px 20px 120px}
-.wrap{max-width:720px;margin:0 auto}
+.wrap{max-width:760px;margin:0 auto}
 .eyebrow{font-size:12px;font-weight:700;letter-spacing:.14em;color:var(--accent);
   text-transform:uppercase;margin-bottom:14px}
 h1{font-size:clamp(30px,5vw,42px);font-weight:800;letter-spacing:-.03em;line-height:1.2}
@@ -44,44 +44,47 @@ h1{font-size:clamp(30px,5vw,42px);font-weight:800;letter-spacing:-.03em;line-hei
 .item.open{border-color:var(--ink);box-shadow:0 6px 24px -12px rgba(20,24,32,.28)}
 
 .head{width:100%;display:block;text-align:left;cursor:pointer;background:none;border:0;
-  font:inherit;color:inherit;padding:22px 24px;position:relative}
+  font:inherit;color:inherit;padding:20px 22px;position:relative}
 .head:focus-visible{outline:2px solid var(--accent);outline-offset:-3px}
-.meta{display:flex;align-items:center;gap:9px;margin-bottom:9px}
+.meta{display:flex;align-items:center;gap:9px;margin-bottom:8px}
 .date{font-size:12px;font-weight:600;color:var(--muted);font-variant-numeric:tabular-nums}
 .cat{font-size:11px;font-weight:700;padding:3px 8px;border-radius:5px;
   background:rgba(0,113,227,.1);color:var(--accent)}
-.title{font-size:18px;font-weight:700;letter-spacing:-.02em;line-height:1.45;padding-right:30px;display:block}
-.summary{margin-top:8px;font-size:14.5px;color:var(--muted);line-height:1.65;display:block}
-.marks{display:flex;gap:6px;margin-top:12px}
-.mark{font-size:11px;font-weight:700;letter-spacing:.03em;padding:3px 8px;border-radius:5px;
-  background:var(--wash);color:#5A616D}
-.chev{position:absolute;top:26px;right:24px;width:11px;height:11px;
+.title{font-size:17px;font-weight:700;letter-spacing:-.02em;line-height:1.4;padding-right:28px;display:block}
+.summary{margin-top:6px;font-size:14px;color:var(--muted);line-height:1.6;display:block}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.badge{font-size:11px;font-weight:700;letter-spacing:.04em;
+  font-family:ui-monospace,'SF Mono',Menlo,monospace;
+  padding:3px 7px;border-radius:4px;background:var(--wash);color:#5A616D}
+.badge.lock{background:rgba(0,113,227,.1);color:var(--accent)}
+.chev{position:absolute;top:22px;right:22px;width:11px;height:11px;
   border-right:2px solid #B4B9C2;border-bottom:2px solid #B4B9C2;transform:rotate(45deg);
   transition:transform .22s cubic-bezier(.2,.7,.3,1)}
 .item.open .chev{transform:rotate(225deg);border-color:var(--ink)}
 
-.panel{display:none;padding:0 24px 24px;border-top:1px solid var(--line)}
+.panel{display:none;padding:0 22px 22px;border-top:1px solid var(--line)}
 .item.open .panel{display:block;animation:rise .26s ease both}
-.body{padding-top:20px;font-size:15.5px;line-height:1.85;color:#2E3440;
-  white-space:pre-wrap;word-break:break-word}
+.body{font-size:14px;line-height:1.75;color:#3C424D;white-space:pre-wrap;padding-top:18px;word-break:break-word}
 .body a{color:var(--accent)}
-.body img{max-width:100%;height:auto;border-radius:10px;margin:6px 0}
-.body iframe{max-width:100%;border-radius:10px}
-.body h2,.body h3{margin:14px 0 6px;letter-spacing:-.02em;white-space:normal}
-.body ul,.body ol{margin:6px 0 6px 20px;white-space:normal}
-.body blockquote{border-left:3px solid var(--line);padding-left:14px;color:var(--muted);margin:10px 0}
-
-.embed{margin-top:20px;display:flex;justify-content:center}
-.embed iframe{width:100%;max-width:420px;height:640px;border:1px solid var(--line);
-  border-radius:12px;background:#fff}
-.links{list-style:none;display:flex;flex-direction:column;gap:8px;padding-top:20px}
-.link{display:flex;align-items:center;gap:12px;padding:13px 15px;border:1px solid var(--line);
+.files{list-style:none;display:flex;flex-direction:column;gap:8px;padding-top:18px}
+.file{display:flex;align-items:center;gap:12px;padding:13px 15px;border:1px solid var(--line);
   border-radius:10px;text-decoration:none;color:inherit;transition:all .16s}
-.link:hover{border-color:var(--accent);background:rgba(0,113,227,.04)}
-.link .tag{font-size:10px;font-weight:700;letter-spacing:.05em;color:#fff;background:var(--ink);
-  padding:5px 7px;border-radius:5px;flex:none}
-.link .nm{font-size:14px;font-weight:600;flex:1;word-break:break-all}
-.link .go{font-size:12px;color:var(--muted);flex:none}
+.file:hover{border-color:var(--accent);background:rgba(0,113,227,.04)}
+.ext{font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10px;font-weight:700;
+  letter-spacing:.05em;color:#fff;background:var(--ink);padding:5px 6px;border-radius:5px;
+  flex:none;min-width:44px;text-align:center}
+.file .fname{font-size:14px;font-weight:600;flex:1;word-break:break-all}
+.file .fsize{font-size:12px;color:var(--muted);flex:none;font-variant-numeric:tabular-nums}
+
+.gate{padding-top:18px}
+.gate p{font-size:13px;color:var(--muted);margin-bottom:10px}
+.gate-row{display:flex;gap:8px}
+.gate input{flex:1;padding:11px 14px;font:inherit;font-size:14px;border:1px solid var(--line);
+  border-radius:10px;background:var(--wash);color:var(--ink)}
+.gate input:focus{outline:none;border-color:var(--accent);background:#fff}
+.gate button{font:inherit;font-size:14px;font-weight:700;padding:11px 20px;cursor:pointer;
+  background:var(--ink);color:#fff;border:0;border-radius:10px}
+.gate .err{color:#D93025;font-size:13px;margin-top:8px;display:none}
 
 .empty{text-align:center;padding:72px 24px;background:var(--paper);
   border:1px dashed var(--line);border-radius:var(--radius)}
@@ -115,13 +118,13 @@ h1{font-size:clamp(30px,5vw,42px);font-weight:800;letter-spacing:-.03em;line-hei
 
 <div class="wrap">
   <header>
-    <p class="eyebrow">멘피디 AI · 게시판</p>
-    <h1>기록하고 나눕니다</h1>
-    <p class="lede">강의하며 겪은 일, 요즘 보고 있는 것들, 소소한 생각을 남겨둡니다.</p>
+    <p class="eyebrow">멘피디 AI · 강의 자료실</p>
+    <h1>강의 자료 내려받기</h1>
+    <p class="lede">강의에서 다룬 실습 파일과 참고 링크를 모아둡니다. 자료는 강의가 끝난 뒤 순차적으로 올라갑니다.</p>
   </header>
 
   <div class="controls">
-    <input class="search" id="q" type="search" placeholder="제목이나 내용으로 찾기" autocomplete="off">
+    <input class="search" id="q" type="search" placeholder="강의명이나 자료명으로 찾기" autocomplete="off">
     <div class="chips" id="chips"></div>
   </div>
 
@@ -168,18 +171,22 @@ h1{font-size:clamp(30px,5vw,42px);font-weight:800;letter-spacing:-.03em;line-hei
 
 <script src="js/main.js"></script>
 <script>
-const DATA_URL = 'data/board.json';
+const DATA_URL = 'data/resources.json';
 let POSTS = [], cat = '전체', kw = '';
 
+function ext(name){ const m = String(name).split('.').pop(); return (m && m.length<=5 ? m : 'FILE').toUpperCase(); }
+function size(b){ if(!b && b!==0) return ''; if(b<1024) return b+' B';
+  if(b<1048576) return (b/1024).toFixed(0)+' KB'; return (b/1048576).toFixed(1)+' MB'; }
 function esc(s){ return String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
-function igCode(url){
-  const m = String(url||'').match(/instagram\.com\/(?:p|reel|reels|tv)\/([A-Za-z0-9_-]+)/);
-  return m ? m[1] : '';
-}
-function excerpt(p){
-  if(p.summary) return p.summary;
-  const t = String(p.body||'').replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim();
-  return t.length > 90 ? t.slice(0,90)+'…' : t;
+
+function assets(files,links){
+  const f = files.map(x=>`<li><a class="file" href="${esc(x.path)}" download>
+      <span class="ext">${ext(x.name)}</span><span class="fname">${esc(x.name)}</span>
+      <span class="fsize">${size(x.size)}</span></a></li>`).join('');
+  const l = links.map(x=>`<li><a class="file" href="${esc(x.url)}" target="_blank" rel="noopener">
+      <span class="ext">LINK</span><span class="fname">${esc(x.label||x.url)}</span>
+      <span class="fsize">열기 ↗</span></a></li>`).join('');
+  return (f||l) ? `<ul class="files">${f}${l}</ul>` : '';
 }
 
 function render(){
@@ -188,44 +195,50 @@ function render(){
     .filter(p => cat==='전체' || p.category===cat)
     .filter(p => {
       if(!kw) return true;
-      const hay = (p.title+' '+(p.summary||'')+' '+(p.body||'')+' '+(p.category||'')).toLowerCase();
+      const hay = (p.title+' '+(p.summary||'')+' '+(p.category||'')+' '+(p.files||[]).map(f=>f.name).join(' ')).toLowerCase();
       return hay.includes(kw.toLowerCase());
     })
     .sort((a,b)=>(b.date||'').localeCompare(a.date||''));
 
-  document.getElementById('count').textContent = shown.length ? `글 ${shown.length}개` : '';
+  document.getElementById('count').textContent = shown.length ? `자료 ${shown.length}건` : '';
 
   if(!shown.length){
-    list.innerHTML = `<div class="empty"><strong>${kw||cat!=='전체' ? '조건에 맞는 글이 없습니다' : '아직 올라온 글이 없습니다'}</strong>
-      <span>${kw||cat!=='전체' ? '검색어나 분류를 바꿔서 찾아보세요.' : '곧 첫 글이 올라옵니다.'}</span></div>`;
+    list.innerHTML = `<div class="empty"><strong>${kw||cat!=='전체' ? '조건에 맞는 자료가 없습니다' : '아직 등록된 자료가 없습니다'}</strong>
+      <span>${kw||cat!=='전체' ? '검색어나 분류를 바꿔서 다시 찾아보세요.' : '강의가 끝나면 이곳에 자료가 올라갑니다.'}</span></div>`;
     return;
   }
 
   list.innerHTML = shown.map((p,i)=>{
-    const marks = [];
-    if(igCode(p.instagram)) marks.push('<span class="mark">인스타그램</span>');
-    if((p.links||[]).length) marks.push(`<span class="mark">링크 ${p.links.length}</span>`);
-    const ex = excerpt(p);
+    const files = p.files||[], links = p.links||[];
+    const badges = [], byExt = {};
+    files.forEach(f => { const e = ext(f.name); byExt[e]=(byExt[e]||0)+1; });
+    Object.keys(byExt).forEach(e => badges.push(`<span class="badge">${e}${byExt[e]>1?' ×'+byExt[e]:''}</span>`));
+    if(links.length) badges.push(`<span class="badge">LINK ×${links.length}</span>`);
+    if(p.lock) badges.push(`<span class="badge lock">🔒 비밀번호</span>`);
 
-    return `<li class="item" style="animation-delay:${Math.min(i*40,320)}ms">
+    return `<li class="item" data-i="${i}" style="animation-delay:${Math.min(i*40,320)}ms">
       <button class="head" aria-expanded="false">
         <span class="meta">
           <span class="date">${esc((p.date||'').replace(/-/g,'.'))}</span>
           ${p.category?`<span class="cat">${esc(p.category)}</span>`:''}
         </span>
         <span class="title">${esc(p.title)}</span>
-        ${ex?`<span class="summary">${esc(ex)}</span>`:''}
-        ${marks.length?`<span class="marks">${marks.join('')}</span>`:''}
+        ${p.summary?`<span class="summary">${esc(p.summary)}</span>`:''}
+        ${badges.length?`<span class="badges">${badges.join('')}</span>`:''}
         <span class="chev"></span>
       </button>
       <div class="panel">
-        ${p.body?`<div class="body">${p.body}</div>`:''}
-        ${igCode(p.instagram)?`<div class="embed"><iframe src="https://www.instagram.com/p/${igCode(p.instagram)}/embed/captioned/"
-            loading="lazy" scrolling="no" allowtransparency="true" title="인스타그램 게시물"></iframe></div>`:''}
-        ${(p.links||[]).length?`<ul class="links">${p.links.map(l=>
-          `<li><a class="link" href="${esc(l.url)}" target="_blank" rel="noopener">
-            <span class="tag">LINK</span><span class="nm">${esc(l.label||l.url)}</span>
-            <span class="go">열기 ↗</span></a></li>`).join('')}</ul>`:''}
+        ${p.body?`<div class="body">${esc(p.body)}</div>`:''}
+        ${p.lock ? `<div class="gate">
+            <p>이 자료는 강의 참석자에게 안내된 비밀번호가 필요합니다.</p>
+            <div class="gate-row">
+              <input type="password" placeholder="비밀번호" autocomplete="off">
+              <button type="button">확인</button>
+            </div>
+            <p class="err">비밀번호가 맞지 않습니다.</p>
+          </div>
+          <div class="vault" hidden>${assets(files,links)}</div>`
+          : assets(files,links)}
       </div>
     </li>`;
   }).join('');
@@ -236,6 +249,16 @@ function render(){
       const open = el.classList.toggle('open');
       head.setAttribute('aria-expanded', open);
     });
+    const gate = el.querySelector('.gate');
+    if(!gate) return;
+    const p = shown[+el.dataset.i];
+    const input = gate.querySelector('input'), btn = gate.querySelector('button'), err = gate.querySelector('.err');
+    const tryOpen = ()=>{
+      if(input.value === p.lock){ gate.remove(); el.querySelector('.vault').hidden = false; }
+      else { err.style.display='block'; input.select(); }
+    };
+    btn.addEventListener('click', tryOpen);
+    input.addEventListener('keydown', e=>{ if(e.key==='Enter') tryOpen(); });
   });
 }
 
