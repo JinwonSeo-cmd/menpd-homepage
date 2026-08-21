@@ -16,41 +16,6 @@ if (navToggle && siteNav) {
   });
 }
 
-// ---- 자료실: 참가자 전용 코드 게이트 ----
-// 강의 참가자 전체가 공유하는 단일 코드 방식입니다.
-// 이 코드는 페이지 소스에 그대로 노출되므로 "진짜 보안"이 아니라
-// 검색엔진·외부인 유입을 막는 정도의 가벼운 잠금장치로만 사용하세요.
-// 코드를 바꾸려면 아래 RESTRICTED_ACCESS_CODE 값만 수정하면 됩니다.
-const RESTRICTED_ACCESS_CODE = '여기에_참가자코드_입력';
-
-const gateForm = document.getElementById('gateForm');
-const gateInput = document.getElementById('gateInput');
-const gateMessage = document.getElementById('gateMessage');
-const restrictedBlock = document.getElementById('restrictedBlock');
-const restrictedList = document.getElementById('restrictedList');
-
-if (gateForm) {
-  gateForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const value = gateInput.value.trim();
-
-    if (value.length === 0) {
-      gateMessage.textContent = '코드를 입력해주세요.';
-      gateMessage.className = 'gate-message error';
-      return;
-    }
-
-    if (value === RESTRICTED_ACCESS_CODE) {
-      gateMessage.textContent = '';
-      restrictedBlock.classList.add('gate-unlocked');
-      restrictedList.hidden = false;
-    } else {
-      gateMessage.textContent = '코드가 올바르지 않습니다. 강의 중 안내받은 코드를 다시 확인해주세요.';
-      gateMessage.className = 'gate-message error';
-    }
-  });
-}
-
 // ---- 연락처 카드 flip (이메일 / 전화) ----
 // 카드 자체가 mailto:/tel: 링크라 클릭하면 메일 앱·전화 앱이 열리는 것과 별개로,
 // 같은 클릭에서 뒷면(실제 주소/번호)이 보이도록 3D flip 애니메이션도 함께 재생합니다.

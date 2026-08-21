@@ -696,170 +696,6 @@ section {
   min-width: 0 !important;
 }
 
-/* ---------- Resources section ---------- */
-
-.resource-columns {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: var(--spacing-24);
-  align-items: start;
-}
-
-.resource-col {
-  border: 1px solid var(--color-hairline);
-  border-radius: var(--radius-cards);
-  background: #ffffff;
-  padding: var(--spacing-24);
-}
-
-.resource-col-badge {
-  display: inline-block;
-  background: var(--color-carbon);
-  color: #ffffff;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: -0.224px;
-  padding: 4px 14px;
-  border-radius: var(--radius-buttons);
-  margin-bottom: var(--spacing-16);
-}
-
-.resource-col-badge.badge-locked {
-  background: var(--color-mist);
-}
-
-.resource-col-desc {
-  font-size: 14px;
-  color: var(--color-ash);
-  margin: 0 0 var(--spacing-20);
-}
-
-.resource-col .resource-list {
-  grid-template-columns: 1fr;
-}
-
-.resource-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: var(--spacing-16);
-}
-
-.resource-item {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-12);
-  border: 1px solid var(--color-hairline);
-  border-radius: var(--radius-cards);
-  padding: var(--spacing-16);
-  background: #ffffff;
-}
-
-.resource-item .res-icon {
-  width: 32px;
-  height: 32px;
-  flex: none;
-  color: var(--color-carbon);
-}
-
-.resource-item .res-icon.locked {
-  color: var(--color-mist);
-}
-
-.resource-item .res-body {
-  flex: 1;
-  min-width: 0;
-}
-
-.resource-item .res-title {
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--color-carbon);
-  margin: 0 0 2px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.resource-item .res-meta {
-  font-size: 12px;
-  color: var(--color-ash);
-  margin: 0;
-}
-
-.res-open-btn {
-  flex: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--color-carbon);
-  color: #ffffff;
-  font-size: 12px;
-  font-weight: 600;
-  padding: 8px 16px;
-  border-radius: var(--radius-buttons);
-}
-
-.gate-box {
-  border: 1px solid var(--color-hairline);
-  border-radius: var(--radius-cards);
-  background: #ffffff;
-  padding: var(--spacing-24);
-  max-width: 460px;
-}
-
-.gate-box p {
-  font-size: 14px;
-  color: var(--color-ash);
-  margin: 0 0 var(--spacing-16);
-}
-
-.gate-form {
-  display: flex;
-  gap: var(--spacing-12);
-}
-
-.gate-input {
-  flex: 1;
-  border: 1px solid var(--color-hairline);
-  border-radius: var(--radius-cards);
-  padding: 11px 15px;
-  font-size: 14px;
-  background: var(--color-frost);
-  color: var(--color-carbon);
-}
-
-.gate-input:focus {
-  outline: 2px solid var(--color-apple-blue);
-  outline-offset: 1px;
-  background: #ffffff;
-}
-
-.gate-message {
-  font-size: 12px;
-  margin-top: var(--spacing-12);
-  min-height: 16px;
-}
-
-.gate-message.error {
-  color: #d70015;
-}
-
-.gate-message.success {
-  color: #1a7d3a;
-}
-
-.resource-list[hidden] {
-  display: none;
-}
-
-.gate-unlocked .resource-list {
-  margin-top: var(--spacing-16);
-}
-
-.gate-unlocked .gate-box {
-  display: none;
-}
-
 /* ---------- Reviews section ---------- */
 
 .review-grid {
@@ -1064,14 +900,6 @@ section {
   }
 }
 
-@media (max-width: 768px) {
-  /* 공개자료/제한자료 카드를 가로 2열에서 세로 스택으로 전환.
-     각 카드는 100% 너비를 차지하고, 카드 간 간격은 grid gap(세로 방향)으로 처리됩니다. */
-  .resource-columns {
-    grid-template-columns: 1fr;
-  }
-}
-
 @media (max-width: 720px) {
   .nav-links {
     display: none;
@@ -1121,10 +949,6 @@ section {
 
   .dynamic-book-grid {
     grid-template-columns: 1fr;
-  }
-
-  .gate-form {
-    flex-direction: column;
   }
 
   .kakao-float span {
