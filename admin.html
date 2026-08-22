@@ -255,8 +255,7 @@ function clearMsg(el){ $(el).className='status'; }
 /* ── GitHub ── */
 function api(path){ const c=cfg();
   return `https://api.github.com/repos/${c.owner}/${c.repo}/contents/${path.split('/').map(encodeURIComponent).join('/')}`; }
-function headers(){ return { Authorization:'Bearer '+cfg().token, Accept:'application/vnd.github+json',
-  'Cache-Control':'no-cache' }; }
+function headers(){ return { Authorization:'Bearer '+cfg().token, Accept:'application/vnd.github+json' }; }
 function b64(bytes){ let s=''; const n=0x8000;
   for(let i=0;i<bytes.length;i+=n) s+=String.fromCharCode.apply(null,bytes.subarray(i,i+n)); return btoa(s); }
 function enc(str){ return b64(new TextEncoder().encode(str)); }
