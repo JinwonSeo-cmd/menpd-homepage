@@ -449,22 +449,23 @@ section:not(.book-section) .section-title-row .section-sub {
   font-style: italic;
 }
 
-/* ---------- 자료실 · 게시판 바로가기 카드 ----------
+/* ---------- 사전 준비 · 자료실 · 게시판 바로가기 카드 ----------
    히어로의 검정 연락처 박스(.contact-card)와 동일한 톤(검정 배경,
-   흰 글씨)을 쓰되, 이름을 크게/설명을 작게 배치하는 자체 타이포를 씀. */
+   흰 글씨)을 쓰되, 이름을 크게/설명을 작게 배치하는 자체 타이포를 씀.
+   3칸이 한 줄에 꽉 차 보이도록 정사각형보다 가로로 넓은 비율로 둠. */
 
 .quicklink-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: var(--spacing-16);
-  max-width: 420px;
+  max-width: var(--text-max-width);
 }
 
 .quicklink-card {
   display: block;
   border: 1px solid var(--color-onyx);
   border-radius: var(--radius-cards);
-  padding: var(--spacing-24);
+  padding: 20px var(--spacing-24);
   background: var(--color-onyx);
   text-decoration: none;
   transition: background-color .15s ease;
@@ -479,6 +480,13 @@ section:not(.book-section) .section-title-row .section-sub {
   margin-bottom: var(--spacing-12);
 }
 
+.quicklink-card .quicklink-icon {
+  display: block;
+  font-size: 22px;
+  line-height: 1;
+  margin-bottom: var(--spacing-12);
+}
+
 .quicklink-card .quicklink-name {
   font-size: 18px;
   font-weight: 600;
@@ -490,6 +498,14 @@ section:not(.book-section) .section-title-row .section-sub {
   font-size: 13px;
   color: rgba(255, 255, 255, 0.65);
   margin: 0;
+}
+
+@media (max-width: 720px) {
+  .quicklink-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 480px) {
+  .quicklink-grid { grid-template-columns: 1fr; }
 }
 
 /* ---------- Contact card flip (email / phone) ---------- */
@@ -573,41 +589,6 @@ section:not(.book-section) .section-title-row .section-sub {
   opacity: 0.7;
 }
 
-/* ---------- 사전 준비 안내 티저 카드 ---------- */
-
-.prep-teaser-card {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #ffffff;
-  border: 1px solid var(--color-hairline);
-  border-radius: 18px;
-  padding: 40px 24px;
-  text-decoration: none;
-  box-shadow: 0 14px 36px -18px rgba(20, 24, 32, .2);
-  transition: box-shadow .2s ease, transform .2s ease;
-}
-
-.prep-teaser-card:hover {
-  box-shadow: 0 20px 46px -18px rgba(20, 24, 32, .3);
-  transform: translateY(-2px);
-}
-
-.prep-teaser-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: #FEE500;
-  color: #191919;
-  font-size: 16px;
-  font-weight: 700;
-  letter-spacing: -0.2px;
-  padding: 15px 28px;
-  border-radius: var(--radius-buttons);
-  transition: background-color .2s ease;
-}
-
-.prep-teaser-card:hover .prep-teaser-btn { background: #ffd400; }
 
 /* ---------- 게시판 · 자료실 카드 리스트 ---------- */
 
