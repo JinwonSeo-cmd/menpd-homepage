@@ -455,8 +455,9 @@ section:not(.book-section) .section-title-row .section-sub {
 
 .quicklink-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr 1fr;
   gap: var(--spacing-16);
+  max-width: 420px;
 }
 
 .quicklink-card {
