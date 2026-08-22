@@ -530,6 +530,42 @@ section:not(.book-section) .section-title-row .section-sub {
   opacity: 0.7;
 }
 
+/* ---------- 사전 준비 안내 티저 카드 ---------- */
+
+.prep-teaser-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  border: 1px solid var(--color-hairline);
+  border-radius: 18px;
+  padding: 40px 24px;
+  text-decoration: none;
+  box-shadow: 0 14px 36px -18px rgba(20, 24, 32, .2);
+  transition: box-shadow .2s ease, transform .2s ease;
+}
+
+.prep-teaser-card:hover {
+  box-shadow: 0 20px 46px -18px rgba(20, 24, 32, .3);
+  transform: translateY(-2px);
+}
+
+.prep-teaser-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #F26B21;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+  padding: 15px 28px;
+  border-radius: var(--radius-buttons);
+  transition: background-color .2s ease;
+}
+
+.prep-teaser-card:hover .prep-teaser-btn { background: #d95c15; }
+
 /* ---------- 게시판 · 자료실 카드 리스트 ---------- */
 
 .controls {
