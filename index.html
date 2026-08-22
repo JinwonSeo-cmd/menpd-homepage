@@ -399,6 +399,150 @@
   </div>
 </section>
 
+<!-- ============ 10. 강의 캘린더 ============ -->
+<section id="schedule" class="section-schedule">
+  <style>
+    /* 폰트만 사이트 기본(--font-text)에 연결하고, 색상은 원본 그대로 둡니다. */
+    .section-schedule{padding:96px 24px;font-family:var(--font-text)}
+    .section-schedule .sc-wrap{max-width:960px;margin:0 auto}
+    .section-schedule .sc-badge{display:inline-block;font-size:11px;font-weight:800;
+      letter-spacing:.08em;color:#fff;background:var(--ink,#16181D);
+      padding:5px 10px;border-radius:6px;margin-bottom:16px}
+    .section-schedule h2{font-size:clamp(26px,4.2vw,34px);font-weight:800;
+      letter-spacing:-.03em;color:var(--ink,#16181D);display:flex;align-items:center;gap:10px}
+    .section-schedule .sc-note{font-size:14.5px;font-weight:600;color:var(--muted,#767C88);
+      margin-top:6px}
+
+    .sc-cal{margin-top:32px;background:#fff;border-radius:22px;overflow:hidden;
+      box-shadow:0 14px 40px -18px rgba(20,24,32,.22);border:1px solid var(--line,#E4E6EB)}
+    .sc-head{display:flex;align-items:center;justify-content:space-between;
+      padding:20px 24px;border-bottom:1px solid var(--line,#E4E6EB)}
+    .sc-head strong{font-size:16px;font-weight:800;letter-spacing:-.02em;color:var(--ink,#16181D)}
+
+    .sc-grid{display:grid;grid-template-columns:repeat(7,1fr)}
+    .sc-dow{padding:11px 0;text-align:center;font-size:12px;font-weight:800;
+      color:var(--muted,#767C88);border-bottom:1px solid var(--line,#E4E6EB);background:var(--wash,#F5F6F8)}
+    .sc-dow.sun{color:#D93025}
+    .sc-dow.sat{color:#1A73E8}
+
+    .sc-cell{min-height:108px;padding:9px 7px;border-right:1px solid var(--line,#E4E6EB);
+      border-bottom:1px solid var(--line,#E4E6EB);position:relative}
+    .sc-cell:nth-child(7n){border-right:0}
+    .sc-cell.out{background:#FAFAFB}
+    .sc-cell.out .sc-date{color:#C7CBD1}
+    .sc-cell.is-sun .sc-date{color:#D93025}
+
+    .sc-date{font-size:12.5px;font-weight:800;color:var(--ink,#16181D);
+      font-variant-numeric:tabular-nums;margin-bottom:6px;display:block}
+
+    .sc-ev{display:block;font-size:10.5px;font-weight:700;line-height:1.5;
+      padding:3px 6px;border-radius:6px;margin-bottom:3px;
+      background:rgba(242,107,33,.12);color:#B5470F;
+      white-space:normal;word-break:keep-all}
+    .sc-ev.holiday{background:#EFEAE3;color:#7A6A52}
+
+    .sc-legend{display:flex;flex-wrap:wrap;gap:16px;margin-top:16px;
+      font-size:12.5px;color:var(--muted,#767C88)}
+    .sc-legend .dot{display:inline-block;width:9px;height:9px;border-radius:3px;
+      margin-right:6px;vertical-align:middle}
+    .sc-legend .dot.lec{background:#F26B21}
+    .sc-legend .dot.hol{background:#B7A585}
+
+    @media (max-width:720px){
+      .sc-cell{min-height:80px;padding:6px 4px}
+      .sc-date{font-size:11px}
+      .sc-ev{font-size:9px;padding:2px 4px}
+      .sc-dow{font-size:11px}
+      .section-schedule h2{font-size:24px}
+    }
+  </style>
+
+  <div class="sc-wrap">
+    <span class="sc-badge">SCHEDULE</span>
+    <h2>🗓️ 2026년 9월 멘피디 강의 캘린더</h2>
+    <p class="sc-note">강의가 없는 날만 문의 가능합니다.</p>
+
+    <div class="sc-cal">
+      <div class="sc-head"><strong>2026년 9월</strong></div>
+      <div class="sc-grid">
+        <div class="sc-dow">월</div><div class="sc-dow">화</div><div class="sc-dow">수</div>
+        <div class="sc-dow">목</div><div class="sc-dow">금</div><div class="sc-dow sat">토</div>
+        <div class="sc-dow sun">일</div>
+
+        <!-- 1주차 -->
+        <div class="sc-cell out"><span class="sc-date">31</span></div>
+        <div class="sc-cell"><span class="sc-date">1</span>
+          <span class="sc-ev">국토부 AI 콘텐츠</span>
+          <span class="sc-ev">법무부 생성형 AI 강의</span></div>
+        <div class="sc-cell"><span class="sc-date">2</span></div>
+        <div class="sc-cell"><span class="sc-date">3</span>
+          <span class="sc-ev">광진구 생성형 AI 강의</span></div>
+        <div class="sc-cell"><span class="sc-date">4</span>
+          <span class="sc-ev">업무에 바로 쓰는 생성형 AI</span></div>
+        <div class="sc-cell"><span class="sc-date">5</span></div>
+        <div class="sc-cell is-sun"><span class="sc-date">6</span></div>
+
+        <!-- 2주차 -->
+        <div class="sc-cell"><span class="sc-date">7</span></div>
+        <div class="sc-cell"><span class="sc-date">8</span>
+          <span class="sc-ev">국토부 AI 콘텐츠</span>
+          <span class="sc-ev">법무부 생성형 AI 강의</span></div>
+        <div class="sc-cell"><span class="sc-date">9</span></div>
+        <div class="sc-cell"><span class="sc-date">10</span>
+          <span class="sc-ev">한국섬유산업연합회 생성형 AI</span></div>
+        <div class="sc-cell"><span class="sc-date">11</span>
+          <span class="sc-ev">현대차 강남(보)</span></div>
+        <div class="sc-cell"><span class="sc-date">12</span></div>
+        <div class="sc-cell is-sun"><span class="sc-date">13</span></div>
+
+        <!-- 3주차 -->
+        <div class="sc-cell"><span class="sc-date">14</span></div>
+        <div class="sc-cell"><span class="sc-date">15</span>
+          <span class="sc-ev">법무부 생성형 AI 강의</span></div>
+        <div class="sc-cell"><span class="sc-date">16</span>
+          <span class="sc-ev">국토부(케럿)</span></div>
+        <div class="sc-cell"><span class="sc-date">17</span></div>
+        <div class="sc-cell"><span class="sc-date">18</span>
+          <span class="sc-ev">한국섬유산업연합회 SNS AI</span></div>
+        <div class="sc-cell"><span class="sc-date">19</span></div>
+        <div class="sc-cell is-sun"><span class="sc-date">20</span></div>
+
+        <!-- 4주차 -->
+        <div class="sc-cell"><span class="sc-date">21</span>
+          <span class="sc-ev">업무에 바로 쓰는 생성형 AI</span></div>
+        <div class="sc-cell"><span class="sc-date">22</span>
+          <span class="sc-ev">현대차 강남(보)</span>
+          <span class="sc-ev">법무부 생성형 AI 강의</span></div>
+        <div class="sc-cell"><span class="sc-date">23</span></div>
+        <div class="sc-cell"><span class="sc-date">24</span>
+          <span class="sc-ev holiday">추석 연휴</span></div>
+        <div class="sc-cell"><span class="sc-date">25</span>
+          <span class="sc-ev holiday">추석</span></div>
+        <div class="sc-cell"><span class="sc-date">26</span>
+          <span class="sc-ev holiday">추석 연휴</span></div>
+        <div class="sc-cell is-sun"><span class="sc-date">27</span></div>
+
+        <!-- 5주차 -->
+        <div class="sc-cell"><span class="sc-date">28</span>
+          <span class="sc-ev">인스타 성장 전략</span></div>
+        <div class="sc-cell"><span class="sc-date">29</span>
+          <span class="sc-ev">법무부 생성형 AI 강의</span></div>
+        <div class="sc-cell"><span class="sc-date">30</span></div>
+        <div class="sc-cell out"><span class="sc-date">1</span></div>
+        <div class="sc-cell out"><span class="sc-date">2</span></div>
+        <div class="sc-cell out"><span class="sc-date">3</span></div>
+        <div class="sc-cell out is-sun"><span class="sc-date">4</span></div>
+      </div>
+    </div>
+
+    <p class="sc-legend">
+      <span><span class="dot lec"></span>강의 일정</span>
+      <span><span class="dot hol"></span>추석 연휴</span>
+      <span>매주 화요일 법무부 생성형 AI 강의(오후 7시) 정기 진행</span>
+    </p>
+  </div>
+</section>
+
 <!-- ============ FOOTER ============ -->
 <footer class="site-footer reveal">
   <div class="footer-inner">
