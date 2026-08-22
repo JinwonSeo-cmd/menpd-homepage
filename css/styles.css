@@ -500,6 +500,19 @@ section:not(.book-section) .section-title-row .section-sub {
   margin: 0;
 }
 
+/* 준비자료 카드만 카카오 옐로 배경 + 검정 텍스트 */
+.quicklink-card-kakao {
+  background: #FEE500;
+  border-color: #FEE500;
+}
+
+.quicklink-card-kakao:hover { background: #ffd400; border-color: #ffd400; }
+
+.quicklink-card-kakao .quicklink-icon,
+.quicklink-card-kakao .quicklink-name { color: #191919; }
+
+.quicklink-card-kakao .quicklink-desc { color: rgba(25, 25, 25, 0.65); }
+
 @media (max-width: 720px) {
   .quicklink-grid { grid-template-columns: repeat(2, 1fr); }
 }
