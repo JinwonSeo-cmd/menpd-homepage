@@ -315,11 +315,18 @@ section {
   min-width: 0;
   align-self: flex-start;
   max-height: 760px;
+  /* 아래 media-frame이 상한을 넘겨 계산되는 경우에도 히어로 밖으로
+     흘러나가 다음 섹션을 덮지 않도록 잘라냅니다. */
+  overflow: hidden;
 }
 
 .hero-portrait .media-frame {
   width: 100%;
   height: 100%;
+  /* height:100%는 부모의 max-height가 적용되기 전 높이(이미지 원본 비율)를
+     기준으로 계산되므로, 같은 상한을 프레임에도 직접 걸어 object-fit이
+     760px 안에서 크롭되도록 합니다. */
+  max-height: inherit;
   border-radius: 0;
   box-shadow: none;
 }
