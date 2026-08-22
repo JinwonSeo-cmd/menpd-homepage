@@ -554,8 +554,8 @@ section:not(.book-section) .section-title-row .section-sub {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: #F26B21;
-  color: #ffffff;
+  background: #FEE500;
+  color: #191919;
   font-size: 16px;
   font-weight: 700;
   letter-spacing: -0.2px;
@@ -564,7 +564,7 @@ section:not(.book-section) .section-title-row .section-sub {
   transition: background-color .2s ease;
 }
 
-.prep-teaser-card:hover .prep-teaser-btn { background: #d95c15; }
+.prep-teaser-card:hover .prep-teaser-btn { background: #ffd400; }
 
 /* ---------- 게시판 · 자료실 카드 리스트 ---------- */
 
