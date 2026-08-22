@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>게시판 | 멘피디 AI</title>
+<link rel="stylesheet" href="css/styles.css">
+<style>
+:root{
+  /* ── 기존 사이트(css/styles.css) 팔레트에 맞춘 3색 ── */
+  --accent:#0071e3; --ink:#1d1d1f; --wash:#f5f5f7;
+  --paper:#FFFFFF; --line:#E4E6EB; --muted:#767C88; --radius:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-text,'Pretendard',system-ui,-apple-system,sans-serif);
+  background:var(--wash);color:var(--ink);-webkit-font-smoothing:antialiased}
+.top{background:var(--ink);padding:16px 24px}
+.top a{color:#fff;text-decoration:none;font-size:13px;font-weight:600;opacity:.85}
+.top a:hover{opacity:1}
+.wrap{max-width:720px;margin:0 auto;padding:64px 20px 120px}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.14em;color:var(--accent);
+  text-transform:uppercase;margin-bottom:14px}
+h1{font-size:clamp(30px,5vw,42px);font-weight:800;letter-spacing:-.03em;line-height:1.2}
+.lede{margin-top:14px;color:var(--muted);font-size:15px;line-height:1.65;max-width:52ch}
+
+.controls{margin:40px 0 20px;display:flex;flex-direction:column;gap:14px}
+.search{width:100%;padding:13px 16px;font:inherit;font-size:15px;background:var(--paper);
+  border:1px solid var(--line);border-radius:var(--radius);color:var(--ink);
+  transition:border-color .18s,box-shadow .18s}
+.search::placeholder{color:#A8AEB8}
+.search:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(0,113,227,.14)}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip{font:inherit;font-size:13px;font-weight:600;padding:7px 13px;cursor:pointer;
+  background:transparent;border:1px solid var(--line);border-radius:999px;color:var(--muted);
+  transition:all .16s}
+.chip:hover{border-color:#C9CDD4;color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.count{font-size:13px;color:var(--muted);margin-bottom:12px}
+
+.list{list-style:none;display:flex;flex-direction:column;gap:10px}
+.item{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+  overflow:hidden;transition:border-color .18s,box-shadow .18s;
+  animation:rise .4s cubic-bezier(.2,.7,.3,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.item:hover{border-color:#CFD3DA}
+.item.open{border-color:var(--ink);box-shadow:0 6px 24px -12px rgba(20,24,32,.28)}
+
+.head{width:100%;display:block;text-align:left;cursor:pointer;background:none;border:0;
+  font:inherit;color:inherit;padding:22px 24px;position:relative}
+.head:focus-visible{outline:2px solid var(--accent);outline-offset:-3px}
+.meta{display:flex;align-items:center;gap:9px;margin-bottom:9px}
+.date{font-size:12px;font-weight:600;color:var(--muted);font-variant-numeric:tabular-nums}
+.cat{font-size:11px;font-weight:700;padding:3px 8px;border-radius:5px;
+  background:rgba(0,113,227,.1);color:var(--accent)}
+.title{font-size:18px;font-weight:700;letter-spacing:-.02em;line-height:1.45;padding-right:30px;display:block}
+.summary{margin-top:8px;font-size:14.5px;color:var(--muted);line-height:1.65;display:block}
+.marks{display:flex;gap:6px;margin-top:12px}
+.mark{font-size:11px;font-weight:700;letter-spacing:.03em;padding:3px 8px;border-radius:5px;
+  background:var(--wash);color:#5A616D}
+.chev{position:absolute;top:26px;right:24px;width:11px;height:11px;
+  border-right:2px solid #B4B9C2;border-bottom:2px solid #B4B9C2;transform:rotate(45deg);
+  transition:transform .22s cubic-bezier(.2,.7,.3,1)}
+.item.open .chev{transform:rotate(225deg);border-color:var(--ink)}
+
+.panel{display:none;padding:0 24px 24px;border-top:1px solid var(--line)}
+.item.open .panel{display:block;animation:rise .26s ease both}
+.body{padding-top:20px;font-size:15.5px;line-height:1.85;color:#2E3440;
+  white-space:pre-wrap;word-break:break-word}
+.body a{color:var(--accent)}
+.body img{max-width:100%;height:auto;border-radius:10px;margin:6px 0}
+.body iframe{max-width:100%;border-radius:10px}
+.body h2,.body h3{margin:14px 0 6px;letter-spacing:-.02em;white-space:normal}
+.body ul,.body ol{margin:6px 0 6px 20px;white-space:normal}
+.body blockquote{border-left:3px solid var(--line);padding-left:14px;color:var(--muted);margin:10px 0}
+
+.embed{margin-top:20px;display:flex;justify-content:center}
+.embed iframe{width:100%;max-width:420px;height:640px;border:1px solid var(--line);
+  border-radius:12px;background:#fff}
+.links{list-style:none;display:flex;flex-direction:column;gap:8px;padding-top:20px}
+.link{display:flex;align-items:center;gap:12px;padding:13px 15px;border:1px solid var(--line);
+  border-radius:10px;text-decoration:none;color:inherit;transition:all .16s}
+.link:hover{border-color:var(--accent);background:rgba(0,113,227,.04)}
+.link .tag{font-size:10px;font-weight:700;letter-spacing:.05em;color:#fff;background:var(--ink);
+  padding:5px 7px;border-radius:5px;flex:none}
+.link .nm{font-size:14px;font-weight:600;flex:1;word-break:break-all}
+.link .go{font-size:12px;color:var(--muted);flex:none}
+
+.empty{text-align:center;padding:72px 24px;background:var(--paper);
+  border:1px dashed var(--line);border-radius:var(--radius)}
+.empty strong{display:block;font-size:16px;margin-bottom:8px}
+.empty span{font-size:14px;color:var(--muted)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="top"><a href="index.html">← 홈으로</a></div>
+
+<div class="wrap">
+  <header>
+    <p class="eyebrow">멘피디 AI · 게시판</p>
+    <h1>기록하고 나눕니다</h1>
+    <p class="lede">강의하며 겪은 일, 요즘 보고 있는 것들, 소소한 생각을 남겨둡니다.</p>
+  </header>
+
+  <div class="controls">
+    <input class="search" id="q" type="search" placeholder="제목이나 내용으로 찾기" autocomplete="off">
+    <div class="chips" id="chips"></div>
+  </div>
+
+  <p class="count" id="count"></p>
+  <ul class="list" id="list"></ul>
+</div>
+
+<script>
+const DATA_URL = 'data/board.json';
+let POSTS = [], cat = '전체', kw = '';
+
+function esc(s){ return String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+function igCode(url){
+  const m = String(url||'').match(/instagram\.com\/(?:p|reel|reels|tv)\/([A-Za-z0-9_-]+)/);
+  return m ? m[1] : '';
+}
+function excerpt(p){
+  if(p.summary) return p.summary;
+  const t = String(p.body||'').replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim();
+  return t.length > 90 ? t.slice(0,90)+'…' : t;
+}
+
+function render(){
+  const list = document.getElementById('list');
+  const shown = POSTS.filter(p => !p.hidden)
+    .filter(p => cat==='전체' || p.category===cat)
+    .filter(p => {
+      if(!kw) return true;
+      const hay = (p.title+' '+(p.summary||'')+' '+(p.body||'')+' '+(p.category||'')).toLowerCase();
+      return hay.includes(kw.toLowerCase());
+    })
+    .sort((a,b)=>(b.date||'').localeCompare(a.date||''));
+
+  document.getElementById('count').textContent = shown.length ? `글 ${shown.length}개` : '';
+
+  if(!shown.length){
+    list.innerHTML = `<div class="empty"><strong>${kw||cat!=='전체' ? '조건에 맞는 글이 없습니다' : '아직 올라온 글이 없습니다'}</strong>
+      <span>${kw||cat!=='전체' ? '검색어나 분류를 바꿔서 찾아보세요.' : '곧 첫 글이 올라옵니다.'}</span></div>`;
+    return;
+  }
+
+  list.innerHTML = shown.map((p,i)=>{
+    const marks = [];
+    if(igCode(p.instagram)) marks.push('<span class="mark">인스타그램</span>');
+    if((p.links||[]).length) marks.push(`<span class="mark">링크 ${p.links.length}</span>`);
+    const ex = excerpt(p);
+
+    return `<li class="item" style="animation-delay:${Math.min(i*40,320)}ms">
+      <button class="head" aria-expanded="false">
+        <span class="meta">
+          <span class="date">${esc((p.date||'').replace(/-/g,'.'))}</span>
+          ${p.category?`<span class="cat">${esc(p.category)}</span>`:''}
+        </span>
+        <span class="title">${esc(p.title)}</span>
+        ${ex?`<span class="summary">${esc(ex)}</span>`:''}
+        ${marks.length?`<span class="marks">${marks.join('')}</span>`:''}
+        <span class="chev"></span>
+      </button>
+      <div class="panel">
+        ${p.body?`<div class="body">${p.body}</div>`:''}
+        ${igCode(p.instagram)?`<div class="embed"><iframe src="https://www.instagram.com/p/${igCode(p.instagram)}/embed/captioned/"
+            loading="lazy" scrolling="no" allowtransparency="true" title="인스타그램 게시물"></iframe></div>`:''}
+        ${(p.links||[]).length?`<ul class="links">${p.links.map(l=>
+          `<li><a class="link" href="${esc(l.url)}" target="_blank" rel="noopener">
+            <span class="tag">LINK</span><span class="nm">${esc(l.label||l.url)}</span>
+            <span class="go">열기 ↗</span></a></li>`).join('')}</ul>`:''}
+      </div>
+    </li>`;
+  }).join('');
+
+  document.querySelectorAll('.item').forEach(el=>{
+    const head = el.querySelector('.head');
+    head.addEventListener('click', ()=>{
+      const open = el.classList.toggle('open');
+      head.setAttribute('aria-expanded', open);
+    });
+  });
+}
+
+function chips(){
+  const cats = ['전체', ...new Set(POSTS.filter(p=>!p.hidden).map(p=>p.category).filter(Boolean))];
+  document.getElementById('chips').innerHTML = cats.map(c=>
+    `<button class="chip" aria-pressed="${c===cat}">${esc(c)}</button>`).join('');
+  document.querySelectorAll('.chip').forEach(b=>b.addEventListener('click',()=>{
+    cat = b.textContent; chips(); render();
+  }));
+}
+
+document.getElementById('q').addEventListener('input', e=>{ kw = e.target.value.trim(); render(); });
+
+fetch(DATA_URL + '?t=' + Date.now())
+  .then(r => r.ok ? r.json() : [])
+  .then(d => { POSTS = Array.isArray(d) ? d : []; chips(); render(); })
+  .catch(()=>{ POSTS=[]; chips(); render(); });
+</script>
+</body>
+</html>

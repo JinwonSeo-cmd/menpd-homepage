@@ -449,6 +449,48 @@ section:not(.book-section) .section-title-row .section-sub {
   font-style: italic;
 }
 
+/* ---------- 자료실 · 게시판 바로가기 카드 ----------
+   히어로의 검정 연락처 박스(.contact-card)와 동일한 톤(검정 배경,
+   흰 글씨)을 쓰되, 이름을 크게/설명을 작게 배치하는 자체 타이포를 씀. */
+
+.quicklink-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-16);
+}
+
+.quicklink-card {
+  display: block;
+  border: 1px solid var(--color-onyx);
+  border-radius: var(--radius-cards);
+  padding: var(--spacing-24);
+  background: var(--color-onyx);
+  text-decoration: none;
+  transition: background-color .15s ease;
+}
+
+.quicklink-card:hover { background: #000000; }
+
+.quicklink-card .contact-icon {
+  width: 24px;
+  height: 24px;
+  color: #ffffff;
+  margin-bottom: var(--spacing-12);
+}
+
+.quicklink-card .quicklink-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 4px;
+}
+
+.quicklink-card .quicklink-desc {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.65);
+  margin: 0;
+}
+
 /* ---------- Contact card flip (email / phone) ---------- */
 
 .contact-card-flip {
