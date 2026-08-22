@@ -559,44 +559,15 @@ section:not(.book-section) .section-title-row .section-sub {
   box-shadow: 0 0 0 3px rgba(0,113,227,.14);
 }
 
-.chips { display: flex; flex-wrap: wrap; gap: 7px; }
-
-/* 분류 칩과 개수 표시를 한 줄에 나란히 */
-.filterbar {
+.list {
+  list-style: none;
   display: flex;
-  align-items: center;
-  justify-content: flex-start;
+  flex-direction: column;
   gap: 10px;
-  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }
-
-.filterbar .chips { flex: 0 1 auto; min-width: 0; }
-.filterbar .count { margin: 0; flex: none; white-space: nowrap; }
-
-.chip {
-  font: inherit;
-  font-size: 13px;
-  font-weight: 600;
-  padding: 7px 13px;
-  cursor: pointer;
-  background: transparent;
-  border: 1px solid #E4E6EB;
-  border-radius: 999px;
-  color: #767C88;
-  transition: all .16s;
-}
-
-.chip:hover { border-color: #C9CDD4; color: var(--color-carbon); }
-
-.chip[aria-pressed="true"] {
-  background: var(--color-carbon);
-  border-color: var(--color-carbon);
-  color: #ffffff;
-}
-
-.count { font-size: 13px; color: #767C88; margin-bottom: 12px; }
-
-.list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
 
 .item {
   background: #ffffff;

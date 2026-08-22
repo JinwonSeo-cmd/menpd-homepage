@@ -100,10 +100,6 @@
 
     <div class="controls">
       <input class="search" id="boardSearch" type="search" placeholder="제목이나 내용으로 찾기" autocomplete="off">
-      <div class="filterbar">
-        <div class="chips" id="boardChips"></div>
-        <p class="count" id="boardCount"></p>
-      </div>
     </div>
 
     <ul class="list" id="boardList"></ul>
@@ -122,10 +118,6 @@
 
     <div class="controls">
       <input class="search" id="resSearch" type="search" placeholder="강의명이나 자료명으로 찾기" autocomplete="off">
-      <div class="filterbar">
-        <div class="chips" id="resChips"></div>
-        <p class="count" id="resCount"></p>
-      </div>
     </div>
 
     <ul class="list" id="resList"></ul>
@@ -595,7 +587,7 @@
 <script>
 (function(){
   const DATA_URL = 'data/board.json';
-  let POSTS = [], cat = '전체', kw = '';
+  let POSTS = [], kw = '';
 
   function esc(s){ return String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
   function igCode(url){
@@ -611,7 +603,6 @@
   function render(){
     const list = document.getElementById('boardList');
     const shown = POSTS.filter(p => !p.hidden)
-      .filter(p => cat==='전체' || p.category===cat)
       .filter(p => {
         if(!kw) return true;
         const hay = (p.title+' '+(p.summary||'')+' '+(p.body||'')+' '+(p.category||'')).toLowerCase();
@@ -619,11 +610,9 @@
       })
       .sort((a,b)=>(b.date||'').localeCompare(a.date||''));
 
-    document.getElementById('boardCount').textContent = shown.length ? `글 ${shown.length}개` : '';
-
     if(!shown.length){
-      list.innerHTML = `<div class="empty"><strong>${kw||cat!=='전체' ? '조건에 맞는 글이 없습니다' : '아직 올라온 글이 없습니다'}</strong>
-        <span>${kw||cat!=='전체' ? '검색어나 분류를 바꿔서 찾아보세요.' : '곧 첫 글이 올라옵니다.'}</span></div>`;
+      list.innerHTML = `<div class="empty"><strong>${kw ? '조건에 맞는 글이 없습니다' : '아직 올라온 글이 없습니다'}</strong>
+        <span>${kw ? '다른 검색어로 찾아보세요.' : '곧 첫 글이 올라옵니다.'}</span></div>`;
       return;
     }
 
@@ -665,22 +654,12 @@
     });
   }
 
-  function chips(){
-    const chipsEl = document.getElementById('boardChips');
-    const cats = ['전체', ...new Set(POSTS.filter(p=>!p.hidden).map(p=>p.category).filter(Boolean))];
-    chipsEl.innerHTML = cats.map(c=>
-      `<button class="chip" aria-pressed="${c===cat}">${esc(c)}</button>`).join('');
-    chipsEl.querySelectorAll('.chip').forEach(b=>b.addEventListener('click',()=>{
-      cat = b.textContent; chips(); render();
-    }));
-  }
-
   document.getElementById('boardSearch').addEventListener('input', e=>{ kw = e.target.value.trim(); render(); });
 
   fetch(DATA_URL + '?t=' + Date.now())
     .then(r => r.ok ? r.json() : [])
-    .then(d => { POSTS = Array.isArray(d) ? d : []; chips(); render(); })
-    .catch(()=>{ POSTS=[]; chips(); render(); });
+    .then(d => { POSTS = Array.isArray(d) ? d : []; render(); })
+    .catch(()=>{ POSTS=[]; render(); });
 })();
 </script>
 
@@ -688,7 +667,7 @@
 <script>
 (function(){
   const DATA_URL = 'data/resources.json';
-  let POSTS = [], cat = '전체', kw = '';
+  let POSTS = [], kw = '';
 
   function ext(name){ const m = String(name).split('.').pop(); return (m && m.length<=5 ? m : 'FILE').toUpperCase(); }
   function size(b){ if(!b && b!==0) return ''; if(b<1024) return b+' B';
@@ -708,7 +687,6 @@
   function render(){
     const list = document.getElementById('resList');
     const shown = POSTS.filter(p => !p.hidden)
-      .filter(p => cat==='전체' || p.category===cat)
       .filter(p => {
         if(!kw) return true;
         const hay = (p.title+' '+(p.summary||'')+' '+(p.category||'')+' '+(p.files||[]).map(f=>f.name).join(' ')).toLowerCase();
@@ -716,11 +694,9 @@
       })
       .sort((a,b)=>(b.date||'').localeCompare(a.date||''));
 
-    document.getElementById('resCount').textContent = shown.length ? `자료 ${shown.length}건` : '';
-
     if(!shown.length){
-      list.innerHTML = `<div class="empty"><strong>${kw||cat!=='전체' ? '조건에 맞는 자료가 없습니다' : '아직 등록된 자료가 없습니다'}</strong>
-        <span>${kw||cat!=='전체' ? '검색어나 분류를 바꿔서 다시 찾아보세요.' : '강의가 끝나면 이곳에 자료가 올라갑니다.'}</span></div>`;
+      list.innerHTML = `<div class="empty"><strong>${kw ? '조건에 맞는 자료가 없습니다' : '아직 등록된 자료가 없습니다'}</strong>
+        <span>${kw ? '다른 검색어로 다시 찾아보세요.' : '강의가 끝나면 이곳에 자료가 올라갑니다.'}</span></div>`;
       return;
     }
 
@@ -778,22 +754,12 @@
     });
   }
 
-  function chips(){
-    const chipsEl = document.getElementById('resChips');
-    const cats = ['전체', ...new Set(POSTS.filter(p=>!p.hidden).map(p=>p.category).filter(Boolean))];
-    chipsEl.innerHTML = cats.map(c=>
-      `<button class="chip" aria-pressed="${c===cat}">${esc(c)}</button>`).join('');
-    chipsEl.querySelectorAll('.chip').forEach(b=>b.addEventListener('click',()=>{
-      cat = b.textContent; chips(); render();
-    }));
-  }
-
   document.getElementById('resSearch').addEventListener('input', e=>{ kw = e.target.value.trim(); render(); });
 
   fetch(DATA_URL + '?t=' + Date.now())
     .then(r => r.ok ? r.json() : [])
-    .then(d => { POSTS = Array.isArray(d) ? d : []; chips(); render(); })
-    .catch(()=>{ POSTS=[]; chips(); render(); });
+    .then(d => { POSTS = Array.isArray(d) ? d : []; render(); })
+    .catch(()=>{ POSTS=[]; render(); });
 })();
 </script>
 </body>
