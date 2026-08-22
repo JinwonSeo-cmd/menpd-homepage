@@ -565,12 +565,12 @@ section:not(.book-section) .section-title-row .section-sub {
 .filterbar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: var(--spacing-12);
+  justify-content: flex-start;
+  gap: 10px;
   flex-wrap: wrap;
 }
 
-.filterbar .chips { flex: 1 1 auto; min-width: 0; }
+.filterbar .chips { flex: 0 1 auto; min-width: 0; }
 .filterbar .count { margin: 0; flex: none; white-space: nowrap; }
 
 .chip {
