@@ -163,7 +163,7 @@ section {
 
 section:not(.book-section) .section-title-row {
   flex-wrap: wrap;
-  align-items: baseline;
+  align-items: center;
   column-gap: var(--spacing-12);
   row-gap: 4px;
   margin-bottom: var(--spacing-24);
@@ -630,10 +630,29 @@ section:not(.book-section) .section-title-row .section-sub {
 
 .head:focus-visible { outline: 2px solid var(--color-apple-blue); outline-offset: -3px; }
 
-.meta { display: flex; align-items: center; gap: 9px; margin-bottom: 5px; }
-.date { font-size: 12px; font-weight: 600; color: #767C88; font-variant-numeric: tabular-nums; }
+/* 날짜 · 분류 · 제목 · 요약을 한 줄로: 날짜는 고정 폭, 제목은 굵게 우선
+   노출되고, 요약은 남는 공간을 차지하며 말줄임 처리됩니다. */
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 5px;
+  width: 100%;
+  min-width: 0;
+  padding-right: 28px;
+}
+
+.date {
+  flex: none;
+  width: 76px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #767C88;
+  font-variant-numeric: tabular-nums;
+}
 
 .cat {
+  flex: none;
   font-size: 11px;
   font-weight: 700;
   padding: 3px 8px;
@@ -642,22 +661,13 @@ section:not(.book-section) .section-title-row .section-sub {
   color: var(--color-apple-blue);
 }
 
-/* 제목과 요약을 한 줄에: 제목이 우선 보이고, 남는 폭에 요약을 말줄임으로 채웁니다. */
-.titlerow {
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-  padding-right: 28px;
-  min-width: 0;
-}
-
 .title {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
   letter-spacing: -.02em;
-  line-height: 1.45;
   color: var(--color-carbon);
   flex: 0 1 auto;
+  max-width: 60%;
   min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -665,9 +675,8 @@ section:not(.book-section) .section-title-row .section-sub {
 }
 
 .summary {
-  font-size: 13.5px;
+  font-size: 13px;
   color: #767C88;
-  line-height: 1.45;
   flex: 1 1 auto;
   min-width: 0;
   overflow: hidden;
@@ -677,10 +686,10 @@ section:not(.book-section) .section-title-row .section-sub {
 
 .summary::before { content: "—"; margin-right: 6px; color: #B4B9C2; }
 
-/* 좁은 화면에서 긴 제목이 폭을 다 먹어 요약이 몇 글자만 남는 것을 막습니다.
-   제목을 먼저 말줄임 처리해 요약에도 읽을 만한 공간을 남깁니다. */
-@media (max-width: 720px) {
-  .titlerow .title { max-width: 62%; }
+/* 폭이 좁아지면 요약은 자동으로 숨기고 날짜+제목만 우선 노출합니다. */
+@media (max-width: 600px) {
+  .summary { display: none; }
+  .title { max-width: 100%; }
 }
 
 .marks { display: flex; gap: 6px; margin-top: 7px; }
