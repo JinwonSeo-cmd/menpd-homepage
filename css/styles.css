@@ -155,6 +155,41 @@ section {
   max-width: 640px;
 }
 
+/* ---------- 컴팩트 섹션 헤더 (저서 섹션 제외) ----------
+   제목(h2)과 설명(section-sub)을 한 줄에 나란히 놓고, 좁은 화면에서는
+   flex-wrap으로 자연스럽게 다음 줄로 내려갑니다. 저서 섹션은
+   .section-sub를 쓰지 않고 설명이 .book-info 안에 있으므로
+   :not(.book-section) 스코프로 완전히 분리됩니다. */
+
+section:not(.book-section) .section-title-row {
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: var(--spacing-12);
+  row-gap: 4px;
+  margin-bottom: var(--spacing-24);
+}
+
+section:not(.book-section) .section-title-row .section-icon {
+  width: 22px;
+  height: 22px;
+  align-self: center;
+}
+
+section:not(.book-section) .section-title-row .section-heading {
+  font-size: 26px;
+  line-height: 1.2;
+  letter-spacing: -0.2px;
+}
+
+section:not(.book-section) .section-title-row .section-sub {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--color-ash);
+  margin: 0;
+  max-width: 640px;
+}
+
 /* ---------- Buttons ---------- */
 
 .btn {
@@ -526,6 +561,18 @@ section {
 
 .chips { display: flex; flex-wrap: wrap; gap: 7px; }
 
+/* 분류 칩과 개수 표시를 한 줄에 나란히 */
+.filterbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-12);
+  flex-wrap: wrap;
+}
+
+.filterbar .chips { flex: 1 1 auto; min-width: 0; }
+.filterbar .count { margin: 0; flex: none; white-space: nowrap; }
+
 .chip {
   font: inherit;
   font-size: 13px;
@@ -577,13 +624,13 @@ section {
   border: 0;
   font: inherit;
   color: inherit;
-  padding: 22px 24px;
+  padding: 14px 20px;
   position: relative;
 }
 
 .head:focus-visible { outline: 2px solid var(--color-apple-blue); outline-offset: -3px; }
 
-.meta { display: flex; align-items: center; gap: 9px; margin-bottom: 9px; }
+.meta { display: flex; align-items: center; gap: 9px; margin-bottom: 5px; }
 .date { font-size: 12px; font-weight: 600; color: #767C88; font-variant-numeric: tabular-nums; }
 
 .cat {
@@ -595,19 +642,48 @@ section {
   color: var(--color-apple-blue);
 }
 
+/* 제목과 요약을 한 줄에: 제목이 우선 보이고, 남는 폭에 요약을 말줄임으로 채웁니다. */
+.titlerow {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding-right: 28px;
+  min-width: 0;
+}
+
 .title {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 700;
   letter-spacing: -.02em;
   line-height: 1.45;
-  padding-right: 30px;
-  display: block;
   color: var(--color-carbon);
+  flex: 0 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.summary { margin-top: 8px; font-size: 14.5px; color: #767C88; line-height: 1.65; display: block; }
+.summary {
+  font-size: 13.5px;
+  color: #767C88;
+  line-height: 1.45;
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 
-.marks { display: flex; gap: 6px; margin-top: 12px; }
+.summary::before { content: "—"; margin-right: 6px; color: #B4B9C2; }
+
+/* 좁은 화면에서 긴 제목이 폭을 다 먹어 요약이 몇 글자만 남는 것을 막습니다.
+   제목을 먼저 말줄임 처리해 요약에도 읽을 만한 공간을 남깁니다. */
+@media (max-width: 720px) {
+  .titlerow .title { max-width: 62%; }
+}
+
+.marks { display: flex; gap: 6px; margin-top: 7px; }
 .mark {
   font-size: 11px;
   font-weight: 700;
@@ -618,7 +694,7 @@ section {
   color: #5A616D;
 }
 
-.badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 7px; }
 .badge {
   font-size: 11px;
   font-weight: 700;
@@ -633,8 +709,8 @@ section {
 
 .chev {
   position: absolute;
-  top: 26px;
-  right: 24px;
+  top: 19px;
+  right: 20px;
   width: 11px;
   height: 11px;
   border-right: 2px solid #B4B9C2;
@@ -644,7 +720,7 @@ section {
 }
 .item.open .chev { transform: rotate(225deg); border-color: var(--color-carbon); }
 
-.panel { display: none; padding: 0 24px 24px; border-top: 1px solid #E4E6EB; }
+.panel { display: none; padding: 0 20px 20px; border-top: 1px solid #E4E6EB; }
 .item.open .panel { display: block; animation: rise .26s ease both; }
 
 .body {

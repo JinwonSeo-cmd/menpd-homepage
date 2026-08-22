@@ -95,15 +95,17 @@
     <div class="section-title-row">
       <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
       <h2 class="section-heading">게시판</h2>
+      <p class="section-sub">강의하며 겪은 일, 요즘 보고 있는 것들, 소소한 생각을 남겨둡니다.</p>
     </div>
-    <p class="section-sub">강의하며 겪은 일, 요즘 보고 있는 것들, 소소한 생각을 남겨둡니다.</p>
 
     <div class="controls">
       <input class="search" id="boardSearch" type="search" placeholder="제목이나 내용으로 찾기" autocomplete="off">
-      <div class="chips" id="boardChips"></div>
+      <div class="filterbar">
+        <div class="chips" id="boardChips"></div>
+        <p class="count" id="boardCount"></p>
+      </div>
     </div>
 
-    <p class="count" id="boardCount"></p>
     <ul class="list" id="boardList"></ul>
   </div>
 </section>
@@ -115,15 +117,17 @@
     <div class="section-title-row">
       <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"/></svg>
       <h2 class="section-heading">자료실</h2>
+      <p class="section-sub">강의 교안, 실습 파일, 유용한 스킬 및 md 파일 등</p>
     </div>
-    <p class="section-sub">강의 교안, 실습 파일, 유용한 스킬 및 md 파일 등</p>
 
     <div class="controls">
       <input class="search" id="resSearch" type="search" placeholder="강의명이나 자료명으로 찾기" autocomplete="off">
-      <div class="chips" id="resChips"></div>
+      <div class="filterbar">
+        <div class="chips" id="resChips"></div>
+        <p class="count" id="resCount"></p>
+      </div>
     </div>
 
-    <p class="count" id="resCount"></p>
     <ul class="list" id="resList"></ul>
   </div>
 </section>
@@ -135,8 +139,8 @@
     <div class="section-title-row">
       <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
       <h2 class="section-heading">현장 사진</h2>
+      <p class="section-sub">강의 현장에서 담은 사진들을 모았습니다.</p>
     </div>
-    <p class="section-sub">강의 현장에서 담은 사진들을 모았습니다.</p>
 
     <div class="portfolio-grid reveal-stagger">
       <div class="gallery-item">
@@ -274,8 +278,8 @@
     <div class="section-title-row">
       <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m22 8-6 4 6 4V8Z"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg>
       <h2 class="section-heading">작업물 예시</h2>
+      <p class="section-sub">AI 활용 콘텐츠 제작 작업물 예시입니다.</p>
     </div>
-    <p class="section-sub">AI 활용 콘텐츠 제작 작업물 예시입니다.</p>
 
     <!-- 작업물 카드는 이 구조를 복사해서 계속 추가할 수 있습니다.
          iframe src의 영상 ID를 실제 유튜브(일부공개) 영상 ID로 교체하세요. -->
@@ -311,8 +315,8 @@
     <div class="section-title-row">
       <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6"/><path d="M9 17h6"/></svg>
       <h2 class="section-heading">동적교재</h2>
+      <p class="section-sub">인터랙티브 동적교재를 새 탭에서 확인할 수 있습니다.</p>
     </div>
-    <p class="section-sub">인터랙티브 동적교재를 새 탭에서 확인할 수 있습니다.</p>
 
     <div class="dynamic-book-grid">
       <a class="dynamic-book-card" href="https://jinwonseo-cmd.github.io/pe7_dynamic_lecture/" target="_blank" rel="noopener">
@@ -336,8 +340,8 @@
     <div class="section-title-row">
       <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m22 8-6 4 6 4V8Z"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg>
       <h2 class="section-heading">영상</h2>
+      <p class="section-sub">강의·데모 영상을 모아두었습니다.</p>
     </div>
-    <p class="section-sub">강의·데모 영상을 모아두었습니다.</p>
 
     <!-- 영상 카드는 이 구조를 복사해서 계속 추가할 수 있습니다.
          data-instgrm-permalink 값을 실제 인스타그램 릴스 URL로 교체하세요. -->
@@ -364,8 +368,8 @@
     <div class="section-title-row">
       <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
       <h2 class="section-heading">강의후기</h2>
+      <p class="section-sub">함께한 기관·기업의 후기입니다.</p>
     </div>
-    <p class="section-sub">함께한 기관·기업의 후기입니다.</p>
 
     <div class="review-grid reveal-stagger">
       <div class="review-card">
@@ -408,10 +412,13 @@
     .section-schedule .sc-badge{display:inline-block;font-size:11px;font-weight:800;
       letter-spacing:.08em;color:#fff;background:var(--ink,#16181D);
       padding:5px 10px;border-radius:6px;margin-bottom:16px}
-    .section-schedule h2{font-size:clamp(26px,4.2vw,34px);font-weight:800;
+    /* 제목과 안내 문구를 한 줄에 나란히, 좁은 화면에서는 자연스럽게 줄바꿈 */
+    .section-schedule .sc-title-row{display:flex;flex-wrap:wrap;align-items:baseline;
+      column-gap:12px;row-gap:4px}
+    .section-schedule h2{font-size:clamp(20px,2.6vw,26px);font-weight:800;
       letter-spacing:-.03em;color:var(--ink,#16181D);display:flex;align-items:center;gap:10px}
-    .section-schedule .sc-note{font-size:14.5px;font-weight:600;color:var(--muted,#767C88);
-      margin-top:6px}
+    .section-schedule .sc-note{font-size:13.5px;font-weight:600;color:var(--muted,#767C88);
+      margin-top:0}
 
     .sc-cal{margin-top:32px;background:#fff;border-radius:22px;overflow:hidden;
       box-shadow:0 14px 40px -18px rgba(20,24,32,.22);border:1px solid var(--line,#E4E6EB)}
@@ -459,8 +466,10 @@
 
   <div class="sc-wrap">
     <span class="sc-badge">SCHEDULE</span>
-    <h2>🗓️ 2026년 9월 멘피디 강의 캘린더</h2>
-    <p class="sc-note">강의가 없는 날만 문의 가능합니다.</p>
+    <div class="sc-title-row">
+      <h2>🗓️ 2026년 9월 멘피디 강의 캘린더</h2>
+      <p class="sc-note">강의 시 일정 참고 부탁드립니다.</p>
+    </div>
 
     <div class="sc-cal">
       <div class="sc-head"><strong>2026년 9월</strong></div>
@@ -632,8 +641,10 @@
             <span class="date">${esc((p.date||'').replace(/-/g,'.'))}</span>
             ${p.category?`<span class="cat">${esc(p.category)}</span>`:''}
           </span>
-          <span class="title">${esc(p.title)}</span>
-          ${ex?`<span class="summary">${esc(ex)}</span>`:''}
+          <span class="titlerow">
+            <span class="title">${esc(p.title)}</span>
+            ${ex?`<span class="summary">${esc(ex)}</span>`:''}
+          </span>
           ${marks.length?`<span class="marks">${marks.join('')}</span>`:''}
           <span class="chev"></span>
         </button>
@@ -731,8 +742,10 @@
             <span class="date">${esc((p.date||'').replace(/-/g,'.'))}</span>
             ${p.category?`<span class="cat">${esc(p.category)}</span>`:''}
           </span>
-          <span class="title">${esc(p.title)}</span>
-          ${p.summary?`<span class="summary">${esc(p.summary)}</span>`:''}
+          <span class="titlerow">
+            <span class="title">${esc(p.title)}</span>
+            ${p.summary?`<span class="summary">${esc(p.summary)}</span>`:''}
+          </span>
           ${badges.length?`<span class="badges">${badges.join('')}</span>`:''}
           <span class="chev"></span>
         </button>
