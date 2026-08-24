@@ -379,15 +379,13 @@ section:not(.book-section) .section-title-row .section-sub {
   flex: 0 0 32%;
   max-width: 380px;
   min-width: 0;
-  align-self: center;
+  align-self: stretch;
   margin: var(--spacing-56) var(--spacing-56) var(--spacing-56) 0;
 }
 
 .hero-portrait .media-frame {
   width: 100%;
-  aspect-ratio: 3 / 4;
-  height: auto;
-  max-height: none;
+  height: 100%;
   background: transparent;
   border-radius: 8px;
   box-shadow: none;
@@ -1357,6 +1355,11 @@ section:not(.book-section) .section-title-row .section-sub {
     max-width: 280px;
     margin: 0 auto;
     order: -1;
+  }
+
+  .hero-portrait .media-frame {
+    height: auto;
+    aspect-ratio: 3 / 4;
   }
 
   .hero-content {
