@@ -285,16 +285,18 @@ section:not(.book-section) .section-title-row .section-sub {
 }
 
 .nav-brand {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--color-frost);
-  letter-spacing: -0.224px;
+  font-family: 'Nanum Brush Script', var(--font-display);
+  font-size: 22px;
+  font-weight: 400;
+  color: #8A6D2F;
+  letter-spacing: 0;
   display: flex;
   align-items: baseline;
   gap: 6px;
 }
 
 .nav-brand span {
+  font-family: var(--font-text);
   font-weight: 400;
   color: var(--color-mist);
   font-size: 12px;
@@ -339,31 +341,55 @@ section:not(.book-section) .section-title-row .section-sub {
 /* ---------- Hero ---------- */
 
 .hero {
+  --hero-bg: #FAF7F1;
+  --hero-ink: #1C1B19;
+  --hero-gold: #8A6D2F;
+  --hero-gray: #6b665d;
+  --font-script: 'Nanum Brush Script', cursive;
+  --font-serif-kr: 'Song Myung', serif;
+  --font-sans-kr: 'Noto Sans KR', var(--font-text);
+
+  position: relative;
   display: flex;
-  align-items: stretch;
+  align-items: center;
   padding: 0;
-  background: var(--color-ice);
+  overflow: hidden;
+  background: var(--hero-bg);
+}
+
+.hero-watermark {
+  position: absolute;
+  left: -24px;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0;
+  font-family: var(--font-script);
+  font-size: clamp(140px, 20vw, 320px);
+  line-height: 1;
+  white-space: nowrap;
+  color: var(--hero-ink);
+  opacity: 0.12;
+  z-index: 0;
+  pointer-events: none;
 }
 
 .hero-portrait {
-  flex: 0 0 42%;
+  position: relative;
+  z-index: 1;
+  flex: 0 0 32%;
+  max-width: 380px;
   min-width: 0;
-  align-self: flex-start;
-  max-height: 760px;
-  /* 아래 media-frame이 상한을 넘겨 계산되는 경우에도 히어로 밖으로
-     흘러나가 다음 섹션을 덮지 않도록 잘라냅니다. */
-  overflow: hidden;
+  align-self: center;
+  margin: var(--spacing-56) var(--spacing-56) var(--spacing-56) 0;
 }
 
 .hero-portrait .media-frame {
   width: 100%;
-  height: 100%;
-  /* height:100%는 부모의 max-height가 적용되기 전 높이(이미지 원본 비율)를
-     기준으로 계산되므로, 같은 상한을 프레임에도 직접 걸어 object-fit이
-     760px 안에서 크롭되도록 합니다. */
-  max-height: inherit;
-  border-radius: 0;
-  box-shadow: none;
+  aspect-ratio: 3 / 4;
+  height: auto;
+  max-height: none;
+  border-radius: 24px;
+  box-shadow: var(--shadow-xl);
 }
 
 .hero-portrait .media-frame img {
@@ -371,36 +397,104 @@ section:not(.book-section) .section-title-row .section-sub {
 }
 
 .hero-content {
+  position: relative;
+  z-index: 1;
   flex: 1;
-  max-width: 860px;
+  max-width: 720px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: var(--spacing-56);
 }
 
-.hero-kicker {
-  font-size: 19px;
-  font-weight: 400;
-  color: var(--color-graphite);
+.hero-eyebrow {
+  font-family: var(--font-sans-kr);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--hero-gold);
   margin: 0 0 var(--spacing-16);
 }
 
 .hero-headline {
-  font-family: var(--font-display);
-  font-size: 56px;
-  font-weight: 600;
-  line-height: 1.07;
-  letter-spacing: 0.616px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
   margin: 0 0 var(--spacing-24);
-  color: var(--color-carbon);
+}
+
+.headline-serif {
+  font-family: var(--font-serif-kr);
+  font-size: 42px;
+  font-weight: 400;
+  line-height: 1.25;
+  color: var(--hero-ink);
+}
+
+.headline-script {
+  font-family: var(--font-script);
+  font-size: 92px;
+  font-weight: 400;
+  line-height: 1.05;
+  color: var(--hero-gold);
 }
 
 .hero-bio {
+  font-family: var(--font-sans-kr);
   font-size: 17px;
-  color: var(--color-smoke);
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--hero-gray);
   max-width: 620px;
+  margin: 0 0 var(--spacing-16);
+}
+
+.hero-emphasis {
+  font-family: var(--font-script);
+  font-size: 28px;
+  color: var(--hero-ink);
   margin: 0 0 var(--spacing-24);
+}
+
+.hero-cta-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-16);
+  margin: 0 0 var(--spacing-40);
+}
+
+.btn-hero-primary,
+.btn-hero-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans-kr);
+  font-size: 15px;
+  font-weight: 500;
+  padding: 13px 26px;
+  border-radius: var(--radius-buttons);
+  white-space: nowrap;
+  transition: opacity 0.15s ease, background-color 0.15s ease;
+}
+
+.btn-hero-primary {
+  background: var(--hero-ink);
+  color: var(--hero-bg);
+  border: 1px solid var(--hero-ink);
+}
+
+.btn-hero-primary:hover {
+  opacity: 0.85;
+}
+
+.btn-hero-outline {
+  background: transparent;
+  border: 1px solid var(--hero-gold);
+  color: var(--hero-gold);
+}
+
+.btn-hero-outline:hover {
+  background: rgba(138, 109, 47, 0.08);
 }
 
 /* ---------- Contact block ---------- */
@@ -1259,12 +1353,18 @@ section:not(.book-section) .section-title-row .section-sub {
   .hero-portrait {
     flex: none;
     width: 100%;
-    height: 340px;
+    max-width: 280px;
+    margin: 0 auto;
+    order: -1;
   }
 
   .hero-content {
     max-width: none;
     padding: var(--spacing-40) var(--spacing-24);
+  }
+
+  .headline-script {
+    font-size: 64px;
   }
 
   .book-layout {
@@ -1312,12 +1412,24 @@ section:not(.book-section) .section-title-row .section-sub {
     border-bottom: 1px solid var(--color-smoke);
   }
 
-  .hero-headline {
-    font-size: 40px;
+  .headline-serif {
+    font-size: 30px;
+  }
+
+  .headline-script {
+    font-size: 48px;
+  }
+
+  .hero-emphasis {
+    font-size: 22px;
   }
 
   .hero-portrait {
-    height: 260px;
+    max-width: 220px;
+  }
+
+  .hero-watermark {
+    font-size: clamp(80px, 28vw, 160px);
   }
 
   .section-heading {

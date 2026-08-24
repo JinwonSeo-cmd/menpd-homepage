@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>서진원(멘피디) | 와이컨텐츠</title>
 <meta name="description" content="와이컨텐츠 대표 서진원(멘피디)의 강의, 저서, 자료실 페이지">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&family=Song+Myung&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -34,19 +37,25 @@
 
 <!-- ============ 1. HOME / HERO ============ -->
 <section class="hero" id="home">
-  <div class="hero-portrait">
-    <div class="media-frame" data-label="images/profile.jpg 파일을 추가하세요 (얼굴 사진, 정방형 권장)">
-      <img src="images/profile.jpg" alt="서진원(멘피디) 프로필 사진"
-           onerror="this.style.display='none'; this.closest('.media-frame').classList.add('img-missing')">
-    </div>
-  </div>
+  <p class="hero-watermark" aria-hidden="true">멘피디</p>
 
   <div class="hero-content">
-    <p class="hero-kicker">멘피디(서진원)</p>
-    <h1 class="hero-headline">농협안성교육원과 멘피디가 함께하는<br>AI로 PPT 교안 완성하기 과정!</h1>
+    <p class="hero-eyebrow">AI 활용 교육 강사 · 멘피디 서진원</p>
+    <h1 class="hero-headline">
+      <span class="headline-serif">우리 조직이,</span>
+      <span class="headline-script">AI로 물들다</span>
+    </h1>
     <p class="hero-bio">
-      AI 활용 교육과 생성형 콘텐츠 그리고 SNS 육성을 함께 합니다. 문체부, 국토부, 환경부, 식약처, 코레일 등 다양한 기관, 기업 대상 AI, 콘텐츠 강의 진행
+      단순히 AI 툴을 아는 것으로는 충분하지 않습니다.<br>
+      우리 조직의 워크플로우에 맞는 세부적인 적용 방법이<br>
+      AX의 핵심입니다.
     </p>
+    <p class="hero-emphasis">여러분의 이야기를 들려주세요.</p>
+
+    <div class="hero-cta-group">
+      <a href="#contact" class="btn-hero-primary">강의 문의하기</a>
+      <a href="#book" class="btn-hero-outline">저서 보기</a>
+    </div>
 
     <div id="contact" class="contact-grid">
       <div class="contact-card">
@@ -86,6 +95,13 @@
         <p class="contact-label">강의 문의 (구글폼)</p>
         <p class="contact-value contact-value-muted">준비 중</p>
       </div>
+    </div>
+  </div>
+
+  <div class="hero-portrait">
+    <div class="media-frame" data-label="images/profile.jpg 파일을 추가하세요 (얼굴 사진, 3:4 세로 비율 권장)">
+      <img src="images/profile.jpg" alt="서진원(멘피디) 프로필 사진"
+           onerror="this.style.display='none'; this.closest('.media-frame').classList.add('img-missing')">
     </div>
   </div>
 </section>
