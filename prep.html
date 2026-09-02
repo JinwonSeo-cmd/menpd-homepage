@@ -59,11 +59,15 @@ h1{font-size:clamp(28px,4.5vw,38px);font-weight:800;letter-spacing:-.03em}
   font-size:12.5px;color:var(--muted);line-height:1.55}
 .tip .ic{flex:none;font-size:14px;line-height:1.5}
 
-.btn-survey{display:inline-flex;align-items:center;justify-content:center;gap:8px;
-  margin-top:18px;font-size:15px;font-weight:600;color:#fff;background:var(--ink);
-  padding:13px 26px;border-radius:var(--radius-buttons,980px);border:1px solid var(--ink);
-  text-decoration:none;white-space:nowrap;transition:opacity .15s ease}
+.btn-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.btn-survey,.btn-dashboard{display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  font-size:15px;font-weight:600;
+  padding:13px 26px;border-radius:var(--radius-buttons,980px);
+  text-decoration:none;white-space:nowrap;transition:opacity .15s ease,background-color .15s ease}
+.btn-survey{color:#fff;background:var(--ink);border:1px solid var(--ink)}
 .btn-survey:hover{opacity:.85}
+.btn-dashboard{color:var(--ink);background:transparent;border:1px solid var(--ink)}
+.btn-dashboard:hover{background:rgba(29,29,31,.06)}
 
 .acc-group{display:flex;flex-direction:column;gap:8px;margin-top:14px}
 .acc{background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow:hidden}
@@ -92,7 +96,10 @@ h1{font-size:clamp(28px,4.5vw,38px);font-weight:800;letter-spacing:-.03em}
 <div class="wrap">
   <span class="badge">PREPARATION</span>
   <h1>강의 사전 준비 안내</h1>
-  <a class="btn-survey" href="https://docs.google.com/forms/d/e/1FAIpQLSdhNi5X8V3a0CHOj-jNO4c4aJhBy3N3I4srwWf_lQlqXUMjLw/viewform" target="_blank" rel="noopener">사전 설문 작성하기 ↗</a>
+  <div class="btn-row">
+    <a class="btn-survey" href="https://docs.google.com/forms/d/e/1FAIpQLSdhNi5X8V3a0CHOj-jNO4c4aJhBy3N3I4srwWf_lQlqXUMjLw/viewform" target="_blank" rel="noopener">사전 설문 작성하기 ↗</a>
+    <a class="btn-dashboard" href="https://menpd.com/survey-dashboard.html" target="_blank" rel="noopener">대시보드 ↗</a>
+  </div>
   <p class="lede">강의 당일 시간을 아끼기 위해, 아래 항목을 강의 전에 미리 준비해 주세요.
     로그인 계정이 없다면 새로 만들어두시는 것도 좋습니다.</p>
 
