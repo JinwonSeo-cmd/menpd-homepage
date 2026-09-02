@@ -29,24 +29,5 @@ document.querySelectorAll('.contact-card-flip').forEach((card) => {
 // index.html의 img 태그에 onerror가 이미 걸려있어 별도 스크립트 없이도 동작합니다.
 // 실제 이미지를 images/ 폴더에 넣으면 자동으로 정상 표시됩니다.
 
-// ---- 스크롤 리빌 애니메이션 (양방향) ----
-// .reveal(섹션 전체)과 .reveal-stagger(카드 그리드) 요소가 화면에 들어오면
-// is-visible 클래스를 붙여 등장(fade + slide-up)시키고, 뷰포트를 벗어나면
-// 클래스를 다시 떼어내 퇴장시킵니다. 아래로 스크롤하며 재진입하면 다시 등장합니다.
-// 위쪽(히어로)은 로드 즉시 보여야 하므로 대상에서 제외되어 있습니다.
-const revealTargets = document.querySelectorAll('.reveal, .reveal-stagger');
-
-if (revealTargets.length && 'IntersectionObserver' in window) {
-  const revealObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        entry.target.classList.toggle('is-visible', entry.isIntersecting);
-      });
-    },
-    { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
-  );
-
-  revealTargets.forEach((el) => revealObserver.observe(el));
-} else {
-  revealTargets.forEach((el) => el.classList.add('is-visible'));
-}
+// ---- 스크롤 리빌 / 히어로 등장 애니메이션 ----
+// js/site-animations.js (전체 페이지 공통 스크립트)에서 처리합니다.

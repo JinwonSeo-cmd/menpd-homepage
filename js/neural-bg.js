@@ -203,6 +203,17 @@
   window.addEventListener('resize', onResize);
   onResize();
 
+  // 패럴랙스: 배경(신경망)이 전경 콘텐츠보다 살짝 느리게(스크롤 속도의 75%) 따라오도록
+  var PARALLAX_SPEED = 0.75;
+  var scrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
+  window.addEventListener(
+    'scroll',
+    function () {
+      scrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
+    },
+    { passive: true }
+  );
+
   var rafId = null;
   function animate() {
     rafId = requestAnimationFrame(animate);
@@ -213,6 +224,14 @@
     targetRotX = mouseY * 0.025;
     group.rotation.y += (targetRotY - group.rotation.y) * 0.02;
     group.rotation.x += (-targetRotX - group.rotation.x) * 0.02;
+
+    // 화면 스크롤량(px)을 "카메라 한 화면 높이 = bounds.y" 기준의 월드 단위로 환산 후,
+    // 배경이 앞쪽 콘텐츠(1x)보다 느리게 따라오도록 상한을 둬 부드럽게 이동시킴
+    var worldPerPixel = bounds.y / window.innerHeight;
+    var rawOffset = scrollY * PARALLAX_SPEED * worldPerPixel;
+    var maxOffset = bounds.y * 1.5;
+    var targetGroupY = Math.min(rawOffset, maxOffset);
+    group.position.y += (targetGroupY - group.position.y) * 0.04;
 
     renderer.render(scene, camera);
   }

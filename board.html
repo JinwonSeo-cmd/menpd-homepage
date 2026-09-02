@@ -39,8 +39,7 @@ h1{font-size:clamp(30px,5vw,42px);font-weight:800;letter-spacing:-.03em;line-hei
 
 .list{list-style:none;display:flex;flex-direction:column;gap:10px}
 .item{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
-  overflow:hidden;transition:border-color .18s,box-shadow .18s;
-  animation:rise .4s cubic-bezier(.2,.7,.3,1) both}
+  overflow:hidden;transition:border-color .18s,box-shadow .18s}
 @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 .item:hover{border-color:#CFD3DA}
 .item.open{border-color:var(--ink);box-shadow:0 6px 24px -12px rgba(20,24,32,.28)}
@@ -151,7 +150,7 @@ function render(){
     if((p.links||[]).length) marks.push(`<span class="mark">링크 ${p.links.length}</span>`);
     const ex = excerpt(p);
 
-    return `<li class="item" style="animation-delay:${Math.min(i*40,320)}ms">
+    return `<li class="item">
       <button class="head" aria-expanded="false">
         <span class="meta">
           <span class="date">${esc((p.date||'').replace(/-/g,'.'))}</span>
@@ -201,5 +200,6 @@ fetch(DATA_URL + '?t=' + Date.now())
 </script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.149.0/build/three.min.js" defer></script>
 <script src="js/neural-bg.js" defer></script>
+<script src="js/site-animations.js" defer></script>
 </body>
 </html>

@@ -741,7 +741,6 @@ section:not(.book-section) .section-title-row .section-sub {
   border-radius: 14px;
   overflow: hidden;
   transition: border-color .18s, box-shadow .18s;
-  animation: rise .4s cubic-bezier(.2,.7,.3,1) both;
 }
 
 @keyframes rise {
@@ -1465,47 +1464,40 @@ section:not(.book-section) .section-title-row .section-sub {
   }
 }
 
-/* ---------- Scroll reveal ---------- */
-/* 양방향(진입/이탈) 트리거: 아래로 스크롤하며 뷰포트에 들어오면 fade+slide-up,
-   위로 스크롤해 벗어나면 다시 사라졌다가 재진입 시 다시 등장합니다.
-   진입(등장)은 느긋하게, 이탈(퇴장)은 더 빠르게 — .reveal(퇴장 상태)과
-   .reveal.is-visible(진입 상태)에 서로 다른 transition 값을 둬서
-   전환이 시작되는 시점의 목표 상태 값이 적용되도록 합니다. */
+/* ---------- Scroll reveal (전체 페이지 공통, js/site-animations.js) ---------- */
+/* 단방향(one-shot) 트리거: 스크롤로 뷰포트에 들어오면 fade + slide-up으로
+   한 번만 등장하고, 이후 다시 스크롤을 벗어나도 사라지지 않습니다. */
 
 .reveal {
   opacity: 0;
   transform: translateY(28px);
-  transition: opacity 0.35s cubic-bezier(0.4, 0, 1, 1),
-              transform 0.35s cubic-bezier(0.4, 0, 1, 1);
+  transition: opacity 0.6s cubic-bezier(0.25, 0.1, 0.25, 1),
+              transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
-  transition: opacity 0.6s cubic-bezier(0.25, 0.1, 0.25, 1),
-              transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .reveal-stagger > * {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.3s cubic-bezier(0.4, 0, 1, 1),
-              transform 0.3s cubic-bezier(0.4, 0, 1, 1);
+  transition: opacity 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
+              transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .reveal-stagger.is-visible > * {
   opacity: 1;
   transform: translateY(0);
-  transition: opacity 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
-              transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .reveal-stagger.is-visible > *:nth-child(1) { transition-delay: 0ms; }
-.reveal-stagger.is-visible > *:nth-child(2) { transition-delay: 70ms; }
-.reveal-stagger.is-visible > *:nth-child(3) { transition-delay: 140ms; }
-.reveal-stagger.is-visible > *:nth-child(4) { transition-delay: 210ms; }
-.reveal-stagger.is-visible > *:nth-child(5) { transition-delay: 280ms; }
-.reveal-stagger.is-visible > *:nth-child(6) { transition-delay: 350ms; }
+.reveal-stagger.is-visible > *:nth-child(2) { transition-delay: 100ms; }
+.reveal-stagger.is-visible > *:nth-child(3) { transition-delay: 200ms; }
+.reveal-stagger.is-visible > *:nth-child(4) { transition-delay: 300ms; }
+.reveal-stagger.is-visible > *:nth-child(5) { transition-delay: 400ms; }
+.reveal-stagger.is-visible > *:nth-child(6) { transition-delay: 500ms; }
 
 @media (prefers-reduced-motion: reduce) {
   .reveal,
@@ -1523,6 +1515,49 @@ section:not(.book-section) .section-title-row .section-sub {
   }
 
   .contact-card-flip .flip-inner {
+    transition: none !important;
+  }
+}
+
+/* ---------- 히어로 헤드라인 등장 시퀀스 (index.html 전용, js/site-animations.js) ---------- */
+.hero-headline { opacity: 0; }
+.hero-headline.js-ready { opacity: 1; }
+
+.hero-headline .word-reveal {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
+              transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+.hero-headline .word-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-bio,
+.hero-emphasis,
+.hero-cta-group {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s cubic-bezier(0.25, 0.1, 0.25, 1),
+              transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+.hero-bio.is-visible,
+.hero-emphasis.is-visible,
+.hero-cta-group.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-headline,
+  .hero-headline .word-reveal,
+  .hero-bio,
+  .hero-emphasis,
+  .hero-cta-group {
+    opacity: 1 !important;
+    transform: none !important;
     transition: none !important;
   }
 }
