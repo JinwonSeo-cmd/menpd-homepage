@@ -273,6 +273,15 @@ h1{font-size:clamp(28px,4.5vw,38px);font-weight:800;letter-spacing:-.03em}
         </ul>
       </div>
     </details>
+
+    <div class="steplist" style="margin-top:10px">
+      <div class="step" style="flex-wrap:wrap;row-gap:10px">
+        <div class="txt"><strong>캡컷(CapCut) 설치</strong>
+          <span>영상 편집 실습에 사용합니다. 노트북 또는 스마트폰에 미리 설치해두세요.</span></div>
+        <a class="go" href="https://www.capcut.com/ko-kr/tools/desktop-video-editor" target="_blank" rel="noopener">데스크톱 다운로드 ↗</a>
+        <a class="go" id="capcut-mobile-link" href="https://www.capcut.com/ko-kr/resource/capcut-app-download" target="_blank" rel="noopener">모바일 다운로드 ↗</a>
+      </div>
+    </div>
   </div>
 
   <!-- AI로 PPT 생성하기 추가 준비사항 -->
@@ -308,5 +317,17 @@ h1{font-size:clamp(28px,4.5vw,38px);font-weight:800;letter-spacing:-.03em}
   <p class="note">계정이 없으신 항목은 강의 전 미리 가입해두시면 실습 시간을 아낄 수 있습니다.
     로그인에 어려움이 있으시면 강의 당일 조금 일찍 접속해 도움을 요청해주세요.</p>
 </div>
+<script>
+(function(){
+  var link = document.getElementById('capcut-mobile-link');
+  if (!link) return;
+  var ua = navigator.userAgent || navigator.vendor || '';
+  if (/iPad|iPhone|iPod/.test(ua)) {
+    link.href = 'https://apps.apple.com/kr/app/capcut-photo-video-editor/id1500855883';
+  } else if (/android/i.test(ua)) {
+    link.href = 'https://play.google.com/store/apps/details?id=com.lemon.lvoverseas&hl=ko';
+  }
+})();
+</script>
 </body>
 </html>
