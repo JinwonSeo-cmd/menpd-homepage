@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>강의 사전 설문 대시보드</title>
+<style>
+  :root{
+    --ink:#24333E;
+    --paper:#F6F4EF;
+    --card:#FFFFFF;
+    --accent:#3F7C74;
+    --accent-dark:#2E5D56;
+    --line:#DFDACB;
+    --muted:#6B7680;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  }
+  .wrap{max-width:640px;margin:0 auto;padding:28px 20px 60px;}
+
+  .dash-title{font-size:22px;font-weight:700;margin:0 0 4px;}
+  .dash-sub{color:var(--muted);font-size:14px;margin:0 0 16px;}
+  .dash-stats{display:flex;gap:10px;margin-bottom:6px;}
+  .stat-pill{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 16px;flex:1;text-align:center;}
+  .stat-num{font-size:24px;font-weight:700;color:var(--accent-dark);}
+  .stat-lbl{font-size:12px;color:var(--muted);margin-top:2px;}
+  .refresh-btn{
+    width:100%;margin-top:14px;padding:12px;border-radius:10px;
+    border:1.5px solid var(--accent);background:transparent;color:var(--accent-dark);
+    font-weight:600;font-size:14px;cursor:pointer;
+  }
+  .updated-note{text-align:center;font-size:12px;color:var(--muted);margin-top:8px;}
+
+  .dash-section{margin-top:28px;}
+  .dash-q{font-size:15px;font-weight:700;margin:0 0 12px;line-height:1.4;}
+  .bar-row{margin-bottom:10px;}
+  .bar-label{display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px;gap:8px;}
+  .bar-label span:first-child{flex:1;}
+  .bar-track{height:10px;background:var(--line);border-radius:6px;overflow:hidden;}
+  .bar-fill{height:100%;background:var(--accent);border-radius:6px;}
+
+  .text-answers{display:flex;flex-direction:column;gap:8px;max-height:320px;overflow-y:auto;}
+  .text-answer-card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:14px;line-height:1.5;}
+  .text-answer-name{font-weight:700;color:var(--accent-dark);font-size:12px;margin-bottom:3px;}
+  .empty-note{color:var(--muted);font-size:13px;text-align:center;padding:20px 0;}
+  .warn-note{
+    background:#FBF1E1;border:1px solid #EBD3A0;color:#7A5A17;
+    border-radius:10px;padding:12px 14px;font-size:13px;line-height:1.5;margin-bottom:20px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap" id="app">
+  <div class="dash-title">강의 사전 설문 대시보드</div>
+  <div class="dash-sub">불러오는 중…</div>
+</div>
+
+<script>
+// ⚠️ 폼이 바뀌면 이 주소도 "파일 → 공유 → 웹에 게시"에서 새로 발급받아 바꿔주세요.
+const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRKmlDqdPvNX-UNYLxM2Z-9whbLSRn9QG95bwp5WtmAKksTwPhe0l5TI3aBuI8QeKmeAUQtQIdb-dkS/pub?output=csv";
+
+const app = document.getElementById('app');
+
+function parseCSV(text){
+  const rows = [];
+  let row = [], field = '', inQuotes = false;
+  for (let i = 0; i < text.length; i++){
+    const c = text[i], next = text[i+1];
+    if (inQuotes){
+      if (c === '"' && next === '"'){ field += '"'; i++; }
+      else if (c === '"'){ inQuotes = false; }
+      else { field += c; }
+    } else {
+      if (c === '"'){ inQuotes = true; }
+      else if (c === ','){ row.push(field); field=''; }
+      else if (c === '\r'){ /* skip */ }
+      else if (c === '\n'){ row.push(field); rows.push(row); row=[]; field=''; }
+      else { field += c; }
+    }
+  }
+  if (field.length || row.length){ row.push(field); rows.push(row); }
+  return rows.filter(r => r.some(v => v.trim().length));
+}
+
+function escapeHtml(str){
+  if (str === undefined || str === null) return '';
+  return String(str).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+async function load(){
+  app.innerHTML = `<div class="dash-title">강의 사전 설문 대시보드</div><div class="dash-sub">불러오는 중…</div>`;
+  try{
+    const res = await fetch(CSV_URL, {cache:'no-store'});
+    if (!res.ok) throw new Error('fetch failed: ' + res.status);
+    const text = await res.text();
+    const rows = parseCSV(text);
+    if (rows.length < 1){ throw new Error('empty sheet'); }
+    const headers = rows[0];
+    const data = rows.slice(1).map(r => {
+      const obj = {};
+      headers.forEach((h,i) => obj[h] = (r[i]||'').trim());
+      return obj;
+    });
+    render(headers, data);
+  }catch(err){
+    app.innerHTML = `
+      <div class="dash-title">불러오기 실패</div>
+      <div class="dash-sub">${escapeHtml(err.message)}</div>
+      <button class="refresh-btn" id="retry">다시 시도</button>`;
+    document.getElementById('retry').onclick = load;
+  }
+}
+
+function render(headers, data){
+  const nicknameKeywords = ['닉네임', '별명', '성함', '이름'];
+  const nicknameCol = headers.find(h => nicknameKeywords.some(k => h.includes(k))) || headers[1];
+  const skipCols = new Set([headers[0], nicknameCol]); // 타임스탬프, 닉네임은 요약 대상에서 제외
+  const qCols = headers.filter(h => !skipCols.has(h));
+
+  let sectionsHtml = '';
+  qCols.forEach(col => {
+    const values = data.map(d => d[col]).filter(v => v && v.length);
+    if (values.length === 0){
+      sectionsHtml += `
+        <div class="dash-section">
+          <div class="dash-q">${escapeHtml(col)}</div>
+          <div class="empty-note">아직 답변이 없어요</div>
+        </div>`;
+      return;
+    }
+    const uniq = [...new Set(values)];
+    const avgLen = values.reduce((a,v) => a + v.length, 0) / values.length;
+    const isCategorical = uniq.length <= 10 && avgLen <= 30;
+
+    if (isCategorical){
+      const counts = {};
+      uniq.forEach(u => counts[u] = 0);
+      values.forEach(v => counts[v]++);
+      const total = values.length;
+      const sortedKeys = Object.keys(counts).sort((a,b) => counts[b]-counts[a]);
+      sectionsHtml += `
+        <div class="dash-section">
+          <div class="dash-q">${escapeHtml(col)}</div>
+          ${sortedKeys.map(k => {
+            const c = counts[k];
+            const pct = Math.round((c/total)*100);
+            return `
+              <div class="bar-row">
+                <div class="bar-label"><span>${escapeHtml(k)}</span><span>${c}명 (${pct}%)</span></div>
+                <div class="bar-track"><div class="bar-fill" style="width:${pct}%"></div></div>
+              </div>`;
+          }).join('')}
+        </div>`;
+    } else {
+      sectionsHtml += `
+        <div class="dash-section">
+          <div class="dash-q">${escapeHtml(col)}</div>
+          <div class="text-answers">
+            ${data.filter(d => d[col] && d[col].length).map(d => `
+              <div class="text-answer-card">
+                <div class="text-answer-name">${escapeHtml(d[nicknameCol] || '익명')}</div>
+                ${escapeHtml(d[col])}
+              </div>`).join('')}
+          </div>
+        </div>`;
+    }
+  });
+
+  const hasClassCol = headers.some(h => h.includes('반') || h.toLowerCase().includes('class'));
+  const warnHtml = hasClassCol ? '' : `
+    <div class="warn-note">
+      ⚠️ 이 시트에는 "반 이름"을 구분하는 문항이 없어요. 지금은 폼에 쌓인 모든 응답이 한 번에 표시됩니다.
+      여러 반에 이 폼을 계속 쓰실 계획이면, 폼에 "반 이름" 질문을 하나 추가하는 걸 추천드려요.
+    </div>`;
+
+  app.innerHTML = `
+    <div class="dash-title">강의 사전 설문 대시보드</div>
+    <div class="dash-sub">실시간 응답 현황</div>
+    <div class="dash-stats">
+      <div class="stat-pill"><div class="stat-num">${data.length}</div><div class="stat-lbl">참여 인원</div></div>
+    </div>
+    <button class="refresh-btn" id="refresh-btn">새로고침</button>
+    <div class="updated-note">마지막 업데이트: ${new Date().toLocaleString('ko-KR')}</div>
+    ${warnHtml}
+    ${data.length === 0 ? '<div class="empty-note">아직 제출된 응답이 없어요.</div>' : sectionsHtml}
+  `;
+  document.getElementById('refresh-btn').onclick = load;
+}
+
+load();
+</script>
+</body>
+</html>
