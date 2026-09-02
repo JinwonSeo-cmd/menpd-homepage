@@ -37,7 +37,7 @@
   .updated-note{text-align:center;font-size:12px;color:var(--muted);margin-top:8px;}
 
   .filter-row{
-    display:flex;align-items:center;gap:10px;margin-bottom:16px;
+    display:flex;align-items:center;gap:10px;margin-bottom:10px;
     background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px;
   }
   .filter-row label{font-size:13px;color:var(--muted);white-space:nowrap;}
@@ -62,6 +62,23 @@
     background:#FBF1E1;border:1px solid #EBD3A0;color:#7A5A17;
     border-radius:10px;padding:12px 14px;font-size:13px;line-height:1.5;margin-bottom:20px;
   }
+
+  .gate-wrap{
+    max-width:360px;margin:80px auto 0;padding:32px 24px;text-align:center;
+  }
+  .gate-title{font-size:20px;font-weight:700;margin:0 0 8px;}
+  .gate-sub{color:var(--muted);font-size:14px;margin:0 0 20px;}
+  .gate-input{
+    width:100%;padding:14px;border-radius:10px;border:1.5px solid var(--line);
+    background:var(--card);color:var(--ink);font-size:20px;text-align:center;
+    letter-spacing:4px;font-family:inherit;margin-bottom:12px;
+  }
+  .gate-input:focus{outline:none;border-color:var(--accent);}
+  .gate-btn{
+    width:100%;padding:14px;border-radius:10px;border:none;background:var(--accent);
+    color:#fff;font-size:16px;font-weight:600;cursor:pointer;
+  }
+  .gate-error{color:#B3452C;font-size:13px;margin-top:10px;min-height:16px;}
 </style>
 </head>
 <body>
@@ -77,12 +94,13 @@ const SHEET_ID = "1rU5W2rH7Cw1Qk9z7hLSdhmANXUSOjM47CZ1qlOUUttg";
 const GID = "1837557039";
 const CSV_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&gid=${GID}`;
 
-const ALL_SESSIONS_VALUE = "__ALL__";
+const ALL_VALUE = "__ALL__";
 const app = document.getElementById('app');
 
 let ALL_HEADERS = [];
 let ALL_DATA = [];
-let currentSession = ALL_SESSIONS_VALUE;
+let currentDate = null;     // null이면 아직 미설정 -> load()에서 "오늘"로 초기화
+let currentSession = ALL_VALUE;
 let lastUpdated = null;
 
 function parseCSV(text){
@@ -112,6 +130,62 @@ function escapeHtml(str){
 }
 function escapeAttr(str){ return escapeHtml(str); }
 
+// 타임스탬프 문자열에서 "YYYY-MM-DD" 키를 뽑아냄 (구글폼 기본 타임스탬프 형식 대응)
+function dateKeyFromTimestamp(ts){
+  if (!ts) return null;
+  const m = ts.match(/(\d{4})\D+(\d{1,2})\D+(\d{1,2})/);
+  if (!m) return null;
+  const yyyy = m[1];
+  const mm = String(m[2]).padStart(2, '0');
+  const dd = String(m[3]).padStart(2, '0');
+  return `${yyyy}-${mm}-${dd}`;
+}
+function dateLabelFromKey(key){
+  const [y, m, d] = key.split('-');
+  return `${Number(m)}월 ${Number(d)}일`;
+}
+function todayKey(){
+  const now = new Date();
+  const yyyy = now.getFullYear();
+  const mm = String(now.getMonth()+1).padStart(2,'0');
+  const dd = String(now.getDate()).padStart(2,'0');
+  return `${yyyy}-${mm}-${dd}`;
+}
+
+
+const LOCK_KEY = "menpd_dashboard_unlocked_v1";
+const PASSWORD = "0438";
+
+function isUnlocked(){
+  try{ return localStorage.getItem(LOCK_KEY) === "yes"; }catch(e){ return false; }
+}
+function setUnlocked(){
+  try{ localStorage.setItem(LOCK_KEY, "yes"); }catch(e){ /* ignore */ }
+}
+
+function renderGate(showError){
+  app.innerHTML = `
+    <div class="gate-wrap">
+      <div class="gate-title">🔒 비밀번호 확인</div>
+      <div class="gate-sub">대시보드를 보려면 비밀번호를 입력하세요.</div>
+      <input class="gate-input" id="pw-input" type="password" inputmode="numeric" maxlength="8" autofocus />
+      <button class="gate-btn" id="pw-submit">확인</button>
+      <div class="gate-error">${showError ? "비밀번호가 올바르지 않아요." : ""}</div>
+    </div>`;
+  const input = document.getElementById('pw-input');
+  const submit = () => {
+    if (input.value === PASSWORD){
+      setUnlocked();
+      load();
+    } else {
+      renderGate(true);
+    }
+  };
+  document.getElementById('pw-submit').onclick = submit;
+  input.addEventListener('keydown', e => { if (e.key === 'Enter') submit(); });
+  input.focus();
+}
+
 async function load(){
   app.innerHTML = `<div class="dash-title">강의 사전 설문 대시보드</div><div class="dash-sub">불러오는 중…</div>`;
   try{
@@ -129,6 +203,7 @@ async function load(){
     ALL_HEADERS = headers;
     ALL_DATA = data;
     lastUpdated = new Date();
+    if (currentDate === null) currentDate = todayKey(); // 처음 열 때는 항상 "오늘"이 기본값
     renderDashboard();
   }catch(err){
     app.innerHTML = `
@@ -141,36 +216,61 @@ async function load(){
 
 function renderDashboard(){
   const headers = ALL_HEADERS;
+  const timestampCol = headers[0];
+
   const nicknameKeywords = ['닉네임', '별명', '성함', '이름'];
   const nicknameCol = headers.find(h => nicknameKeywords.some(k => h.includes(k))) || headers[1];
 
   const sessionKeywords = ['세션', '분반', '반 이름', '반명', '반이름'];
   const sessionCol = headers.find(h => sessionKeywords.some(k => h.includes(k)));
 
-  let filterHtml = '';
-  let data = ALL_DATA;
+  // ---- 날짜 필터 옵션 구성 ----
+  const withDateKey = ALL_DATA.map(d => ({...d, __dateKey: dateKeyFromTimestamp(d[timestampCol])}));
+  const dateKeysWithData = [...new Set(withDateKey.map(d => d.__dateKey).filter(Boolean))].sort().reverse();
+  const today = todayKey();
+  const dateOptions = [today, ...dateKeysWithData.filter(k => k !== today)];
 
+  if (currentDate !== ALL_VALUE && !dateOptions.includes(currentDate)) currentDate = today;
+
+  let dataByDate = (currentDate === ALL_VALUE)
+    ? withDateKey
+    : withDateKey.filter(d => d.__dateKey === currentDate);
+
+  const dateFilterHtml = `
+    <div class="filter-row">
+      <label for="date-select">날짜</label>
+      <select id="date-select">
+        ${dateOptions.map(k => {
+          const cnt = withDateKey.filter(d => d.__dateKey === k).length;
+          const label = (k === today) ? `오늘 (${dateLabelFromKey(k)}) · ${cnt}명` : `${dateLabelFromKey(k)} · ${cnt}명`;
+          return `<option value="${k}" ${currentDate===k?'selected':''}>${label}</option>`;
+        }).join('')}
+        <option value="${ALL_VALUE}" ${currentDate===ALL_VALUE?'selected':''}>전체 기간 (${withDateKey.length}명)</option>
+      </select>
+    </div>`;
+
+  // ---- 세션(반) 필터 옵션 구성 (문항이 있을 때만) ----
+  let sessionFilterHtml = '';
+  let data = dataByDate;
   if (sessionCol){
-    const sessions = [...new Set(ALL_DATA.map(d => d[sessionCol]).filter(v => v && v.length))].sort();
-    if (currentSession !== ALL_SESSIONS_VALUE && !sessions.includes(currentSession)){
-      currentSession = ALL_SESSIONS_VALUE;
-    }
-    data = (currentSession === ALL_SESSIONS_VALUE) ? ALL_DATA : ALL_DATA.filter(d => d[sessionCol] === currentSession);
+    const sessions = [...new Set(dataByDate.map(d => d[sessionCol]).filter(v => v && v.length))].sort();
+    if (currentSession !== ALL_VALUE && !sessions.includes(currentSession)) currentSession = ALL_VALUE;
+    data = (currentSession === ALL_VALUE) ? dataByDate : dataByDate.filter(d => d[sessionCol] === currentSession);
 
-    filterHtml = `
+    sessionFilterHtml = `
       <div class="filter-row">
-        <label for="session-select">반 선택</label>
+        <label for="session-select">반</label>
         <select id="session-select">
-          <option value="${ALL_SESSIONS_VALUE}" ${currentSession===ALL_SESSIONS_VALUE?'selected':''}>전체 (${ALL_DATA.length}명)</option>
+          <option value="${ALL_VALUE}" ${currentSession===ALL_VALUE?'selected':''}>전체 (${dataByDate.length}명)</option>
           ${sessions.map(s => {
-            const cnt = ALL_DATA.filter(d => d[sessionCol] === s).length;
+            const cnt = dataByDate.filter(d => d[sessionCol] === s).length;
             return `<option value="${escapeAttr(s)}" ${currentSession===s?'selected':''}>${escapeHtml(s)} (${cnt}명)</option>`;
           }).join('')}
         </select>
       </div>`;
   }
 
-  const skipCols = new Set([headers[0], nicknameCol]);
+  const skipCols = new Set([timestampCol, nicknameCol]);
   if (sessionCol) skipCols.add(sessionCol);
   const qCols = headers.filter(h => !skipCols.has(h));
 
@@ -225,14 +325,14 @@ function renderDashboard(){
 
   const warnHtml = sessionCol ? '' : `
     <div class="warn-note">
-      ⚠️ 이 시트에는 "반"을 구분하는 문항이 없어요. 지금은 폼에 쌓인 모든 응답이 한 번에 표시됩니다.
-      여러 반에 이 폼을 계속 쓰실 계획이면, 폼에 "세션 ID" 같은 질문을 하나 추가하면 이 페이지에 반 선택 드롭다운이 자동으로 생겨요.
+      ⚠️ 같은 날 여러 반이 겹치면 날짜만으로는 구분이 안 돼요. 폼에 "세션 ID" 같은 질문을 하나 추가하면, 같은 날짜 안에서도 반을 나눠보는 드롭다운이 자동으로 추가돼요.
     </div>`;
 
   app.innerHTML = `
     <div class="dash-title">강의 사전 설문 대시보드</div>
     <div class="dash-sub">실시간 응답 현황</div>
-    ${filterHtml}
+    ${dateFilterHtml}
+    ${sessionFilterHtml}
     <div class="dash-stats">
       <div class="stat-pill"><div class="stat-num">${data.length}</div><div class="stat-lbl">참여 인원</div></div>
     </div>
@@ -242,14 +342,14 @@ function renderDashboard(){
     ${data.length === 0 ? '<div class="empty-note">아직 제출된 응답이 없어요.</div>' : sectionsHtml}
   `;
 
-  const sel = document.getElementById('session-select');
-  if (sel){
-    sel.onchange = (e) => { currentSession = e.target.value; renderDashboard(); };
-  }
+  const dateSel = document.getElementById('date-select');
+  if (dateSel) dateSel.onchange = (e) => { currentDate = e.target.value; renderDashboard(); };
+  const sessionSel = document.getElementById('session-select');
+  if (sessionSel) sessionSel.onchange = (e) => { currentSession = e.target.value; renderDashboard(); };
   document.getElementById('refresh-btn').onclick = load;
 }
 
-load();
+if (isUnlocked()){ load(); } else { renderGate(false); }
 </script>
 </body>
 </html>
