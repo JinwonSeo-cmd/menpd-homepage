@@ -64,6 +64,26 @@ h1{font-size:clamp(28px,4.5vw,38px);font-weight:800;letter-spacing:-.03em}
   padding:13px 26px;border-radius:var(--radius-buttons,980px);border:1px solid var(--ink);
   text-decoration:none;white-space:nowrap;transition:opacity .15s ease}
 .btn-survey:hover{opacity:.85}
+
+.acc-group{display:flex;flex-direction:column;gap:8px;margin-top:14px}
+.acc{background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.acc + .acc{margin-top:0}
+.acc summary{cursor:pointer;list-style:none;padding:14px 18px;font-size:13.5px;
+  font-weight:700;display:flex;align-items:center;gap:8px}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary::after{content:'+';margin-left:auto;font-size:16px;font-weight:400;
+  color:var(--muted);flex:none}
+.acc[open] summary::after{content:'–'}
+.acc summary .acc-desc{font-weight:400;color:var(--muted);font-size:12px}
+.acc-body{padding:0 18px 16px;font-size:13px;color:var(--ink);line-height:1.7}
+.acc-body h4{font-size:12px;font-weight:700;color:var(--accent);margin:14px 0 4px}
+.acc-body h4:first-child{margin-top:0}
+.acc-body p{margin:0}
+.acc-flow{background:var(--wash);border:1px solid var(--line);border-radius:8px;
+  padding:10px 12px;font-size:11.5px;color:var(--muted);line-height:1.7;
+  font-family:ui-monospace,'SF Mono',Menlo,monospace;margin:2px 0 0}
+.acc-body ul{margin:4px 0 0 18px;padding:0;color:var(--muted);font-size:12.5px;line-height:1.65}
+.acc-body ul li{margin-bottom:2px}
 </style>
 </head>
 <body>
@@ -114,6 +134,66 @@ h1{font-size:clamp(28px,4.5vw,38px);font-weight:800;letter-spacing:-.03em}
         <div class="avatar" style="background:#1D1D1D">G</div>
         <strong>Grok</strong><span>grok.com</span></a>
     </div>
+
+    <div class="acc-group">
+      <details class="acc">
+        <summary>챗GPT (ChatGPT) <span class="acc-desc">— 가장 범용적인 대화형 AI</span></summary>
+        <div class="acc-body">
+          <h4>언제 쓰면 좋을까요?</h4>
+          <p>질문에 대한 답, 아이디어 브레인스토밍, 글 초안 작성처럼 폭넓은 용도에 두루 씁니다.</p>
+          <h4>시작하는 흐름</h4>
+          <div class="acc-flow">구글 계정으로 로그인 → 새 대화 시작 → 하고 싶은 말을 자연스럽게 입력 → 답변 확인 → 이어서 질문하며 다듬기</div>
+          <h4>기본 팁</h4>
+          <ul>
+            <li>한 번에 완벽한 답을 기대하기보다, 대화를 주고받으며 다듬어가는 도구입니다.</li>
+            <li>"이런 상황에서 이런 톤으로" 처럼 예시를 들어 요청하면 결과가 훨씬 좋아집니다.</li>
+            <li>대화가 길어져 답변이 이상해지면, 새 대화를 여는 게 낫습니다.</li>
+          </ul>
+        </div>
+      </details>
+      <details class="acc">
+        <summary>클로드 (Claude) <span class="acc-desc">— 문서 작업과 긴 글에 강함</span></summary>
+        <div class="acc-body">
+          <h4>언제 쓰면 좋을까요?</h4>
+          <p>긴 문서 요약·정리, 꼼꼼한 글쓰기, 파일을 올려서 분석을 맡길 때 특히 유용합니다.</p>
+          <h4>시작하는 흐름</h4>
+          <div class="acc-flow">구글/이메일 계정으로 로그인 → 새 대화 시작 → 파일 첨부(선택) → 요청 입력 → 답변 확인 후 이어서 요청</div>
+          <h4>기본 팁</h4>
+          <ul>
+            <li>문서 파일을 통째로 올리고 "이거 요약해줘", "이거 다듬어줘"라고 바로 요청할 수 있습니다.</li>
+            <li>관련된 대화를 묶어서 관리하고 싶으면 '프로젝트' 기능을 활용하세요.</li>
+          </ul>
+        </div>
+      </details>
+      <details class="acc">
+        <summary>퍼플렉시티 (Perplexity) <span class="acc-desc">— 출처가 함께 나오는 검색형 AI</span></summary>
+        <div class="acc-body">
+          <h4>언제 쓰면 좋을까요?</h4>
+          <p>최신 정보를 찾거나, 답변의 출처를 확인해야 하는 리서치에 적합합니다.</p>
+          <h4>시작하는 흐름</h4>
+          <div class="acc-flow">구글 계정으로 로그인 → 검색창에 질문 입력 → 답변과 함께 뜨는 출처 링크 확인</div>
+          <h4>기본 팁</h4>
+          <ul>
+            <li>답변 아래 표시되는 출처 링크를 눌러 원문을 확인하는 습관을 들이면 좋습니다.</li>
+            <li>최신 뉴스나 트렌드 조사에 특히 강합니다.</li>
+          </ul>
+        </div>
+      </details>
+      <details class="acc">
+        <summary>그록 (Grok) <span class="acc-desc">— 실시간 트렌드에 강함</span></summary>
+        <div class="acc-body">
+          <h4>언제 쓰면 좋을까요?</h4>
+          <p>X(트위터)의 실시간 반응이나 트렌드를 살펴볼 때 유용합니다.</p>
+          <h4>시작하는 흐름</h4>
+          <div class="acc-flow">X(트위터) 계정으로 로그인 (계정이 없으면 먼저 가입) → 그록 아이콘 클릭 → 질문 입력</div>
+          <h4>기본 팁</h4>
+          <ul>
+            <li>다른 도구와 달리 X 계정이 필요해서, 처음 쓰시는 분은 가입 단계가 하나 더 있습니다.</li>
+            <li>실시간성이 강점이니, "지금 이슈가 되는" 류의 질문에 활용해보세요.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
   </div>
 
   <!-- 생성형 AI 강의 준비사항 -->
@@ -123,16 +203,69 @@ h1{font-size:clamp(28px,4.5vw,38px);font-weight:800;letter-spacing:-.03em}
 
     <div class="steplist">
       <div class="step">
+        <div class="txt"><strong>구글 플로우(Google Flow) 로그인</strong>
+          <span>AI 이미지·영상 생성 실습에 사용합니다.</span></div>
+        <a class="go" href="https://labs.google/flow" target="_blank" rel="noopener">로그인 열기 ↗</a>
+      </div>
+    </div>
+    <details class="acc">
+      <summary>구글 플로우 (Google Flow) <span class="acc-desc">— 이미지·영상을 만들어주는 구글의 생성 도구</span></summary>
+      <div class="acc-body">
+        <h4>언제 쓰면 좋을까요?</h4>
+        <p>문장으로 설명만 하면 이미지나 짧은 영상을 만들어줍니다. 카드뉴스용 이미지, 영상 소재 제작 실습에 사용합니다.</p>
+        <h4>시작하는 흐름</h4>
+        <div class="acc-flow">구글 계정으로 로그인 → labs.google/flow 접속 → 새 프로젝트 만들기 → 원하는 이미지·영상 내용을 문장으로 입력 → 생성 결과 확인 후 다운로드</div>
+        <h4>기본 팁</h4>
+        <ul>
+          <li>스타일·구도·색감처럼 구체적인 표현을 넣을수록 원하는 결과에 가까워집니다.</li>
+          <li>한 번에 여러 버전이 나오니, 마음에 드는 걸 골라 다운로드하면 됩니다.</li>
+        </ul>
+      </div>
+    </details>
+
+    <div class="steplist" style="margin-top:10px">
+      <div class="step">
         <div class="txt"><strong>수노(Suno) AI 로그인</strong>
           <span>AI 음악 생성 실습에 사용합니다.</span></div>
         <a class="go" href="https://suno.com/create" target="_blank" rel="noopener">로그인 열기 ↗</a>
       </div>
+    </div>
+    <details class="acc">
+      <summary>수노 (Suno) <span class="acc-desc">— 문장만 입력하면 노래를 만들어주는 AI</span></summary>
+      <div class="acc-body">
+        <h4>언제 쓰면 좋을까요?</h4>
+        <p>가사와 스타일만 정해주면 실제 노래(보컬+반주)를 완성해줍니다. 강의 오프닝 음악, 홍보 영상 배경음악, 나만의 로고송 만들기 등에 활용합니다.</p>
+        <h4>시작하는 흐름</h4>
+        <div class="acc-flow">구글 계정 또는 이메일로 로그인 → 새 곡 만들기 → 원하는 분위기·가사를 텍스트로 입력 → 생성된 곡 중 마음에 드는 버전 선택 → 다운로드</div>
+        <h4>기본 팁</h4>
+        <ul>
+          <li>장르, 분위기, 보컬 톤(예: "잔잔한 어쿠스틱", "신나는 팝")을 구체적으로 적을수록 원하는 결과에 가까워집니다.</li>
+          <li>한 번에 2가지 버전이 생성되니, 둘 다 들어보고 고르면 됩니다.</li>
+        </ul>
+      </div>
+    </details>
+
+    <div class="steplist" style="margin-top:10px">
       <div class="step">
         <div class="txt"><strong>일레븐랩스(ElevenLabs) 로그인</strong>
           <span>AI 음성 생성 실습에 사용합니다.</span></div>
         <a class="go" href="https://elevenlabs.io/" target="_blank" rel="noopener">로그인 열기 ↗</a>
       </div>
     </div>
+    <details class="acc">
+      <summary>일레븐랩스 (ElevenLabs) <span class="acc-desc">— 자연스러운 AI 음성을 만들어주는 도구</span></summary>
+      <div class="acc-body">
+        <h4>언제 쓰면 좋을까요?</h4>
+        <p>글로 쓴 대본을 사람 목소리처럼 자연스러운 음성으로 변환합니다. 영상 나레이션, 오디오 콘텐츠, 다국어 더빙 등에 활용합니다.</p>
+        <h4>시작하는 흐름</h4>
+        <div class="acc-flow">구글 계정 또는 이메일로 로그인 → Text to Speech 메뉴 선택 → 대본 텍스트 입력 → 원하는 목소리(보이스) 선택 → 생성 후 오디오 다운로드</div>
+        <h4>기본 팁</h4>
+        <ul>
+          <li>기본 제공되는 목소리 중에서 톤(차분한/발랄한 등)을 미리 들어보고 고르면 원하는 느낌을 빨리 찾을 수 있습니다.</li>
+          <li>무료 이용량에 한도가 있으니, 강의 실습 전에 미리 한 번 테스트해보는 걸 추천합니다.</li>
+        </ul>
+      </div>
+    </details>
   </div>
 
   <!-- AI로 PPT 생성하기 추가 준비사항 -->
@@ -147,6 +280,22 @@ h1{font-size:clamp(28px,4.5vw,38px);font-weight:800;letter-spacing:-.03em}
         <a class="go" href="https://notebook.google/?hl=ko-KR" target="_blank" rel="noopener">로그인 열기 ↗</a>
       </div>
     </div>
+    <details class="acc">
+      <summary>제미나이 &amp; 구글 노트북(NotebookLM) <span class="acc-desc">— 진입장벽이 가장 낮음</span></summary>
+      <div class="acc-body">
+        <h4>언제 쓰면 좋을까요?</h4>
+        <p>이미 쓰고 있는 구글 계정으로 바로 시작할 수 있어 처음 AI를 접하는 분께 가장 편합니다. 노트북LM은 내가 올린 자료 안에서만 답을 찾아주는 게 특징입니다.</p>
+        <h4>시작하는 흐름 (제미나이)</h4>
+        <div class="acc-flow">구글 계정으로 로그인 → gemini.google.com 접속 → 질문 입력 → 답변 확인</div>
+        <h4>시작하는 흐름 (노트북LM)</h4>
+        <div class="acc-flow">구글 계정으로 로그인 → notebooklm.google.com 접속 → 소스 추가(문서·링크·유튜브 등 업로드) → 소스 기반으로 질문하기 / 오디오 요약 만들기</div>
+        <h4>기본 팁</h4>
+        <ul>
+          <li>이미 구글 계정이 있다면 별도 가입 없이 바로 쓸 수 있어 가장 부담이 적습니다.</li>
+          <li>노트북LM은 강의자료·회의록처럼 특정 자료를 정리할 때 정확도가 특히 높습니다.</li>
+        </ul>
+      </div>
+    </details>
   </div>
 
   <p class="note">계정이 없으신 항목은 강의 전 미리 가입해두시면 실습 시간을 아낄 수 있습니다.
