@@ -183,6 +183,9 @@ function renderGate(showError){
   };
   document.getElementById('pw-submit').onclick = submit;
   input.addEventListener('keydown', e => { if (e.key === 'Enter') submit(); });
+  input.addEventListener('input', () => {
+    if (input.value.length === PASSWORD.length) submit();
+  });
   input.focus();
 }
 
