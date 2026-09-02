@@ -18,7 +18,9 @@
   var CONNECT_DIST = 4.0;
   var GOLD = 0xc9a24b;
   var CREAM = 0xf5f1e8;
-  var DRIFT_SPEED = 0.0035;
+  var DRIFT_SPEED = 0.0135;
+  var REPEL_RADIUS = 3.0;
+  var REPEL_STRENGTH = 1.7;
 
   var canvas = document.createElement('canvas');
   canvas.id = 'neural-bg-canvas';
@@ -79,10 +81,10 @@
   pointsGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
   var pointsMaterial = new THREE.PointsMaterial({
     color: GOLD,
-    size: 0.16,
+    size: 0.24,
     sizeAttenuation: true,
     transparent: true,
-    opacity: 0.22,
+    opacity: 0.48,
     depthWrite: false
   });
   var points = new THREE.Points(pointsGeometry, pointsMaterial);
@@ -96,35 +98,55 @@
   var lineMaterial = new THREE.LineBasicMaterial({
     color: CREAM,
     transparent: true,
-    opacity: 0.16,
+    opacity: 0.4,
     depthWrite: false
   });
   var lines = new THREE.LineSegments(lineGeometry, lineMaterial);
   group.add(lines);
 
+  var renderX = new Float32Array(NODE_COUNT);
+  var renderY = new Float32Array(NODE_COUNT);
+  var mouseWorldX = 9999;
+  var mouseWorldY = 9999;
+
   function updateGeometry() {
     var posAttr = pointsGeometry.attributes.position.array;
+
+    // 렌더 위치 = 실제 드리프트 위치 + 마우스 근접 시의 일시적 반발 오프셋
+    for (var i = 0; i < NODE_COUNT; i++) {
+      var n = nodes[i];
+      var rx = n.x;
+      var ry = n.y;
+      var dxm = n.x - mouseWorldX;
+      var dym = n.y - mouseWorldY;
+      var distm = Math.sqrt(dxm * dxm + dym * dym);
+      if (distm < REPEL_RADIUS && distm > 0.0001) {
+        var push = ((REPEL_RADIUS - distm) / REPEL_RADIUS) * REPEL_STRENGTH;
+        rx += (dxm / distm) * push;
+        ry += (dym / distm) * push;
+      }
+      renderX[i] = rx;
+      renderY[i] = ry;
+      posAttr[i * 3] = rx;
+      posAttr[i * 3 + 1] = ry;
+      posAttr[i * 3 + 2] = n.z;
+    }
+
     var lineIndex = 0;
     for (var a = 0; a < NODE_COUNT; a++) {
-      var na = nodes[a];
-      posAttr[a * 3] = na.x;
-      posAttr[a * 3 + 1] = na.y;
-      posAttr[a * 3 + 2] = na.z;
-
       for (var b = a + 1; b < NODE_COUNT; b++) {
-        var nb = nodes[b];
-        var dx = na.x - nb.x;
-        var dy = na.y - nb.y;
-        var dz = na.z - nb.z;
+        var dx = renderX[a] - renderX[b];
+        var dy = renderY[a] - renderY[b];
+        var dz = nodes[a].z - nodes[b].z;
         var dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
         if (dist < CONNECT_DIST) {
           var o = lineIndex * 6;
-          linePositions[o] = na.x;
-          linePositions[o + 1] = na.y;
-          linePositions[o + 2] = na.z;
-          linePositions[o + 3] = nb.x;
-          linePositions[o + 4] = nb.y;
-          linePositions[o + 5] = nb.z;
+          linePositions[o] = renderX[a];
+          linePositions[o + 1] = renderY[a];
+          linePositions[o + 2] = nodes[a].z;
+          linePositions[o + 3] = renderX[b];
+          linePositions[o + 4] = renderY[b];
+          linePositions[o + 5] = nodes[b].z;
           lineIndex++;
         }
       }
@@ -155,6 +177,19 @@
     function (e) {
       mouseX = (e.clientX / window.innerWidth) * 2 - 1;
       mouseY = (e.clientY / window.innerHeight) * 2 - 1;
+      // 화면 NDC를 노드가 사는 월드 영역 크기로 근사 변환 (반발 효과용)
+      mouseWorldX = mouseX * bounds.x;
+      mouseWorldY = -mouseY * bounds.y;
+    },
+    { passive: true }
+  );
+  document.addEventListener(
+    'mouseout',
+    function (e) {
+      if (!e.relatedTarget) {
+        mouseWorldX = 9999;
+        mouseWorldY = 9999;
+      }
     },
     { passive: true }
   );
@@ -174,8 +209,8 @@
     stepNodes();
     updateGeometry();
 
-    targetRotY = mouseX * 0.08;
-    targetRotX = mouseY * 0.05;
+    targetRotY = mouseX * 0.04;
+    targetRotX = mouseY * 0.025;
     group.rotation.y += (targetRotY - group.rotation.y) * 0.02;
     group.rotation.x += (-targetRotX - group.rotation.x) * 0.02;
 
