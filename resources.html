@@ -222,5 +222,7 @@ fetch(DATA_URL + '?t=' + Date.now())
   .then(d => { POSTS = Array.isArray(d) ? d : []; chips(); render(); })
   .catch(()=>{ POSTS=[]; chips(); render(); });
 </script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.149.0/build/three.min.js" defer></script>
+<script src="js/neural-bg.js" defer></script>
 </body>
 </html>
