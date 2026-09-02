@@ -72,13 +72,11 @@ h1{font-size:clamp(28px,4.5vw,38px);font-weight:800;letter-spacing:-.03em}
   font-weight:700;display:flex;align-items:center;gap:8px}
 .acc summary::-webkit-details-marker{display:none}
 .acc summary::after{content:'+';font-size:16px;font-weight:400;
-  color:var(--muted);flex:none}
+  color:var(--muted);flex:none;order:-2}
 .acc[open] summary::after{content:'–'}
 .acc summary .acc-desc{font-weight:400;color:var(--muted);font-size:12px}
-.acc summary .acc-label{margin-left:auto;font-weight:400;color:var(--muted);
-  font-size:12px;flex:none;white-space:nowrap}
 .acc summary .acc-badge{flex:none;background:var(--ink);color:#fff;font-size:10.5px;
-  font-weight:600;padding:3px 10px;border-radius:999px;white-space:nowrap}
+  font-weight:600;padding:3px 10px;border-radius:999px;white-space:nowrap;order:-1}
 .acc-body{padding:0 18px 16px;font-size:13px;color:var(--ink);line-height:1.7}
 .acc-body h4{font-size:12px;font-weight:700;color:var(--accent);margin:14px 0 4px}
 .acc-body h4:first-child{margin-top:0}
@@ -134,7 +132,7 @@ h1{font-size:clamp(28px,4.5vw,38px);font-weight:800;letter-spacing:-.03em}
         </div>
       </div>
       <details class="acc">
-        <summary>클로드 (Claude) <span class="acc-desc">— 문서 작업과 긴 글에 강함</span><span class="acc-label">클로드는?</span><span class="acc-badge">설명 보기</span></summary>
+        <summary>클로드 (Claude) <span class="acc-desc">— 문서 작업과 긴 글에 강함</span><span class="acc-badge">설명 보기</span></summary>
         <div class="acc-body">
           <h4>언제 쓰면 좋을까요?</h4>
           <p>긴 문서 요약·정리, 꼼꼼한 글쓰기, 파일을 올려서 분석을 맡길 때 특히 유용합니다.</p>
@@ -158,7 +156,7 @@ h1{font-size:clamp(28px,4.5vw,38px);font-weight:800;letter-spacing:-.03em}
         </div>
       </div>
       <details class="acc">
-        <summary>제미나이는? <span class="acc-desc" style="margin-left:auto">— 진입장벽이 가장 낮음</span><span class="acc-badge">설명 보기</span></summary>
+        <summary>제미나이는? <span class="acc-desc">— 진입장벽이 가장 낮음</span><span class="acc-badge">설명 보기</span></summary>
         <div class="acc-body">
           <h4>언제 쓰면 좋을까요?</h4>
           <p>이미 쓰고 있는 구글 계정으로 바로 시작할 수 있어 처음 AI를 접하는 분께 가장 편합니다.</p>
@@ -181,7 +179,7 @@ h1{font-size:clamp(28px,4.5vw,38px);font-weight:800;letter-spacing:-.03em}
         </div>
       </div>
       <details class="acc">
-        <summary>챗GPT (ChatGPT) <span class="acc-desc">— 가장 범용적인 대화형 AI</span><span class="acc-label">챗GPT는?</span><span class="acc-badge">설명 보기</span></summary>
+        <summary>챗GPT (ChatGPT) <span class="acc-desc">— 가장 범용적인 대화형 AI</span><span class="acc-badge">설명 보기</span></summary>
         <div class="acc-body">
           <h4>언제 쓰면 좋을까요?</h4>
           <p>질문에 대한 답, 아이디어 브레인스토밍, 글 초안 작성처럼 폭넓은 용도에 두루 씁니다.</p>
@@ -206,7 +204,7 @@ h1{font-size:clamp(28px,4.5vw,38px);font-weight:800;letter-spacing:-.03em}
         </div>
       </div>
       <details class="acc">
-        <summary>퍼플렉시티 (Perplexity) <span class="acc-desc">— 출처가 함께 나오는 검색형 AI</span><span class="acc-label">퍼플렉시티는?</span><span class="acc-badge">설명 보기</span></summary>
+        <summary>퍼플렉시티 (Perplexity) <span class="acc-desc">— 출처가 함께 나오는 검색형 AI</span><span class="acc-badge">설명 보기</span></summary>
         <div class="acc-body">
           <h4>언제 쓰면 좋을까요?</h4>
           <p>최신 정보를 찾거나, 답변의 출처를 확인해야 하는 리서치에 적합합니다.</p>
@@ -230,7 +228,7 @@ h1{font-size:clamp(28px,4.5vw,38px);font-weight:800;letter-spacing:-.03em}
         </div>
       </div>
       <details class="acc">
-        <summary>그록 (Grok) <span class="acc-desc">— 실시간 트렌드에 강함</span><span class="acc-label">그록은?</span><span class="acc-badge">설명 보기</span></summary>
+        <summary>그록 (Grok) <span class="acc-desc">— 실시간 트렌드에 강함</span><span class="acc-badge">설명 보기</span></summary>
         <div class="acc-body">
           <h4>언제 쓰면 좋을까요?</h4>
           <p>X(트위터)의 실시간 반응이나 트렌드를 살펴볼 때 유용합니다.</p>
@@ -254,7 +252,7 @@ h1{font-size:clamp(28px,4.5vw,38px);font-weight:800;letter-spacing:-.03em}
         </div>
       </div>
       <details class="acc">
-        <summary>노트북LM은? <span class="acc-desc" style="margin-left:auto">— 내가 올린 자료 안에서만 답을 찾아줌</span><span class="acc-badge">설명 보기</span></summary>
+        <summary>노트북LM은? <span class="acc-desc">— 내가 올린 자료 안에서만 답을 찾아줌</span><span class="acc-badge">설명 보기</span></summary>
         <div class="acc-body">
           <h4>언제 쓰면 좋을까요?</h4>
           <p>강의 자료·회의록처럼 내가 올린 자료 안에서만 정확하게 답을 찾아주는 AI입니다. 자료 요약·정리에 특화되어 있습니다.</p>
@@ -283,7 +281,7 @@ h1{font-size:clamp(28px,4.5vw,38px);font-weight:800;letter-spacing:-.03em}
         </div>
       </div>
       <details class="acc">
-        <summary>구글 플로우 (Google Flow) <span class="acc-desc">— 이미지·영상을 만들어주는 구글의 생성 도구</span><span class="acc-label">구글 플로우는?</span><span class="acc-badge">설명 보기</span></summary>
+        <summary>구글 플로우 (Google Flow) <span class="acc-desc">— 이미지·영상을 만들어주는 구글의 생성 도구</span><span class="acc-badge">설명 보기</span></summary>
         <div class="acc-body">
           <h4>언제 쓰면 좋을까요?</h4>
           <p>문장으로 설명만 하면 이미지나 짧은 영상을 만들어줍니다. 카드뉴스용 이미지, 영상 소재 제작 실습에 사용합니다.</p>
@@ -307,7 +305,7 @@ h1{font-size:clamp(28px,4.5vw,38px);font-weight:800;letter-spacing:-.03em}
         </div>
       </div>
       <details class="acc">
-        <summary>수노 (Suno) <span class="acc-desc">— 문장만 입력하면 노래를 만들어주는 AI</span><span class="acc-label">수노는?</span><span class="acc-badge">설명 보기</span></summary>
+        <summary>수노 (Suno) <span class="acc-desc">— 문장만 입력하면 노래를 만들어주는 AI</span><span class="acc-badge">설명 보기</span></summary>
         <div class="acc-body">
           <h4>언제 쓰면 좋을까요?</h4>
           <p>가사와 스타일만 정해주면 실제 노래(보컬+반주)를 완성해줍니다. 강의 오프닝 음악, 홍보 영상 배경음악, 나만의 로고송 만들기 등에 활용합니다.</p>
@@ -331,7 +329,7 @@ h1{font-size:clamp(28px,4.5vw,38px);font-weight:800;letter-spacing:-.03em}
         </div>
       </div>
       <details class="acc">
-        <summary>일레븐랩스 (ElevenLabs) <span class="acc-desc">— 자연스러운 AI 음성을 만들어주는 도구</span><span class="acc-label">일레븐랩스는?</span><span class="acc-badge">설명 보기</span></summary>
+        <summary>일레븐랩스 (ElevenLabs) <span class="acc-desc">— 자연스러운 AI 음성을 만들어주는 도구</span><span class="acc-badge">설명 보기</span></summary>
         <div class="acc-body">
           <h4>언제 쓰면 좋을까요?</h4>
           <p>글로 쓴 대본을 사람 목소리처럼 자연스러운 음성으로 변환합니다. 영상 나레이션, 오디오 콘텐츠, 다국어 더빙 등에 활용합니다.</p>
@@ -356,7 +354,7 @@ h1{font-size:clamp(28px,4.5vw,38px);font-weight:800;letter-spacing:-.03em}
         </div>
       </div>
       <details class="acc">
-        <summary>캡컷 (CapCut) <span class="acc-desc">— 쉽고 강력한 영상 편집 도구</span><span class="acc-label">캡컷은?</span><span class="acc-badge">설명 보기</span></summary>
+        <summary>캡컷 (CapCut) <span class="acc-desc">— 쉽고 강력한 영상 편집 도구</span><span class="acc-badge">설명 보기</span></summary>
         <div class="acc-body">
           <h4>언제 쓰면 좋을까요?</h4>
           <p>촬영하거나 AI로 만든 영상 소스를 잘라 붙이고, 자막·음악·효과를 넣어 완성된 영상으로 만들 때 사용합니다. 초보자도 쉽게 배울 수 있는 인터페이스가 특징입니다.</p>
@@ -386,7 +384,7 @@ h1{font-size:clamp(28px,4.5vw,38px);font-weight:800;letter-spacing:-.03em}
         </div>
       </div>
       <details class="acc">
-        <summary>핀터레스트 (Pinterest) <span class="acc-desc">— 이미지와 무드보드로 디자인 영감을 모으는 사이트</span><span class="acc-label">핀터레스트는?</span><span class="acc-badge">설명 보기</span></summary>
+        <summary>핀터레스트 (Pinterest) <span class="acc-desc">— 이미지와 무드보드로 디자인 영감을 모으는 사이트</span><span class="acc-badge">설명 보기</span></summary>
         <div class="acc-body">
           <h4>언제 쓰면 좋을까요?</h4>
           <p>카드뉴스·포스터·슬라이드를 만들기 전, 참고할 만한 이미지나 배치 아이디어를 모을 때 사용합니다.</p>
@@ -410,7 +408,7 @@ h1{font-size:clamp(28px,4.5vw,38px);font-weight:800;letter-spacing:-.03em}
         </div>
       </div>
       <details class="acc">
-        <summary>언스플래시 (Unsplash) <span class="acc-desc">— 저작권 걱정 없는 무료 고화질 사진</span><span class="acc-label">언스플래시는?</span><span class="acc-badge">설명 보기</span></summary>
+        <summary>언스플래시 (Unsplash) <span class="acc-desc">— 저작권 걱정 없는 무료 고화질 사진</span><span class="acc-badge">설명 보기</span></summary>
         <div class="acc-body">
           <h4>언제 쓰면 좋을까요?</h4>
           <p>카드뉴스, 블로그, PPT 배경 이미지가 필요할 때 저작권 걱정 없이 바로 다운로드해 쓸 수 있습니다.</p>
@@ -434,7 +432,7 @@ h1{font-size:clamp(28px,4.5vw,38px);font-weight:800;letter-spacing:-.03em}
         </div>
       </div>
       <details class="acc">
-        <summary>Refero Styles <span class="acc-desc">— 실제 서비스의 디자인 시스템 레퍼런스</span><span class="acc-label">Refero Styles는?</span><span class="acc-badge">설명 보기</span></summary>
+        <summary>Refero Styles <span class="acc-desc">— 실제 서비스의 디자인 시스템 레퍼런스</span><span class="acc-badge">설명 보기</span></summary>
         <div class="acc-body">
           <h4>언제 쓰면 좋을까요?</h4>
           <p>실제 서비스들이 어떤 색상·폰트·여백·버튼 스타일을 쓰는지 참고해 디자인 톤을 정할 때 유용합니다.</p>
