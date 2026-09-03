@@ -15,10 +15,13 @@
     window.matchMedia('(max-width: 768px)').matches;
 
   var NODE_COUNT = isMobile ? 20 : 40;
-  var CONNECT_DIST = 4.0;
+  var CONNECT_DIST = 6.5;
   var GOLD = 0xc9a24b;
   var CREAM = 0xf5f1e8;
-  var DRIFT_SPEED = 0.0135;
+  var WOBBLE_AMP_MIN = 0.22;
+  var WOBBLE_AMP_MAX = 0.4;
+  var WOBBLE_FREQ_MIN = 0.12;
+  var WOBBLE_FREQ_MAX = 0.3;
   var REPEL_RADIUS = 3.0;
   var REPEL_STRENGTH = 1.7;
 
@@ -56,20 +59,45 @@
     var vFov = (camera.fov * Math.PI) / 180;
     var height = 2 * Math.tan(vFov / 2) * camera.position.z;
     var width = height * camera.aspect;
-    bounds = { x: (width / 2) * 0.9, y: (height / 2) * 0.9, z: 4 };
+    var nx = (width / 2) * 0.9;
+    var ny = (height / 2) * 0.9;
+    // 뷰포트 크기를 아직 알 수 없는 시점(초기 레이아웃 이전 등)에는 aspect가
+    // NaN/0이 될 수 있어, 그런 경우 직전 값을 유지하고 다음 resize에서 다시 계산함
+    bounds = {
+      x: isFinite(nx) && nx > 0 ? nx : bounds.x,
+      y: isFinite(ny) && ny > 0 ? ny : bounds.y,
+      z: 4
+    };
   }
   computeBounds();
+
+  function randRange(min, max) {
+    return min + Math.random() * (max - min);
+  }
 
   var nodes = [];
   var positions = new Float32Array(NODE_COUNT * 3);
   for (var i = 0; i < NODE_COUNT; i++) {
+    var baseX = (Math.random() * 2 - 1) * bounds.x;
+    var baseY = (Math.random() * 2 - 1) * bounds.y;
+    var baseZ = (Math.random() * 2 - 1) * bounds.z;
     var p = {
-      x: (Math.random() * 2 - 1) * bounds.x,
-      y: (Math.random() * 2 - 1) * bounds.y,
-      z: (Math.random() * 2 - 1) * bounds.z,
-      vx: (Math.random() * 2 - 1) * DRIFT_SPEED,
-      vy: (Math.random() * 2 - 1) * DRIFT_SPEED,
-      vz: (Math.random() * 2 - 1) * DRIFT_SPEED
+      // 노드는 고정된 홈 위치(base) 주변에서만 아주 미세하게 흔들림 — 넓게 떠다니지 않음
+      baseX: baseX,
+      baseY: baseY,
+      baseZ: baseZ,
+      x: baseX,
+      y: baseY,
+      z: baseZ,
+      ampX: randRange(WOBBLE_AMP_MIN, WOBBLE_AMP_MAX),
+      ampY: randRange(WOBBLE_AMP_MIN, WOBBLE_AMP_MAX),
+      ampZ: randRange(WOBBLE_AMP_MIN, WOBBLE_AMP_MAX) * 0.6,
+      freqX: randRange(WOBBLE_FREQ_MIN, WOBBLE_FREQ_MAX),
+      freqY: randRange(WOBBLE_FREQ_MIN, WOBBLE_FREQ_MAX),
+      freqZ: randRange(WOBBLE_FREQ_MIN, WOBBLE_FREQ_MAX),
+      phaseX: Math.random() * Math.PI * 2,
+      phaseY: Math.random() * Math.PI * 2,
+      phaseZ: Math.random() * Math.PI * 2
     };
     nodes.push(p);
     positions[i * 3] = p.x;
@@ -112,7 +140,7 @@
   function updateGeometry() {
     var posAttr = pointsGeometry.attributes.position.array;
 
-    // 렌더 위치 = 실제 드리프트 위치 + 마우스 근접 시의 일시적 반발 오프셋
+    // 렌더 위치 = 노드의 흔들림 위치 + 마우스 근접 시의 일시적 반발 오프셋
     for (var i = 0; i < NODE_COUNT; i++) {
       var n = nodes[i];
       var rx = n.x;
@@ -157,14 +185,15 @@
   }
 
   function stepNodes() {
+    // 고정된 홈 위치를 중심으로 각 노드마다 다른 주기·위상으로 아주 작게 흔들림.
+    // 이 미세한 흔들림만으로도 노드 간 거리가 CONNECT_DIST 경계를 오가며
+    // 연결선이 서서히 생겼다 사라지는 효과가 자연스럽게 만들어짐.
+    var t = performance.now() / 1000;
     for (var i = 0; i < NODE_COUNT; i++) {
       var n = nodes[i];
-      n.x += n.vx;
-      n.y += n.vy;
-      n.z += n.vz;
-      if (n.x > bounds.x || n.x < -bounds.x) n.vx *= -1;
-      if (n.y > bounds.y || n.y < -bounds.y) n.vy *= -1;
-      if (n.z > bounds.z || n.z < -bounds.z) n.vz *= -1;
+      n.x = n.baseX + Math.sin(t * n.freqX + n.phaseX) * n.ampX;
+      n.y = n.baseY + Math.sin(t * n.freqY + n.phaseY) * n.ampY;
+      n.z = n.baseZ + Math.sin(t * n.freqZ + n.phaseZ) * n.ampZ;
     }
   }
 
@@ -195,6 +224,7 @@
   );
 
   function onResize() {
+    if (window.innerWidth <= 0 || window.innerHeight <= 0) return; // 아직 레이아웃 전이면 건너뜀
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -202,6 +232,9 @@
   }
   window.addEventListener('resize', onResize);
   onResize();
+  // 스크립트 실행 시점에 아직 뷰포트 크기를 알 수 없었던 경우(레이아웃 이전 등)를 대비해
+  // 다음 틱에 한 번 더 재확인 — 정상 상황에서는 같은 값이라 아무 변화도 없음
+  setTimeout(onResize, 0);
 
   // 패럴랙스: 배경(신경망)이 전경 콘텐츠보다 살짝 느리게(스크롤 속도의 75%) 따라오도록
   var PARALLAX_SPEED = 0.75;
@@ -226,12 +259,15 @@
     group.rotation.x += (-targetRotX - group.rotation.x) * 0.02;
 
     // 화면 스크롤량(px)을 "카메라 한 화면 높이 = bounds.y" 기준의 월드 단위로 환산 후,
-    // 배경이 앞쪽 콘텐츠(1x)보다 느리게 따라오도록 상한을 둬 부드럽게 이동시킴
-    var worldPerPixel = bounds.y / window.innerHeight;
-    var rawOffset = scrollY * PARALLAX_SPEED * worldPerPixel;
-    var maxOffset = bounds.y * 1.5;
-    var targetGroupY = Math.min(rawOffset, maxOffset);
-    group.position.y += (targetGroupY - group.position.y) * 0.04;
+    // 배경이 앞쪽 콘텐츠(1x)보다 느리게 따라오도록 상한을 둬 부드럽게 이동시킴.
+    // innerHeight가 아직 0인 시점(레이아웃 이전 등)에는 계산을 건너뛰어 NaN 전파를 막음
+    if (window.innerHeight > 0) {
+      var worldPerPixel = bounds.y / window.innerHeight;
+      var rawOffset = scrollY * PARALLAX_SPEED * worldPerPixel;
+      var maxOffset = bounds.y * 1.5;
+      var targetGroupY = Math.min(rawOffset, maxOffset);
+      group.position.y += (targetGroupY - group.position.y) * 0.04;
+    }
 
     renderer.render(scene, camera);
   }
