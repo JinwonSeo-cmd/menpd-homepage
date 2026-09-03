@@ -288,7 +288,7 @@ section:not(.book-section) .section-title-row .section-sub {
   font-family: 'Nanum Brush Script', var(--font-display);
   font-size: 22px;
   font-weight: 400;
-  color: #8A6D2F;
+  color: #ffffff;
   letter-spacing: 0;
   display: flex;
   align-items: baseline;
