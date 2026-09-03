@@ -1307,6 +1307,10 @@ section:not(.book-section) .section-title-row .section-sub {
   justify-content: center;
 }
 
+.review-cta .btn {
+  width: 100%;
+}
+
 .portfolio-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
