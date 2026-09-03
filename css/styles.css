@@ -1084,7 +1084,7 @@ section:not(.book-section) .section-title-row .section-sub {
 .course-preview img {
   display: block;
   width: 100%;
-  aspect-ratio: 1904 / 745;
+  aspect-ratio: 1889 / 720;
   object-fit: cover;
 }
 
