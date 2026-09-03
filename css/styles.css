@@ -1072,6 +1072,71 @@ section:not(.book-section) .section-title-row .section-sub {
   gap: var(--spacing-16);
 }
 
+/* ---------- Course section (사다리스쿨) ---------- */
+
+.course-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-40);
+  background: #ffffff;
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-cards);
+  padding: var(--spacing-40);
+}
+
+.course-card-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.course-desc {
+  font-size: 17px;
+  color: var(--color-smoke);
+  margin: 0 0 var(--spacing-16);
+  max-width: 640px;
+}
+
+.course-desc strong {
+  color: var(--color-carbon);
+}
+
+.course-stats {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-12);
+}
+
+.course-stat-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: -0.224px;
+  color: #ffffff;
+  background: var(--color-apple-blue);
+  text-transform: uppercase;
+  padding: 4px 14px;
+  border-radius: var(--radius-buttons);
+}
+
+.course-stat-number {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-carbon);
+}
+
+.course-stat-number span {
+  font-weight: 400;
+  color: var(--color-ash);
+  margin-left: 2px;
+}
+
+.course-card-actions {
+  flex: none;
+}
+
 /* ---------- Dynamic book section ---------- */
 
 .dynamic-book-grid {
@@ -1372,6 +1437,19 @@ section:not(.book-section) .section-title-row .section-sub {
 
   .book-layout {
     grid-template-columns: 1fr;
+  }
+
+  .course-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .course-card-actions {
+    width: 100%;
+  }
+
+  .course-card-actions .btn {
+    width: 100%;
   }
 
   .contact-grid {
