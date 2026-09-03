@@ -1115,7 +1115,7 @@ section:not(.book-section) .section-title-row .section-sub {
   font-weight: 600;
   letter-spacing: -0.224px;
   color: #ffffff;
-  background: var(--color-apple-blue);
+  background: var(--color-carbon);
   text-transform: uppercase;
   padding: 4px 14px;
   border-radius: var(--radius-buttons);
