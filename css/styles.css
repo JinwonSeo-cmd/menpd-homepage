@@ -1074,6 +1074,20 @@ section:not(.book-section) .section-title-row .section-sub {
 
 /* ---------- Course section (사다리스쿨) ---------- */
 
+.course-preview {
+  display: block;
+  margin: 0 0 var(--spacing-16);
+  border-radius: var(--radius-cards);
+  overflow: hidden;
+}
+
+.course-preview img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1904 / 745;
+  object-fit: cover;
+}
+
 .course-card {
   display: flex;
   align-items: center;
