@@ -1,5 +1,28 @@
 [
   {
+    "id": "p1788614901284",
+    "title": "AI 활용 리서치 관련",
+    "date": "2026-09-05",
+    "category": "",
+    "summary": "",
+    "body": "딥 리서치를 실행하는 스킬",
+    "links": [
+      {
+        "label": "AI 활용 리서치 스킬 등",
+        "url": "https://drive.google.com/drive/folders/1JZUWfsJnR6iH4AK3HH6KUGh2VFdJdq0E?usp=drive_link"
+      }
+    ],
+    "hidden": false,
+    "files": [
+      {
+        "name": "research.skill",
+        "path": "data/files/1788614899870-4pi7z.skill",
+        "size": 12483
+      }
+    ],
+    "lock": ""
+  },
+  {
     "id": "p1788023411208",
     "title": "카드뉴스(클로드+구글 플로우) 스킬",
     "date": "2026-08-29",
