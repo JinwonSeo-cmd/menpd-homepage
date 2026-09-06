@@ -34,6 +34,19 @@
     border:1.5px solid var(--accent);background:transparent;color:var(--accent-dark);
     font-weight:600;font-size:14px;cursor:pointer;
   }
+  .link-btn-row{display:flex;gap:8px;margin-top:10px;}
+  .link-btn{
+    flex:1;display:flex;align-items:center;justify-content:center;gap:6px;
+    padding:10px;border-radius:10px;border:1px solid var(--line);
+    background:var(--card);color:var(--muted);
+    font-weight:600;font-size:13px;text-decoration:none;
+    line-height:1.2;
+  }
+  .link-btn:hover{border-color:var(--accent);color:var(--accent-dark);}
+  .link-btn svg{flex-shrink:0;}
+  @media (max-width:480px){
+    .link-btn-row{flex-direction:column;}
+  }
   .updated-note{text-align:center;font-size:12px;color:var(--muted);margin-top:8px;}
 
   .filter-row{
@@ -349,6 +362,16 @@ function renderDashboard(){
       <div class="stat-pill"><div class="stat-num">${data.length}</div><div class="stat-lbl">참여 인원</div></div>
     </div>
     <button class="refresh-btn" id="refresh-btn">새로고침</button>
+    <div class="link-btn-row">
+      <a class="link-btn" href="https://docs.google.com/forms/d/1XGkc71TCceSfTYlyqx3F_4Oz0skt_3eAOuWYcSqpI4Y/edit#responses" target="_blank" rel="noopener noreferrer">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6"/><path d="M9 17h6"/><path d="M9 9h1"/></svg>
+        구글 폼 응답 보기
+      </a>
+      <a class="link-btn" href="https://docs.google.com/spreadsheets/d/1rU5W2rH7Cw1Qk9z7hLSdhmANXUSOjM47CZ1qlOUUttg/edit?resourcekey=&gid=1837557039#gid=1837557039" target="_blank" rel="noopener noreferrer">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M3 15h18"/><path d="M9 9v12"/><path d="M15 9v12"/></svg>
+        구글 시트로 보기
+      </a>
+    </div>
     <div class="updated-note">마지막 업데이트: ${lastUpdated ? lastUpdated.toLocaleString('ko-KR') : ''}</div>
     ${warnHtml}
     ${data.length === 0 ? '<div class="empty-note">아직 제출된 응답이 없어요.</div>' : sectionsHtml}
