@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>캐릭터 시트 & 레퍼런스 시트 제작 가이드</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@500;700;900&family=Noto+Serif+KR:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#101B30;
+    --navy-deep:#0B1424;
+    --paper:#EFEAE0;
+    --paper-dim:#E3DCCB;
+    --ink:#2A271F;
+    --orange:#E4602E;
+    --teal:#4FC3B0;
+    --line:rgba(79,195,176,0.18);
+    --font-head:'Gothic A1', sans-serif;
+    --font-body:'Noto Serif KR', serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--navy);
+    background-image:
+      repeating-linear-gradient(0deg, var(--line) 0px, var(--line) 1px, transparent 1px, transparent 48px),
+      repeating-linear-gradient(90deg, var(--line) 0px, var(--line) 1px, transparent 1px, transparent 48px);
+    color:var(--paper);
+    font-family:var(--font-body);
+    line-height:1.7;
+  }
+  a{color:inherit;}
+  .wrap{max-width:980px;margin:0 auto;padding:0 24px;}
+
+  /* HERO */
+  .hero{padding:90px 0 70px;position:relative;}
+  .hero-tag{font-family:var(--font-head);font-weight:700;font-size:14px;color:var(--teal);letter-spacing:0.02em;margin-bottom:18px;}
+  .hero h1{
+    font-family:var(--font-head);font-weight:900;
+    font-size:clamp(34px,5.5vw,58px);
+    line-height:1.15;margin:0 0 22px;color:var(--paper);
+    max-width:14ch;
+  }
+  .hero h1 span{color:var(--orange);}
+  .hero p{font-size:17px;max-width:56ch;color:#C9C2B0;margin:0 0 36px;}
+  .hero-figure{display:flex;gap:14px;align-items:flex-end;}
+  .hero-figure svg{display:block;}
+  .hero-cap{font-family:var(--font-head);font-size:12px;color:#8892A6;margin-top:10px;}
+
+  section{padding:64px 0;border-top:1px solid rgba(239,234,224,0.09);}
+  .section-head{margin-bottom:38px;}
+  .section-head .kicker{font-family:var(--font-head);font-weight:700;color:var(--teal);font-size:13px;margin-bottom:10px;}
+  .section-head h2{font-family:var(--font-head);font-weight:900;font-size:clamp(24px,3.5vw,34px);margin:0 0 12px;color:var(--paper);}
+  .section-head p{color:#C9C2B0;max-width:60ch;margin:0;}
+
+  /* PREVIEW */
+  .preview-figure{
+    background:var(--paper);border-radius:2px;padding:20px 20px 22px;margin:0;
+  }
+  .preview-figure img{
+    display:block;width:100%;height:auto;border-radius:1px;
+  }
+  .preview-figure figcaption{
+    font-family:var(--font-body);font-size:14px;color:#4A4636;
+    margin-top:14px;text-align:center;
+  }
+
+  /* STEPPER */
+  .stepper{display:flex;flex-direction:column;gap:0;}
+  .step{display:grid;grid-template-columns:56px 1fr;gap:22px;cursor:pointer;position:relative;}
+  .step:not(:last-child)::before{
+    content:"";position:absolute;left:27px;top:56px;bottom:-4px;width:2px;
+    background:rgba(79,195,176,0.25);
+  }
+  .step-num{
+    width:56px;height:56px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--font-head);font-weight:900;font-size:20px;
+    background:var(--navy-deep);border:2px solid rgba(79,195,176,0.35);
+    color:var(--teal);z-index:1;transition:all .25s ease;
+    flex-shrink:0;
+  }
+  .step.active .step-num{background:var(--orange);border-color:var(--orange);color:var(--navy-deep);}
+  .step-body{padding-bottom:34px;}
+  .step-title{font-family:var(--font-head);font-weight:700;font-size:19px;color:var(--paper);margin:12px 0 8px;}
+  .step.active .step-title{color:var(--orange);}
+  .step-detail{
+    max-height:0;overflow:hidden;opacity:0;
+    transition:max-height .35s ease, opacity .3s ease, margin .35s ease;
+    color:#C9C2B0;font-size:15px;
+  }
+  .step.active .step-detail{max-height:280px;opacity:1;margin-bottom:6px;}
+
+  /* STYLE GALLERY */
+  .style-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:16px;}
+  .style-card{
+    background:var(--paper);color:var(--ink);
+    border-radius:2px;padding:22px 22px 20px;
+    cursor:pointer;border-left:4px solid var(--orange);
+    transition:transform .2s ease;
+  }
+  .style-card:hover{transform:translateY(-3px);}
+  .style-card h3{font-family:var(--font-head);font-weight:700;font-size:17px;margin:0 0 8px;}
+  .style-card p{font-size:14px;margin:0 0 14px;color:#4A4636;}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;max-height:0;overflow:hidden;opacity:0;transition:max-height .3s ease,opacity .25s ease;}
+  .style-card.open .chips{max-height:200px;opacity:1;margin-top:6px;}
+  .chip{
+    font-family:var(--font-head);font-size:11.5px;font-weight:700;
+    background:var(--navy-deep);color:var(--teal);
+    padding:5px 10px;border-radius:20px;
+  }
+  .style-card .toggle-label{font-family:var(--font-head);font-size:12px;font-weight:700;color:var(--orange);}
+
+  /* CHECKLIST */
+  .checklist-card{background:var(--paper);color:var(--ink);border-radius:2px;padding:32px;}
+  .progress-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;}
+  .progress-label{font-family:var(--font-head);font-weight:700;font-size:14px;}
+  .progress-track{flex:1;height:6px;background:var(--paper-dim);border-radius:6px;margin:0 16px;overflow:hidden;}
+  .progress-fill{height:100%;width:0%;background:var(--orange);transition:width .3s ease;}
+  ul.check-list{list-style:none;margin:0;padding:0;display:grid;gap:2px;}
+  .check-item{
+    display:flex;gap:14px;align-items:flex-start;padding:13px 4px;
+    border-bottom:1px solid rgba(42,39,31,0.1);cursor:pointer;
+  }
+  .check-item:last-child{border-bottom:none;}
+  .box{
+    width:20px;height:20px;flex-shrink:0;margin-top:2px;
+    border:2px solid var(--ink);border-radius:3px;position:relative;
+  }
+  .check-item.done .box{background:var(--orange);border-color:var(--orange);}
+  .check-item.done .box::after{
+    content:"";position:absolute;left:4px;top:0px;width:6px;height:11px;
+    border-right:2px solid var(--paper);border-bottom:2px solid var(--paper);
+    transform:rotate(40deg);
+  }
+  .check-text b{display:block;font-family:var(--font-head);font-size:15px;font-weight:700;}
+  .check-text span{font-size:13.5px;color:#4A4636;}
+  .check-text .ex{display:block;font-size:12.5px;color:#8B8368;font-style:italic;margin-top:3px;}
+  .check-item.done .check-text b{text-decoration:line-through;opacity:.55;}
+
+  /* TIPS */
+  .tip-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;}
+  .tip{background:var(--navy-deep);border:1px solid rgba(79,195,176,0.25);padding:22px;border-radius:2px;}
+  .tip .num{font-family:var(--font-head);color:var(--orange);font-weight:900;font-size:22px;margin-bottom:8px;display:block;}
+  .tip p{font-size:14.5px;color:#C9C2B0;margin:0;}
+
+  footer{padding:40px 0 70px;color:#7C859B;font-size:13px;}
+
+  @media (max-width:600px){
+    .hero{padding:60px 0 40px;}
+    section{padding:48px 0;}
+    .checklist-card{padding:22px;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{transition:none !important;}
+  }
+  :focus-visible{outline:2px solid var(--orange);outline-offset:2px;}
+</style>
+</head>
+<body>
+
+<div class="wrap hero">
+  <div class="hero-tag">구글 플로우 실전 워크북</div>
+  <h1>매번 다른 얼굴로 나오는 캐릭터, <span>레퍼런스 시트</span>로 고정하기</h1>
+  <p>AI 이미지·영상 생성에서 캐릭터 일관성을 지키는 5단계 프로세스와 그림체 스타일 6종, 제작 전 체크리스트를 한 장에 정리했습니다.</p>
+  <div class="hero-figure">
+    <svg width="220" height="90" viewBox="0 0 220 90" fill="none">
+      <g stroke="#4FC3B0" stroke-width="1.5" opacity="0.5">
+        <line x1="0" y1="82" x2="220" y2="82"/>
+      </g>
+      <g stroke="#E4602E" stroke-width="2.2" fill="none" stroke-linecap="round">
+        <!-- front -->
+        <circle cx="24" cy="24" r="9"/>
+        <line x1="24" y1="33" x2="24" y2="60"/>
+        <line x1="24" y1="40" x2="10" y2="55"/>
+        <line x1="24" y1="40" x2="38" y2="55"/>
+        <line x1="24" y1="60" x2="14" y2="80"/>
+        <line x1="24" y1="60" x2="34" y2="80"/>
+        <!-- side -->
+        <circle cx="94" cy="24" r="9"/>
+        <line x1="94" y1="33" x2="90" y2="60"/>
+        <line x1="90" y1="40" x2="78" y2="50"/>
+        <line x1="90" y1="60" x2="82" y2="80"/>
+        <line x1="90" y1="60" x2="98" y2="80"/>
+        <!-- back -->
+        <circle cx="164" cy="24" r="9"/>
+        <line x1="164" y1="33" x2="164" y2="60"/>
+        <line x1="164" y1="40" x2="150" y2="55"/>
+        <line x1="164" y1="40" x2="178" y2="55"/>
+        <line x1="164" y1="60" x2="154" y2="80"/>
+        <line x1="164" y1="60" x2="174" y2="80"/>
+      </g>
+    </svg>
+  </div>
+  <div class="hero-cap">FRONT — SIDE — BACK · 턴어라운드 기본 구성</div>
+</div>
+
+<section id="preview">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">FINAL RESULT</div>
+      <h2>완성 예시 미리보기</h2>
+      <p>아래처럼 원본 캐릭터 한 장을 기준으로 표정·포즈·의상·컬러 팔레트까지 확장해 하나의 시트로 완성합니다.</p>
+    </div>
+    <figure class="preview-figure">
+      <img src="images/character-sheet-example.png" alt="완성된 캐릭터 시트 예시 — 정면/측면 포즈, 표정 8종, 의상, 컬러 팔레트가 한 장에 정리된 레퍼런스 시트">
+      <figcaption>표정·포즈·의상·컬러 팔레트가 한 장에 정리된 최종 결과물입니다.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="steps">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">PROCESS</div>
+      <h2>제작 순서 5단계</h2>
+      <p>번호를 눌러 각 단계에서 무엇을 해야 하는지 확인하세요. 핵심은 1단계에서 만든 원본 이미지 한 장을 계속 기준으로 삼아 확장해나가는 것입니다.</p>
+    </div>
+    <div class="stepper" id="stepper"></div>
+  </div>
+</section>
+
+<section id="styles">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">STYLE OPTIONS</div>
+      <h2>캐릭터 그림체 스타일 6종</h2>
+      <p>카드를 누르면 구글 플로우에 바로 넣을 수 있는 프롬프트 키워드가 펼쳐집니다.</p>
+    </div>
+    <div class="style-grid" id="styleGrid"></div>
+  </div>
+</section>
+
+<section id="checklist">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">BEFORE YOU START</div>
+      <h2>제작 전 선택 체크리스트</h2>
+      <p>시트를 만들기 전에 아래 항목을 먼저 정해두면 프롬프트 작성이 훨씬 빨라집니다.</p>
+    </div>
+    <div class="checklist-card">
+      <div class="progress-row">
+        <div class="progress-label">진행 상황</div>
+        <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+        <div class="progress-label" id="progressText">0/7</div>
+      </div>
+      <ul class="check-list" id="checkList"></ul>
+    </div>
+  </div>
+</section>
+
+<section id="tips">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">REAL-WORLD TIPS</div>
+      <h2>구글 플로우 실전 팁</h2>
+    </div>
+    <div class="tip-grid">
+      <div class="tip"><span class="num">01</span><p>완성된 시트 중 가장 안정적인 한 장을 "기준 이미지"로 저장해, 이후 모든 장면 생성 시 레퍼런스 이미지로 첨부하세요. 텍스트 프롬프트 반복보다 훨씬 일관성이 좋습니다.</p></div>
+      <div class="tip"><span class="num">02</span><p>실존 브랜드 로고나 연예인 얼굴은 저작권 이슈가 있으니, 일반명사나 가상의 이름으로 대체하는 게 안전합니다.</p></div>
+      <div class="tip"><span class="num">03</span><p>한 시트에 각도가 8개 이상 들어가면 결과가 무너지기 쉽습니다. 핵심 뷰 5~7개로 압축하는 걸 추천합니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer class="wrap">캐릭터 시트 & 레퍼런스 시트 제작 가이드 · 구글 플로우 기준</footer>
+
+<script>
+const steps = [
+  {title:"원본 캐릭터 1장 만들기 (16:9)", desc:"구글 플로우에 외형(피부톤·헤어스타일·체형), 의상, 그림체를 자세히 설명하는 프롬프트를 입력해 캐릭터를 16:9 비율로 딱 1장 생성합니다. 이 이미지가 앞으로 만들 모든 이미지의 '기준 얼굴'이 됩니다. → 결과물: 원본 캐릭터 이미지 1장"},
+  {title:"표정 추가하기", desc:"1단계 이미지를 레퍼런스(참고용으로 첨부하는 원본 이미지)로 다시 첨부한 뒤, '이 캐릭터가 웃는 표정으로', '놀란 표정으로'처럼 표정만 바꾸는 프롬프트를 반복 입력합니다. 얼굴 생김새는 그대로 두고 표정만 바뀌어야 합니다. → 결과물: 표정 변화 이미지 4~8장"},
+  {title:"포즈·행동 추가하기", desc:"같은 원본 이미지를 기준으로 '걷는 자세', '손을 흔드는 동작'처럼 다이나믹 포즈(가만히 서 있는 자세가 아니라 움직임이 느껴지는 역동적인 자세)를 추가로 생성합니다. → 결과물: 포즈·행동 이미지 3~6장"},
+  {title:"배경·소품 추가하기", desc:"캐릭터가 등장할 공간(예: 사무실, 카페)이나 자주 쓰는 소품(예: 노트북, 커피컵)을 같은 톤으로 별도 생성해둡니다. 나중에 장면을 만들 때 캐릭터와 자연스럽게 합칠 수 있습니다. → 결과물: 배경·소품 이미지 2~4장"},
+  {title:"한 장으로 모아 캐릭터 시트 완성", desc:"1~4단계에서 만든 이미지 중 가장 잘 나온 것들을 골라 표정·포즈·의상·컬러 팔레트가 한눈에 보이는 한 장(레퍼런스 시트: 캐릭터 정보를 모아놓은 참고용 이미지)으로 정리합니다. 이후 모든 콘텐츠 제작에서 이 완성본을 기준 이미지로 재사용합니다. → 결과물: 완성된 캐릭터 시트 1장"}
+];
+
+const stepperEl = document.getElementById('stepper');
+steps.forEach((s,i)=>{
+  const div = document.createElement('div');
+  div.className = 'step' + (i===0?' active':'');
+  div.innerHTML = `
+    <div class="step-num">${i+1}</div>
+    <div class="step-body">
+      <div class="step-title">${s.title}</div>
+      <div class="step-detail">${s.desc}</div>
+    </div>`;
+  div.addEventListener('click', ()=>{
+    div.classList.toggle('active');
+  });
+  stepperEl.appendChild(div);
+});
+
+const styles = [
+  {name:"2D 셀셰이딩 애니메이션", desc:"일본 애니메이션 특유의 평면적 색면과 진한 윤곽선, 고채도 컬러. 액션·추격 콘텐츠에 잘 맞습니다.", chips:["2D anime style","cel-shaded","bold outlines"]},
+  {name:"3D 픽사풍", desc:"둥글둥글한 비례와 부드러운 조명, 따뜻한 색감. 브랜드 마스코트나 친근한 강의용 캐릭터에 적합합니다.", chips:["3D Pixar-style render","soft global illumination","rounded proportions"]},
+  {name:"실사풍 인물", desc:"실제 사람처럼 보이는 사실적 렌더링. 브이로그형 콘텐츠나 실사 합성에 사용합니다.", chips:["photorealistic","natural skin texture","studio lighting"]},
+  {name:"플랫 벡터 일러스트", desc:"단순한 도형과 면 위주의 평면 일러스트. 인포그래픽·카드뉴스용 캐릭터에 적합합니다.", chips:["flat vector illustration","minimal shading","clean geometric shapes"]},
+  {name:"수채화 감성 일러스트", desc:"손그림 느낌의 따뜻한 질감. 감성적인 스토리텔링 콘텐츠에 어울립니다.", chips:["watercolor illustration","soft textured strokes","hand-drawn feel"]},
+  {name:"레트로 콜라주 톤", desc:"찢어진 신문지 질감과 하프톤 도트, 종이 콜라주 배경. 소개형 숏폼에 특히 잘 맞습니다.", chips:["vintage cut-paper collage","halftone dots","torn newspaper texture"]}
+];
+
+const styleGrid = document.getElementById('styleGrid');
+styles.forEach(st=>{
+  const card = document.createElement('div');
+  card.className = 'style-card';
+  card.innerHTML = `
+    <h3>${st.name}</h3>
+    <p>${st.desc}</p>
+    <div class="chips">${st.chips.map(c=>`<span class="chip">${c}</span>`).join('')}</div>
+    <div class="toggle-label">프롬프트 키워드 보기</div>`;
+  card.addEventListener('click', ()=> card.classList.toggle('open'));
+  styleGrid.appendChild(card);
+});
+
+const items = [
+  {t:"외형", d:"피부톤, 헤어스타일/컬러, 체형, 나이대, 얼굴형", ex:"20대 후반, 갈색 단발머리, 웜톤 피부, 갸름한 얼굴형"},
+  {t:"의상", d:"스타일(캐주얼/포멀/특수복), 컬러, 포인트 아이템", ex:"캐주얼 스트리트룩, 블랙&화이트 톤에 포인트로 레드 스니커즈"},
+  {t:"표정 범위", d:"평온·기쁨·분노·놀람 등 몇 가지 감정을 담을지", ex:"평온 3장 + 기쁨 2장 + 놀람 1장 정도로 다양하게"},
+  {t:"포즈 범위", d:"정적 포즈만 vs 다이나믹 동작까지 포함할지", ex:"정적 포즈 위주 + 다이나믹 점프 동작 1~2컷 추가"},
+  {t:"캐릭터 수", d:"단독 캐릭터 vs 다수(그룹) — 다수면 그룹 실루엣 컷 추가", ex:"단독 캐릭터 1명 기준, 그룹이 필요하면 실루엣 컷 추가"},
+  {t:"배경 처리", d:"시트는 무배경(스튜디오 톤)으로 통일, 배경은 별도 에셋 시트로 분리", ex:"시트는 무배경 스튜디오 톤으로 통일, 배경은 별도 에셋 시트로 분리"},
+  {t:"용도", d:"영상용(움직임 포즈 필요) vs 카드뉴스/썸네일용(정적 포즈 위주)", ex:"카드뉴스 썸네일용 → 정적 포즈 위주로 요청"}
+];
+
+const checkList = document.getElementById('checkList');
+const progressFill = document.getElementById('progressFill');
+const progressText = document.getElementById('progressText');
+let doneCount = 0;
+
+function updateProgress(){
+  progressFill.style.width = (doneCount/items.length*100)+'%';
+  progressText.textContent = `${doneCount}/${items.length}`;
+}
+
+items.forEach(it=>{
+  const li = document.createElement('li');
+  li.className = 'check-item';
+  li.innerHTML = `<div class="box"></div><div class="check-text"><b>${it.t}</b><span>${it.d}</span><em class="ex">예시: ${it.ex}</em></div>`;
+  li.addEventListener('click', ()=>{
+    li.classList.toggle('done');
+    doneCount += li.classList.contains('done') ? 1 : -1;
+    updateProgress();
+  });
+  checkList.appendChild(li);
+});
+updateProgress();
+</script>
+
+</body>
+</html>
