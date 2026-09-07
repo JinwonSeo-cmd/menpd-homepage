@@ -5,7 +5,7 @@
     "date": "2026-09-07",
     "category": "",
     "summary": "",
-    "body": "먼저, 구글 드라이브 링크를 누르고 스킬을 받아 클로드에 설치하세요.\n스킬을 소환 후 ( /image-characterseet-gflow 입력) 엔터만 치세요.\n안내에 따라 만들어 가면 됩니다.\n참고로 클로드와 구글 플로우 두 개 창을 다 띄워놓고 작업하시는게 편해요.",
+    "body": "먼저, 구글 드라이브 링크를 누르고 스킬을 받아 클로드에 설치하세요.\n스킬을 소환 후 ( / 치고 각 스킬명, 예: /image-charactersheet-gflow) 엔터만 치세요.\n클로드의 안내에 따라 만들어 가면 됩니다.\n참고로 클로드와 구글 플로우 두 개 창을 다 띄워놓고 작업하시는게 편해요.",
     "links": [
       {
         "label": "https://drive.google.com/drive/folders/18hQliLyLLSg0ZnG9tQJGGajK6Tk6LgQZ?usp=drive_link",
