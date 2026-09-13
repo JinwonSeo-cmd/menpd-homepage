@@ -1,5 +1,22 @@
 [
   {
+    "id": "p1789295144251",
+    "title": "타이포 마스킹 포스터 디자인 스킬 (클로드)",
+    "date": "2026-09-13",
+    "category": "",
+    "summary": "",
+    "body": "큰 텍스트가 포스터 상단에 투명으로 나오고 뒤에 배경 이미지가 나오는 포스터 스타일입니다.\n수업에서도 예시로 많이 활용되는 포스터 스타일로 스킬로 제작해두었으니 사용하시고 싶으신 분들을 스킬을 등록후 /design-poster-typomasking 을 소환하여 사용해보세요.\n본 스킬은 이미지 생성용 프롬프트만 제시되니 구글 플로우 등에서 생성해보세요.",
+    "links": [
+      {
+        "label": "https://drive.google.com/drive/folders/1UOBX52tFrNxSZwBiq6FZnN9NX8c9Mu0H?usp=drive_link",
+        "url": "https://drive.google.com/drive/folders/1UOBX52tFrNxSZwBiq6FZnN9NX8c9Mu0H?usp=drive_link"
+      }
+    ],
+    "hidden": false,
+    "files": [],
+    "lock": ""
+  },
+  {
     "id": "p1788743455697",
     "title": "레퍼런스 시트(캐릭터, 배경, 소품) 자동 완성 스킬",
     "date": "2026-09-07",
