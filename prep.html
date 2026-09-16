@@ -87,6 +87,21 @@ h1{font-size:clamp(28px,4.5vw,38px);font-weight:800;letter-spacing:-.03em}
   font-family:ui-monospace,'SF Mono',Menlo,monospace;margin:2px 0 0}
 .acc-body ul{margin:4px 0 0 18px;padding:0;color:var(--muted);font-size:12.5px;line-height:1.65}
 .acc-body ul li{margin-bottom:2px}
+
+.flowchart{display:flex;flex-direction:column;margin:2px 0 0}
+.fc-row{display:flex;gap:10px;align-items:flex-start}
+.fc-num{flex:none;width:24px;height:24px;border-radius:50%;background:var(--accent);
+  color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.fc-box{flex:1;background:var(--wash);border:1px solid var(--line);border-radius:10px;padding:9px 12px}
+.fc-box strong{display:block;font-size:12.5px;font-weight:700;margin-bottom:2px;color:var(--ink)}
+.fc-box span{display:block;color:var(--muted);font-size:11.5px;line-height:1.5}
+.fc-connector{width:24px;display:flex;justify-content:center}
+.fc-connector .fc-line{width:2px;height:12px;background:var(--line)}
+.fc-branch-row{display:flex;gap:10px;align-items:flex-start}
+.fc-branch{flex:1;display:flex;gap:8px;flex-wrap:wrap}
+.fc-branch .fc-box{flex:1;min-width:150px}
+.fc-branch .fc-box.warn{background:#FFF4E5;border-color:#F3D9B1}
+.fc-or{flex:none;align-self:center;font-size:11px;font-weight:700;color:var(--muted)}
 </style>
 </head>
 <body>
@@ -294,10 +309,48 @@ h1{font-size:clamp(28px,4.5vw,38px);font-weight:800;letter-spacing:-.03em}
           <p>문장으로 설명만 하면 이미지나 짧은 영상을 만들어줍니다. 카드뉴스용 이미지, 영상 소재 제작 실습에 사용합니다.</p>
           <h4>시작하는 흐름</h4>
           <div class="acc-flow">구글 계정으로 로그인 → labs.google/flow 접속 → 새 프로젝트 만들기 → 원하는 이미지·영상 내용을 문장으로 입력 → 생성 결과 확인 후 다운로드</div>
+          <h4>가입 순서도 (헷갈리기 쉬운 부분)</h4>
+          <div class="flowchart">
+            <div class="fc-row">
+              <div class="fc-num">1</div>
+              <div class="fc-box"><strong>구글 계정으로 로그인</strong>
+                <span>labs.google/flow 접속 후 보유한 구글 계정으로 로그인합니다.</span></div>
+            </div>
+            <div class="fc-connector"><div class="fc-line"></div></div>
+            <div class="fc-row">
+              <div class="fc-num">2</div>
+              <div class="fc-box"><strong>만 18세 이상 여부 확인</strong>
+                <span>이용약관 동의 및 연령 확인 절차가 나올 수 있습니다.</span></div>
+            </div>
+            <div class="fc-connector"><div class="fc-line"></div></div>
+            <div class="fc-row">
+              <div class="fc-num">3</div>
+              <div class="fc-box"><strong>지원 국가/지역인지 확인</strong>
+                <span>접속이 안 되면 계정 문제가 아니라 지역 제한일 수 있습니다.</span></div>
+            </div>
+            <div class="fc-connector"><div class="fc-line"></div></div>
+            <div class="fc-branch-row">
+              <div class="fc-num">4</div>
+              <div class="fc-branch">
+                <div class="fc-box"><strong>무료로 바로 시작</strong>
+                  <span>별도 결제 없이 매일 50 크레딧이 제공됩니다.</span></div>
+                <div class="fc-or">또는</div>
+                <div class="fc-box warn"><strong>요금제 가입</strong>
+                  <span>크레딧이 더 필요하면 Google AI Plus/Pro/Ultra 중 선택해 가입합니다.</span></div>
+              </div>
+            </div>
+            <div class="fc-connector"><div class="fc-line"></div></div>
+            <div class="fc-row">
+              <div class="fc-num">5</div>
+              <div class="fc-box"><strong>새 프로젝트 만들기</strong>
+                <span>원하는 이미지·영상 내용을 문장으로 입력해 생성을 시작합니다.</span></div>
+            </div>
+          </div>
           <h4>기본 팁</h4>
           <ul>
             <li>스타일·구도·색감처럼 구체적인 표현을 넣을수록 원하는 결과에 가까워집니다.</li>
             <li>한 번에 여러 버전이 나오니, 마음에 드는 걸 골라 다운로드하면 됩니다.</li>
+            <li>가입 화면에서 요금제 선택이 나와도, 무료 크레딧만으로 실습은 충분히 가능합니다.</li>
           </ul>
         </div>
       </details>
