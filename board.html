@@ -63,7 +63,13 @@ h1{font-size:clamp(30px,5vw,42px);font-weight:800;letter-spacing:-.03em;line-hei
 
 .panel{display:none;padding:0 24px 24px;border-top:1px solid var(--line)}
 .item.open .panel{display:block;animation:rise .26s ease both}
-.body{padding-top:20px;font-size:15.5px;line-height:1.85;color:#2E3440;
+.body-toolbar{display:flex;justify-content:flex-end;padding-top:18px}
+.copy-btn{font:inherit;font-size:12px;font-weight:600;padding:6px 12px;cursor:pointer;
+  background:var(--paper);border:1px solid var(--line);border-radius:8px;color:var(--muted);
+  transition:all .16s;flex:none}
+.copy-btn:hover{border-color:var(--accent);color:var(--accent)}
+.copy-btn.copied{background:var(--ink);border-color:var(--ink);color:#fff}
+.body{padding-top:6px;font-size:15.5px;line-height:1.85;color:#2E3440;
   white-space:pre-wrap;word-break:break-word}
 .body a{color:var(--accent)}
 .body img{max-width:100%;height:auto;border-radius:10px;margin:6px 0}
@@ -162,7 +168,8 @@ function render(){
         <span class="chev"></span>
       </button>
       <div class="panel">
-        ${p.body?`<div class="body">${p.body}</div>`:''}
+        ${p.body?`<div class="body-toolbar"><button type="button" class="copy-btn">복사</button></div>
+        <div class="body">${p.body}</div>`:''}
         ${igCode(p.instagram)?`<div class="embed"><iframe src="https://www.instagram.com/p/${igCode(p.instagram)}/embed/captioned/"
             loading="lazy" scrolling="no" allowtransparency="true" title="인스타그램 게시물"></iframe></div>`:''}
         ${(p.links||[]).length?`<ul class="links">${p.links.map(l=>
@@ -192,6 +199,23 @@ function chips(){
 }
 
 document.getElementById('q').addEventListener('input', e=>{ kw = e.target.value.trim(); render(); });
+
+document.getElementById('list').addEventListener('click', e=>{
+  const btn = e.target.closest('.copy-btn');
+  if(!btn) return;
+  const body = btn.closest('.panel').querySelector('.body');
+  const text = (body.innerText || body.textContent || '').trim();
+  navigator.clipboard.writeText(text).then(()=>{
+    clearTimeout(btn._resetTimer);
+    if(!btn.dataset.label) btn.dataset.label = btn.textContent;
+    btn.textContent = '복사됨';
+    btn.classList.add('copied');
+    btn._resetTimer = setTimeout(()=>{
+      btn.textContent = btn.dataset.label;
+      btn.classList.remove('copied');
+    }, 1500);
+  }).catch(()=>{});
+});
 
 fetch(DATA_URL + '?t=' + Date.now())
   .then(r => r.ok ? r.json() : [])
