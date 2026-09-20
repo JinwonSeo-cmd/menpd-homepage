@@ -96,6 +96,7 @@ h1{font-size:clamp(30px,5vw,42px);font-weight:800;letter-spacing:-.03em;line-hei
 .empty span{font-size:14px;color:var(--muted)}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
+<link rel="stylesheet" href="css/depth-motion.css">
 </head>
 <body>
 <div class="top"><a href="index.html">← 홈으로</a></div>
@@ -223,5 +224,6 @@ fetch(DATA_URL + '?t=' + Date.now())
   .catch(()=>{ POSTS=[]; chips(); render(); });
 </script>
 <script src="js/site-animations.js" defer></script>
+<script src="js/depth-motion.js" defer></script>
 </body>
 </html>
