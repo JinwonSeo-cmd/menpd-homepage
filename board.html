@@ -97,12 +97,20 @@ h1{font-size:clamp(30px,5vw,42px);font-weight:800;letter-spacing:-.03em;line-hei
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 <link rel="stylesheet" href="css/depth-motion.css">
+<link rel="stylesheet" href="css/dusk-pages.css?v=20260923">
 </head>
-<body>
-<div class="top"><a href="index.html">← 홈으로</a></div>
+<body class="dusk-page board-page">
+<div class="top">
+  <a class="top-brand" href="index.html">← 멘피디 AI</a>
+  <nav class="top-links" aria-label="하위 페이지">
+    <a href="prep.html">안내</a>
+    <a href="resources.html">자료실</a>
+    <a href="board.html" aria-current="page">게시판</a>
+  </nav>
+</div>
 
 <div class="wrap">
-  <header>
+  <header class="page-intro">
     <p class="eyebrow">멘피디 AI · 게시판</p>
     <h1>기록하고 나눕니다</h1>
     <p class="lede">강의하며 겪은 일, 요즘 보고 있는 것들, 소소한 생각을 남겨둡니다.</p>

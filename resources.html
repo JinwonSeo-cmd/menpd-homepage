@@ -94,12 +94,20 @@ h1{font-size:clamp(30px,5vw,42px);font-weight:800;letter-spacing:-.03em;line-hei
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 <link rel="stylesheet" href="css/depth-motion.css">
+<link rel="stylesheet" href="css/dusk-pages.css?v=20260923">
 </head>
-<body>
-<div class="top"><a href="index.html">← 홈으로</a></div>
+<body class="dusk-page library-page">
+<div class="top">
+  <a class="top-brand" href="index.html">← 멘피디 AI</a>
+  <nav class="top-links" aria-label="하위 페이지">
+    <a href="prep.html">안내</a>
+    <a href="resources.html" aria-current="page">자료실</a>
+    <a href="board.html">게시판</a>
+  </nav>
+</div>
 
 <div class="wrap">
-  <header>
+  <header class="page-intro">
     <p class="eyebrow">멘피디 AI · 강의 자료실</p>
     <h1>강의 자료 내려받기</h1>
     <p class="lede">강의에서 다룬 실습 파일과 참고 링크를 모아둡니다. 자료는 강의가 끝난 뒤 순차적으로 올라갑니다.</p>

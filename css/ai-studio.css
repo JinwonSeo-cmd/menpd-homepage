@@ -552,3 +552,7 @@ body {
   #prep-teaser .quicklink-card,
   #dynamic-book .dynamic-book-btn { transition: none !important; }
 }
+/* Make the book cover feel like a direct purchase action. */
+.book-cover-main { display: block; border-radius: 16px; transition: transform .25s ease, box-shadow .25s ease; }
+.book-cover-main:hover { transform: translateY(-5px); }
+.book-cover-main:focus-visible { outline: 3px solid #315b9b; outline-offset: 6px; }
