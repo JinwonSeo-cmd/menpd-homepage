@@ -556,3 +556,19 @@ body {
 .book-cover-main { display: block; border-radius: 16px; transition: transform .25s ease, box-shadow .25s ease; }
 .book-cover-main:hover { transform: translateY(-5px); }
 .book-cover-main:focus-visible { outline: 3px solid #315b9b; outline-offset: 6px; }
+
+/* Highlight the preparation entry beside Resources. */
+#prep-teaser .quicklink-card.quicklink-card-kakao {
+  background: #fee500;
+  border-color: #fee500;
+  box-shadow: 0 14px 32px rgba(129, 105, 0, .16);
+}
+#prep-teaser .quicklink-card.quicklink-card-kakao:hover,
+#prep-teaser .quicklink-card.quicklink-card-kakao:focus-visible {
+  background: #ffe94a;
+  border-color: #ffe94a;
+  box-shadow: 0 18px 38px rgba(129, 105, 0, .22);
+}
+#prep-teaser .quicklink-card.quicklink-card-kakao .quicklink-name,
+#prep-teaser .quicklink-card.quicklink-card-kakao .quicklink-icon { color: #252525; }
+#prep-teaser .quicklink-card.quicklink-card-kakao .quicklink-desc { color: #4c471b; }
