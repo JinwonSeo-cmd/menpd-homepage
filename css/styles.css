@@ -1155,7 +1155,7 @@ section:not(.book-section) .section-title-row .section-sub {
 
 .dynamic-book-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: var(--spacing-24);
 }
 
@@ -1430,6 +1430,12 @@ section:not(.book-section) .section-title-row .section-sub {
 }
 
 /* ---------- Responsive ---------- */
+
+@media (max-width: 1200px) {
+  .dynamic-book-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
 
 @media (max-width: 900px) {
   .hero {
