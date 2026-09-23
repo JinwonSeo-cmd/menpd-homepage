@@ -1,0 +1,300 @@
+<title>바이브 코딩 첫걸음</title>
+<style>
+  :root{
+    --paper:#f1efe8;
+    --paper-2:#e4e1d6;
+    --ink:#1d1c17;
+    --ink-soft:#6a675c;
+    --line:#cec9ba;
+    --accent:#2c5a86;
+    --accent-soft:#dbe6ee;
+    --lvl1:#3f7d54;
+    --lvl1-soft:#dcece0;
+    --lvl2:#c9902c;
+    --lvl2-soft:#f3e6c9;
+    --lvl3:#b5502f;
+    --lvl3-soft:#f2ded4;
+    --card:#f8f7f2;
+    --code-bg:#1d1c17;
+    --code-fg:#eae7dc;
+    color-scheme:light;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --paper:#16150f;
+      --paper-2:#1e1c15;
+      --ink:#ece9de;
+      --ink-soft:#a29d8c;
+      --line:#3c392c;
+      --accent:#6fa2cf;
+      --accent-soft:#22303e;
+      --lvl1:#7bc294;
+      --lvl1-soft:#1f3327;
+      --lvl2:#e0ae5c;
+      --lvl2-soft:#3a2f19;
+      --lvl3:#e08361;
+      --lvl3-soft:#3a241b;
+      --card:#1e1c15;
+      --code-bg:#0e0d09;
+      --code-fg:#eae7dc;
+      color-scheme:dark;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#16150f;
+    --paper-2:#1e1c15;
+    --ink:#ece9de;
+    --ink-soft:#a29d8c;
+    --line:#3c392c;
+    --accent:#6fa2cf;
+    --accent-soft:#22303e;
+    --lvl1:#7bc294;
+    --lvl1-soft:#1f3327;
+    --lvl2:#e0ae5c;
+    --lvl2-soft:#3a2f19;
+    --lvl3:#e08361;
+    --lvl3-soft:#3a241b;
+    --card:#1e1c15;
+    --code-bg:#0e0d09;
+    --code-fg:#eae7dc;
+    color-scheme:dark;
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans KR', 'Pretendard', -apple-system, sans-serif;
+    margin:0;
+    padding-inline:20px;
+    padding-block:0 48px;
+    line-height:1.6;
+  }
+  .wrap{max-width:720px; margin:0 auto;}
+
+  header{padding-block:40px 28px; border-bottom:1px solid var(--line); margin-bottom:36px;}
+  .eyebrow{font-size:12.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); font-weight:700; margin-bottom:14px;}
+  h1{
+    font-family:'Bricolage Grotesque','Pretendard',sans-serif;
+    font-weight:700; font-size:clamp(28px,6vw,40px); line-height:1.22;
+    margin:0 0 14px; text-wrap:balance;
+  }
+  .lede{font-size:15.5px; color:var(--ink-soft); max-width:58ch; margin:0;}
+
+  h2{
+    font-family:'Bricolage Grotesque','Pretendard',sans-serif;
+    font-weight:700; font-size:21px; margin:0 0 6px;
+  }
+  .section{margin-bottom:52px;}
+  .section-head{margin-bottom:20px;}
+  .section-num{font-size:12px; color:var(--ink-soft); letter-spacing:.08em; margin-bottom:6px; font-variant-numeric:tabular-nums;}
+
+  .compare{display:grid; grid-template-columns:1fr; gap:12px;}
+  .compare-card{background:var(--card); border:1px solid var(--line); border-radius:10px; padding:18px 20px;}
+  .compare-card .tag{display:inline-block; font-size:12px; font-weight:700; padding:3px 10px; border-radius:100px; margin-bottom:10px;}
+  .compare-card.old .tag{background:var(--paper-2); color:var(--ink-soft);}
+  .compare-card.new .tag{background:var(--accent-soft); color:var(--accent);}
+  .compare-card.new{border-color:var(--accent); border-width:1.5px;}
+  .compare-card h3{margin:0 0 6px; font-size:16px; font-weight:700;}
+  .compare-card p{margin:0; font-size:14.5px; color:var(--ink-soft);}
+
+  .steps{display:flex; flex-direction:column; gap:0;}
+  .step{display:flex; gap:16px; padding-block:18px; border-bottom:1px solid var(--line);}
+  .step:last-child{border-bottom:none;}
+  .step-num{
+    font-family:'JetBrains Mono',monospace; font-size:13px; font-weight:700;
+    color:var(--accent); background:var(--accent-soft);
+    width:30px; height:30px; border-radius:8px; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .step h3{margin:2px 0 5px; font-size:15.5px; font-weight:700;}
+  .step p{margin:0 0 8px; font-size:14px; color:var(--ink-soft);}
+  .code{
+    font-family:'JetBrains Mono',monospace; font-size:12.5px;
+    background:var(--code-bg); color:var(--code-fg);
+    padding:10px 12px; border-radius:7px; overflow-x:auto; white-space:pre-wrap;
+    line-height:1.5;
+  }
+
+  .proj-grid{display:grid; grid-template-columns:1fr; gap:12px;}
+  .proj-card{background:var(--card); border:1px solid var(--line); border-radius:10px; padding:18px 20px;}
+  .proj-head{display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:8px;}
+  .proj-head h3{margin:0; font-size:16px; font-weight:700;}
+  .lvl{font-size:11.5px; font-weight:700; padding:3px 9px; border-radius:100px; white-space:nowrap;}
+  .lvl.l1{background:var(--lvl1-soft); color:var(--lvl1);}
+  .lvl.l2{background:var(--lvl2-soft); color:var(--lvl2);}
+  .lvl.l3{background:var(--lvl3-soft); color:var(--lvl3);}
+  .proj-card p{margin:0 0 10px; font-size:14.5px; color:var(--ink-soft);}
+  .proj-card .code{margin:0;}
+
+  .progress-bar{
+    position:sticky; top:env(safe-area-inset-top,0px);
+    background:var(--paper); padding-block:10px 14px; margin:-1px 0 22px;
+    border-bottom:1px solid var(--line); z-index:5;
+  }
+  .progress-track{height:6px; background:var(--paper-2); border-radius:100px; overflow:hidden;}
+  .progress-fill{height:100%; background:var(--accent); width:0%; transition:width .3s ease;}
+  .progress-label{font-size:12.5px; color:var(--ink-soft); margin-top:6px; font-variant-numeric:tabular-nums;}
+
+  .item{display:flex; align-items:flex-start; gap:12px; padding:12px 4px; border-bottom:1px solid var(--line); cursor:pointer;}
+  .item:last-child{border-bottom:none;}
+  .item input{margin-top:3px; width:17px; height:17px; accent-color:var(--accent); cursor:pointer; flex-shrink:0;}
+  .item label{font-size:14.5px; cursor:pointer;}
+  .item.checked label{color:var(--ink-soft); text-decoration:line-through; text-decoration-color:var(--line);}
+
+  footer{
+    margin-top:56px; padding-top:24px; border-top:1px solid var(--line);
+    display:flex; flex-wrap:wrap; gap:10px 18px; align-items:center;
+    font-size:13px; color:var(--ink-soft);
+  }
+  footer strong{color:var(--ink);}
+  footer a{color:var(--accent); text-decoration:none;}
+
+  @media(min-width:560px){
+    .compare{grid-template-columns:1fr 1fr;}
+  }
+</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap">
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">동적교재 · 바이브 코딩</div>
+    <h1>코드를 짜지 않고<br>대화로 만든다</h1>
+    <p class="lede">바이브 코딩(Vibe Coding)은 원하는 것을 말로 설명하면 AI가 코드를 작성하고, 나는 결과를 보며 방향을 다듬는 방식입니다. 첫 프로젝트를 시작하기 위한 개념과 실습 흐름을 정리했습니다.</p>
+  </header>
+
+  <div class="section">
+    <div class="section-head">
+      <div class="section-num">01 — 개념</div>
+      <h2>기존 코딩과 뭐가 다른가</h2>
+    </div>
+    <div class="compare">
+      <div class="compare-card old">
+        <span class="tag">기존 방식</span>
+        <h3>문법을 배우고, 직접 짠다</h3>
+        <p>언어 문법과 라이브러리 사용법을 익힌 뒤, 한 줄 한 줄 코드를 직접 작성. 막히면 검색하고 디버깅.</p>
+      </div>
+      <div class="compare-card new">
+        <span class="tag">바이브 코딩</span>
+        <h3>의도를 말하고, 검토한다</h3>
+        <p>"이런 화면, 이런 동작"을 자연어로 설명하면 AI가 코드를 작성. 나는 결과물을 써보고 고칠 부분을 다시 말로 전달.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <div class="section-num">02 — 흐름</div>
+      <h2>3단계로 반복한다</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div>
+          <h3>아이디어를 구체화한다</h3>
+          <p>"누가, 무엇을 위해 쓰는지"를 한두 문장으로 정리. 완성됐을 때 어떤 화면·동작인지 먼저 그려본다.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div>
+          <h3>작은 단위로 요청한다</h3>
+          <p>한 번에 전부 요청하지 않고, 기능 하나씩 순서대로 요청한다.</p>
+          <div class="code">예: "할일을 입력하면 목록에 추가되는 화면부터 만들어줘. 삭제 기능은 다음에."</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div>
+          <h3>실행하고, 그대로 되묻는다</h3>
+          <p>실행해보고 안 되거나 어색한 부분은 화면을 설명하거나 에러 메시지를 그대로 붙여넣어 되묻는다. 추측해서 고치려 하지 않는다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <div class="section-num">03 — 실습</div>
+      <h2>첫 프로젝트, 뭐부터 만들까</h2>
+    </div>
+    <div class="proj-grid">
+      <div class="proj-card">
+        <div class="proj-head"><h3>나만의 소개 페이지</h3><span class="lvl l1">입문</span></div>
+        <p>이름, 하는 일, 연락처가 담긴 한 페이지짜리 웹사이트. 완성 기준이 명확해서 첫 프로젝트로 적합.</p>
+        <div class="code">"제 소개 페이지를 만들어줘. 이름은 OOO, 하는 일은 △△△, 연락처는 이메일 하나만."</div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-head"><h3>체크리스트 / 할일 앱</h3><span class="lvl l2">초중급</span></div>
+        <p>입력, 완료 표시, 삭제까지 세 가지 동작이 들어가 "기능 단위로 나눠 요청하기"를 연습하기 좋음.</p>
+        <div class="code">"할일을 입력하면 목록에 쌓이고, 클릭하면 완료 표시되는 화면부터."</div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-head"><h3>데이터 정리 자동화</h3><span class="lvl l3">중급</span></div>
+        <p>엑셀·CSV 파일을 읽어 원하는 형태로 정리해주는 스크립트. 반복 업무 하나를 골라 그대로 적용해볼 것.</p>
+        <div class="code">"이 CSV에서 A열 기준으로 중복을 지우고, 날짜순으로 정렬한 새 파일을 만들어줘."</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="checklist-section">
+    <div class="section-head">
+      <div class="section-num">04 — 시작 전</div>
+      <h2>준비물 체크리스트</h2>
+    </div>
+
+    <div class="progress-bar">
+      <div class="progress-track"><div class="progress-fill" id="fill"></div></div>
+      <div class="progress-label" id="label">0 / 6 확인</div>
+    </div>
+
+    <div class="item" data-id="c1"><input type="checkbox" id="c1"><label for="c1">완성됐을 때 결과물이 어떤 모습인지 한두 문장으로 말할 수 있다</label></div>
+    <div class="item" data-id="c2"><input type="checkbox" id="c2"><label for="c2">기능을 여러 개로 쪼개서 순서를 정해두었다</label></div>
+    <div class="item" data-id="c3"><input type="checkbox" id="c3"><label for="c3">한 번에 다 완성하지 않기로 마음먹었다</label></div>
+    <div class="item" data-id="c4"><input type="checkbox" id="c4"><label for="c4">막히면 에러 메시지를 그대로 복사해 붙여넣기로 했다</label></div>
+    <div class="item" data-id="c5"><input type="checkbox" id="c5"><label for="c5">다루는 데이터에 개인정보·기밀정보가 없는지 확인했다</label></div>
+    <div class="item" data-id="c6"><input type="checkbox" id="c6"><label for="c6">결과물을 시험해볼 대상(나 자신, 동료 등)을 정해두었다</label></div>
+  </div>
+
+  <footer>
+    <strong>서진원 (멘피디)</strong>
+    <span>와이컨텐츠 · 생성형 AI &amp; SNS 콘텐츠 전문 강사</span>
+    <a href="mailto:ceo.ycontents@gmail.com">ceo.ycontents@gmail.com</a>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var boxes = document.querySelectorAll('.item input[type=checkbox]');
+  var fill = document.getElementById('fill');
+  var label = document.getElementById('label');
+  var KEY = 'vibe_coding_checklist_v1';
+
+  function load(){
+    try{ var raw = localStorage.getItem(KEY); return raw ? JSON.parse(raw) : {}; }
+    catch(e){ return {}; }
+  }
+  function save(state){ try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} }
+  function update(){
+    var checked = 0;
+    boxes.forEach(function(b){ if(b.checked) checked++; });
+    var pct = Math.round(checked / boxes.length * 100);
+    fill.style.width = pct + '%';
+    label.textContent = checked + ' / ' + boxes.length + ' 확인';
+  }
+
+  var state = load();
+  boxes.forEach(function(b){
+    if(state[b.id]) b.checked = true;
+    b.closest('.item').classList.toggle('checked', b.checked);
+    b.addEventListener('change', function(){
+      var s = load();
+      s[b.id] = b.checked;
+      save(s);
+      b.closest('.item').classList.toggle('checked', b.checked);
+      update();
+    });
+  });
+  update();
+})();
+</script>
