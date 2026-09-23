@@ -210,11 +210,11 @@
   box-shadow: none;
   transition: transform .22s ease, background-color .22s ease;
 }
-.prep-page .btn-survey { color: #2f517c; background: #fffaf5; }
+.prep-page .btn-survey { color: #24354a; background: #ffd84d; border-color: #ffd84d; }
 .prep-page .btn-dashboard { color: #fff; background: rgba(255,255,255,.12); backdrop-filter: blur(8px); }
 .prep-page .btn-survey:hover,
 .prep-page .btn-dashboard:hover { transform: translateY(-3px); }
-.prep-page .btn-survey:hover { background: #eaf3fb; }
+.prep-page .btn-survey:hover { background: #f3c82f; border-color: #f3c82f; }
 .prep-page .btn-dashboard:hover { background: rgba(255,255,255,.25); }
 .prep-page .prep-jump {
   display: flex;
