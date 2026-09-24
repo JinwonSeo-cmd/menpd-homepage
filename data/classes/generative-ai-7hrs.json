@@ -1,0 +1,26 @@
+{
+  "id": "generative-ai-7hrs",
+  "title": "생성형 AI로의 초대 - 업무에 바로 쓰는 생성형 AI",
+  "subtitle": "채팅형, 오디오, 이미지, 비디오 4대 영역 살펴보기",
+  "instructor": "서진원 (멘피디)",
+  "duration": "7시간",
+  "shortUrl": "c/gen7",
+  "downloads": [],
+  "parts": [
+    { "partNo": 1, "title": "현재 생성형 AI 트렌드는?", "summary": "생성형 AI 실제 사례(포스터·영화·숏폼) 및 워크플로우 미리보기", "prompts": [] },
+    { "partNo": 2, "title": "4대 분류 · 생성 6단계", "summary": "글/그림/오디오/비디오 4대 분류와 자동화 수준에 따른 생성 6단계", "prompts": [] },
+    { "partNo": 3, "title": "채팅형 AI와 프롬프트 (PE7)", "summary": "메타프롬프팅 개념과 PE7 프레임워크(Persona-Identity-Object-Procedure-Sample-GroundData-Format)", "prompts": ["pe7-bad-good-example"] },
+    { "partNo": 4, "title": "제미나이 노트북", "summary": "자료 업로드 → 자동 정리 → 오디오/마인드맵/인포그래픽 생성, 커스터마이즈용 MD 체계(INS/KB/디자인MD)", "prompts": [] },
+    { "partNo": 5, "title": "AI 문서: PPT 생성 (1단계)", "summary": "단순 프롬프팅으로 내용 정리 후 디자인 없는 PPT 생성", "prompts": ["ppt-step1-content", "ppt-step1-to-ppt"] },
+    { "partNo": 6, "title": "샘플 입력 디자인 (2단계)", "summary": "핀터레스트 샘플 캡처 기반 PPT 리디자인", "prompts": ["sample-redesign"] },
+    { "partNo": 7, "title": "디자인 MD 파일 활용 (4단계)", "summary": "MD 파일 개념, 디자인 MD로 스타일 고정, 이미지 분석→MD 생성 실습", "prompts": ["design-md-analyze", "own-md-4step"] },
+    { "partNo": 8, "title": "스킬 기능 활용 (5단계)", "summary": "MD 파일을 스킬로 저장해 슬래시로 소환, 사람이 직접 할 일과의 경계", "prompts": [] },
+    { "partNo": 9, "title": "커스텀봇 활용 (프로젝트/젬스/GPTs)", "summary": "반복 워크플로우를 전용 공간에 고정하는 커스텀봇 실습", "prompts": [] },
+    { "partNo": 10, "title": "AI 플러그인 (Claude 애드인/Copilot)", "summary": "PPT 내부 직접 수정, 시각화 요소 9대 카테고리 총정리", "prompts": [] },
+    { "partNo": "11-research", "title": "딥리서치와 AI", "summary": "딥리서치 개념, 모델 선택 가이드, 교차·출처·할루시네이션 검증", "prompts": ["research-meta-template", "research-verify-4"] },
+    { "partNo": 11, "title": "오디오 생성 (음원/TTS)", "summary": "Suno 음원 생성, 일레븐랩스 등 음성 생성 실습", "prompts": [] },
+    { "partNo": 12, "title": "이미지 생성 AI 활용법", "summary": "약식 vs 정식 프롬프트 비교, 스타일 변형, 디자인MD/스킬/커스텀봇으로 일관성 확보", "prompts": ["image-basic-vs-refined"] },
+    { "partNo": 13, "title": "레퍼런스 시트 생성", "summary": "캐릭터/인바이어먼트/프롭 시트로 이미지·영상 생성 시 일관성 유지", "prompts": [] },
+    { "partNo": 14, "title": "비디오 생성 및 편집", "summary": "Text/Image to Video, 스토리→레퍼런스시트→스토리보드→신별생성→편집 5단계 프로세스, 캡컷 기초", "prompts": ["video-meta-prompt", "video-story-3scene"] }
+  ]
+}
