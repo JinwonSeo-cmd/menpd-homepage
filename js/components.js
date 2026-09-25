@@ -77,17 +77,49 @@ function renderDownloadCard(file) {
   return link;
 }
 
+function renderGuideCards(cards) {
+  const grid = document.createElement("div");
+  grid.className = "guide-card-grid";
+  cards.forEach((card) => {
+    const article = document.createElement("article");
+    article.className = "guide-card";
+    article.innerHTML = `<h5>${escapeHtml(card.title)}</h5>${card.body ? `<p>${escapeHtml(card.body)}</p>` : ""}`;
+    if (card.keywords?.length) {
+      const keywords = document.createElement("div");
+      keywords.className = "guide-keywords";
+      card.keywords.forEach((keyword) => {
+        const chip = document.createElement("span");
+        chip.textContent = keyword;
+        keywords.appendChild(chip);
+      });
+      article.appendChild(keywords);
+    }
+    if (card.steps?.length) {
+      const steps = document.createElement("ol");
+      steps.className = "guide-steps";
+      card.steps.forEach((step) => {
+        const item = document.createElement("li");
+        item.textContent = step;
+        steps.appendChild(item);
+      });
+      article.appendChild(steps);
+    }
+    grid.appendChild(article);
+  });
+  return grid;
+}
+
 function partStorageKey(classId, part, index) {
   return `menpd-class:${classId}:${part.slug || part.partNo || index}`;
 }
 
-function renderPart({ part, index, classId, promptMap, onProgressChange }) {
+function renderPart({ part, index, classId, promptMap }) {
   const section = document.createElement("section");
   const partId = `part-${part.slug || String(part.partNo).replace(/[^a-zA-Z0-9가-힣_-]/g, "-")}`;
   const label = part.label || `Part ${part.partNo}`;
   const storageKey = partStorageKey(classId, part, index);
-  const saved = JSON.parse(localStorage.getItem(storageKey) || '{"done":false,"tasks":[]}');
-  section.className = `class-part${index === 0 ? " open" : ""}${saved.done ? " is-complete" : ""}`;
+  const saved = JSON.parse(localStorage.getItem(storageKey) || '{"tasks":[]}');
+  section.className = `class-part${index === 0 ? " open" : ""}`;
   section.id = partId;
   section.dataset.storageKey = storageKey;
   section.innerHTML = `
@@ -110,13 +142,21 @@ function renderPart({ part, index, classId, promptMap, onProgressChange }) {
       const li = document.createElement("li");
       li.innerHTML = `<label><input type="checkbox" ${saved.tasks?.[taskIndex] ? "checked" : ""}><span>${escapeHtml(task)}</span></label>`;
       li.querySelector("input").addEventListener("change", () => {
-        const state = JSON.parse(localStorage.getItem(storageKey) || '{"done":false,"tasks":[]}');
+        const state = JSON.parse(localStorage.getItem(storageKey) || '{"tasks":[]}');
         state.tasks = Array.from(list.querySelectorAll("input")).map((input) => input.checked);
         localStorage.setItem(storageKey, JSON.stringify(state));
       });
       list.appendChild(li);
     });
     block.appendChild(list);
+    body.appendChild(block);
+  }
+
+  if (part.guideCards?.length) {
+    const block = document.createElement("div");
+    block.className = "part-block";
+    block.innerHTML = '<h4 class="part-block-title">핵심 내용</h4>';
+    block.appendChild(renderGuideCards(part.guideCards));
     body.appendChild(block);
   }
 
@@ -146,21 +186,6 @@ function renderPart({ part, index, classId, promptMap, onProgressChange }) {
     block.appendChild(renderLinkList(part.tools, "tool-list"));
     body.appendChild(block);
   }
-
-  const completeButton = document.createElement("button");
-  completeButton.type = "button";
-  completeButton.className = `part-complete${saved.done ? " done" : ""}`;
-  completeButton.textContent = saved.done ? "완료됨 ✓" : "이 단계 완료";
-  completeButton.addEventListener("click", () => {
-    const state = JSON.parse(localStorage.getItem(storageKey) || '{"done":false,"tasks":[]}');
-    state.done = !state.done;
-    localStorage.setItem(storageKey, JSON.stringify(state));
-    section.classList.toggle("is-complete", state.done);
-    completeButton.classList.toggle("done", state.done);
-    completeButton.textContent = state.done ? "완료됨 ✓" : "이 단계 완료";
-    onProgressChange();
-  });
-  body.appendChild(completeButton);
 
   const head = section.querySelector(".part-head");
   const togglePart = () => {
@@ -197,18 +222,8 @@ async function renderClassPage(classId) {
 
     const partsRoot = document.querySelector("[data-parts]");
     const toc = document.querySelector("[data-toc]");
-    const updateProgress = () => {
-      const parts = Array.from(partsRoot.querySelectorAll(".class-part"));
-      const completed = parts.filter((part) => part.classList.contains("is-complete")).length;
-      const percent = parts.length ? Math.round((completed / parts.length) * 100) : 0;
-      document.querySelector("[data-progress-percent]").textContent = `${percent}%`;
-      document.querySelector("[data-progress-copy]").textContent = completed === parts.length ? "모든 단계를 완료했습니다" : `${completed}/${parts.length}단계 완료`;
-      document.querySelector("[data-progress-bar]").style.width = `${percent}%`;
-      parts.forEach((part, index) => toc.children[index]?.classList.toggle("complete", part.classList.contains("is-complete")));
-    };
-
     classData.parts.forEach((part, index) => {
-      const section = renderPart({ part, index, classId, promptMap, onProgressChange: updateProgress });
+      const section = renderPart({ part, index, classId, promptMap });
       partsRoot.appendChild(section);
       const anchor = document.createElement("a");
       anchor.href = `#${section.id}`;
@@ -216,15 +231,10 @@ async function renderClassPage(classId) {
       toc.appendChild(anchor);
     });
 
-    document.querySelector("[data-next-step]").addEventListener("click", () => {
-      const next = Array.from(partsRoot.querySelectorAll(".class-part")).find((part) => !part.classList.contains("is-complete"));
-      if (next) {
-        next.classList.add("open");
-        next.querySelector(".part-head").setAttribute("aria-expanded", "true");
-        next.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
+    document.querySelector("[data-course-start]").addEventListener("click", () => {
+      const first = partsRoot.querySelector(".class-part");
+      if (first) first.scrollIntoView({ behavior: "smooth", block: "start" });
     });
-    updateProgress();
   } catch (error) {
     document.querySelector("[data-parts]").innerHTML = '<div class="class-part open"><div class="part-head"><div><h3 class="part-title">강의 자료를 불러오지 못했습니다.</h3><p class="part-summary">잠시 후 새로고침하거나 강사에게 알려주세요.</p></div></div></div>';
     console.error(error);

@@ -43,8 +43,7 @@ button { font: inherit; }
 .hero-progress-row { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
 .hero-progress-row strong { font-size: 42px; letter-spacing: -.05em; }
 .hero-progress-row span { color: #e1e9f0; font-size: 12px; text-align: right; }
-.progress-track { height: 8px; margin: 18px 0; overflow: hidden; border-radius: 99px; background: rgba(255,255,255,.18); }
-.progress-track span { display: block; width: 0; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #f2c4a8, #fffaf5); transition: width .35s ease; }
+.hero-progress-row { margin-bottom: 20px; }
 .qr-toggle { width: 100%; padding: 11px; color: #fff; border: 1px solid var(--white-line); border-radius: 999px; background: rgba(255,255,255,.08); cursor: pointer; }
 .qr-box { display: none; margin-top: 14px; padding: 14px; color: var(--ink); text-align: center; border-radius: 16px; background: #fff; }
 .qr-box.open { display: block; }
@@ -89,6 +88,15 @@ button { font: inherit; }
 .part-body-inner { padding-top: 26px; border-top: 1px solid var(--line); }
 .part-block + .part-block { margin-top: 26px; }
 .part-block-title { margin: 0 0 12px; font-size: 13px; font-weight: 800; }
+.guide-card-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.guide-card { padding: 18px; border: 1px solid var(--line); border-radius: var(--radius-md); background: linear-gradient(145deg, #fff, #f5f8fb); }
+.guide-card h5 { margin: 0 0 8px; color: var(--blue-deep); font-size: 15px; }
+.guide-card > p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.65; }
+.guide-keywords { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 7px; }
+.guide-keywords span { padding: 7px 10px; color: #7a4b34; border-radius: 999px; background: var(--peach-soft); font-size: 12px; font-weight: 700; }
+.guide-steps { margin: 14px 0 0; padding: 0; list-style: none; counter-reset: guide-step; display: grid; gap: 8px; }
+.guide-steps li { counter-increment: guide-step; display: grid; grid-template-columns: 24px 1fr; gap: 9px; align-items: start; color: #40516a; font-size: 12px; line-height: 1.55; }
+.guide-steps li::before { content: counter(guide-step); width: 22px; height: 22px; display: grid; place-items: center; color: #fff; border-radius: 50%; background: var(--blue-deep); font-size: 10px; font-weight: 800; }
 .task-list { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
 .task-list label { padding: 12px 14px; display: flex; align-items: flex-start; gap: 10px; color: #40516a; border-radius: 13px; background: var(--blue-pale); font-size: 14px; line-height: 1.55; cursor: pointer; }
 .task-list input { margin-top: 4px; accent-color: var(--blue-deep); }
@@ -105,8 +113,6 @@ button { font: inherit; }
 .prompt-body { max-height: 210px; margin: 0 15px 12px; padding: 13px; overflow-y: auto; white-space: pre-wrap; color: #3f4f64; border: 1px solid var(--line); border-radius: 12px; background: #fff; font-family: var(--font); font-size: 12px; line-height: 1.65; }
 .copy-btn { width: 100%; padding: 13px; color: #fff; border: 0; background: var(--blue-deep); cursor: pointer; font-size: 13px; font-weight: 800; }
 .copy-btn.copied { background: #4f8766; }
-.part-complete { width: 100%; margin-top: 28px; padding: 14px; color: var(--blue-deep); border: 1px solid rgba(49,91,155,.32); border-radius: 14px; background: var(--blue-pale); cursor: pointer; font-weight: 800; }
-.part-complete.done { color: #fff; border-color: #4f8766; background: #4f8766; }
 .class-footer { padding: 44px max(24px, calc((100% - 1120px) / 2)); display: flex; justify-content: space-between; gap: 24px; color: #eaf0f5; background: #294d82; }
 .class-footer strong { font-size: 18px; }
 .class-footer p { margin: 7px 0 0; color: #cbd8e5; font-size: 13px; }
@@ -117,7 +123,7 @@ button { font: inherit; }
   .hero-panel { max-width: 520px; }
   .toc-wrap { top: 86px; }
   .class-intro { grid-template-columns: 1fr; }
-  .download-grid, .prompt-grid { grid-template-columns: 1fr; }
+  .download-grid, .prompt-grid, .guide-card-grid { grid-template-columns: 1fr; }
   .part-head { grid-template-columns: 52px 1fr auto; gap: 14px; }
   .part-number { width: 52px; height: 52px; border-radius: 16px; }
 }

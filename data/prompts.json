@@ -64,6 +64,14 @@
     "tags": ["리서치", "검증", "할루시네이션"]
   },
   {
+    "id": "suno-advanced-meta",
+    "category": "오디오 생성",
+    "title": "Suno 어드밴스드용 가사·Styles 메타프롬프트",
+    "tool": "Claude/ChatGPT → Suno",
+    "prompt": "Suno 어드밴스드 모드에서 사용할 곡을 만들려고 해. 아래 내용을 바탕으로 1) Lyrics 입력란에 넣을 완성 가사와 2) Styles 입력란에 넣을 스타일 프롬프트를 각각 구분해서 작성해줘.\n\n- 곡의 주제: [입력]\n- 보컬 성별: [입력]\n- 빠르기: [입력]\n- 장르: [입력]\n- 분위기: [입력]\n- 꼭 포함할 메시지 또는 문장: [입력]\n\n가사는 자연스러운 곡 구조(Verse, Chorus 등)로 구성하고, Styles 프롬프트에는 장르·보컬·템포·악기·분위기가 명확히 드러나게 작성해줘.",
+    "tags": ["Suno", "어드밴스드", "메타프롬프팅"]
+  },
+  {
     "id": "image-basic-vs-refined",
     "category": "이미지 생성",
     "title": "이미지 프롬프트 약식 vs 정식 비교",
