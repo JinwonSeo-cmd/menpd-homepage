@@ -604,10 +604,8 @@ body {
 #live-class .section-sub { color: #e2eaf2; max-width: 760px; }
 .live-course-card {
   max-width: 1120px;
-  padding: clamp(24px, 4vw, 46px);
-  display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(320px, .85fr);
-  gap: clamp(28px, 5vw, 62px);
+  padding: clamp(19px, 2.4vw, 28px);
+  display: block;
   align-items: center;
   color: #17243a;
   border: 1px solid rgba(255,255,255,.72);
@@ -623,11 +621,13 @@ body {
   box-shadow: 0 30px 82px rgba(26,52,88,.24);
   outline: none;
 }
+.live-course-copy { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "status cta" "title cta" "desc cta" "meta cta"; column-gap: 28px; align-items: center; }
 .live-course-status {
+  grid-area: status;
   display: inline-flex;
   align-items: center;
   gap: 9px;
-  margin-bottom: 17px;
+  margin-bottom: 9px;
   color: #315b9b;
   font-size: 12px;
   font-weight: 700;
@@ -641,19 +641,22 @@ body {
   box-shadow: 0 0 0 6px rgba(98,184,128,.13);
 }
 .live-course-copy h3 {
+  grid-area: title;
   margin: 0;
-  font-size: clamp(28px, 3.6vw, 48px);
+  font-size: clamp(27px, 3vw, 38px);
   line-height: 1.12;
   letter-spacing: -.05em;
 }
 .live-course-copy > p {
+  grid-area: desc;
   max-width: 620px;
-  margin: 18px 0 22px;
+  margin: 8px 0 12px;
   color: #586b80;
-  font-size: 16px;
-  line-height: 1.75;
+  font-size: 14px;
+  line-height: 1.55;
 }
 .live-course-meta { display: flex; flex-wrap: wrap; gap: 8px; }
+.live-course-meta { grid-area: meta; }
 .live-course-meta span {
   padding: 7px 11px;
   color: #315b9b;
@@ -664,12 +667,13 @@ body {
   font-weight: 600;
 }
 .live-course-cta {
-  margin-top: 26px;
+  grid-area: cta;
+  margin-top: 0;
   display: inline-flex;
   align-items: center;
   gap: 12px;
   color: #fff;
-  padding: 12px 18px;
+  padding: 9px 15px;
   border-radius: 999px;
   background: #315b9b;
   font-size: 13px;
@@ -678,6 +682,7 @@ body {
 .live-course-cta b { font-size: 17px; transition: transform .2s ease; }
 .live-course-card:hover .live-course-cta b { transform: translateX(4px); }
 .live-course-preview {
+  display: none;
   padding: 22px;
   color: #fff;
   border-radius: 23px;
@@ -703,16 +708,16 @@ body {
 .live-course-instances i { margin-left: auto; color: #315b9b; font-size: 11px; font-style: normal; font-weight: 700; white-space: nowrap; }
 
 @media (max-width: 760px) {
-  .live-course-card { grid-template-columns: 1fr; }
-  .live-course-preview { order: -1; }
+  .live-course-card { display: block; }
+  .live-course-copy { display: block; }
+  .live-course-cta { margin-top: 13px; }
 }
 
 @media (max-width: 520px) {
   #live-class { padding-left: 14px; padding-right: 14px; }
-  .live-course-card { padding: 20px 17px; border-radius: 22px; }
-  .live-course-preview { padding: 17px; border-radius: 18px; }
-  .live-course-copy h3 { font-size: 30px; }
-  .live-course-copy > p { font-size: 14px; }
+  .live-course-card { padding: 18px 16px; border-radius: 20px; }
+  .live-course-copy h3 { font-size: 27px; }
+  .live-course-copy > p { font-size: 13px; }
   .live-course-instances { align-items: stretch; flex-direction: column; gap: 7px; }
   .live-course-instances a { flex-wrap: wrap; }
   .live-course-instances small { width: 100%; padding-left: 22px; }
