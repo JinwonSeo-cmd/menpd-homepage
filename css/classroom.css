@@ -86,12 +86,21 @@ button { font: inherit; }
 .guide-card { padding: 18px; border: 1px solid var(--line); border-radius: var(--radius-md); background: linear-gradient(145deg, #fff, #f5f8fb); }
 .guide-card h5 { margin: 0 0 8px; color: var(--blue-deep); font-size: 15px; }
 .guide-card > p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.65; }
+.guide-example { margin: 14px 0 0; padding: 12px 14px; color: #285f42; border-radius: 11px; background: #f1f8f3; font-size: 12px; line-height: 1.65; }
+.guide-point { margin-top: 10px !important; padding-left: 10px; color: #40516a !important; border-left: 2px solid var(--blue-deep); font-size: 12px !important; }
 .guide-keywords { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 7px; }
 .guide-keywords span { padding: 7px 10px; color: #7a4b34; border-radius: 999px; background: var(--peach-soft); font-size: 12px; font-weight: 700; }
 .guide-steps { margin: 14px 0 0; padding: 0; list-style: none; counter-reset: guide-step; display: grid; gap: 8px; }
 .guide-steps li { counter-increment: guide-step; display: grid; grid-template-columns: 24px 1fr; gap: 9px; align-items: start; color: #40516a; font-size: 12px; line-height: 1.55; }
 .guide-steps li::before { content: counter(guide-step); width: 22px; height: 22px; display: grid; place-items: center; color: #fff; border-radius: 50%; background: var(--blue-deep); font-size: 10px; font-weight: 800; }
 .learning-chapters { display: grid; gap: 18px; }
+.chapter-mini-nav { position: sticky; top: 150px; z-index: 4; padding: 10px; display: flex; gap: 7px; overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius-md); background: rgba(255,255,255,.94); box-shadow: 0 10px 24px rgba(41,68,104,.08); backdrop-filter: blur(10px); }
+.chapter-mini-nav a { flex: none; padding: 8px 11px; color: var(--blue-deep); border-radius: 999px; background: var(--blue-pale); font-size: 11px; font-weight: 750; }
+.chapter-progress { padding: 16px 18px; border-radius: var(--radius-md); color: #fff; background: #18304e; }
+.chapter-progress-row { margin-bottom: 10px; display: flex; justify-content: space-between; gap: 12px; font-size: 12px; }
+.chapter-progress-row span { color: #bdd0e2; }
+.chapter-progress-track { height: 6px; overflow: hidden; border-radius: 999px; background: rgba(255,255,255,.16); }
+.chapter-progress-track i { height: 100%; display: block; border-radius: inherit; background: linear-gradient(90deg, #79a8d8, #efb99e); transition: width .25s ease; }
 .learning-chapter { padding: clamp(18px, 3vw, 28px); border: 1px solid var(--line); border-radius: var(--radius-lg); background: #fff; box-shadow: 0 12px 30px rgba(41, 68, 104, .06); }
 .learning-chapter-head { display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: start; margin-bottom: 18px; }
 .learning-chapter-head > span { padding: 7px 10px; color: #fff; border-radius: 999px; background: var(--blue-deep); font-size: 11px; font-weight: 800; letter-spacing: .08em; }
@@ -109,12 +118,22 @@ button { font: inherit; }
 .assembled-prompt { margin-top: 14px; padding: 17px; border-radius: var(--radius-md); color: #eaf4ff; background: #18304e; }
 .assembled-prompt > strong { display: block; margin-bottom: 10px; font-size: 13px; }
 .assembled-prompt pre { margin: 0; white-space: pre-wrap; font: inherit; font-size: 12px; line-height: 1.7; }
+.chapter-callout { margin: 14px 0 0; padding: 13px 15px; color: #285f42; border-left: 3px solid #4f8766; border-radius: 0 12px 12px 0; background: #f1f8f3; font-size: 12px; line-height: 1.65; }
 .chapter-checklist { margin: 14px 0 0; padding: 14px 16px; display: grid; gap: 8px; list-style: none; border-radius: var(--radius-md); background: var(--blue-pale); }
-.chapter-checklist li { display: grid; grid-template-columns: 20px 1fr; gap: 7px; color: #40516a; font-size: 12px; line-height: 1.55; }
-.chapter-checklist li::before { content: '✓'; color: var(--blue-deep); font-weight: 900; }
+.chapter-checklist-head { padding-bottom: 9px; display: flex; justify-content: space-between; gap: 10px; color: var(--blue-deep); border-bottom: 1px solid var(--line); font-size: 12px; }
+.chapter-checklist-head span { color: var(--muted); font-weight: 700; }
+.chapter-checklist label { display: grid; grid-template-columns: 18px 1fr; gap: 9px; align-items: start; color: #40516a; font-size: 12px; line-height: 1.55; cursor: pointer; }
+.chapter-checklist input { margin-top: 2px; accent-color: var(--blue-deep); }
+.chapter-checklist input:checked + span { color: #8895a5; text-decoration: line-through; }
 .chapter-quiz { margin-top: 14px; padding: 14px 16px; border: 1px solid var(--line); border-radius: var(--radius-md); background: #fbfcfd; }
-.chapter-quiz summary { color: var(--blue-deep); font-size: 13px; font-weight: 800; cursor: pointer; }
-.chapter-quiz ol { margin: 12px 0; padding-left: 22px; color: #40516a; font-size: 12px; line-height: 1.7; }
+.chapter-quiz > strong { color: var(--blue-deep); font-size: 13px; }
+.chapter-quiz > p { margin: 10px 0; color: #40516a; font-size: 12px; line-height: 1.6; }
+.quiz-options { display: grid; gap: 7px; }
+.quiz-option { width: 100%; padding: 10px 12px; color: #40516a; text-align: left; border: 1px solid var(--line); border-radius: 10px; background: #fff; cursor: pointer; font: inherit; font-size: 12px; }
+.quiz-option:hover, .quiz-option.selected { color: var(--blue-deep); border-color: #79a8d8; background: var(--blue-pale); }
+.quiz-option.correct { color: #285f42; border-color: #75aa88; background: #eef8f1; }
+.quiz-option.wrong { color: #94463f; border-color: #d99690; background: #fff2f1; }
+.quiz-submit { margin-top: 10px; padding: 9px 13px; color: #fff; border: 0; border-radius: 10px; background: var(--blue-deep); cursor: pointer; font-size: 12px; font-weight: 800; }
 .chapter-quiz p { margin: 8px 0 0; color: var(--muted); font-size: 12px; line-height: 1.6; }
 .task-list { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
 .task-list label { padding: 12px 14px; display: flex; align-items: flex-start; gap: 10px; color: #40516a; border-radius: 13px; background: var(--blue-pale); font-size: 14px; line-height: 1.55; cursor: pointer; }

@@ -84,6 +84,18 @@ function renderGuideCards(cards) {
     const article = document.createElement("article");
     article.className = "guide-card";
     article.innerHTML = `<h5>${escapeHtml(card.title)}</h5>${card.body ? `<p>${escapeHtml(card.body)}</p>` : ""}`;
+    if (card.example) {
+      const example = document.createElement("blockquote");
+      example.className = "guide-example";
+      example.textContent = card.example;
+      article.appendChild(example);
+    }
+    if (card.point) {
+      const point = document.createElement("p");
+      point.className = "guide-point";
+      point.textContent = card.point;
+      article.appendChild(point);
+    }
     if (card.keywords?.length) {
       const keywords = document.createElement("div");
       keywords.className = "guide-keywords";
@@ -109,13 +121,39 @@ function renderGuideCards(cards) {
   return grid;
 }
 
-function renderLearningChapters(chapters) {
+function renderLearningChapters(chapters, storageKey) {
   const wrap = document.createElement("div");
   wrap.className = "learning-chapters";
+  const progressKey = `${storageKey}:chapter-checks`;
+  const savedChecks = JSON.parse(localStorage.getItem(progressKey) || "{}");
+  const totalChecks = chapters.reduce((total, chapter) => total + (chapter.checklist?.length || 0), 0);
 
-  chapters.forEach((chapter) => {
+  const nav = document.createElement("nav");
+  nav.className = "chapter-mini-nav";
+  nav.setAttribute("aria-label", "PE7 챕터 바로가기");
+  chapters.forEach((chapter, chapterIndex) => {
+    const link = document.createElement("a");
+    link.href = `#${storageKey.replace(/[^a-zA-Z0-9_-]/g, "-")}-chapter-${chapterIndex + 1}`;
+    link.textContent = `${chapter.number} ${chapter.navTitle || chapter.title}`;
+    nav.appendChild(link);
+  });
+  wrap.appendChild(nav);
+
+  const progress = document.createElement("div");
+  progress.className = "chapter-progress";
+  progress.innerHTML = `<div class="chapter-progress-row"><strong>전체 학습 진행</strong><span></span></div><div class="chapter-progress-track"><i></i></div>`;
+  wrap.appendChild(progress);
+
+  const updateProgress = () => {
+    const completed = Object.values(savedChecks).filter(Boolean).length;
+    progress.querySelector("span").textContent = `${completed} / ${totalChecks} 항목 완료`;
+    progress.querySelector("i").style.width = `${totalChecks ? (completed / totalChecks) * 100 : 0}%`;
+  };
+
+  chapters.forEach((chapter, chapterIndex) => {
     const article = document.createElement("article");
     article.className = "learning-chapter";
+    article.id = `${storageKey.replace(/[^a-zA-Z0-9_-]/g, "-")}-chapter-${chapterIndex + 1}`;
     article.innerHTML = `
       <header class="learning-chapter-head">
         <span>${escapeHtml(chapter.number || "")}</span>
@@ -148,28 +186,76 @@ function renderLearningChapters(chapters) {
       article.appendChild(example);
     }
 
+    if (chapter.callout) {
+      const callout = document.createElement("p");
+      callout.className = "chapter-callout";
+      callout.textContent = chapter.callout;
+      article.appendChild(callout);
+    }
+
     if (chapter.checklist?.length) {
-      const checklist = document.createElement("ul");
+      const checklist = document.createElement("div");
       checklist.className = "chapter-checklist";
-      chapter.checklist.forEach((item) => {
-        const li = document.createElement("li");
-        li.textContent = item;
-        checklist.appendChild(li);
+      const checklistHead = document.createElement("div");
+      checklistHead.className = "chapter-checklist-head";
+      checklistHead.innerHTML = `<strong>챕터 체크리스트</strong><span></span>`;
+      checklist.appendChild(checklistHead);
+      const updateChapterCount = () => {
+        const checked = checklist.querySelectorAll("input:checked").length;
+        checklistHead.querySelector("span").textContent = `${checked} / ${chapter.checklist.length} 완료`;
+      };
+      chapter.checklist.forEach((item, itemIndex) => {
+        const key = `${chapterIndex}-${itemIndex}`;
+        const label = document.createElement("label");
+        label.innerHTML = `<input type="checkbox" ${savedChecks[key] ? "checked" : ""}><span>${escapeHtml(item)}</span>`;
+        const input = label.querySelector("input");
+        input.addEventListener("change", () => {
+          savedChecks[key] = input.checked;
+          localStorage.setItem(progressKey, JSON.stringify(savedChecks));
+          updateChapterCount();
+          updateProgress();
+        });
+        checklist.appendChild(label);
       });
+      updateChapterCount();
       article.appendChild(checklist);
     }
 
     if (chapter.quiz) {
-      const quiz = document.createElement("details");
+      const quiz = document.createElement("section");
       quiz.className = "chapter-quiz";
-      const options = (chapter.quiz.options || []).map((option) => `<li>${escapeHtml(option)}</li>`).join("");
-      quiz.innerHTML = `<summary>퀴즈 · ${escapeHtml(chapter.quiz.question)}</summary>${options ? `<ol>${options}</ol>` : ""}<p><strong>정답</strong> ${escapeHtml(chapter.quiz.answer)}</p>${chapter.quiz.explanation ? `<p>${escapeHtml(chapter.quiz.explanation)}</p>` : ""}`;
+      quiz.innerHTML = `<strong>🧩 퀴즈</strong><p>${escapeHtml(chapter.quiz.question)}</p><div class="quiz-options"></div><button type="button" class="quiz-submit">채점하기</button><p class="quiz-result" aria-live="polite"></p>`;
+      const optionsRoot = quiz.querySelector(".quiz-options");
+      let selected = null;
+      (chapter.quiz.options || []).forEach((option) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "quiz-option";
+        button.textContent = option;
+        button.addEventListener("click", () => {
+          optionsRoot.querySelectorAll("button").forEach((item) => item.classList.remove("selected"));
+          button.classList.add("selected");
+          selected = option;
+        });
+        optionsRoot.appendChild(button);
+      });
+      quiz.querySelector(".quiz-submit").addEventListener("click", () => {
+        const result = quiz.querySelector(".quiz-result");
+        optionsRoot.querySelectorAll("button").forEach((button) => {
+          button.classList.toggle("correct", button.textContent === chapter.quiz.answer);
+          button.classList.toggle("wrong", button.textContent === selected && selected !== chapter.quiz.answer);
+        });
+        if (!selected) result.textContent = "먼저 답을 선택하세요.";
+        else if (selected === chapter.quiz.answer) result.textContent = `정답입니다. ${chapter.quiz.explanation || ""}`.trim();
+        else result.textContent = `다시 확인해보세요. 정답은 ${chapter.quiz.answer}입니다. ${chapter.quiz.explanation || ""}`.trim();
+      });
       article.appendChild(quiz);
     }
 
     wrap.appendChild(article);
   });
 
+  updateProgress();
   return wrap;
 }
 
@@ -228,7 +314,7 @@ function renderPart({ part, index, classId, promptMap }) {
     const block = document.createElement("div");
     block.className = "part-block";
     block.innerHTML = '<h4 class="part-block-title">PE7+ 프롬프트 엔지니어링 핵심 교안</h4>';
-    block.appendChild(renderLearningChapters(part.chapters));
+    block.appendChild(renderLearningChapters(part.chapters, storageKey));
     body.appendChild(block);
   }
 
