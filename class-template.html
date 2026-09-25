@@ -3,159 +3,97 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title data-class-title>강의 진행</title>
-<style>
-  :root {
-    --accent: #2563eb;
-    --bg: #ffffff;
-    --text: #1f2937;
-    --muted: #6b7280;
-    --border: #e5e7eb;
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    font-family: -apple-system, "Pretendard", "Noto Sans KR", sans-serif;
-    background: #f9fafb;
-    color: var(--text);
-  }
-  header {
-    background: var(--accent);
-    color: white;
-    padding: 24px 16px;
-  }
-  header h1 { margin: 0 0 4px; font-size: 1.3rem; }
-  header p { margin: 0; opacity: 0.9; font-size: 0.9rem; }
-  header .meta { margin-top: 8px; font-size: 0.8rem; opacity: 0.8; }
-  .qr-toggle {
-    margin-top: 12px;
-    background: rgba(255,255,255,0.15);
-    border: 1px solid rgba(255,255,255,0.4);
-    color: white;
-    padding: 6px 12px;
-    border-radius: 999px;
-    font-size: 0.8rem;
-    cursor: pointer;
-  }
-  .qr-box {
-    display: none;
-    margin-top: 12px;
-    background: white;
-    border-radius: 10px;
-    padding: 12px;
-    color: var(--text);
-    text-align: center;
-    max-width: 180px;
-  }
-  .qr-box.open { display: block; }
-  .short-url { font-size: 0.85rem; margin: 0 0 8px; word-break: break-all; }
-
-  main { max-width: 720px; margin: 0 auto; padding: 16px; }
-
-  nav.toc {
-    display: flex;
-    gap: 8px;
-    overflow-x: auto;
-    padding: 12px 16px;
-    background: white;
-    border-bottom: 1px solid var(--border);
-    position: sticky;
-    top: 0;
-    z-index: 10;
-  }
-  nav.toc a {
-    flex: 0 0 auto;
-    padding: 6px 12px;
-    border-radius: 999px;
-    background: #f3f4f6;
-    color: var(--text);
-    text-decoration: none;
-    font-size: 0.8rem;
-    white-space: nowrap;
-  }
-
-  .class-part {
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 16px;
-    margin-bottom: 12px;
-    scroll-margin-top: 60px;
-  }
-  .class-part h3 { margin: 0 0 6px; font-size: 1.05rem; }
-  .part-summary { margin: 0 0 12px; color: var(--muted); font-size: 0.9rem; }
-
-  .prompt-card {
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 12px;
-    margin-top: 10px;
-    background: #f9fafb;
-  }
-  .prompt-card-head { display: flex; gap: 8px; margin-bottom: 6px; }
-  .prompt-category, .prompt-tool {
-    font-size: 0.7rem;
-    padding: 2px 8px;
-    border-radius: 999px;
-    background: #e0e7ff;
-    color: #3730a3;
-  }
-  .prompt-tool { background: #d1fae5; color: #065f46; }
-  .prompt-title { margin: 0 0 6px; font-size: 0.95rem; }
-  .prompt-body {
-    white-space: pre-wrap;
-    font-family: inherit;
-    font-size: 0.85rem;
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 10px;
-    margin: 0 0 8px;
-    max-height: 240px;
-    overflow-y: auto;
-  }
-  .copy-btn {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 8px;
-    background: var(--accent);
-    color: white;
-    font-size: 0.9rem;
-    cursor: pointer;
-  }
-  .copy-btn.copied { background: #16a34a; }
-</style>
+<meta name="description" content="멘피디 AI 강의를 따라가는 실시간 학습 페이지" />
+<title data-class-title>강의 진행 | 멘피디 AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/classroom.css?v=20260925">
 </head>
 <body>
-  <header>
-    <h1 data-class-title>강의 로딩 중...</h1>
-    <p data-class-subtitle></p>
-    <div class="meta" data-class-meta></div>
-    <button class="qr-toggle" type="button" id="qrToggleBtn">강의 시작 QR 보기</button>
-    <div class="qr-box" data-class-qr id="qrBox"></div>
+  <nav class="class-nav" aria-label="강의 메뉴">
+    <a class="class-brand" href="index.html">멘피디 AI</a>
+    <div class="class-nav-links">
+      <a href="index.html#live-class">홈으로</a>
+      <a href="resources.html">자료실</a>
+      <button class="nav-progress" type="button" data-next-step>다음 단계</button>
+    </div>
+  </nav>
+
+  <header class="class-hero">
+    <div class="hero-orb hero-orb-one" aria-hidden="true"></div>
+    <div class="hero-orb hero-orb-two" aria-hidden="true"></div>
+    <div class="class-hero-inner">
+      <div class="hero-copy">
+        <p class="hero-kicker">LIVE CLASSROOM · 오늘의 동적교재</p>
+        <h1 data-class-title>강의 로딩 중...</h1>
+        <p class="hero-subtitle" data-class-subtitle></p>
+        <div class="hero-meta">
+          <span data-class-meta></span>
+          <span class="hero-status"><i></i> 수업 진행 중</span>
+        </div>
+      </div>
+
+      <div class="hero-panel">
+        <p class="hero-panel-label">나의 학습 진도</p>
+        <div class="hero-progress-row">
+          <strong data-progress-percent>0%</strong>
+          <span data-progress-copy>첫 단계를 시작해보세요</span>
+        </div>
+        <div class="progress-track" aria-label="전체 학습 진도"><span data-progress-bar></span></div>
+        <button class="qr-toggle" type="button" id="qrToggleBtn">휴대폰으로 열기 · QR</button>
+        <div class="qr-box" data-class-qr id="qrBox"></div>
+      </div>
+    </div>
   </header>
 
-  <nav class="toc" data-toc></nav>
+  <nav class="toc-wrap" aria-label="강의 단계 바로가기">
+    <div class="toc" data-toc></div>
+  </nav>
 
-  <main>
-    <div data-parts></div>
+  <main class="class-main">
+    <section class="class-intro" aria-labelledby="guide-title">
+      <div>
+        <p class="section-kicker">HOW TO USE</p>
+        <h2 id="guide-title">설명을 듣고, 복사하고, 바로 실습하세요.</h2>
+      </div>
+      <ol class="guide-steps">
+        <li><span>01</span>현재 파트 확인</li>
+        <li><span>02</span>프롬프트 복사</li>
+        <li><span>03</span>자료 다운로드</li>
+        <li><span>04</span>완료 체크</li>
+      </ol>
+    </section>
+
+    <section class="download-hub" data-download-section hidden>
+      <div class="download-hub-heading">
+        <p class="section-kicker">TODAY'S FILES</p>
+        <h2>오늘 수업에 필요한 자료</h2>
+        <p>작은 실습 파일은 바로 받고, 큰 자료는 구글 드라이브에서 확인하세요.</p>
+      </div>
+      <div class="download-grid" data-class-downloads></div>
+    </section>
+
+    <div class="parts-heading">
+      <div>
+        <p class="section-kicker">COURSE FLOW</p>
+        <h2>오늘의 학습 순서</h2>
+      </div>
+      <p>완료한 단계는 이 브라우저에 자동으로 저장됩니다.</p>
+    </div>
+    <div class="parts-list" data-parts></div>
   </main>
 
-  <script src="js/components.js"></script>
+  <footer class="class-footer">
+    <div><strong>멘피디 AI</strong><p>배우는 순간 바로 써보는 실습형 AI 교육</p></div>
+    <div class="class-footer-links"><a href="index.html">홈</a><a href="resources.html">자료실</a><a href="board.html">게시판</a></div>
+  </footer>
+
+  <script src="js/components.js?v=20260925"></script>
   <script>
     const params = new URLSearchParams(location.search);
     const classId = params.get("id") || "generative-ai-7hrs";
-    renderClassPage(classId).then(() => {
-      // 목차 자동 생성
-      const toc = document.querySelector("[data-toc]");
-      document.querySelectorAll(".class-part").forEach((el) => {
-        const a = document.createElement("a");
-        a.href = `#${el.id}`;
-        a.textContent = el.querySelector("h3").textContent.replace(/^Part \d+\.\s*/, "");
-        toc.appendChild(a);
-      });
-    });
+    renderClassPage(classId);
     document.getElementById("qrToggleBtn").addEventListener("click", () => {
       document.getElementById("qrBox").classList.toggle("open");
     });
