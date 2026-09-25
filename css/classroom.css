@@ -60,8 +60,13 @@ button { font: inherit; }
 .download-grid { margin-top: 25px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
 .download-card { min-height: 108px; padding: 18px; display: flex; align-items: center; justify-content: space-between; gap: 16px; border: 1px solid var(--line); border-radius: var(--radius-md); background: rgba(255,255,255,.82); transition: transform .2s ease, border-color .2s ease; }
 .download-card:hover { transform: translateY(-3px); border-color: rgba(49,91,155,.38); }
+.download-card-link { min-width: 0; flex: 1; display: flex; align-items: center; justify-content: space-between; gap: 14px; }
 .download-card strong { display: block; margin-bottom: 4px; }
 .download-card small { color: var(--muted); line-height: 1.5; }
+.download-copy-btn { flex: 0 0 auto; padding: 9px 11px; color: var(--blue-deep); border: 1px solid rgba(49,91,155,.28); border-radius: 10px; background: var(--blue-pale); cursor: pointer; font-size: 11px; font-weight: 800; }
+.download-copy-btn:hover { color: #fff; background: var(--blue-deep); }
+.download-copy-btn.copied { color: #fff; background: #4f8766; }
+.download-copy-btn:disabled { cursor: wait; opacity: .7; }
 .file-type { flex: 0 0 auto; min-width: 48px; padding: 9px 7px; text-align: center; color: #fff; border-radius: 12px; background: var(--blue-deep); font-size: 11px; font-weight: 800; }
 .file-type.drive { color: var(--ink); background: var(--peach-soft); }
 .parts-heading { margin-bottom: 25px; display: flex; justify-content: space-between; align-items: end; gap: 25px; }
@@ -174,6 +179,8 @@ button { font: inherit; }
   .hero-subtitle { font-size: 16px; }
   .class-main { padding-top: 48px; }
   .class-intro, .download-hub { margin-bottom: 48px; padding: 23px 18px; border-radius: 22px; }
+  .download-card { align-items: stretch; flex-direction: column; }
+  .download-copy-btn { width: 100%; }
   .guide-steps { grid-template-columns: 1fr; }
   .parts-heading { align-items: start; flex-direction: column; }
   .parts-heading > p { text-align: left; }

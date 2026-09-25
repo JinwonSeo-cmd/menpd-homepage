@@ -6,6 +6,25 @@ async function loadJSON(path) {
   return res.json();
 }
 
+async function loadOptionalJSON(path) {
+  const res = await fetch(path, { cache: "no-store" });
+  if (res.status === 404) return null;
+  if (!res.ok) throw new Error(`${path} 로드 실패`);
+  return res.json();
+}
+
+function applyClassVariant(classData, variant) {
+  if (!variant) return classData;
+  const overrides = new Map((variant.parts || []).map((part) => [part.slug, part]));
+  return {
+    ...classData,
+    ...(variant.class || {}),
+    variantId: variant.id,
+    variantLabel: variant.label,
+    parts: classData.parts.map((part) => ({ ...part, ...(overrides.get(part.slug) || {}) })),
+  };
+}
+
 function escapeHtml(value = "") {
   const div = document.createElement("div");
   div.textContent = value;
@@ -64,8 +83,10 @@ function renderLinkList(items, className) {
 }
 
 function renderDownloadCard(file) {
+  const card = document.createElement("article");
+  card.className = "download-card";
   const link = document.createElement("a");
-  link.className = "download-card";
+  link.className = "download-card-link";
   link.href = file.url;
   if (file.download || file.url?.endsWith(".md")) link.setAttribute("download", "");
   else { link.target = "_blank"; link.rel = "noopener"; }
@@ -74,7 +95,28 @@ function renderDownloadCard(file) {
     <span><strong>${escapeHtml(file.label)}</strong><small>${escapeHtml(file.note || "새 창에서 자료를 확인합니다.")}</small></span>
     <span class="file-type${kind === "DRIVE" ? " drive" : ""}">${escapeHtml(kind)}</span>
   `;
-  return link;
+  card.appendChild(link);
+  if (file.copyable || file.url?.endsWith(".md")) {
+    const copyBtn = document.createElement("button");
+    copyBtn.type = "button";
+    copyBtn.className = "download-copy-btn";
+    copyBtn.textContent = "MD 내용 복사";
+    copyBtn.addEventListener("click", async () => {
+      copyBtn.disabled = true;
+      try {
+        const res = await fetch(file.url, { cache: "no-store" });
+        if (!res.ok) throw new Error("파일을 불러오지 못했습니다.");
+        copyToClipboard(await res.text(), copyBtn);
+      } catch (error) {
+        copyBtn.textContent = "복사 실패";
+        setTimeout(() => { copyBtn.textContent = "MD 내용 복사"; }, 1500);
+      } finally {
+        copyBtn.disabled = false;
+      }
+    });
+    card.appendChild(copyBtn);
+  }
+  return card;
 }
 
 function renderGuideCards(cards) {
@@ -357,14 +399,19 @@ function renderPart({ part, index, classId, promptMap }) {
   return section;
 }
 
-async function renderClassPage(classId) {
+async function renderClassPage(classId, variantId = "") {
   try {
-    const [classData, promptsArr] = await Promise.all([loadJSON(`data/classes/${classId}.json`), loadJSON("data/prompts.json")]);
+    const [baseClassData, promptsArr, variant] = await Promise.all([
+      loadJSON(`data/classes/${classId}.json`),
+      loadJSON("data/prompts.json"),
+      variantId ? loadOptionalJSON(`data/classes/variants/${classId}/${variantId}.json`) : Promise.resolve(null),
+    ]);
+    const classData = applyClassVariant(baseClassData, variant);
     const promptMap = Object.fromEntries(promptsArr.map((prompt) => [prompt.id, prompt]));
     document.title = `${classData.title} | 멘피디 AI`;
     document.querySelector("h1[data-class-title]").textContent = classData.title;
     document.querySelector("[data-class-subtitle]").textContent = classData.subtitle || "";
-    document.querySelector("[data-class-meta]").textContent = `${classData.instructor} · ${classData.duration} · ${classData.parts.length}단계`;
+    document.querySelector("[data-class-meta]").textContent = `${classData.instructor} · ${classData.duration} · ${classData.parts.length}단계${classData.variantLabel ? ` · ${classData.variantLabel}` : ""}`;
 
     if (classData.downloads?.length) {
       const downloadSection = document.querySelector("[data-download-section]");
