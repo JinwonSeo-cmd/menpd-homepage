@@ -40,20 +40,33 @@
       "slug": "trends",
       "title": "현재 생성형 AI 트렌드는?",
       "summary": "포스터·영화·숏폼 사례를 보며 오늘 만들 결과물과 전체 워크플로우를 이해합니다.",
-      "tasks": ["오늘 가장 만들어보고 싶은 결과물 한 가지를 정합니다.", "채팅형 AI → 이미지 → 영상 → 음성으로 이어지는 흐름을 확인합니다."],
+      "tasks": ["오늘 가장 만들어보고 싶은 결과물 한 가지를 정합니다.", "포스터·AI 모델·영화·외국어 숏폼·동물 숏츠 사례 중 내 업무와 가장 가까운 사례를 고릅니다.", "채팅형 AI → 이미지 → 영상 → 음성으로 이어지는 흐름을 확인합니다."],
+      "guideCards": [
+        {"title": "생성형 AI는 이미 제작 현장에 있습니다", "body": "홍보 포스터, 잡지 이미지, 100% AI 영화, 외국어 학습 숏폼처럼 글·그림·음성·영상이 하나의 제작 흐름으로 연결되고 있습니다.", "keywords": ["포스터", "영화", "숏폼", "홍보 콘텐츠"]},
+        {"title": "오늘의 전체 워크플로우", "body": "채팅형 AI가 기획과 프롬프트를 만들고, 이미지 AI가 장면을 고정하며, 영상 AI가 움직임을 만들고, 음성·음원 AI가 소리를 완성합니다.", "steps": ["Claude 등으로 스토리와 작업 흐름을 정리합니다.", "Google Flow 등에서 영상용 이미지를 만듭니다.", "Seedance·Veo·Kling 등에서 이미지를 영상으로 바꿉니다.", "ElevenLabs로 목소리, Suno로 음원을 만듭니다."]},
+        {"title": "도구보다 흐름이 먼저", "body": "도구 이름은 바뀌어도 ‘기획 → 재료 생성 → 움직임 → 소리 → 편집’이라는 제작 순서는 유지됩니다.", "point": "오늘은 여러 도구를 외우기보다, 각 도구가 제작 과정의 어느 자리를 담당하는지 이해하는 것이 목표입니다."}
+      ],
       "prompts": [],
       "resources": [],
-      "tools": []
+      "tools": [{"label": "Claude 열기", "url": "https://claude.ai/new"}, {"label": "Google Flow 열기", "url": "https://labs.google/fx/tools/flow"}]
     },
     {
       "partNo": 2,
       "slug": "four-types",
       "title": "4대 분류 · 생성 6단계",
       "summary": "글·그림·오디오·비디오를 구분하고 반복 업무를 어느 수준까지 자동화할지 판단합니다.",
-      "tasks": ["내 업무를 텍스트·이미지·오디오·비디오 중 하나로 분류합니다.", "현재 작업이 6단계 중 어디에 있는지 표시합니다."],
+      "tasks": ["내 업무 결과물을 텍스트·이미지·오디오·비디오 중 하나 이상으로 분류합니다.", "현재 작업이 생성 6단계 중 어디에 있는지 표시합니다.", "한 단계 위로 올리기 위해 추가할 샘플·지침·자동화 요소를 한 가지 정합니다."],
+      "guideCards": [
+        {"title": "글 · 모든 생성의 중심", "body": "자료 조사, 보고서, 대본, 설명문, 구성안을 만듭니다. 텍스트형 AI는 다른 생성 AI에 명령을 전달하는 에이전트 역할도 합니다.", "keywords": ["보고서", "대본", "기획", "프롬프트"]},
+        {"title": "그림 · 시각 재료", "body": "삽화, 카드뉴스, 포스터, 인포그래픽, 섬네일, 영상용 장면 이미지를 만듭니다.", "keywords": ["삽화", "카드뉴스", "포스터", "스토리보드"]},
+        {"title": "오디오 · 목소리와 분위기", "body": "팟캐스트, 오디오북, 내레이션, BGM, 주제가, 플레이리스트를 만듭니다.", "keywords": ["TTS", "BGM", "팟캐스트", "음원"]},
+        {"title": "비디오 · 최종 전달물", "body": "숏폼, 롱폼, 안내영상, 홍보영상, 행사 인트로 영상을 만듭니다.", "keywords": ["숏폼", "홍보영상", "안내영상", "브이로그"]},
+        {"title": "생성 1~3단계 · 개인 작업", "body": "말로 생성 → 샘플을 주고 생성 → AI에게 전문 프롬프트를 대신 쓰게 하는 메타프롬프팅 순서입니다.", "steps": ["1단계: 자연어로 바로 요청", "2단계: 닮고 싶은 샘플 첨부", "3단계: 메타프롬프팅으로 요청문 개선"]},
+        {"title": "생성 4~6단계 · 조직 자산", "body": "KB·지침을 붙여 기준을 세우고, 봇·스킬에 반복 업무를 고정한 뒤, API·MCP·노드로 입력부터 업로드까지 연결합니다.", "steps": ["4단계: KB·지침 파일", "5단계: 봇·스킬로 반복", "6단계: 자동화 연결"]}
+      ],
       "prompts": [],
       "resources": [],
-      "tools": []
+      "tools": [{"label": "ChatGPT 열기", "url": "https://chatgpt.com/"}, {"label": "Claude 열기", "url": "https://claude.ai/new"}]
     },
     {
       "partNo": 3,
@@ -217,8 +230,14 @@
       "slug": "gemini-notebook",
       "title": "제미나이 노트북",
       "summary": "PDF·링크·텍스트를 하나의 노트북에 모아 보고서, 슬라이드, 오디오, 마인드맵으로 정리합니다.",
-      "tasks": ["수업용 PDF 또는 업무 자료 하나를 업로드합니다.", "핵심 내용 요약과 예상 질문을 생성합니다.", "원하는 형식의 학습 자료 하나를 만들어봅니다."],
-      "prompts": [],
+      "tasks": ["PDF·유튜브·웹 링크·텍스트·오디오 중 업무 자료를 하나 이상 업로드합니다.", "핵심 내용 요약과 예상 질문을 생성합니다.", "보고서·슬라이드·오디오·마인드맵·퀴즈 중 필요한 산출물을 하나 만듭니다.", "반복해서 쓸 INS·KB·디자인 MD 기준을 구분해 적습니다."],
+      "guideCards": [
+        {"title": "왜 NotebookLM인가", "body": "긴 자료의 토큰을 관리하고, 소스를 노트북에 계속 보관하며, 나중에 다시 꺼내 재활용하고, 출력 방식을 내 스타일로 고정할 수 있습니다.", "keywords": ["토큰 관리", "지속 보관", "재활용", "커스터마이즈"]},
+        {"title": "자료만 넣어도 자동 정리", "body": "PDF·링크·텍스트·오디오 등 여러 소스를 한곳에 넣으면 핵심을 구조화하고 소스에 근거해 답합니다.", "steps": ["새 노트북을 만듭니다.", "여러 형식의 소스를 업로드합니다.", "자동 요약과 주요 주제를 확인합니다.", "필요한 질문을 이어서 묻습니다."]},
+        {"title": "스튜디오 산출물", "body": "같은 소스를 보고서, 슬라이드 자료, 오디오 개요, 인포그래픽, 퀴즈, 마인드맵처럼 학습 방식에 맞춰 바꿔 쓸 수 있습니다.", "point": "중요한 리서치는 딥리서치로 확장하되, 일상적인 정리와 학습자료 제작은 저장된 소스를 중심으로 진행합니다."},
+        {"title": "정리 뇌를 만드는 3종 파일", "body": "한 번 잘 만든 기준 파일은 다음 수업과 다른 주제에도 재사용할 수 있습니다.", "steps": ["INS: 전체 작업 순서와 판단 원칙을 지휘합니다.", "KB: 반드시 근거로 삼을 지식과 사실을 모읍니다.", "디자인 MD: 색·폰트·톤·레이아웃 규칙을 고정합니다."]}
+      ],
+      "prompts": ["notebooklm-source-analysis", "notebooklm-teaching-output"],
       "resources": [],
       "tools": [{"label": "Gemini Notebook 열기", "url": "https://notebooklm.google.com/"}]
     },
@@ -228,6 +247,11 @@
       "title": "AI 문서: PPT 생성 (1단계)",
       "summary": "내용을 먼저 정리한 뒤 디자인 없는 2장짜리 PPT로 바꾸며 생성 과정의 기본을 익힙니다.",
       "tasks": ["내용 정리 프롬프트를 먼저 실행합니다.", "답변이 나온 뒤 PPT 변환 후속 프롬프트를 실행합니다.", "완성된 원본 PPT를 저장합니다."],
+      "guideCards": [
+        {"title": "1단계의 목적", "body": "처음부터 디자인까지 한꺼번에 요구하지 않고, 내용의 정확성·구조·분량을 먼저 확정합니다.", "point": "이 단계의 PPT는 예쁘게 만드는 결과물이 아니라 이후 리디자인의 ‘원본’입니다."},
+        {"title": "내용 먼저, 형식은 다음", "body": "행정 전문가와 AI 전문가라는 역할을 주고, 업무 팁·사례·도구를 구조화한 뒤 2장짜리 단순 PPT로 변환합니다.", "steps": ["내용 정리 프롬프트 실행", "사실과 표현 검토", "PPT 변환 후속 지시", "원본 파일 저장"]},
+        {"title": "검토 포인트", "body": "슬라이드마다 핵심 메시지가 하나인지, 제목만 읽어도 흐름이 이어지는지, 근거 없는 수치가 없는지 확인합니다.", "keywords": ["핵심 메시지", "논리 흐름", "사실 확인", "2장 제한"]}
+      ],
       "prompts": ["ppt-step1-content", "ppt-step1-to-ppt"],
       "resources": [{"label": "PPT 실습 자료 모음", "url": "https://drive.google.com/drive/folders/1IXElH51ZFXBLQvUH6xXnCZ9RUnlhrgu8?usp=drive_link"}],
       "tools": [{"label": "Claude 열기", "url": "https://claude.ai/new"}]
@@ -238,6 +262,11 @@
       "title": "샘플 입력 디자인 (2단계)",
       "summary": "좋은 디자인 샘플을 먼저 찾고 원본 PPT를 같은 분위기로 리디자인합니다.",
       "tasks": ["마음에 드는 디자인 샘플을 캡처합니다.", "원본 PPT와 샘플 이미지를 함께 첨부합니다.", "리디자인 전후 결과를 비교합니다."],
+      "guideCards": [
+        {"title": "센스보다 샘플", "body": "디자인을 말로 길게 설명하는 것보다, 내가 원하는 결과에 가까운 샘플 한 장을 보여주는 편이 빠르고 정확합니다.", "point": "Pinterest에서 색·구성·타이포그래피가 내 내용과 맞는 자료를 찾습니다."},
+        {"title": "샘플 선택 기준", "body": "예쁘기만 한 샘플보다 실제로 내 정보량을 담을 수 있는 구성을 고릅니다.", "keywords": ["정보 밀도", "제목 위계", "색상 수", "도형 구성", "여백"]},
+        {"title": "리디자인 실습", "body": "디자인 샘플 이미지와 1단계에서 만든 원본 PPT를 함께 첨부하고, 내용은 유지한 채 2장으로 다시 디자인합니다.", "steps": ["샘플 캡처", "원본 PPT 첨부", "리디자인 프롬프트 실행", "Before·After 비교"]}
+      ],
       "prompts": ["sample-redesign"],
       "resources": [{"label": "PPT 실습 자료 모음", "url": "https://drive.google.com/drive/folders/1IXElH51ZFXBLQvUH6xXnCZ9RUnlhrgu8?usp=drive_link"}],
       "tools": [{"label": "Pinterest 열기", "url": "https://www.pinterest.com/"}, {"label": "Claude 열기", "url": "https://claude.ai/new"}]
@@ -248,6 +277,12 @@
       "title": "디자인 MD 파일 활용 (4단계)",
       "summary": "색상·폰트·구성 규칙을 MD 파일에 저장해 결과물의 디자인을 반복해서 일관되게 만듭니다.",
       "tasks": ["디자인 MD 시작 템플릿을 다운로드합니다.", "샘플 이미지를 분석하는 프롬프트를 실행합니다.", "생성된 규칙을 템플릿에 넣고 내 MD 파일로 저장합니다."],
+      "guideCards": [
+        {"title": "MD는 사람과 AI가 함께 읽는 지침서", "body": "# 제목, **굵게**, - 목록처럼 단순한 문법으로 구조를 표현하는 텍스트 파일입니다. 필요할 때 HTML·PDF 등으로 바꾸기도 쉽습니다."},
+        {"title": "디자인 MD는 ‘우리 조직의 옷장’", "body": "내용이 바뀌어도 색·폰트·톤·레이아웃이라는 옷은 유지합니다. 챕터가 달라져도 같은 조직이 만든 결과처럼 보이게 합니다.", "keywords": ["색", "폰트", "톤", "구성"]},
+        {"title": "기준 파일의 역할 구분", "body": "MD는 포맷, 스킬은 반복 작업의 행동 매뉴얼, INS는 전체 지휘, KB는 사실과 지식의 창고입니다.", "keywords": ["MD", "Skill", "INS", "KB"]},
+        {"title": "샘플에서 MD로", "body": "좋아하는 디자인을 분석해 규칙을 뽑고, 그 규칙을 한 장의 MD에 저장하면 다른 내용에도 같은 스타일을 적용할 수 있습니다.", "steps": ["샘플 디자인 첨부", "디자인 특성 총망라", "우선순위와 약어 정리", "MD 파일로 저장"]}
+      ],
       "prompts": ["design-md-analyze", "own-md-4step"],
       "resources": [{"label": "디자인 MD 시작 템플릿", "url": "downloads/public/design-md-starter.md", "download": true}, {"label": "PPT 자료 모음", "url": "https://drive.google.com/drive/folders/1IXElH51ZFXBLQvUH6xXnCZ9RUnlhrgu8?usp=drive_link"}],
       "tools": [{"label": "Claude 열기", "url": "https://claude.ai/new"}, {"label": "디자인 MD 사례 보기", "url": "https://styles.refero.design/"}]
@@ -257,8 +292,14 @@
       "slug": "skills",
       "title": "스킬 기능 활용 (5단계)",
       "summary": "반복해서 쓰는 MD 지침을 스킬로 등록하고 필요할 때 이름으로 불러옵니다.",
-      "tasks": ["앞 단계에서 만든 MD 파일 이름을 정리합니다.", "클로드 설정의 스킬 메뉴에서 파일을 등록합니다.", "새 대화에서 스킬을 불러 결과가 유지되는지 확인합니다."],
-      "prompts": [],
+      "tasks": ["앞 단계에서 만든 MD 파일의 역할과 이름을 정리합니다.", "대-중-소분류 규칙으로 스킬 이름을 짓습니다.", "클로드 설정의 스킬 메뉴에서 파일을 등록합니다.", "새 대화에서 스킬을 불러 2장 PPT를 만들고 결과가 유지되는지 확인합니다."],
+      "guideCards": [
+        {"title": "스킬 이름은 기능이 보이게", "body": "대분류-중분류-소분류 순서로 지으면 목록이 길어져도 찾기 쉽습니다.", "example": "ppt-design-greenyellow / design-applestyle / sns-produce-cardnews"},
+        {"title": "등록 순서", "body": "반복해서 쓸 MD 파일을 준비한 뒤 스킬 메뉴에 올리고 새 대화에서 불러 테스트합니다.", "steps": ["좌하단 프로필", "설정", "스킬", "우상단 추가", "파일 업로드", "새 대화에서 호출"]},
+        {"title": "AI가 못 잡는 것은 직접", "body": "몇 px의 위치·정렬처럼 계속 틀리는 부분은 사람이 직접 고치는 편이 빠릅니다.", "point": "수동 보정은 실패가 아니라 토큰·시간을 절약하고, 다음 작업의 좋은 샘플을 만드는 과정입니다."},
+        {"title": "MD는 다른 AI에도 이식 가능", "body": "Claude에서는 파일·스킬로, Gemini에서는 파일 첨부로, 다른 도구에서는 텍스트 붙여넣기나 PDF 변환 방식으로 같은 기준을 재활용할 수 있습니다."}
+      ],
+      "prompts": ["skill-instruction-pack"],
       "resources": [],
       "tools": [{"label": "Claude 열기", "url": "https://claude.ai/new"}]
     },
@@ -267,20 +308,34 @@
       "slug": "custom-bot",
       "title": "커스텀봇 활용",
       "summary": "프로젝트·젬스·GPTs에 지침과 자료를 넣어 반복 업무를 하나의 전용 공간으로 고정합니다.",
-      "tasks": ["반복할 업무 하나를 고릅니다.", "역할·절차·출력 형식을 지침으로 작성합니다.", "새 입력으로 다시 실행해 결과의 일관성을 확인합니다."],
-      "prompts": [],
+      "tasks": ["반복할 업무 하나를 고릅니다.", "역할·입력·절차·금지사항·출력 형식을 MD 지침으로 작성합니다.", "관련 KB와 샘플 파일을 넣습니다.", "새 입력 3개로 다시 실행해 결과의 일관성과 예외 대응을 확인합니다."],
+      "guideCards": [
+        {"title": "커스텀봇이 필요한 순간", "body": "같은 설명과 파일을 매번 다시 넣는 작업, 여러 번의 대화가 이어지는 워크플로우, 조직의 기준을 계속 적용해야 하는 업무에 적합합니다."},
+        {"title": "대표적인 전용 공간", "body": "Claude Projects, Gemini Gems, ChatGPT GPTs처럼 지침과 자료를 저장하고 같은 목적의 대화를 이어가는 공간입니다.", "keywords": ["Claude Projects", "Gemini Gems", "ChatGPT GPTs"]},
+        {"title": "봇을 구성하는 4가지", "body": "지침만 길게 쓰기보다 역할·행동·근거·예시를 구분해서 넣습니다.", "steps": ["INS: 언제 무엇을 어떤 순서로 할지", "KB: 반드시 근거로 삼을 자료", "Sample: 좋은 결과의 기준", "Output: 최종 형식과 품질 검사"]},
+        {"title": "완성 후 테스트", "body": "정상 입력뿐 아니라 자료가 부족한 경우와 애매한 요청도 넣어봅니다.", "point": "좋은 봇은 모를 때 추측하지 않고, 필요한 자료를 요청하거나 확인 불가라고 말합니다."}
+      ],
+      "prompts": ["custom-bot-instruction"],
       "resources": [],
-      "tools": [{"label": "Gemini 열기", "url": "https://gemini.google.com/"}, {"label": "ChatGPT 열기", "url": "https://chatgpt.com/"}]
+      "tools": [{"label": "Claude 열기", "url": "https://claude.ai/new"}, {"label": "Gemini 열기", "url": "https://gemini.google.com/"}, {"label": "ChatGPT 열기", "url": "https://chatgpt.com/"}]
     },
     {
       "partNo": 10,
       "slug": "ai-plugin",
       "title": "AI 플러그인과 시각화",
       "summary": "PPT 안에서 AI를 활용해 색상·개체·레이아웃을 다듬고 내용에 맞는 시각화 형식을 선택합니다.",
-      "tasks": ["슬라이드 내용이 순서·비교·구성·수치 중 무엇인지 판단합니다.", "맞는 시각화 형식을 하나 선택합니다.", "AI 수정 후 정렬과 간격은 직접 최종 점검합니다."],
-      "prompts": [],
+      "tasks": ["기준이 될 샘플 장표 3~5장 또는 디자인 MD를 준비합니다.", "슬라이드 내용이 흐름·관계·수치·비교·공간 중 무엇인지 판단합니다.", "맞는 시각화 형식을 하나 선택해 AI에 변환을 요청합니다.", "AI 수정 후 정렬·간격·색상 오류는 직접 최종 점검합니다."],
+      "guideCards": [
+        {"title": "플러그인의 역할", "body": "PowerPoint 안에서 Claude 에이전트나 Copilot을 이용해 개체·색·레이아웃을 직접 수정합니다. 복잡하고 세밀한 톤앤매너 작업과 단순한 대량 수정의 성격을 구분합니다."},
+        {"title": "샘플 3~5장이 디자인 규칙서", "body": "잘 만든 대표 장표를 먼저 확정한 뒤 이를 기준으로 나머지를 확장하면 재설명과 토큰 사용이 줄어듭니다.", "steps": ["기준 샘플 제작", "샘플 기준 확장 요청", "작은 오류는 수동 조정"]},
+        {"title": "흐름 · 프로세스", "body": "순서가 있는 내용은 플로우차트, 프로세스, 타임라인, 로드맵, 사이클, 퍼널, 스윔레인, 갠트차트가 어울립니다."},
+        {"title": "관계 · 구조", "body": "전체와 부분 또는 연결 관계는 조직도, 트리, 마인드맵, 벤다이어그램, 네트워크, 2×2 매트릭스가 어울립니다."},
+        {"title": "데이터 · 수치", "body": "숫자는 막대·선·도넛·영역·산점도·레이더·게이지·워터폴·히트맵처럼 비교 목적에 맞는 그래프로 표현합니다."},
+        {"title": "비교 · 강조 · 실제 화면", "body": "대조는 VS 카드·비교표, 핵심 수치는 빅넘버·통계카드, 제품과 화면은 디바이스 목업·스크린샷 주석으로 표현합니다."}
+      ],
+      "prompts": ["ppt-visualization-selector", "ppt-plugin-expand"],
       "resources": [{"label": "PPT 실습 자료 모음", "url": "https://drive.google.com/drive/folders/1IXElH51ZFXBLQvUH6xXnCZ9RUnlhrgu8?usp=drive_link"}],
-      "tools": []
+      "tools": [{"label": "PowerPoint용 Copilot 안내", "url": "https://support.microsoft.com/copilot-powerpoint"}]
     },
     {
       "partNo": "심화",
@@ -288,8 +343,15 @@
       "slug": "deep-research",
       "title": "딥리서치와 AI",
       "summary": "탄탄한 조사 프롬프트를 만들고 출처·교차검증·할루시네이션 확인 절차를 습관화합니다.",
-      "tasks": ["검증 체크리스트를 다운로드합니다.", "리서치 메타프롬프트에서 조사 목적과 핵심 질문을 내 주제로 바꿉니다.", "결과의 링크를 직접 열어 출처를 확인합니다."],
-      "prompts": ["research-meta-template", "research-verify-4"],
+      "tasks": ["검증 체크리스트를 다운로드합니다.", "리서치 메타프롬프트에서 조사 목적·핵심 질문·범위·소스 우선순위를 내 현안으로 바꿉니다.", "같은 프롬프트를 2개 이상의 AI에서 실행합니다.", "결과 파일을 한곳에 모아 충돌·출처·할루시네이션을 교차 검증합니다.", "모든 링크를 직접 열어 존재 여부와 원문 내용을 확인합니다."],
+      "guideCards": [
+        {"title": "AI가 잘하는 조사와 못 보는 정보", "body": "공개 웹 정보는 넓고 빠르게 수집하지만, 현장 경험·로그인 사이트·비공개 커뮤니티·내부 문서는 사람이 직접 제공해야 합니다."},
+        {"title": "딥리서치의 작동 방식", "body": "조사 질문을 하위 검색어로 나누고, 웹을 반복 탐색한 뒤, 수집한 근거를 체계적인 보고서로 정리하는 에이전트형 기능입니다.", "steps": ["검색어 자동 생성", "웹 검색·수집과 재검색", "근거 정리", "보고서화"]},
+        {"title": "좋은 조사 결과의 3조건", "body": "탄탄한 PE7 프롬프트, 충분한 추론 성능, 여러 결과의 교차·출처·할루시네이션 검증이 함께 필요합니다.", "keywords": ["프롬프트", "모델", "교차검증", "출처검증"]},
+        {"title": "검증을 자산으로 만들기", "body": "검증 방식을 총망라해 하나의 KB로 정리하고, 스킬이나 커스텀봇에 심으면 조사할 때마다 같은 기준을 적용할 수 있습니다.", "steps": ["검증 방법 수집", "중복 제거·우선순위화", "KB 파일화", "스킬·봇 등록"]},
+        {"title": "검증의 마지막은 사람", "body": "AI가 실제처럼 보이는 잘못된 링크를 만들 수도 있으므로 링크는 반드시 직접 열어야 합니다.", "point": "검증된 자료란 완벽한 자료가 아니라, 무엇을 어디까지 확인했는지 사용자가 아는 자료입니다."}
+      ],
+      "prompts": ["research-meta-template", "research-verify-4", "research-cross-verify"],
       "resources": [{"label": "딥리서치 검증 체크리스트", "url": "downloads/public/research-checklist.md", "download": true}, {"label": "리서치 스킬 자료", "url": "https://drive.google.com/drive/folders/1JZUWfsJnR6iH4AK3HH6KUGh2VFdJdq0E?usp=sharing"}],
       "tools": [{"label": "Claude 열기", "url": "https://claude.ai/new"}, {"label": "ChatGPT 열기", "url": "https://chatgpt.com/"}]
     },
@@ -309,6 +371,15 @@
           "title": "어드밴스드 모드 · 메타프롬프팅",
           "body": "LLM에서 먼저 가사와 음악 스타일을 설계한 뒤 Suno의 두 입력란에 나눠 넣습니다.",
           "steps": ["Claude·ChatGPT 등에 만들고 싶은 곡을 대략 설명합니다.", "메타프롬프팅으로 완성된 가사와 Styles용 프롬프트를 요청합니다.", "가사는 Lyrics에, 스타일 프롬프트는 Styles에 복사해 넣습니다.", "Create를 눌러 생성한 뒤 링크를 복사해 공유합니다."]
+        },
+        {
+          "title": "음원과 음성은 구분해서 선택",
+          "body": "Suno는 노래와 BGM 제작에, ElevenLabs·Typecast·네이버 클로바 더빙은 내레이션과 안내 음성 제작에 적합합니다.",
+          "keywords": ["Suno", "ElevenLabs", "Typecast", "클로바 더빙"]
+        },
+        {
+          "title": "공유 전 확인",
+          "body": "가사·발음·목소리 톤·음량을 확인하고, 외부 공개나 상업 이용 전에는 각 서비스의 이용 조건과 사용한 소스의 권리를 확인합니다."
         }
       ],
       "prompts": ["suno-advanced-meta"],
@@ -320,8 +391,14 @@
       "slug": "image",
       "title": "이미지 생성 AI 활용법",
       "summary": "샘플과 디자인 MD를 활용해 포스터·삽화·목업 이미지를 같은 스타일로 반복 생성합니다.",
-      "tasks": ["약식 프롬프트를 먼저 실행합니다.", "정식 프롬프트 결과와 비교합니다.", "원하는 스타일을 MD 또는 커스텀봇에 저장합니다."],
-      "prompts": ["image-basic-vs-refined"],
+      "tasks": ["약식 프롬프트를 먼저 실행합니다.", "정식 프롬프트 결과와 비교합니다.", "말로만 만든 결과와 샘플을 준 결과를 비교합니다.", "원하는 스타일을 디자인 MD로 정리해 커스텀봇 또는 스킬에 저장합니다.", "새 주제 3개를 넣어 스타일 일관성을 확인합니다."],
+      "guideCards": [
+        {"title": "이미지 생성의 활용 범위", "body": "실사형 삽화, 3D·애니메이션 스타일, 개념 심벌, 사은품 목업, 포스터, 인물·장소 변형에 활용할 수 있습니다.", "keywords": ["삽화", "심벌", "목업", "포스터", "변형"]},
+        {"title": "약식과 정식의 차이", "body": "요즘 도구는 짧은 한국어 설명도 잘 이해합니다. 정식 프롬프트는 카메라·조명·구도·분위기를 고정하거나 반복 제작할 때 가치가 큽니다."},
+        {"title": "샘플이 먼저", "body": "좋은 견본을 조사해 ‘이 사진처럼’ 요청하면 AI가 샘플을 분석해 스타일과 구도를 더 구체적으로 재현합니다.", "steps": ["견본 탐색", "샘플 첨부", "스타일 분석", "내 내용으로 재디자인"]},
+        {"title": "일관성을 자산화", "body": "한 번 만든 결과를 끝내지 말고, 원하는 기준을 디자인 MD에 정리하고 스킬·커스텀봇에 등록해 계속 고도화합니다.", "steps": ["샘플 입력", "기준 MD 생성", "스킬·봇 등록", "새 내용으로 반복 테스트"]}
+      ],
+      "prompts": ["image-basic-vs-refined", "image-reference-redesign", "image-style-system"],
       "resources": [{"label": "카드뉴스 제작 스킬", "url": "https://drive.google.com/file/d/1N6CBadwfAQMU5wdyw0SBpNOmjb6_E4nw/view?usp=drive_link"}],
       "tools": [{"label": "Google Flow 열기", "url": "https://labs.google/fx/tools/flow"}, {"label": "Claude 열기", "url": "https://claude.ai/new"}]
     },
@@ -330,8 +407,15 @@
       "slug": "reference-sheet",
       "title": "레퍼런스 시트 생성",
       "summary": "캐릭터·배경·소품 시트로 이미지와 영상 속 인물·공간의 일관성을 유지합니다.",
-      "tasks": ["캐릭터의 기본 정보와 색상·의상 규칙을 정합니다.", "클로드에서 이미지 생성용 3안을 만듭니다.", "선택한 안을 Google Flow에서 시트로 생성합니다."],
-      "prompts": [],
+      "tasks": ["캐릭터·환경·소품 중 이번 영상에서 반복할 대상을 고릅니다.", "캐릭터의 기본 정보와 색상·의상 규칙을 정합니다.", "클로드에서 이미지 생성용 3안을 만듭니다.", "선택한 안으로 베이스 이미지를 생성한 뒤 다시 업로드합니다.", "Google Flow에서 정면·측면·표정·포즈가 포함된 시트를 생성합니다."],
+      "guideCards": [
+        {"title": "캐릭터 시트", "body": "인물의 정면·측면, 표정, 포즈, 손동작을 한 장에 정리합니다. 마스코트나 숏폼 주인공을 반복 생성할 때 사용합니다."},
+        {"title": "환경 시트", "body": "하나의 공간을 여러 각도·시간대·날씨로 표현합니다. 카페·도시·기관 건물처럼 반복 등장하는 배경을 고정합니다."},
+        {"title": "소품 시트", "body": "브랜드 굿즈·가방·제품처럼 중요한 소품의 여러 각도와 상태를 한 장에 정리합니다."},
+        {"title": "캐릭터 시트 구성요소", "body": "베이스 이미지만 넣지 말고 바뀌면 안 되는 속성을 명시합니다.", "keywords": ["이름·나이·직업", "신체 비율", "컬러 팔레트", "표정", "포즈", "손동작", "의상·소품"]},
+        {"title": "Claude ↔ Google Flow 실습", "body": "설명과 프롬프트 설계는 채팅형 AI가 맡고, 베이스 이미지와 최종 시트 생성은 이미지 도구가 맡습니다.", "steps": ["Claude에서 캐릭터 3안과 프롬프트 요청", "Flow에서 베이스 이미지 생성", "베이스 이미지를 Claude에 다시 업로드", "시트 생성용 프롬프트 받기", "Flow에서 레퍼런스 시트 완성"]}
+      ],
+      "prompts": ["reference-character-three-options", "reference-character-sheet"],
       "resources": [{"label": "레퍼런스 시트 자동 완성 스킬", "url": "https://drive.google.com/drive/folders/18hQliLyLLSg0ZnG9tQJGGajK6Tk6LgQZ?usp=drive_link"}],
       "tools": [{"label": "Claude 열기", "url": "https://claude.ai/new"}, {"label": "Google Flow 열기", "url": "https://labs.google/fx/tools/flow"}]
     },
@@ -340,8 +424,16 @@
       "slug": "video",
       "title": "비디오 생성 및 편집",
       "summary": "스토리 → 레퍼런스 시트 → 스토리보드 → 장면 생성 → 편집의 5단계로 짧은 영상을 완성합니다.",
-      "tasks": ["영상 제작 워크플로우를 다운로드합니다.", "3개 장면의 스토리 구성안을 만듭니다.", "장면별 프롬프트로 영상을 생성합니다.", "CapCut에서 영상·자막·음원을 연결합니다."],
-      "prompts": ["video-meta-prompt", "video-story-3scene"],
+      "tasks": ["영상 제작 워크플로우를 다운로드합니다.", "텍스트 투 비디오와 이미지 투 비디오 중 제작 방식을 정합니다.", "3개 장면의 스토리와 스토리보드를 만듭니다.", "레퍼런스 시트의 캐릭터·배경 정보를 각 장면 프롬프트에 반복합니다.", "장면별 이미지와 움직임 프롬프트로 영상을 생성합니다.", "CapCut에서 클립·자막·음원·효과음을 연결합니다."],
+      "guideCards": [
+        {"title": "두 가지 생성 방식", "body": "Text to Video는 설명 글에서 바로 영상을 만들고, Image to Video는 먼저 만든 기준 이미지를 움직입니다.", "point": "캐릭터와 배경 일관성이 중요하면 이미지 투 비디오가 관리하기 쉽습니다."},
+        {"title": "스타트·엔드 프레임", "body": "시작 이미지와 끝 이미지를 정하면 장면의 출발과 도착을 더 구체적으로 통제할 수 있습니다."},
+        {"title": "AI 영상 제작 5단계", "body": "레퍼런스 시트가 빠지면 장면마다 얼굴·의상·공간이 달라지는 일관성 붕괴가 생기기 쉽습니다.", "steps": ["목적·타깃·플랫폼·메시지로 스토리 기획", "캐릭터·배경 레퍼런스 시트 고정", "신 구성·컷·카메라 무빙의 스토리보드", "신별 이미지 생성 후 영상화", "편집·음악·자막·색보정"]},
+        {"title": "장면 프롬프트 분리", "body": "정지 이미지 프롬프트에는 인물·의상·장소·구도·조명을, 움직임 프롬프트에는 행동·카메라 무빙·속도·대사·음향 조건을 씁니다."},
+        {"title": "CapCut 최소 편집", "body": "영상 클립을 순서대로 붙이고, 자동자막을 다듬고, 저작권을 확인한 음악·효과음과 색보정을 더합니다.", "keywords": ["컷편집", "오버레이", "자막", "BGM", "효과음", "색보정"]},
+        {"title": "직접 익힐 핵심 조작", "body": "타임라인 기준선, 자르기, 이동, 삭제, 오버레이, 자막 길이, 음량 조절만 익혀도 기본 편집은 가능합니다.", "example": "Ctrl+B: 자르기 / Ctrl+Z: 되돌리기 / Ctrl+Y: 되돌리기 취소"}
+      ],
+      "prompts": ["video-meta-prompt", "video-story-3scene", "video-scene-motion", "capcut-edit-plan"],
       "resources": [{"label": "영상 제작 워크플로우", "url": "downloads/public/video-production-workflow.md", "download": true}, {"label": "숏폼 영상 기획 스킬", "url": "https://drive.google.com/drive/folders/1vIJPMfpJRCEUM8L4CYFtCpmll1fMPpx2?usp=sharing"}],
       "tools": [{"label": "Google Flow 열기", "url": "https://labs.google/fx/tools/flow"}, {"label": "Claude 열기", "url": "https://claude.ai/new"}]
     }

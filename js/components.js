@@ -412,6 +412,11 @@ async function renderClassPage(classId, variantId = "") {
     document.querySelector("h1[data-class-title]").textContent = classData.title;
     document.querySelector("[data-class-subtitle]").textContent = classData.subtitle || "";
     document.querySelector("[data-class-meta]").textContent = `${classData.instructor} · ${classData.duration} · ${classData.parts.length}단계${classData.variantLabel ? ` · ${classData.variantLabel}` : ""}`;
+    const promptCount = classData.parts.reduce((total, part) => total + (part.prompts?.length || 0), 0);
+    const mdCount = (classData.downloads || []).filter((file) => file.type?.toUpperCase() === "MD" || file.url?.endsWith(".md")).length;
+    document.querySelector("[data-class-step-count]").textContent = `${classData.parts.length}단계`;
+    document.querySelector("[data-class-prompt-count]").textContent = `프롬프트 ${promptCount}개`;
+    document.querySelector("[data-class-md-count]").textContent = `MD 실습자료 ${mdCount}종`;
 
     if (classData.downloads?.length) {
       const downloadSection = document.querySelector("[data-download-section]");

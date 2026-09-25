@@ -37,8 +37,8 @@
       <div class="hero-panel">
         <p class="hero-panel-label">오늘의 학습 구성</p>
         <div class="hero-progress-row">
-          <strong>15단계</strong>
-          <span>프롬프트 12개<br>MD 실습자료 3종</span>
+          <strong data-class-step-count>단계 확인 중</strong>
+          <span><span data-class-prompt-count>프롬프트 확인 중</span><br><span data-class-md-count>MD 자료 확인 중</span></span>
         </div>
       </div>
     </div>
@@ -86,7 +86,7 @@
     <div class="class-footer-links"><a href="index.html">홈</a><a href="resources.html">자료실</a><a href="board.html">게시판</a></div>
   </footer>
 
-  <script src="js/components.js?v=20260925e"></script>
+  <script src="js/components.js?v=20260925f"></script>
   <script>
     const params = new URLSearchParams(location.search);
     const classId = params.get("id") || "generative-ai-7hrs";
