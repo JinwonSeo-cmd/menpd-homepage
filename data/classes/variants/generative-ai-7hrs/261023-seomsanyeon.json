@@ -1,0 +1,15 @@
+{
+  "id": "261023-seomsanyeon",
+  "label": "261023(금) 섬산연",
+  "class": {
+    "subtitle": "섬산연 수강생을 위한 생성형 AI 실무 교안입니다. 현재는 정식 기본 교안과 동일하며, 수업 구성에 맞춰 추후 조정됩니다."
+  },
+  "access": {
+    "enabled": true,
+    "displayName": "261023(금) 섬산연",
+    "passwordHash": "d2fbb3121369e1095202040cf8ebe5fc2110b4e3acdc9ec353d511d04de3f9c9",
+    "expiresAt": "2027-01-23T23:59:59+09:00",
+    "expiryLabel": "2027년 1월 23일"
+  },
+  "parts": []
+}

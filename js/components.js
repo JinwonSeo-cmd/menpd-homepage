@@ -305,6 +305,92 @@ function partStorageKey(classId, part, index) {
   return `menpd-class:${classId}:${part.slug || part.partNo || index}`;
 }
 
+async function hashAccessPassword(value) {
+  const bytes = new TextEncoder().encode(value);
+  const digest = await crypto.subtle.digest("SHA-256", bytes);
+  return Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, "0")).join("");
+}
+
+function classAccessStorageKey(classId, variantId) {
+  return `menpd-class-access:${classId}:${variantId}`;
+}
+
+async function ensureClassAccess({ classId, variantId, variant, classData }) {
+  const access = variant?.access;
+  if (!access?.enabled) return true;
+
+  const expiresAt = Date.parse(access.expiresAt);
+  const now = Date.now();
+  const storageKey = classAccessStorageKey(classId, variantId);
+  const savedUntil = Number(localStorage.getItem(storageKey) || 0);
+  if (savedUntil > now && savedUntil === expiresAt) return true;
+
+  localStorage.removeItem(storageKey);
+  document.body.classList.add("class-access-locked");
+  document.title = `${access.displayName || variant.label || classData.title} | 수강생 전용`;
+  let robots = document.querySelector('meta[name="robots"]');
+  if (!robots) {
+    robots = document.createElement("meta");
+    robots.name = "robots";
+    document.head.appendChild(robots);
+  }
+  robots.content = "noindex, nofollow";
+
+  const gate = document.createElement("main");
+  gate.className = "class-access-gate";
+  const isExpired = Number.isFinite(expiresAt) && now > expiresAt;
+  gate.innerHTML = `
+    <section class="access-gate-card" aria-labelledby="access-gate-title">
+      <div class="access-lock" aria-hidden="true">🔒</div>
+      <p class="access-kicker">STUDENT MATERIALS</p>
+      <h1 id="access-gate-title">${escapeHtml(access.displayName || variant.label || classData.title)}</h1>
+      <p class="access-description">${isExpired ? "이 교안의 복습 기간이 종료되었습니다." : "수강생에게 안내된 비밀번호를 입력하면 교안이 열립니다."}</p>
+      ${isExpired ? `<p class="access-expiry">복습 종료일 · ${escapeHtml(access.expiryLabel || access.expiresAt)}</p>` : `
+        <form class="access-form">
+          <label for="class-access-password">교안 비밀번호</label>
+          <div class="access-input-row">
+            <input id="class-access-password" name="password" type="password" autocomplete="current-password" spellcheck="false" placeholder="비밀번호 입력" required>
+            <button type="submit">교안 열기</button>
+          </div>
+          <p class="access-message" aria-live="polite"></p>
+        </form>
+        <p class="access-expiry">${escapeHtml(access.expiryLabel || access.expiresAt)}까지 복습할 수 있습니다.</p>
+      `}
+      <a class="access-home-link" href="index.html#live-class">← 홈페이지로 돌아가기</a>
+    </section>
+  `;
+  document.querySelector(".class-nav").after(gate);
+
+  if (isExpired) return false;
+
+  return new Promise((resolve) => {
+    const form = gate.querySelector(".access-form");
+    const input = gate.querySelector("#class-access-password");
+    const message = gate.querySelector(".access-message");
+    const button = gate.querySelector("button[type='submit']");
+    input.focus();
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      button.disabled = true;
+      message.classList.remove("error");
+      message.textContent = "비밀번호를 확인하고 있습니다.";
+      const candidateHash = await hashAccessPassword(input.value.trim());
+      if (candidateHash === access.passwordHash) {
+        localStorage.setItem(storageKey, String(expiresAt));
+        gate.remove();
+        document.body.classList.remove("class-access-locked");
+        resolve(true);
+        return;
+      }
+      message.textContent = "비밀번호가 맞지 않습니다. 다시 확인해 주세요.";
+      message.classList.add("error");
+      input.value = "";
+      input.focus();
+      button.disabled = false;
+    });
+  });
+}
+
 function renderPart({ part, index, classId, promptMap }) {
   const section = document.createElement("section");
   const partId = `part-${part.slug || String(part.partNo).replace(/[^a-zA-Z0-9가-힣_-]/g, "-")}`;
@@ -407,6 +493,8 @@ async function renderClassPage(classId, variantId = "") {
       variantId ? loadOptionalJSON(`data/classes/variants/${classId}/${variantId}.json`) : Promise.resolve(null),
     ]);
     const classData = applyClassVariant(baseClassData, variant);
+    const accessGranted = await ensureClassAccess({ classId, variantId, variant, classData });
+    if (!accessGranted) return;
     const promptMap = Object.fromEntries(promptsArr.map((prompt) => [prompt.id, prompt]));
     document.title = `${classData.title} | 멘피디 AI`;
     document.querySelector("h1[data-class-title]").textContent = classData.title;

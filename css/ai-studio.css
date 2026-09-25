@@ -693,6 +693,14 @@ body {
 .live-preview-step span { color: #f3d0bb; font-size: 10px; font-weight: 700; }
 .live-preview-step p { margin: 0; color: #eef4f8; font-size: 11px; }
 .live-preview-step b { padding: 3px 6px; color: #315b9b; border-radius: 999px; background: #fffaf5; font-size: 8px; }
+.live-course-instances { max-width: 1120px; margin-top: 12px; padding: 10px 12px 10px 16px; display: flex; align-items: center; gap: 14px; border: 1px solid rgba(255,255,255,.28); border-radius: 15px; background: rgba(35,61,96,.28); }
+.live-course-instances > span { flex: 0 0 auto; color: #dce7f1; font-size: 11px; font-weight: 700; letter-spacing: .08em; }
+.live-course-instances a { min-width: 0; flex: 1; padding: 9px 12px; display: flex; align-items: center; gap: 9px; color: #17243a; border-radius: 11px; background: rgba(255,250,245,.96); transition: transform .2s ease, background-color .2s ease; }
+.live-course-instances a:hover, .live-course-instances a:focus-visible { transform: translateX(3px); background: #fff; outline: none; }
+.live-course-instances b { font-size: 13px; }
+.live-course-instances strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 13px; }
+.live-course-instances small { color: #718095; font-size: 11px; white-space: nowrap; }
+.live-course-instances i { margin-left: auto; color: #315b9b; font-size: 11px; font-style: normal; font-weight: 700; white-space: nowrap; }
 
 @media (max-width: 760px) {
   .live-course-card { grid-template-columns: 1fr; }
@@ -705,4 +713,7 @@ body {
   .live-course-preview { padding: 17px; border-radius: 18px; }
   .live-course-copy h3 { font-size: 30px; }
   .live-course-copy > p { font-size: 14px; }
+  .live-course-instances { align-items: stretch; flex-direction: column; gap: 7px; }
+  .live-course-instances a { flex-wrap: wrap; }
+  .live-course-instances small { width: 100%; padding-left: 22px; }
 }
