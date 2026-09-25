@@ -1,7 +1,7 @@
 // 강의 진행 공통 컴포넌트: 프롬프트, 자료, 진도 저장
 
 async function loadJSON(path) {
-  const res = await fetch(path);
+  const res = await fetch(path, { cache: "no-store" });
   if (!res.ok) throw new Error(`${path} 로드 실패`);
   return res.json();
 }
