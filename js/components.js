@@ -208,11 +208,6 @@ async function renderClassPage(classId) {
     document.querySelector("[data-class-subtitle]").textContent = classData.subtitle || "";
     document.querySelector("[data-class-meta]").textContent = `${classData.instructor} · ${classData.duration} · ${classData.parts.length}단계`;
 
-    if (classData.shortUrl) {
-      const fullUrl = `https://menpd.com/${classData.shortUrl}`;
-      document.querySelector("[data-class-qr]").innerHTML = `<p class="short-url">${fullUrl}</p><img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(fullUrl)}" alt="강의 페이지 QR 코드" width="130" height="130">`;
-    }
-
     if (classData.downloads?.length) {
       const downloadSection = document.querySelector("[data-download-section]");
       const downloadRoot = document.querySelector("[data-class-downloads]");

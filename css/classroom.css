@@ -43,12 +43,6 @@ button { font: inherit; }
 .hero-progress-row { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
 .hero-progress-row strong { font-size: 42px; letter-spacing: -.05em; }
 .hero-progress-row span { color: #e1e9f0; font-size: 12px; text-align: right; }
-.hero-progress-row { margin-bottom: 20px; }
-.qr-toggle { width: 100%; padding: 11px; color: #fff; border: 1px solid var(--white-line); border-radius: 999px; background: rgba(255,255,255,.08); cursor: pointer; }
-.qr-box { display: none; margin-top: 14px; padding: 14px; color: var(--ink); text-align: center; border-radius: 16px; background: #fff; }
-.qr-box.open { display: block; }
-.qr-box img { width: 130px; height: 130px; margin: auto; }
-.short-url { margin: 0 0 8px; font-size: 12px; word-break: break-all; }
 .toc-wrap { position: sticky; top: 88px; z-index: 50; border-bottom: 1px solid var(--line); background: rgba(247,245,242,.92); backdrop-filter: blur(16px); }
 .toc { width: min(1120px, calc(100% - 32px)); margin: 0 auto; padding: 12px 0; display: flex; gap: 8px; overflow-x: auto; scrollbar-width: thin; }
 .toc a { flex: 0 0 auto; padding: 8px 13px; color: var(--muted); border: 1px solid transparent; border-radius: 999px; background: #fff; font-size: 12px; font-weight: 700; }

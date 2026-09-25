@@ -40,8 +40,6 @@
           <strong>15단계</strong>
           <span>프롬프트 12개<br>MD 실습자료 3종</span>
         </div>
-        <button class="qr-toggle" type="button" id="qrToggleBtn">휴대폰으로 열기 · QR</button>
-        <div class="qr-box" data-class-qr id="qrBox"></div>
       </div>
     </div>
   </header>
@@ -93,9 +91,6 @@
     const params = new URLSearchParams(location.search);
     const classId = params.get("id") || "generative-ai-7hrs";
     renderClassPage(classId);
-    document.getElementById("qrToggleBtn").addEventListener("click", () => {
-      document.getElementById("qrBox").classList.toggle("open");
-    });
   </script>
 </body>
 </html>
