@@ -109,6 +109,70 @@ function renderGuideCards(cards) {
   return grid;
 }
 
+function renderLearningChapters(chapters) {
+  const wrap = document.createElement("div");
+  wrap.className = "learning-chapters";
+
+  chapters.forEach((chapter) => {
+    const article = document.createElement("article");
+    article.className = "learning-chapter";
+    article.innerHTML = `
+      <header class="learning-chapter-head">
+        <span>${escapeHtml(chapter.number || "")}</span>
+        <div><h5>${escapeHtml(chapter.title)}</h5>${chapter.summary ? `<p>${escapeHtml(chapter.summary)}</p>` : ""}</div>
+      </header>
+    `;
+
+    if (chapter.cards?.length) {
+      const cards = renderGuideCards(chapter.cards);
+      cards.classList.add("chapter-card-grid");
+      article.appendChild(cards);
+    }
+
+    if (chapter.comparison?.length) {
+      const comparison = document.createElement("div");
+      comparison.className = "prompt-comparison";
+      chapter.comparison.forEach((item) => {
+        const card = document.createElement("section");
+        card.className = `comparison-card ${item.tone === "good" ? "good" : "bad"}`;
+        card.innerHTML = `<strong>${escapeHtml(item.label)}</strong><blockquote>${escapeHtml(item.prompt)}</blockquote>${item.note ? `<p>${escapeHtml(item.note)}</p>` : ""}`;
+        comparison.appendChild(card);
+      });
+      article.appendChild(comparison);
+    }
+
+    if (chapter.examplePrompt) {
+      const example = document.createElement("div");
+      example.className = "assembled-prompt";
+      example.innerHTML = `<strong>실전 PE7+ 조립 예시</strong><pre>${escapeHtml(chapter.examplePrompt)}</pre>`;
+      article.appendChild(example);
+    }
+
+    if (chapter.checklist?.length) {
+      const checklist = document.createElement("ul");
+      checklist.className = "chapter-checklist";
+      chapter.checklist.forEach((item) => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        checklist.appendChild(li);
+      });
+      article.appendChild(checklist);
+    }
+
+    if (chapter.quiz) {
+      const quiz = document.createElement("details");
+      quiz.className = "chapter-quiz";
+      const options = (chapter.quiz.options || []).map((option) => `<li>${escapeHtml(option)}</li>`).join("");
+      quiz.innerHTML = `<summary>퀴즈 · ${escapeHtml(chapter.quiz.question)}</summary>${options ? `<ol>${options}</ol>` : ""}<p><strong>정답</strong> ${escapeHtml(chapter.quiz.answer)}</p>${chapter.quiz.explanation ? `<p>${escapeHtml(chapter.quiz.explanation)}</p>` : ""}`;
+      article.appendChild(quiz);
+    }
+
+    wrap.appendChild(article);
+  });
+
+  return wrap;
+}
+
 function partStorageKey(classId, part, index) {
   return `menpd-class:${classId}:${part.slug || part.partNo || index}`;
 }
@@ -157,6 +221,14 @@ function renderPart({ part, index, classId, promptMap }) {
     block.className = "part-block";
     block.innerHTML = '<h4 class="part-block-title">핵심 내용</h4>';
     block.appendChild(renderGuideCards(part.guideCards));
+    body.appendChild(block);
+  }
+
+  if (part.chapters?.length) {
+    const block = document.createElement("div");
+    block.className = "part-block";
+    block.innerHTML = '<h4 class="part-block-title">PE7+ 프롬프트 엔지니어링 핵심 교안</h4>';
+    block.appendChild(renderLearningChapters(part.chapters));
     body.appendChild(block);
   }
 

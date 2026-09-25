@@ -91,6 +91,31 @@ button { font: inherit; }
 .guide-steps { margin: 14px 0 0; padding: 0; list-style: none; counter-reset: guide-step; display: grid; gap: 8px; }
 .guide-steps li { counter-increment: guide-step; display: grid; grid-template-columns: 24px 1fr; gap: 9px; align-items: start; color: #40516a; font-size: 12px; line-height: 1.55; }
 .guide-steps li::before { content: counter(guide-step); width: 22px; height: 22px; display: grid; place-items: center; color: #fff; border-radius: 50%; background: var(--blue-deep); font-size: 10px; font-weight: 800; }
+.learning-chapters { display: grid; gap: 18px; }
+.learning-chapter { padding: clamp(18px, 3vw, 28px); border: 1px solid var(--line); border-radius: var(--radius-lg); background: #fff; box-shadow: 0 12px 30px rgba(41, 68, 104, .06); }
+.learning-chapter-head { display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: start; margin-bottom: 18px; }
+.learning-chapter-head > span { padding: 7px 10px; color: #fff; border-radius: 999px; background: var(--blue-deep); font-size: 11px; font-weight: 800; letter-spacing: .08em; }
+.learning-chapter-head h5 { margin: 1px 0 5px; color: var(--blue-deep); font-size: clamp(17px, 2vw, 22px); }
+.learning-chapter-head p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.65; }
+.chapter-card-grid { margin-top: 0; }
+.chapter-card-grid .guide-card { background: linear-gradient(145deg, #f9fbfd, #f1f6fb); }
+.prompt-comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px; }
+.comparison-card { padding: 16px; border-radius: var(--radius-md); border: 1px solid #f0c7c2; background: #fff7f6; }
+.comparison-card.good { border-color: #bcdac9; background: #f3fbf6; }
+.comparison-card > strong { color: #a84942; font-size: 13px; }
+.comparison-card.good > strong { color: #25734a; }
+.comparison-card blockquote { margin: 10px 0; color: #26384d; font-size: 13px; line-height: 1.7; }
+.comparison-card p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.55; }
+.assembled-prompt { margin-top: 14px; padding: 17px; border-radius: var(--radius-md); color: #eaf4ff; background: #18304e; }
+.assembled-prompt > strong { display: block; margin-bottom: 10px; font-size: 13px; }
+.assembled-prompt pre { margin: 0; white-space: pre-wrap; font: inherit; font-size: 12px; line-height: 1.7; }
+.chapter-checklist { margin: 14px 0 0; padding: 14px 16px; display: grid; gap: 8px; list-style: none; border-radius: var(--radius-md); background: var(--blue-pale); }
+.chapter-checklist li { display: grid; grid-template-columns: 20px 1fr; gap: 7px; color: #40516a; font-size: 12px; line-height: 1.55; }
+.chapter-checklist li::before { content: '✓'; color: var(--blue-deep); font-weight: 900; }
+.chapter-quiz { margin-top: 14px; padding: 14px 16px; border: 1px solid var(--line); border-radius: var(--radius-md); background: #fbfcfd; }
+.chapter-quiz summary { color: var(--blue-deep); font-size: 13px; font-weight: 800; cursor: pointer; }
+.chapter-quiz ol { margin: 12px 0; padding-left: 22px; color: #40516a; font-size: 12px; line-height: 1.7; }
+.chapter-quiz p { margin: 8px 0 0; color: var(--muted); font-size: 12px; line-height: 1.6; }
 .task-list { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
 .task-list label { padding: 12px 14px; display: flex; align-items: flex-start; gap: 10px; color: #40516a; border-radius: 13px; background: var(--blue-pale); font-size: 14px; line-height: 1.55; cursor: pointer; }
 .task-list input { margin-top: 4px; accent-color: var(--blue-deep); }
@@ -117,7 +142,7 @@ button { font: inherit; }
   .hero-panel { max-width: 520px; }
   .toc-wrap { top: 86px; }
   .class-intro { grid-template-columns: 1fr; }
-  .download-grid, .prompt-grid, .guide-card-grid { grid-template-columns: 1fr; }
+  .download-grid, .prompt-grid, .guide-card-grid, .prompt-comparison { grid-template-columns: 1fr; }
   .part-head { grid-template-columns: 52px 1fr auto; gap: 14px; }
   .part-number { width: 52px; height: 52px; border-radius: 16px; }
 }
