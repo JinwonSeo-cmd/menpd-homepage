@@ -600,7 +600,7 @@ body {
   border: 1px solid rgba(255,255,255,.32);
 }
 #live-class .section-heading,
-#live-class .section-icon { color: #fffaf5; }
+#live-class .section-icon { color: #fffaf5; text-shadow: none; }
 #live-class .section-sub { color: #e2eaf2; max-width: 760px; }
 .live-course-card {
   max-width: 1120px;
