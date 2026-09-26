@@ -127,10 +127,10 @@ button { font: inherit; }
 .slide-module-head > span { padding: 6px 9px; color: #fff; border-radius: 999px; background: var(--blue-deep); font-size: 10px; font-weight: 800; letter-spacing: .08em; }
 .slide-module-head h5 { margin: 0 0 4px; color: var(--blue-deep); font-size: clamp(16px,2vw,20px); }
 .slide-module-head p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.6; }
-.lesson-slide-gallery { padding: clamp(10px,2vw,18px); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-.lesson-slide { position: relative; margin: 0; overflow: hidden; border: 1px solid rgba(37,62,89,.14); border-radius: 14px; background: #fff; box-shadow: 0 10px 24px rgba(30,48,70,.08); }
+.lesson-slide-gallery { padding: clamp(10px,2vw,18px); display: grid; gap: 16px; }
+.lesson-slide { margin: 0; overflow: hidden; border: 1px solid rgba(37,62,89,.14); border-radius: 14px; background: #fff; box-shadow: 0 10px 24px rgba(30,48,70,.08); }
 .lesson-slide img { width: 100%; height: auto; display: block; aspect-ratio: 16 / 9; object-fit: contain; background: #f8f4ee; }
-.lesson-slide figcaption { position: absolute; right: 7px; bottom: 7px; left: 7px; padding: 6px 9px; color: #40516a; border: 1px solid rgba(255,255,255,.72); border-radius: 9px; background: rgba(255,255,255,.91); box-shadow: 0 4px 14px rgba(30,48,70,.08); backdrop-filter: blur(8px); font-size: 10px; line-height: 1.35; }
+.lesson-slide figcaption { padding: 9px 12px; color: var(--muted); border-top: 1px solid var(--line); background: #fff; font-size: 11px; line-height: 1.5; }
 .slide-module-notes { padding: clamp(18px,3vw,28px); border-top: 1px solid rgba(49,91,155,.14); background: #fff; }
 .slide-module-notes > h6 { margin: 0 0 14px; color: #7a4b34; font-size: 12px; letter-spacing: .03em; }
 .slide-module-notes .guide-card-grid { margin-top: 0; }
@@ -225,7 +225,7 @@ button { font: inherit; }
   .slide-module { border-radius: 20px; }
   .slide-module-head { padding: 16px; grid-template-columns: 1fr; }
   .slide-module-head > span { justify-self: start; }
-  .lesson-slide-gallery { padding: 8px; grid-template-columns: 1fr; gap: 10px; }
+  .lesson-slide-gallery { padding: 8px; gap: 10px; }
   .lesson-slide { border-radius: 10px; }
   .slide-module-notes { padding: 17px 13px; }
   .parts-heading { align-items: start; flex-direction: column; }
