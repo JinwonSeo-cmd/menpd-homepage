@@ -120,6 +120,23 @@ button { font: inherit; }
 .guide-steps { margin: 14px 0 0; padding: 0; list-style: none; counter-reset: guide-step; display: grid; gap: 8px; }
 .guide-steps li { counter-increment: guide-step; display: grid; grid-template-columns: 24px 1fr; gap: 9px; align-items: start; color: #40516a; font-size: 12px; line-height: 1.55; }
 .guide-steps li::before { content: counter(guide-step); width: 22px; height: 22px; display: grid; place-items: center; color: #fff; border-radius: 50%; background: var(--blue-deep); font-size: 10px; font-weight: 800; }
+.part-slide-block { margin-top: 4px; }
+.slide-modules { display: grid; gap: 34px; }
+.slide-module { overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius-lg); background: #f5f1eb; box-shadow: 0 16px 38px rgba(41,68,104,.08); }
+.slide-module-head { padding: 18px 20px; display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: start; border-bottom: 1px solid rgba(49,91,155,.12); background: #fff; }
+.slide-module-head > span { padding: 6px 9px; color: #fff; border-radius: 999px; background: var(--blue-deep); font-size: 10px; font-weight: 800; letter-spacing: .08em; }
+.slide-module-head h5 { margin: 0 0 4px; color: var(--blue-deep); font-size: clamp(16px,2vw,20px); }
+.slide-module-head p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.6; }
+.lesson-slide-gallery { padding: clamp(10px,2vw,18px); display: grid; gap: 16px; }
+.lesson-slide { margin: 0; overflow: hidden; border: 1px solid rgba(37,62,89,.14); border-radius: 14px; background: #fff; box-shadow: 0 10px 24px rgba(30,48,70,.08); }
+.lesson-slide img { width: 100%; height: auto; display: block; aspect-ratio: 16 / 9; object-fit: contain; background: #f8f4ee; }
+.lesson-slide figcaption { padding: 9px 12px; color: var(--muted); border-top: 1px solid var(--line); background: #fff; font-size: 11px; line-height: 1.5; }
+.slide-module-notes { padding: clamp(18px,3vw,28px); border-top: 1px solid rgba(49,91,155,.14); background: #fff; }
+.slide-module-notes > h6 { margin: 0 0 14px; color: #7a4b34; font-size: 12px; letter-spacing: .03em; }
+.slide-module-notes .guide-card-grid { margin-top: 0; }
+.slide-module-notes .learning-chapters { gap: 14px; }
+.slide-module-notes .learning-chapter { box-shadow: none; }
+.slide-prompt-grid { margin-top: 14px; }
 .learning-chapters { display: grid; gap: 18px; }
 .chapter-mini-nav { position: sticky; top: 150px; z-index: 4; padding: 10px; display: flex; gap: 7px; overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius-md); background: rgba(255,255,255,.94); box-shadow: 0 10px 24px rgba(41,68,104,.08); backdrop-filter: blur(10px); }
 .chapter-mini-nav a { flex: none; padding: 8px 11px; color: var(--blue-deep); border-radius: 999px; background: var(--blue-pale); font-size: 11px; font-weight: 750; }
@@ -204,6 +221,13 @@ button { font: inherit; }
   .download-card { align-items: stretch; flex-direction: column; }
   .download-copy-btn { width: 100%; }
   .guide-steps { grid-template-columns: 1fr; }
+  .slide-modules { gap: 24px; }
+  .slide-module { border-radius: 20px; }
+  .slide-module-head { padding: 16px; grid-template-columns: 1fr; }
+  .slide-module-head > span { justify-self: start; }
+  .lesson-slide-gallery { padding: 8px; gap: 10px; }
+  .lesson-slide { border-radius: 10px; }
+  .slide-module-notes { padding: 17px 13px; }
   .parts-heading { align-items: start; flex-direction: column; }
   .parts-heading > p { text-align: left; }
   .part-head { padding: 20px 16px; grid-template-columns: 45px 1fr 32px; gap: 11px; }

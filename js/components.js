@@ -163,9 +163,11 @@ function renderGuideCards(cards) {
   return grid;
 }
 
-function renderLearningChapters(chapters, storageKey) {
+function renderLearningChapters(chapters, storageKey, options = {}) {
   const wrap = document.createElement("div");
   wrap.className = "learning-chapters";
+  const showNavigation = options.showNavigation !== false;
+  const showProgress = options.showProgress !== false;
   const progressKey = `${storageKey}:chapter-checks`;
   const savedChecks = JSON.parse(localStorage.getItem(progressKey) || "{}");
   const totalChecks = chapters.reduce((total, chapter) => total + (chapter.checklist?.length || 0), 0);
@@ -179,12 +181,12 @@ function renderLearningChapters(chapters, storageKey) {
     link.textContent = `${chapter.number} ${chapter.navTitle || chapter.title}`;
     nav.appendChild(link);
   });
-  wrap.appendChild(nav);
+  if (showNavigation) wrap.appendChild(nav);
 
   const progress = document.createElement("div");
   progress.className = "chapter-progress";
   progress.innerHTML = `<div class="chapter-progress-row"><strong>전체 학습 진행</strong><span></span></div><div class="chapter-progress-track"><i></i></div>`;
-  wrap.appendChild(progress);
+  if (showProgress) wrap.appendChild(progress);
 
   const updateProgress = () => {
     const completed = Object.values(savedChecks).filter(Boolean).length;
@@ -298,6 +300,76 @@ function renderLearningChapters(chapters, storageKey) {
   });
 
   updateProgress();
+  return wrap;
+}
+
+function renderSlideModules(part, promptMap, storageKey) {
+  const wrap = document.createElement("div");
+  wrap.className = "slide-modules";
+
+  part.slideModules.forEach((module, moduleIndex) => {
+    const section = document.createElement("section");
+    section.className = "slide-module";
+
+    if (module.title || module.summary) {
+      const header = document.createElement("header");
+      header.className = "slide-module-head";
+      header.innerHTML = `${module.eyebrow ? `<span>${escapeHtml(module.eyebrow)}</span>` : ""}<div>${module.title ? `<h5>${escapeHtml(module.title)}</h5>` : ""}${module.summary ? `<p>${escapeHtml(module.summary)}</p>` : ""}</div>`;
+      section.appendChild(header);
+    }
+
+    if (module.slides?.length) {
+      const gallery = document.createElement("div");
+      gallery.className = "lesson-slide-gallery";
+      module.slides.forEach((slide) => {
+        const figure = document.createElement("figure");
+        figure.className = "lesson-slide";
+        const image = document.createElement("img");
+        image.src = slide.src;
+        image.alt = slide.alt || module.title || "강의 장표";
+        image.loading = "lazy";
+        image.decoding = "async";
+        figure.appendChild(image);
+        if (slide.caption) {
+          const caption = document.createElement("figcaption");
+          caption.textContent = slide.caption;
+          figure.appendChild(caption);
+        }
+        gallery.appendChild(figure);
+      });
+      section.appendChild(gallery);
+    }
+
+    const notes = document.createElement("div");
+    notes.className = "slide-module-notes";
+    const hasGuideCards = module.guideCardIndexes?.length;
+    const hasChapters = module.chapterIndexes?.length;
+    const hasPrompts = module.promptIds?.length;
+    if (hasGuideCards || hasChapters || hasPrompts) {
+      const notesTitle = document.createElement("h6");
+      notesTitle.textContent = module.notesTitle || "장표와 함께 보는 핵심 설명";
+      notes.appendChild(notesTitle);
+    }
+    if (hasGuideCards) {
+      const cards = module.guideCardIndexes.map((cardIndex) => part.guideCards?.[cardIndex]).filter(Boolean);
+      if (cards.length) notes.appendChild(renderGuideCards(cards));
+    }
+    if (hasChapters) {
+      const chapters = module.chapterIndexes.map((chapterIndex) => part.chapters?.[chapterIndex]).filter(Boolean);
+      if (chapters.length) {
+        notes.appendChild(renderLearningChapters(chapters, `${storageKey}:slide-module-${moduleIndex}`, { showNavigation: false, showProgress: false }));
+      }
+    }
+    if (hasPrompts) {
+      const promptGrid = document.createElement("div");
+      promptGrid.className = "prompt-grid slide-prompt-grid";
+      renderPromptsByIds(promptMap, module.promptIds, promptGrid);
+      notes.appendChild(promptGrid);
+    }
+    if (notes.childElementCount) section.appendChild(notes);
+    wrap.appendChild(section);
+  });
+
   return wrap;
 }
 
@@ -430,7 +502,15 @@ function renderPart({ part, index, classId, promptMap }) {
     body.appendChild(block);
   }
 
-  if (part.guideCards?.length) {
+  if (part.slideModules?.length) {
+    const block = document.createElement("div");
+    block.className = "part-block part-slide-block";
+    block.innerHTML = '<h4 class="part-block-title">샘플 장표와 핵심 설명</h4>';
+    block.appendChild(renderSlideModules(part, promptMap, storageKey));
+    body.appendChild(block);
+  }
+
+  if (!part.slideModules?.length && part.guideCards?.length) {
     const block = document.createElement("div");
     block.className = "part-block";
     block.innerHTML = '<h4 class="part-block-title">핵심 내용</h4>';
@@ -438,7 +518,7 @@ function renderPart({ part, index, classId, promptMap }) {
     body.appendChild(block);
   }
 
-  if (part.chapters?.length) {
+  if (!part.slideModules?.length && part.chapters?.length) {
     const block = document.createElement("div");
     block.className = "part-block";
     block.innerHTML = '<h4 class="part-block-title">PE7+ 프롬프트 엔지니어링 핵심 교안</h4>';
@@ -446,7 +526,7 @@ function renderPart({ part, index, classId, promptMap }) {
     body.appendChild(block);
   }
 
-  if (part.prompts?.length) {
+  if (!part.slideModules?.length && part.prompts?.length) {
     const block = document.createElement("div");
     block.className = "part-block";
     block.innerHTML = '<h4 class="part-block-title">복사해서 바로 쓰는 프롬프트</h4>';
