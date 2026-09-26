@@ -28,6 +28,13 @@
       "download": true
     },
     {
+      "label": "FFmpeg AI 영상 자동화 실습 가이드",
+      "type": "MD",
+      "note": "소스 준비부터 폴더 연결·요청·완성본 확인까지 복사용 실습 자료",
+      "url": "downloads/public/ffmpeg-ai-video-automation.md",
+      "download": true
+    },
+    {
       "label": "PPT 실습 자료 모음",
       "type": "DRIVE",
       "note": "샘플 PPT와 시각화·이미지 관련 자료",
@@ -423,18 +430,23 @@
       "partNo": 14,
       "slug": "video",
       "title": "비디오 생성 및 편집",
-      "summary": "스토리 → 레퍼런스 시트 → 스토리보드 → 장면 생성 → 편집의 5단계로 짧은 영상을 완성합니다.",
-      "tasks": ["영상 제작 워크플로우를 다운로드합니다.", "텍스트 투 비디오와 이미지 투 비디오 중 제작 방식을 정합니다.", "3개 장면의 스토리와 스토리보드를 만듭니다.", "레퍼런스 시트의 캐릭터·배경 정보를 각 장면 프롬프트에 반복합니다.", "장면별 이미지와 움직임 프롬프트로 영상을 생성합니다.", "CapCut에서 클립·자막·음원·효과음을 연결합니다."],
+      "summary": "생성형 AI로 장면을 만들고, 준비한 소스를 AI와 FFmpeg로 자동 조합한 뒤 CapCut에서 마무리합니다.",
+      "tasks": ["영상 제작 워크플로우와 FFmpeg 자동화 가이드를 다운로드합니다.", "텍스트 투 비디오와 이미지 투 비디오 중 제작 방식을 정합니다.", "3개 장면의 스토리와 스토리보드를 만듭니다.", "레퍼런스 시트의 캐릭터·배경 정보를 각 장면 프롬프트에 반복합니다.", "장면별 이미지와 움직임 프롬프트로 영상을 생성합니다.", "캐릭터시트·로고·대본·음원을 한 폴더에 모으고 자동 제작을 요청합니다.", "완성된 mp4를 확인하고 CapCut에서 자막·음량·색감을 마무리합니다."],
       "guideCards": [
         {"title": "두 가지 생성 방식", "body": "Text to Video는 설명 글에서 바로 영상을 만들고, Image to Video는 먼저 만든 기준 이미지를 움직입니다.", "point": "캐릭터와 배경 일관성이 중요하면 이미지 투 비디오가 관리하기 쉽습니다."},
         {"title": "스타트·엔드 프레임", "body": "시작 이미지와 끝 이미지를 정하면 장면의 출발과 도착을 더 구체적으로 통제할 수 있습니다."},
         {"title": "AI 영상 제작 5단계", "body": "레퍼런스 시트가 빠지면 장면마다 얼굴·의상·공간이 달라지는 일관성 붕괴가 생기기 쉽습니다.", "steps": ["목적·타깃·플랫폼·메시지로 스토리 기획", "캐릭터·배경 레퍼런스 시트 고정", "신 구성·컷·카메라 무빙의 스토리보드", "신별 이미지 생성 후 영상화", "편집·음악·자막·색보정"]},
         {"title": "장면 프롬프트 분리", "body": "정지 이미지 프롬프트에는 인물·의상·장소·구도·조명을, 움직임 프롬프트에는 행동·카메라 무빙·속도·대사·음향 조건을 씁니다."},
+        {"title": "FFmpeg + AI 폴더 자동화", "body": "모션 중심 영상은 Python과 FFmpeg가 장면 길이·배치·효과·음원을 계산해 합성합니다. 직접 설치해 반복 실행할 수도 있지만, 처음에는 연결된 작업 폴더에서 AI에게 제작을 요청하는 방식이 가장 간단합니다.", "point": "설치와 오류 해결보다 결과 확인에 집중하려면 폴더 연결 방식부터 시작하세요."},
+        {"title": "먼저 모아둘 소스 4가지", "body": "파일명이 무엇인지 알아보기 쉽게 정리하고 같은 작업 폴더에 넣습니다.", "steps": ["캐릭터시트: 배경을 제거하고 필요한 컷만 사용", "로고: 보통 마지막 아웃트로 장면에 배치", "대본: 장면 순서와 문구를 기준으로 길이 자동 배분", "음원: 배경음으로 사용하며 없으면 별도 준비"]},
+        {"title": "자동 제작은 3단계", "body": "소스를 모아두고 원하는 흐름을 대략 설명한 뒤 완성본을 확인합니다.", "steps": ["폴더 정리: 캐릭터시트·로고·대본·음원 넣기", "대략 설명: 몇 초에 무엇이 나올지 말하기", "완성본 확인: mp4를 보고 수정할 점 다시 요청하기"]},
+        {"title": "채팅 업로드 vs 폴더 연결", "body": "한두 파일의 일회성 작업은 채팅 업로드도 충분합니다. 소스가 3개 이상이거나 반복 제작이라면 폴더에 넣고 교체하는 방식이 편하고, 결과물 위치도 일정하게 유지됩니다."},
+        {"title": "가능한 작업과 한계", "body": "지정 장면에 이미지 적용, 캐릭터시트 배경 제거·컷 활용, 배경음 믹싱, 등장 효과음·간단한 모션 생성은 가능합니다.", "point": "목소리는 직접 녹음하거나 외부 TTS로 준비해야 하며, 복잡한 관절 움직임은 전문 애니메이션 도구가 더 적합합니다."},
         {"title": "CapCut 최소 편집", "body": "영상 클립을 순서대로 붙이고, 자동자막을 다듬고, 저작권을 확인한 음악·효과음과 색보정을 더합니다.", "keywords": ["컷편집", "오버레이", "자막", "BGM", "효과음", "색보정"]},
         {"title": "직접 익힐 핵심 조작", "body": "타임라인 기준선, 자르기, 이동, 삭제, 오버레이, 자막 길이, 음량 조절만 익혀도 기본 편집은 가능합니다.", "example": "Ctrl+B: 자르기 / Ctrl+Z: 되돌리기 / Ctrl+Y: 되돌리기 취소"}
       ],
-      "prompts": ["video-meta-prompt", "video-story-3scene", "video-scene-motion", "capcut-edit-plan"],
-      "resources": [{"label": "영상 제작 워크플로우", "url": "downloads/public/video-production-workflow.md", "download": true}, {"label": "숏폼 영상 기획 스킬", "url": "https://drive.google.com/drive/folders/1vIJPMfpJRCEUM8L4CYFtCpmll1fMPpx2?usp=sharing"}],
+      "prompts": ["video-meta-prompt", "video-story-3scene", "video-scene-motion", "ffmpeg-folder-video-request", "ffmpeg-video-revision-request", "capcut-edit-plan"],
+      "resources": [{"label": "영상 제작 워크플로우", "url": "downloads/public/video-production-workflow.md", "download": true}, {"label": "FFmpeg AI 영상 자동화 실습 가이드", "url": "downloads/public/ffmpeg-ai-video-automation.md", "download": true}, {"label": "숏폼 영상 기획 스킬", "url": "https://drive.google.com/drive/folders/1vIJPMfpJRCEUM8L4CYFtCpmll1fMPpx2?usp=sharing"}],
       "tools": [{"label": "Google Flow 열기", "url": "https://labs.google/fx/tools/flow"}, {"label": "Claude 열기", "url": "https://claude.ai/new"}]
     }
   ]
