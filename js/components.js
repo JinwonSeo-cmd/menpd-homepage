@@ -31,8 +31,24 @@ function escapeHtml(value = "") {
   return div.innerHTML;
 }
 
-function copyToClipboard(text, btnEl) {
-  navigator.clipboard.writeText(text).then(() => {
+async function copyToClipboard(text, btnEl) {
+  let copied = false;
+  try {
+    await navigator.clipboard.writeText(text);
+    copied = true;
+  } catch (error) {
+    const fallback = document.createElement("textarea");
+    fallback.value = text;
+    fallback.setAttribute("readonly", "");
+    fallback.style.position = "fixed";
+    fallback.style.opacity = "0";
+    document.body.appendChild(fallback);
+    fallback.select();
+    copied = document.execCommand("copy");
+    fallback.remove();
+  }
+
+  if (copied) {
     const original = btnEl.textContent;
     btnEl.textContent = "복사됨 ✓";
     btnEl.classList.add("copied");
@@ -40,7 +56,11 @@ function copyToClipboard(text, btnEl) {
       btnEl.textContent = original;
       btnEl.classList.remove("copied");
     }, 1500);
-  });
+  } else {
+    const original = btnEl.textContent;
+    btnEl.textContent = "복사 실패 · 직접 선택";
+    setTimeout(() => { btnEl.textContent = original; }, 2000);
+  }
 }
 
 function renderPromptCard(prompt) {
@@ -318,10 +338,24 @@ function renderSlideModules(part, promptMap, storageKey) {
       section.appendChild(header);
     }
 
-    if (module.slides?.length) {
+    const slides = [...(module.slides || [])];
+    if (module.slideRange) {
+      const range = module.slideRange;
+      const excluded = new Set(range.exclude || []);
+      for (let slideNo = range.from; slideNo <= range.to; slideNo += 1) {
+        if (excluded.has(slideNo)) continue;
+        const fileNo = String(slideNo).padStart(3, "0");
+        slides.push({
+          src: `${range.basePath}/slide-${fileNo}.${range.extension || "jpg"}`,
+          alt: `${range.altPrefix || module.title || "강의"} 장표 ${slideNo}`,
+        });
+      }
+    }
+
+    if (slides.length) {
       const gallery = document.createElement("div");
       gallery.className = "lesson-slide-gallery";
-      module.slides.forEach((slide) => {
+      slides.forEach((slide) => {
         const figure = document.createElement("figure");
         figure.className = "lesson-slide";
         const image = document.createElement("img");

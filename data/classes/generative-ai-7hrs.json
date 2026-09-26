@@ -379,6 +379,11 @@
       "title": "제미나이 노트북",
       "summary": "PDF·링크·텍스트를 하나의 노트북에 모아 보고서, 슬라이드, 오디오, 마인드맵으로 정리합니다.",
       "tasks": ["PDF·유튜브·웹 링크·텍스트·오디오 중 업무 자료를 하나 이상 업로드합니다.", "핵심 내용 요약과 예상 질문을 생성합니다.", "보고서·슬라이드·오디오·마인드맵·퀴즈 중 필요한 산출물을 하나 만듭니다.", "반복해서 쓸 INS·KB·디자인 MD 기준을 구분해 적습니다."],
+      "slideModules": [
+        {"eyebrow": "장표 31", "title": "Part 4 · 내용 정리와 NotebookLM", "summary": "샘플 교안의 파트 안내 장표입니다.", "slideRange": {"from": 31, "to": 31, "basePath": "images/classroom/sample-ai-7hrs/step-04", "altPrefix": "NotebookLM 파트 안내"}},
+        {"eyebrow": "장표 32~39", "title": "자료 정리부터 멀티미디어 학습자료까지", "summary": "소스 관리, 자동 정리, 보고서·슬라이드·오디오·마인드맵 생성 흐름을 봅니다.", "slideRange": {"from": 32, "to": 39, "basePath": "images/classroom/sample-ai-7hrs/step-04", "altPrefix": "NotebookLM 활용"}, "guideCardIndexes": [0, 1, 2], "promptIds": ["notebooklm-source-analysis", "notebooklm-teaching-output"], "notesTitle": "NotebookLM 장표와 함께 보는 기존 설명·프롬프트"},
+        {"eyebrow": "장표 40~44", "title": "정리 기준을 내 방식으로 고정하기", "summary": "실습, 커스터마이즈, INS·KB·디자인 MD로 이어지는 정리 체계를 봅니다.", "slideRange": {"from": 40, "to": 44, "basePath": "images/classroom/sample-ai-7hrs/step-04", "altPrefix": "NotebookLM 실습과 기준 파일"}, "guideCardIndexes": [3], "notesTitle": "기준 파일 장표와 함께 보는 기존 설명"}
+      ],
       "guideCards": [
         {"title": "왜 NotebookLM인가", "body": "긴 자료의 토큰을 관리하고, 소스를 노트북에 계속 보관하며, 나중에 다시 꺼내 재활용하고, 출력 방식을 내 스타일로 고정할 수 있습니다.", "keywords": ["토큰 관리", "지속 보관", "재활용", "커스터마이즈"]},
         {"title": "자료만 넣어도 자동 정리", "body": "PDF·링크·텍스트·오디오 등 여러 소스를 한곳에 넣으면 핵심을 구조화하고 소스에 근거해 답합니다.", "steps": ["새 노트북을 만듭니다.", "여러 형식의 소스를 업로드합니다.", "자동 요약과 주요 주제를 확인합니다.", "필요한 질문을 이어서 묻습니다."]},
@@ -395,6 +400,10 @@
       "title": "AI 문서: PPT 생성 (1단계)",
       "summary": "내용을 먼저 정리한 뒤 디자인 없는 2장짜리 PPT로 바꾸며 생성 과정의 기본을 익힙니다.",
       "tasks": ["내용 정리 프롬프트를 먼저 실행합니다.", "답변이 나온 뒤 PPT 변환 후속 프롬프트를 실행합니다.", "완성된 원본 PPT를 저장합니다."],
+      "slideModules": [
+        {"eyebrow": "장표 45", "title": "Part 5 · AI 문서와 PPT 생성", "summary": "샘플 교안의 파트 안내 장표입니다.", "slideRange": {"from": 45, "to": 45, "basePath": "images/classroom/sample-ai-7hrs/step-05", "altPrefix": "AI 문서 PPT 생성 파트 안내"}},
+        {"eyebrow": "장표 46", "title": "내용 정리 후 단순 PPT로 변환하기", "summary": "디자인보다 내용의 정확성·구조·분량을 먼저 확정하는 첫 실습입니다.", "slideRange": {"from": 46, "to": 46, "basePath": "images/classroom/sample-ai-7hrs/step-05", "altPrefix": "PPT 생성 1단계 실습"}, "guideCardIndexes": [0, 1, 2], "promptIds": ["ppt-step1-content", "ppt-step1-to-ppt"], "notesTitle": "1단계 실습 장표와 함께 보는 기존 설명·프롬프트"}
+      ],
       "guideCards": [
         {"title": "1단계의 목적", "body": "처음부터 디자인까지 한꺼번에 요구하지 않고, 내용의 정확성·구조·분량을 먼저 확정합니다.", "point": "이 단계의 PPT는 예쁘게 만드는 결과물이 아니라 이후 리디자인의 ‘원본’입니다."},
         {"title": "내용 먼저, 형식은 다음", "body": "행정 전문가와 AI 전문가라는 역할을 주고, 업무 팁·사례·도구를 구조화한 뒤 2장짜리 단순 PPT로 변환합니다.", "steps": ["내용 정리 프롬프트 실행", "사실과 표현 검토", "PPT 변환 후속 지시", "원본 파일 저장"]},
@@ -410,6 +419,11 @@
       "title": "샘플 입력 디자인 (2단계)",
       "summary": "좋은 디자인 샘플을 먼저 찾고 원본 PPT를 같은 분위기로 리디자인합니다.",
       "tasks": ["마음에 드는 디자인 샘플을 캡처합니다.", "원본 PPT와 샘플 이미지를 함께 첨부합니다.", "리디자인 전후 결과를 비교합니다."],
+      "slideModules": [
+        {"eyebrow": "장표 47", "title": "Part 6 · 샘플 입력 디자인", "summary": "샘플을 활용한 PPT 리디자인 파트입니다.", "slideRange": {"from": 47, "to": 47, "basePath": "images/classroom/sample-ai-7hrs/step-06", "altPrefix": "샘플 입력 디자인 파트 안내"}},
+        {"eyebrow": "장표 48~49", "title": "Pinterest 샘플로 디자인 방향 정하기", "summary": "원하는 스타일을 말로 설명하기보다 샘플 이미지로 보여주는 방법을 익힙니다.", "slideRange": {"from": 48, "to": 49, "basePath": "images/classroom/sample-ai-7hrs/step-06", "altPrefix": "디자인 샘플 선택과 리디자인 실습"}, "guideCardIndexes": [0, 1, 2], "promptIds": ["sample-redesign"], "notesTitle": "샘플 장표와 함께 보는 기존 설명·프롬프트"},
+        {"eyebrow": "장표 50~51", "title": "리디자인 전후 비교", "summary": "원본과 샘플 적용 결과를 나란히 확인합니다.", "slideRange": {"from": 50, "to": 51, "basePath": "images/classroom/sample-ai-7hrs/step-06", "altPrefix": "PPT 리디자인 전후 결과"}}
+      ],
       "guideCards": [
         {"title": "센스보다 샘플", "body": "디자인을 말로 길게 설명하는 것보다, 내가 원하는 결과에 가까운 샘플 한 장을 보여주는 편이 빠르고 정확합니다.", "point": "Pinterest에서 색·구성·타이포그래피가 내 내용과 맞는 자료를 찾습니다."},
         {"title": "샘플 선택 기준", "body": "예쁘기만 한 샘플보다 실제로 내 정보량을 담을 수 있는 구성을 고릅니다.", "keywords": ["정보 밀도", "제목 위계", "색상 수", "도형 구성", "여백"]},
@@ -425,6 +439,11 @@
       "title": "디자인 MD 파일 활용 (4단계)",
       "summary": "색상·폰트·구성 규칙을 MD 파일에 저장해 결과물의 디자인을 반복해서 일관되게 만듭니다.",
       "tasks": ["디자인 MD 시작 템플릿을 다운로드합니다.", "샘플 이미지를 분석하는 프롬프트를 실행합니다.", "생성된 규칙을 템플릿에 넣고 내 MD 파일로 저장합니다."],
+      "slideModules": [
+        {"eyebrow": "장표 52", "title": "Part 7 · 디자인 MD 파일 활용", "summary": "디자인 규칙을 재사용 가능한 파일로 만드는 파트입니다.", "slideRange": {"from": 52, "to": 52, "basePath": "images/classroom/sample-ai-7hrs/step-07", "altPrefix": "디자인 MD 파트 안내"}},
+        {"eyebrow": "장표 53~60", "title": "MD의 역할과 디자인 규칙 이해", "summary": "MD·스킬·INS·KB의 차이와 디자인 규칙을 구조화하는 방법을 익힙니다.", "slideRange": {"from": 53, "to": 60, "basePath": "images/classroom/sample-ai-7hrs/step-07", "altPrefix": "디자인 MD 개념과 구조"}, "guideCardIndexes": [0, 1, 2], "promptIds": ["design-md-analyze"], "notesTitle": "개념 장표와 함께 보는 기존 설명·분석 프롬프트"},
+        {"eyebrow": "장표 61~63", "title": "나만의 디자인 MD 만들기", "summary": "샘플의 특성을 분석해 우선순위가 있는 디자인 지침 파일로 저장합니다.", "slideRange": {"from": 61, "to": 63, "basePath": "images/classroom/sample-ai-7hrs/step-07", "altPrefix": "디자인 MD 제작 실습"}, "guideCardIndexes": [3], "promptIds": ["own-md-4step"], "notesTitle": "제작 장표와 함께 쓰는 기존 설명·4단계 프롬프트"}
+      ],
       "guideCards": [
         {"title": "MD는 사람과 AI가 함께 읽는 지침서", "body": "# 제목, **굵게**, - 목록처럼 단순한 문법으로 구조를 표현하는 텍스트 파일입니다. 필요할 때 HTML·PDF 등으로 바꾸기도 쉽습니다."},
         {"title": "디자인 MD는 ‘우리 조직의 옷장’", "body": "내용이 바뀌어도 색·폰트·톤·레이아웃이라는 옷은 유지합니다. 챕터가 달라져도 같은 조직이 만든 결과처럼 보이게 합니다.", "keywords": ["색", "폰트", "톤", "구성"]},
@@ -441,6 +460,11 @@
       "title": "스킬 기능 활용 (5단계)",
       "summary": "반복해서 쓰는 MD 지침을 스킬로 등록하고 필요할 때 이름으로 불러옵니다.",
       "tasks": ["앞 단계에서 만든 MD 파일의 역할과 이름을 정리합니다.", "대-중-소분류 규칙으로 스킬 이름을 짓습니다.", "클로드 설정의 스킬 메뉴에서 파일을 등록합니다.", "새 대화에서 스킬을 불러 2장 PPT를 만들고 결과가 유지되는지 확인합니다."],
+      "slideModules": [
+        {"eyebrow": "장표 64", "title": "Part 8 · 스킬 기능 활용", "summary": "반복 지침을 이름으로 불러 쓰는 스킬 활용 파트입니다.", "slideRange": {"from": 64, "to": 64, "basePath": "images/classroom/sample-ai-7hrs/step-08", "altPrefix": "스킬 기능 활용 파트 안내"}},
+        {"eyebrow": "장표 65~67", "title": "스킬 이름과 등록 순서", "summary": "기능이 드러나는 이름을 정하고 설정 메뉴에 지침 파일을 등록합니다.", "slideRange": {"from": 65, "to": 67, "basePath": "images/classroom/sample-ai-7hrs/step-08", "altPrefix": "스킬 이름과 등록 실습"}, "guideCardIndexes": [0, 1], "promptIds": ["skill-instruction-pack"], "notesTitle": "등록 장표와 함께 보는 기존 설명·복사용 프롬프트"},
+        {"eyebrow": "장표 68~70", "title": "스킬 적용과 결과 보정", "summary": "새 대화에서 스킬을 호출하고, 필요한 부분은 직접 보정하며 다른 AI에도 기준을 이식합니다.", "slideRange": {"from": 68, "to": 70, "basePath": "images/classroom/sample-ai-7hrs/step-08", "altPrefix": "스킬 적용과 결과 보정"}, "guideCardIndexes": [2, 3], "notesTitle": "적용 장표와 함께 보는 기존 설명"}
+      ],
       "guideCards": [
         {"title": "스킬 이름은 기능이 보이게", "body": "대분류-중분류-소분류 순서로 지으면 목록이 길어져도 찾기 쉽습니다.", "example": "ppt-design-greenyellow / design-applestyle / sns-produce-cardnews"},
         {"title": "등록 순서", "body": "반복해서 쓸 MD 파일을 준비한 뒤 스킬 메뉴에 올리고 새 대화에서 불러 테스트합니다.", "steps": ["좌하단 프로필", "설정", "스킬", "우상단 추가", "파일 업로드", "새 대화에서 호출"]},
@@ -457,6 +481,10 @@
       "title": "커스텀봇 활용",
       "summary": "프로젝트·젬스·GPTs에 지침과 자료를 넣어 반복 업무를 하나의 전용 공간으로 고정합니다.",
       "tasks": ["반복할 업무 하나를 고릅니다.", "역할·입력·절차·금지사항·출력 형식을 MD 지침으로 작성합니다.", "관련 KB와 샘플 파일을 넣습니다.", "새 입력 3개로 다시 실행해 결과의 일관성과 예외 대응을 확인합니다."],
+      "slideModules": [
+        {"eyebrow": "장표 71", "title": "Part 9 · 커스텀봇 활용", "summary": "반복 업무를 전용 AI 공간에 고정하는 파트입니다.", "slideRange": {"from": 71, "to": 71, "basePath": "images/classroom/sample-ai-7hrs/step-09", "altPrefix": "커스텀봇 활용 파트 안내"}},
+        {"eyebrow": "장표 72~76", "title": "지침·지식·샘플로 전용 봇 만들기", "summary": "Claude Projects·Gemini Gems·ChatGPT GPTs의 구성 원리와 테스트 방법을 익힙니다.", "slideRange": {"from": 72, "to": 76, "basePath": "images/classroom/sample-ai-7hrs/step-09", "altPrefix": "커스텀봇 구성과 테스트"}, "guideCardIndexes": [0, 1, 2, 3], "promptIds": ["custom-bot-instruction"], "notesTitle": "커스텀봇 장표와 함께 보는 기존 설명·지침 프롬프트"}
+      ],
       "guideCards": [
         {"title": "커스텀봇이 필요한 순간", "body": "같은 설명과 파일을 매번 다시 넣는 작업, 여러 번의 대화가 이어지는 워크플로우, 조직의 기준을 계속 적용해야 하는 업무에 적합합니다."},
         {"title": "대표적인 전용 공간", "body": "Claude Projects, Gemini Gems, ChatGPT GPTs처럼 지침과 자료를 저장하고 같은 목적의 대화를 이어가는 공간입니다.", "keywords": ["Claude Projects", "Gemini Gems", "ChatGPT GPTs"]},
@@ -473,6 +501,11 @@
       "title": "AI 플러그인과 시각화",
       "summary": "PPT 안에서 AI를 활용해 색상·개체·레이아웃을 다듬고 내용에 맞는 시각화 형식을 선택합니다.",
       "tasks": ["기준이 될 샘플 장표 3~5장 또는 디자인 MD를 준비합니다.", "슬라이드 내용이 흐름·관계·수치·비교·공간 중 무엇인지 판단합니다.", "맞는 시각화 형식을 하나 선택해 AI에 변환을 요청합니다.", "AI 수정 후 정렬·간격·색상 오류는 직접 최종 점검합니다."],
+      "slideModules": [
+        {"eyebrow": "장표 77", "title": "Part 10 · AI 플러그인과 시각화", "summary": "PPT 안에서 AI로 디자인을 확장하고 시각화 형식을 고르는 파트입니다.", "slideRange": {"from": 77, "to": 77, "basePath": "images/classroom/sample-ai-7hrs/step-10", "altPrefix": "AI 플러그인과 시각화 파트 안내"}},
+        {"eyebrow": "장표 78~81", "title": "PPT 플러그인으로 디자인 확장", "summary": "대표 샘플 장표를 기준으로 나머지 슬라이드를 확장하고 직접 보정할 지점을 구분합니다.", "slideRange": {"from": 78, "to": 81, "basePath": "images/classroom/sample-ai-7hrs/step-10", "altPrefix": "PPT 플러그인 디자인 확장"}, "guideCardIndexes": [0, 1], "promptIds": ["ppt-plugin-expand"], "notesTitle": "플러그인 장표와 함께 보는 기존 설명·확장 프롬프트"},
+        {"eyebrow": "장표 82~88", "title": "내용에 맞는 시각화 선택", "summary": "흐름·관계·수치·비교 목적에 맞는 도표와 그래프를 선택합니다.", "slideRange": {"from": 82, "to": 88, "basePath": "images/classroom/sample-ai-7hrs/step-10", "altPrefix": "PPT 시각화 유형 선택"}, "guideCardIndexes": [2, 3, 4, 5], "promptIds": ["ppt-visualization-selector"], "notesTitle": "시각화 장표와 함께 보는 기존 설명·선택 프롬프트"}
+      ],
       "guideCards": [
         {"title": "플러그인의 역할", "body": "PowerPoint 안에서 Claude 에이전트나 Copilot을 이용해 개체·색·레이아웃을 직접 수정합니다. 복잡하고 세밀한 톤앤매너 작업과 단순한 대량 수정의 성격을 구분합니다."},
         {"title": "샘플 3~5장이 디자인 규칙서", "body": "잘 만든 대표 장표를 먼저 확정한 뒤 이를 기준으로 나머지를 확장하면 재설명과 토큰 사용이 줄어듭니다.", "steps": ["기준 샘플 제작", "샘플 기준 확장 요청", "작은 오류는 수동 조정"]},
@@ -492,6 +525,12 @@
       "title": "딥리서치와 AI",
       "summary": "탄탄한 조사 프롬프트를 만들고 출처·교차검증·할루시네이션 확인 절차를 습관화합니다.",
       "tasks": ["검증 체크리스트를 다운로드합니다.", "리서치 메타프롬프트에서 조사 목적·핵심 질문·범위·소스 우선순위를 내 현안으로 바꿉니다.", "같은 프롬프트를 2개 이상의 AI에서 실행합니다.", "결과 파일을 한곳에 모아 충돌·출처·할루시네이션을 교차 검증합니다.", "모든 링크를 직접 열어 존재 여부와 원문 내용을 확인합니다."],
+      "slideModules": [
+        {"eyebrow": "장표 89", "title": "심화 · 딥리서치와 AI", "summary": "AI 조사와 검증을 하나의 워크플로우로 익히는 파트입니다.", "slideRange": {"from": 89, "to": 89, "basePath": "images/classroom/sample-ai-7hrs/step-11", "altPrefix": "딥리서치 파트 안내"}},
+        {"eyebrow": "장표 90~96", "title": "딥리서치의 원리와 조사 설계", "summary": "AI가 볼 수 있는 정보의 범위를 이해하고 좋은 조사 질문과 메타프롬프트를 설계합니다.", "slideRange": {"from": 90, "to": 96, "basePath": "images/classroom/sample-ai-7hrs/step-11", "altPrefix": "딥리서치 원리와 조사 설계"}, "guideCardIndexes": [0, 1, 2], "promptIds": ["research-meta-template"], "notesTitle": "조사 장표와 함께 보는 기존 설명·메타프롬프트"},
+        {"eyebrow": "장표 97~100", "title": "출처·교차·할루시네이션 검증", "summary": "영상 장표 98은 제외하고 검증 절차와 복사용 프롬프트를 함께 제공합니다.", "slideRange": {"from": 97, "to": 100, "exclude": [98], "basePath": "images/classroom/sample-ai-7hrs/step-11", "altPrefix": "딥리서치 결과 검증"}, "guideCardIndexes": [4], "promptIds": ["research-verify-4", "research-cross-verify"], "notesTitle": "검증 장표와 함께 쓰는 기존 설명·검증 프롬프트"},
+        {"eyebrow": "장표 101~104", "title": "검증 기준을 조직의 자산으로", "summary": "검증 방식을 KB·스킬·커스텀봇으로 축적해 반복 적용합니다.", "slideRange": {"from": 101, "to": 104, "basePath": "images/classroom/sample-ai-7hrs/step-11", "altPrefix": "검증 기준 자산화"}, "guideCardIndexes": [3], "notesTitle": "자산화 장표와 함께 보는 기존 설명"}
+      ],
       "guideCards": [
         {"title": "AI가 잘하는 조사와 못 보는 정보", "body": "공개 웹 정보는 넓고 빠르게 수집하지만, 현장 경험·로그인 사이트·비공개 커뮤니티·내부 문서는 사람이 직접 제공해야 합니다."},
         {"title": "딥리서치의 작동 방식", "body": "조사 질문을 하위 검색어로 나누고, 웹을 반복 탐색한 뒤, 수집한 근거를 체계적인 보고서로 정리하는 에이전트형 기능입니다.", "steps": ["검색어 자동 생성", "웹 검색·수집과 재검색", "근거 정리", "보고서화"]},
@@ -509,6 +548,11 @@
       "title": "오디오 생성 (음원·TTS)",
       "summary": "Suno로 음원을 만들고 음성 생성 도구로 내 콘텐츠에 맞는 내레이션을 제작합니다.",
       "tasks": ["심플 모드는 다섯 가지 키워드를 정해 바로 생성합니다.", "어드밴스드 모드는 메타프롬프팅으로 가사와 Styles 프롬프트를 만들어 입력합니다.", "생성한 음원의 링크를 복사해 공유합니다."],
+      "slideModules": [
+        {"eyebrow": "장표 105", "title": "Part 11 · 오디오 생성", "summary": "음원과 음성을 목적에 맞게 만드는 파트입니다.", "slideRange": {"from": 105, "to": 105, "basePath": "images/classroom/sample-ai-7hrs/step-12", "altPrefix": "오디오 생성 파트 안내"}},
+        {"eyebrow": "장표 106~108", "title": "Suno 심플·어드밴스드 모드", "summary": "다섯 키워드로 빠르게 만들거나 메타프롬프팅으로 가사와 스타일을 정교하게 설계합니다.", "slideRange": {"from": 106, "to": 108, "basePath": "images/classroom/sample-ai-7hrs/step-12", "altPrefix": "Suno 음악 생성 실습"}, "guideCardIndexes": [0, 1], "promptIds": ["suno-advanced-meta"], "notesTitle": "음원 생성 장표와 함께 보는 기존 설명·메타프롬프트"},
+        {"eyebrow": "장표 109~110", "title": "음성 도구 선택과 공유 전 확인", "summary": "음원과 내레이션 도구를 구분하고 공개 전 품질과 권리를 확인합니다.", "slideRange": {"from": 109, "to": 110, "basePath": "images/classroom/sample-ai-7hrs/step-12", "altPrefix": "음성 생성 도구와 확인 사항"}, "guideCardIndexes": [2, 3], "notesTitle": "도구 장표와 함께 보는 기존 설명"}
+      ],
       "guideCards": [
         {
           "title": "심플 모드 · 5가지 키워드",
@@ -540,6 +584,13 @@
       "title": "이미지 생성 AI 활용법",
       "summary": "샘플과 디자인 MD를 활용해 포스터·삽화·목업 이미지를 같은 스타일로 반복 생성합니다.",
       "tasks": ["약식 프롬프트를 먼저 실행합니다.", "정식 프롬프트 결과와 비교합니다.", "말로만 만든 결과와 샘플을 준 결과를 비교합니다.", "원하는 스타일을 디자인 MD로 정리해 커스텀봇 또는 스킬에 저장합니다.", "새 주제 3개를 넣어 스타일 일관성을 확인합니다."],
+      "slideModules": [
+        {"eyebrow": "장표 111", "title": "Part 12 · 이미지 생성 AI 활용", "summary": "이미지를 만들고 같은 스타일로 반복하는 파트입니다.", "slideRange": {"from": 111, "to": 111, "basePath": "images/classroom/sample-ai-7hrs/step-13", "altPrefix": "이미지 생성 AI 파트 안내"}},
+        {"eyebrow": "장표 112~113", "title": "이미지 생성의 범위와 프롬프트", "summary": "활용 범위를 살펴보고 약식·정식 프롬프트의 차이를 비교합니다.", "slideRange": {"from": 112, "to": 113, "basePath": "images/classroom/sample-ai-7hrs/step-13", "altPrefix": "이미지 생성 활용과 프롬프트"}, "guideCardIndexes": [0, 1], "promptIds": ["image-basic-vs-refined"], "notesTitle": "기초 장표와 함께 보는 기존 설명·비교 프롬프트"},
+        {"eyebrow": "장표 114~121", "title": "다양한 이미지 생성 사례", "summary": "영상 장표 117은 제외하고 실사·삽화·3D·포스터·목업 등 활용 사례를 확인합니다.", "slideRange": {"from": 114, "to": 121, "exclude": [117], "basePath": "images/classroom/sample-ai-7hrs/step-13", "altPrefix": "이미지 생성 활용 사례"}},
+        {"eyebrow": "장표 122~128", "title": "샘플을 활용한 이미지 리디자인", "summary": "좋은 견본을 분석해 내 주제와 내용에 맞는 이미지로 다시 설계합니다.", "slideRange": {"from": 122, "to": 128, "basePath": "images/classroom/sample-ai-7hrs/step-13", "altPrefix": "샘플 기반 이미지 리디자인"}, "guideCardIndexes": [2], "promptIds": ["image-reference-redesign"], "notesTitle": "샘플 장표와 함께 보는 기존 설명·리디자인 프롬프트"},
+        {"eyebrow": "장표 129~136", "title": "이미지 스타일을 디자인 MD로", "summary": "원하는 이미지 기준을 파일·스킬·커스텀봇에 저장해 일관되게 반복합니다.", "slideRange": {"from": 129, "to": 136, "basePath": "images/classroom/sample-ai-7hrs/step-13", "altPrefix": "이미지 스타일 시스템 구축"}, "guideCardIndexes": [3], "promptIds": ["image-style-system"], "notesTitle": "스타일 장표와 함께 보는 기존 설명·시스템 프롬프트"}
+      ],
       "guideCards": [
         {"title": "이미지 생성의 활용 범위", "body": "실사형 삽화, 3D·애니메이션 스타일, 개념 심벌, 사은품 목업, 포스터, 인물·장소 변형에 활용할 수 있습니다.", "keywords": ["삽화", "심벌", "목업", "포스터", "변형"]},
         {"title": "약식과 정식의 차이", "body": "요즘 도구는 짧은 한국어 설명도 잘 이해합니다. 정식 프롬프트는 카메라·조명·구도·분위기를 고정하거나 반복 제작할 때 가치가 큽니다."},
@@ -556,6 +607,11 @@
       "title": "레퍼런스 시트 생성",
       "summary": "캐릭터·배경·소품 시트로 이미지와 영상 속 인물·공간의 일관성을 유지합니다.",
       "tasks": ["캐릭터·환경·소품 중 이번 영상에서 반복할 대상을 고릅니다.", "캐릭터의 기본 정보와 색상·의상 규칙을 정합니다.", "클로드에서 이미지 생성용 3안을 만듭니다.", "선택한 안으로 베이스 이미지를 생성한 뒤 다시 업로드합니다.", "Google Flow에서 정면·측면·표정·포즈가 포함된 시트를 생성합니다."],
+      "slideModules": [
+        {"eyebrow": "장표 137", "title": "Part 13 · 레퍼런스 시트 생성", "summary": "인물·배경·소품의 일관성을 고정하는 파트입니다.", "slideRange": {"from": 137, "to": 137, "basePath": "images/classroom/sample-ai-7hrs/step-14", "altPrefix": "레퍼런스 시트 파트 안내"}},
+        {"eyebrow": "장표 138~143", "title": "캐릭터·환경·소품 시트 이해", "summary": "반복 등장하는 대상의 바뀌면 안 되는 속성과 필요한 각도를 정리합니다.", "slideRange": {"from": 138, "to": 143, "basePath": "images/classroom/sample-ai-7hrs/step-14", "altPrefix": "레퍼런스 시트 종류와 구성"}, "guideCardIndexes": [0, 1, 2, 3], "notesTitle": "개념 장표와 함께 보는 기존 설명"},
+        {"eyebrow": "장표 148", "title": "Claude와 Flow로 시트 완성", "summary": "영상 장표 144~147은 제외하고, 캐릭터 3안과 최종 시트를 만드는 복사용 프롬프트를 제공합니다.", "slideRange": {"from": 148, "to": 148, "basePath": "images/classroom/sample-ai-7hrs/step-14", "altPrefix": "레퍼런스 시트 제작 실습"}, "guideCardIndexes": [4], "promptIds": ["reference-character-three-options", "reference-character-sheet"], "notesTitle": "실습 장표와 함께 보는 기존 설명·복사용 프롬프트"}
+      ],
       "guideCards": [
         {"title": "캐릭터 시트", "body": "인물의 정면·측면, 표정, 포즈, 손동작을 한 장에 정리합니다. 마스코트나 숏폼 주인공을 반복 생성할 때 사용합니다."},
         {"title": "환경 시트", "body": "하나의 공간을 여러 각도·시간대·날씨로 표현합니다. 카페·도시·기관 건물처럼 반복 등장하는 배경을 고정합니다."},
@@ -573,6 +629,16 @@
       "title": "비디오 생성 및 편집",
       "summary": "생성형 AI로 장면을 만들고, 준비한 소스를 AI와 FFmpeg로 자동 조합한 뒤 CapCut에서 마무리합니다.",
       "tasks": ["영상 제작 워크플로우와 FFmpeg 자동화 가이드를 다운로드합니다.", "텍스트 투 비디오와 이미지 투 비디오 중 제작 방식을 정합니다.", "3개 장면의 스토리와 스토리보드를 만듭니다.", "레퍼런스 시트의 캐릭터·배경 정보를 각 장면 프롬프트에 반복합니다.", "장면별 이미지와 움직임 프롬프트로 영상을 생성합니다.", "캐릭터시트·로고·대본·음원을 한 폴더에 모으고 자동 제작을 요청합니다.", "완성된 mp4를 확인하고 CapCut에서 자막·음량·색감을 마무리합니다."],
+      "slideModules": [
+        {"eyebrow": "장표 149", "title": "Part 14 · 비디오 생성 및 편집", "summary": "AI로 장면을 만들고 자동 조합한 뒤 편집으로 마무리하는 파트입니다.", "slideRange": {"from": 149, "to": 149, "basePath": "images/classroom/sample-ai-7hrs/step-15", "altPrefix": "비디오 생성과 편집 파트 안내"}},
+        {"eyebrow": "장표 150~153", "title": "Text to Video와 Image to Video", "summary": "두 생성 방식과 스타트·엔드 프레임의 차이를 이해합니다.", "slideRange": {"from": 150, "to": 153, "basePath": "images/classroom/sample-ai-7hrs/step-15", "altPrefix": "영상 생성 방식과 프레임"}, "guideCardIndexes": [0, 1], "notesTitle": "생성 방식 장표와 함께 보는 기존 설명"},
+        {"eyebrow": "장표 154~160", "title": "스토리에서 장면 프롬프트까지", "summary": "레퍼런스 시트를 고정하고 3개 장면의 스토리·스토리보드·프롬프트를 설계합니다.", "slideRange": {"from": 154, "to": 160, "basePath": "images/classroom/sample-ai-7hrs/step-15", "altPrefix": "AI 영상 스토리와 스토리보드"}, "guideCardIndexes": [2, 3], "promptIds": ["video-meta-prompt", "video-story-3scene"], "notesTitle": "기획 장표와 함께 보는 기존 설명·스토리 프롬프트"},
+        {"eyebrow": "장표 161~165", "title": "장면별 이미지와 움직임 만들기", "summary": "정지 이미지와 움직임 조건을 분리해 각 장면을 영상으로 발전시킵니다.", "slideRange": {"from": 161, "to": 165, "basePath": "images/classroom/sample-ai-7hrs/step-15", "altPrefix": "장면 이미지와 움직임 생성"}, "promptIds": ["video-scene-motion"], "notesTitle": "장면 장표와 함께 쓰는 움직임 프롬프트"},
+        {"eyebrow": "추가 실습", "title": "FFmpeg + AI 폴더 자동화", "summary": "추가한 실습 가이드와 기존 홈페이지 설명을 유지해, 소스 폴더만 준비하면 영상 조합을 요청할 수 있게 했습니다.", "guideCardIndexes": [4, 5, 6, 7, 8], "promptIds": ["ffmpeg-folder-video-request", "ffmpeg-video-revision-request"], "notesTitle": "폴더 자동화 설명과 복사용 요청문"},
+        {"eyebrow": "장표 166", "title": "영상 편집", "summary": "생성한 장면을 하나의 완성 영상으로 다듬는 편집 파트입니다.", "slideRange": {"from": 166, "to": 166, "basePath": "images/classroom/sample-ai-7hrs/step-15", "altPrefix": "영상 편집 파트 안내"}},
+        {"eyebrow": "장표 167~174", "title": "CapCut 최소 편집 실습", "summary": "컷·오버레이·자막·음량·색보정의 핵심 조작으로 결과를 마무리합니다.", "slideRange": {"from": 167, "to": 174, "basePath": "images/classroom/sample-ai-7hrs/step-15", "altPrefix": "CapCut 영상 편집 실습"}, "guideCardIndexes": [9, 10], "promptIds": ["capcut-edit-plan"], "notesTitle": "편집 장표와 함께 보는 기존 설명·편집 프롬프트"},
+        {"eyebrow": "장표 175", "title": "과정 마무리", "summary": "샘플 교안의 마지막 장표까지 홈페이지 교안에 연결했습니다.", "slideRange": {"from": 175, "to": 175, "basePath": "images/classroom/sample-ai-7hrs/step-15", "altPrefix": "생성형 AI 과정 마무리"}}
+      ],
       "guideCards": [
         {"title": "두 가지 생성 방식", "body": "Text to Video는 설명 글에서 바로 영상을 만들고, Image to Video는 먼저 만든 기준 이미지를 움직입니다.", "point": "캐릭터와 배경 일관성이 중요하면 이미지 투 비디오가 관리하기 쉽습니다."},
         {"title": "스타트·엔드 프레임", "body": "시작 이미지와 끝 이미지를 정하면 장면의 출발과 도착을 더 구체적으로 통제할 수 있습니다."},
