@@ -1,5 +1,22 @@
 [
   {
+    "id": "p1790651952378",
+    "title": "민원봇 MD (광진구시설관리공단 내규 및 봇 지침)",
+    "date": "2026-09-29",
+    "category": "",
+    "summary": "",
+    "body": "1. 해당 링크 속 파일 모두 다운로드\n2. 내규 및 규정집(총 4개)은 모두 커스텀 봇에 업로드(컨텍스트 등의 곳에)\n3. 지침 md(총 1개) 는 열어서 전문 복사 후 커스텀 봇 지침에 붙여넣으면 완료",
+    "links": [
+      {
+        "label": "https://drive.google.com/drive/folders/1LcQektswsefpEKeKsiaXsr3rFaMfoZnx?usp=sharing",
+        "url": "https://drive.google.com/drive/folders/1LcQektswsefpEKeKsiaXsr3rFaMfoZnx?usp=sharing"
+      }
+    ],
+    "hidden": false,
+    "files": [],
+    "lock": ""
+  },
+  {
     "id": "p1789295144251",
     "title": "타이포 마스킹 포스터 디자인 스킬 (클로드)",
     "date": "2026-09-13",
