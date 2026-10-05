@@ -614,6 +614,11 @@ section:not(.book-section) .section-title-row .section-sub {
   .quicklink-grid { grid-template-columns: 1fr; }
 }
 
+/* 4-card variant (e.g. 기관 전용 준비사항 카드 추가 시) */
+.quicklink-grid.quicklink-grid-4 { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 900px) { .quicklink-grid.quicklink-grid-4 { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .quicklink-grid.quicklink-grid-4 { grid-template-columns: 1fr; } }
+
 /* ---------- Contact card flip (email / phone) ---------- */
 
 .contact-card-flip {
