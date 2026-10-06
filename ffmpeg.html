@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FFmpeg 설치 방법 | 멘피디 AI</title>
+<meta name="description" content="클로드가 영상 컷 편집·자막·음악 삽입에 쓰는 FFmpeg를 윈도우·맥에서 3분 만에 설치하는 방법">
+<link rel="stylesheet" href="css/styles.css">
+<style>
+:root{--accent:#0071e3;--ink:#1d1d1f;--wash:#f5f5f7;--paper:#fff;--line:#E4E6EB;--muted:#767C88;--code:#111827}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-text,'Pretendard',system-ui,-apple-system,sans-serif);background:var(--wash);color:var(--ink);-webkit-font-smoothing:antialiased}
+.top{background:var(--ink);padding:16px 24px}
+.top a{color:#fff;text-decoration:none;font-size:13px;font-weight:600;opacity:.85}
+.top a:hover{opacity:1}
+.wrap{max-width:760px;margin:0 auto;padding:56px 24px 120px}
+.badge{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.08em;color:#fff;background:var(--ink);padding:5px 10px;border-radius:6px;margin-bottom:16px}
+h1{font-size:clamp(28px,4.5vw,38px);font-weight:800;letter-spacing:-.03em}
+.lede{margin-top:12px;color:var(--muted);font-size:15px;line-height:1.7;max-width:56ch}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:24px}
+.fact{background:rgba(255,255,255,.75);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.fact b{display:block;font-size:20px;margin-bottom:4px;color:var(--ink)}
+.fact span{font-size:12.5px;color:var(--muted);line-height:1.5}
+.os-toggle{display:inline-flex;gap:4px;padding:4px;border-radius:999px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.4);margin-top:24px}
+.os-toggle button{border:0;background:transparent;color:#fff;font:600 13px var(--font-text,system-ui);padding:8px 18px;border-radius:999px;cursor:pointer}
+.os-toggle button.on{background:#fff;color:#294463}
+.os-win .mac,.os-mac .win{display:none!important}
+
+.group{margin-top:48px}
+.group-head{display:flex;align-items:baseline;gap:10px;margin-bottom:6px}
+.group-num{font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:13px;font-weight:800;color:var(--accent)}
+.group h2{font-size:20px;font-weight:800;letter-spacing:-.02em}
+.group-desc{color:var(--muted);font-size:13.5px;margin-bottom:18px;line-height:1.6}
+
+.flow{display:flex;flex-direction:column;gap:12px}
+.card{display:flex;gap:16px;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:18px 20px}
+.card .n{flex:none;width:32px;height:32px;border-radius:50%;background:#365f92;color:#fff;font-weight:800;font-size:14px;display:grid;place-items:center}
+.card .cbody{flex:1;min-width:0}
+.card h3{font-size:15px;font-weight:700;margin:5px 0 4px}
+.card p{font-size:13px;color:var(--muted);line-height:1.6}
+.card p b{color:var(--ink)}
+.cmd{display:flex;align-items:center;gap:10px;margin-top:10px;background:var(--code);border-radius:10px;padding:10px 10px 10px 14px}
+.cmd code{flex:1;min-width:0;color:#fff;font:600 13.5px ui-monospace,'SF Mono',Menlo,Consolas,monospace;overflow-x:auto;white-space:nowrap}
+.copy{flex:none;border:0;background:#fff;color:var(--code);font:700 12px var(--font-text,system-ui);padding:7px 12px;border-radius:7px;cursor:pointer}
+.copy.ok{background:#22c55e;color:#fff}
+.keys{display:inline-block;font:600 12px ui-monospace,Menlo,monospace;background:var(--wash);border:1px solid var(--line);border-bottom-width:2px;border-radius:6px;padding:1px 7px;color:var(--ink)}
+.ok-card{background:#ecfdf3;border-color:#bbf7d0}
+.ok-card .n{background:#16a34a}
+.screen{margin-top:10px;background:var(--code);color:#a7f3d0;font:12px/1.6 ui-monospace,Menlo,monospace;padding:10px 14px;border-radius:10px;overflow-x:auto;white-space:pre}
+
+.acc-group{display:flex;flex-direction:column;gap:8px}
+.acc{background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.acc summary{cursor:pointer;list-style:none;padding:14px 18px;font-size:13.5px;font-weight:700;display:flex;gap:8px}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary::before{content:'+';color:var(--muted);font-weight:400;width:12px}
+.acc[open] summary::before{content:'–'}
+.acc-body{padding:0 18px 16px 38px;font-size:13px;line-height:1.7;color:var(--ink)}
+.acc-body .cmd{margin-top:8px}
+.back{display:inline-flex;margin-top:40px;font-size:14px;font-weight:700;color:#fff;background:var(--ink);padding:12px 20px;border-radius:999px;text-decoration:none}
+.back:hover{background:var(--accent)}
+@media (max-width:600px){.facts{grid-template-columns:1fr}.cmd code,.screen{white-space:normal;word-break:break-all}.card{padding:16px}.card .n{width:28px;height:28px;font-size:13px}}
+</style>
+<link rel="stylesheet" href="css/depth-motion.css">
+<link rel="stylesheet" href="css/dusk-pages.css?v=20260923b">
+</head>
+<body class="dusk-page prep-page os-win">
+<div class="top">
+  <a class="top-brand" href="kofoti.html">← 섬산련 준비사항</a>
+  <nav class="top-links" aria-label="하위 페이지">
+    <a href="kofoti.html">섬산련 준비</a>
+    <a href="prep.html">준비자료</a>
+    <a href="resources.html">자료실</a>
+    <a href="board.html">게시판</a>
+  </nav>
+</div>
+
+<div class="wrap">
+  <header class="page-intro">
+    <span class="badge">설치 가이드 · 약 3분</span>
+    <h1>FFmpeg 설치 방법</h1>
+    <p class="lede">FFmpeg는 화면 없이 돌아가는 <b>무료 영상 편집 엔진</b>입니다. 설치만 해두면 클로드가 컷 편집·자막·음악 삽입 명령을 대신 짜서 실행합니다.</p>
+    <div class="facts">
+      <div class="fact"><b>💸 무료</b><span>오픈소스라 결제·구독 없음</span></div>
+      <div class="fact"><b>🔓 가입 X</b><span>로그인·회원가입 필요 없음</span></div>
+      <div class="fact"><b>⌨️ 한 줄</b><span>명령어 한 줄 복사·붙여넣기</span></div>
+    </div>
+    <div class="os-toggle" role="group" aria-label="운영체제 선택">
+      <button id="bWin" class="on" onclick="setOS('win')">Windows</button>
+      <button id="bMac" onclick="setOS('mac')">Mac</button>
+    </div>
+  </header>
+
+  <!-- WINDOWS -->
+  <div class="group win">
+    <div class="group-head"><span class="group-num">01</span><h2>🪟 윈도우 10 / 11</h2></div>
+    <p class="group-desc">아래 순서대로 따라 하세요. 명령어는 <b>복사</b> 버튼을 누른 뒤 붙여넣기만 하면 됩니다.</p>
+    <div class="flow">
+      <div class="card"><span class="n">1</span><div class="cbody">
+        <h3>터미널 열기</h3>
+        <p><span class="keys">⊞ Win</span> 키 → <b>"터미널"</b> 입력 → 엔터. (없으면 <b>"PowerShell"</b>로 검색)</p>
+      </div></div>
+      <div class="card"><span class="n">2</span><div class="cbody">
+        <h3>설치 명령어 붙여넣기</h3>
+        <p>터미널 창에서 <span class="keys">Ctrl</span>+<span class="keys">V</span> 또는 마우스 우클릭으로 붙여넣고 엔터. 중간에 <b>Y</b>를 물어보면 Y 입력 후 엔터.</p>
+        <div class="cmd"><code>winget install Gyan.FFmpeg</code><button class="copy">복사</button></div>
+      </div></div>
+      <div class="card"><span class="n">3</span><div class="cbody">
+        <h3>터미널 껐다가 다시 켜기</h3>
+        <p>설치 직후 창에서는 바로 인식이 안 될 수 있어요. <b>꼭 닫고 새로 여세요.</b></p>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- MAC -->
+  <div class="group mac">
+    <div class="group-head"><span class="group-num">01</span><h2>🍎 맥</h2></div>
+    <p class="group-desc">맥은 '홈브루'라는 설치 도우미를 먼저 깐 뒤 FFmpeg를 설치합니다. 홈브루가 이미 있다면 2번부터 하세요.</p>
+    <div class="flow">
+      <div class="card"><span class="n">1</span><div class="cbody">
+        <h3>터미널 열기 + 홈브루 설치</h3>
+        <p><span class="keys">⌘ Cmd</span>+<span class="keys">Space</span> → <b>"터미널"</b> 입력 → 엔터. 아래 명령어를 붙여넣고 엔터. 맥 <b>로그인 비밀번호</b>를 물으면 입력(화면에 안 보여도 정상)하고 엔터.</p>
+        <div class="cmd"><code>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</code><button class="copy">복사</button></div>
+        <p style="margin-top:8px">설치 끝에 <b>"Next steps"</b> 아래 명령어 2줄이 나오면, 그것도 복사해서 그대로 실행하세요.</p>
+      </div></div>
+      <div class="card"><span class="n">2</span><div class="cbody">
+        <h3>FFmpeg 설치</h3>
+        <p>같은 터미널에 붙여넣고 엔터. 몇 분 걸릴 수 있으니 기다려 주세요.</p>
+        <div class="cmd"><code>brew install ffmpeg</code><button class="copy">복사</button></div>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- VERIFY -->
+  <div class="group">
+    <div class="group-head"><span class="group-num">02</span><h2>✅ 설치 확인</h2></div>
+    <p class="group-desc">새 터미널을 열고 아래 명령어를 입력하세요.</p>
+    <div class="flow">
+      <div class="card ok-card"><span class="n">✓</span><div class="cbody">
+        <h3>버전 정보가 나오면 성공!</h3>
+        <div class="cmd"><code>ffmpeg -version</code><button class="copy">복사</button></div>
+        <div class="screen">ffmpeg version 7.x ...  ← 이런 글자가 나오면 완료</div>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- TROUBLE -->
+  <div class="group">
+    <div class="group-head"><span class="group-num">03</span><h2>⚠️ 막힐 때</h2></div>
+    <div class="acc-group">
+      <details class="acc win"><summary>'winget'을 찾을 수 없다고 나와요</summary><div class="acc-body">Microsoft Store에서 <b>"앱 설치 관리자"</b>를 검색해 <b>업데이트</b>한 뒤, 터미널을 다시 열고 2번을 반복하세요.</div></details>
+      <details class="acc win"><summary>'ffmpeg'은(는) 인식되지 않는 명령이라고 나와요</summary><div class="acc-body">터미널을 <b>완전히 닫고 새로</b> 여세요. 그래도 안 되면 PC를 한 번 재시작하면 대부분 해결됩니다.</div></details>
+      <details class="acc mac"><summary>'brew: command not found'가 나와요</summary><div class="acc-body">홈브루 설치 끝에 나온 <b>"Next steps"</b> 명령어 2줄을 실행하지 않은 경우입니다. 1번을 다시 실행하고 마지막에 나오는 안내 명령어를 꼭 실행하세요.</div></details>
+      <details class="acc"><summary>회사 PC라 설치가 막혀요 (권한 오류)</summary><div class="acc-body">관리자 권한이 필요한 경우입니다. 전산팀에 <b>"FFmpeg 설치 요청"</b>을 하시거나, 개인 노트북을 사용해 주세요.</div></details>
+      <details class="acc"><summary>그래도 안 되면?</summary><div class="acc-body">당일 강의 시작 전에 강사에게 말씀해 주세요. 클로드 데스크톱앱에 <b>"FFmpeg 설치해줘"</b>라고 요청해 함께 해결할 수도 있습니다.</div></details>
+    </div>
+  </div>
+
+  <a class="back" href="kofoti.html#install">← 준비사항으로 돌아가기</a>
+</div>
+
+<script>
+var KEY='kofoti_prep_v1',st={};
+try{st=JSON.parse(localStorage.getItem(KEY))||{}}catch(e){st={}}
+function setOS(os){
+  document.body.classList.remove('os-win','os-mac');document.body.classList.add('os-'+os);
+  document.getElementById('bWin').classList.toggle('on',os==='win');
+  document.getElementById('bMac').classList.toggle('on',os==='mac');
+  st._os=os;try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}
+}
+var q=(location.search.match(/os=(win|mac)/)||[])[1];
+setOS(q||st._os||(/Mac/i.test(navigator.platform||navigator.userAgent)?'mac':'win'));
+document.querySelectorAll('.copy').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=b.previousElementSibling.textContent;
+    function done(){b.textContent='복사됨 ✓';b.classList.add('ok');setTimeout(function(){b.textContent='복사';b.classList.remove('ok')},1500)}
+    if(navigator.clipboard){navigator.clipboard.writeText(t).then(done,function(){fallback()})}else fallback();
+    function fallback(){var a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();try{document.execCommand('copy');done()}catch(e){}a.remove()}
+  });
+});
+</script>
+<script src="js/site-animations.js" defer></script>
+<script src="js/depth-motion.js" defer></script>
+</body>
+</html>
