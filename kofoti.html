@@ -158,7 +158,7 @@ h1{font-size:clamp(28px,4.5vw,38px);font-weight:800;letter-spacing:-.03em}
     </div>
   </div>
 
-  <div class="progress"><div class="bar"><i id="barFill"></i></div><span id="progTxt">0 / 8 완료</span></div>
+  <div class="progress"><div class="bar"><i id="barFill"></i></div><span id="progTxt">0 / 9 완료</span></div>
 
   <div class="group" id="install">
     <div class="group-head"><span class="group-num">01</span><h2>설치 · 로그인</h2></div>
@@ -184,12 +184,20 @@ h1{font-size:clamp(28px,4.5vw,38px);font-weight:800;letter-spacing:-.03em}
         <span class="step-num">03</span>
         <img class="service-logo" src="images/service-logos/claude.png" alt="" width="40" height="40" loading="lazy" decoding="async">
         <div class="txt"><strong>Claude in Chrome (크롬 확장)<span class="req must">필수</span></strong>
-          <span>크롬에서 열기 → "Chrome에 추가" → 클로드 계정 로그인 → 퍼즐 아이콘에서 압정으로 고정</span><span class="os-tip">🎬 FFmpeg(영상 편집 엔진)도 설치: 🪟 터미널에 <b>winget install Gyan.FFmpeg</b> · 🍎 <b>brew install ffmpeg</b> → <b>ffmpeg -version</b>으로 확인</span></div>
+          <span>크롬에서 열기 → "Chrome에 추가" → 클로드 계정 로그인 → 퍼즐 아이콘에서 압정으로 고정</span></div>
         <a class="go" href="https://chromewebstore.google.com/detail/claude/fcoeoabgfenejglbffodgkkbkcdhcgfn" target="_blank" rel="noopener">웹스토어 ↗</a>
         <label class="chk"><input type="checkbox">완료</label>
       </div>
-      <div class="step" data-i="4">
+      <div class="step" data-i="9">
         <span class="step-num">04</span>
+        <span class="service-logo" style="display:grid;place-items:center;font-size:20px">🎬</span>
+        <div class="txt"><strong>FFmpeg (영상 편집 엔진)<span class="req must">필수</span></strong>
+          <span>클로드가 컷 편집·자막·음악 삽입을 할 때 씁니다. 창 없이 설치만 해두면 됩니다. 설치 후 <b>ffmpeg -version</b>을 입력해 버전이 나오면 성공!</span><span class="os-tip win">🪟 시작 메뉴 → "터미널" 실행 → <b>winget install Gyan.FFmpeg</b> 입력 → 터미널 껐다 다시 켜기 (winget이 없으면 Microsoft Store에서 "앱 설치 관리자" 업데이트)</span><span class="os-tip mac">🍎 brew.sh에서 홈브루 먼저 설치 → 터미널에 <b>brew install ffmpeg</b> 입력</span></div>
+        <a class="go" href="https://ffmpeg.org/download.html" target="_blank" rel="noopener">공식 사이트 ↗</a>
+        <label class="chk"><input type="checkbox">완료</label>
+      </div>
+      <div class="step" data-i="4">
+        <span class="step-num">05</span>
         <img class="service-logo" src="images/service-logos/chatgpt.png" alt="" width="40" height="40" loading="lazy" decoding="async">
         <div class="txt"><strong>챗GPT(ChatGPT) 데스크톱앱<span class="req rec">권장</span></strong>
           <span>무료 계정도 괜찮습니다. 설치 후 로그인만 해두세요.</span><span class="os-tip win">🪟 Microsoft Store로 연결 → "받기"</span><span class="os-tip mac">🍎 .dmg 열기 → 응용 프로그램으로 드래그 (설치가 안 되면 chatgpt.com 웹 사용)</span></div>
@@ -197,7 +205,7 @@ h1{font-size:clamp(28px,4.5vw,38px);font-weight:800;letter-spacing:-.03em}
         <label class="chk"><input type="checkbox">완료</label>
       </div>
       <div class="step" data-i="5">
-        <span class="step-num">05</span>
+        <span class="step-num">06</span>
         <img class="service-logo" src="images/service-logos/flow.png" alt="" width="40" height="40" loading="lazy" decoding="async">
         <div class="txt"><strong>구글 플로우(Google Flow) 로그인<span class="req must">필수</span></strong>
           <span>크롬에서 1번 구글 계정으로 시작. 연령 확인이 뜨면 안내대로 진행하세요. 이미지 생성은 무료입니다.</span></div>
@@ -205,7 +213,7 @@ h1{font-size:clamp(28px,4.5vw,38px);font-weight:800;letter-spacing:-.03em}
         <label class="chk"><input type="checkbox">완료</label>
       </div>
       <div class="step" data-i="6">
-        <span class="step-num">06</span>
+        <span class="step-num">07</span>
         <img class="service-logo" src="images/service-logos/elevenlabs.png" alt="" width="40" height="40" loading="lazy" decoding="async">
         <div class="txt"><strong>일레븐랩스(ElevenLabs) 가입<span class="req must">필수</span></strong>
           <span>크롬에서 "Google로 계속하기"로 가입하면 1분이면 끝납니다.</span></div>
@@ -213,7 +221,7 @@ h1{font-size:clamp(28px,4.5vw,38px);font-weight:800;letter-spacing:-.03em}
         <label class="chk"><input type="checkbox">완료</label>
       </div>
       <div class="step" data-i="7">
-        <span class="step-num">07</span>
+        <span class="step-num">08</span>
         <span class="service-logo" style="display:grid;place-items:center;font-size:20px">📷</span>
         <div class="txt"><strong>인스타그램 로그인<span class="req opt">선택</span></strong>
           <span>카드뉴스 벤치마킹 때 클로드가 게시물을 깊게 보려면 필요할 수 있습니다. 크롬에서 로그인만 해두세요.</span></div>
@@ -221,7 +229,7 @@ h1{font-size:clamp(28px,4.5vw,38px);font-weight:800;letter-spacing:-.03em}
         <label class="chk"><input type="checkbox">완료</label>
       </div>
       <div class="step" data-i="8">
-        <span class="step-num">08</span>
+        <span class="step-num">09</span>
         <span class="service-logo" style="display:grid;place-items:center;font-size:20px">📦</span>
         <div class="txt"><strong>강의 키트 다운로드<span class="req must">필수</span></strong>
           <span>구글 드라이브 폴더가 열립니다. 폴더 이름 옆 ▼ → <b>다운로드</b>를 누르면 zip으로 받아집니다. 압축을 풀어 바탕화면에 두세요.</span><span class="os-tip win">🪟 zip 우클릭 → 압축 풀기 → 바탕화면</span><span class="os-tip mac">🍎 zip 더블클릭 → 생긴 폴더를 바탕화면으로 이동</span></div>
