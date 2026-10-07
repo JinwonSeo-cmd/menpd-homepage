@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>클로드 혼자 세팅하기</title>
+<meta name="description" content="클로드 데스크톱 앱 설치, 내 폴더 연결, 클로드인크롬, 제미나이·구글 플로우·일레븐랩스 연결까지 한 단계씩 따라 하는 왕초보 동적교재">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root{
+  --paper:#f4f1e9; --card:#fffdf8; --ink:#17160f; --ink-soft:#57544a; --line:#d8d2c2;
+  --accent:#1f5a8c; --accent-soft:#dde9f3; --ok:#2f7a4a; --ok-soft:#dcefe2;
+  --warn:#a5561c; --warn-soft:#f8e6d6; --hl:#e0362b; --mock:#ffffff; --mock-2:#eef0f3; --mock-ink:#22252b;
+  --fs:20px; color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#15140f; --card:#1f1d17; --ink:#f0ede3; --ink-soft:#b3ad9c; --line:#3d3a2f;
+    --accent:#7db3e0; --accent-soft:#1f3142; --ok:#7fcb98; --ok-soft:#1d3326;
+    --warn:#eaa36b; --warn-soft:#3b2a1b; --hl:#ff5a4f; --mock:#2a2c31; --mock-2:#202227; --mock-ink:#e7e8ea; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#15140f; --card:#1f1d17; --ink:#f0ede3; --ink-soft:#b3ad9c; --line:#3d3a2f;
+  --accent:#7db3e0; --accent-soft:#1f3142; --ok:#7fcb98; --ok-soft:#1d3326;
+  --warn:#eaa36b; --warn-soft:#3b2a1b; --hl:#ff5a4f; --mock:#2a2c31; --mock-2:#202227; --mock-ink:#e7e8ea; color-scheme:dark;
+}
+:root.big{--fs:24px;}
+*{box-sizing:border-box}
+html{font-size:var(--fs)}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:'Pretendard',-apple-system,'Malgun Gothic',sans-serif;line-height:1.65;word-break:keep-all;-webkit-font-smoothing:antialiased}
+button{font:inherit;cursor:pointer}
+a{color:var(--accent)}
+.top{position:sticky;top:0;z-index:20;background:var(--paper);border-bottom:2px solid var(--line)}
+.top-in{max-width:880px;margin:0 auto;padding:10px 16px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.brand{font-weight:800;font-size:.95rem;margin-right:auto;cursor:pointer;background:none;border:0;color:var(--ink);padding:6px 0}
+.tbtn{border:2px solid var(--line);background:var(--card);color:var(--ink);border-radius:12px;padding:6px 12px;font-size:.78rem;font-weight:700;min-height:44px}
+.tbtn[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft);color:var(--accent)}
+.seg{display:inline-flex;border:2px solid var(--line);border-radius:12px;overflow:hidden}
+.seg button{border:0;background:var(--card);color:var(--ink-soft);padding:6px 12px;font-size:.78rem;font-weight:700;min-height:40px}
+.seg button.on{background:var(--accent);color:#fff}
+.bar{height:8px;background:var(--line)}
+.bar i{display:block;height:100%;background:var(--ok);width:0;transition:width .4s}
+main{max-width:880px;margin:0 auto;padding:22px 16px 120px}
+h1{font-size:1.75rem;line-height:1.3;margin:.4em 0 .3em;letter-spacing:-.02em}
+h2{font-size:1.4rem;line-height:1.35;margin:.2em 0 .5em;letter-spacing:-.01em}
+.lead{color:var(--ink-soft);font-size:1rem;margin:0 0 1em}
+.eyebrow{font-size:.7rem;font-weight:800;letter-spacing:.12em;color:var(--accent)}
+.card{background:var(--card);border:2px solid var(--line);border-radius:20px;padding:22px;margin:16px 0}
+.parts{display:grid;gap:12px}
+.part{display:flex;gap:14px;align-items:center;background:var(--card);border:2px solid var(--line);border-radius:18px;padding:16px;text-align:left;color:var(--ink);width:100%}
+.part:hover{border-color:var(--accent)}
+.part .num{flex:0 0 52px;height:52px;border-radius:50%;display:grid;place-items:center;font-weight:900;font-size:1.1rem;background:var(--accent-soft);color:var(--accent)}
+.part.done .num{background:var(--ok);color:#fff}
+.part b{display:block;font-size:1.05rem}
+.part small{color:var(--ink-soft);font-size:.8rem}
+.part .pct{margin-left:auto;font-weight:800;color:var(--ok);font-size:.85rem;white-space:nowrap}
+.big-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:64px;padding:12px 26px;border-radius:16px;border:0;background:var(--accent);color:#fff;font-weight:800;font-size:1.05rem;text-decoration:none}
+.big-btn.ok{background:var(--ok)}
+.big-btn.ghost{background:var(--card);color:var(--ink);border:2px solid var(--line)}
+.os-pick{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+.os-pick button{min-height:110px;border-radius:18px;border:3px solid var(--line);background:var(--card);color:var(--ink);font-weight:800;font-size:1.05rem}
+.os-pick button span{display:block;font-size:2rem}
+.os-pick button.on{border-color:var(--accent);background:var(--accent-soft)}
+.check{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px dashed var(--line)}
+.check:last-child{border:0}
+.check input{width:30px;height:30px;flex:0 0 30px;margin-top:2px;accent-color:var(--ok)}
+.check label{cursor:pointer}
+.check small{display:block;color:var(--ink-soft);font-size:.82rem}
+/* step */
+.stephead{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.pill{display:inline-block;background:var(--accent-soft);color:var(--accent);border-radius:999px;padding:4px 14px;font-size:.75rem;font-weight:800}
+.dots{display:flex;gap:6px;margin-left:auto}
+.dots i{width:14px;height:14px;border-radius:50%;background:var(--line)}
+.dots i.d{background:var(--ok)} .dots i.c{background:var(--accent);outline:3px solid var(--accent-soft)}
+ol.do{padding:0;margin:14px 0;list-style:none;counter-reset:s}
+ol.do li{counter-increment:s;position:relative;padding:10px 0 10px 56px;border-bottom:1px dashed var(--line);font-size:1.02rem}
+ol.do li:last-child{border:0}
+ol.do li::before{content:counter(s);position:absolute;left:0;top:8px;width:40px;height:40px;border-radius:50%;background:var(--ink);color:var(--paper);display:grid;place-items:center;font-weight:900}
+ol.do b{color:var(--hl)}
+.key{display:inline-block;border:2px solid var(--line);border-bottom-width:4px;border-radius:8px;padding:0 8px;font-size:.85em;font-weight:800;background:var(--card)}
+.tip{background:var(--ok-soft);border-radius:16px;padding:14px 16px;margin:12px 0;font-size:.95rem}
+.tip::before{content:"💡 도움말";display:block;font-weight:800;color:var(--ok);font-size:.8rem}
+.warn{background:var(--warn-soft);border-radius:16px;padding:14px 16px;margin:12px 0;font-size:.95rem}
+.warn::before{content:"⚠️ 꼭 지켜주세요";display:block;font-weight:800;color:var(--warn);font-size:.8rem}
+.copybox{border:2px dashed var(--accent);border-radius:16px;padding:14px 16px;margin:12px 0;background:var(--accent-soft)}
+.copybox p{margin:0 0 10px;font-weight:600}
+.copybox button{min-height:52px;border-radius:12px;border:0;background:var(--accent);color:#fff;font-weight:800;padding:8px 18px}
+.copybox button.done{background:var(--ok)}
+.linkbtn{margin:8px 0 4px}
+details.stuck{border:2px solid var(--warn);border-radius:16px;margin:14px 0;background:var(--card)}
+details.stuck summary{list-style:none;padding:14px 16px;font-weight:800;color:var(--warn);cursor:pointer;min-height:56px}
+details.stuck summary::-webkit-details-marker{display:none}
+details.stuck div{padding:0 16px 14px}
+details.stuck dt{font-weight:800;margin-top:10px}
+details.stuck dd{margin:2px 0 0;color:var(--ink-soft)}
+.nav{position:fixed;left:0;right:0;bottom:0;background:var(--paper);border-top:2px solid var(--line);z-index:20}
+.nav-in{max-width:880px;margin:0 auto;padding:10px 16px;display:flex;gap:10px}
+.nav .big-btn{flex:1}
+.nav .big-btn.ghost{flex:0 0 auto}
+/* mock screens */
+.shot{margin:14px 0 4px}
+.shot img{width:100%;border-radius:14px;border:2px solid var(--line);display:block}
+.shot figcaption{font-size:.72rem;color:var(--ink-soft);margin-top:6px;text-align:center}
+.mock{border-radius:14px;border:2px solid var(--line);overflow:hidden;background:var(--mock);color:var(--mock-ink);font-size:15px;line-height:1.45;box-shadow:0 8px 24px rgba(0,0,0,.08)}
+.m-top{display:flex;align-items:center;gap:8px;background:var(--mock-2);padding:8px 10px;border-bottom:1px solid rgba(127,127,127,.25)}
+.m-dots{display:flex;gap:5px}.m-dots i{width:10px;height:10px;border-radius:50%;background:#c9ccd2}
+.m-url{flex:1;background:var(--mock);border-radius:999px;padding:4px 12px;font-size:13px;color:var(--mock-ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.m-title{flex:1;font-weight:700;font-size:13px}
+.m-ico{width:30px;height:30px;border-radius:8px;display:grid;place-items:center;font-size:16px;flex:0 0 30px}
+.m-main{display:flex;min-height:180px}
+.m-body{flex:1;padding:22px 16px 16px;display:flex;flex-direction:column;gap:10px;align-items:flex-start;min-width:0}
+.m-side{flex:0 0 42%;border-left:1px solid rgba(127,127,127,.25);background:var(--mock-2);padding:12px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.m-h{font-weight:800;font-size:19px}
+.m-p{opacity:.75;font-size:14px}
+.m-btn{border-radius:10px;padding:9px 16px;font-weight:700;background:#22252b;color:#fff;font-size:14px;display:inline-block}
+.m-btn.l{background:transparent;color:var(--mock-ink);border:1.5px solid rgba(127,127,127,.5)}
+.m-menu{border:1px solid rgba(127,127,127,.35);border-radius:10px;background:var(--mock);box-shadow:0 6px 18px rgba(0,0,0,.12);min-width:200px}
+.m-menu div.hl{outline-offset:-3px;background:rgba(224,54,43,.08)}
+.m-menu div{padding:9px 14px;border-bottom:1px solid rgba(127,127,127,.15)}
+.m-grid{display:flex;flex-wrap:wrap;gap:14px}
+.m-file{width:86px;text-align:center;font-size:13px;padding:6px;border-radius:10px}
+.m-file span{display:block;font-size:34px;line-height:1.2}
+.m-chat{align-self:stretch;display:flex;flex-direction:column;gap:6px}
+.m-msg{border-radius:12px;padding:8px 12px;font-size:14px;max-width:88%;background:var(--mock-2)}
+.m-msg.me{align-self:flex-end;background:#d8e6f6;color:#17202b}
+.m-input{align-self:stretch;display:flex;align-items:center;gap:8px;border:1.5px solid rgba(127,127,127,.45);border-radius:14px;padding:8px 10px;margin-top:auto}
+.m-input .ph{flex:1;opacity:.55;font-size:14px}
+.m-plus{width:30px;height:30px;border-radius:50%;border:1.5px solid rgba(127,127,127,.55);display:grid;place-items:center;font-weight:800}
+.m-send{width:30px;height:30px;border-radius:8px;background:#c8642f;color:#fff;display:grid;place-items:center;font-size:14px}
+.m-bm{display:flex;gap:6px;padding:6px 10px;background:var(--mock-2);border-bottom:1px solid rgba(127,127,127,.25);font-size:12px;flex-wrap:wrap}
+.m-bm span{background:var(--mock);border-radius:6px;padding:2px 8px}
+.m-drag{display:flex;align-items:center;gap:18px;font-size:14px}
+.m-drag span{font-size:40px}
+.hl{position:relative;outline:3px solid var(--hl);outline-offset:3px;border-radius:10px;animation:pulse 1.4s ease-in-out infinite}
+.hl::after{content:"👆 여기!";position:absolute;right:-10px;top:-16px;background:var(--hl);color:#fff;font-size:12px;font-weight:800;padding:2px 8px;border-radius:999px;white-space:nowrap;z-index:2}
+
+.m-top .hl::after{top:auto;bottom:-26px}
+@keyframes pulse{50%{outline-color:transparent}}
+@media (prefers-reduced-motion:reduce){.hl{animation:none}.bar i{transition:none}}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.gcard{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.gcard .em{font-size:2rem}
+.gcard b{font-size:1.02rem}
+.gcard p{margin:0;font-size:.85rem;color:var(--ink-soft)}
+.gcard button{margin-top:auto;min-height:48px;border-radius:12px;border:2px solid var(--accent);background:var(--card);color:var(--accent);font-weight:800}
+.gcard button.done{background:var(--ok);border-color:var(--ok);color:#fff}
+.flow{display:grid;gap:10px}
+.flow .row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.flow .node{background:var(--card);border:2px solid var(--line);border-radius:14px;padding:10px 14px;font-weight:800;font-size:.9rem;text-align:center}
+.flow .node small{display:block;font-weight:500;color:var(--ink-soft);font-size:.72rem}
+.flow .node.a{border-color:var(--accent);background:var(--accent-soft)}
+.flow .arr{font-weight:900;color:var(--accent)}
+.cert{text-align:center;border:3px solid var(--ok);background:var(--ok-soft)}
+.cert .big{font-size:3rem}
+.toast{position:fixed;left:50%;bottom:110px;transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:10px 18px;border-radius:999px;font-weight:700;opacity:0;transition:opacity .25s;z-index:30;pointer-events:none;font-size:.85rem}
+.toast.on{opacity:1}
+@media (max-width:560px){
+  :root{--fs:18px} :root.big{--fs:22px}
+  .m-main{flex-direction:column}.m-side{border-left:0;border-top:1px solid rgba(127,127,127,.25)}
+  .mock{font-size:13px}
+  .top-in{gap:6px}
+}
+</style>
+</head>
+<body>
+<div class="top"><div class="top-in">
+  <button class="brand" id="homeBtn" aria-label="처음 화면으로">🏠 클로드 혼자 세팅하기</button>
+  <div class="seg" role="group" aria-label="컴퓨터 종류">
+    <button data-os="win">🪟 윈도우</button><button data-os="mac">🍎 맥</button>
+  </div>
+  <button class="tbtn" id="bigBtn" aria-pressed="false">가+ 글자 크게</button>
+  <button class="tbtn" id="ttsBtn" aria-pressed="false">🔊 읽어주기</button>
+</div><div class="bar"><i id="barFill"></i></div></div>
+
+<main id="app"></main>
+<div class="nav" id="nav" hidden><div class="nav-in">
+  <button class="big-btn ghost" id="prevBtn">◀ 이전</button>
+  <button class="big-btn ok" id="nextBtn">다 했어요 ▶</button>
+</div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+/* ---------- 상태 ---------- */
+var KEY='menpd-claude-setup-v1';
+var S={os:null,done:{},prep:{},big:false,i:-1};
+try{var raw=localStorage.getItem(KEY); if(raw) S=Object.assign(S,JSON.parse(raw));}catch(e){}
+if(!S.os){ S.os=/Mac|iPhone|iPad/.test(navigator.platform||navigator.userAgent)?'mac':'win'; }
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
+function T(x){ if(x==null) return ''; if(typeof x==='object' && !Array.isArray(x) && ('win' in x||'mac' in x)) return x[S.os]; return x; }
+var CTRL=function(){return S.os==='mac'?'<span class="key">⌘ command</span>':'<span class="key">Ctrl</span>';};
+
+/* ---------- 화면 그림(모형) ---------- */
+function blk(b){
+  var h=b.hl?' hl':'';
+  if(b.h) return '<div class="m-h'+h+'">'+b.h+'</div>';
+  if(b.p) return '<div class="m-p">'+b.p+'</div>';
+  if(b.btn) return '<span class="m-btn'+(b.light?' l':'')+h+'">'+T(b.btn)+'</span>';
+  if(b.menu) return '<div class="m-menu">'+b.menu.map(function(m,i){return '<div class="'+(b.hl===i+1?'hl':'')+'">'+T(m)+'</div>';}).join('')+'</div>';
+  if(b.files) return '<div class="m-grid">'+b.files.map(function(f,i){return '<div class="m-file'+(b.hl===i+1?' hl':'')+'"><span>'+f[0]+'</span>'+f[1]+'</div>';}).join('')+'</div>';
+  if(b.chat) return '<div class="m-chat">'+b.chat.map(function(c){return '<div class="m-msg'+(c[0]?' me':'')+'">'+c[1]+'</div>';}).join('')+'</div>';
+  if(b.input) return '<div class="m-input"><span class="m-plus'+(b.hlPlus?' hl':'')+'">+</span><span class="ph">'+b.input+'</span><span class="m-send'+(b.hlSend?' hl':'')+'">↑</span></div>';
+  if(b.drag) return '<div class="m-drag"><span>'+b.drag[0]+'</span><b>→ 끌어다 놓기 →</b><span class="hl">'+b.drag[1]+'</span></div>';
+  if(b.row) return '<div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">'+b.row.map(blk).join('')+'</div>';
+  return '';
+}
+function mock(m){
+  m=T(m); if(!m) return '';
+  var top;
+  if(m.f==='browser'){
+    top='<div class="m-top"><div class="m-dots"><i></i><i></i><i></i></div><div class="m-url">🔒 '+m.url+'</div>'
+      +(m.ext?'<span class="m-ico'+(m.ext==='puzzle'?' hl':'')+'">🧩</span>':'')
+      +(m.ext==='claude'||m.ext==='both'||m.ext==='claude0'?'<span class="m-ico'+(m.ext==='claude0'?'':' hl')+'" style="background:#c8642f;color:#fff">✳</span>':'')
+      +(m.dl?'<span class="m-ico hl">⬇</span>':'')+'</div>'
+      +(m.bm?'<div class="m-bm">'+m.bm.map(function(x){return '<span>'+x+'</span>';}).join('')+'</div>':'');
+  } else {
+    top='<div class="m-top"><div class="m-dots"><i></i><i></i><i></i></div><div class="m-title">'+(m.title||'')+'</div></div>';
+  }
+  var body='<div class="m-body">'+(m.b||[]).map(blk).join('')+'</div>';
+  var side=m.side?'<div class="m-side"><div style="font-weight:800;font-size:13px">✳ Claude</div>'+m.side.map(blk).join('')+'</div>':'';
+  return '<div class="mock" aria-hidden="true">'+top+'<div class="m-main">'+body+side+'</div></div>';
+}
+function shot(st){
+  var m=mock(st.mock); if(!m) return '';
+  var img='images/setup/'+st.id+'-'+S.os+'.png';
+  return '<figure class="shot" data-img="'+img+'">'+m+'<figcaption>그림은 이해를 돕는 예시예요. 실제 화면은 글자·색이 조금 다를 수 있어요.</figcaption></figure>';
+}
+
+/* ---------- 내용 ---------- */
+var PARTS=[
+{id:'A',title:'클로드 앱 설치하기',sub:'컴퓨터에 클로드 프로그램 깔기 · 약 10분',em:'💻',steps:[
+ {id:'a1',title:'크롬을 열고 다운로드 페이지로 가기',
+  do:['바탕화면이나 아래쪽 줄에서 <b>크롬(동그란 빨강·노랑·초록 아이콘)</b>을 두 번 누릅니다.','아래 <b>파란 버튼</b>을 누르면 다운로드 페이지가 새 창으로 열립니다.'],
+  link:['https://claude.ai/download','👉 클로드 다운로드 페이지 열기'],
+  mock:{f:'browser',url:'claude.ai/download',b:[{h:'Claude를 내 컴퓨터에'},{p:'Windows · macOS에서 사용할 수 있어요'},{btn:{win:'Windows용 다운로드',mac:'macOS용 다운로드'},hl:1}]},
+  stuck:[['크롬이 없어요','아래 주소에서 크롬을 먼저 설치하세요 → google.com/chrome  (설치 후 이 교재로 다시 돌아오세요)'],['버튼을 눌러도 아무 일이 없어요','주소창에 claude.ai/download 를 직접 입력하고 <span class="key">Enter</span>를 누르세요.']]},
+ {id:'a2',title:'다운로드 버튼 누르기',
+  do:[{win:'<b>Windows용 다운로드</b> 라고 적힌 버튼을 한 번 누릅니다.',mac:'<b>macOS용 다운로드</b> 라고 적힌 버튼을 한 번 누릅니다.'},'오른쪽 위에 <b>⬇ 모양(다운로드 표시)</b>이 생기면 성공입니다. 잠깐 기다리세요.'],
+  mock:{f:'browser',url:'claude.ai/download',dl:1,b:[{h:'Claude를 내 컴퓨터에'},{btn:{win:'Windows용 다운로드',mac:'macOS용 다운로드'}},{p:'다운로드가 시작되었습니다…'}]},
+  tip:'버튼이 두 개 보이면 내 컴퓨터 종류에 맞는 것을 고르세요. 위쪽 <b>🪟 윈도우 / 🍎 맥</b> 버튼으로 이 교재 설명도 바꿀 수 있어요.',
+  stuck:[['내 컴퓨터가 윈도우인지 맥인지 모르겠어요','키보드 아래쪽에 <span class="key">⊞</span> 창문 모양 키가 있으면 윈도우, <span class="key">⌘ command</span> 키가 있으면 맥입니다.']]},
+ {id:'a3',title:'설치 파일 열기',
+  do:{win:['오른쪽 위 <b>⬇ 다운로드 표시</b>를 누릅니다.','목록에서 <b>Claude Setup</b>(또는 Claude로 시작하는 파일)을 누릅니다.','“이 앱이 변경하도록 허용하시겠어요?” 창이 뜨면 <b>예</b>를 누릅니다.','설치는 저절로 진행됩니다. 1~2분 기다리면 클로드 창이 열려요.'],
+      mac:['오른쪽 위 <b>⬇ 다운로드 표시</b>를 누르고 <b>Claude.dmg</b> 파일을 누릅니다.','새 창이 뜨면 <b>Claude 아이콘</b>을 옆의 <b>Applications(응용 프로그램) 폴더</b> 위로 끌어다 놓습니다.','바닥 줄의 <b>Launchpad(로켓 모양)</b> 또는 Finder ▸ 응용 프로그램에서 <b>Claude</b>를 누릅니다.','“인터넷에서 다운로드한 앱입니다” 창이 뜨면 <b>열기</b>를 누릅니다.']},
+  mock:{win:{f:'browser',url:'claude.ai/download',dl:1,b:[{p:'최근 다운로드'},{menu:['📦 Claude Setup.exe  ·  완료','📄 지난번 받은 파일.pdf'],hl:1}]},
+        mac:{f:'app',title:'Claude 설치',b:[{p:'왼쪽 아이콘을 오른쪽 폴더로 끌어다 놓으세요'},{drag:['✳','📁']}]}},
+  stuck:[['파일이 안 보여요',{win:'파일 탐색기(노란 폴더) ▸ 왼쪽 <b>다운로드</b>를 열면 Claude Setup 파일이 있어요. 두 번 누르세요.',mac:'Finder ▸ 왼쪽 <b>다운로드</b>를 열면 Claude.dmg가 있어요. 두 번 누르세요.'}],
+         ['“PC 보호” 같은 파란 경고창이 떠요','<b>추가 정보</b> ▸ <b>실행</b>을 누르면 됩니다. 클로드 공식 홈페이지에서 받은 파일이면 안전합니다.'],
+         ['회사 컴퓨터라 설치가 막혀요','회사 보안 정책일 수 있어요. 전산 담당자에게 “Claude 데스크톱 앱 설치 허용”을 요청하세요.']]},
+ {id:'a4',title:'로그인하기',
+  do:['클로드 창이 열리면 <b>Google로 계속하기</b>를 누릅니다.','인터넷 창이 열리면 내 <b>구글(지메일) 계정</b>을 고릅니다.','“Claude를 여시겠습니까?” 같은 창이 뜨면 <b>열기</b> 또는 <b>허용</b>을 누릅니다.','다시 클로드 창으로 돌아오면 끝입니다.'],
+  mock:{f:'app',title:'Claude',b:[{h:'다시 오신 걸 환영해요'},{btn:'G  Google로 계속하기',hl:1},{btn:'이메일로 계속하기',light:1}]},
+  tip:'클로드 유료 요금제를 쓰는 <b>같은 계정</b>으로 로그인해야 해요. 계정이 여러 개라면 결제한 메일 주소를 고르세요.',
+  stuck:[['로그인 후 화면이 그대로예요','클로드 창을 닫았다가 다시 열어보세요. 그래도 안 되면 컴퓨터를 한 번 껐다 켜세요.'],['메일 주소 인증번호를 달래요','지메일함을 열어 클로드가 보낸 메일의 숫자 6자리를 그대로 입력하세요.']]},
+ {id:'a5',title:'첫 인사로 확인하기',
+  do:['아래쪽 <b>입력창</b>을 한 번 누릅니다.','아래 문장을 <b>복사</b>해서 입력창에 붙여넣습니다. ('+'<span class="key">Ctrl</span>+<span class="key">V</span> / 맥은 <span class="key">⌘</span>+<span class="key">V</span>)','오른쪽 <b>↑ 보내기</b> 버튼을 누르고 답이 오면 <b>설치 성공!</b>'],
+  copy:'안녕하세요. 저는 오늘 클로드를 처음 써봐요. 앞으로 쉬운 말로 천천히 설명해 주세요.',
+  mock:{f:'app',title:'Claude',b:[{chat:[[1,'안녕하세요. 저는 오늘 클로드를 처음 써봐요…'],[0,'반갑습니다! 천천히 하나씩 도와드릴게요 😊']]},{input:'클로드에게 물어보세요',hlSend:1}]},
+  tip:{win:'다음부터 쉽게 열려면: 아래쪽 줄의 클로드 아이콘에서 <b>마우스 오른쪽 버튼 ▸ 작업 표시줄에 고정</b>',mac:'다음부터 쉽게 열려면: 바닥 줄(Dock)의 클로드 아이콘에서 <b>두 손가락 클릭 ▸ 옵션 ▸ Dock에 유지</b>'}}
+]},
+{id:'B',title:'내 폴더 연결하기',sub:'내 사진·파일로 PPT 등 만들기 · 약 10분',em:'📁',steps:[
+ {id:'b1',title:'“클로드작업실” 폴더 만들기',
+  do:{win:['아래쪽 줄의 <b>노란 폴더(파일 탐색기)</b>를 누릅니다.','왼쪽 목록에서 <b>문서</b>를 누릅니다.','하얀 빈 곳에서 <b>마우스 오른쪽 버튼 ▸ 새로 만들기 ▸ 폴더</b>를 누릅니다.','이름에 <b>클로드작업실</b> 이라고 쓰고 <span class="key">Enter</span>.'],
+      mac:['바닥 줄의 <b>웃는 얼굴(Finder)</b>을 누릅니다.','왼쪽 목록에서 <b>문서(Documents)</b>를 누릅니다.','하얀 빈 곳에서 <b>두 손가락 클릭 ▸ 새로운 폴더</b>를 누릅니다.','이름에 <b>클로드작업실</b> 이라고 쓰고 <span class="key">return</span>.']},
+  mock:{f:'files',title:'문서',b:[{row:[{files:[['📁','업무'],['📁','사진'],['📁','클로드작업실']],hl:3},{menu:[{win:'새로 만들기 ▸ 폴더',mac:'새로운 폴더'},'붙여넣기','보기']}]}]},
+  tip:'왜 따로 만드나요? 클로드에게 <b>이 폴더 하나만</b> 보여주면 다른 개인 파일은 안전하게 지킬 수 있어요.'},
+ {id:'b2',title:'재료(사진·파일) 넣어두기',
+  do:['연습용으로 <b>사진 5~10장</b>을 클로드작업실 폴더에 복사해 넣습니다.','한글·워드·엑셀 파일이 있으면 1~2개 같이 넣어도 좋아요.','파일 위에서 '+'<span class="key">Ctrl</span>+<span class="key">C</span>(복사) → 클로드작업실 열고 <span class="key">Ctrl</span>+<span class="key">V</span>(붙여넣기). 맥은 Ctrl 대신 ⌘.'],
+  mock:{f:'files',title:'문서 ▸ 클로드작업실',b:[{files:[['🖼️','행사1.jpg'],['🖼️','행사2.jpg'],['🖼️','행사3.jpg'],['📊','참석자.xlsx'],['📝','메모.hwp']]}]},
+  tip:'휴대폰 사진은 <b>카카오톡 PC ▸ 나와의 채팅</b>으로 보내고, 사진을 눌러 <b>저장</b>하면 컴퓨터로 쉽게 옮길 수 있어요.'},
+ {id:'b3',title:'클로드 앱에 폴더 연결하기',
+  do:['클로드 앱 입력창 왼쪽의 <b>+ 버튼</b>을 누릅니다.','메뉴에서 <b>폴더</b>가 들어간 항목(예: 폴더 추가)을 누릅니다.',{win:'문서 ▸ <b>클로드작업실</b>을 고르고 <b>폴더 선택</b>을 누릅니다.',mac:'문서 ▸ <b>클로드작업실</b>을 고르고 <b>열기</b>를 누릅니다.'},'“접근을 허용할까요?” 창이 뜨면 <b>허용</b>을 누릅니다.'],
+  mock:{f:'app',title:'Claude',b:[{menu:['📎 파일 추가','📁 폴더 추가','🔌 연결 도구'],hl:2},{input:'클로드에게 물어보세요',hlPlus:1}]},
+  warn:'<b>바탕화면 전체</b>나 <b>문서 전체</b>를 연결하지 마세요. 꼭 <b>클로드작업실</b> 하나만 연결합니다.',
+  stuck:[['+ 버튼에 폴더 메뉴가 없어요','① 클로드 앱이 최신인지 확인(앱을 껐다 켜면 자동 업데이트) ② 웹사이트가 아니라 <b>설치한 앱</b>에서 하고 있는지 확인 ③ 유료 요금제 계정인지 확인하세요.'],['메뉴 이름이 그림과 달라요','앱은 자주 업데이트돼요. <b>폴더</b>라는 단어가 들어간 메뉴를 찾으면 됩니다.']]},
+ {id:'b4',title:'첫 작업 시켜보기: 사진으로 PPT',
+  do:['아래 문장을 복사해서 입력창에 붙여넣고 보냅니다.','클로드가 “파일을 만들어도 될까요?” 하고 물으면 <b>허용</b>을 누릅니다.','몇 분 뒤 클로드작업실 폴더를 열면 <b>발표자료.pptx</b> 파일이 생겨 있어요!'],
+  copy:'연결한 클로드작업실 폴더에 있는 사진들을 보고, 5장짜리 발표자료를 파워포인트(pptx) 파일로 만들어서 같은 폴더에 저장해 주세요. 글씨는 크게, 문장은 짧게 해주세요.',
+  mock:{f:'app',title:'Claude',b:[{chat:[[1,'클로드작업실 사진들로 5장짜리 발표자료…'],[0,'사진 8장을 확인했어요. 발표자료를 저장하려고 해요.']]},{row:[{btn:'허용',hl:1},{btn:'거절',light:1}]}]},
+  tip:'결과가 마음에 안 들면 그냥 말로 고치세요. 예) “2번 장 글씨를 더 크게”, “제목을 ○○로 바꿔줘”.'},
+ {id:'b5',title:'더 해볼 수 있는 것 (골라서 복사)',gallery:1,
+  do:['아래 카드 중 하나를 골라 <b>복사</b> → 클로드 앱에 붙여넣기 하면 됩니다.','같은 폴더에 재료만 바꿔 넣으면 매번 다른 결과물이 나와요.']},
+ {id:'b6',title:'자주 하는 일은 “프로젝트”로 묶기',
+  do:['클로드 앱 왼쪽 메뉴에서 <b>프로젝트</b>를 누르고 <b>새 프로젝트</b>를 만듭니다. (예: 우리 부서 보고서)','프로젝트 <b>지침</b>에 나에 대한 설명을 적어둡니다. 아래 예시를 복사해 고쳐 쓰세요.','프로젝트 화면에서 <b>폴더 연결</b>(또는 + 버튼)로 클로드작업실을 지정합니다.','이제 그 프로젝트 안에서 대화하면, 매번 설명하지 않아도 같은 폴더·같은 규칙으로 일해요.'],
+  copy:'나는 ○○기관 ○○팀에서 일합니다. 결과물은 항상 한국어로, 글씨는 크게, 문장은 짧게 만들어 주세요. 파일은 연결한 폴더에 저장해 주세요.',
+  mock:{f:'app',title:'Claude ▸ 프로젝트',b:[{h:'우리 부서 보고서'},{p:'지침: 나는 ○○팀에서 일합니다…'},{row:[{btn:'📁 폴더 연결',hl:1},{btn:'＋ 새 대화',light:1}]}]},
+  tip:'메뉴 위치는 앱 버전마다 조금 달라요. 찾기 어려우면 클로드에게 그대로 물어보세요: “프로젝트에 폴더를 연결하려면 어디를 눌러야 해?”'}
+]},
+{id:'C',title:'클로드인크롬 설치하기',sub:'클로드가 인터넷 창을 대신 조작 · 약 10분',em:'🧩',steps:[
+ {id:'c1',title:'크롬 웹스토어에서 “Claude” 찾기',
+  do:['아래 파란 버튼을 누르면 크롬 웹스토어 검색 결과가 열립니다.','목록에서 <b>Claude</b> 를 누릅니다. 만든 곳이 <b>Anthropic</b>인지 꼭 확인하세요.'],
+  link:['https://chromewebstore.google.com/search/Claude','👉 크롬 웹스토어에서 Claude 찾기'],
+  mock:{f:'browser',url:'chromewebstore.google.com',b:[{h:'검색 결과: Claude'},{menu:['✳ Claude  ·  Anthropic  ⭐','비슷한 이름의 다른 확장 프로그램'],hl:1}]},
+  warn:'이름이 비슷한 <b>가짜 확장 프로그램</b>이 있어요. 만든 곳(제공자)이 <b>Anthropic</b>인 것만 설치하세요.',
+  stuck:[['크롬이 아니라 엣지/웨일이에요','클로드인크롬은 <b>구글 크롬</b>에서만 됩니다. 크롬을 설치해서 진행하세요.']]},
+ {id:'c2',title:'“Chrome에 추가” 누르기',
+  do:['파란색 <b>Chrome에 추가</b> 버튼을 누릅니다.','작은 확인창이 뜨면 <b>확장 프로그램 추가</b>를 누릅니다.'],
+  mock:{f:'browser',url:'chromewebstore.google.com/…/claude',b:[{h:'✳ Claude'},{p:'제공: Anthropic'},{btn:'Chrome에 추가',hl:1}]}},
+ {id:'c3',title:'퍼즐 조각에서 “핀” 고정하기',
+  do:['주소창 오른쪽의 <b>🧩 퍼즐 조각</b>을 누릅니다.','목록의 Claude 옆 <b>📌 압정</b>을 눌러 파랗게 만듭니다.','이제 주소창 옆에 클로드 아이콘이 항상 보여요.'],
+  mock:{f:'browser',url:'naver.com',ext:'puzzle',b:[{p:'확장 프로그램'},{menu:['✳ Claude   📌','기타 확장 프로그램'],hl:1}]}},
+ {id:'c4',title:'클로드 아이콘 누르고 로그인',
+  do:['주소창 옆 <b>클로드 아이콘</b>을 누릅니다.','오른쪽에 <b>옆 창(사이드 패널)</b>이 열리면, 앱과 <b>같은 계정</b>으로 로그인합니다.','“권한을 허용할까요?” 창들이 뜨면 읽어보고 <b>허용</b>을 누릅니다.'],
+  mock:{f:'browser',url:'naver.com',ext:'claude',b:[{h:'아무 웹사이트'},{p:'평소처럼 보는 화면'}],side:[{btn:'로그인',hl:1},{p:'클로드가 이 창을 함께 봅니다'}]},
+  tip:'클로드인크롬은 <b>유료 요금제</b>에서 쓸 수 있어요. 로그인 후 “이용할 수 없음”이 뜨면 요금제를 확인하세요.'},
+ {id:'c5',title:'첫 명령: 지금 보는 페이지 요약',
+  do:['아무 뉴스 기사를 하나 엽니다.','오른쪽 클로드 창에 아래 문장을 붙여넣고 보냅니다.','클로드가 화면을 읽고 요약해 주면 성공!'],
+  copy:'지금 보고 있는 페이지 내용을 쉬운 말로 3줄 요약해 주세요.',
+  mock:{f:'browser',url:'news.example.com/기사',ext:'claude0',b:[{h:'오늘의 뉴스 기사'},{p:'긴 기사 본문…'}],side:[{chat:[[1,'이 페이지 3줄 요약해 주세요'],[0,'① … ② … ③ …']]},{input:'무엇을 할까요?',hlSend:1}]},
+  warn:'<b>비밀번호 입력·결제·송금·인증서 로그인</b>은 클로드에게 맡기지 말고 직접 하세요. 클로드가 “눌러도 될까요?” 물으면 꼭 읽고 결정하세요.'}
+]},
+{id:'D',title:'제미나이·플로우·일레븐랩스 연결',sub:'크롬에 로그인해두고 클로드가 대신 조작 · 약 15분',em:'🔗',steps:[
+ {id:'d0',title:'“연결”이 뭔가요? (먼저 읽기)',
+  do:['연결은 어렵지 않아요. <b>① 크롬에서 각 사이트에 내 구글 계정으로 로그인</b>해두고 <b>② 즐겨찾기</b>에 저장해두면 끝입니다.','그러면 크롬의 클로드가 그 사이트를 열어 <b>대신 입력하고 버튼을 눌러줘요</b>.','가입·로그인은 사람이 직접 한 번만 하면 됩니다.'],
+  mock:{f:'browser',url:'chrome://bookmarks',bm:['✳ Claude','✦ Gemini','🎬 Flow','🔊 ElevenLabs'],ext:'claude0',b:[{h:'즐겨찾기 줄에 4개가 보이면 준비 완료'}]},
+  tip:'즐겨찾기 줄이 안 보이면 '+'<span class="key">Ctrl</span>+<span class="key">Shift</span>+<span class="key">B</span> (맥: <span class="key">⌘</span>+<span class="key">Shift</span>+<span class="key">B</span>)를 누르세요.'},
+ {id:'d1',title:'제미나이(Gemini) 연결',
+  do:['아래 버튼으로 제미나이를 엽니다.','오른쪽 위 <b>로그인</b> ▸ 내 구글 계정을 고릅니다.','주소창 오른쪽 <b>☆ 별</b>을 눌러 즐겨찾기에 저장합니다.','크롬 클로드 창에 아래 문장을 보내 시켜보세요.'],
+  link:['https://gemini.google.com','👉 제미나이 열기'],
+  copy:'제미나이 탭을 열어서 “60대가 가기 좋은 가을 여행지 3곳 추천해줘”라고 입력하고, 나온 답을 표로 정리해 주세요.',
+  mock:{f:'browser',url:'gemini.google.com',ext:'claude0',b:[{h:'안녕하세요'},{row:[{btn:'로그인',hl:1}]}],side:[{chat:[[1,'제미나이에 입력하고 답을 표로…']]}]}},
+ {id:'d2',title:'구글 플로우(Flow) 연결',
+  do:['아래 버튼으로 구글 플로우를 엽니다.','시작 버튼(예: Create with Flow)을 누르고 <b>구글 계정</b>으로 로그인합니다.','처음 나오는 안내·약관은 읽고 <b>동의</b>합니다.','☆ 별을 눌러 즐겨찾기에 저장하고, 아래 문장으로 시켜보세요.'],
+  link:['https://labs.google/flow','👉 구글 플로우 열기'],
+  copy:'구글 플로우 탭에서 “단풍길을 천천히 걷는 노부부, 따뜻한 오후 햇살” 장면을 만들 수 있게 입력창에 넣어주세요. 생성 버튼은 누르기 전에 저에게 먼저 물어봐 주세요.',
+  mock:{f:'browser',url:'labs.google/flow',ext:'claude0',b:[{h:'Flow'},{btn:'Create with Flow',hl:1}],side:[{chat:[[1,'입력창에 넣고 생성 전에 물어봐줘'],[0,'입력했어요. 생성할까요?']]}]},
+  tip:'영상 만들기는 <b>구글 AI 요금제·크레딧</b>이 필요할 수 있어요. 그래서 “누르기 전에 물어봐 달라”고 꼭 덧붙이세요.'},
+ {id:'d3',title:'일레븐랩스(ElevenLabs) 연결',
+  do:['아래 버튼으로 일레븐랩스를 엽니다.','오른쪽 위 <b>Sign up(가입)</b> ▸ <b>Sign up with Google</b>을 누르고 구글 계정을 고릅니다.','처음 나오는 질문들은 아무거나 골라 넘어가도 괜찮아요.','☆ 별로 즐겨찾기 저장 후, 아래 문장으로 시켜보세요.'],
+  link:['https://elevenlabs.io','👉 일레븐랩스 열기'],
+  copy:'일레븐랩스 탭의 “텍스트 음성 변환(Text to Speech)” 화면에서 다음 문장을 차분한 목소리로 읽게 해주세요: “안녕하세요, 오늘 행사에 와주셔서 감사합니다.” 다운로드는 제가 직접 할게요.',
+  mock:{f:'browser',url:'elevenlabs.io',ext:'claude0',b:[{h:'ElevenLabs'},{row:[{btn:'Sign up',hl:1},{btn:'Log in',light:1}]}],side:[{chat:[[1,'이 문장을 차분한 목소리로…']]}]},
+  tip:'사이트가 영어로 나와도 괜찮아요. 크롬에서 <b>마우스 오른쪽 ▸ 한국어로 번역</b>을 누르면 한글로 보여요.'},
+ {id:'d4',title:'한 번에 이어서 시키기 (자동화 맛보기)',
+  do:['이제 앱(내 폴더)과 크롬(웹사이트)을 이어서 쓸 수 있어요.','아래 문장처럼 <b>여러 단계를 한 번에</b> 부탁해 보세요.','중간중간 클로드가 확인을 물으면 읽고 허용하면 됩니다.'],
+  copy:'제미나이에서 “우리 동네 가을 축제 홍보 문구”를 3개 받아오고, 가장 좋은 문구를 일레븐랩스에서 밝은 목소리로 읽게 해주세요. 각 단계마다 결과를 저에게 보여주세요.',
+  mock:{f:'browser',url:'gemini.google.com',ext:'claude0',bm:['✳ Claude','✦ Gemini','🎬 Flow','🔊 ElevenLabs'],b:[{h:'제미나이 → 일레븐랩스'},{p:'클로드가 탭을 오가며 대신 작업 중…'}],side:[{chat:[[0,'① 제미나이에서 문구 3개 받았어요'],[0,'② 일레븐랩스에 입력할까요?']]},{row:[{btn:'좋아요',hl:1}]}]}}
+]}
+];
+var GALLERY=[
+ ['🖼️','사진 → 발표자료','행사 사진으로 PPT','클로드작업실 사진들로 행사 결과보고 발표자료(pptx) 6장을 만들어 같은 폴더에 저장해 주세요. 글씨는 크게 해주세요.'],
+ ['📰','사진 → 카드뉴스','인스타·단톡방 공유용','클로드작업실 사진 3장을 골라 정사각형 카드뉴스 이미지 3장을 만들어 저장해 주세요. 큰 제목 한 줄씩 넣어주세요.'],
+ ['📊','엑셀 → 보고서','표를 문장으로','클로드작업실의 엑셀 파일을 읽고, 중요한 숫자 3가지를 쉬운 말로 정리한 1쪽짜리 워드(docx) 보고서를 만들어 저장해 주세요.'],
+ ['🧾','영수증 사진 → 장부','사진 속 금액 정리','클로드작업실의 영수증 사진들을 읽어서 날짜·가게·금액이 들어간 엑셀(xlsx) 장부를 만들어 저장해 주세요.'],
+ ['🗂️','파일 이름 정리','날짜순으로 깔끔하게','클로드작업실의 사진 파일 이름을 “2026-10-08_행사_01” 같은 형식으로 바꾸기 전에, 바꿀 목록을 먼저 보여주세요.'],
+ ['📌','사진 → 안내 포스터','PDF로 출력용','클로드작업실 사진 1장을 배경으로 쓰고, 행사 이름·날짜·장소가 크게 들어간 A4 안내 포스터를 PDF로 만들어 저장해 주세요.']
+];
+
+/* 평평한 단계 목록 */
+var FLAT=[]; PARTS.forEach(function(p,pi){p.steps.forEach(function(s,si){FLAT.push({p:p,pi:pi,s:s,si:si});});});
+
+/* ---------- 렌더 ---------- */
+var app=document.getElementById('app');
+function esc(t){return String(t).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function partPct(p){var n=p.steps.filter(function(s){return S.done[s.id];}).length;return Math.round(n/p.steps.length*100);}
+function totalPct(){var n=FLAT.filter(function(f){return S.done[f.s.id];}).length;return Math.round(n/FLAT.length*100);}
+function copyBox(text){return '<div class="copybox"><p>'+esc(text)+'</p><button data-copy="'+esc(text)+'">📋 이 문장 복사하기</button></div>';}
+
+function renderHome(){
+  var prepItems=[
+    ['pc','컴퓨터(노트북) 한 대','휴대폰·태블릿으로는 설치할 수 없어요'],
+    ['chrome','구글 크롬','파란 동그라미 안에 빨강·노랑·초록 아이콘'],
+    ['google','구글(지메일) 아이디와 비밀번호','종이에 적어두면 편해요'],
+    ['paid','클로드 유료 요금제 계정','클로드인크롬·폴더 연결은 유료 요금제에서 쓸 수 있어요'],
+    ['time','40분 정도의 여유 시간','중간에 멈춰도 이 화면이 진행 상황을 기억해요']
+  ];
+  var next=FLAT.findIndex(function(f){return !S.done[f.s.id];});
+  var h='<p class="eyebrow">왕초보 자습 교재 · 강사 없이 혼자 끝내기</p>'
+   +'<h1>클로드 혼자 세팅하기</h1>'
+   +'<p class="lead">그림을 보고 <b>빨간 동그라미</b>만 따라 누르세요. 한 화면에 한 가지만 합니다. 막히면 <b>“막혔어요”</b> 버튼을 누르세요.</p>'
+   +'<div class="card"><h2>1. 내 컴퓨터는?</h2><div class="os-pick"><button data-os="win"><span>🪟</span>윈도우</button><button data-os="mac"><span>🍎</span>맥(애플)</button></div>'
+   +'<p class="lead" style="margin:0;font-size:.85rem">모르겠다면: 키보드에 <span class="key">⊞</span> 창문 키가 있으면 윈도우, <span class="key">⌘</span> 키가 있으면 맥이에요.</p></div>'
+   +'<div class="card"><h2>2. 준비물 확인</h2>'+prepItems.map(function(x){return '<div class="check"><input type="checkbox" id="pp-'+x[0]+'" data-prep="'+x[0]+'"'+(S.prep[x[0]]?' checked':'')+'><label for="pp-'+x[0]+'"><b>'+x[1]+'</b><small>'+x[2]+'</small></label></div>';}).join('')+'</div>'
+   +'<div class="card"><h2>3. 순서대로 따라 하기</h2><div class="parts">'
+   +PARTS.map(function(p,pi){var pc=partPct(p);return '<button class="part'+(pc===100?' done':'')+'" data-part="'+pi+'"><span class="num">'+(pc===100?'✓':p.em)+'</span><span><b>'+p.id+'. '+p.title+'</b><small>'+p.sub+'</small></span><span class="pct">'+pc+'%</span></button>';}).join('')
+   +'<button class="part'+(totalPct()===100?' done':'')+'" data-goto="big"><span class="num">🚀</span><span><b>E. 이제 이런 게 됩니다</b><small>자동화 큰 그림과 완료 인증</small></span></button>'
+   +'</div></div>'
+   +'<p style="text-align:center;margin:24px 0">'+(next===-1?'<button class="big-btn ok" data-goto="big">🎉 완료 화면 보기</button>':'<button class="big-btn" data-step="'+next+'">'+(next===0?'▶ 처음부터 시작하기':'▶ 이어서 하기 ('+FLAT[next].p.id+'. '+FLAT[next].s.title+')')+'</button>')+'</p>';
+  app.innerHTML=h; document.getElementById('nav').hidden=true;
+}
+function renderStep(i){
+  var f=FLAT[i], s=f.s, p=f.p;
+  var dots=p.steps.map(function(x,k){return '<i class="'+(k===f.si?'c':(S.done[x.id]?'d':''))+'"></i>';}).join('');
+  var dos=T(s.do); if(!Array.isArray(dos)) dos=[dos];
+  var h='<div class="stephead"><span class="pill">'+p.em+' '+p.id+'. '+p.title+'</span><span class="pill" style="background:var(--card);border:2px solid var(--line);color:var(--ink)">'+(f.si+1)+' / '+p.steps.length+'</span><div class="dots">'+dots+'</div></div>'
+   +'<h1 id="stitle">'+s.title+'</h1>'
+   +shot(s)
+   +'<ol class="do" id="sdo">'+dos.map(function(d){return '<li>'+T(d)+'</li>';}).join('')+'</ol>'
+   +(s.link?'<p class="linkbtn"><a class="big-btn" href="'+s.link[0]+'" target="_blank" rel="noopener">'+s.link[1]+'</a></p>':'')
+   +(s.copy?copyBox(s.copy):'')
+   +(s.gallery?'<div class="gallery">'+GALLERY.map(function(g){return '<div class="gcard"><span class="em">'+g[0]+'</span><b>'+g[1]+'</b><p>'+g[2]+'</p><button data-copy="'+esc(g[3])+'">📋 복사하기</button></div>';}).join('')+'</div>':'')
+   +(s.warn?'<div class="warn">'+T(s.warn)+'</div>':'')
+   +(s.tip?'<div class="tip">'+T(s.tip)+'</div>':'')
+   +(s.stuck?'<details class="stuck"><summary>😥 막혔어요 (눌러서 해결 방법 보기)</summary><div><dl>'+s.stuck.map(function(q){return '<dt>Q. '+q[0]+'</dt><dd>'+T(q[1])+'</dd>';}).join('')
+     +'<dt>Q. 그래도 안 돼요</dt><dd>지금 화면을 사진으로 찍어(또는 '+(S.os==='mac'?'<span class="key">⌘</span>+<span class="key">Shift</span>+<span class="key">4</span>':'<span class="key">⊞</span>+<span class="key">Shift</span>+<span class="key">S</span>')+'로 캡처) 클로드에게 보여주며 “여기서 뭘 눌러야 해요?”라고 물어보세요. 클로드 앱이 아직 없다면 claude.ai 웹사이트에서 물어봐도 됩니다.</dd></dl></div></details>'
+     :'<details class="stuck"><summary>😥 막혔어요</summary><div><dl><dt>화면이 그림과 달라요</dt><dd>지금 화면을 캡처해 클로드에게 보여주며 “여기서 뭘 눌러야 해요?”라고 물어보세요.</dd></dl></div></details>');
+  app.innerHTML=h;
+  var nav=document.getElementById('nav'); nav.hidden=false;
+  document.getElementById('prevBtn').textContent=i===0?'🏠 처음':'◀ 이전';
+  document.getElementById('nextBtn').textContent=S.done[s.id]?'다음 ▶':'✓ 다 했어요';
+  loadShots(); speak();
+}
+function renderBig(){
+  var all=totalPct()===100;
+  var h='<p class="eyebrow">E. 큰 그림</p><h1>이제 이런 게 됩니다</h1>'
+   +'<p class="lead">세 가지가 합쳐지면, 말 한마디로 여러 프로그램을 오가며 일이 끝나요.</p>'
+   +'<div class="card flow">'
+   +'<div class="row"><span class="node">📁 클로드작업실<small>재료(사진·엑셀)</small></span><span class="arr">→</span><span class="node a">💻 클로드 앱<small>두뇌 · 파일 만들기</small></span><span class="arr">→</span><span class="node">📊 PPT·보고서·포스터<small>폴더에 저장</small></span></div>'
+   +'<div class="row"><span class="node a">🧩 크롬 속 클로드<small>손 · 대신 클릭·입력</small></span><span class="arr">→</span><span class="node">✦ 제미나이</span><span class="node">🎬 구글 플로우</span><span class="node">🔊 일레븐랩스</span></div>'
+   +'<div class="row"><span class="node">🗂️ 프로젝트<small>나의 규칙 + 폴더 기억</small></span><span class="arr">→</span><span class="node">매번 설명 없이 같은 품질</span></div>'
+   +'</div>'
+   +'<div class="card"><h2>예시: 행사 하나 끝내기</h2><ol class="do">'
+   +'<li>행사 사진을 <b>클로드작업실</b>에 넣는다</li><li>앱에서 “결과보고 PPT + 단톡방 공지 문구 만들어줘”</li><li>크롬 클로드에게 “공지 문구를 일레븐랩스로 읽혀줘”</li><li>“대표 사진 장면으로 플로우 영상 프롬프트 넣어줘 (생성 전 확인)”</li></ol>'
+   +copyBox('클로드작업실의 행사 사진으로 결과보고 PPT 5장과 단체방 공지 문구 3줄을 만들어 폴더에 저장해 주세요.')+'</div>'
+   +(all?'<div class="card cert"><div class="big">🎉</div><h2>세팅 완료!</h2><p>클로드 앱 ✓ · 내 폴더 ✓ · 클로드인크롬 ✓ · 제미나이·플로우·일레븐랩스 ✓</p><p class="lead">완료일: '+new Date().toLocaleDateString('ko-KR')+'<br>이 화면을 강사에게 보여주세요.</p></div>'
+        :'<div class="card"><h2>아직 남은 단계가 있어요 ('+totalPct()+'%)</h2><p class="lead">처음 화면에서 이어서 하기를 누르세요.</p><button class="big-btn" id="goHome2">🏠 처음 화면</button></div>');
+  app.innerHTML=h; document.getElementById('nav').hidden=true;
+}
+function loadShots(){
+  document.querySelectorAll('.shot[data-img]').forEach(function(fig){
+    var im=new Image(); im.alt='실제 화면 캡처';
+    im.onload=function(){fig.innerHTML='';fig.appendChild(im);var c=document.createElement('figcaption');c.textContent='빨간 표시를 찾아 눌러주세요';fig.appendChild(c);};
+    im.src=fig.getAttribute('data-img');
+  });
+}
+function render(){
+  document.querySelectorAll('[data-os]').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-os')===S.os);});
+  document.documentElement.classList.toggle('big',!!S.big);
+  document.getElementById('bigBtn').setAttribute('aria-pressed',S.big?'true':'false');
+  document.getElementById('barFill').style.width=totalPct()+'%';
+  if(S.i==='big') renderBig(); else if(S.i>=0 && S.i<FLAT.length) renderStep(S.i); else renderHome();
+  window.scrollTo(0,0);
+}
+function go(i){S.i=i;save();render();}
+
+/* ---------- 소리로 읽기 ---------- */
+var tts=false;
+function speak(){
+  if(!tts||!('speechSynthesis' in window)) return;
+  speechSynthesis.cancel();
+  var t=document.getElementById('stitle'), d=document.getElementById('sdo'); if(!t) return;
+  var txt=t.textContent+'. '+Array.prototype.map.call(d.querySelectorAll('li'),function(li,k){return (k+1)+'번. '+li.textContent;}).join(' ');
+  var u=new SpeechSynthesisUtterance(txt); u.lang='ko-KR'; u.rate=.9; speechSynthesis.speak(u);
+}
+
+/* ---------- 이벤트 ---------- */
+var toastT;
+function toast(m){var t=document.getElementById('toast');t.textContent=m;t.classList.add('on');clearTimeout(toastT);toastT=setTimeout(function(){t.classList.remove('on');},1800);}
+document.addEventListener('click',function(e){
+  var b=e.target.closest('button,[data-part]'); if(!b) return;
+  if(b.dataset.os){S.os=b.dataset.os;save();render();toast(S.os==='mac'?'🍎 맥 설명으로 바꿨어요':'🪟 윈도우 설명으로 바꿨어요');return;}
+  if(b.dataset.part!=null){var pi=+b.dataset.part;var first=FLAT.findIndex(function(f){return f.pi===pi&&!S.done[f.s.id];});if(first===-1)first=FLAT.findIndex(function(f){return f.pi===pi;});go(first);return;}
+  if(b.dataset.step!=null){go(+b.dataset.step);return;}
+  if(b.dataset.goto==='big'){go('big');return;}
+  if(b.dataset.copy!=null){
+    var txt=b.dataset.copy, done=function(){b.classList.add('done');b.textContent='✓ 복사됐어요! 붙여넣기 하세요';toast('복사됐어요. '+(S.os==='mac'?'⌘':'Ctrl')+'+V로 붙여넣으세요');};
+    if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(txt).then(done,function(){fallback(txt);done();});}else{fallback(txt);done();}
+    return;
+  }
+  if(b.id==='goHome2'){go(-1);}
+});
+function fallback(t){var a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);a.select();try{document.execCommand('copy');}catch(e){}a.remove();}
+document.addEventListener('change',function(e){if(e.target.dataset.prep){S.prep[e.target.dataset.prep]=e.target.checked;save();}});
+document.getElementById('homeBtn').onclick=function(){go(-1);};
+document.getElementById('bigBtn').onclick=function(){S.big=!S.big;save();render();};
+document.getElementById('ttsBtn').onclick=function(){
+  if(!('speechSynthesis' in window)){toast('이 브라우저는 읽어주기를 지원하지 않아요');return;}
+  tts=!tts;this.setAttribute('aria-pressed',tts?'true':'false');
+  if(tts){toast('🔊 각 단계를 소리로 읽어드려요');speak();}else{speechSynthesis.cancel();}
+};
+document.getElementById('prevBtn').onclick=function(){go(typeof S.i==='number'&&S.i>0?S.i-1:-1);};
+document.getElementById('nextBtn').onclick=function(){
+  var s=FLAT[S.i].s; var first=!S.done[s.id]; S.done[s.id]=true;
+  var p=FLAT[S.i].p, partDone=p.steps.every(function(x){return S.done[x.id];});
+  if(first&&partDone) toast('🎉 '+p.id+'. '+p.title+' 완료!'); else if(first) toast('👍 잘하셨어요!');
+  go(S.i+1<FLAT.length?S.i+1:'big');
+};
+if(typeof S.i!=='number'&&S.i!=='big') S.i=-1;
+render();
+})();
+</script>
+</body>
+</html>
