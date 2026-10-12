@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>클로드 혼자 세팅하기</title>
-<meta name="description" content="클로드 데스크톱 앱 설치, 내 폴더 연결, 클로드인크롬, 제미나이·구글 플로우·일레븐랩스 연결까지 한 단계씩 따라 하는 왕초보 동적교재">
+<meta name="description" content="클로드 데스크톱 앱 설치, 내 폴더 연결, 제미나이·구글 플로우·일레븐랩스 연결까지 한 단계씩 따라 하는 왕초보 동적교재">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/static/pretendard.min.css">
 <style>
 :root{
@@ -287,30 +287,7 @@ var PARTS=[
   mock:{f:'app',title:'Claude ▸ 프로젝트',b:[{h:'우리 부서 보고서'},{p:'지침: 나는 ○○팀에서 일합니다…'},{row:[{btn:'📁 폴더 연결',hl:1},{btn:'＋ 새 대화',light:1}]}]},
   tip:'메뉴 위치는 앱 버전마다 조금 달라요. 찾기 어려우면 클로드에게 그대로 물어보세요: “프로젝트에 폴더를 연결하려면 어디를 눌러야 해?”'}
 ]},
-{id:'C',title:'클로드인크롬 설치하기',sub:'클로드가 인터넷 창을 대신 조작 · 약 10분',em:'🧩',steps:[
- {id:'c1',title:'크롬 웹스토어에서 “Claude” 찾기',
-  do:['아래 파란 버튼을 누르면 크롬 웹스토어 검색 결과가 열립니다.','목록에서 <b>Claude</b> 를 누릅니다. 만든 곳이 <b>Anthropic</b>인지 꼭 확인하세요.'],
-  link:['https://chromewebstore.google.com/search/Claude','👉 크롬 웹스토어에서 Claude 찾기'],
-  mock:{f:'browser',url:'chromewebstore.google.com',b:[{h:'검색 결과: Claude'},{menu:['✳ Claude  ·  Anthropic  ⭐','비슷한 이름의 다른 확장 프로그램'],hl:1}]},
-  warn:'이름이 비슷한 <b>가짜 확장 프로그램</b>이 있어요. 만든 곳(제공자)이 <b>Anthropic</b>인 것만 설치하세요.',
-  stuck:[['크롬이 아니라 엣지/웨일이에요','클로드인크롬은 <b>구글 크롬</b>에서만 됩니다. 크롬을 설치해서 진행하세요.']]},
- {id:'c2',title:'“Chrome에 추가” 누르기',
-  do:['파란색 <b>Chrome에 추가</b> 버튼을 누릅니다.','작은 확인창이 뜨면 <b>확장 프로그램 추가</b>를 누릅니다.'],
-  mock:{f:'browser',url:'chromewebstore.google.com/…/claude',b:[{h:'✳ Claude'},{p:'제공: Anthropic'},{btn:'Chrome에 추가',hl:1}]}},
- {id:'c3',title:'퍼즐 조각에서 “핀” 고정하기',
-  do:['주소창 오른쪽의 <b>🧩 퍼즐 조각</b>을 누릅니다.','목록의 Claude 옆 <b>📌 압정</b>을 눌러 파랗게 만듭니다.','이제 주소창 옆에 클로드 아이콘이 항상 보여요.'],
-  mock:{f:'browser',url:'naver.com',ext:'puzzle',b:[{p:'확장 프로그램'},{menu:['✳ Claude   📌','기타 확장 프로그램'],hl:1}]}},
- {id:'c4',title:'클로드 아이콘 누르고 로그인',
-  do:['주소창 옆 <b>클로드 아이콘</b>을 누릅니다.','오른쪽에 <b>옆 창(사이드 패널)</b>이 열리면, 앱과 <b>같은 계정</b>으로 로그인합니다.','“권한을 허용할까요?” 창들이 뜨면 읽어보고 <b>허용</b>을 누릅니다.'],
-  mock:{f:'browser',url:'naver.com',ext:'claude',b:[{h:'아무 웹사이트'},{p:'평소처럼 보는 화면'}],side:[{btn:'로그인',hl:1},{p:'클로드가 이 창을 함께 봅니다'}]},
-  tip:'클로드인크롬은 <b>유료 요금제</b>에서 쓸 수 있어요. 로그인 후 “이용할 수 없음”이 뜨면 요금제를 확인하세요.'},
- {id:'c5',title:'첫 명령: 지금 보는 페이지 요약',
-  do:['아무 뉴스 기사를 하나 엽니다.','오른쪽 클로드 창에 아래 문장을 붙여넣고 보냅니다.','클로드가 화면을 읽고 요약해 주면 성공!'],
-  copy:'지금 보고 있는 페이지 내용을 쉬운 말로 3줄 요약해 주세요.',
-  mock:{f:'browser',url:'news.example.com/기사',ext:'claude0',b:[{h:'오늘의 뉴스 기사'},{p:'긴 기사 본문…'}],side:[{chat:[[1,'이 페이지 3줄 요약해 주세요'],[0,'① … ② … ③ …']]},{input:'무엇을 할까요?',hlSend:1}]},
-  warn:'<b>비밀번호 입력·결제·송금·인증서 로그인</b>은 클로드에게 맡기지 말고 직접 하세요. 클로드가 “눌러도 될까요?” 물으면 꼭 읽고 결정하세요.'}
-]},
-{id:'D',title:'제미나이·플로우·일레븐랩스 연결',sub:'크롬에 로그인해두고 클로드가 대신 조작 · 약 15분',em:'🔗',steps:[
+{id:'C',title:'제미나이·플로우·일레븐랩스 연결',sub:'크롬에 로그인해두고 클로드가 대신 조작 · 약 15분',em:'🔗',steps:[
  {id:'d0',title:'“연결”이 뭔가요? (먼저 읽기)',
   do:['연결은 어렵지 않아요. <b>① 크롬에서 각 사이트에 내 구글 계정으로 로그인</b>해두고 <b>② 즐겨찾기</b>에 저장해두면 끝입니다.','그러면 크롬의 클로드가 그 사이트를 열어 <b>대신 입력하고 버튼을 눌러줘요</b>.','가입·로그인은 사람이 직접 한 번만 하면 됩니다.'],
   mock:{f:'browser',url:'chrome://bookmarks',bm:['✳ Claude','✦ Gemini','🎬 Flow','🔊 ElevenLabs'],ext:'claude0',b:[{h:'즐겨찾기 줄에 4개가 보이면 준비 완료'}]},
@@ -374,7 +351,7 @@ function renderHome(){
    +'<div class="card"><h2>2. 준비물 확인</h2>'+prepItems.map(function(x){return '<div class="check"><input type="checkbox" id="pp-'+x[0]+'" data-prep="'+x[0]+'"'+(S.prep[x[0]]?' checked':'')+'><label for="pp-'+x[0]+'"><b>'+x[1]+'</b><small>'+x[2]+'</small></label></div>';}).join('')+'</div>'
    +'<div class="card"><h2>3. 순서대로 따라 하기</h2><div class="parts">'
    +PARTS.map(function(p,pi){var pc=partPct(p);return '<button class="part'+(pc===100?' done':'')+'" data-part="'+pi+'"><span class="num">'+(pc===100?'✓':p.em)+'</span><span><b>'+p.id+'. '+p.title+'</b><small>'+p.sub+'</small></span><span class="pct">'+pc+'%</span></button>';}).join('')
-   +'<button class="part'+(totalPct()===100?' done':'')+'" data-goto="big"><span class="num">🚀</span><span><b>E. 이제 이런 게 됩니다</b><small>자동화 큰 그림과 완료 인증</small></span></button>'
+   +'<button class="part'+(totalPct()===100?' done':'')+'" data-goto="big"><span class="num">🚀</span><span><b>D. 이제 이런 게 됩니다</b><small>자동화 큰 그림과 완료 인증</small></span></button>'
    +'</div></div>'
    +'<p style="text-align:center;margin:24px 0">'+(next===-1?'<button class="big-btn ok" data-goto="big">🎉 완료 화면 보기</button>':'<button class="big-btn" data-step="'+next+'">'+(next===0?'▶ 처음부터 시작하기':'▶ 이어서 하기 ('+FLAT[next].p.id+'. '+FLAT[next].s.title+')')+'</button>')+'</p>';
   app.innerHTML=h; document.getElementById('nav').hidden=true;
@@ -403,7 +380,7 @@ function renderStep(i){
 }
 function renderBig(){
   var all=totalPct()===100;
-  var h='<p class="eyebrow">E. 큰 그림</p><h1>이제 이런 게 됩니다</h1>'
+  var h='<p class="eyebrow">D. 큰 그림</p><h1>이제 이런 게 됩니다</h1>'
    +'<p class="lead">세 가지가 합쳐지면, 말 한마디로 여러 프로그램을 오가며 일이 끝나요.</p>'
    +'<div class="card flow">'
    +'<div class="row"><span class="node">📁 클로드작업실<small>재료(사진·엑셀)</small></span><span class="arr">→</span><span class="node a">💻 클로드 앱<small>두뇌 · 파일 만들기</small></span><span class="arr">→</span><span class="node">📊 PPT·보고서·포스터<small>폴더에 저장</small></span></div>'
