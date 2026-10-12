@@ -98,6 +98,12 @@ ol.do b{color:var(--hot)}
 .chk.good{background:var(--ok-bg);color:var(--ok);border:1px solid var(--ok)}
 .chk.bad{background:var(--help-bg);color:var(--fg);border:2px solid var(--help-line);display:flex;flex-direction:column;gap:8px}
 .chk.bad strong{font-size:1.02rem}
+.chk.ask{background:var(--eyebrow-bg);color:var(--fg);border:2px solid var(--navy2);display:flex;flex-direction:column;gap:8px}
+.chk.ask strong{font-size:1.02rem;color:var(--eyebrow-fg)}
+.chk.ask b{color:var(--hot)}
+.chk details{display:flex;flex-direction:column;gap:8px}
+.chk summary{cursor:pointer;font-weight:700;color:var(--navy);text-decoration:underline;min-height:40px;display:flex;align-items:center}
+.chk details[open] .fix{margin-block:6px 8px}
 .fix{margin:0;padding-left:1.3em;display:flex;flex-direction:column;gap:8px}
 .fix b{color:var(--hot)}
 .addrbig{display:inline-block;font-size:1.15rem;font-weight:800;background:var(--card);border:2px solid var(--navy);color:var(--navy);border-radius:10px;padding:1px 10px;letter-spacing:.02em}
@@ -332,20 +338,36 @@ function shot(k){const v=SHOTS[k+"_"+os]||SHOTS[k];if(!v)return MOCK[k](os)+`<sp
   const o=typeof v==="string"?{src:v}:v;
   return `<div class="real"><img src="${o.src}" alt="실제 화면">${(o.hot||[]).map((h,n)=>`<span class="hotbox hot" style="left:${h[0]}%;top:${h[1]}%;width:${h[2]}%;height:${h[3]}%">${o.hot.length>1?`<em>${"①②③"[n]}</em>`:""}</span>`).join("")}</div>`}
 
+function detectBrowser(){
+  const ua=navigator.userAgent||"", br=((navigator.userAgentData||{}).brands||[]).map(b=>b.brand).join("|");
+  if(/Electron|Claude\//i.test(ua)) return "unknown";
+  if(/Edg\//.test(ua)||/Microsoft Edge/.test(br)) return "엣지";
+  if(/Whale/i.test(ua)) return "웨일";
+  if(/SamsungBrowser/.test(ua)) return "삼성 인터넷";
+  if(/KAKAOTALK/i.test(ua)) return "카카오톡 안의 창";
+  if(/NAVER/.test(ua)) return "네이버 앱";
+  if(/OPR\//.test(ua)) return "오페라";
+  if(/Firefox\//.test(ua)) return "파이어폭스";
+  if(/Google Chrome/.test(br)) return "chrome";
+  if(br) return "unknown";
+  if(/Chrome\//.test(ua)) return "chrome";
+  if(/Safari\//.test(ua)) return "사파리";
+  return "unknown";
+}
+function fixSteps(){return `<ol class="fix">
+    <li><button class="copy" id="copyurl">이 교재 주소 복사</button> 를 누르세요.</li>
+    <li>크롬을 열고, 맨 위 <b>주소창</b>을 누른 뒤 <b>붙여넣기</b>(Ctrl+V${os==="mac"?" / command+V":""}) 하세요.</li>
+    <li>복사가 어려우면 주소창에 <span class="addrbig">menpd.com</span> 을 치고, <b>동적교재 → 첫 번째</b> 교재를 누르세요.</li>
+  </ol>
+  <a class="nochrome" href="https://www.google.com/chrome/" target="_blank" rel="noopener">크롬이 아예 없나요? 크롬 설치하기 ↗</a>`}
 function checkBox(){
-  const ua=navigator.userAgent||"";
-  const isChrome=/Chrome\//.test(ua)&&!/Edg\/|OPR\/|SamsungBrowser|Whale|Electron|NAVER|KAKAOTALK/i.test(ua);
-  return isChrome
-   ?`<div class="chk good">✓ 지금 <b>크롬</b>으로 보고 계세요. '됐어요'를 누르세요.</div>`
-   :`<div class="chk bad"><strong>⚠ 지금은 크롬이 아닌 것 같아요</strong>
-      <span>카톡 링크를 누르면 엣지 같은 다른 창으로 열릴 수 있어요. 아래처럼 크롬으로 옮겨 주세요.</span>
-      <ol class="fix">
-        <li><button class="copy" id="copyurl">이 교재 주소 복사</button> 를 누르세요.</li>
-        <li>크롬을 열고, 맨 위 <b>주소창</b>을 누른 뒤 <b>붙여넣기</b>(Ctrl+V${os==="mac"?" / command+V":""}) 하세요.</li>
-        <li>복사가 어려우면 주소창에 <span class="addrbig">menpd.com</span> 을 치고, <b>동적교재 → 첫 번째</b> 교재를 누르세요.</li>
-      </ol>
-      <a class="nochrome" href="https://www.google.com/chrome/" target="_blank" rel="noopener">크롬이 아예 없나요? 크롬 설치하기 ↗</a>
-    </div>`;
+  const b=detectBrowser();
+  if(b==="chrome") return `<div class="chk good">✓ 지금 <b>크롬</b>으로 보고 계세요. '됐어요'를 누르세요.</div>`;
+  if(b==="unknown") return `<div class="chk ask"><strong>크롬으로 보고 계신가요?</strong>
+      <span>화면 맨 위나 작업 표시줄에서 동그란 <b>크롬 아이콘</b> 창이면 맞아요. 그럼 '됐어요'를 누르세요.</span>
+      <details><summary>크롬이 아니라면 여기를 누르세요</summary>${fixSteps()}</details></div>`;
+  return `<div class="chk bad"><strong>⚠ 지금 '${b}'(으)로 열려 있어요</strong>
+      <span>설치는 크롬에서만 됩니다. 아래처럼 크롬으로 옮겨 주세요.</span>${fixSteps()}</div>`;
 }
 function render(){
   document.getElementById("steps").innerHTML=STEPS.map((s,k)=>`
