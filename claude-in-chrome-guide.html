@@ -307,7 +307,7 @@ const MOCK={
 
 const STEPS=[
  {key:"open",title:"이 교재를 크롬에서 열어 주세요",
-  desc:{win:"설치는 <b>크롬</b>에서만 됩니다. 작업 표시줄의 동그란 <b>크롬 아이콘</b>을 누르고, 강사가 보낸 교재 링크를 크롬에서 열어 주세요.",mac:"설치는 <b>크롬</b>에서만 됩니다. Dock의 동그란 <b>크롬 아이콘</b>을 누르고, 강사가 보낸 교재 링크를 크롬에서 열어 주세요."},
+  desc:{win:"설치는 <b>크롬</b>(또는 웨일)에서 됩니다. 작업 표시줄의 동그란 <b>크롬 아이콘</b>을 누르고, 강사가 보낸 교재 링크를 크롬에서 열어 주세요.",mac:"설치는 <b>크롬</b>(또는 웨일)에서 됩니다. Dock의 동그란 <b>크롬 아이콘</b>을 누르고, 강사가 보낸 교재 링크를 크롬에서 열어 주세요."},
   check:true,
   help:{win:["카톡에서 링크를 누르면 다른 창으로 열릴 수 있어요. 링크를 <b>복사</b>해서 크롬 주소창에 <b>붙여넣기</b> 하세요.","크롬 아이콘이 안 보이면 왼쪽 아래 <b>시작 버튼</b>을 누르고 '크롬'이라고 쳐 보세요.","크롬이 아예 없으면 강사에게 손을 들어 주세요."],
         mac:["카톡에서 링크를 누르면 다른 창으로 열릴 수 있어요. 링크를 <b>복사</b>해서 크롬 주소창에 <b>붙여넣기</b> 하세요.","Dock에 없으면 <b>command + 스페이스</b>를 누르고 '크롬'이라고 쳐 보세요.","크롬이 아예 없으면 강사에게 손을 들어 주세요."]}},
@@ -363,11 +363,12 @@ function fixSteps(){return `<ol class="fix">
 function checkBox(){
   const b=detectBrowser();
   if(b==="chrome") return `<div class="chk good">✓ 지금 <b>크롬</b>으로 보고 계세요. '됐어요'를 누르세요.</div>`;
+  if(b==="웨일") return `<div class="chk good">✓ 지금 <b>웨일</b>로 보고 계세요. 웨일에서도 설치할 수 있어요. '됐어요'를 누르세요.<br><span style="font-size:.85rem;color:var(--fg)">설치가 막히면 크롬으로 옮겨 다시 해 보세요.</span></div>`;
   if(b==="unknown") return `<div class="chk ask"><strong>크롬으로 보고 계신가요?</strong>
       <span>화면 맨 위나 작업 표시줄에서 동그란 <b>크롬 아이콘</b> 창이면 맞아요. 그럼 '됐어요'를 누르세요.</span>
       <details><summary>크롬이 아니라면 여기를 누르세요</summary>${fixSteps()}</details></div>`;
   return `<div class="chk bad"><strong>⚠ 지금 '${b}'(으)로 열려 있어요</strong>
-      <span>설치는 크롬에서만 됩니다. 아래처럼 크롬으로 옮겨 주세요.</span>${fixSteps()}</div>`;
+      <span>설치는 크롬(또는 웨일)에서 됩니다. 아래처럼 크롬으로 옮겨 주세요.</span>${fixSteps()}</div>`;
 }
 function render(){
   document.getElementById("steps").innerHTML=STEPS.map((s,k)=>`
