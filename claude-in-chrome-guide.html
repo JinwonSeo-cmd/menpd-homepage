@@ -96,7 +96,12 @@ ol.do b{color:var(--hot)}
 .biglink{align-self:stretch;justify-content:center;font-size:1.05rem;padding:16px 22px;min-height:60px}
 .chk{border-radius:14px;padding:12px 16px;font-weight:500;font-size:.92rem}
 .chk.good{background:var(--ok-bg);color:var(--ok);border:1px solid var(--ok)}
-.chk.bad{background:var(--help-bg);color:var(--fg);border:1px solid var(--help-line)}
+.chk.bad{background:var(--help-bg);color:var(--fg);border:2px solid var(--help-line);display:flex;flex-direction:column;gap:8px}
+.chk.bad strong{font-size:1.02rem}
+.fix{margin:0;padding-left:1.3em;display:flex;flex-direction:column;gap:8px}
+.fix b{color:var(--hot)}
+.addrbig{display:inline-block;font-size:1.15rem;font-weight:800;background:var(--card);border:2px solid var(--navy);color:var(--navy);border-radius:10px;padding:1px 10px;letter-spacing:.02em}
+.nochrome{align-self:flex-start;font-size:.85rem;font-weight:700;color:var(--navy);text-decoration:underline}
 .sample{display:flex;gap:10px;align-items:center;flex-wrap:wrap;background:var(--screen);border-radius:14px;padding:10px 14px}
 .sample span{font-weight:700}
 .copy{font:inherit;font-size:.75rem;border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:999px;padding:6px 14px;cursor:pointer}
@@ -332,7 +337,15 @@ function checkBox(){
   const isChrome=/Chrome\//.test(ua)&&!/Edg\/|OPR\/|SamsungBrowser|Whale|Electron|NAVER|KAKAOTALK/i.test(ua);
   return isChrome
    ?`<div class="chk good">✓ 지금 <b>크롬</b>으로 보고 계세요. '됐어요'를 누르세요.</div>`
-   :`<div class="chk bad">⚠ 지금은 크롬이 아닌 것 같아요. 이 링크를 크롬에서 다시 열어 주세요.</div>`;
+   :`<div class="chk bad"><strong>⚠ 지금은 크롬이 아닌 것 같아요</strong>
+      <span>카톡 링크를 누르면 엣지 같은 다른 창으로 열릴 수 있어요. 아래처럼 크롬으로 옮겨 주세요.</span>
+      <ol class="fix">
+        <li><button class="copy" id="copyurl">이 교재 주소 복사</button> 를 누르세요.</li>
+        <li>크롬을 열고, 맨 위 <b>주소창</b>을 누른 뒤 <b>붙여넣기</b>(Ctrl+V${os==="mac"?" / command+V":""}) 하세요.</li>
+        <li>복사가 어려우면 주소창에 <span class="addrbig">menpd.com</span> 을 치고, <b>동적교재 → 첫 번째</b> 교재를 누르세요.</li>
+      </ol>
+      <a class="nochrome" href="https://www.google.com/chrome/" target="_blank" rel="noopener">크롬이 아예 없나요? 크롬 설치하기 ↗</a>
+    </div>`;
 }
 function render(){
   document.getElementById("steps").innerHTML=STEPS.map((s,k)=>`
@@ -376,6 +389,9 @@ document.querySelectorAll("[data-os]").forEach(b=>b.onclick=()=>{os=b.dataset.os
 document.querySelectorAll("[data-fs]").forEach(b=>b.onclick=()=>{setFs(b.dataset.fs);try{localStorage.setItem("cic-fs",b.dataset.fs)}catch(e){}});
 function setFs(fs){const r=document.documentElement;r.classList.remove("big","bigger");if(fs)r.classList.add(fs);document.querySelectorAll("[data-fs]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.fs===fs))}
 function syncOs(){document.querySelectorAll("[data-os]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.os===os))}
+const GUIDE_URL="https://menpd.com/claude-in-chrome-guide.html";
+document.addEventListener("click",e=>{const b=e.target.closest("#copyurl");if(!b)return;
+  navigator.clipboard.writeText(GUIDE_URL).then(()=>b.textContent="복사됐어요 ✓",()=>{b.textContent=GUIDE_URL;const r=document.createRange();r.selectNodeContents(b);const s=getSelection();s.removeAllRanges();s.addRange(r)})});
 const ct=document.getElementById("copytry");
 ct.onclick=()=>navigator.clipboard.writeText("이 기사 3줄로 요약해줘").then(()=>ct.textContent="복사됐어요",()=>{const r=document.createRange();r.selectNodeContents(document.getElementById("sample"));const s=getSelection();s.removeAllRanges();s.addRange(r);ct.textContent="글자를 선택했어요"});
 const nw=document.getElementById("navwrap"),hero=document.querySelector(".hero");
