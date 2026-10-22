@@ -118,6 +118,9 @@ h1{font-size:clamp(28px,4.5vw,38px);font-weight:800;letter-spacing:-.03em}
 .bot-steps{margin:12px 0 14px 20px;color:#435d77;font-size:12.5px;line-height:1.72}
 .bot-steps li{padding-left:3px;margin-bottom:2px}
 .bot-downloads{display:flex;flex-wrap:wrap;gap:8px}
+.resource-choice{display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:5px;
+  border:1px solid rgba(54,95,146,.14);border-radius:13px;background:rgba(255,255,255,.48)}
+.resource-name{padding:0 7px;color:#536d87;font-size:11px;font-weight:800;white-space:nowrap}
 .resource-link{display:inline-flex;align-items:center;justify-content:center;min-height:38px;
   padding:9px 13px;border:1px solid rgba(54,95,146,.22);border-radius:10px;
   color:#365f92;background:rgba(255,255,255,.76);font-size:12px;font-weight:700;
@@ -133,12 +136,17 @@ h1{font-size:clamp(28px,4.5vw,38px);font-weight:800;letter-spacing:-.03em}
   .bot-card-head{flex-wrap:wrap}
   .bot-badges{width:100%;justify-content:flex-start;padding-left:48px;margin-top:-6px}
   .resource-link{flex:1 1 155px}
+  .resource-choice{width:100%}
+  .resource-name{width:100%;padding:4px 7px 0}
 }
 </style>
 <link rel="stylesheet" href="css/depth-motion.css">
 <link rel="stylesheet" href="css/dusk-pages.css?v=20260923b">
+<style>
+.seomsanryeon-page .page-intro::after{display:none}
+</style>
 </head>
-<body class="dusk-page prep-page">
+<body class="dusk-page prep-page seomsanryeon-page">
 <div class="top">
   <a class="top-brand" href="index.html">← 멘피디 AI</a>
   <nav class="top-links" aria-label="하위 페이지">
@@ -575,7 +583,11 @@ h1{font-size:clamp(28px,4.5vw,38px);font-weight:800;letter-spacing:-.03em}
       </div>
       <div class="bot-downloads">
         <a class="resource-link resource-link-primary" href="downloads/seomsanryeon/seomsanryeon-class-bot-pack.zip" download>전체 자료 한 번에 받기 · ZIP</a>
-        <a class="resource-link" href="downloads/seomsanryeon/00-class-download-guide.md" download>다운로드 안내 · MD</a>
+        <div class="resource-choice">
+          <span class="resource-name">다운로드 안내 · MD</span>
+          <a class="resource-link" href="seomsanryeon-material-preview.html?doc=guide" target="_blank" rel="noopener">미리보기·복사 ↗</a>
+          <a class="resource-link" href="downloads/seomsanryeon/00-class-download-guide.md" download>다운로드 ↓</a>
+        </div>
       </div>
     </div>
 
@@ -595,10 +607,18 @@ h1{font-size:clamp(28px,4.5vw,38px);font-weight:800;letter-spacing:-.03em}
           <li>PPT 생성 후 글자 잘림·겹침과 메시지 흐름을 검수합니다.</li>
         </ol>
         <div class="bot-downloads">
-          <a class="resource-link resource-link-primary" href="downloads/seomsanryeon/ppt/ppt-bot-instructions.md" download>봇 지침 받기 · MD</a>
-          <a class="resource-link" href="downloads/seomsanryeon/ppt/ppt-design-rules.md" download>디자인 KB 받기 · MD</a>
-          <a class="resource-link" href="downloads/seomsanryeon/ppt/ppt-style-library.zip" download>스타일 10종 받기 · ZIP</a>
-          <a class="resource-link" href="downloads/seomsanryeon/ppt/ppt-example-raycast.pptx" download>예시 PPT 받기</a>
+          <div class="resource-choice">
+            <span class="resource-name">봇 지침 · MD</span>
+            <a class="resource-link resource-link-primary" href="seomsanryeon-material-preview.html?doc=ppt-instructions" target="_blank" rel="noopener">미리보기·복사 ↗</a>
+            <a class="resource-link" href="downloads/seomsanryeon/ppt/ppt-bot-instructions.md" download>다운로드 ↓</a>
+          </div>
+          <div class="resource-choice">
+            <span class="resource-name">디자인 KB · MD</span>
+            <a class="resource-link" href="seomsanryeon-material-preview.html?doc=ppt-design" target="_blank" rel="noopener">미리보기·복사 ↗</a>
+            <a class="resource-link" href="downloads/seomsanryeon/ppt/ppt-design-rules.md" download>다운로드 ↓</a>
+          </div>
+          <a class="resource-link" href="downloads/seomsanryeon/ppt/ppt-style-library.zip" download>스타일 10종 · ZIP ↓</a>
+          <a class="resource-link" href="downloads/seomsanryeon/ppt/ppt-example-raycast.pptx" download>예시 PPT ↓</a>
         </div>
         <p class="bot-kb-note">KB 구성: 공통 디자인 규칙 1개 + Brex·Wise·Notion·Raycast 등 스타일 샘플 10종</p>
       </article>
@@ -618,8 +638,16 @@ h1{font-size:clamp(28px,4.5vw,38px);font-weight:800;letter-spacing:-.03em}
           <li>두 AI의 결과를 Claude에 차례로 붙여넣어 종합 HTML·PDF를 만듭니다.</li>
         </ol>
         <div class="bot-downloads">
-          <a class="resource-link resource-link-primary" href="downloads/seomsanryeon/research-free/research-free-instructions.md" download>무료 봇 지침 받기 · MD</a>
-          <a class="resource-link" href="downloads/seomsanryeon/research-free/research-free-example.pdf" download>예시 결과 받기 · PDF</a>
+          <div class="resource-choice">
+            <span class="resource-name">무료 봇 지침 · MD</span>
+            <a class="resource-link resource-link-primary" href="seomsanryeon-material-preview.html?doc=research-free" target="_blank" rel="noopener">미리보기·복사 ↗</a>
+            <a class="resource-link" href="downloads/seomsanryeon/research-free/research-free-instructions.md" download>다운로드 ↓</a>
+          </div>
+          <div class="resource-choice">
+            <span class="resource-name">예시 결과 · PDF</span>
+            <a class="resource-link" href="downloads/seomsanryeon/research-free/research-free-example.pdf" target="_blank" rel="noopener">미리보기 ↗</a>
+            <a class="resource-link" href="downloads/seomsanryeon/research-free/research-free-example.pdf" download>다운로드 ↓</a>
+          </div>
         </div>
       </article>
 
@@ -638,8 +666,16 @@ h1{font-size:clamp(28px,4.5vw,38px);font-weight:800;letter-spacing:-.03em}
           <li>4개 AI 결과 저장 후 Claude 리서치와 최종 종합을 진행합니다.</li>
         </ol>
         <div class="bot-downloads">
-          <a class="resource-link resource-link-primary" href="downloads/seomsanryeon/research-paid/research-paid-instructions.md" download>유료 봇 지침 받기 · MD</a>
-          <a class="resource-link" href="downloads/seomsanryeon/research-paid/research-paid-example.pdf" download>종합 예시 받기 · PDF</a>
+          <div class="resource-choice">
+            <span class="resource-name">유료 봇 지침 · MD</span>
+            <a class="resource-link resource-link-primary" href="seomsanryeon-material-preview.html?doc=research-paid" target="_blank" rel="noopener">미리보기·복사 ↗</a>
+            <a class="resource-link" href="downloads/seomsanryeon/research-paid/research-paid-instructions.md" download>다운로드 ↓</a>
+          </div>
+          <div class="resource-choice">
+            <span class="resource-name">종합 예시 · PDF</span>
+            <a class="resource-link" href="downloads/seomsanryeon/research-paid/research-paid-example.pdf" target="_blank" rel="noopener">미리보기 ↗</a>
+            <a class="resource-link" href="downloads/seomsanryeon/research-paid/research-paid-example.pdf" download>다운로드 ↓</a>
+          </div>
         </div>
         <p class="bot-kb-note">실습 전 ChatGPT·Gemini·Grok·Perplexity 로그인을 미리 완료해 주세요.</p>
       </article>
@@ -659,7 +695,11 @@ h1{font-size:clamp(28px,4.5vw,38px);font-weight:800;letter-spacing:-.03em}
           <li>초안의 수치·출처와 <b>[확인 필요]</b> 표시를 검토해 수정합니다.</li>
         </ol>
         <div class="bot-downloads">
-          <a class="resource-link resource-link-primary" href="downloads/seomsanryeon/report-free/report-free-prompt.md" download>무료 실습 프롬프트 받기 · MD</a>
+          <div class="resource-choice">
+            <span class="resource-name">무료 실습 프롬프트 · MD</span>
+            <a class="resource-link resource-link-primary" href="seomsanryeon-material-preview.html?doc=report-free" target="_blank" rel="noopener">미리보기·복사 ↗</a>
+            <a class="resource-link" href="downloads/seomsanryeon/report-free/report-free-prompt.md" download>다운로드 ↓</a>
+          </div>
         </div>
       </article>
 
@@ -678,9 +718,17 @@ h1{font-size:clamp(28px,4.5vw,38px);font-weight:800;letter-spacing:-.03em}
           <li>대안·실행계획·성과지표와 확인 필요 사항을 검토해 최종본을 다듬습니다.</li>
         </ol>
         <div class="bot-downloads">
-          <a class="resource-link resource-link-primary" href="downloads/seomsanryeon/report-paid/report-paid-instructions.md" download>유료 봇 지침 받기 · MD</a>
-          <a class="resource-link" href="downloads/seomsanryeon/report-paid/report-kb.zip" download>보고서 KB 7개 받기 · ZIP</a>
-          <a class="resource-link" href="downloads/seomsanryeon/report-paid/report-paid-example-draft.md" download>예시 초안 받기 · MD</a>
+          <div class="resource-choice">
+            <span class="resource-name">유료 봇 지침 · MD</span>
+            <a class="resource-link resource-link-primary" href="seomsanryeon-material-preview.html?doc=report-paid" target="_blank" rel="noopener">미리보기·복사 ↗</a>
+            <a class="resource-link" href="downloads/seomsanryeon/report-paid/report-paid-instructions.md" download>다운로드 ↓</a>
+          </div>
+          <a class="resource-link" href="downloads/seomsanryeon/report-paid/report-kb.zip" download>보고서 KB 7개 · ZIP ↓</a>
+          <div class="resource-choice">
+            <span class="resource-name">예시 초안 · MD</span>
+            <a class="resource-link" href="seomsanryeon-material-preview.html?doc=report-example" target="_blank" rel="noopener">미리보기·복사 ↗</a>
+            <a class="resource-link" href="downloads/seomsanryeon/report-paid/report-paid-example-draft.md" download>다운로드 ↓</a>
+          </div>
         </div>
         <p class="bot-kb-note">KB 구성: 총론, 유형별 구조, 문체·표현, 근거·수치, 성과지표, 검토 체크리스트, 공공기관·HWP</p>
       </article>
