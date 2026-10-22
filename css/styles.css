@@ -593,10 +593,6 @@ section:not(.book-section) .section-title-row .section-sub {
   margin: 0;
 }
 
-.quicklink-card-placeholder {
-  cursor: default;
-}
-
 /* 준비자료 카드만 카카오 옐로 배경 + 검정 텍스트 */
 .quicklink-card-kakao {
   background: #FEE500;
