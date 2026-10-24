@@ -125,6 +125,11 @@ h3.sub{font-size:17px;font-weight:800;margin:28px 0 10px}
 .acc[open] summary::before{content:'–'}
 .acc-body{padding:0 18px 16px 34px;font-size:14px;color:#3a4250;line-height:1.75}
 
+.kim{margin-top:12px;background:var(--paper);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.kim img{display:block;width:100%;height:auto}
+.kim figcaption{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:14px 16px}
+.kim figcaption strong{font-size:16px}
+.kim figcaption span{display:block;font-size:13px;color:var(--muted);margin-top:2px}
 .homework{background:linear-gradient(135deg,#1f3a68,#2f5794);color:#fff;border-radius:20px;padding:24px}
 .homework h3{font-size:19px;margin-bottom:10px}
 .homework ul{margin-left:18px;font-size:14.5px;line-height:1.85}
@@ -302,9 +307,16 @@ h3.sub{font-size:17px;font-weight:800;margin:28px 0 10px}
     <p class="group-desc">영상 속 인물이 신2와 신4에서 똑같이 나오도록 <b>캐릭터 시트(그림 1장)</b>를 씁니다. 봇이 처음에 올려달라고 하니, 아래 중 하나를 바탕화면에 준비해 두세요.</p>
     <div class="choice">
       <div class="choice-card c1"><span class="tag">1순위</span><strong>내가 만든 캐릭터 시트</strong><p>수업 시간에 만든 나만의 캐릭터가 있다면 가장 좋습니다.</p></div>
-      <div class="choice-card c2"><span class="tag">2순위</span><strong>기본 캐릭터 '김법무'</strong><p>강사님이 나눠드린 김법무 시트 파일을 그대로 올리면 됩니다.</p></div>
+      <div class="choice-card c2"><span class="tag">2순위</span><strong>기본 캐릭터 '김법무'</strong><p>아래에서 김법무 시트를 내려받아 바탕화면에 저장해 두세요.</p></div>
       <div class="choice-card c3"><span class="tag">3순위</span><strong>없어도 괜찮아요</strong><p>봇이 영상에 어울리는 귀여운 3D 캐릭터를 직접 만들어 씁니다.</p></div>
     </div>
+    <figure class="kim">
+      <a href="images/moj/kim-beopmu-sheet.png" target="_blank" rel="noopener"><img src="images/moj/kim-beopmu-sheet-thumb.jpg" alt="기본 캐릭터 김법무 캐릭터 시트 (25세 법무부 공무원, 정면·측면·후면·포즈·표정)" width="800" height="450" loading="lazy"></a>
+      <figcaption>
+        <div><strong>김법무</strong> · 25세 법무부 공무원<span>흰 셔츠, 네이비 넥타이·바지, 파란 사원증 목걸이</span></div>
+        <a class="go" href="images/moj/kim-beopmu-sheet.png" download="김법무_캐릭터시트.png">김법무 시트 내려받기 ↓</a>
+      </figcaption>
+    </figure>
     <div class="steplist" style="margin-top:10px">
       <div class="step">
         <span class="logo-emoji" aria-hidden="true">🧑‍🎨</span>
@@ -376,6 +388,8 @@ h3.sub{font-size:17px;font-weight:800;margin:28px 0 10px}
 영상 속 인물을 신2·신4에서 똑같이 보이게 하려고 캐릭터 시트를 먼저 받는다. 아래 순서로 안내한다.
 1. **"직접 만든 캐릭터 시트가 있으면 지금 채팅창에 올려주세요."** (사진 파일을 끌어다 놓거나 + 버튼으로 첨부하는 방법을 쉽게 안내)
 2. 없다고 하면: **"강사님이 나눠주신 기본 캐릭터 '김법무' 시트를 올려주세요."**
+   - 수강생이 파일을 못 찾으면, 크롬으로 https://menpd.com/images/moj/kim-beopmu-sheet.png 를 열어 직접 내려받아 쓴다(수강생 허락 후).
+   - 김법무 겉모습: 25세 남성 법무부 공무원, 치비 3D 스타일, 검은 웨이브 머리, 흰 셔츠(소매 걷음), 네이비 넥타이·네이비 바지, 검은 구두, 파란 줄 사원증 목걸이.
 3. 그것도 없다고 하면: **"괜찮아요! 영상에 어울리는 귀여운 3D 캐릭터를 제가 하나 만들어 쓸게요."** → 기획이 끝나고 컨펌을 받은 뒤 제작 단계에서 만든다(5-3-1 참고).
 - 받은 캐릭터 시트는 컨펌 후 `02_자료/캐릭터시트.png`로 저장한다.
 - 캐릭터 시트를 받으면 겉모습(옷, 머리, 색, 소품)을 짧게 정리해 보여주고 "이 캐릭터 맞으시죠?"로 확인한다. 이 정리는 플로우 주문서에 그대로 쓴다.
