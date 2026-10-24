@@ -156,6 +156,9 @@ h3.sub{font-size:17px;font-weight:800;margin:28px 0 10px}
   .tri{flex-direction:column}
   .tri-plus{margin:-12px auto}
 }
+.say-hi{display:flex;align-items:center;gap:16px;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:18px 20px}
+.say-hi-bubble{flex:none;background:var(--accent);color:#fff;font-weight:800;font-size:17px;padding:10px 18px;border-radius:18px 18px 4px 18px}
+.say-hi p{font-size:15px;line-height:1.7;color:#2c3d57}
 .homework{background:linear-gradient(135deg,#1f3a68,#2f5794);color:#fff;border-radius:20px;padding:24px}
 .homework h3{font-size:19px;margin-bottom:10px}
 .homework ul{margin-left:18px;font-size:14.5px;line-height:1.85}
@@ -413,6 +416,7 @@ h3.sub{font-size:17px;font-weight:800;margin:28px 0 10px}
 - 오류가 나도 수강생에게 기술 내용을 늘어놓지 않는다. "잠깐 다시 해볼게요"라고 하고 스스로 해결을 시도한 뒤, 2번 실패하면 쉬운 말로 도움을 요청한다.
 
 ## 2. 첫 채팅: 준비사항 점검 (3가지만, 짧게)
+수강생의 첫 메시지가 "안녕", "ㅎㅇ" 등 무엇이든 **바로 인사하고 이 점검부터 시작**한다. 무엇을 입력해야 하는지 되묻지 않는다.
 처음 세팅이 많으면 시니어 수강생이 지친다. 첫 채팅에서는 **아래 3가지만** 확인하고, 나머지는 **필요한 순간에** 요청한다(2-2 참고). 확인 가능한 것은 직접 확인하고, 안 되는 것만 묻는다.
 
 | 순서 | 확인 항목 | 확인 방법 / 안 될 때 안내 |
@@ -591,22 +595,9 @@ h3.sub{font-size:17px;font-weight:800;margin:28px 0 10px}
   <section class="group" id="start">
     <div class="group-head"><span class="group-num">07</span><h2>봇과 대화 시작하기</h2></div>
     <p class="group-desc">꼭 <b>데스크톱 앱</b>의 <b>'숏폼 마스터 봇' 프로젝트 안</b>에서 새 채팅을 시작하세요. 프로젝트 밖에서 대화하면 지침이 적용되지 않습니다.</p>
-    <details class="acc fold">
-      <summary>시작하는 방법, 단계별로 보기 <span class="acc-desc">3단계</span></summary>
-      <div class="acc-body">
-    <ol class="howto">
-      <li>프로젝트 화면 가운데 입력칸을 누릅니다.</li>
-      <li>아래 첫 인사를 복사해서 붙여 넣고 보냅니다.</li>
-      <li>이제부터는 <b>봇이 묻는 대로 번호나 짧은 말로 답하기만</b> 하면 됩니다.</li>
-    </ol>
-      </div>
-    </details>
-    <div class="copybox short">
-      <div class="copybox-head">
-        <span>💬 첫 메시지</span>
-        <div class="copybox-actions"><button class="copy-btn" type="button" data-copy="hello">복사</button></div>
-      </div>
-      <pre id="hello">안녕하세요! 숏폼 영상을 만들고 싶어요. 준비사항부터 확인해 주세요.</pre>
+    <div class="say-hi">
+      <span class="say-hi-bubble">안녕</span>
+      <p><b>"안녕"</b>이든 아무 말이든 입력하고 보내면 바로 시작됩니다.<br>그다음부터는 <b>봇이 묻는 대로 번호나 짧은 말로 답하기만</b> 하면 돼요.</p>
     </div>
   </section>
 
