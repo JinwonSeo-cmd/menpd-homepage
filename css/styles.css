@@ -549,7 +549,7 @@ section:not(.book-section) .section-title-row .section-sub {
 
 .quicklink-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: var(--spacing-16);
   max-width: var(--text-max-width);
 }
@@ -593,6 +593,10 @@ section:not(.book-section) .section-title-row .section-sub {
   margin: 0;
 }
 
+/* 법무부 숏폼 봇 카드: 네이비 */
+.quicklink-card-moj { background: #1f3a68; border-color: #1f3a68; }
+.quicklink-card-moj:hover { background: #162c52; border-color: #162c52; }
+
 /* 준비자료 카드만 카카오 옐로 배경 + 검정 텍스트 */
 .quicklink-card-kakao {
   background: #FEE500;
@@ -605,6 +609,10 @@ section:not(.book-section) .section-title-row .section-sub {
 .quicklink-card-kakao .quicklink-name { color: #191919; }
 
 .quicklink-card-kakao .quicklink-desc { color: rgba(25, 25, 25, 0.65); }
+
+@media (max-width: 960px) {
+  .quicklink-grid { grid-template-columns: repeat(3, 1fr); }
+}
 
 @media (max-width: 720px) {
   .quicklink-grid { grid-template-columns: repeat(2, 1fr); }
