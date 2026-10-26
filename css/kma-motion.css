@@ -1,0 +1,138 @@
+/* kma-prep 모션 그래픽 — 개별 transform 속성(translate/scale/rotate)만 사용해 기존 레이아웃과 충돌 없음 */
+.kma-page .wrap{position:relative;z-index:1}
+
+/* 스크롤 진행 바 */
+.mo-progress{position:fixed;left:0;top:0;height:4px;width:100%;z-index:9999;pointer-events:none;
+  background:linear-gradient(90deg,#2C5F6F,#E8946B,#ffd84d);transform-origin:0 50%;transform:scaleX(0)}
+
+/* 배경 떠다니는 빛 덩어리 */
+.mo-blob{position:fixed;z-index:0;pointer-events:none;border-radius:50%;filter:blur(60px);opacity:.32}
+.mo-blob.b1{width:380px;height:380px;left:-120px;top:12%;background:#7fb7c4;animation:mo-drift1 16s ease-in-out infinite}
+.mo-blob.b2{width:340px;height:340px;right:-110px;top:45%;background:#f3b48f;animation:mo-drift2 19s ease-in-out infinite}
+.mo-blob.b3{width:300px;height:300px;left:30%;bottom:-140px;background:#ffe27a;animation:mo-drift3 22s ease-in-out infinite}
+@keyframes mo-drift1{0%,100%{translate:0 0;scale:1}50%{translate:90px 60px;scale:1.2}}
+@keyframes mo-drift2{0%,100%{translate:0 0;scale:1}50%{translate:-80px -70px;scale:1.25}}
+@keyframes mo-drift3{0%,100%{translate:0 0;scale:1}50%{translate:110px -50px;scale:.85}}
+
+/* 히어로 장식 도형 */
+.page-intro{position:relative}
+.page-intro > *:not(.mo-shapes){position:relative;z-index:1}
+.mo-shapes{position:absolute;inset:-20px -10px 0 -10px;z-index:0;pointer-events:none;overflow:visible}
+.mo-shape{position:absolute;opacity:.85}
+.mo-shape.circle{border-radius:50%}
+.mo-shape.ring{border-radius:50%;border:3px solid currentColor;background:transparent!important}
+.mo-shape.tri{width:0!important;height:0!important;background:transparent!important;
+  border-left:calc(var(--s)/2) solid transparent;border-right:calc(var(--s)/2) solid transparent;
+  border-bottom:var(--s) solid currentColor}
+.mo-shape.sq{border-radius:6px}
+.mo-shape.f1{animation:mo-float 5s ease-in-out infinite}
+.mo-shape.f2{animation:mo-float2 6.5s ease-in-out infinite}
+.mo-shape.sp{animation:mo-spin 9s linear infinite}
+.mo-shape.pu{animation:mo-pulse 2.8s ease-in-out infinite}
+@keyframes mo-float{0%,100%{translate:0 0;rotate:0deg}50%{translate:12px -26px;rotate:25deg}}
+@keyframes mo-float2{0%,100%{translate:0 0;rotate:0deg}50%{translate:-18px 22px;rotate:-30deg}}
+@keyframes mo-spin{to{rotate:360deg}}
+@keyframes mo-pulse{0%,100%{scale:1;opacity:.85}50%{scale:1.5;opacity:.35}}
+
+/* ── 등장(스크롤 리빌) ── */
+html.mo .rv{opacity:0}
+html.mo .rv.in{animation-duration:.75s;animation-timing-function:cubic-bezier(.2,.9,.25,1.05);
+  animation-fill-mode:both;animation-delay:var(--d,0s)}
+html.mo .rv.in[data-fx="left"]{animation-name:mo-left}
+html.mo .rv.in[data-fx="right"]{animation-name:mo-right}
+html.mo .rv.in[data-fx="up"]{animation-name:mo-up}
+html.mo .rv.in[data-fx="drop"]{animation-name:mo-drop;animation-duration:.9s}
+html.mo .rv.in[data-fx="pop"]{animation-name:mo-pop;animation-duration:.6s}
+html.mo .rv.in[data-fx="fly"]{animation-name:mo-fly,mo-bob;
+  animation-duration:.85s,3.4s;animation-delay:var(--d,0s),calc(var(--d,0s) + 1s);
+  animation-iteration-count:1,infinite;animation-timing-function:cubic-bezier(.2,.9,.25,1.1),ease-in-out}
+html.mo .rv.in[data-fx="flip"]{animation-name:mo-flip;animation-duration:.8s}
+html.mo .rv.in[data-fx="wiggle"]{animation-name:mo-wiggle;animation-duration:1s}
+html.mo .rv.in[data-fx="zoom"]{animation-name:mo-zoom;animation-duration:.8s}
+@keyframes mo-left{from{opacity:0;translate:-90px 0;rotate:-3deg}to{opacity:1;translate:0 0;rotate:0deg}}
+@keyframes mo-right{from{opacity:0;translate:90px 0;rotate:3deg}to{opacity:1;translate:0 0;rotate:0deg}}
+@keyframes mo-up{from{opacity:0;translate:0 44px}to{opacity:1;translate:0 0}}
+@keyframes mo-drop{0%{opacity:0;translate:0 -80px;scale:.9}60%{opacity:1;translate:0 10px;scale:1.03}100%{opacity:1;translate:0 0;scale:1}}
+@keyframes mo-pop{0%{opacity:0;scale:.3;rotate:-12deg}65%{opacity:1;scale:1.18;rotate:4deg}100%{opacity:1;scale:1;rotate:0deg}}
+@keyframes mo-fly{from{opacity:0;translate:120px -40px;rotate:12deg;scale:.6}to{opacity:1;translate:0 0;rotate:0deg;scale:1}}
+@keyframes mo-bob{0%,100%{translate:0 0}50%{translate:0 -6px}}
+@keyframes mo-flip{0%{opacity:0;rotate:-8deg;translate:0 30px;scale:.9}40%{opacity:1}60%{rotate:3deg;translate:0 -4px}80%{rotate:-1.5deg}100%{opacity:1;rotate:0deg;translate:0 0;scale:1}}
+@keyframes mo-wiggle{0%{opacity:0;translate:0 30px;scale:.9}30%{opacity:1;translate:0 0;scale:1.03}45%{rotate:-1.6deg}60%{rotate:1.4deg}75%{rotate:-.8deg}100%{opacity:1;rotate:0deg;scale:1;translate:0 0}}
+@keyframes mo-zoom{from{opacity:0;scale:.6}to{opacity:1;scale:1}}
+
+/* 번호 배지 한 번 튕김 */
+.group-num{display:inline-block}
+.group-head.in .group-num{animation:mo-numspin .9s .25s cubic-bezier(.2,.9,.25,1.2) both}
+@keyframes mo-numspin{from{rotate:-360deg;scale:.2}to{rotate:0deg;scale:1}}
+
+/* 제목 아래 쓸어가는 밑줄 */
+.page-intro h1{position:relative;display:block;width:fit-content}
+.page-intro h1::after{content:'';position:absolute;left:0;bottom:-6px;height:5px;width:100%;border-radius:4px;
+  background:linear-gradient(90deg,#2C5F6F,#E8946B);transform-origin:0 50%;scale:0 1;animation:mo-underline 1s .7s ease-out forwards}
+@keyframes mo-underline{to{scale:1 1}}
+
+/* ── 상시 움직임 ── */
+.press-ic{display:inline-block;animation:mo-ring 3s ease-in-out infinite;transform-origin:50% 10%}
+@keyframes mo-ring{0%,60%,100%{rotate:0deg}68%{rotate:-18deg}76%{rotate:16deg}84%{rotate:-10deg}92%{rotate:6deg}}
+.say-hi-bubble{animation:mo-bubble 2.6s ease-in-out infinite}
+@keyframes mo-bubble{0%,100%{scale:1}50%{scale:1.06}}
+
+/* 트라이 커넥트: 삼각형 선 흐르는 점선 + + 버튼 파동 */
+.tri-svg polygon{animation:mo-march 1.4s linear infinite}
+@keyframes mo-march{to{stroke-dashoffset:-22}}
+.tri-plus::after{content:'';position:absolute;inset:0;border-radius:50%;border:3px solid #e0201c;
+  animation:mo-ping 2s ease-out infinite;pointer-events:none}
+.tri-plus.p13::after{animation-delay:.66s}
+.tri-plus.p23::after{animation-delay:1.33s}
+@keyframes mo-ping{0%{scale:1;opacity:.8}100%{scale:2.3;opacity:0}}
+.tri-num{animation:mo-bob2 2.8s ease-in-out infinite}
+.tri-card:nth-of-type(2) .tri-num{animation-delay:.4s}
+.tri-card:nth-of-type(3) .tri-num{animation-delay:.8s}
+@keyframes mo-bob2{0%,100%{translate:0 0;scale:1}50%{translate:0 -4px;scale:1.1}}
+
+/* 진행 흐름 동그라미 파동 */
+.flow-dot{position:relative}
+.flow-dot::after{content:'';position:absolute;inset:0;border-radius:50%;border:2px solid var(--accent);
+  animation:mo-ping 2.6s ease-out infinite;pointer-events:none}
+.flow-item.stop .flow-dot::after{border-color:#e0201c}
+.flow-item:nth-child(2) .flow-dot::after{animation-delay:.3s}
+.flow-item:nth-child(3) .flow-dot::after{animation-delay:.6s}
+.flow-item:nth-child(4) .flow-dot::after{animation-delay:.9s}
+.flow-item:nth-child(5) .flow-dot::after{animation-delay:1.2s}
+.flow-item:nth-child(6) .flow-dot::after{animation-delay:1.5s}
+.flow-item:nth-child(7) .flow-dot::after{animation-delay:1.8s}
+
+/* 영상 구성 칸: 빛이 훑고 지나감 */
+.scene{position:relative;overflow:hidden}
+.scene::after{content:'';position:absolute;top:0;left:-60%;width:40%;height:100%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);
+  transform:skewX(-20deg);animation:mo-shine 4.5s ease-in-out infinite}
+.scene:nth-child(2)::after{animation-delay:.3s}
+.scene:nth-child(3)::after{animation-delay:.6s}
+.scene:nth-child(4)::after{animation-delay:.9s}
+.scene:nth-child(5)::after{animation-delay:1.2s}
+@keyframes mo-shine{0%,55%{left:-60%}100%{left:130%}}
+
+/* 경고 카드 살짝 흔들림(주의 환기) */
+.warn{transition:transform .25s,box-shadow .25s}
+.warn:hover{transform:translateY(-4px) rotate(-.6deg);box-shadow:0 10px 22px rgba(232,148,107,.25)}
+
+/* 호버 반응 */
+.choice-card,.tri-card,.step,.jump a,.acc,.flow-body{transition:transform .25s ease,box-shadow .25s ease,border-color .25s}
+.choice-card:hover,.tri-card:hover{transform:translateY(-6px);box-shadow:0 14px 28px rgba(44,95,111,.18);border-color:#2C5F6F}
+.step:hover{transform:translateX(6px);box-shadow:0 8px 18px rgba(44,95,111,.14)}
+.jump a:hover{transform:translateY(-3px) scale(1.06);box-shadow:0 8px 16px rgba(44,95,111,.18)}
+.acc:hover{transform:translateX(4px);border-color:#2C5F6F}
+.go{transition:transform .2s}
+.go:hover{transform:scale(1.08)}
+
+@media (max-width:720px){
+  .mo-blob{opacity:.22}
+  html.mo .rv.in[data-fx="left"],html.mo .rv.in[data-fx="right"]{animation-name:mo-up}
+}
+@media (prefers-reduced-motion:reduce){
+  html.mo .rv{opacity:1}
+  html.mo .rv.in,.mo-blob,.mo-shape,.press-ic,.say-hi-bubble,.tri-svg polygon,.tri-plus::after,.tri-num,
+  .flow-dot::after,.scene::after,.page-intro h1::after,.group-head.in .group-num{animation:none!important}
+  .page-intro h1::after{scale:1 1}
+}
