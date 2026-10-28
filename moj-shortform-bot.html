@@ -131,6 +131,9 @@ h3.sub{font-size:17px;font-weight:800;margin:28px 0 10px}
 .kim figcaption{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:14px 16px}
 .kim figcaption strong{font-size:16px}
 .kim figcaption span{display:block;font-size:13px;color:var(--muted);margin-top:2px}
+.bgm{margin-top:14px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.bgm .txt{flex:1 1 200px;min-width:0}.bgm .txt strong{display:block;font-size:15.5px}.bgm .txt span{display:block;font-size:13px;color:var(--muted);margin-top:2px}
+.bgm audio{flex:1 1 100%;width:100%;height:40px}
 .logos{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
 .logo-cell{border-radius:14px;padding:18px;display:flex;flex-direction:column;align-items:center;gap:14px;border:1px solid var(--line)}
 .logo-cell.light{background:#fff}.logo-cell.dark{background:#1f3a68}
@@ -227,7 +230,7 @@ h3.sub{font-size:17px;font-weight:800;margin:28px 0 10px}
     <a href="#setup"><span>02</span>사전 세팅</a>
     <a href="#later"><span>03</span>봇이 물어보면</a>
     <a href="#character"><span>04</span>캐릭터 고르기</a>
-    <a href="#logo"><span>05</span>로고</a>
+    <a href="#logo"><span>05</span>로고·BGM</a>
     <a href="#project"><span>06</span>봇 만들기</a>
     <a href="#caution"><span>07</span>주의사항</a>
     <a href="#start"><span>08</span>시작하기</a>
@@ -398,7 +401,7 @@ h3.sub{font-size:17px;font-weight:800;margin:28px 0 10px}
 
   <!-- 03-2 로고 -->
   <section class="group" id="logo">
-    <div class="group-head"><span class="group-num">05</span><h2>법무부 로고</h2></div>
+    <div class="group-head"><span class="group-num">05</span><h2>법무부 로고 · 샘플 BGM</h2></div>
     <p class="group-desc">영상 중하단과 엔딩에 들어가는 공식 로고입니다. <b>봇이 알아서 가져다 씁니다.</b> 아래 파일은 다른 곳에 쓰고 싶을 때만 받으세요.</p>
     <div class="logos">
       <div class="logo-cell light"><img src="images/moj/moj-logo-h-color.png" alt="법무부 가로형 로고 (밝은 배경용)" loading="lazy"><a class="go ghost" href="images/moj/moj-logo-h-color.png" download="법무부_로고_가로_밝은배경용.png">가로형 · 밝은 배경용 ↓</a></div>
@@ -407,6 +410,12 @@ h3.sub{font-size:17px;font-weight:800;margin:28px 0 10px}
       <div class="logo-cell dark"><img src="images/moj/moj-logo-v-white.png" alt="법무부 세로형 로고 (어두운 배경용)" loading="lazy" class="v"><a class="go" href="images/moj/moj-logo-v-white.png" download="법무부_로고_세로_어두운배경용.png">세로형 · 어두운 배경용 ↓</a></div>
     </div>
     <div class="warn">⚠️ 로고는 <b>교육·업무용으로만</b> 쓰고, 색을 바꾸거나 늘이거나 AI로 새로 그리지 마세요.</div>
+    <div class="bgm">
+      <span class="logo-emoji" aria-hidden="true">🎵</span>
+      <div class="txt"><strong>샘플 BGM · The Tidy Hour</strong><span>영상 배경음악 예시입니다. 들어보고 마음에 들면 받아서 쓰세요.</span></div>
+      <a class="go" href="downloads/public/sample-bgm-the-tidy-hour.mp3" download="샘플BGM_The_Tidy_Hour.mp3">BGM 내려받기 ↓</a>
+      <audio controls preload="none" src="downloads/public/sample-bgm-the-tidy-hour.mp3"></audio>
+    </div>
   </section>
 
   <!-- 04 프로젝트 -->
