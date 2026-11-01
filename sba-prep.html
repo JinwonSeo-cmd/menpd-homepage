@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SBA 준비사항 | 멘피디 AI</title>
+<meta name="description" content="SBA AI 이미지·영상 콘텐츠 제작 수강생용 — 로그인·설치 준비, 1주차 교안, 복사용 프롬프트, MD·KB 파일 다운로드">
+<link rel="stylesheet" href="css/styles.css">
+<style>
+:root{
+  --accent:#2C5F6F; --accent2:#D9784A; --ink:#1d1d1f; --wash:#f5f5f7;
+  --paper:#FFFFFF; --line:#E4E6EB; --muted:#5f6672; --hl:#F4A88E;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-text,'Pretendard',system-ui,-apple-system,sans-serif);
+  background:var(--wash);color:var(--ink);-webkit-font-smoothing:antialiased;font-size:16px}
+.top{background:var(--ink);padding:16px 24px}
+.top a{color:#fff;text-decoration:none;font-size:13px;font-weight:600;opacity:.85}
+.top a:hover{opacity:1}
+.wrap{max-width:780px;margin:0 auto;padding:56px 16px 120px}
+.badge{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.08em;
+  color:#fff;background:var(--ink);padding:5px 10px;border-radius:6px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,42px);font-weight:800;letter-spacing:-.03em;line-height:1.25}
+.lede{margin-top:14px;color:var(--muted);font-size:16px;line-height:1.75;max-width:58ch}
+
+/* 5신 미리보기 */
+.scenes{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:26px}
+.scene{border-radius:12px;padding:12px 8px;text-align:center;font-size:12.5px;line-height:1.45;font-weight:700}
+.scene small{display:block;font-weight:500;opacity:.8;margin-top:2px;font-size:11.5px}
+.scene.ff{background:#2C5F6F;color:#fff}
+.scene.end{background:#fff;color:#2C5F6F;border:2px dashed #9fb0c8}
+.scene.gf{background:#fff;color:#2C5F6F;border:2px solid #2C5F6F}
+.scene-total{margin-top:8px;font-size:13px;color:var(--muted);text-align:right}
+
+.group{margin-top:64px;scroll-margin-top:20px}
+.group-head{display:flex;align-items:baseline;gap:10px;margin-bottom:8px}
+.group-num{font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:14px;font-weight:800;color:var(--accent2)}
+.group h2{font-size:23px;font-weight:800;letter-spacing:-.02em}
+.group-desc{color:var(--muted);font-size:15px;margin-bottom:20px;line-height:1.7}
+h3.sub{font-size:17px;font-weight:800;margin:28px 0 10px}
+
+/* 트라이 커넥트 */
+.tri{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.tri-card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:18px}
+.tri-num{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;
+  background:var(--accent);color:#fff;font-weight:800;font-size:14px;margin-bottom:10px}
+.tri-card strong{display:block;font-size:16px;margin-bottom:4px}
+.tri-card p{font-size:13.5px;color:var(--muted);line-height:1.6}
+.tri-card .role{display:inline-block;margin-top:10px;font-size:12px;font-weight:700;color:var(--accent);
+  background:rgba(44,95,111,.08);padding:4px 9px;border-radius:999px}
+.tri-flow{margin-top:12px;background:var(--paper);border:1px dashed #b9c3d3;border-radius:14px;
+  padding:14px 16px;font-size:14px;line-height:1.8;color:#2c3d57}
+.tri-flow b{color:var(--accent)}
+
+/* 단계 카드 */
+.steplist{display:flex;flex-direction:column;gap:10px}
+.step{display:flex;align-items:center;gap:14px;background:var(--paper);
+  border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.step .txt{flex:1;min-width:0}
+.service-logo{flex:none;width:42px;height:42px;padding:5px;border:1px solid var(--line);
+  border-radius:11px;background:#fff;object-fit:contain}
+.logo-emoji{flex:none;width:42px;height:42px;border:1px solid var(--line);border-radius:11px;
+  background:#fff;display:grid;place-items:center;font-size:22px}
+.step .txt strong{display:block;font-size:15.5px;font-weight:700;margin-bottom:3px}
+.step .txt span{display:block;font-size:13.5px;color:var(--muted);line-height:1.55}
+.go{flex:none;display:inline-flex;align-items:center;font-size:14px;font-weight:700;
+  color:#fff;background:var(--accent);padding:11px 16px;border-radius:10px;text-decoration:none;
+  white-space:nowrap;transition:.15s;border:none;cursor:pointer;font-family:inherit}
+.go:hover{background:var(--accent2)}
+.go.ghost{background:#fff;color:var(--accent);border:1px solid var(--accent)}
+.go.ghost:hover{background:rgba(44,95,111,.06)}
+
+/* 따라하기 번호 목록 */
+.howto{counter-reset:h;list-style:none;display:flex;flex-direction:column;gap:10px}
+.howto li{counter-increment:h;position:relative;background:var(--paper);border:1px solid var(--line);
+  border-radius:14px;padding:16px 18px 16px 60px;font-size:15px;line-height:1.7}
+.howto li::before{content:counter(h);position:absolute;left:16px;top:15px;width:30px;height:30px;
+  border-radius:50%;background:var(--ink);color:#fff;font-weight:800;font-size:14px;
+  display:grid;place-items:center}
+.howto li small{display:block;color:var(--muted);font-size:13.5px;margin-top:2px}
+.key{display:inline-block;background:var(--hl);color:#1d1d1f;font-weight:800;padding:0 6px;border-radius:5px}
+.ui{display:inline-block;background:#eef1f6;border:1px solid #d6dce6;color:#2C5F6F;font-weight:700;
+  padding:0 7px;border-radius:6px;font-size:.95em}
+
+/* 복사 박스 */
+.copybox{background:#16313a;border-radius:16px;overflow:hidden;margin-top:14px}
+.copybox-head{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;
+  padding:12px 14px;background:#1f4452;color:#cfd8e6;font-size:13px;font-weight:700}
+.copybox-actions{display:flex;gap:8px;flex-wrap:wrap}
+.copy-btn{font-family:inherit;font-size:14px;font-weight:800;border:none;border-radius:9px;
+  padding:10px 16px;cursor:pointer;background:var(--hl);color:#1d1d1f}
+.copy-btn.done{background:#5fd39a}
+.copy-btn.alt{background:#fff;color:#2C5F6F;text-decoration:none;display:inline-flex;align-items:center}
+.copybox pre{margin:0;padding:16px;max-height:340px;overflow:auto;color:#e6ecf5;
+  font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:12.5px;line-height:1.65;
+  white-space:pre-wrap;word-break:break-word}
+.copybox.short pre{max-height:none;font-size:15px;font-family:inherit}
+
+/* 진행 흐름 */
+.flow{display:flex;flex-direction:column;gap:0;position:relative}
+.flow-item{display:flex;gap:14px;padding:0 0 18px;position:relative}
+.flow-item:not(:last-child)::before{content:'';position:absolute;left:17px;top:36px;bottom:0;width:2px;background:#cfd6e2}
+.flow-dot{flex:none;width:36px;height:36px;border-radius:50%;background:var(--accent);color:#fff;
+  display:grid;place-items:center;font-size:17px}
+.flow-item.stop .flow-dot{background:#e0201c}
+.flow-body strong{display:block;font-size:15.5px;margin-top:6px}
+.flow-body p{font-size:13.5px;color:var(--muted);line-height:1.6;margin-top:2px}
+
+.note{margin-top:16px;padding:15px 17px;background:rgba(0,113,227,.08);border-radius:12px;
+  font-size:14px;color:#0b4a8f;line-height:1.65}
+.warn{margin-top:16px;padding:15px 17px;background:#fff4e5;border:1px solid #ffd59a;border-radius:12px;
+  font-size:14px;color:#7a4a00;line-height:1.65}
+
+.choice{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.choice-card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:16px}
+.choice-card .tag{display:inline-block;font-size:12px;font-weight:800;color:#fff;background:var(--accent);
+  padding:3px 9px;border-radius:999px;margin-bottom:8px}
+.choice-card.c2 .tag{background:#3a6fb0}.choice-card.c3 .tag{background:#8a93a3}
+.choice-card strong{display:block;font-size:15.5px;margin-bottom:4px}
+.choice-card p{font-size:13.5px;color:var(--muted);line-height:1.6}
+
+.acc{background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:8px}
+.acc summary{cursor:pointer;list-style:none;padding:15px 18px;font-size:15px;font-weight:700;display:flex;gap:8px}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary::before{content:'+';color:var(--muted);font-weight:400}
+.acc[open] summary::before{content:'–'}
+.acc-body{padding:0 18px 16px 34px;font-size:14px;color:#3a4250;line-height:1.75}
+
+.kim{margin-top:12px;background:var(--paper);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.kim img{display:block;width:100%;height:auto}
+.kim figcaption{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:14px 16px}
+.kim figcaption strong{font-size:16px}
+.kim figcaption span{display:block;font-size:13px;color:var(--muted);margin-top:2px}
+.logos{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.logo-cell{border-radius:14px;padding:18px;display:flex;flex-direction:column;align-items:center;gap:14px;border:1px solid var(--line)}
+.logo-cell.light{background:#fff}.logo-cell.dark{background:#2C5F6F}
+.logo-cell img{width:100%;max-width:260px;height:110px;object-fit:contain}
+.logo-cell img.v{height:150px}
+.logo-cell .go{font-size:13px}
+.logo-cell.dark .go{background:#fff;color:#2C5F6F}
+@media (max-width:720px){.logos{grid-template-columns:1fr}}
+.tri{position:relative;display:grid;grid-template-columns:1fr 1fr;column-gap:56px;row-gap:56px}
+.tri .tri-card{position:relative;z-index:1;min-width:0;background:#fbfdfd}
+.tri .tri-card:nth-of-type(1){grid-column:1 / 3;justify-self:center;width:calc(50% - 28px)}
+.tri-svg{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.tri-svg polygon{fill:rgba(44,95,111,.06);stroke:var(--accent);stroke-width:2;stroke-dasharray:6 5;vector-effect:non-scaling-stroke}
+.tri-plus{position:absolute;transform:translate(-50%,-50%);width:40px;height:40px;z-index:2;
+  display:grid;place-items:center;border-radius:50%;background:#e0201c;color:#fff;font-size:26px;font-weight:800;
+  line-height:1;box-shadow:0 0 0 4px var(--wash),0 6px 14px rgba(224,32,28,.3)}
+.tri-plus.p12{left:37.5%;top:50%}
+.tri-plus.p13{left:62.5%;top:50%}
+.tri-plus.p23{left:50%;top:79%}
+.seq{flex:none;width:28px;height:28px;border-radius:50%;background:var(--ink);color:#fff;font-weight:800;font-size:13px;display:grid;place-items:center}
+.fold{margin-top:10px}
+.fold summary{align-items:center}
+.fold .acc-desc{font-weight:500;color:var(--muted);font-size:13px;margin-left:auto}
+.fold .acc-body{padding:4px 18px 18px}
+.fold .acc-body > p{margin-bottom:10px}
+.fold .howto li{background:var(--wash)}
+.mini-logo{width:20px;height:20px;object-fit:contain}
+.btn-line{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+@media (max-width:720px){
+  .tri{display:flex;flex-direction:column;gap:0}
+  .tri .tri-card:nth-of-type(1){width:auto}
+  .tri-svg,.tri-plus.p13{display:none}
+  .tri .tri-plus,.tri .tri-plus.p12,.tri .tri-plus.p23{position:relative;transform:none;align-self:center;margin:-12px auto;left:auto;top:auto}
+}
+.say-hi{display:flex;align-items:center;gap:16px;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:18px 20px}
+.say-hi-bubble{flex:none;background:var(--accent);color:#fff;font-weight:800;font-size:17px;padding:10px 18px;border-radius:18px 18px 4px 18px}
+.say-hi p{font-size:15px;line-height:1.7;color:#2c3d57}
+.h2-note{font-size:14px;font-weight:600;color:var(--muted);letter-spacing:0}
+.press{display:flex;gap:14px;align-items:flex-start;background:#fff8d6;border:2px solid #ffd84d;border-radius:16px;padding:16px 18px;margin-bottom:12px}
+.press-ic{font-size:26px;line-height:1}
+.press strong{display:block;font-size:16px;margin-bottom:4px}
+.press p{font-size:14.5px;line-height:1.7;color:#4a3d00}
+.homework{background:linear-gradient(135deg,#2C5F6F,#3d7d8f);color:#fff;border-radius:20px;padding:24px}
+.homework h3{font-size:19px;margin-bottom:10px}
+.homework ul{margin-left:18px;font-size:14.5px;line-height:1.85}
+
+.jump{display:flex;flex-wrap:wrap;gap:6px;margin-top:28px}
+.jump a{font-size:13px;font-weight:700;color:var(--accent);background:#fff;border:1px solid var(--line);
+  padding:7px 11px;border-radius:999px;text-decoration:none}
+.jump a span{color:var(--accent2);margin-right:4px;font-family:ui-monospace,Menlo,monospace}
+
+@media (max-width:720px){
+  .tri,.choice{grid-template-columns:1fr}
+  .scenes{grid-template-columns:repeat(5,1fr);gap:3px}
+  .scene{font-size:11px;padding:10px 4px}
+  .scene small{font-size:10px}
+  .step{flex-wrap:wrap}
+  .step .go{width:100%;justify-content:center}
+}
+.chk{list-style:none;display:flex;flex-direction:column;gap:8px;margin:0}
+.chk li{position:relative;padding-left:26px;line-height:1.7}
+.chk li::before{content:'☐';position:absolute;left:0;top:0;color:var(--accent);font-weight:800}
+.caution{display:flex;flex-direction:column;gap:10px}
+.caution .warn{margin-top:0}
+.caution .warn strong{display:block;font-size:15.5px;margin-bottom:3px}
+.caution .warn p{font-size:14.5px;line-height:1.7}
+</style>
+<link rel="stylesheet" href="css/depth-motion.css">
+<link rel="stylesheet" href="css/dusk-pages.css?v=20260923b">
+<style>.pill{display:inline-block;font-size:12px;font-weight:800;padding:3px 9px;border-radius:999px;background:var(--accent);color:#fff;margin-right:6px}.pill.free{background:#E8946B}
+.choice-card.c1 .tag{background:#2C5F6F}.choice-card.c2 .tag{background:#E8946B}
+.dl{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}</style>
+<style>.page-intro::after{display:none}.step .txt strong .pill{display:inline-block;margin:0 0 0 8px;vertical-align:1px}.choice.three{grid-template-columns:repeat(3,1fr)}@media(max-width:720px){.choice.three{grid-template-columns:1fr}}.step .btn-line{flex:none;margin:0}</style>
+</head>
+<body class="dusk-page prep-page">
+<div class="top">
+  <a class="top-brand" href="index.html">← 멘피디 AI</a>
+  <nav class="top-links" aria-label="하위 페이지">
+    <a href="sba-prep.html" aria-current="page">SBA 준비사항</a>
+    <a href="kma-prep.html">능률 준비사항</a>
+    <a href="moj-shortform-bot.html">(법무부) 숏폼 마스터 봇</a>
+    <a href="seomsanryeon-prep.html">섬산련 준비</a>
+    <a href="prep.html">준비자료</a>
+    <a href="resources.html">자료실</a>
+  </nav>
+</div>
+<div class="wrap">
+<header class="page-intro">
+  <span class="badge">SBA · AI CONTENT</span>
+  <h1>SBA 준비사항</h1>
+  <p class="lede"><b>AI 이미지·영상 콘텐츠 제작</b> 수강생용 안내 페이지입니다. 수업 순서대로 <b>로그인·설치 → 교안 → 복사용 프롬프트 → MD·KB 파일</b>을 모았습니다. 지금은 <b>1주차(11/7)</b> 자료입니다. 2·3주차 자료는 수업 전에 이 페이지에 추가됩니다.</p>
+</header>
+<div class="step" style="margin-top:20px">
+  <span class="logo-emoji" aria-hidden="true">📘</span>
+  <div class="txt"><strong>1주차 교안 · 생성형 AI의 도입</strong><span>생성의 7단계 · PE7 · MD · 봇 · 컴앱웹 · PPT (85쪽)</span></div>
+  <div class="btn-line"><a class="go" href="sba/week1/index.html" target="_blank" rel="noopener">웹 교안 보기</a><a class="go ghost" href="downloads/public/sba-week1-slides.pdf" target="_blank" rel="noopener">PDF 보기</a></div>
+</div>
+<nav class="jump" aria-label="바로가기">
+  <a href="#ready"><span>01</span>준비물</a>
+  <a href="#login"><span>02</span>로그인·설치</a>
+  <a href="#comappweb"><span>03</span>컴앱웹</a>
+  <a href="#prompts"><span>04</span>복사 프롬프트</a>
+  <a href="#files"><span>05</span>MD·KB 파일</a>
+  <a href="#links"><span>06</span>참고 링크</a>
+  <a href="#token"><span>07</span>토큰 절약</a>
+  <a href="#faq"><span>08</span>막힐 때</a>
+</nav>
+<div class="press" id="chat-room"><span class="press-ic" aria-hidden="true">💬</span><div><strong>막히면 캡처해서 질문 · 완성하면 공유</strong><p>안 되는 부분은 <b>화면을 캡처해서 강사에게 보여주세요.</b> 결과물은 단톡방에 올려 서로 공유합니다.</p></div></div>
+<section class="group" id="ready"><div class="group-head"><span class="group-num">01</span><h2>수업 전 준비물</h2></div>
+<p class="group-desc">아래가 다 되어 있으면 수업 시작이 훨씬 빠릅니다. 안 되어 있어도 수업 중에 함께 하니 걱정하지 마세요.</p>
+<ul class="chk">
+<li><b>ChatGPT 계정</b>으로 로그인해 보기 (지급받은 계정 안내에 따라)</li>
+<li><b>ChatGPT 데스크톱 앱</b> 설치 (수업에서 쓸 컴퓨터에)</li>
+<li>바탕화면에 <b>‘AI작업’ 폴더</b> 만들기 (아래 템플릿 zip을 풀면 됩니다)</li>
+<li>(선택) 로고 파일, 소개하고 싶은 <b>회사·팀 정보</b> 한 줄 메모</li>
+<li>(선택) PowerPoint가 설치된 컴퓨터라면 <b>PPT 실습</b>에서 애드인을 써 볼 수 있습니다</li>
+</ul>
+<div class="warn">강의장 컴퓨터·네트워크 환경은 주최 측 안내를 따릅니다. 설치가 막히면 억지로 우회하지 말고 강사에게 말씀해 주세요.</div></section><section class="group" id="login"><div class="group-head"><span class="group-num">02</span><h2>로그인 · 설치 안내</h2></div><p class="group-desc">필수 2개만 먼저 하세요. 나머지는 수업 중 시연을 보거나, 원하시면 미리 해 보세요.</p><div class="steplist"><div class="step"><img class="service-logo" src="images/service-logos/chatgpt.png" alt="" width="42" height="42" loading="lazy"><div class="txt"><strong>① ChatGPT 로그인 <span class="pill">필수</span></strong><span>지급받은 계정으로 로그인합니다. 수업의 모든 실습(프롬프트·봇·PPT)이 여기서 이뤄집니다.</span></div><a class="go" href="https://chatgpt.com" target="_blank" rel="noopener">열기</a></div><div class="step"><img class="service-logo" src="images/service-logos/chatgpt.png" alt="" width="42" height="42" loading="lazy"><div class="txt"><strong>② ChatGPT 데스크톱 앱 <span class="pill">필수</span></strong><span>내 컴퓨터의 폴더를 AI가 읽고 쓰려면 웹이 아니라 <b>앱</b>이 필요합니다(컴앱웹의 ‘앱’). 설치 후 같은 계정으로 로그인하세요.</span></div><a class="go" href="https://openai.com/chatgpt/download/" target="_blank" rel="noopener">다운로드</a></div><div class="step"><span class="logo-emoji" aria-hidden="true">📊</span><div class="txt"><strong>③ PowerPoint + ChatGPT 애드인 <span class="pill free">선택</span></strong><span>PPT 실습(Part.06)에서 파워포인트 안에서 바로 고칩니다. PowerPoint → 홈 → 추가 기능에서 “ChatGPT”를 검색해 추가합니다. 현재 베타 기능입니다.</span></div><a class="go ghost" href="https://help.openai.com/en/articles/20001242-chatgpt-for-powerpoint" target="_blank" rel="noopener">설치 안내</a></div><div class="step"><span class="logo-emoji" aria-hidden="true">🔥</span><div class="txt"><strong>④ Adobe Firefly <span class="pill free">시연</span></strong><span>마지막 시연에서 영상 클립을 만듭니다. 강사 시연을 보시면 되고, 직접 해 보려면 Adobe 계정이 필요합니다. 생성에는 크레딧이 듭니다.</span></div><a class="go ghost" href="https://firefly.adobe.com" target="_blank" rel="noopener">열기</a></div><div class="step"><img class="service-logo" src="images/service-logos/elevenlabs.png" alt="" width="42" height="42" loading="lazy"><div class="txt"><strong>⑤ ElevenLabs <span class="pill free">시연</span></strong><span>마지막 시연에서 나레이션과 노래(음악)를 만듭니다. 강사 시연 위주이고, 직접 해 보려면 가입이 필요합니다.</span></div><a class="go ghost" href="https://elevenlabs.io" target="_blank" rel="noopener">열기</a></div><div class="step"><img class="service-logo" src="images/service-logos/google.png" alt="" width="42" height="42" loading="lazy"><div class="txt"><strong>⑥ Gmail · 캘린더 연결 <span class="pill free">시연</span></strong><span>마지막 시연에서 강사 계정으로 메일·일정을 찾습니다. 수강생은 따로 연결하지 않아도 됩니다.</span></div></div></div><div class="note">비밀번호와 결제 정보는 직접 입력하세요. 결제·유료 전환 화면은 누르지 않아도 됩니다. 캡컷은 2주차 이후에 사용합니다.</div></section><section class="group" id="comappweb"><div class="group-head"><span class="group-num">03</span><h2>컴앱웹이란?</h2></div>
+<p class="group-desc">AI가 일하는 세 군데입니다. 세 가지를 오가며 일하게 만드는 것이 이번 수업의 목표입니다.</p>
+<div class="choice three">
+<div class="choice-card"><span class="tag">컴</span><strong>내 컴퓨터 · 폴더</strong><p>폴더에서 파일을 읽고 씁니다(로고·엑셀·MD·결과). FFmpeg로 컷 편집·자막·음악까지 합니다.</p></div>
+<div class="choice-card c2"><span class="tag">앱</span><strong>ChatGPT 데스크톱 앱</strong><p>대화하고 기획하면서, 컴과 웹을 중간에서 이어 줍니다.</p></div>
+<div class="choice-card c3"><span class="tag">웹</span><strong>각종 웹 서비스</strong><p>Firefly·일레븐랩스 등을 사용법을 몰라도 알아서 조작하고, 결과를 다운로드까지 합니다.</p></div>
+</div>
+<div class="note"><b>폴더 구조</b> : 소스 · 샘플 · 로고 · 캐릭터 · MD · 봇지침 · 결과. 샘플은 <b>종류별로 이름</b>(포스터_미니멀_01)을 붙여 폴더에 쌓아 두면 봇이 매번 같은 기준으로 참조합니다.</div>
+<div class="dl"><a class="go" href="downloads/public/sba-ai-work-template.zip" download>‘AI작업’ 폴더 템플릿 받기 (zip)</a></div></section><section class="group" id="prompts"><div class="group-head"><span class="group-num">04</span><h2>수업 순서별 복사 프롬프트</h2></div><p class="group-desc">수업 중 해당 장표가 나오면 여기서 복사해 ChatGPT에 붙여넣으세요. <b>___</b> 표시는 직접 채우는 칸입니다.</p><details class="acc fold"><summary>Part.01 · 1~2단계 체험<span class="acc-desc">말로 vs 샘플</span></summary><div class="acc-body"><h3 class="sub">1단계 · 포스터</h3><div class="copybox short" id="p1-box"><div class="copybox-head"><span>📋 1단계 포스터</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="p1">복사</button></div></div><pre id="p1">우리 회사를 알리는 홍보 포스터 만들어줘. 세로형이야.</pre></div><h3 class="sub">1단계 · 보고서</h3><div class="copybox short" id="g1-box"><div class="copybox-head"><span>📋 1단계 보고서</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="g1">복사</button></div></div><pre id="g1">우리 팀 업무 개선 추진 계획 보고서 초안을 써줘.</pre></div><h3 class="sub">2단계 · 같은 한 줄 + 샘플 1장</h3><p>샘플 포스터 이미지를 함께 첨부하세요(수업에서 제공).</p><div class="copybox short" id="p2-box"><div class="copybox-head"><span>📋 2단계 포스터(샘플 첨부)</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="p2">복사</button></div></div><pre id="p2">우리 회사를 알리는 홍보 포스터 만들어줘. 세로형이야.
+첨부한 샘플 포스터의 분위기와 구도를 참고해줘. 샘플을 그대로 베끼지는 마.</pre></div></div></details><details class="acc fold"><summary>Part.02 · PE7 프롬프트<span class="acc-desc">7가지 요소로 보고서</span></summary><div class="acc-body"><div class="copybox" id="pe7-box"><div class="copybox-head"><span>📋 PE7 보고서 프롬프트 (___ 두 칸만 채우기)</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="pe7">복사</button></div></div><pre id="pe7">[PE1 역할] 너는 기업·기관 기획 보고서를 20년 써 온 기획 전문가야.
+[PE2 대상] 나는 ___ 팀 담당자고, 읽는 사람은 ___(팀장 · 임원)이야.
+[PE3 목표] 우리 팀 업무 개선 추진 계획 보고서 초안을 쓰려고 해.
+[PE4 절차] 먼저 현황과 문제를 정리하고, 그다음 개선안 3가지를 제안하고, 마지막에 일정과 기대 효과를 써줘.
+[PE5 샘플] 목차는 이 순서로 해줘 : 1. 추진 배경 2. 현황 · 문제점 3. 개선 방안 4. 추진 일정 5. 기대 효과
+[PE6 자료] 아래 정보 안에서만 써줘. 없는 수치는 만들지 말고 ‘확인 필요’로 표시해줘 : ___
+[PE7 형식] A4 1장 분량, 개조식으로 써줘. 표는 추진 일정에만 써줘.</pre></div></div></details><details class="acc fold"><summary>Part.03 · MD (INS · KB)<span class="acc-desc">리서치 · MD 대필</span></summary><div class="acc-body"><h3 class="sub">리서치 (먼저 말로만, 그다음 리서치-대가.md 첨부)</h3><div class="copybox short" id="r1-box"><div class="copybox-head"><span>📋 리서치 한 줄</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="r1">복사</button></div></div><pre id="r1">숏폼 영상 제작에 쓰는 AI 도구 동향을 조사해줘.</pre></div><h3 class="sub">INS(업무 지침) MD 대필 요청</h3><div class="copybox short" id="i1-box"><div class="copybox-head"><span>📋 INS 만들기</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="i1">복사</button></div></div><pre id="i1">내가 포스터 만들 때 하는 순서는 대강 이래.
+주제 확인 → 색 · 분위기 고르기 → 이미지 만들기 → 금지 사항 점검
+이 순서를 AI가 따라 할 수 있게 INS(업무 지침) 형식의 MD 파일로 다듬어줘.</pre></div><h3 class="sub">KB(참고 자료) MD 대필 요청</h3><div class="copybox short" id="k1-box"><div class="copybox-head"><span>📋 KB 만들기</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="k1">복사</button></div></div><pre id="k1">포스터 디자인 대가들이 쓰는 색 · 구도 · 글씨 배치 원칙을 조사해줘.
+출처를 붙이고, 항목별로 나눠 KB용 MD 파일로 체계적으로 정리해줘.
+우리 회사 포스터 규칙도 같은 형식으로 추가할 수 있게 해줘.</pre></div><h3 class="sub">우리 회사 디자인 MD (빈칸 채우기)</h3><div class="copybox" id="md-box"><div class="copybox-head"><span>📋 우리회사_디자인.md</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="md">복사</button><a class="copy-btn alt" href="downloads/public/sba-design-md-template.md" download>파일로 받기</a></div></div><pre id="md"># 우리 회사 디자인 규칙
+- 회사명 : ___
+- 메인색 : ___ (모르면 로고 색)
+- 포인트색 : ___
+- 분위기 : ___ (예 : 깔끔한, 따뜻한)
+- 구성 : ___ (예 : 여백 넉넉, 중앙 정렬)
+- 금지 : ___ (예 : 글씨 넣기, 과한 장식)</pre></div></div></details><details class="acc fold"><summary>Part.04 · 봇 5종 지침<span class="acc-desc">프로젝트 지침 칸에 붙여넣기</span></summary><div class="acc-body"><p>ChatGPT <span class="ui">프로젝트</span>를 만들고 <b>지침 칸</b>에 붙여넣습니다. 참고 자료(KB)는 <b>파일 칸</b>에 올립니다.</p><h3 class="sub">① 프롬프트 대필 봇</h3><p>대충 쓴 한 줄을 PE7 프롬프트로 바꿔 줍니다</p><div class="copybox" id="b1-box"><div class="copybox-head"><span>📋 ① 프롬프트 대필 봇 지침</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="b1">복사</button><a class="copy-btn alt" href="downloads/public/sba-bot-1-prompt-writer.md" download>파일로 받기</a></div></div><pre id="b1">너는 ‘프롬프트 대필 봇’이야.
+사용자가 대충 쓴 요청을 PE7 기준으로 완성도 높은 프롬프트로 바꿔 쓴다.
+
+[PE7 기준]
+PE1 역할: 그 일에 맞는 전문가 역할을 한 줄로 정한다
+PE2 대상: 사용자의 직무·상황, 결과를 읽을 사람
+PE3 목표: 하려는 일을 한 문장으로
+PE4 절차: 작업 순서를 2~4단계로
+PE5 샘플: 샘플이 있으면 “첨부한 샘플을 참고”, 없으면 [샘플 첨부 시 더 정확]
+PE6 자료: 써도 되는 정보의 범위. 모르면 [채워주세요]
+PE7 형식: 결과물의 형태·분량·톤
+
+[작동 방식]
+1. 질문하지 말고 바로 쓴다
+2. 요청에서 알 수 없는 것은 지어내지 말고 [채워주세요]로 남긴다
+3. 한국어로, 복사해서 바로 쓸 수 있는 프롬프트 하나만 출력한다 (인사말·설명 없이)
+
+[출력 형식]
+[PE1 역할] …
+[PE2 대상] …
+[PE3 목표] …
+[PE4 절차] …
+[PE5 샘플] …
+[PE6 자료] …
+[PE7 형식] …
+
+[예시]
+입력: 신제품 홍보 포스터 문구 좀
+출력: [PE1 역할] 너는 15년 경력의 카피라이터야. [PE2 대상] 나는 [채워주세요] 담당자고, 읽는 사람은 [채워주세요]야. [PE3 목표] 신제품 홍보 포스터 문구를 만들려고 해. …
+
+[KB 사용]
+파일 칸에 ‘프롬프트-대가.md’(좋은 프롬프트 사례, 분야별 PE7 예시)가 있으면 먼저 읽고, 그 사례의 구체성과 문체 수준을 따른다. 없으면 위 PE7 기준만으로 쓴다.</pre></div><h3 class="sub">② 리서치 봇</h3><p>조사 순서와 출처 표기를 고정합니다</p><div class="copybox" id="b2-box"><div class="copybox-head"><span>📋 ② 리서치 봇 지침</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="b2">복사</button><a class="copy-btn alt" href="downloads/public/sba-bot-2-research.md" download>파일로 받기</a></div></div><pre id="b2">너는 ‘리서치 봇’이야.
+사용자가 준 주제를 조사해 업무에 바로 쓸 수 있게 정리한다.
+
+[작동 방식]
+1. 주제가 넓어도 되묻지 말고, 가장 흔한 해석으로 먼저 정리한다
+2. 확인된 사실과 추정·의견을 반드시 구분한다
+3. 출처가 있는 정보는 기관명이나 링크를 함께 적는다
+4. 출처를 찾지 못한 수치·사례는 지어내지 말고 [확인 필요]로 표시한다
+5. 최신 정보가 필요한 주제는 검색해서 확인한다
+
+[출력 형식]
+## 핵심 요약 (5줄)
+## 확인된 사실 (출처 포함)
+## 추정·의견 (사실과 구분)
+## 더 조사할 질문 3개
+## 바로 쓸 수 있는 활용 제안 1가지
+
+[말투]
+개조식, 존댓말, 한 문장은 짧게
+
+[KB 사용]
+파일 칸에 ‘리서치-대가.md’가 있으면 먼저 읽고, 그 안의 검색 방식·출처 등급·검증 기준·결과 양식을 위 작동 방식보다 우선해 따른다. 없으면 위 작동 방식대로 한다.</pre></div><h3 class="sub">③ 보고서 봇</h3><p>보고서-기준.md대로 초안을 씁니다</p><div class="copybox" id="b3-box"><div class="copybox-head"><span>📋 ③ 보고서 봇 지침</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="b3">복사</button><a class="copy-btn alt" href="downloads/public/sba-bot-3-report.md" download>파일로 받기</a></div></div><pre id="b3">너는 ‘보고서 봇’이야.
+파일 칸의 ‘보고서-기준.md’를 먼저 읽고, 그 기준대로 보고서 초안을 쓴다.
+
+[작동 방식]
+1. 사용자가 준 정보만 근거로 쓴다. 없는 내용은 지어내지 않는다
+2. 근거 없는 수치·날짜·고유명사는 [확인 필요]로 표시한다
+3. 정보가 부족해도 멈추지 말고, [확인 필요]를 남기고 끝까지 쓴다
+4. 기준 문서와 사용자의 요청이 충돌하면 기준 문서를 우선한다
+
+[문체]
+- 개조식(명사형 종결), 한 문장은 한 줄 이내
+- 제목은 결론부터 쓴다
+
+[출력 형식]
+제목
+1. 추진 배경
+2. 주요 내용
+3. 기대 효과
+4. 향후 계획
+
+[마무리]
+맨 끝에 ‘확인 필요 항목’을 목록으로 모아 준다
+
+[우수사례 사용]
+파일 칸에 우수사례 보고서가 있으면 구조와 표현 수준만 참고하고, 내용은 그대로 베끼지 않는다.</pre></div><h3 class="sub">④ 포스터 봇</h3><p>우리회사_디자인.md로 세로형 포스터를 만듭니다</p><div class="copybox" id="b4-box"><div class="copybox-head"><span>📋 ④ 포스터 봇 지침</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="b4">복사</button><a class="copy-btn alt" href="downloads/public/sba-bot-4-poster.md" download>파일로 받기</a></div></div><pre id="b4">너는 ‘포스터 봇’이야.
+사용자가 주제 한 줄을 주면, 파일 칸의 ‘우리회사_디자인.md’ 규칙대로 세로형 포스터 이미지를 만든다.
+
+[작동 방식]
+1. 먼저 콘셉트 3가지를 한 줄씩 제안하고, 사용자가 고르면 이미지를 생성한다
+2. 사용자가 “알아서”라고 하면 1번 콘셉트로 진행한다
+3. 디자인 MD의 색·분위기·구성·금지 규칙을 모두 지킨다. 충돌하면 디자인 MD를 우선한다
+4. 이미지에는 글씨를 넣지 않는다 (글씨를 넣을 수 있게 여백을 남긴다)
+5. 비율은 4:5 세로, 한 번에 이미지 1장
+
+[콘셉트 제안 형식]
+① 콘셉트 한 줄 / 느낌
+② 콘셉트 한 줄 / 느낌
+③ 콘셉트 한 줄 / 느낌
+
+[수정 요청 시]
+바뀐 부분만 설명하고, 나머지는 그대로 유지한다
+
+[샘플·로고 사용]
+파일 칸에 샘플 포스터가 있으면 구도와 분위기만 참고하고 그대로 베끼지 않는다. 로고 파일이 있으면 디자인 MD의 로고 규칙대로 위치와 크기를 지킨다.</pre></div><h3 class="sub">⑤ 숏폼 봇</h3><p>기획 상담부터 FFmpeg 편집까지 한 채팅창에서</p><div class="copybox" id="b5-box"><div class="copybox-head"><span>📋 ⑤ 숏폼 봇 지침</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="b5">복사</button><a class="copy-btn alt" href="downloads/public/sba-bot-5-shortform.md" download>파일로 받기</a></div></div><pre id="b5">너는 ‘숏폼 봇’이야.
+사용자와 상담해 숏폼 영상을 기획하고, 신별 생성 프롬프트를 주고, 사용자가 생성해 온 영상·나레이션·음악을 받아 FFmpeg로 편집한다.
+
+[작동 순서]
+1. 기획 상담: 주제·대상·길이(20~30초)를 질문 3개 이내로 묻고, 기획안 3가지를 한 줄씩 제안한다. 사용자가 고르면 확정한다
+2. 구성안: 신(장면) 4~5개로 나눠 표로 정리한다. 신마다 [화면 / 나레이션 / 자막 / 길이]를 적는다
+3. 프롬프트 전달: 신마다 영상 생성 프롬프트, 나레이션 대본, 음악 분위기 키워드를 그 신 하나로 복사해 쓸 수 있는 완결형으로 준다 (공통 블록으로 분리하지 않는다)
+4. 생성 대기: 사용자가 외부 웹 도구에서 생성해 올 때까지 기다린다. 새 개념을 설명하지 않는다
+5. 결과물 받기: 사용자가 채팅창에 영상 클립, 나레이션, 음악 파일을 올리면 구성안과 대조해 빠진 것이 없는지 확인한다
+6. FFmpeg 편집: 구성안 기준으로 컷 편집, 이어 붙이기, 자막 넣기, 나레이션·음악 믹싱을 실행하고 최종 mp4 파일을 준다
+7. 수정: 사용자가 요청한 신만 고쳐 다시 편집한다
+
+[KB 사용]
+파일 칸에 ‘숏폼-기획-규칙.md’와 ‘숏폼-편집-규칙.md’가 있으면 먼저 읽고 그대로 따른다.
+기획 규칙: 비유·은유 사용, 첫 3초 후킹, 감정 건드리기, 스토리 구조 활용
+편집 규칙: 컷 길이, 자막 크기·위치, 음악은 나레이션보다 작게, 마지막 신 마무리
+파일이 없으면 위 순서만 지키고, 규칙은 일반 원칙으로 적용한다.
+
+[금지]
+구성안에 없는 장면 추가 금지
+출처 없는 음원 사용 금지
+사용자가 올리지 않은 파일을 만든 것처럼 말하기 금지
+
+[말투]
+존댓말, 짧게, 한 번에 한 단계만 안내</pre></div></div></details><details class="acc fold"><summary>Part.06 · PPT 만들기<span class="acc-desc">1~5단계 + 애드인</span></summary><div class="acc-body"><h3 class="sub">1단계 · 디자인 없는 원본 만들기</h3><div class="copybox short" id="pp1-box"><div class="copybox-head"><span>📋 PPT 1단계</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="pp1">복사</button></div></div><pre id="pp1">방금 쓴 ‘우리 팀 업무 개선 추진 계획 보고서’ 내용을 PPT 2장(표지 + 핵심 요약)으로 만들어줘.
+디자인은 넣지 말고 글만 단순하게 나열해서 .pptx 파일로 줘.</pre></div><h3 class="sub">2단계 · 샘플 이미지로 디자인</h3><p>핀터레스트에서 캡처한 PPT 샘플 이미지를 첨부하세요.</p><div class="copybox short" id="pp2-box"><div class="copybox-head"><span>📋 PPT 2단계</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="pp2">복사</button></div></div><pre id="pp2">이 PPT의 디자인을 첨부한 샘플 이미지의 분위기로 바꿔줘.
+내용은 그대로 두고 색 · 글꼴 · 배치만 바꿔. 샘플을 그대로 베끼지는 마.</pre></div><h3 class="sub">3단계 · 디자인을 말로 → 지시문 대필</h3><div class="copybox short" id="pp3-box"><div class="copybox-head"><span>📋 PPT 3단계 ① 지시문 받기</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="pp3">복사</button></div></div><pre id="pp3">내가 원하는 PPT 디자인은 ‘차분한 공공기관 보고서 느낌, 청록색과 크림색, 깔끔한 카드형’이야.
+AI가 그대로 따라 할 수 있게 디자인 지시문(색 · 글꼴 · 여백 · 배치 규칙)으로 정리해줘.</pre></div><div class="copybox short" id="pp3b-box"><div class="copybox-head"><span>📋 PPT 3단계 ② 적용</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="pp3b">복사</button></div></div><pre id="pp3b">위 디자인 지시문대로 이 PPT를 다시 디자인해줘.
+내용은 그대로 두고 .pptx 파일로 줘.</pre></div><h3 class="sub">4단계 · 디자인 MD로</h3><p>아래 05번의 디자인 MD 예시 파일을 첨부하세요.</p><div class="copybox short" id="pp4-box"><div class="copybox-head"><span>📋 PPT 4단계</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="pp4">복사</button></div></div><pre id="pp4">첨부한 디자인 MD의 규칙대로 이 PPT를 다시 디자인해줘.
+내용은 그대로 두고 .pptx 파일로 줘.</pre></div><h3 class="sub">5단계 · 프로젝트에 고정</h3><div class="copybox short" id="pp5-box"><div class="copybox-head"><span>📋 PPT 봇 지침</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="pp5">복사</button></div></div><pre id="pp5">보고서 내용을 주면 첨부된 ‘우리회사_디자인.md’ 규칙대로 PPT(.pptx)를 만들어 줘.
+먼저 슬라이드 구성을 3줄로 보여주고, 내가 OK 하면 제작해.
+내용은 바꾸지 말고 디자인만 규칙대로 적용해.</pre></div><h3 class="sub">애드인 · 슬라이드 한 장만 고치기</h3><div class="copybox short" id="pp6-box"><div class="copybox-head"><span>📋 애드인 지시</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="pp6">복사</button></div></div><pre id="pp6">이 슬라이드의 문장을 절반으로 줄이고, 핵심 숫자는 크게 강조해줘.
+다른 슬라이드는 건드리지 마.</pre></div></div></details><details class="acc fold"><summary>마지막 시연 · 컴앱웹<span class="acc-desc">강사 시연용 (참고)</span></summary><div class="acc-body"><p>강사 계정에서 시연합니다. 수강생은 흐름만 보시면 됩니다.</p><h3 class="sub">한 줄 지시 ①</h3><div class="copybox short" id="d1-box"><div class="copybox-head"><span>📋 시연 지시 ①</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="d1">복사</button></div></div><pre id="d1">AI작업 폴더를 기준으로 일해.
+1) 캘린더에서 올해 하반기 강의 일정을 모두 찾아 횟수를 세고, 종류별(기관 · 기업 · 기타)로 정리해서 엑셀로 ‘소스’ 폴더에 저장해.
+2) Gmail에서 가장 최신 강의 교안 PDF를 찾아 ‘소스’ 폴더에 내려받아.</pre></div><h3 class="sub">한 줄 지시 ②</h3><div class="copybox short" id="d2-box"><div class="copybox-head"><span>📋 시연 지시 ②</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="d2">복사</button></div></div><pre id="d2">‘소스’의 집계 엑셀과 교안 PDF 일부를 활용해 ‘멘피디의 하반기 강의 활동 내역’ PPT와 HTML을 만들어.
+그다음 ‘사진’ · ‘로고’ · ‘디자인예시’를 참고해 Firefly로 영상 클립을, 일레븐랩스로 나레이션과 노래(음악)를 만들고, FFmpeg로 컷 편집 · 자막 · 음악을 넣어 20초 숏폼으로 완성해. 주제 : 멘피디 올해 후반기도 열심히 살았네요. 내년엔 더 열심히 달려보겠습니다. 강의 문의 많이 주세요!
+모든 결과는 ‘결과’ 폴더에 저장해.</pre></div></div></details></section><section class="group" id="files"><div class="group-head"><span class="group-num">05</span><h2>MD · KB 파일 다운로드</h2></div><p class="group-desc">받아서 <b>AI작업/MD</b> 폴더에 넣고, 필요하면 ChatGPT 프로젝트의 파일 칸에 올립니다. 파일은 메모장으로도 열립니다.</p><div class="steplist"><div class="step"><span class="logo-emoji" aria-hidden="true">🗂️</span><div class="txt"><strong>‘AI작업’ 폴더 템플릿</strong><span>폴더 구조 + 안내 파일 (zip)</span></div><a class="go" href="downloads/public/sba-ai-work-template.zip" download>받기</a></div><div class="step"><span class="logo-emoji" aria-hidden="true">📄</span><div class="txt"><strong>우리회사_디자인.md 양식</strong><span>빈칸을 채워 내 디자인 규칙으로 (PPT·포스터 공통)</span></div><a class="go" href="downloads/public/sba-design-md-template.md" download>받기</a></div><div class="step"><span class="logo-emoji" aria-hidden="true">📄</span><div class="txt"><strong>리서치-대가.md (KB)</strong><span>찾는 방식 · 검증 · 텍스트+HTML 결과 양식</span></div><a class="go" href="downloads/public/sba-kb-research-master.md" download>받기</a></div><div class="step"><span class="logo-emoji" aria-hidden="true">📄</span><div class="txt"><strong>숏폼-기획-규칙.md (KB)</strong><span>후킹 · 비유 · 감정 · 스토리 규칙</span></div><a class="go" href="downloads/public/sba-kb-shortform-plan.md" download>받기</a></div><div class="step"><span class="logo-emoji" aria-hidden="true">📄</span><div class="txt"><strong>숏폼-편집-규칙.md (KB)</strong><span>컷 · 자막 · 음악 편집 규칙</span></div><a class="go" href="downloads/public/sba-kb-shortform-edit.md" download>받기</a></div><div class="step"><span class="logo-emoji" aria-hidden="true">🎨</span><div class="txt"><strong>디자인 MD 예시 · dope</strong><span>어두운 배경 + 보라 포인트, 세련된 느낌 (영문 · PPT 4단계 실습용)</span></div><a class="go" href="downloads/public/sba-design-md-dope.md" download>받기</a></div><div class="step"><span class="logo-emoji" aria-hidden="true">🎨</span><div class="txt"><strong>디자인 MD 예시 · slush</strong><span>파스텔 + 스티커 같은 발랄한 느낌 (영문 · PPT 4단계 실습용)</span></div><a class="go" href="downloads/public/sba-design-md-slush.md" download>받기</a></div><div class="step"><span class="logo-emoji" aria-hidden="true">🎨</span><div class="txt"><strong>디자인 MD 예시 · perk</strong><span>따뜻한 아이보리 + 연두 포인트 (영문 · PPT 4단계 실습용)</span></div><a class="go" href="downloads/public/sba-design-md-perk.md" download>받기</a></div></div><div class="note">보고서-기준.md, 프롬프트-대가.md 등 나머지 KB 파일은 수업 전까지 이 목록에 추가됩니다.</div></section><section class="group" id="links"><div class="group-head"><span class="group-num">06</span><h2>참고 링크</h2></div><div class="steplist"><div class="step"><img class="service-logo" src="images/service-logos/pinterest.png" alt="" width="42" height="42" loading="lazy"><div class="txt"><strong>핀터레스트</strong><span>PPT·포스터 샘플 캡처하기 좋은 곳</span></div><a class="go ghost" href="https://www.pinterest.com" target="_blank" rel="noopener">열기</a></div><div class="step"><img class="service-logo" src="images/service-logos/refero.png" alt="" width="42" height="42" loading="lazy"><div class="txt"><strong>디자인 MD 전문 사이트</strong><span>styles.refero.design — 마음에 드는 디자인 MD 받기</span></div><a class="go ghost" href="https://styles.refero.design/" target="_blank" rel="noopener">열기</a></div><div class="step"><span class="logo-emoji" aria-hidden="true">🐙</span><div class="txt"><strong>브랜드 디자인 MD 모음 (깃허브)</strong><span>VoltAgent / awesome-design-md</span></div><a class="go ghost" href="https://github.com/VoltAgent/awesome-design-md/tree/main/design-md" target="_blank" rel="noopener">열기</a></div></div></section><section class="group" id="token"><div class="group-head"><span class="group-num">07</span><h2>AI 토큰 절약 15가지</h2></div><details class="acc fold"><summary>펼쳐서 보기<span class="acc-desc">수업 첫 장표 요약</span></summary><div class="acc-body"><h3 class="sub">요청할 때</h3><ul class="chk"><li>매번 “토큰 덜 쓰는 법”을 요청하고 적용하기</li><li>3안씩 달라고 하기</li><li>인터뷰로 리드해 달라고 하기</li><li>작업 계획을 먼저 보여 달라고 하기</li></ul><h3 class="sub">만들기 전에</h3><ul class="chk"><li>영상은 스토리보드를 한 장으로 먼저 보기</li><li>구성안을 두고 생성 전에 대화로 수정 잡기</li><li>조금 만들어 보고 괜찮으면 끝까지 (한 번에 끝까지 X)</li></ul><h3 class="sub">환경</h3><ul class="chk"><li>데스크톱 앱 쓰기</li><li>PDF · 이미지보다 텍스트나 문서 파일로 주기</li></ul><h3 class="sub">대화 관리</h3><ul class="chk"><li>길어지면 요약해서 새 창에서 하기</li><li>맥락이 꼬인 것 같으면 새 창 켜기</li><li>“그게 아니라” 대신 지난 채팅을 수정하기</li></ul><h3 class="sub">분담 · 한도</h3><ul class="chk"><li>사람이 해도 되는 간단한 건 사람이</li><li>간단한 건 모델을 낮춰서</li><li>오전 6시 자동 메시지로 한도 창 시작 (11시 · 오후 4시 리셋 노리기)</li></ul></div></details></section><section class="group" id="faq"><div class="group-head"><span class="group-num">08</span><h2>막힐 때</h2></div><details class="acc"><summary>ChatGPT 데스크톱 앱에서 폴더가 안 보여요</summary><div class="acc-body">웹(chatgpt.com)이 아니라 <b>설치한 앱</b>에서 대화 중인지 확인하세요. 앱에서 폴더(작업 위치) 연결을 다시 해 보세요.</div></details><details class="acc"><summary>프롬프트를 붙여넣었는데 결과가 이상해요</summary><div class="acc-body">___ 칸을 채웠는지, 새 대화에서 시작했는지 확인하세요. 대화가 길어졌다면 새 창에서 다시 시작하는 것이 빠릅니다.</div></details><details class="acc"><summary>PowerPoint에서 애드인이 안 보여요</summary><div class="acc-body">홈 → 추가 기능에서 “ChatGPT”를 검색해 보세요. 회사·기관 보안 정책으로 막혀 있을 수 있습니다. 그럴 땐 채팅으로 PPT 파일을 만드는 방법으로 진행하세요.</div></details><details class="acc"><summary>다운로드한 MD 파일이 안 열려요</summary><div class="acc-body">메모장으로 열면 됩니다. 마우스 오른쪽 → 연결 프로그램 → 메모장.</div></details><details class="acc"><summary>사용 한도를 넘었다고 해요</summary><div class="acc-body">같은 요청을 연타하지 마세요. 한도가 풀릴 때까지 구성안과 프롬프트를 다듬고, 강사에게 알려 주세요.</div></details></section></div><script>
+document.querySelectorAll('[data-copy]').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var el=document.getElementById(btn.getAttribute('data-copy'));
+    var text=el.innerText, label=btn.textContent;
+    function ok(){btn.textContent='복사 완료! ✔︎';btn.classList.add('done');
+      setTimeout(function(){btn.textContent=label;btn.classList.remove('done')},2200)}
+    function fallback(){var r=document.createRange();r.selectNodeContents(el);
+      var s=window.getSelection();s.removeAllRanges();s.addRange(r);
+      try{document.execCommand('copy');ok()}catch(e){}}
+    if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(text).then(ok,fallback)}else{fallback()}
+  });
+});
+</script>
+</body>
+</html>

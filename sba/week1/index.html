@@ -1,0 +1,604 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>생성형 AI의 도입</title>
+<link rel="stylesheet" href="kit/base.css">
+</head>
+<body>
+<div class="stage" id="stage">
+<!-- 1 표지 -->
+<section class="slide teal">
+<div class="cv"><div class="lb">생성형 AI로의 초대</div><h1>생성형 AI의 도입</h1><div class="sub">1주차 : 생성의 7단계 · PE7 · MD · 봇 · 컴앱웹</div><div class="ft"><span data-cfg="org"></span> · <span data-cfg="session"></span> · <span data-cfg="date"></span></div></div>
+</section>
+
+<!-- 2 강사 소개 -->
+<section class="slide">
+  <div class="hd"><div class="bd">Intro</div><div class="tt">Instructor</div></div>
+  <div class="ins">
+    <h2>서진원 <span>( 멘피디 )</span></h2>
+    <div class="card"><div class="ct">영상 제작사 와이컨텐츠 대표</div><div class="cb">· Since 2016 콘텐츠 전문 기업 운영<br>· SNS 육성, AI 콘텐츠 기획 제작 전문</div></div>
+    <div class="card"><div class="ct">콘텐츠 활용 전문 강사</div><div class="cb">문체부·중기부·환경부·국방부 등 지자체 다수 강연<br>LG, 현대, 삼성 등 기업 대상 생성형 AI 워크숍 진행</div></div>
+    <div class="card"><div class="ct">저서</div><div class="cb">『인스타그램 릴스 &amp; 알고리즘 공략법』 2026년 출간</div></div>
+    <div class="card"><div class="ct">인플루언서</div><div class="cb">12만 인스타그램 팔로워 · 콘텐츠 크리에이터</div></div>
+  </div>
+  <img class="photo" src="kit/assets/instructor.webp" alt="">
+  <img class="book" src="kit/assets/book.webp" alt="">
+</section>
+
+<!-- 3 로드맵 -->
+<section class="slide">
+<div class="hd"><div class="bd">Intro</div><div class="tt">3주 로드맵 — 21시간</div></div>
+<div class="st3 "><div class="c"><div class="n">1</div><h3>1주차 · 도입</h3><p>생성의 7단계, PE7, MD, 봇 만들기, 컴앱웹 세팅</p></div><div class="c"><div class="n">2</div><h3>2주차 · 영상</h3><p>캐릭터 시트, 음원 · 음성, 영상 5신 만들기</p></div><div class="c"><div class="n">3</div><h3>3주차 · 우리 회사</h3><p>내 봇을 키워 우리 회사 포스터 · 카드뉴스 · 영상 제출</p></div></div>
+<div class="tk"><b>핵심</b>3주 뒤 목표 : 주제와 방향만 정하면 우리 회사 콘텐츠가 나오는 나만의 봇</div>
+</section>
+
+<!-- 4 목적지 -->
+<section class="slide">
+<div class="hd"><div class="bd">Intro</div><div class="tt">오늘의 목적지 — 시연으로 시작합니다</div></div>
+<div class="fl" style="left:40px;top:190px;width:252px;height:150px;text-align:center;font-size:26px;display:flex;flex-direction:column;justify-content:center">AI와 상담<small>주제 · 방향 확정</small></div><div class="fl" style="left:356px;top:190px;width:252px;height:150px;text-align:center;font-size:26px;display:flex;flex-direction:column;justify-content:center">봇 (INS + KB)<small>AI에게 일하는 방식을 가르친 것</small></div><div class="fl" style="left:672px;top:190px;width:252px;height:150px;text-align:center;font-size:26px;display:flex;flex-direction:column;justify-content:center">컴앱웹<small>폴더 · ChatGPT 앱 · 웹 도구</small></div><div class="fl" style="left:988px;top:190px;width:252px;height:150px;text-align:center;font-size:26px;display:flex;flex-direction:column;justify-content:center;background:var(--mint)">결과물<small>포스터 · 카드뉴스 · 숏폼</small></div><div class="arr" style="left:306px;top:232px">›</div><div class="arr" style="left:622px;top:232px">›</div><div class="arr" style="left:938px;top:232px">›</div><div class="pane" style="left:40px;top:380px;width:1200px;height:150px"><h3>시연에서 볼 것</h3><ul><li>사람은 AI와 상담해 주제 · 콘텐츠 방향을 확정한다</li><li>확정된 뒤의 제작은 봇(틀)과 컴앱웹(도구)이 한다</li></ul></div>
+<div class="tk"><b>핵심</b>이해보다 느낌을 먼저 가져가세요. 3주 뒤에는 이 시연을 여러분이 직접 합니다</div>
+</section>
+
+<!-- 5 컴앱웹 -->
+<section class="slide">
+<div class="hd"><div class="bd">Intro</div><div class="tt">컴앱웹이란?</div></div>
+<div class="st3 "><div class="c"><div class="n">1</div><h3>컴</h3><p>폴더에서 읽고 쓰기 (로고 · 엑셀 · MD · 결과). FFmpeg로 영상 편집까지 (컷편 · 자막 · 음악 삽입)</p></div><div class="c"><div class="n">2</div><h3>앱</h3><p>ChatGPT 데스크톱 앱. 대화 · 기획도 하고, 컴 조작과 웹 조작을 중간에서 이어 줍니다</p></div><div class="c"><div class="n">3</div><h3>웹</h3><p>일레븐랩스 · 구글 AI 스튜디오 · 히드라 · 구글 플로우 · 파이어플라이 · 캡컷. 조작법을 몰라도 알아서 만지고, 다운로드까지 합니다</p></div></div>
+<div class="tk"><b>핵심</b>컴앱웹 = 컴(내 폴더) + 앱(중간 다리) + 웹(서비스)을 한 흐름으로 묶어 쓰는 방식</div>
+</section>
+
+<!-- 6 시연 해설 -->
+<section class="slide">
+<div class="hd"><div class="bd">Intro</div><div class="tt">시연 해설 — 지금 무슨 일이 일어났을까?</div></div>
+<div class="rows"><div class="row"><div class="l">사람이 한 일</div><div class="r">AI와 상담해 주제와 콘텐츠 방향을 확정했다</div></div><div class="row"><div class="l">봇이 한 일</div><div class="r">지침(INS)의 워크플로우대로 명령을 실행하고, 제작 지식(KB)을 활용해 일했다</div></div><div class="row"><div class="l">컴앱웹이 한 일</div><div class="r">컴(폴더) · 앱 · 웹 세 곳을 돌아다니며 작업을 해냈다</div></div></div>
+<div class="tk"><b>핵심</b>어떻게 만드는지는 오늘 하나씩 배웁니다. 지금은 일어난 일만 보세요</div>
+</section>
+
+<!-- 7 가져갈 3가지 -->
+<section class="slide">
+<div class="hd"><div class="bd">Intro</div><div class="tt">시연에서 가져갈 3가지</div></div>
+<div class="ck" style="top:124px"><div>사람이 정하는 것은 방향<small>상담으로 방향을 확정하면 나머지는 틀이 합니다</small></div><div>틀은 MD가 쥐고 있다<small>디자인 규칙 · 작성 기준 · 지침</small></div><div>결과는 폴더에 쌓인다<small>내 컴퓨터에 파일로 남습니다</small></div></div>
+<div class="tk"><b>핵심</b>오늘의 순서 : 생성의 7단계 → PE7 → MD → 봇 → 컴앱웹</div>
+</section>
+
+<!-- 8 Part.01 -->
+<section class="slide teal">
+<div class="cv"><div class="lb">Part.01</div><h2>생성형 AI 4종류와<br>생성의 7단계</h2><div class="sub">채팅 · 이미지 · 오디오 · 영상</div></div>
+</section>
+
+<!-- 9 토큰 팁1 -->
+<section class="slide">
+<div class="hd"><div class="bd">Intro</div><div class="tt">토큰 절약 15가지 ① 요청하고, 만들기 전에</div></div>
+<div class="cols"><div class="col"><div class="h">요청할 때</div><ul><li>매번 “토큰 덜 쓰는 법”을 요청하고 적용하기</li><li>3안씩 달라고 하기</li><li>인터뷰로 리드해 달라고 하기</li><li>작업 계획을 먼저 보여 달라고 하기</li></ul></div><div class="col"><div class="h">만들기 전에</div><ul><li>영상은 스토리보드를 한 장으로 먼저 보기</li><li>구성안을 두고 생성 전에 대화로 수정 잡기</li><li>조금 만들어 보고 괜찮으면 끝까지 (한 번에 끝까지 X)</li></ul></div></div>
+<div class="tk"><b>핵심</b>한 번에 정확히, 만들기 전에 고치는 것이 가장 큰 절약입니다</div>
+</section>
+
+<!-- 10 토큰 팁2 -->
+<section class="slide">
+<div class="hd"><div class="bd">Intro</div><div class="tt">토큰 절약 15가지 ② 환경 · 대화 · 분담 · 한도</div></div>
+<div class="cols"><div class="col"><div class="h">환경</div><ul><li>데스크톱 앱 쓰기</li><li>PDF · 이미지보다 텍스트나 문서 파일로 주기</li></ul></div><div class="col"><div class="h">대화 관리</div><ul><li>길어지면 요약해서 새 창에서 하기</li><li>맥락이 꼬인 것 같으면 새 창 켜기</li><li>“그게 아니라” 대신 지난 채팅을 수정하기</li></ul></div><div class="col"><div class="h">분담 · 한도</div><ul><li>사람이 해도 되는 간단한 건 사람이</li><li>간단한 건 모델을 낮춰서</li><li>오전 6시 자동 메시지로 한도 창 시작 (11시 · 오후 4시 리셋 노리기)</li></ul></div></div>
+<div class="tk"><b>핵심</b>AI에게 맡길 일과 내가 할 일의 경계를 정하세요</div>
+</section>
+
+<!-- 11 4종류 -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.01</div><div class="tt">생성형 AI 4종류</div></div>
+<div class="cols"><div class="col"><div class="h">채팅</div><ul><li>보고서</li><li>기획안</li><li>대본</li><li>요약</li></ul></div><div class="col"><div class="h">이미지</div><ul><li>포스터</li><li>카드뉴스</li><li>캐릭터</li><li>썸네일</li></ul></div><div class="col"><div class="h">오디오</div><ul><li>BGM</li><li>나레이션</li><li>노래</li></ul></div><div class="col"><div class="h">영상</div><ul><li>숏폼</li><li>홍보영상</li><li>행사 인트로</li></ul></div></div>
+<div class="tk"><b>핵심</b>채팅(텍스트)형이 나머지 셋의 사령탑입니다</div>
+</section>
+
+<!-- 12 5대 채팅AI -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.01</div><div class="tt">5대 채팅형 AI, 이렇게 골라 씁니다</div></div>
+<table class="tb" style="top:112px"><tr><th>AI</th><th>한마디</th><th>잘 쓰는 곳</th><th>이 강의에서</th></tr><tr><td>챗지피티</td><td class="k">올라운더</td><td>대화, 글쓰기, 이미지 생성</td><td><span class="pill">주력 · 3주 내내</span></td></tr><tr><td>클로드</td><td class="k">글 · 지침 정리</td><td>긴 글, 문서, 지침을 따르는 작업</td><td><span class="pill t">강사 시연</span></td></tr><tr><td>제미나이</td><td class="k">구글 연동</td><td>글, 보고서, 자료 정리</td><td><span class="pill t">참고</span></td></tr><tr><td>그록</td><td class="k">SNS 이슈</td><td>X(옛 트위터) 기반 실시간 이슈</td><td><span class="pill t">맛보기</span></td></tr><tr><td>퍼플렉시티</td><td class="k">검색형</td><td>출처가 붙는 검색 답변, 자료 조사</td><td><span class="pill t">맛보기</span></td></tr></table>
+<div class="tk"><b>핵심</b>하나만 고집하지 말고 목적에 맞게 — 이 강의는 챗지피티로 진행합니다. 서비스 기능은 수시로 바뀝니다</div>
+</section>
+
+<!-- 13 LLM -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.01</div><div class="tt">LLM이 가장 중요한 이유</div></div>
+<div class="fl" style="left:40px;top:260px;width:230px;height:120px;text-align:center;font-size:26px;display:flex;flex-direction:column;justify-content:center">내 한 줄<small>‘포스터 만들어줘’</small></div><div class="arr" style="left:284px;top:290px">›</div><div class="cd" style="left:340px;top:170px;width:300px;height:300px"><h4 style="font-size:28px">채팅형 AI<small>LLM</small></h4><div class="ds">내 한 줄을 다른 AI가 알아듣는 ‘프롬프트’로 통역합니다.</div><div class="ex">‘이 색감, 이 구도, 이 분위기로 그려줘’</div></div><div class="arr" style="left:654px;top:290px">›</div><div class="fl" style="left:710px;top:170px;width:530px;height:80px;text-align:center;font-size:24px;display:flex;flex-direction:column;justify-content:center">이미지 AI<small>이미지 프롬프트</small></div><div class="fl" style="left:710px;top:280px;width:530px;height:80px;text-align:center;font-size:24px;display:flex;flex-direction:column;justify-content:center">오디오 AI<small>음악 · 음성 프롬프트</small></div><div class="fl" style="left:710px;top:390px;width:530px;height:80px;text-align:center;font-size:24px;display:flex;flex-direction:column;justify-content:center">영상 AI<small>영상 프롬프트 · 장면 구성</small></div>
+<div class="tk"><b>핵심</b>채팅형 AI가 사령탑입니다 — 그래서 프롬프트(PE7)부터 배웁니다</div>
+</section>
+
+<!-- 14 7단계 -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.01</div><div class="tt">생성의 7단계</div></div>
+<div class="lad"><div class="s on" style="height:150px"><div class="k">01</div><div class="t">말로</div><div class="d">그냥 말로 생성</div></div><div class="s" style="height:185px"><div class="k">02</div><div class="t">샘플</div><div class="d">샘플 주고 생성</div></div><div class="s" style="height:220px"><div class="k">03</div><div class="t">프롬프팅</div><div class="d">직접 제대로 쓰거나 AI가 대필</div></div><div class="s on" style="height:255px"><div class="k">04</div><div class="t">MD</div><div class="d">MD(INS, KB)를 주고 생성</div></div><div class="s" style="height:290px"><div class="k">05</div><div class="t">봇 · 스킬</div><div class="d">봇에 고정해 반복 생성</div></div><div class="s off" style="height:325px"><div class="k">06</div><div class="t">자동화 연결</div><div class="d">API · MCP · Node</div></div><div class="s off" style="height:360px"><div class="k">07</div><div class="t">바이브 코딩</div><div class="d">프로그램 · 서비스 제작</div></div></div><div class="rg"><div class="a">3주 실습 범위 : 1 ~ 5단계</div><div class="b">6 ~ 7단계는 맛보기</div></div>
+<div class="tk"><b>핵심</b>오늘은 1 · 2 · 4단계를 같은 한 줄로 비교하며 몸으로 느낍니다</div>
+</section>
+
+<!-- 15 1단계 포스터 -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.01</div><div class="tt">1단계 체험 ① 아무말로 포스터</div></div>
+<div class="pb" data-txt="p1" style="left:40px;top:124px;width:780px;height:150px"><span class="lb2">ChatGPT에 붙여넣기</span><button class="cpb" onclick="cp('p1',this)">복사</button></div><div class="pane o" style="left:40px;top:300px;width:780px;height:150px"><h3>꼭 해 두세요</h3><p>결과를 캡처해 보관 — 4단계에서 다시 비교합니다</p></div><div class="pane" style="left:850px;top:124px;width:390px;height:330px"><h3>살펴볼 점</h3><ul><li>구성과 분위기가 어떻게 나오나?</li><li>글씨는 제대로 나오나?</li><li>내가 상상한 느낌과 같은가?</li></ul></div>
+<div class="tk"><b>핵심</b>한 줄로만 요청하면 어떤 결과가 나올지는 AI가 정합니다</div>
+</section>
+
+<!-- 16 1단계 보고서 -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.01</div><div class="tt">1단계 체험 ② 아무말로 보고서</div></div>
+<div class="pb" data-txt="g1" style="left:40px;top:124px;width:780px;height:150px"><span class="lb2">ChatGPT에 붙여넣기</span><button class="cpb" onclick="cp('g1',this)">복사</button></div><div class="pane o" style="left:40px;top:300px;width:780px;height:150px"><h3>꼭 해 두세요</h3><p>결과를 캡처해 보관 — 4단계에서 다시 비교합니다</p></div><div class="pane" style="left:850px;top:124px;width:390px;height:330px"><h3>살펴볼 점</h3><ul><li>목차와 구조가 있나?</li><li>문체는 보고서답나?</li><li>근거 없는 수치가 있나?</li></ul></div>
+<div class="tk"><b>핵심</b>이번에도 결과는 AI 마음입니다</div>
+</section>
+
+<!-- 17 비교 -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.01</div><div class="tt">옆 사람과 비교해 보세요</div></div>
+<div class="ck" style="top:124px"><div>같은 한 줄인데 결과가 같은가요?<small>포스터 · 보고서 모두</small></div><div>구조와 문체가 사람마다 다른가요?<small>제목 · 목차 · 말투</small></div><div>결과를 단톡방에 올려 주세요</div></div>
+<div class="tk"><b>핵심</b>아무말로 시키면 사람마다 결과가 다릅니다 — 그래서 4단계(MD)가 필요합니다</div>
+</section>
+
+<!-- 18 2단계 개념 -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.01</div><div class="tt">2단계 · 샘플 — 말로 안 되는 건 보여 주세요</div></div>
+<div class="cols"><div class="col"><div class="h">말로 되는 것</div><ul><li>회사명 · 메인색</li><li>금지 규칙</li><li>글씨 유무</li></ul></div><div class="col"><div class="h">말로 안 되는 것</div><ul><li>그림체 · 질감</li><li>구도 · 분위기</li><li>자막 모양</li></ul></div><div class="col"><div class="h">그래서 샘플</div><ul><li>포스터 · 카드뉴스 캡처</li><li>핀터레스트 · 유튜브 화면</li><li>이름 붙여 폴더에 보관</li></ul></div></div>
+<div class="tk"><b>핵심</b>샘플 1장이 설명 열 줄을 대신합니다</div>
+</section>
+
+<!-- 19 2단계 체험 -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.01</div><div class="tt">2단계 체험 · 같은 한 줄 + 샘플 1장</div></div>
+<div class="pb" data-txt="p2" style="left:40px;top:124px;width:780px;height:150px"><span class="lb2">ChatGPT에 붙여넣기 + 샘플_포스터_01.jpg 첨부</span><button class="cpb" onclick="cp('p2',this)">복사</button></div><div class="pane o" style="left:40px;top:300px;width:780px;height:150px"><h3>방법</h3><ul><li>오른쪽 샘플 포스터(샘플_포스터_01.jpg)를 대화에 첨부</li><li>결과를 1단계와 비교: 구도 · 분위기를 닮았나? 베끼지는 않았나?</li></ul></div><img class="shot" src="kit/assets/poster_sample.jpg" style="left:905px;top:112px;height:440px;width:auto" alt="샘플 포스터"><div style="position:absolute;left:905px;top:566px;width:340px"><button class="cpb s" onclick="cpimg('kit/assets/poster_sample.jpg',this)">이미지 복사</button><a class="cpb s" href="kit/assets/poster_sample.jpg" download="샘플_포스터_01.jpg">다운로드</a></div>
+<div class="tk"><b>핵심</b>샘플을 주면 결과가 샘플을 닮습니다</div>
+</section>
+
+<!-- 20 1vs2 비교 -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.01</div><div class="tt">1단계 vs 2단계</div></div>
+<div class="lbl" style="left:40px;top:112px;font-size:20px">1단계 · 아무말</div><div class="ph" style="left:40px;top:142px;width:590px;height:380px">1단계 결과<br>(포스터 캡처)</div><div class="lbl" style="left:650px;top:112px;font-size:20px;color:var(--orange)">2단계 · 샘플 첨부</div><div class="ph" style="left:650px;top:142px;width:590px;height:380px">2단계 결과<br>(포스터 캡처)</div>
+<div class="tk"><b>핵심</b>샘플을 주면 분위기가 모입니다 — 하지만 색 · 금지 규칙은 아직 제멋대로입니다. 그래서 4단계(MD)</div>
+</section>
+
+<!-- 21 Part.02 -->
+<section class="slide teal">
+<div class="cv"><div class="lb">Part.02</div><h2>PE7<br>프롬프트의 7가지 요소</h2><div class="sub">누가 · 누구에게 · 무엇을 · 어떻게 · 재료 · 그릇</div></div>
+</section>
+
+<!-- 22 PE7 -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.02</div><div class="tt">PE7 프레임워크 — 프롬프트를 이루는 7가지</div></div>
+<div class="cir"><div class="i"><div class="o">PE1</div><div class="e">Persona</div><div class="k">누가</div><div class="d">역할 부여</div></div><div class="i"><div class="o">PE2</div><div class="e">Identity</div><div class="k">누구에게</div><div class="d">정체성 지정</div></div><div class="i"><div class="o">PE3</div><div class="e">Object</div><div class="k">뭐 하려고</div><div class="d">목표</div></div><div class="i"><div class="o">PE4</div><div class="e">Procedure</div><div class="k">어떤 단계를 거쳐</div><div class="d">절차 명시</div></div><div class="i"><div class="o">PE5</div><div class="e">Sample</div><div class="k">마치 이것처럼</div><div class="d">샘플</div></div><div class="i"><div class="o">PE6</div><div class="e">Ground Data</div><div class="k">이 안에서만</div><div class="d">자료 범위</div></div><div class="i"><div class="o">PE7</div><div class="e">Format</div><div class="k">결과물 형태는</div><div class="d">형식</div></div></div><div style="position:absolute;left:40px;right:40px;top:440px;display:flex;gap:12px;font-weight:800;font-size:21px;text-align:center"><div style="flex:2;background:var(--mint);color:var(--teal);border-radius:20px;padding:10px">PE1·2 : 누가, 누구를 위해</div><div style="flex:2;background:#FDE7DD;color:var(--orange);border-radius:20px;padding:10px">PE3·4 : 무엇을, 어떻게</div><div style="flex:3;background:var(--mint);color:var(--teal);border-radius:20px;padding:10px">PE5·6·7 : 재료와 그릇</div></div>
+<div class="tk"><b>핵심</b>7가지를 순서대로 채우면 누구나 완성도 높은 결과를 얻습니다</div>
+</section>
+
+<!-- 23 PE1-4 -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.02</div><div class="tt">PE1 ~ PE4 — 누가, 누구에게, 무엇을, 어떻게</div></div>
+<div class="cd" style="left:40px;top:118px;width:290px;height:440px"><h4 style="font-size:24px">PE1 Persona<small>역할</small></h4><div class="ds">AI에게 전문가 배역을 줍니다.</div><div class="ex">“너는 15년 경력의 홍보 디자이너야.”</div></div><div class="cd o" style="left:335px;top:118px;width:290px;height:440px"><h4 style="font-size:24px">PE2 Identity<small>대상</small></h4><div class="ds">읽을 대상과 내 처지를 알려줍니다.</div><div class="ex">“나는 중소기업 마케팅 담당자고, 20~30대에게 알리려 해.”</div></div><div class="cd" style="left:630px;top:118px;width:290px;height:440px"><h4 style="font-size:24px">PE3 Object<small>목표</small></h4><div class="ds">무엇을 하려는지 한 문장으로.</div><div class="ex">“신제품 홍보 포스터 시안을 만들고 싶어.”</div></div><div class="cd o" style="left:925px;top:118px;width:290px;height:440px"><h4 style="font-size:24px">PE4 Procedure<small>절차</small></h4><div class="ds">어떤 순서로 할지 알려줍니다.</div><div class="ex">“먼저 콘셉트 3가지를 제안하고, 내가 고르면 만들어줘.”</div></div>
+<div class="tk"><b>핵심</b>앞의 네 가지만 채워도 결과가 달라집니다</div>
+</section>
+
+<!-- 24 PE5-7 -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.02</div><div class="tt">PE5 ~ PE7 — 재료와 그릇</div></div>
+<div class="cd" style="left:40px;top:118px;width:390px;height:440px"><h4 style="font-size:26px">PE5 Sample<small>샘플</small></h4><div class="ds">‘마치 이것처럼’ 견본을 줍니다.</div><div class="ex">“첨부한 포스터의 분위기를 참고해줘.”</div><div class="kp"><b>핵심 포인트</b>샘플을 주면 결과가 샘플을 닮습니다</div></div><div class="cd o" style="left:445px;top:118px;width:390px;height:440px"><h4 style="font-size:26px">PE6 Ground Data<small>자료</small></h4><div class="ds">이 안에서만 쓰라고 범위를 줍니다.</div><div class="ex">“제품명과 가격은 아래 정보만 써줘.”</div><div class="kp"><b>핵심 포인트</b>AI가 지어내지 못하게 울타리를 칩니다</div></div><div class="cd" style="left:850px;top:118px;width:390px;height:440px"><h4 style="font-size:26px">PE7 Format<small>형식</small></h4><div class="ds">결과물의 모양을 정합니다.</div><div class="ex">“글씨 없이, 4:5 세로 이미지로 줘.”</div><div class="kp"><b>핵심 포인트</b>쓸 수 있는 모양으로 받아야 수정이 줄어듭니다</div></div>
+<div class="tk"><b>핵심</b>재료(샘플 · 자료)와 그릇(형식)을 주면 결과가 일정해집니다</div>
+</section>
+
+<!-- 25 나쁜vs좋은 -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.02</div><div class="tt">나쁜 프롬프트 vs 좋은 프롬프트</div></div>
+<div class="dh" style="left:40px;top:118px;width:590px">나쁜 프롬프트</div><div class="dk" style="left:40px;top:162px;width:590px;height:300px;font-size:26px">“포스터 만들어줘”</div><div class="dh" style="left:650px;top:118px;width:590px">좋은 프롬프트 (PE7)</div><div class="dk" style="left:650px;top:162px;width:590px;height:300px;font-size:19px">너는 15년 경력의 홍보 디자이너야.<br>나는 중소기업 마케팅 담당자고, 20~30대에게 신제품을 알리려 해.<br>먼저 콘셉트 3가지를 제안하고, 내가 고르면 만들어줘.<br>첨부한 포스터의 분위기를 참고해.<br>제품명과 가격은 아래 정보만 써.<br>글씨 없는 4:5 세로 이미지로 줘.</div><div style="position:absolute;left:40px;width:590px;top:478px;font-size:20px;font-weight:700;color:var(--muted)">→ 누가 · 누구에게 · 형태가 모두 불분명</div><div style="position:absolute;left:650px;width:590px;top:478px;font-size:20px;font-weight:700;color:var(--teal)">→ 역할 · 대상 · 절차 · 샘플 · 자료 · 형식이 모두 명시</div>
+<div class="tk"><b>핵심</b>같은 요청인데, 프롬프트 한 줄 차이로 결과의 질이 갈립니다</div>
+</section>
+
+<!-- 26 PE7 실습 -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.02</div><div class="tt">실습 : 보고서 초안을 PE7로 제대로 시키기</div></div>
+<div class="pb" data-txt="pe7" style="left:40px;top:124px;width:780px;height:400px;font-size:18px"><span class="lb2">ChatGPT에 붙여넣기 — ___ 두 칸만 채우세요</span><button class="cpb" onclick="cp('pe7',this)">복사</button></div><div class="pane" style="left:850px;top:124px;width:390px;height:400px"><h3>채우는 요령</h3><ul><li>___ 두 칸 : 팀 · 읽는 사람, 참고 자료</li><li>1단계와 같은 주제입니다</li><li>자료는 우리 팀 실제 내용 몇 줄</li><li>1단계 결과와 나란히 비교합니다</li></ul></div>
+<div class="tk"><b>핵심</b>같은 주제를 PE7로 시키면 결과가 어떻게 달라지는지 보세요</div>
+</section>
+
+<!-- 27 PE7 확인 -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.02</div><div class="tt">1단계 보고서 vs PE7 보고서</div></div>
+<div class="ck" style="top:124px"><div>목차 · 구조가 잡혔나요?<small>1단계는 AI 마음, PE7은 내가 정한 순서</small></div><div>분량 · 문체가 달라졌나요?<small>A4 1장 · 개조식</small></div><div>근거 없는 수치가 줄었나요?<small>‘확인 필요’ 표시 여부</small></div><div>결과를 단톡방에 올려 주세요</div></div>
+<div class="tk"><b>핵심</b>PE7은 AI에게 보내는 업무 지시서입니다 — 다만 매번 7칸을 써야 합니다</div>
+</section>
+
+<!-- 28 Part.03 -->
+<section class="slide teal">
+<div class="cv"><div class="lb">Part.03</div><h2>MD<br>AI의 매뉴얼</h2><div class="sub">INS(지침) · KB(지식) · 디자인 MD</div></div>
+</section>
+
+<!-- 29 알바 비유 -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.03</div><div class="tt">매뉴얼 없이 vs 매뉴얼을 주고 vs 이미 숙지한</div></div>
+<div class="cd" style="left:40px;top:124px;width:360px;height:410px"><h4 style="font-size:26px">1 ~ 3단계<small>매뉴얼 없이 출근</small></h4><div class="ds">매일 새로 오는 똑똑한 알바. 일을 매번 말로 설명합니다.</div><div class="ex">“포스터 만들어줘”</div><div class="kp"><b>핵심 포인트</b>결과가 매번 달라집니다</div></div><div class="arr" style="left:402px;top:300px">›</div><div class="cd o" style="left:460px;top:124px;width:360px;height:410px"><h4 style="font-size:26px">4단계 · MD<small>매뉴얼 받고 출근</small></h4><div class="ds">일 시키기 전에 업무 지침(INS)과 참고 자료(KB)를 매번 건넵니다.</div><div class="ex">대화마다 MD 파일 첨부</div><div class="kp"><b>핵심 포인트</b>결과가 한 톤으로 모입니다</div></div><div class="arr" style="left:822px;top:300px">›</div><div class="cd" style="left:880px;top:124px;width:360px;height:410px"><h4 style="font-size:26px">5단계 · 봇<small>매뉴얼 숙지하고 출근</small></h4><div class="ds">출근 전에 업무 매뉴얼을 숙지해 오는 알바. 출근하면 바로 업무 처리가 가능합니다.</div><div class="ex">주제만 입력</div><div class="kp"><b>핵심 포인트</b>첨부 없이 늘 같은 방식으로</div></div>
+<div class="tk"><b>핵심</b>봇 = 업무 지침과 참고 자료를 미리 받아 숙지한 전담 알바</div>
+</section>
+
+<!-- 30 MD란 -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.03</div><div class="tt">MD = AI가 읽는 매뉴얼 파일(.md)</div></div>
+<table class="tb sm" style="top:112px"><tr><th>우리 일에서는</th><th>AI 세계에서는</th><th>들어가는 것</th></tr><tr><td>업무 매뉴얼 · 취업규칙</td><td class="k">INS (지침)</td><td>역할, 순서, 출력 방식</td></tr><tr><td>참고서 · 참고 자료</td><td class="k">KB (지식)</td><td>기준, 샘플, 자료</td></tr><tr><td>사내 디자인 가이드</td><td class="k">디자인 MD</td><td>색, 분위기, 구성, 금지</td></tr></table>
+<div class="tk"><b>핵심</b>MD는 메모장으로도 열리는 텍스트 파일입니다 — 어려운 코딩이 아닙니다</div>
+</section>
+
+<!-- 31 INS+KB -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.03</div><div class="tt">INS + KB = 봇의 구조</div></div>
+<div class="fl" style="left:40px;top:230px;width:220px;height:130px;text-align:center;font-size:26px;display:flex;flex-direction:column;justify-content:center">대충 입력<small>‘보고서 써줘’</small></div><div class="arr" style="left:272px;top:268px">›</div><div style="position:absolute;left:320px;top:130px;width:620px;height:340px;border:3px dashed var(--teal);border-radius:16px"></div><div class="lbl" style="left:342px;top:140px;font-size:18px;color:var(--teal)">봇 = 매뉴얼을 숙지한 전담 알바</div><div class="cd" style="left:350px;top:182px;width:270px;height:260px;border-top-width:8px"><h4 style="font-size:28px">INS</h4><div class="ds" style="font-size:21px;font-weight:700">업무 지침</div><div class="ds">어떻게 행동할지<br>(역할, 순서, 출력 방식)</div></div><div class="cd o" style="left:640px;top:182px;width:270px;height:260px;border-top-width:8px"><h4 style="font-size:28px">KB</h4><div class="ds" style="font-size:21px;font-weight:700">참고 자료</div><div class="ds">무엇을 보고 할지<br>(기준, 샘플, 자료)</div></div><div class="arr" style="left:956px;top:268px">›</div><div class="fl" style="left:1010px;top:230px;width:230px;height:130px;text-align:center;font-size:26px;display:flex;flex-direction:column;justify-content:center;background:var(--mint)">완성 결과<small>우리 방식대로</small></div>
+<div class="tk"><b>핵심</b>업무 지침(INS)과 참고 자료(KB)를 미리 주면 AI가 우리 전담 알바가 됩니다</div>
+</section>
+
+<!-- 32 INS 오케스트레이션 -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.03</div><div class="tt">INS가 지휘하고, KB가 규칙을 공급합니다</div></div>
+<div style="position:absolute;left:40px;top:112px;font-size:19px;font-weight:800;color:var(--teal)">🤖 포스터 봇 — INS와 KB로 만들어집니다</div><div style="position:absolute;left:40px;top:146px;width:1200px;height:118px;box-sizing:border-box;background:var(--teal);color:#fff;border-radius:16px;padding:14px 26px"><div style="font-size:26px;font-weight:800">INS · 작업 순서 <span style="font-size:18px;font-weight:600;opacity:.85">— 워크플로우가 담긴 업무 지침</span></div><div style="margin-top:12px;display:flex;align-items:center;white-space:nowrap"><span style="background:rgba(255,255,255,.2);border-radius:10px;padding:8px 16px;font-size:20px;font-weight:700">① 주제 확인</span><span style="margin:0 12px;font-size:22px">→</span><span style="background:rgba(255,255,255,.2);border-radius:10px;padding:8px 16px;font-size:20px;font-weight:700">② KB 규칙 고르기</span><span style="margin:0 12px;font-size:22px">→</span><span style="background:rgba(255,255,255,.2);border-radius:10px;padding:8px 16px;font-size:20px;font-weight:700">③ 이미지 생성</span><span style="margin:0 12px;font-size:22px">→</span><span style="background:rgba(255,255,255,.2);border-radius:10px;padding:8px 16px;font-size:20px;font-weight:700">④ 금지 점검</span></div></div><svg style="position:absolute;left:0;top:0;width:1280px;height:400px;pointer-events:none" viewBox="0 0 1280 400"><path d="M640,264 C640,330 160,320 160,386" fill="none" stroke="var(--orange)" stroke-width="4"/><polygon points="160,394 152,380 168,380" fill="var(--orange)"/><path d="M640,264 C640,330 400,320 400,386" fill="none" stroke="var(--orange)" stroke-width="4"/><polygon points="400,394 392,380 408,380" fill="var(--orange)"/><path d="M640,264 C640,330 640,320 640,386" fill="none" stroke="var(--orange)" stroke-width="4"/><polygon points="640,394 632,380 648,380" fill="var(--orange)"/><path d="M640,264 C640,330 880,320 880,386" fill="none" stroke="var(--orange)" stroke-width="4"/><polygon points="880,394 872,380 888,380" fill="var(--orange)"/><path d="M640,264 C640,330 1120,320 1120,386" fill="none" stroke="var(--orange)" stroke-width="4"/><polygon points="1120,394 1112,380 1128,380" fill="var(--orange)"/></svg><div style="position:absolute;left:50px;top:398px;width:220px;height:158px;box-sizing:border-box;background:#fff;border:2px solid var(--orange);border-top:8px solid var(--orange);border-radius:14px;padding:12px 16px"><div style="font-size:22px;font-weight:800">색상 규칙 KB</div><div style="font-size:18px;margin-top:8px;line-height:1.5">메인색 · 포인트색<br>로고 색 기준</div></div><div style="position:absolute;left:290px;top:398px;width:220px;height:158px;box-sizing:border-box;background:#fff;border:2px solid var(--orange);border-top:8px solid var(--orange);border-radius:14px;padding:12px 16px"><div style="font-size:22px;font-weight:800">분위기 · 구도 KB</div><div style="font-size:18px;margin-top:8px;line-height:1.5">깔끔 · 따뜻<br>여백 넉넉, 중앙</div></div><div style="position:absolute;left:530px;top:398px;width:220px;height:158px;box-sizing:border-box;background:#fff;border:2px solid var(--orange);border-top:8px solid var(--orange);border-radius:14px;padding:12px 16px"><div style="font-size:22px;font-weight:800">글씨 규칙 KB</div><div style="font-size:18px;margin-top:8px;line-height:1.5">글씨는 넣지 않기<br>제목 자리만 비움</div></div><div style="position:absolute;left:770px;top:398px;width:220px;height:158px;box-sizing:border-box;background:#fff;border:2px solid var(--orange);border-top:8px solid var(--orange);border-radius:14px;padding:12px 16px"><div style="font-size:22px;font-weight:800">로고 규칙 KB</div><div style="font-size:18px;margin-top:8px;line-height:1.5">위치 · 크기<br>우측 하단 작게</div></div><div style="position:absolute;left:1010px;top:398px;width:220px;height:158px;box-sizing:border-box;background:#fff;border:2px solid var(--orange);border-top:8px solid var(--orange);border-radius:14px;padding:12px 16px"><div style="font-size:22px;font-weight:800">금지 규칙 KB</div><div style="font-size:18px;margin-top:8px;line-height:1.5">과한 장식 X<br>인물 얼굴 X</div></div><div style="position:absolute;left:50px;top:566px;font-size:20px;font-weight:700;color:var(--orange)">▲ KB · 디자인 규칙이 여러 개 — INS가 필요한 것을 골라 씁니다</div>
+<div class="tk"><b>핵심</b>포스터 하나에도 INS는 일하는 순서를, KB는 디자인 규칙을 줍니다</div>
+</section>
+
+<!-- 33 리서치 대가 -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.03</div><div class="tt">대가의 뇌를 심는다 — 리서치 대가의 INS · KB</div></div>
+<div style="position:absolute;left:40px;top:112px;font-size:19px;font-weight:800;color:var(--teal)">📄 리서치-대가.md — 한 파일 안에 INS와 KB가 함께 들어 있습니다</div><div style="position:absolute;left:40px;top:146px;width:1200px;height:118px;box-sizing:border-box;background:var(--teal);color:#fff;border-radius:16px;padding:14px 26px"><div style="font-size:26px;font-weight:800">INS · 리서치 대가의 일하는 순서 <span style="font-size:18px;font-weight:600;opacity:.85">— 워크플로우가 담긴 업무 지침</span></div><div style="margin-top:12px;display:flex;align-items:center;white-space:nowrap"><span style="background:rgba(255,255,255,.2);border-radius:10px;padding:7px 10px;font-size:18px;font-weight:700">① 주제 정의</span><span style="margin:0 6px;font-size:22px">→</span><span style="background:rgba(255,255,255,.2);border-radius:10px;padding:7px 10px;font-size:18px;font-weight:700">② 다각도 검색</span><span style="margin:0 6px;font-size:22px">→</span><span style="background:rgba(255,255,255,.2);border-radius:10px;padding:7px 10px;font-size:18px;font-weight:700">③ 출처 등급</span><span style="margin:0 6px;font-size:22px">→</span><span style="background:rgba(255,255,255,.2);border-radius:10px;padding:7px 10px;font-size:18px;font-weight:700">④ 교차검증</span><span style="margin:0 6px;font-size:22px">→</span><span style="background:rgba(255,255,255,.2);border-radius:10px;padding:7px 10px;font-size:18px;font-weight:700">⑤ 사실·추정 분리</span><span style="margin:0 6px;font-size:22px">→</span><span style="background:rgba(255,255,255,.2);border-radius:10px;padding:7px 10px;font-size:18px;font-weight:700">⑥ 텍스트+HTML 저장</span></div></div><svg style="position:absolute;left:0;top:0;width:1280px;height:400px;pointer-events:none" viewBox="0 0 1280 400"><path d="M640,264 C640,330 190,320 190,386" fill="none" stroke="var(--orange)" stroke-width="4"/><polygon points="190,394 182,380 198,380" fill="var(--orange)"/><path d="M640,264 C640,330 490,320 490,386" fill="none" stroke="var(--orange)" stroke-width="4"/><polygon points="490,394 482,380 498,380" fill="var(--orange)"/><path d="M640,264 C640,330 790,320 790,386" fill="none" stroke="var(--orange)" stroke-width="4"/><polygon points="790,394 782,380 798,380" fill="var(--orange)"/><path d="M640,264 C640,330 1090,320 1090,386" fill="none" stroke="var(--orange)" stroke-width="4"/><polygon points="1090,394 1082,380 1098,380" fill="var(--orange)"/></svg><div style="position:absolute;left:50px;top:398px;width:280px;height:158px;box-sizing:border-box;background:#fff;border:2px solid var(--orange);border-top:8px solid var(--orange);border-radius:14px;padding:12px 16px"><div style="font-size:22px;font-weight:800">검색 방식 KB</div><div style="font-size:18px;margin-top:8px;line-height:1.5">주제어 + 동향 · 사례 · 비교<br>5개 이상, 공식 → 업계 → 후기</div></div><div style="position:absolute;left:350px;top:398px;width:280px;height:158px;box-sizing:border-box;background:#fff;border:2px solid var(--orange);border-top:8px solid var(--orange);border-radius:14px;padding:12px 16px"><div style="font-size:22px;font-weight:800">출처 등급 KB</div><div style="font-size:18px;margin-top:8px;line-height:1.5">A 공공 · 공식 · 논문<br>B 언론 · 업계 / C 블로그</div></div><div style="position:absolute;left:650px;top:398px;width:280px;height:158px;box-sizing:border-box;background:#fff;border:2px solid var(--orange);border-top:8px solid var(--orange);border-radius:14px;padding:12px 16px"><div style="font-size:22px;font-weight:800">검증 기준 KB</div><div style="font-size:18px;margin-top:8px;line-height:1.5">핵심 주장은 2곳 이상<br>단일 출처는 표시</div></div><div style="position:absolute;left:950px;top:398px;width:280px;height:158px;box-sizing:border-box;background:#fff;border:2px solid var(--orange);border-top:8px solid var(--orange);border-radius:14px;padding:12px 16px"><div style="font-size:22px;font-weight:800">결과 양식 KB</div><div style="font-size:18px;margin-top:8px;line-height:1.5">텍스트 요약 5줄<br>+ HTML 보고서 파일</div></div><div style="position:absolute;left:50px;top:566px;font-size:20px;font-weight:700;color:var(--orange)">▲ 먼저 읽고 예상해 보세요 — AI는 이 순서와 기준을 그대로 따라 움직입니다</div>
+<div class="tk"><b>핵심</b>찾는 방식 · 검증 · 결과물 형식까지, 대가의 방법을 파일 하나로 빌려 씁니다</div>
+</section>
+
+<!-- 34 리서치 1단계 -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.03</div><div class="tt">4단계 체험 ① 먼저 말로만 리서치 (1단계)</div></div>
+<div class="pb" data-txt="r1" style="left:40px;top:124px;width:780px;height:150px"><span class="lb2">ChatGPT에 붙여넣기 (새 대화)</span><button class="cpb" onclick="cp('r1',this)">복사</button></div><div class="pane o" style="left:40px;top:300px;width:780px;height:150px"><h3>방법</h3><ul><li>새 대화에서 이 한 줄만 입력</li><li>결과를 캡처해 보관</li></ul></div><div class="pane" style="left:850px;top:124px;width:390px;height:330px"><h3>살펴볼 점</h3><ul><li>출처가 붙어 있나?</li><li>사실과 의견이 구분되나?</li><li>HTML 파일로 주나?</li></ul></div>
+<div class="tk"><b>핵심</b>대가의 방법 없이는, 조사 방식도 결과 형식도 AI 마음입니다</div>
+</section>
+
+<!-- 35 리서치 4단계 -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.03</div><div class="tt">4단계 체험 ② 같은 한 줄 + 리서치 대가 MD</div></div>
+<div class="pb" data-txt="r1" style="left:40px;top:124px;width:780px;height:150px"><span class="lb2">ChatGPT에 붙여넣기 + 리서치-대가.md 첨부</span><button class="cpb" onclick="cp('r1',this)">복사</button></div><div class="pane o" style="left:40px;top:300px;width:780px;height:150px"><h3>방법</h3><ul><li>새 대화에서 리서치-대가.md를 먼저 첨부</li><li>1단계와 똑같은 한 줄을 입력</li></ul></div><div class="pane" style="left:850px;top:124px;width:390px;height:420px"><h3>앞 장에서 본 대로 움직이나?</h3><ul><li>다각도로 검색했나?</li><li>출처에 A · B · C 등급이 붙었나?</li><li>2곳 이상 교차검증을 표시했나?</li><li>사실과 추정이 나뉘었나?</li><li>텍스트 + HTML 파일이 나왔나?</li></ul></div>
+<div class="tk"><b>핵심</b>미리 읽은 INS · KB대로 AI가 움직이는지 확인하세요</div>
+</section>
+
+<!-- 36 비교 화면 -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.03</div><div class="tt">1단계 vs 4단계 — 리서치</div></div>
+<div class="lbl" style="left:40px;top:112px;font-size:20px">1단계 · 말로만</div><div class="ph" style="left:40px;top:142px;width:590px;height:380px">1단계 결과<br>(리서치 캡처)</div><div class="lbl" style="left:650px;top:112px;font-size:20px;color:var(--orange)">4단계 · 리서치 대가 MD</div><div class="ph" style="left:650px;top:142px;width:590px;height:380px">4단계 결과<br>(리서치 캡처 · HTML)</div>
+<div class="tk"><b>핵심</b>같은 한 줄인데, 대가의 INS · KB를 심으면 조사 방식부터 달라집니다</div>
+</section>
+
+<!-- 37 디자인MD 예 -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.03</div><div class="tt">디자인 MD 안에는 이게 들어 있습니다</div></div>
+<div style="position:absolute;left:40px;top:112px;font-size:19px;font-weight:800;color:var(--teal)">📄 디자인-MD.md — 한 파일 안에 INS와 KB가 함께 들어 있습니다</div><div style="position:absolute;left:40px;top:146px;width:1200px;height:118px;box-sizing:border-box;background:var(--teal);color:#fff;border-radius:16px;padding:14px 26px"><div style="font-size:26px;font-weight:800">INS · 작업 순서 <span style="font-size:18px;font-weight:600;opacity:.85">— 워크플로우가 담긴 업무 지침</span></div><div style="margin-top:12px;display:flex;align-items:center;white-space:nowrap"><span style="background:rgba(255,255,255,.2);border-radius:10px;padding:8px 16px;font-size:20px;font-weight:700">① 주제 확인</span><span style="margin:0 12px;font-size:22px">→</span><span style="background:rgba(255,255,255,.2);border-radius:10px;padding:8px 16px;font-size:20px;font-weight:700">② KB 규칙 고르기</span><span style="margin:0 12px;font-size:22px">→</span><span style="background:rgba(255,255,255,.2);border-radius:10px;padding:8px 16px;font-size:20px;font-weight:700">③ 이미지 생성</span><span style="margin:0 12px;font-size:22px">→</span><span style="background:rgba(255,255,255,.2);border-radius:10px;padding:8px 16px;font-size:20px;font-weight:700">④ 금지 점검</span></div></div><svg style="position:absolute;left:0;top:0;width:1280px;height:400px;pointer-events:none" viewBox="0 0 1280 400"><path d="M640,264 C640,330 160,320 160,386" fill="none" stroke="var(--orange)" stroke-width="4"/><polygon points="160,394 152,380 168,380" fill="var(--orange)"/><path d="M640,264 C640,330 400,320 400,386" fill="none" stroke="var(--orange)" stroke-width="4"/><polygon points="400,394 392,380 408,380" fill="var(--orange)"/><path d="M640,264 C640,330 640,320 640,386" fill="none" stroke="var(--orange)" stroke-width="4"/><polygon points="640,394 632,380 648,380" fill="var(--orange)"/><path d="M640,264 C640,330 880,320 880,386" fill="none" stroke="var(--orange)" stroke-width="4"/><polygon points="880,394 872,380 888,380" fill="var(--orange)"/><path d="M640,264 C640,330 1120,320 1120,386" fill="none" stroke="var(--orange)" stroke-width="4"/><polygon points="1120,394 1112,380 1128,380" fill="var(--orange)"/></svg><div style="position:absolute;left:50px;top:398px;width:220px;height:158px;box-sizing:border-box;background:#fff;border:2px solid var(--orange);border-top:8px solid var(--orange);border-radius:14px;padding:12px 16px"><div style="font-size:22px;font-weight:800">색상 KB</div><div style="font-size:18px;margin-top:8px;line-height:1.5">메인 #2D6B7A<br>포인트 #E8642C<br>배경 크림</div></div><div style="position:absolute;left:290px;top:398px;width:220px;height:158px;box-sizing:border-box;background:#fff;border:2px solid var(--orange);border-top:8px solid var(--orange);border-radius:14px;padding:12px 16px"><div style="font-size:22px;font-weight:800">분위기 KB</div><div style="font-size:18px;margin-top:8px;line-height:1.5">깔끔하고 신뢰감 있게<br>따뜻하되 과하지 않게</div></div><div style="position:absolute;left:530px;top:398px;width:220px;height:158px;box-sizing:border-box;background:#fff;border:2px solid var(--orange);border-top:8px solid var(--orange);border-radius:14px;padding:12px 16px"><div style="font-size:22px;font-weight:800">구성 KB</div><div style="font-size:18px;margin-top:8px;line-height:1.5">여백 넉넉, 중앙 정렬<br>제목 자리는 상단</div></div><div style="position:absolute;left:770px;top:398px;width:220px;height:158px;box-sizing:border-box;background:#fff;border:2px solid var(--orange);border-top:8px solid var(--orange);border-radius:14px;padding:12px 16px"><div style="font-size:22px;font-weight:800">로고 KB</div><div style="font-size:18px;margin-top:8px;line-height:1.5">우측 하단, 작게<br>원본 비율 유지</div></div><div style="position:absolute;left:1010px;top:398px;width:220px;height:158px;box-sizing:border-box;background:#fff;border:2px solid var(--orange);border-top:8px solid var(--orange);border-radius:14px;padding:12px 16px"><div style="font-size:22px;font-weight:800">금지 KB</div><div style="font-size:18px;margin-top:8px;line-height:1.5">글씨 넣기<br>과한 장식<br>인물 얼굴</div></div><div style="position:absolute;left:50px;top:566px;font-size:20px;font-weight:700;color:var(--orange)">▲ KB · 디자인 규칙 — INS가 순서대로 꺼내 씁니다</div>
+<div class="tk"><b>핵심</b>규칙을 글로 적어 두면 AI가 매번 같은 기준으로 만듭니다</div>
+</section>
+
+<!-- 38 4단계 보고서 -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.03</div><div class="tt">4단계 체험 ② 보고서도 같은 방식</div></div>
+<div class="pb" data-txt="g1" style="left:40px;top:124px;width:780px;height:150px"><span class="lb2">ChatGPT에 붙여넣기 + 보고서-기준.md 첨부</span><button class="cpb" onclick="cp('g1',this)">복사</button></div><div class="pane o" style="left:40px;top:300px;width:780px;height:150px"><h3>KB가 가르친 것</h3><p>목차 구조 · 문체(개조식) · 수치 규칙</p></div><div class="pane" style="left:850px;top:124px;width:390px;height:330px"><h3>비교할 점</h3><ul><li>1단계 결과와 구조가 달라졌나?</li><li>문체가 맞춰졌나?</li><li>근거 없는 수치를 지어내지 않나?</li></ul></div>
+<div class="tk"><b>핵심</b>KB는 우리 회사의 ‘일하는 방식’을 AI에게 가르치는 일입니다</div>
+</section>
+
+<!-- 39 5단계 -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.03</div><div class="tt">5단계 : 우리 회사 디자인 MD 직접 쓰기</div></div>
+<div class="pb" data-txt="md" style="left:40px;top:124px;width:780px;height:400px;font-size:21px"><span class="lb2">복사해서 빈칸 채우기</span><button class="cpb" onclick="cp('md',this)">복사</button></div><div class="pane" style="left:850px;top:124px;width:390px;height:400px"><h3>쓰는 순서</h3><ul><li>로고 색부터 확인</li><li>분위기는 한 단어</li><li>금지는 한 가지만</li><li>모르면 비워 두기</li></ul></div>
+<div class="tk"><b>핵심</b>틀은 같고, 채우는 내용만 우리 회사 것입니다</div>
+</section>
+
+<!-- 40 MD 시험 -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.03</div><div class="tt">내 MD로 시험하기</div></div>
+<div class="ck" style="top:124px"><div>메모장에 붙여 ‘우리회사_디자인.md’로 저장<small>폴더에 넣는 것은 컴앱웹에서</small></div><div>내 MD를 첨부해 같은 한 줄 포스터 만들기<small>1단계 · 4단계 결과와 비교</small></div><div>세 장을 단톡방에 공유</div></div>
+<div class="tk"><b>핵심</b>MD는 한 번 쓰면 포스터 · 카드뉴스 · 영상에 계속 씁니다</div>
+</section>
+
+<!-- 41 MD도 AI에게 -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.03</div><div class="tt">MD도 AI에게 써달라고 하면 됩니다</div></div>
+<div class="pb" data-txt="i1" style="left:40px;top:124px;width:590px;height:250px;font-size:19px"><span class="lb2">INS 만들기 — ChatGPT에 붙여넣기</span><button class="cpb" onclick="cp('i1',this)">복사</button></div><div class="pb" data-txt="k1" style="left:650px;top:124px;width:590px;height:250px;font-size:19px"><span class="lb2">KB 만들기 — ChatGPT에 붙여넣기</span><button class="cpb" onclick="cp('k1',this)">복사</button></div><div class="pane" style="left:40px;top:386px;width:590px;height:200px"><h3>INS = 대강 쓰고 다듬기</h3><ul><li>워크플로우를 대강 적는다</li><li>“다듬어줘”라고 시킨다</li><li>나온 MD를 읽고 고친다</li></ul></div><div class="pane o" style="left:650px;top:386px;width:590px;height:200px"><h3>KB = 조사해서 체계화</h3><ul><li>대가들의 방식을 조사한다</li><li>항목별로 나눠 KB 파일로 만든다</li><li>우리 회사 방식도 같은 방법으로 추가</li></ul></div>
+<div class="tk"><b>핵심</b>핵심은 KB입니다 — 대가들의 방식을 조사한 뒤 체계적으로 KB화합니다</div>
+</section>
+
+<!-- 42 Part.04 -->
+<section class="slide teal">
+<div class="cv"><div class="lb">Part.04</div><h2>봇 만들기</h2><div class="sub">ChatGPT 프로젝트 = 지침 칸 + 파일 칸</div></div>
+</section>
+
+<!-- 43 프로젝트 구조 -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.04</div><div class="tt">ChatGPT 프로젝트 = 지침 칸 + 파일 칸</div></div>
+<div class="dh" style="left:40px;top:120px;width:590px">지침 칸 (INS)</div><div class="dk" style="left:40px;top:164px;width:590px;height:340px;font-size:19px;background:#fff;color:var(--ink);border:2px solid var(--teal);border-top:0">너는 ‘프롬프트 대필 봇’이야.<br>사용자가 대충 쓴 요청을 PE7 기준으로 완성도 높은 프롬프트로 바꿔 쓴다.<br><br>[작동 방식]<br>1. 질문하지 말고 바로 쓴다<br>2. 모르는 부분은 [채워주세요]로 남긴다</div><div class="dh" style="left:650px;top:120px;width:590px;background:var(--orange)">파일 칸 (KB)</div><div class="dk" style="left:650px;top:164px;width:590px;height:340px;font-size:20px;background:#fff;color:var(--ink);border:2px solid var(--orange);border-top:0"><div class="fl" style="position:static;margin-bottom:12px">디자인-MD.md<small>색 · 분위기 · 구성 · 금지</small></div><div class="fl" style="position:static;margin-bottom:12px">보고서-기준.md<small>목차 · 문체 · 수치 규칙</small></div></div>
+<div class="tk"><b>핵심</b>프로젝트 하나가 봇 하나입니다 — 지침 칸에 업무 지침, 파일 칸에 참고 자료</div>
+</section>
+
+<!-- 44 만드는 순서 -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.04</div><div class="tt">봇 만드는 순서</div></div>
+<div class="st3 st4 nr"><div class="c"><div class="n">1</div><h3>프로젝트 만들기</h3><p>새 프로젝트를 만들고 이름을 붙입니다</p></div><div class="c"><div class="n">2</div><h3>지침 붙여넣기</h3><p>복사한 지침을 지침 칸에</p></div><div class="c"><div class="n">3</div><h3>파일 올리기</h3><p>MD · 기준 문서와 각종 샘플(로고 · 디자인 · 우수사례 문서)을 파일 칸에</p></div><div class="c"><div class="n">4</div><h3>시험하기</h3><p>대충 쓴 문장을 넣어 봅니다</p></div></div>
+<div class="tk"><b>핵심</b>순서는 늘 같습니다 — 만들고, 붙이고, 올리고, 시험하기</div>
+</section>
+
+<!-- 45 봇 5종 -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.04</div><div class="tt">봇 5종 한눈에 — 지침(INS) + KB</div></div>
+<table class="tb sm" style="top:112px"><tr><th>봇</th><th>INS (지금 붙임)</th><th>KB (나중에 채워도 됨 · 대가의 뇌)</th></tr><tr><td>① 프롬프트 대필 봇</td><td class="k">PE7로 바꿔 쓰기</td><td>프롬프트-대가.md (좋은 사례 · 분야별 PE7)</td></tr><tr><td>② 리서치 봇</td><td class="k">조사 · 출처 표기</td><td>리서치-대가.md (검색 · 검증 · 결과 양식)</td></tr><tr><td>③ 보고서 봇</td><td class="k">구조 · 문체 지키기</td><td>보고서-기준.md + 우수사례 보고서</td></tr><tr><td>④ 포스터 봇</td><td class="k">콘셉트 3안 → 이미지 생성</td><td>디자인 MD + 로고 · 샘플 포스터</td></tr><tr><td>⑤ 숏폼 봇</td><td class="k">기획 → 생성 → FFmpeg 편집</td><td>기획 규칙 · 편집 규칙 · 우수 숏폼 사례</td></tr></table>
+<div class="tk"><b>핵심</b>지침만으로도 봇은 움직이고, KB를 채우면 대가의 뇌를 가진 봇이 됩니다</div>
+</section>
+
+<!-- 46 봇1 구조 -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.04</div><div class="tt">봇 ① 프롬프트 대필 봇 — 구조</div></div>
+<div style="position:absolute;left:40px;top:112px;font-size:19px;font-weight:800;color:var(--teal)">✍️ 프롬프트 대필 봇 — 대충 쓴 한 줄을 완성 프롬프트로</div><div style="position:absolute;left:40px;top:146px;width:1200px;height:118px;box-sizing:border-box;background:var(--teal);color:#fff;border-radius:16px;padding:14px 26px"><div style="font-size:26px;font-weight:800">INS · 대필 순서 <span style="font-size:18px;font-weight:600;opacity:.85">— 워크플로우가 담긴 업무 지침</span></div><div style="margin-top:12px;display:flex;align-items:center;white-space:nowrap"><span style="background:rgba(255,255,255,.2);border-radius:10px;padding:8px 16px;font-size:20px;font-weight:700">① 대충 입력</span><span style="margin:0 12px;font-size:22px">→</span><span style="background:rgba(255,255,255,.2);border-radius:10px;padding:8px 16px;font-size:20px;font-weight:700">② PE7 칸 채우기</span><span style="margin:0 12px;font-size:22px">→</span><span style="background:rgba(255,255,255,.2);border-radius:10px;padding:8px 16px;font-size:20px;font-weight:700">③ 모르는 칸은 [채워주세요]</span><span style="margin:0 12px;font-size:22px">→</span><span style="background:rgba(255,255,255,.2);border-radius:10px;padding:8px 16px;font-size:20px;font-weight:700">④ 완성 프롬프트 출력</span></div></div><svg style="position:absolute;left:0;top:0;width:1280px;height:400px;pointer-events:none" viewBox="0 0 1280 400"><path d="M640,264 C640,330 260,320 260,386" fill="none" stroke="var(--orange)" stroke-width="4"/><polygon points="260,394 252,380 268,380" fill="var(--orange)"/><path d="M640,264 C640,330 640,320 640,386" fill="none" stroke="var(--orange)" stroke-width="4"/><polygon points="640,394 632,380 648,380" fill="var(--orange)"/><path d="M640,264 C640,330 1020,320 1020,386" fill="none" stroke="var(--orange)" stroke-width="4"/><polygon points="1020,394 1012,380 1028,380" fill="var(--orange)"/></svg><div style="position:absolute;left:80px;top:398px;width:360px;height:158px;box-sizing:border-box;background:#fff;border:2px solid var(--orange);border-top:8px solid var(--orange);border-radius:14px;padding:12px 16px"><div style="font-size:22px;font-weight:800">좋은 프롬프트 사례 KB</div><div style="font-size:18px;margin-top:8px;line-height:1.5">잘 쓴 프롬프트 모음<br>구체성 · 문체 수준</div></div><div style="position:absolute;left:460px;top:398px;width:360px;height:158px;box-sizing:border-box;background:#fff;border:2px solid var(--orange);border-top:8px solid var(--orange);border-radius:14px;padding:12px 16px"><div style="font-size:22px;font-weight:800">분야별 PE7 예시 KB</div><div style="font-size:18px;margin-top:8px;line-height:1.5">보고서 · 포스터<br>영상 · 기획</div></div><div style="position:absolute;left:840px;top:398px;width:360px;height:158px;box-sizing:border-box;background:#fff;border:2px solid var(--orange);border-top:8px solid var(--orange);border-radius:14px;padding:12px 16px"><div style="font-size:22px;font-weight:800">우리 회사 용어 KB</div><div style="font-size:18px;margin-top:8px;line-height:1.5">직무 · 읽는 사람<br>말투 · 금지어</div></div><div style="position:absolute;left:50px;top:566px;font-size:20px;font-weight:700;color:var(--orange)">▲ 프롬프트-대가.md — 잘 쓰는 사람의 프롬프트를 KB로 가져옵니다</div>
+<div class="tk"><b>핵심</b>지침만으로도 동작하고, KB를 더하면 대가의 프롬프트 감각을 빌려 씁니다</div>
+</section>
+
+<!-- 47 봇1 -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.04</div><div class="tt">봇 ① 프롬프트 대필 봇 — 지침 (+ 프롬프트-대가.md)</div></div>
+<div class="pb" data-txt="b1" style="left:40px;top:112px;width:1200px;height:456px;font-size:14px;column-count:2;column-gap:40px"><span class="lb2">프로젝트 지침 칸에 붙여넣기</span><button class="cpb" onclick="cp('b1',this)">복사</button></div>
+<div class="tk"><b>핵심</b>지침만으로도 동작하고, 프롬프트-대가.md를 더하면 대가의 뇌를 가진 봇이 됩니다</div>
+</section>
+
+<!-- 48 봇1 시험 -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.04</div><div class="tt">봇 ① 시험하기</div></div>
+<div class="ck" style="top:124px"><div>대충 한 줄 입력<small>예 : 신제품 홍보 포스터 문구 좀 만들어줘</small></div><div>나온 ‘완성 프롬프트’ 확인<small>[채워주세요] 칸을 직접 채워 보기</small></div><div>채운 프롬프트로 다시 시험하고 단톡방에 공유</div></div>
+<div class="tk"><b>핵심</b>빈칸이 곧 내가 몰랐던 정보입니다 — 채울수록 결과가 좋아집니다</div>
+</section>
+
+<!-- 49 봇2 구조 -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.04</div><div class="tt">봇 ② 리서치 봇 — 구조</div></div>
+<div style="position:absolute;left:40px;top:112px;font-size:19px;font-weight:800;color:var(--teal)">🔎 리서치 봇 — 조사의 틀을 고정합니다</div><div style="position:absolute;left:40px;top:146px;width:1200px;height:118px;box-sizing:border-box;background:var(--teal);color:#fff;border-radius:16px;padding:14px 26px"><div style="font-size:26px;font-weight:800">INS · 조사 순서 <span style="font-size:18px;font-weight:600;opacity:.85">— 워크플로우가 담긴 업무 지침</span></div><div style="margin-top:12px;display:flex;align-items:center;white-space:nowrap"><span style="background:rgba(255,255,255,.2);border-radius:10px;padding:7px 10px;font-size:18px;font-weight:700">① 주제 정리</span><span style="margin:0 6px;font-size:22px">→</span><span style="background:rgba(255,255,255,.2);border-radius:10px;padding:7px 10px;font-size:18px;font-weight:700">② 검색</span><span style="margin:0 6px;font-size:22px">→</span><span style="background:rgba(255,255,255,.2);border-radius:10px;padding:7px 10px;font-size:18px;font-weight:700">③ 사실 · 추정 구분</span><span style="margin:0 6px;font-size:22px">→</span><span style="background:rgba(255,255,255,.2);border-radius:10px;padding:7px 10px;font-size:18px;font-weight:700">④ 출처 · [확인 필요]</span><span style="margin:0 6px;font-size:22px">→</span><span style="background:rgba(255,255,255,.2);border-radius:10px;padding:7px 10px;font-size:18px;font-weight:700">⑤ 5줄 요약 + 활용 제안</span></div></div><svg style="position:absolute;left:0;top:0;width:1280px;height:400px;pointer-events:none" viewBox="0 0 1280 400"><path d="M640,264 C640,330 190,320 190,386" fill="none" stroke="var(--orange)" stroke-width="4"/><polygon points="190,394 182,380 198,380" fill="var(--orange)"/><path d="M640,264 C640,330 490,320 490,386" fill="none" stroke="var(--orange)" stroke-width="4"/><polygon points="490,394 482,380 498,380" fill="var(--orange)"/><path d="M640,264 C640,330 790,320 790,386" fill="none" stroke="var(--orange)" stroke-width="4"/><polygon points="790,394 782,380 798,380" fill="var(--orange)"/><path d="M640,264 C640,330 1090,320 1090,386" fill="none" stroke="var(--orange)" stroke-width="4"/><polygon points="1090,394 1082,380 1098,380" fill="var(--orange)"/></svg><div style="position:absolute;left:50px;top:398px;width:280px;height:158px;box-sizing:border-box;background:#fff;border:2px solid var(--orange);border-top:8px solid var(--orange);border-radius:14px;padding:12px 16px"><div style="font-size:22px;font-weight:800">검색 방식 KB</div><div style="font-size:18px;margin-top:8px;line-height:1.5">주제어 + 동향 · 사례 · 비교<br>공식 → 업계 → 후기</div></div><div style="position:absolute;left:350px;top:398px;width:280px;height:158px;box-sizing:border-box;background:#fff;border:2px solid var(--orange);border-top:8px solid var(--orange);border-radius:14px;padding:12px 16px"><div style="font-size:22px;font-weight:800">출처 등급 KB</div><div style="font-size:18px;margin-top:8px;line-height:1.5">A 공공 · 공식 · 논문<br>B 언론 / C 블로그</div></div><div style="position:absolute;left:650px;top:398px;width:280px;height:158px;box-sizing:border-box;background:#fff;border:2px solid var(--orange);border-top:8px solid var(--orange);border-radius:14px;padding:12px 16px"><div style="font-size:22px;font-weight:800">검증 기준 KB</div><div style="font-size:18px;margin-top:8px;line-height:1.5">핵심 주장은 2곳 이상<br>단일 출처는 표시</div></div><div style="position:absolute;left:950px;top:398px;width:280px;height:158px;box-sizing:border-box;background:#fff;border:2px solid var(--orange);border-top:8px solid var(--orange);border-radius:14px;padding:12px 16px"><div style="font-size:22px;font-weight:800">결과 양식 KB</div><div style="font-size:18px;margin-top:8px;line-height:1.5">텍스트 요약 5줄<br>+ HTML 보고서</div></div><div style="position:absolute;left:50px;top:566px;font-size:20px;font-weight:700;color:var(--orange)">▲ 리서치-대가.md — 30번에서 본 대가의 뇌를 봇에 심습니다</div>
+<div class="tk"><b>핵심</b>지침은 지금, KB는 나중에 — 넣는 순간 대가의 방식으로 조사합니다</div>
+</section>
+
+<!-- 50 봇2 -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.04</div><div class="tt">봇 ② 리서치 봇 — 지침 (+ 리서치-대가.md)</div></div>
+<div class="pb" data-txt="b2" style="left:40px;top:112px;width:1200px;height:456px;font-size:16px;column-count:2;column-gap:40px"><span class="lb2">프로젝트 지침 칸에 붙여넣기</span><button class="cpb" onclick="cp('b2',this)">복사</button></div>
+<div class="tk"><b>핵심</b>리서치-대가.md를 넣으면 30번에서 본 대가의 뇌가 이 봇에 심어집니다</div>
+</section>
+
+<!-- 51 봇3 구조 -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.04</div><div class="tt">봇 ③ 보고서 봇 — 구조</div></div>
+<div style="position:absolute;left:40px;top:112px;font-size:19px;font-weight:800;color:var(--teal)">📝 보고서 봇 — 우리 팀 기준으로 초안을 씁니다</div><div style="position:absolute;left:40px;top:146px;width:1200px;height:118px;box-sizing:border-box;background:var(--teal);color:#fff;border-radius:16px;padding:14px 26px"><div style="font-size:26px;font-weight:800">INS · 작성 순서 <span style="font-size:18px;font-weight:600;opacity:.85">— 워크플로우가 담긴 업무 지침</span></div><div style="margin-top:12px;display:flex;align-items:center;white-space:nowrap"><span style="background:rgba(255,255,255,.2);border-radius:10px;padding:8px 16px;font-size:20px;font-weight:700">① 기준 문서 읽기</span><span style="margin:0 12px;font-size:22px">→</span><span style="background:rgba(255,255,255,.2);border-radius:10px;padding:8px 16px;font-size:20px;font-weight:700">② 정보로만 근거 쓰기</span><span style="margin:0 12px;font-size:22px">→</span><span style="background:rgba(255,255,255,.2);border-radius:10px;padding:8px 16px;font-size:20px;font-weight:700">③ 개조식 초안 작성</span><span style="margin:0 12px;font-size:22px">→</span><span style="background:rgba(255,255,255,.2);border-radius:10px;padding:8px 16px;font-size:20px;font-weight:700">④ [확인 필요] 모아 주기</span></div></div><svg style="position:absolute;left:0;top:0;width:1280px;height:400px;pointer-events:none" viewBox="0 0 1280 400"><path d="M640,264 C640,330 260,320 260,386" fill="none" stroke="var(--orange)" stroke-width="4"/><polygon points="260,394 252,380 268,380" fill="var(--orange)"/><path d="M640,264 C640,330 640,320 640,386" fill="none" stroke="var(--orange)" stroke-width="4"/><polygon points="640,394 632,380 648,380" fill="var(--orange)"/><path d="M640,264 C640,330 1020,320 1020,386" fill="none" stroke="var(--orange)" stroke-width="4"/><polygon points="1020,394 1012,380 1028,380" fill="var(--orange)"/></svg><div style="position:absolute;left:80px;top:398px;width:360px;height:158px;box-sizing:border-box;background:#fff;border:2px solid var(--orange);border-top:8px solid var(--orange);border-radius:14px;padding:12px 16px"><div style="font-size:22px;font-weight:800">보고서 기준 KB</div><div style="font-size:18px;margin-top:8px;line-height:1.5">목차 구조 · 문체<br>수치 규칙</div></div><div style="position:absolute;left:460px;top:398px;width:360px;height:158px;box-sizing:border-box;background:#fff;border:2px solid var(--orange);border-top:8px solid var(--orange);border-radius:14px;padding:12px 16px"><div style="font-size:22px;font-weight:800">우수사례 KB</div><div style="font-size:18px;margin-top:8px;line-height:1.5">잘 쓴 보고서 구조<br>표현 수준만 참고</div></div><div style="position:absolute;left:840px;top:398px;width:360px;height:158px;box-sizing:border-box;background:#fff;border:2px solid var(--orange);border-top:8px solid var(--orange);border-radius:14px;padding:12px 16px"><div style="font-size:22px;font-weight:800">우리 팀 양식 KB</div><div style="font-size:18px;margin-top:8px;line-height:1.5">제출 양식<br>제목 · 분량 규칙</div></div><div style="position:absolute;left:50px;top:566px;font-size:20px;font-weight:700;color:var(--orange)">▲ 보고서-기준.md + 우수사례 — 기준 문서를 바꾸면 봇의 실력이 바뀝니다</div>
+<div class="tk"><b>핵심</b>같은 지침이라도 KB가 다르면 다른 실력의 봇이 됩니다</div>
+</section>
+
+<!-- 52 봇3 -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.04</div><div class="tt">봇 ③ 보고서 봇 — 지침 + 보고서-기준.md</div></div>
+<div class="pb" data-txt="b3" style="left:40px;top:112px;width:1200px;height:456px;font-size:16px;column-count:2;column-gap:40px"><span class="lb2">프로젝트 지침 칸에 붙여넣기</span><button class="cpb" onclick="cp('b3',this)">복사</button></div>
+<div class="tk"><b>핵심</b>기준 문서와 우수사례를 바꾸면 봇의 실력이 바뀝니다</div>
+</section>
+
+<!-- 53 봇4 구조 -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.04</div><div class="tt">봇 ④ 포스터 봇 — 구조</div></div>
+<div style="position:absolute;left:40px;top:112px;font-size:19px;font-weight:800;color:var(--teal)">🎨 포스터 봇 — 내 디자인 MD로 업그레이드</div><div style="position:absolute;left:40px;top:146px;width:1200px;height:118px;box-sizing:border-box;background:var(--teal);color:#fff;border-radius:16px;padding:14px 26px"><div style="font-size:26px;font-weight:800">INS · 제작 순서 <span style="font-size:18px;font-weight:600;opacity:.85">— 워크플로우가 담긴 업무 지침</span></div><div style="margin-top:12px;display:flex;align-items:center;white-space:nowrap"><span style="background:rgba(255,255,255,.2);border-radius:10px;padding:8px 16px;font-size:20px;font-weight:700">① 콘셉트 3가지 제안</span><span style="margin:0 12px;font-size:22px">→</span><span style="background:rgba(255,255,255,.2);border-radius:10px;padding:8px 16px;font-size:20px;font-weight:700">② 하나 고르기</span><span style="margin:0 12px;font-size:22px">→</span><span style="background:rgba(255,255,255,.2);border-radius:10px;padding:8px 16px;font-size:20px;font-weight:700">③ 이미지 생성</span><span style="margin:0 12px;font-size:22px">→</span><span style="background:rgba(255,255,255,.2);border-radius:10px;padding:8px 16px;font-size:20px;font-weight:700">④ 규칙 점검 · 수정</span></div></div><svg style="position:absolute;left:0;top:0;width:1280px;height:400px;pointer-events:none" viewBox="0 0 1280 400"><path d="M640,264 C640,330 190,320 190,386" fill="none" stroke="var(--orange)" stroke-width="4"/><polygon points="190,394 182,380 198,380" fill="var(--orange)"/><path d="M640,264 C640,330 490,320 490,386" fill="none" stroke="var(--orange)" stroke-width="4"/><polygon points="490,394 482,380 498,380" fill="var(--orange)"/><path d="M640,264 C640,330 790,320 790,386" fill="none" stroke="var(--orange)" stroke-width="4"/><polygon points="790,394 782,380 798,380" fill="var(--orange)"/><path d="M640,264 C640,330 1090,320 1090,386" fill="none" stroke="var(--orange)" stroke-width="4"/><polygon points="1090,394 1082,380 1098,380" fill="var(--orange)"/></svg><div style="position:absolute;left:50px;top:398px;width:280px;height:158px;box-sizing:border-box;background:#fff;border:2px solid var(--orange);border-top:8px solid var(--orange);border-radius:14px;padding:12px 16px"><div style="font-size:22px;font-weight:800">색상 규칙 KB</div><div style="font-size:18px;margin-top:8px;line-height:1.5">메인색 · 포인트색</div></div><div style="position:absolute;left:350px;top:398px;width:280px;height:158px;box-sizing:border-box;background:#fff;border:2px solid var(--orange);border-top:8px solid var(--orange);border-radius:14px;padding:12px 16px"><div style="font-size:22px;font-weight:800">분위기 · 구도 KB</div><div style="font-size:18px;margin-top:8px;line-height:1.5">깔끔 · 여백 넉넉</div></div><div style="position:absolute;left:650px;top:398px;width:280px;height:158px;box-sizing:border-box;background:#fff;border:2px solid var(--orange);border-top:8px solid var(--orange);border-radius:14px;padding:12px 16px"><div style="font-size:22px;font-weight:800">로고 규칙 KB</div><div style="font-size:18px;margin-top:8px;line-height:1.5">위치 · 크기</div></div><div style="position:absolute;left:950px;top:398px;width:280px;height:158px;box-sizing:border-box;background:#fff;border:2px solid var(--orange);border-top:8px solid var(--orange);border-radius:14px;padding:12px 16px"><div style="font-size:22px;font-weight:800">샘플 포스터 KB</div><div style="font-size:18px;margin-top:8px;line-height:1.5">구도 · 분위기 참고<br>그대로 베끼지 않기</div></div><div style="position:absolute;left:50px;top:566px;font-size:20px;font-weight:700;color:var(--orange)">▲ 우리회사_디자인.md + 로고 · 샘플 — 주제 한 줄만 넣으면 같은 톤이 나옵니다</div>
+<div class="tk"><b>핵심</b>틀은 INS와 KB가 쥐고, 사용자는 주제 한 줄만 넣습니다</div>
+</section>
+
+<!-- 54 봇4 -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.04</div><div class="tt">봇 ④ 포스터 봇 — 내 디자인 MD로 업그레이드</div></div>
+<div class="pb" data-txt="b4" style="left:40px;top:112px;width:1200px;height:456px;font-size:16px;column-count:2;column-gap:40px"><span class="lb2">프로젝트 지침 칸에 붙여넣기</span><button class="cpb" onclick="cp('b4',this)">복사</button></div>
+<div class="tk"><b>핵심</b>틀은 고정하고, 사용자는 주제 한 줄만 넣는 것이 봇의 핵심입니다</div>
+</section>
+
+<!-- 55 봇4 시험 -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.04</div><div class="tt">봇 ④ 시험하기</div></div>
+<div class="ck" style="top:124px"><div>주제 한 줄만 입력<small>예 : 봄맞이 신제품 홍보</small></div><div>콘셉트 3가지 중 하나 고르기<small>봇이 먼저 제안합니다</small></div><div>주제만 바꿔 세 번 만들기<small>한 톤으로 모이는지 확인</small></div></div>
+<div class="tk"><b>핵심</b>주제만 바꾸면 같은 톤의 포스터가 나옵니다 — 이것이 ‘봇’입니다</div>
+</section>
+
+<!-- 56 봇5 구조 -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.04</div><div class="tt">봇 ⑤ 숏폼 봇 — 한 채팅창에서 기획부터 편집까지</div></div>
+<div style="position:absolute;left:40px;top:112px;font-size:19px;font-weight:800;color:var(--teal)">🎬 숏폼 봇 — 컴앱웹 없이, 채팅창으로 파일을 주고받습니다</div><div style="position:absolute;left:40px;top:146px;width:1200px;height:118px;box-sizing:border-box;background:var(--teal);color:#fff;border-radius:16px;padding:14px 26px"><div style="font-size:26px;font-weight:800">INS · 숏폼 제작 순서 <span style="font-size:18px;font-weight:600;opacity:.85">— 워크플로우가 담긴 업무 지침</span></div><div style="margin-top:12px;display:flex;align-items:center;white-space:nowrap"><span style="background:rgba(255,255,255,.2);border-radius:10px;padding:7px 10px;font-size:18px;font-weight:700">① 기획 상담</span><span style="margin:0 6px;font-size:22px">→</span><span style="background:rgba(255,255,255,.2);border-radius:10px;padding:7px 10px;font-size:18px;font-weight:700">② 프롬프트 받기</span><span style="margin:0 6px;font-size:22px">→</span><span style="background:rgba(255,255,255,.2);border-radius:10px;padding:7px 10px;font-size:18px;font-weight:700">③ 웹에서 생성</span><span style="margin:0 6px;font-size:22px">→</span><span style="background:rgba(255,255,255,.2);border-radius:10px;padding:7px 10px;font-size:18px;font-weight:700">④ 결과물 올리기</span><span style="margin:0 6px;font-size:22px">→</span><span style="background:rgba(255,255,255,.2);border-radius:10px;padding:7px 10px;font-size:18px;font-weight:700">⑤ FFmpeg 편집</span></div></div><svg style="position:absolute;left:0;top:0;width:1280px;height:400px;pointer-events:none" viewBox="0 0 1280 400"><path d="M640,264 C640,330 260,320 260,386" fill="none" stroke="var(--orange)" stroke-width="4"/><polygon points="260,394 252,380 268,380" fill="var(--orange)"/><path d="M640,264 C640,330 640,320 640,386" fill="none" stroke="var(--orange)" stroke-width="4"/><polygon points="640,394 632,380 648,380" fill="var(--orange)"/><path d="M640,264 C640,330 1020,320 1020,386" fill="none" stroke="var(--orange)" stroke-width="4"/><polygon points="1020,394 1012,380 1028,380" fill="var(--orange)"/></svg><div style="position:absolute;left:80px;top:398px;width:360px;height:158px;box-sizing:border-box;background:#fff;border:2px solid var(--orange);border-top:8px solid var(--orange);border-radius:14px;padding:12px 16px"><div style="font-size:22px;font-weight:800">기획 규칙 KB</div><div style="font-size:18px;margin-top:8px;line-height:1.5">비유 · 은유 사용<br>첫 3초 후킹<br>감정 건드리기 · 스토리</div></div><div style="position:absolute;left:460px;top:398px;width:360px;height:158px;box-sizing:border-box;background:#fff;border:2px solid var(--orange);border-top:8px solid var(--orange);border-radius:14px;padding:12px 16px"><div style="font-size:22px;font-weight:800">편집 규칙 KB</div><div style="font-size:18px;margin-top:8px;line-height:1.5">컷 길이 · 자막 크기<br>음악은 나레이션보다 작게<br>구성안 기준으로 편집</div></div><div style="position:absolute;left:840px;top:398px;width:360px;height:158px;box-sizing:border-box;background:#fff;border:2px solid var(--orange);border-top:8px solid var(--orange);border-radius:14px;padding:12px 16px"><div style="font-size:22px;font-weight:800">우수 사례 KB</div><div style="font-size:18px;margin-top:8px;line-height:1.5">대가의 방식 조사<br>우리 회사 방식 추가<br>잘 된 숏폼 분석</div></div><div style="position:absolute;left:50px;top:566px;font-size:20px;font-weight:700;color:var(--orange)">▲ KB를 채울수록 기획과 편집이 대가의 방식에 가까워집니다</div>
+<div class="tk"><b>핵심</b>아직 컴앱웹 전 단계 — 만든 영상 · 나레이션 · 음악은 채팅창에 올려 줍니다</div>
+</section>
+
+<!-- 57 봇5 -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.04</div><div class="tt">봇 ⑤ 숏폼 봇 — 지침</div></div>
+<div class="pb" data-txt="b5" style="left:40px;top:112px;width:1200px;height:456px;font-size:14px;column-count:2;column-gap:40px"><span class="lb2">프로젝트 지침 칸에 붙여넣기</span><button class="cpb" onclick="cp('b5',this)">복사</button></div>
+<div class="tk"><b>핵심</b>지침은 지금 붙이고, 기획 · 편집 KB는 나중에 채워도 됩니다</div>
+</section>
+
+<!-- 58 봇5 시험 -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.04</div><div class="tt">봇 ⑤ 시험하기</div></div>
+<div class="ck" style="top:124px"><div>주제를 말하고 기획 상담하기<small>봇이 기획안 3가지를 제안합니다</small></div><div>구성안의 신별 프롬프트 받기<small>웹 도구에서 생성은 컴앱웹 단계에서</small></div><div>만든 영상 · 나레이션 · 음악을 채팅창에 올리기<small>구성안과 대조해 줍니다</small></div><div>FFmpeg로 편집된 mp4 받기</div></div>
+<div class="tk"><b>핵심</b>생성은 밖에서, 편집은 챗지피티가 — 구성안이 기준입니다</div>
+</section>
+
+<!-- 59 봇 정리 -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.04</div><div class="tt">내 봇 정리하기</div></div>
+<div class="ck" style="top:124px"><div>봇 이름 붙이기<small>예 : 우리팀 포스터 봇</small></div><div>지침을 메모장에 백업<small>봇이 사라져도 다시 만들 수 있게</small></div><div>다음 순서에서 폴더에 보관<small>컴앱웹에서 넣습니다</small></div></div>
+<div class="tk"><b>핵심</b>내 봇은 곧 내 자산입니다 — 지침과 MD는 꼭 저장해 두세요</div>
+</section>
+
+<!-- 60 Part.05 -->
+<section class="slide teal">
+<div class="cv"><div class="lb">Part.05</div><h2>컴앱웹 세팅</h2><div class="sub">컴(폴더) + 앱(ChatGPT) + 웹(각종 웹사이트)</div></div>
+</section>
+
+<!-- 61 폴더 구조 -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.05</div><div class="tt">컴 : 작업 폴더 만들기</div></div>
+<div class="dh" style="left:40px;top:118px;width:1200px;border-radius:10px">AI작업 — 바탕화면에 만드는 내 책상 폴더</div><div style="position:absolute;left:40px;top:176px;width:1200px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px"><div class="fl" style="position:static;font-size:22px">소스 · 샘플<small style="font-size:16px">엑셀 · 자료 · 참고 이미지</small></div><div class="fl" style="position:static;font-size:22px">로고<small style="font-size:16px">회사 로고</small></div><div class="fl" style="position:static;font-size:22px">캐릭터<small style="font-size:16px">다음 주에 만듭니다</small></div><div class="fl" style="position:static;font-size:22px">MD<small style="font-size:16px">디자인 규칙 · 보고서 기준</small></div><div class="fl" style="position:static;font-size:22px">봇지침<small style="font-size:16px">내 봇 지침 백업</small></div><div class="fl" style="position:static;font-size:22px">결과<small style="font-size:16px">AI가 만든 파일</small></div></div><div class="pane" style="left:40px;top:390px;width:1200px;height:130px"><h3>컴앱웹의 시작</h3><p>AI에게 “이 폴더를 보고 일해”라고 시키는 것입니다</p></div>
+<div class="tk"><b>핵심</b>폴더 구조가 곧 AI가 일하는 책상입니다</div>
+</section>
+
+<!-- 62 샘플 관리 이유 -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.05</div><div class="tt">샘플 관리가 폴더에 되어 있어야 유리한 이유</div></div>
+<div class="rows"><div class="row"><div class="l">매번 같은 샘플</div><div class="r">폴더에 있으면 봇이 매번 같은 기준을 참조합니다</div></div><div class="row"><div class="l">이름으로 찾는다</div><div class="r">파일명이 곧 검색어입니다 (포스터_미니멀_01)</div></div><div class="row"><div class="l">말로 안 되는 것</div><div class="r">그림체 · 질감 · 구도 · 자막은 캡처로 쌓아 둡니다</div></div><div class="row"><div class="l">바꾸기 쉽다</div><div class="r">샘플만 교체하면 봇 지침은 그대로 둬도 됩니다</div></div></div>
+<div class="tk"><b>핵심</b>MD가 규칙이라면, 샘플 폴더는 눈으로 보는 규칙입니다</div>
+</section>
+
+<!-- 63 샘플 규칙 · 템플릿 -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.05</div><div class="tt">샘플 폴더 만들기 · 관리 규칙</div></div>
+<div class="pane" style="left:40px;top:124px;width:590px;height:380px"><h3>샘플 폴더 구성</h3><ul><li>샘플 / 포스터 : 포스터_미니멀_01.jpg</li><li>샘플 / 카드뉴스 : 카드_표지_01.jpg</li><li>샘플 / 영상 : 영상_질감_필름_01.jpg</li><li>샘플 / 자막 : 자막_굵은노랑_01.jpg</li><li>핀터레스트 · 유튜브 화면을 캡처해 모읍니다</li></ul></div><div class="pane o" style="left:650px;top:124px;width:590px;height:380px"><h3>관리 규칙</h3><ul><li>파일명 = 종류_특징_번호</li><li>종류당 3~5장만 — 베스트만 남기기</li><li>캡처마다 한 줄 메모 : 무엇을 참고할지</li><li>MD에 “샘플을 그대로 베끼지 말 것”</li><li>빈 폴더 템플릿(zip)을 받아 시작해도 됩니다</li></ul></div>
+<div class="tk"><b>핵심</b>템플릿으로 시작하면 폴더 이름이 모두 같아서 봇이 헷갈리지 않습니다</div>
+</section>
+
+<!-- 64 폴더 실습 -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.05</div><div class="tt">폴더 만들고 채우기</div></div>
+<div class="ck" style="top:124px"><div>바탕화면에 ‘AI작업’ 폴더 만들기<small>템플릿(zip)을 풀거나, 소스 · 샘플 · 로고 · 캐릭터 · MD · 봇지침 · 결과 폴더를 직접 만듭니다</small></div><div>로고 파일 넣기<small>로고 폴더에</small></div><div>내 디자인 MD · 봇 지침 저장해 넣기<small>MD · 봇지침 폴더에</small></div></div>
+<div class="tk"><b>핵심</b>폴더에 넣는 것까지가 세팅입니다 — 이제 AI가 볼 수 있습니다</div>
+</section>
+
+<!-- 65 앱 -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.05</div><div class="tt">앱 : ChatGPT 데스크톱 앱에서 폴더 열기</div></div>
+<div class="st3 "><div class="c"><div class="n">1</div><h3>앱 열기</h3><p>ChatGPT 데스크톱 앱을 실행하고 로그인합니다</p></div><div class="c"><div class="n">2</div><h3>폴더 연결</h3><p>AI작업 폴더를 열어 작업 위치로 지정합니다</p></div><div class="c"><div class="n">3</div><h3>시험</h3><p>“이 폴더 안 파일 목록을 알려줘”라고 말해 봅니다</p></div></div>
+<div class="tk"><b>핵심</b>목록이 보이면 연결 성공 — AI가 내 폴더를 볼 수 있습니다</div>
+</section>
+
+<!-- 66 Part.06 -->
+<section class="slide teal">
+<div class="cv"><div class="lb">Part.06</div><h2>PPT 만들기<br>1~6단계 + 애드인</h2><div class="sub">같은 원본 PPT를 단계마다 다시 입혀 봅니다</div></div>
+</section>
+
+<!-- 67 PPT 대세 -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.06</div><div class="tt">요즘 대세 : HTML로 먼저, PPT · PDF는 나중에</div></div>
+<div class="st3 "><div class="c"><div class="n">1</div><h3>HTML로 먼저 만든다</h3><p>AI에게 말로 시키면 웹 페이지(HTML)로 바로 완성합니다</p></div><div class="c"><div class="n">2</div><h3>말로 고친다</h3><p>수정도 말로, 링크 하나로 바로 공유합니다</p></div><div class="c"><div class="n">3</div><h3>필요할 때 내려받기</h3><p>회의나 제출용이 필요하면 PPT 또는 PDF로 변환합니다</p></div></div><div class="pane o" style="left:40px;top:380px;width:1200px;height:150px"><h3>이 교안도 HTML입니다</h3><p>지금 보시는 이 슬라이드도 HTML로 만들었습니다. 이어지는 PPT 실습은 ‘PPT 파일이 꼭 필요할 때’의 방법입니다.</p></div>
+<div class="tk"><b>핵심</b>PPT가 꼭 필요한지 먼저 물어보세요 — 화면 공유용이면 HTML로 충분합니다</div>
+</section>
+
+<!-- 68 PPT 지도 -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.06</div><div class="tt">같은 원본, 단계마다 다시 입힙니다</div></div>
+<table class="tb sm" style="top:112px"><tr><th>단계</th><th>PPT에서는</th><th>도구</th></tr><tr><td>1 말로</td><td class="k">디자인 없는 원본 2장 만들기</td><td>ChatGPT</td></tr><tr><td>2 샘플</td><td class="k">핀터레스트 캡처를 주고 디자인 입히기</td><td>ChatGPT</td></tr><tr><td>3 프롬프팅</td><td class="k">원하는 디자인을 말로 → AI가 지시문 대필</td><td>ChatGPT</td></tr><tr><td>4 MD</td><td class="k">외부 디자인 MD를 받아 입히기</td><td>ChatGPT</td></tr><tr><td>5 봇 · 스킬</td><td class="k">내 디자인 MD를 프로젝트에 고정</td><td>ChatGPT 프로젝트</td></tr><tr><td>6 자동화</td><td class="k">폴더의 보고서가 PPT로 (마지막 시연)</td><td>컴앱웹</td></tr></table>
+<div class="tk"><b>핵심</b>내용은 그대로, 디자인만 바뀝니다 — 마지막에 파워포인트 애드인으로 부분 수정까지</div>
+</section>
+
+<!-- 69 PPT 1단계 [재사용:법무부 3차수 2차] -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.06</div><div class="tt">1단계 · 디자인 없는 원본 만들기</div></div>
+<div class="pb" data-txt="pp1" style="left:40px;top:124px;width:780px;height:200px"><span class="lb2">ChatGPT에 붙여넣기</span><button class="cpb" onclick="cp('pp1',this)">복사</button></div><div class="pane" style="left:850px;top:124px;width:390px;height:200px"><h3>꼭 해 두세요</h3><p>결과를 ‘원본.pptx’로 저장 — 이후 계속 이 원본을 씁니다</p></div><div class="pane o" style="left:40px;top:350px;width:1200px;height:150px"><h3>왜 디자인을 빼나요?</h3><p>처음부터 꾸미면 단계별 차이가 안 보입니다. 글만 있는 원본이 비교의 기준입니다.</p></div>
+<div class="tk"><b>핵심</b>원본 2장이 이번 파트의 출발점입니다</div>
+</section>
+
+<!-- 70 PPT 2단계 [재사용] -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.06</div><div class="tt">2단계 · 샘플 — 핀터레스트에서 캡처해 입히기</div></div>
+<div class="pb" data-txt="pp2" style="left:40px;top:124px;width:780px;height:200px"><span class="lb2">ChatGPT에 붙여넣기 + 샘플 이미지 첨부</span><button class="cpb" onclick="cp('pp2',this)">복사</button></div><div class="pane" style="left:850px;top:124px;width:390px;height:200px"><h3>샘플 구하기</h3><p>핀터레스트 · 미리캔버스에서 마음에 드는 PPT 한 장 캡처</p></div><div class="pane o" style="left:40px;top:350px;width:1200px;height:150px"><h3>센스를 갖기보다 센스를 많이 알기</h3><p>보여 주면 쉽게 합니다 — 샘플은 폴더(샘플/PPT)에 쌓아 두세요.</p></div>
+<div class="tk"><b>핵심</b>샘플 한 장이면 분위기가 모입니다</div>
+</section>
+
+<!-- 71 PPT 3단계 -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.06</div><div class="tt">3단계 · 프롬프팅 — 디자인을 말로, 지시문은 AI가</div></div>
+<div class="pb" data-txt="pp3" style="left:40px;top:124px;width:590px;height:260px;font-size:19px"><span class="lb2">① 디자인 지시문 받기</span><button class="cpb" onclick="cp('pp3',this)">복사</button></div><div class="pb" data-txt="pp3b" style="left:650px;top:124px;width:590px;height:260px;font-size:19px"><span class="lb2">② 받은 지시문으로 적용</span><button class="cpb" onclick="cp('pp3b',this)">복사</button></div><div class="pane o" style="left:40px;top:410px;width:1200px;height:110px"><h3>포인트</h3><p>디자인을 말로 설명하면 AI가 정확한 지시문으로 바꿔 줍니다 (대필)</p></div>
+<div class="tk"><b>핵심</b>말 → 지시문(대필) → 적용, 두 번에 나눠 합니다</div>
+</section>
+
+<!-- 72 PPT 4단계 [재사용] -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.06</div><div class="tt">4단계 · MD — 외부 디자인 MD 받아 입히기</div></div>
+<div class="pane" style="left:40px;top:124px;width:590px;height:230px"><h3>디자인 MD 구하는 곳</h3><ul><li>브랜드 디자인 MD 모음 : github.com/VoltAgent/awesome-design-md</li><li>디자인 MD 전문 사이트 : styles.refero.design</li><li>마음에 드는 MD 파일 하나 다운로드</li></ul></div><div class="pane o" style="left:40px;top:380px;width:590px;height:150px"><h3>디자인 MD란?</h3><p>색 · 글꼴 · 톤 · 구성 규칙을 적은 문서 = AI에게 주는 ‘옷장’</p></div><div class="pb" data-txt="pp4" style="left:650px;top:124px;width:590px;height:406px;font-size:21px"><span class="lb2">ChatGPT에 붙여넣기 + 디자인 MD 첨부</span><button class="cpb" onclick="cp('pp4',this)">복사</button></div>
+<div class="tk"><b>핵심</b>MD 파일 하나만 바꿔 끼우면 완전히 다른 모습이 됩니다</div>
+</section>
+
+<!-- 73 PPT 비교 -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.06</div><div class="tt">같은 원본, 네 가지 옷</div></div>
+<div class="ck" style="top:124px"><div>1단계<small>디자인 없음 — 글만 나열</small></div><div>2단계 샘플<small>샘플의 분위기는 따라오지만 색 · 글꼴은 제멋대로</small></div><div>3단계 프롬프팅<small>내가 말한 규칙은 따라오지만 매번 설명해야 함</small></div><div>4단계 MD<small>규칙이 문서에 있어 결과가 일정하고 재사용 가능</small></div></div>
+<div class="tk"><b>핵심</b>옆 사람과 4가지 결과를 나란히 비교해 보세요</div>
+</section>
+
+<!-- 74 PPT 5단계① -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.06</div><div class="tt">5단계 · 디자인 MD를 프로젝트에 고정</div></div>
+<div class="pb" data-txt="pp5" style="left:40px;top:124px;width:590px;height:420px;font-size:19px"><span class="lb2">프로젝트 지침 칸에 붙여넣기</span><button class="cpb" onclick="cp('pp5',this)">복사</button></div><div class="pane" style="left:650px;top:124px;width:590px;height:420px"><h3>만드는 순서</h3><ul><li>① ‘PPT 봇’ 프로젝트를 새로 만듭니다</li><li>② 파일 칸에 디자인 MD를 넣습니다</li><li>③ 지침 칸에 왼쪽 지침을 붙입니다</li><li>④ 보고서 내용만 주면 같은 디자인으로 나옵니다</li></ul></div>
+<div class="tk"><b>핵심</b>한 번 고정하면 보고서 내용만 주면 같은 디자인으로 나옵니다</div>
+</section>
+
+<!-- 75 PPT 5단계② [재사용] -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.06</div><div class="tt">5단계 · 내 디자인 MD는 이렇게 만듭니다</div></div>
+<div class="ck" style="top:124px"><div>① 샘플 분석<small>“첨부한 PPT의 디자인 특징을 총 분석해줘” (우리 회사 교안 샘플 등)</small></div><div>② 우선순위 · 약어화<small>“난 가독성이 중요해. 중요한 순서로 나열하고 약어로 정리해줘”</small></div><div>③ MD 파일로 만들기<small>“위 내용을 md 파일로 만들어줘”</small></div><div>④ 프로젝트에 넣기<small>우리회사_디자인.md로 저장해 폴더 · 프로젝트에 보관</small></div></div>
+<div class="tk"><b>핵심</b>MD도 AI에게 써달라고 하면 됩니다 — 사람은 우선순위만 정합니다</div>
+</section>
+
+<!-- 76 PPT 6단계 -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.06</div><div class="tt">6단계 · 자동화 — 폴더에서 PPT까지</div></div>
+<div class="pane" style="left:40px;top:124px;width:1200px;height:200px"><h3>컴앱웹이 하면</h3><ul><li>컴 : 폴더의 보고서와 디자인 MD를 읽습니다</li><li>앱 : ChatGPT가 PPT를 만듭니다</li><li>컴 : 결과 폴더에 .pptx로 저장합니다</li></ul></div><div class="fl" style="left:40px;top:360px;width:252px;height:130px;text-align:center;font-size:26px;display:flex;flex-direction:column;justify-content:center">컴 · 소스<small>보고서 · 자료</small></div><div class="fl" style="left:356px;top:360px;width:252px;height:130px;text-align:center;font-size:26px;display:flex;flex-direction:column;justify-content:center">컴 · MD<small>우리회사_디자인.md</small></div><div class="fl" style="left:672px;top:360px;width:252px;height:130px;text-align:center;font-size:26px;display:flex;flex-direction:column;justify-content:center">앱 · ChatGPT<small>PPT 제작</small></div><div class="fl" style="left:988px;top:360px;width:252px;height:130px;text-align:center;font-size:26px;display:flex;flex-direction:column;justify-content:center;background:var(--mint)">컴 · 결과<small>pptx 저장</small></div><div class="arr" style="left:306px;top:396px">›</div><div class="arr" style="left:622px;top:396px">›</div><div class="arr" style="left:938px;top:396px">›</div>
+<div class="tk"><b>핵심</b>마지막 시연에서 이 방식으로 PPT가 만들어집니다</div>
+</section>
+
+<!-- 77 PPT 애드인① [재사용:법무부 3차수 2차] -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.06</div><div class="tt">애드인 · 파워포인트 안에 ChatGPT 달기</div></div>
+<div class="st3 "><div class="c"><div class="n">1</div><h3>설치</h3><p>파워포인트 → 홈 → 추가 기능에서 ChatGPT를 검색해 추가</p></div><div class="c"><div class="n">2</div><h3>로그인</h3><p>ChatGPT 계정으로 로그인합니다</p></div><div class="c"><div class="n">3</div><h3>지시</h3><p>열린 작업창에서 슬라이드를 보며 말로 지시</p></div></div><div class="pane o" style="left:40px;top:380px;width:1200px;height:150px"><h3>언제 쓰나요?</h3><p>복잡하고 세밀한 수정 · 톤 맞추기에 좋습니다. 처음 초안은 채팅으로, 다듬기는 애드인으로.</p></div>
+<div class="tk"><b>핵심</b>파워포인트를 벗어나지 않고 그 자리에서 고칩니다</div>
+</section>
+
+<!-- 78 PPT 애드인② -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.06</div><div class="tt">애드인 실습 · 슬라이드 한 장만 고치기</div></div>
+<div class="pb" data-txt="pp6" style="left:40px;top:124px;width:780px;height:220px"><span class="lb2">애드인 작업창에 입력</span><button class="cpb" onclick="cp('pp6',this)">복사</button></div><div class="pane" style="left:850px;top:124px;width:390px;height:220px"><h3>방법</h3><p>슬라이드(또는 개체)를 선택하고 지시하면 그 부분만 바뀝니다</p></div><div class="pane o" style="left:40px;top:370px;width:1200px;height:150px"><h3>⚠️ 베타 기능</h3><p>결과를 꼭 확인하고, 작업 전에 파일을 복사해 두세요.</p></div>
+<div class="tk"><b>핵심</b>선택한 곳만 바꿔 달라고 말하는 것이 요령입니다</div>
+</section>
+
+<!-- 79 PPT 요령 [재사용] -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.06</div><div class="tt">PPT 잘 만드는 3가지 요령</div></div>
+<div class="ck" style="top:124px"><div>샘플 3~5장을 먼저 제대로<small>그 장표들이 곧 디자인 규칙서가 되어 나머지가 같은 기준으로 정렬됩니다</small></div><div>소소한 오류는 직접<small>위치 몇 px을 스무 번 요청하느니 5분 직접 고치는 편이 빠릅니다</small></div><div>내용 먼저, 디자인은 나중에<small>구성안을 확정한 뒤에 옷을 갈아입힙니다</small></div></div>
+<div class="tk"><b>핵심</b>맡길 일과 내가 할 일의 경계를 먼저 정하세요</div>
+</section>
+
+<!-- 80 Part.07 -->
+<section class="slide teal">
+<div class="cv"><div class="lb">Part.07</div><h2>마지막 시연</h2><div class="sub">컴 · 앱 · 웹이 한꺼번에 움직입니다</div></div>
+</section>
+
+<!-- 81 마지막 시연 준비 -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.07</div><div class="tt">마지막 시연 — 준비 : 폴더와 소스</div></div>
+<div class="pane" style="left:40px;top:124px;width:590px;height:400px"><h3>AI작업 폴더 구조</h3><ul><li>소스 : 시연 중 집계 엑셀 · 교안 PDF가 쌓임</li><li>사진 : 강의 사진 (미리 넣어 둠)</li><li>로고 : 회사 로고 (미리 넣어 둠)</li><li>디자인예시 : 참고 디자인 (미리 넣어 둠)</li><li>결과 : PPT · HTML · 영상이 저장됨</li></ul></div><div class="pane o" style="left:650px;top:124px;width:590px;height:400px"><h3>시연에서 일어날 일</h3><ul><li>앱이 캘린더에서 하반기 강의 횟수를 센다</li><li>앱이 Gmail에서 최신 교안 PDF를 내려받는다</li><li>앱이 PPT · HTML을 만든다</li><li>웹(Firefly · 일레븐랩스)에서 영상 · 나레이션 · 노래를 만들고, FFmpeg로 편집한다</li><li>모든 파일이 폴더에 정리된다</li></ul></div>
+<div class="tk"><b>핵심</b>사진 · 로고 · 디자인 예시는 미리 폴더에 넣어 둡니다 — 나머지는 시연 중에 쌓입니다</div>
+</section>
+
+<!-- 82 마지막 시연1 -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.07</div><div class="tt">마지막 시연 ① 캘린더와 메일에서 모으기</div></div>
+<div class="pb" data-txt="d1" style="left:40px;top:124px;width:1200px;height:200px;font-size:21px"><span class="lb2">한 줄 지시 ①</span></div><div class="fl" style="left:40px;top:360px;width:252px;height:130px;text-align:center;font-size:26px;display:flex;flex-direction:column;justify-content:center">앱 · 캘린더<small>하반기 강의 일정 찾기</small></div><div class="fl" style="left:356px;top:360px;width:252px;height:130px;text-align:center;font-size:26px;display:flex;flex-direction:column;justify-content:center">앱 · 집계<small>횟수 · 종류 정리 → 엑셀</small></div><div class="fl" style="left:672px;top:360px;width:252px;height:130px;text-align:center;font-size:26px;display:flex;flex-direction:column;justify-content:center">앱 · Gmail<small>최신 교안 PDF 찾기</small></div><div class="fl" style="left:988px;top:360px;width:252px;height:130px;text-align:center;font-size:26px;display:flex;flex-direction:column;justify-content:center;background:var(--mint)">컴 · 소스 폴더<small>엑셀 + PDF 저장</small></div><div class="arr" style="left:306px;top:396px">›</div><div class="arr" style="left:622px;top:396px">›</div><div class="arr" style="left:938px;top:396px">›</div>
+<div class="tk"><b>핵심</b>횟수는 캘린더에서, 교안은 메일에서 — 모은 소스는 ‘소스’ 폴더에 쌓입니다</div>
+</section>
+
+<!-- 83 마지막 시연2 -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.07</div><div class="tt">마지막 시연 ② 만들고 정리하기</div></div>
+<div class="pb" data-txt="d2" style="left:40px;top:110px;width:1200px;height:232px;font-size:19px"><span class="lb2">한 줄 지시 ②</span></div><div class="fl" style="left:40px;top:360px;width:252px;height:130px;text-align:center;font-size:26px;display:flex;flex-direction:column;justify-content:center">앱 · 제작<small>PPT · HTML 만들기</small></div><div class="fl" style="left:356px;top:360px;width:252px;height:130px;text-align:center;font-size:26px;display:flex;flex-direction:column;justify-content:center">컴 · 참고<small>사진 · 로고 · 디자인 예시</small></div><div class="fl" style="left:672px;top:360px;width:252px;height:130px;text-align:center;font-size:26px;display:flex;flex-direction:column;justify-content:center">웹 · Firefly · 일레븐랩스<small>영상 · 나레이션 · 노래</small></div><div class="fl" style="left:988px;top:360px;width:252px;height:130px;text-align:center;font-size:26px;display:flex;flex-direction:column;justify-content:center;background:var(--mint)">컴 · FFmpeg → 결과<small>20초로 편집 · 저장</small></div><div class="arr" style="left:306px;top:396px">›</div><div class="arr" style="left:622px;top:396px">›</div><div class="arr" style="left:938px;top:396px">›</div>
+<div class="tk"><b>핵심</b>컴 · 앱 · 웹을 오가며 만들고, 결과는 폴더에 정리됩니다</div>
+</section>
+
+<!-- 84 시연 해설2 -->
+<section class="slide">
+<div class="hd"><div class="bd">PT.07</div><div class="tt">시연 해설 — 무슨 일이 일어났을까?</div></div>
+<div class="rows"><div class="row"><div class="l">컴이 한 일</div><div class="r">폴더를 만들어 소스를 보관하고, FFmpeg로 20초 숏폼으로 편집했다</div></div><div class="row"><div class="l">앱이 한 일</div><div class="r">캘린더 · 메일을 뒤져 집계하고, PPT · HTML을 만들었다</div></div><div class="row"><div class="l">웹이 한 일</div><div class="r">Firefly에서 영상 클립을, 일레븐랩스에서 나레이션 · 노래를 만들었다</div></div><div class="row"><div class="l">결과</div><div class="r">모든 소스와 결과물이 폴더에 정리됐다</div></div></div>
+<div class="tk"><b>핵심</b>오늘 만든 폴더 · 봇 · MD가 이 시연의 재료입니다</div>
+</section>
+
+<!-- 85 마무리 -->
+<section class="slide teal">
+<div class="cv"><div class="lb">오늘 정리</div><h2>① 아무말(1단계)과 MD(4단계)는 결과가 다르다<br>② PE7로 쓰고 INS + KB로 봇이 된다<br>③ 컴앱웹으로 폴더 · 앱 · 웹을 묶는다</h2><div class="sub">Thank you</div></div>
+</section>
+
+<div class="bar" id="bar"></div><div class="num" id="num"></div>
+</div>
+<script>
+window.CFG={org:'SBA',session:'1주차',date:'11/7(토)'};
+window.TXT={"p1": "우리 회사를 알리는 홍보 포스터 만들어줘. 세로형이야.", "p2": "우리 회사를 알리는 홍보 포스터 만들어줘. 세로형이야.\n첨부한 샘플 포스터의 분위기와 구도를 참고해줘. 샘플을 그대로 베끼지는 마.", "i1": "내가 포스터 만들 때 하는 순서는 대강 이래.\n주제 확인 → 색 · 분위기 고르기 → 이미지 만들기 → 금지 사항 점검\n이 순서를 AI가 따라 할 수 있게 INS(업무 지침) 형식의 MD 파일로 다듬어줘.", "k1": "포스터 디자인 대가들이 쓰는 색 · 구도 · 글씨 배치 원칙을 조사해줘.\n출처를 붙이고, 항목별로 나눠 KB용 MD 파일로 체계적으로 정리해줘.\n우리 회사 포스터 규칙도 같은 형식으로 추가할 수 있게 해줘.", "r1": "숏폼 영상 제작에 쓰는 AI 도구 동향을 조사해줘.", "g1": "우리 팀 업무 개선 추진 계획 보고서 초안을 써줘.", "pe7": "[PE1 역할] 너는 기업·기관 기획 보고서를 20년 써 온 기획 전문가야.\n[PE2 대상] 나는 ___ 팀 담당자고, 읽는 사람은 ___(팀장 · 임원)이야.\n[PE3 목표] 우리 팀 업무 개선 추진 계획 보고서 초안을 쓰려고 해.\n[PE4 절차] 먼저 현황과 문제를 정리하고, 그다음 개선안 3가지를 제안하고, 마지막에 일정과 기대 효과를 써줘.\n[PE5 샘플] 목차는 이 순서로 해줘 : 1. 추진 배경 2. 현황 · 문제점 3. 개선 방안 4. 추진 일정 5. 기대 효과\n[PE6 자료] 아래 정보 안에서만 써줘. 없는 수치는 만들지 말고 ‘확인 필요’로 표시해줘 : ___\n[PE7 형식] A4 1장 분량, 개조식으로 써줘. 표는 추진 일정에만 써줘.", "md": "# 우리 회사 디자인 규칙\n- 회사명 : ___\n- 메인색 : ___ (모르면 로고 색)\n- 포인트색 : ___\n- 분위기 : ___ (예 : 깔끔한, 따뜻한)\n- 구성 : ___ (예 : 여백 넉넉, 중앙 정렬)\n- 금지 : ___ (예 : 글씨 넣기, 과한 장식)", "c1": "첨부한 ‘우리회사_디자인.md’ 규칙에 맞는 세로형 포스터 이미지를 만들 Firefly용 영문 프롬프트를 써줘.\n주제 : [주제 한 줄]\n글씨는 넣지 않는 이미지야.", "d1": "AI작업 폴더를 기준으로 일해.\n1) 캘린더에서 올해 하반기 강의 일정을 모두 찾아 횟수를 세고, 종류별(기관 · 기업 · 기타)로 정리해서 엑셀로 ‘소스’ 폴더에 저장해.\n2) Gmail에서 가장 최신 강의 교안 PDF를 찾아 ‘소스’ 폴더에 내려받아.", "d2": "‘소스’의 집계 엑셀과 교안 PDF 일부를 활용해 ‘멘피디의 하반기 강의 활동 내역’ PPT와 HTML을 만들어.\n그다음 ‘사진’ · ‘로고’ · ‘디자인예시’를 참고해 Firefly로 영상 클립을, 일레븐랩스로 나레이션과 노래(음악)를 만들고, FFmpeg로 컷 편집 · 자막 · 음악을 넣어 20초 숏폼으로 완성해. 주제 : 멘피디 올해 후반기도 열심히 살았네요. 내년엔 더 열심히 달려보겠습니다. 강의 문의 많이 주세요!\n모든 결과는 ‘결과’ 폴더에 저장해.", "b1": "너는 ‘프롬프트 대필 봇’이야.\n사용자가 대충 쓴 요청을 PE7 기준으로 완성도 높은 프롬프트로 바꿔 쓴다.\n\n[PE7 기준]\nPE1 역할: 그 일에 맞는 전문가 역할을 한 줄로 정한다\nPE2 대상: 사용자의 직무·상황, 결과를 읽을 사람\nPE3 목표: 하려는 일을 한 문장으로\nPE4 절차: 작업 순서를 2~4단계로\nPE5 샘플: 샘플이 있으면 “첨부한 샘플을 참고”, 없으면 [샘플 첨부 시 더 정확]\nPE6 자료: 써도 되는 정보의 범위. 모르면 [채워주세요]\nPE7 형식: 결과물의 형태·분량·톤\n\n[작동 방식]\n1. 질문하지 말고 바로 쓴다\n2. 요청에서 알 수 없는 것은 지어내지 말고 [채워주세요]로 남긴다\n3. 한국어로, 복사해서 바로 쓸 수 있는 프롬프트 하나만 출력한다 (인사말·설명 없이)\n\n[출력 형식]\n[PE1 역할] …\n[PE2 대상] …\n[PE3 목표] …\n[PE4 절차] …\n[PE5 샘플] …\n[PE6 자료] …\n[PE7 형식] …\n\n[예시]\n입력: 신제품 홍보 포스터 문구 좀\n출력: [PE1 역할] 너는 15년 경력의 카피라이터야. [PE2 대상] 나는 [채워주세요] 담당자고, 읽는 사람은 [채워주세요]야. [PE3 목표] 신제품 홍보 포스터 문구를 만들려고 해. …\n\n[KB 사용]\n파일 칸에 ‘프롬프트-대가.md’(좋은 프롬프트 사례, 분야별 PE7 예시)가 있으면 먼저 읽고, 그 사례의 구체성과 문체 수준을 따른다. 없으면 위 PE7 기준만으로 쓴다.", "b2": "너는 ‘리서치 봇’이야.\n사용자가 준 주제를 조사해 업무에 바로 쓸 수 있게 정리한다.\n\n[작동 방식]\n1. 주제가 넓어도 되묻지 말고, 가장 흔한 해석으로 먼저 정리한다\n2. 확인된 사실과 추정·의견을 반드시 구분한다\n3. 출처가 있는 정보는 기관명이나 링크를 함께 적는다\n4. 출처를 찾지 못한 수치·사례는 지어내지 말고 [확인 필요]로 표시한다\n5. 최신 정보가 필요한 주제는 검색해서 확인한다\n\n[출력 형식]\n## 핵심 요약 (5줄)\n## 확인된 사실 (출처 포함)\n## 추정·의견 (사실과 구분)\n## 더 조사할 질문 3개\n## 바로 쓸 수 있는 활용 제안 1가지\n\n[말투]\n개조식, 존댓말, 한 문장은 짧게\n\n[KB 사용]\n파일 칸에 ‘리서치-대가.md’가 있으면 먼저 읽고, 그 안의 검색 방식·출처 등급·검증 기준·결과 양식을 위 작동 방식보다 우선해 따른다. 없으면 위 작동 방식대로 한다.", "b3": "너는 ‘보고서 봇’이야.\n파일 칸의 ‘보고서-기준.md’를 먼저 읽고, 그 기준대로 보고서 초안을 쓴다.\n\n[작동 방식]\n1. 사용자가 준 정보만 근거로 쓴다. 없는 내용은 지어내지 않는다\n2. 근거 없는 수치·날짜·고유명사는 [확인 필요]로 표시한다\n3. 정보가 부족해도 멈추지 말고, [확인 필요]를 남기고 끝까지 쓴다\n4. 기준 문서와 사용자의 요청이 충돌하면 기준 문서를 우선한다\n\n[문체]\n- 개조식(명사형 종결), 한 문장은 한 줄 이내\n- 제목은 결론부터 쓴다\n\n[출력 형식]\n제목\n1. 추진 배경\n2. 주요 내용\n3. 기대 효과\n4. 향후 계획\n\n[마무리]\n맨 끝에 ‘확인 필요 항목’을 목록으로 모아 준다\n\n[우수사례 사용]\n파일 칸에 우수사례 보고서가 있으면 구조와 표현 수준만 참고하고, 내용은 그대로 베끼지 않는다.", "b4": "너는 ‘포스터 봇’이야.\n사용자가 주제 한 줄을 주면, 파일 칸의 ‘우리회사_디자인.md’ 규칙대로 세로형 포스터 이미지를 만든다.\n\n[작동 방식]\n1. 먼저 콘셉트 3가지를 한 줄씩 제안하고, 사용자가 고르면 이미지를 생성한다\n2. 사용자가 “알아서”라고 하면 1번 콘셉트로 진행한다\n3. 디자인 MD의 색·분위기·구성·금지 규칙을 모두 지킨다. 충돌하면 디자인 MD를 우선한다\n4. 이미지에는 글씨를 넣지 않는다 (글씨를 넣을 수 있게 여백을 남긴다)\n5. 비율은 4:5 세로, 한 번에 이미지 1장\n\n[콘셉트 제안 형식]\n① 콘셉트 한 줄 / 느낌\n② 콘셉트 한 줄 / 느낌\n③ 콘셉트 한 줄 / 느낌\n\n[수정 요청 시]\n바뀐 부분만 설명하고, 나머지는 그대로 유지한다\n\n[샘플·로고 사용]\n파일 칸에 샘플 포스터가 있으면 구도와 분위기만 참고하고 그대로 베끼지 않는다. 로고 파일이 있으면 디자인 MD의 로고 규칙대로 위치와 크기를 지킨다.", "b5": "너는 ‘숏폼 봇’이야.\n사용자와 상담해 숏폼 영상을 기획하고, 신별 생성 프롬프트를 주고, 사용자가 생성해 온 영상·나레이션·음악을 받아 FFmpeg로 편집한다.\n\n[작동 순서]\n1. 기획 상담: 주제·대상·길이(20~30초)를 질문 3개 이내로 묻고, 기획안 3가지를 한 줄씩 제안한다. 사용자가 고르면 확정한다\n2. 구성안: 신(장면) 4~5개로 나눠 표로 정리한다. 신마다 [화면 / 나레이션 / 자막 / 길이]를 적는다\n3. 프롬프트 전달: 신마다 영상 생성 프롬프트, 나레이션 대본, 음악 분위기 키워드를 그 신 하나로 복사해 쓸 수 있는 완결형으로 준다 (공통 블록으로 분리하지 않는다)\n4. 생성 대기: 사용자가 외부 웹 도구에서 생성해 올 때까지 기다린다. 새 개념을 설명하지 않는다\n5. 결과물 받기: 사용자가 채팅창에 영상 클립, 나레이션, 음악 파일을 올리면 구성안과 대조해 빠진 것이 없는지 확인한다\n6. FFmpeg 편집: 구성안 기준으로 컷 편집, 이어 붙이기, 자막 넣기, 나레이션·음악 믹싱을 실행하고 최종 mp4 파일을 준다\n7. 수정: 사용자가 요청한 신만 고쳐 다시 편집한다\n\n[KB 사용]\n파일 칸에 ‘숏폼-기획-규칙.md’와 ‘숏폼-편집-규칙.md’가 있으면 먼저 읽고 그대로 따른다.\n기획 규칙: 비유·은유 사용, 첫 3초 후킹, 감정 건드리기, 스토리 구조 활용\n편집 규칙: 컷 길이, 자막 크기·위치, 음악은 나레이션보다 작게, 마지막 신 마무리\n파일이 없으면 위 순서만 지키고, 규칙은 일반 원칙으로 적용한다.\n\n[금지]\n구성안에 없는 장면 추가 금지\n출처 없는 음원 사용 금지\n사용자가 올리지 않은 파일을 만든 것처럼 말하기 금지\n\n[말투]\n존댓말, 짧게, 한 번에 한 단계만 안내", "pp1": "방금 쓴 ‘우리 팀 업무 개선 추진 계획 보고서’ 내용을 PPT 2장(표지 + 핵심 요약)으로 만들어줘.\n디자인은 넣지 말고 글만 단순하게 나열해서 .pptx 파일로 줘.", "pp2": "이 PPT의 디자인을 첨부한 샘플 이미지의 분위기로 바꿔줘.\n내용은 그대로 두고 색 · 글꼴 · 배치만 바꿔. 샘플을 그대로 베끼지는 마.", "pp3": "내가 원하는 PPT 디자인은 ‘차분한 공공기관 보고서 느낌, 청록색과 크림색, 깔끔한 카드형’이야.\nAI가 그대로 따라 할 수 있게 디자인 지시문(색 · 글꼴 · 여백 · 배치 규칙)으로 정리해줘.", "pp3b": "위 디자인 지시문대로 이 PPT를 다시 디자인해줘.\n내용은 그대로 두고 .pptx 파일로 줘.", "pp4": "첨부한 디자인 MD의 규칙대로 이 PPT를 다시 디자인해줘.\n내용은 그대로 두고 .pptx 파일로 줘.", "pp5": "보고서 내용을 주면 첨부된 ‘우리회사_디자인.md’ 규칙대로 PPT(.pptx)를 만들어 줘.\n먼저 슬라이드 구성을 3줄로 보여주고, 내가 OK 하면 제작해.\n내용은 바꾸지 말고 디자인만 규칙대로 적용해.", "pp6": "이 슬라이드의 문장을 절반으로 줄이고, 핵심 숫자는 크게 강조해줘.\n다른 슬라이드는 건드리지 마."};
+
+</script>
+<script src="kit/nav.js"></script>
+</body>
+</html>
