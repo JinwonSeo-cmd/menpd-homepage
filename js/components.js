@@ -462,7 +462,7 @@ async function ensureClassAccess({ classId, variantId, variant, classData }) {
         </form>
         <p class="access-expiry">${escapeHtml(access.expiryLabel || access.expiresAt)}까지 복습할 수 있습니다.</p>
       `}
-      <a class="access-home-link" href="index.html#live-class">← 홈페이지로 돌아가기</a>
+      <a class="access-home-link" href="index.html">← 홈페이지로 돌아가기</a>
     </section>
   `;
   document.querySelector(".class-nav").after(gate);
