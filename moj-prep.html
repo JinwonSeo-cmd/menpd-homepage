@@ -228,6 +228,7 @@ h3.sub{font-size:17px;font-weight:800;margin:28px 0 10px}
 .prepcopy .step{background:#FFFBEA}
 .prepcopy .go{background:var(--ink)}.prepcopy .go:hover{background:var(--accent)}
 </style>
+<style>.poster-ref{padding:4px 16px 18px;text-align:center}.poster-ref img{display:block;margin:0 auto 12px;max-width:285px;width:100%;height:auto;border-radius:10px;border:1.5px solid rgba(255,255,255,.25);background:#fff}.poster-ref .copybox-actions{justify-content:center}a.copy-btn{display:inline-flex;align-items:center;text-decoration:none}</style>
 </head>
 <body class="dusk-page prep-page">
 <div class="top">
@@ -691,7 +692,7 @@ h3.sub{font-size:17px;font-weight:800;margin:28px 0 10px}
 - 큰 글씨: 영어 한 단어만 [예: TOGETHER]
 - 세로형
 
-원본 포스터의 로고, QR코드, 기업명, 문구는 절대 넣지 마.</pre></div>
+원본 포스터의 로고, QR코드, 기업명, 문구는 절대 넣지 마.</pre><div class="poster-ref"><img src="images/moj/poster_sample.jpg" alt="샘플 포스터" width="285" height="420"><div class="copybox-actions"><button class="copy-btn" type="button" id="copy-poster-btn">이미지 복사</button><a class="copy-btn" href="images/moj/poster_sample.jpg" download="poster_sample.jpg">다운로드</a></div></div></div>
 <h3 class="sub">제미나이 · 보고서</h3>
 <div class="copybox short" id="g1-box"><div class="copybox-head"><span>📋 제미나이 보고서 ① 대충 정보만</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="g1">복사</button></div></div><pre id="g1">우리 기관 숏츠 콘텐츠 추진 계획 보고서 초안을 써줘.
 
@@ -810,6 +811,11 @@ document.querySelectorAll('[data-copy]').forEach(function(btn){
     if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(text).then(ok,fallback)}else{fallback()}
   });
 });
+(function(){var b=document.getElementById('copy-poster-btn');if(!b)return;
+b.addEventListener('click',function(){var o=b.textContent;function done(m){b.textContent=m;setTimeout(function(){b.textContent=o},1800)}
+var im=new Image();im.onload=function(){var c=document.createElement('canvas');c.width=im.naturalWidth;c.height=im.naturalHeight;c.getContext('2d').drawImage(im,0,0);
+c.toBlob(function(bl){try{navigator.clipboard.write([new ClipboardItem({'image/png':bl})]).then(function(){done('복사 완료! ✔︎')},function(){done('우클릭 → 이미지 복사')})}catch(e){done('우클릭 → 이미지 복사')}},'image/png')};
+im.onerror=function(){done('다운로드를 이용해 주세요')};im.src='images/moj/poster_sample.jpg'})})();
 </script>
 <script>
 (function(){
