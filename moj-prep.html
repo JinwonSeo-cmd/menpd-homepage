@@ -247,118 +247,25 @@ h3.sub{font-size:17px;font-weight:800;margin:28px 0 10px}
 </header>
 
 <nav class="jump" aria-label="바로가기">
-  <a href="#login"><span>01</span>로그인 확인</a>
+  <a href="#common-prep"><span>01</span>공통 준비</a>
   <a href="#prompts"><span>02</span>복사 프롬프트</a>
   <a href="#bot"><span>03</span>대필 봇 만들기</a>
   <a href="#homework"><span>04</span>설정 숙제</a>
-  <a href="#common-prep"><span>05</span>공통 준비</a>
-  <a href="#ai-prep"><span>06</span>AI 실습 준비</a>
-  <a href="#design-prep"><span>07</span>디자인 참고</a>
+  <a href="#ai-prep"><span>05</span>AI 실습 준비</a>
+  <a href="#design-prep"><span>06</span>디자인 참고</a>
 </nav>
 
 <div class="press" id="chat-room"><span class="press-ic" aria-hidden="true">💬</span><div><strong>막히면 캡처해서 단톡방에 올려 주세요</strong><p>안 되는 부분은 <b>화면을 캡처</b>해서 단톡방에 올려 주세요.</p></div></div>
 
-<section class="group" id="login"><div class="group-head"><span class="group-num">01</span><h2>수업 전 로그인 확인</h2></div>
-<p class="group-desc">크롬에서 아래 항목을 차례로 확인해 주세요.</p>
-<div class="steplist">
-<div class="step"><img class="service-logo" src="images/service-logos/chrome.svg" alt="" width="42" height="42" loading="lazy"><div class="txt"><strong>① 크롬 브라우저 구글 로그인 <span class="pill">필수</span></strong><span>크롬 오른쪽 위 프로필에서 구글 계정 로그인 상태를 확인합니다.</span></div><a class="go" href="https://accounts.google.com" target="_blank" rel="noopener">열기</a></div>
-<div class="step"><img class="service-logo" src="images/service-logos/chatgpt.png" alt="" width="42" height="42" loading="lazy"><div class="txt"><strong>② 챗지피티 <span class="pill">필수</span></strong><span>포스터 이미지 실습에 사용합니다.</span></div><a class="go" href="https://chatgpt.com" target="_blank" rel="noopener">열기</a></div>
-<div class="step"><img class="service-logo" src="images/service-logos/claude.png" alt="" width="42" height="42" loading="lazy"><div class="txt"><strong>③ 클로드 <span class="pill">필수</span></strong><span>프롬프트 대필 봇(프로젝트)을 만드는 데 사용합니다.</span></div><a class="go" href="https://claude.ai" target="_blank" rel="noopener">열기</a></div>
-<div class="step"><img class="service-logo" src="images/service-logos/claude.png" alt="" width="42" height="42" loading="lazy"><div class="txt"><strong>④ 클로드 데스크탑 다운로드 <span class="pill">필수</span></strong><span>컴퓨터에 클로드 데스크탑 앱을 설치합니다.</span></div><a class="go" href="https://claude.ai/download" target="_blank" rel="noopener">다운로드</a></div>
-<div class="step"><img class="service-logo" src="images/service-logos/gemini.png" alt="" width="42" height="42" loading="lazy"><div class="txt"><strong>⑤ 제미나이 <span class="pill">필수</span></strong><span>보고서 초안 실습에 사용합니다.</span></div><a class="go" href="https://gemini.google.com" target="_blank" rel="noopener">열기</a></div>
-</div>
-</section>
-
-<section class="group" id="prompts"><div class="group-head"><span class="group-num">02</span><h2>복사용 프롬프트</h2></div>
-<p class="group-desc">수업 순서대로 복사 버튼을 눌러 붙여넣으면 됩니다. 같은 요청이 어떻게 달라지는지 비교해 보세요.</p>
-<h3 class="sub">챗지피티 · 포스터</h3>
-<div class="copybox short" id="p1-box"><div class="copybox-head"><span>📋 포스터 ① 말로만 요청</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="p1">복사</button></div></div><pre id="p1">우리 기관 시설과 프로그램을 주민들에게 알리는 홍보 포스터를 만들어줘. 세로형이야.</pre></div><div class="copybox short" id="p2-box"><div class="copybox-head"><span>📋 포스터 ② 샘플 넣고 요청 (샘플 포스터 첨부)</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="p2">복사</button></div></div><pre id="p2">첨부한 포스터의 스타일만 참고해서 새 포스터를 만들어줘.
-(참고할 것: 인물 실루엣 안에 풍경이 겹쳐 보이는 이중노출 구성, 푸른 톤, 흰 여백이 넓은 배경)
-
-- 주제: 우리 기관 시설과 프로그램을 주민들에게 알리는 홍보
-- 인물: [예: 운동하는 주민]
-- 실루엣 안에 겹칠 풍경: [예: 우리 기관 체육관·수영장]
-- 큰 글씨: 영어 한 단어만 [예: TOGETHER]
-- 세로형
-
-원본 포스터의 로고, QR코드, 기업명, 문구는 절대 넣지 마.</pre></div>
-<h3 class="sub">제미나이 · 보고서</h3>
-<div class="copybox short" id="g1-box"><div class="copybox-head"><span>📋 제미나이 보고서 ① 대충 정보만</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="g1">복사</button></div></div><pre id="g1">우리 기관 숏츠 콘텐츠 추진 계획 보고서 초안을 써줘.
-주민들에게 우리 기관 시설과 프로그램을 알리는 내용이야.
-3월부터 6월까지 할 거야.</pre></div><div class="copybox short" id="g2-box"><div class="copybox-head"><span>📋 제미나이 보고서 ② 기준 + 정보 (※ [기준] 전문은 수업 준비자료에서 복사)</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="g2">복사</button></div></div><pre id="g2">아래 [기준]을 지켜서 [정보]로 보고서 초안을 써줘.
-
-[기준]
-(보고서 작성 기준 전문을 여기에 붙여넣기)
-
-[정보]
-- 주제: 우리 기관 숏츠 콘텐츠 추진 계획
-- 내용: 주민들에게 우리 기관 시설과 프로그램을 알리는 숏츠 제작
-- 기간: 3월부터 6월까지
-- 보고 대상: 부서장(결재)</pre></div>
-<div class="note"><b>[기준] 전문</b>은 수업 시간에 안내하는 준비자료에서 복사 버튼으로 한 번에 받습니다. 직접 타이핑하지 않습니다.</div>
-</section>
-
-<section class="group" id="bot"><div class="group-head"><span class="group-num">03</span><h2>나만의 프롬프트 대필 봇 만들기</h2></div>
-<p class="group-desc">클로드에서 <b>새 프로젝트</b>를 만들고, 아래 지침을 <b>지침 칸</b>에 붙여넣으면 끝입니다.</p>
-<div class="tri">
-<div class="tri-card"><span class="tri-num">1</span><strong>프로젝트 만들기</strong><p>클로드에 접속해 새 프로젝트를 만듭니다.</p><span class="role">5분</span></div>
-<div class="tri-card"><span class="tri-num">2</span><strong>지침 붙여넣기</strong><p>아래 지침을 복사해 지침 칸에 붙여넣습니다.</p><span class="role">3분</span></div>
-<div class="tri-card"><span class="tri-num">3</span><strong>테스트·공유</strong><p>대충 쓴 문장 3개를 넣고, 잘 나온 결과를 단톡방에 올립니다.</p><span class="role">17분</span></div>
-</div>
-<div class="copybox short" id="bot-box"><div class="copybox-head"><span>📋 프롬프트 대필 봇 지침 (클로드 프로젝트 지침 칸에 붙여넣기)</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="bot">복사</button></div></div><pre id="bot">너는 '프롬프트 대필 봇'이야. 사용자가 대충 쓴 요청을 PE7 기준으로 완성도 높은 프롬프트로 바꿔 써 준다.
-
-[PE7]
-PE1 Persona: AI에게 줄 전문가 역할 (누가)
-PE2 Identity: 읽는 사람, 또는 나의 신분 (누구에게)
-PE3 Object: 달성할 목표 (뭐 하려고) - 숫자와 기한 포함
-PE4 Procedure: 단계별 순서 (어떤 단계를 거쳐)
-PE5 Sample: 모범 예시 (마치 이것처럼)
-PE6 Ground Data: 기반 자료 (이 안에서만)
-PE7 Format: 결과물 형태 (표, 분량 등)
-
-[작동 방식]
-1. 사용자가 대충 쓴 문장을 받으면 질문하지 말고 바로 완성 프롬프트를 쓴다.
-2. 사용자가 주지 않은 내용은 지어내지 말고 [채워주세요: 설명]으로 빈칸을 남긴다.
-3. 아래 출력 형식으로 답한다.
-
-[출력 형식]
-■ 완성 프롬프트: 다른 AI에 그대로 붙여넣을 수 있는 한 덩어리 글
-■ PE7 체크: PE1~PE7을 각각 한 줄씩 ○(반영) / △(빈칸) 표시
-■ 더 좋아지려면: 추가하면 좋은 샘플·자료 1~2가지
-
-[규칙]
-- 사용자가 준 사실만 쓴다. 없는 수치·법령·사례를 만들지 않는다.
-- 쉬운 말과 존댓말을 쓴다.
-- 설명은 짧게 한다.</pre></div>
-<h3 class="sub">테스트 문장 (같은 주제로 비교)</h3>
-<div class="copybox short" id="t1-box"><div class="copybox-head"><span>📋 테스트 문장 ①</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="t1">복사</button></div></div><pre id="t1">우리 기관 숏츠 보고서 써줘</pre></div><div class="copybox short" id="t2-box"><div class="copybox-head"><span>📋 테스트 문장 ②</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="t2">복사</button></div></div><pre id="t2">숏츠 홍보 문구 써줘</pre></div><div class="copybox short" id="t3-box"><div class="copybox-head"><span>📋 테스트 문장 ③</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="t3">복사</button></div></div><pre id="t3">숏츠 기획 아이디어 줘</pre></div>
-<div class="note"><b>단톡방에 올릴 것</b> : ① 내가 입력한 대충 쓴 문장 ② 봇이 만들어 준 ‘완성 프롬프트’ ③ PE7 체크 줄(○ / △). 시간이 남으면 <b>[채워주세요]</b> 빈칸을 직접 채워 같은 봇에 다시 넣어 보세요.</div>
-</section>
-
-<section class="group" id="homework"><div class="group-head"><span class="group-num">04</span><h2>다음 주까지 설정 숙제</h2></div>
-<div class="homework"><h3>트라이 커넥트 준비 (설정만 해 오세요)</h3>
-<ul>
-<li>크롬에 <b>구글 계정 로그인</b></li>
-<li><b>클로드 인 크롬</b> 확장 프로그램 설치 · 고정 (유료 요금제 전용 · Chrome 웹 스토어에서 ‘Claude’ 검색)</li>
-<li><b>클로드 데스크톱 앱</b> 설치 후 로그인 — claude.com/download</li>
-<li>데스크톱 앱과 <b>같은 클로드 계정</b>인지 확인</li>
-<li>기관 PC는 확장 프로그램 <b>설치 가능 여부</b>를 미리 확인</li>
-</ul></div>
-<div class="steplist" style="margin-top:12px">
-<div class="step"><span class="logo-emoji" aria-hidden="true">🧩</span><div class="txt"><strong>클로드 인 크롬 안내 보기 <span class="pill free">선택</span></strong><span>설치 방법을 그림으로 확인합니다.</span></div><a class="go" href="claude-in-chrome-guide.html" target="_blank" rel="noopener">안내 보기</a></div>
-<div class="step"><span class="logo-emoji" aria-hidden="true">🖥️</span><div class="txt"><strong>클로드 데스크톱 앱 폴더 연결 안내 <span class="pill free">선택</span></strong><span>데스크톱 앱 설치 후 폴더 연결 방법입니다.</span></div><a class="go" href="claude-desktop-folder-guide.html" target="_blank" rel="noopener">안내 보기</a></div>
-</div>
-</section>
 <div class="prepcopy">
-  <!-- 공통 준비 사항 -->
   <div class="group" id="common-prep">
-    <div class="group-head"><span class="group-num">05</span><h2>공통 준비 사항</h2></div>
+    <div class="group-head"><span class="group-num">01</span><h2>공통 준비 사항</h2></div>
     <p class="group-desc">모든 강의에 공통으로 필요한 준비물입니다.</p>
 
     <div class="steplist">
       <div class="step">
         <img class="service-logo" src="images/service-logos/google.png" alt="" width="40" height="40" loading="lazy" decoding="async">
-        <div class="txt"><strong>크롬 브라우저에 구글 로그인</strong>
+        <div class="txt"><strong>크롬 브라우저에 구글 로그인 <span class="pill">필수</span></strong>
           <span>강의 실습은 크롬 기준으로 진행됩니다. 미리 구글 계정으로 로그인해두세요.</span></div>
         <a class="go" href="https://accounts.google.com" target="_blank" rel="noopener">로그인 열기 ↗</a>
       </div>
@@ -384,8 +291,8 @@ PE7 Format: 결과물 형태 (표, 분량 등)
       <div class="steplist">
         <div class="step">
           <img class="service-logo" src="images/service-logos/claude.png" alt="" width="40" height="40" loading="lazy" decoding="async">
-          <div class="txt"><strong>클로드(Claude) 로그인</strong>
-            <span>문서 작업과 긴 글 정리에 강한 AI입니다.</span></div>
+          <div class="txt"><strong>클로드(Claude) 로그인 <span class="pill">필수</span></strong>
+            <span>프롬프트 대필 봇(프로젝트)을 만드는 데 사용합니다.</span></div>
           <a class="go" href="https://claude.ai" target="_blank" rel="noopener">로그인 열기 ↗</a>
         </div>
       </div>
@@ -409,7 +316,7 @@ PE7 Format: 결과물 형태 (표, 분량 등)
       <div class="steplist">
         <div class="step">
           <img class="service-logo" src="images/service-logos/claude.png" alt="" width="40" height="40" loading="lazy" decoding="async">
-          <div class="txt"><strong>클로드(Claude) 데스크톱 앱 설치</strong>
+          <div class="txt"><strong>클로드(Claude) 데스크톱 앱 설치 <span class="pill">필수</span></strong>
             <span>클로드를 노트북에서 바로 사용할 수 있도록 공식 데스크톱 앱을 설치해 주세요.</span></div>
           <a class="go" href="https://claude.com/download" target="_blank" rel="noopener">다운로드 열기 ↗</a>
         </div>
@@ -448,8 +355,8 @@ PE7 Format: 결과물 형태 (표, 분량 등)
       <div class="steplist">
         <div class="step">
           <img class="service-logo" src="images/service-logos/gemini.png" alt="" width="40" height="40" loading="lazy" decoding="async">
-          <div class="txt"><strong>제미나이(Gemini) 로그인</strong>
-            <span>구글 계정으로 바로 시작할 수 있는 AI입니다.</span></div>
+          <div class="txt"><strong>제미나이(Gemini) 로그인 <span class="pill">필수</span></strong>
+            <span>보고서 초안 실습에 사용합니다.</span></div>
           <a class="go" href="https://gemini.google.com" target="_blank" rel="noopener">로그인 열기 ↗</a>
         </div>
       </div>
@@ -472,8 +379,8 @@ PE7 Format: 결과물 형태 (표, 분량 등)
       <div class="steplist">
         <div class="step">
           <img class="service-logo" src="images/service-logos/chatgpt.png" alt="" width="40" height="40" loading="lazy" decoding="async">
-          <div class="txt"><strong>챗GPT(ChatGPT) 로그인</strong>
-            <span>가장 범용적으로 쓰이는 대화형 AI입니다.</span></div>
+          <div class="txt"><strong>챗GPT(ChatGPT) 로그인 <span class="pill">필수</span></strong>
+            <span>포스터 이미지 실습에 사용합니다.</span></div>
           <a class="go" href="https://chatgpt.com" target="_blank" rel="noopener">로그인 열기 ↗</a>
         </div>
       </div>
@@ -570,8 +477,92 @@ PE7 Format: 결과물 형태 (표, 분량 등)
   </div>
 
   <!-- 생성형 AI 강의 준비사항 -->
+</div>
+
+<section class="group" id="prompts"><div class="group-head"><span class="group-num">02</span><h2>복사용 프롬프트</h2></div>
+<p class="group-desc">수업 순서대로 복사 버튼을 눌러 붙여넣으면 됩니다. 같은 요청이 어떻게 달라지는지 비교해 보세요.</p>
+<h3 class="sub">챗지피티 · 포스터</h3>
+<div class="copybox short" id="p1-box"><div class="copybox-head"><span>📋 포스터 ① 말로만 요청</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="p1">복사</button></div></div><pre id="p1">우리 기관 시설과 프로그램을 주민들에게 알리는 홍보 포스터를 만들어줘. 세로형이야.</pre></div><div class="copybox short" id="p2-box"><div class="copybox-head"><span>📋 포스터 ② 샘플 넣고 요청 (샘플 포스터 첨부)</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="p2">복사</button></div></div><pre id="p2">첨부한 포스터의 스타일만 참고해서 새 포스터를 만들어줘.
+(참고할 것: 인물 실루엣 안에 풍경이 겹쳐 보이는 이중노출 구성, 푸른 톤, 흰 여백이 넓은 배경)
+
+- 주제: 우리 기관 시설과 프로그램을 주민들에게 알리는 홍보
+- 인물: [예: 운동하는 주민]
+- 실루엣 안에 겹칠 풍경: [예: 우리 기관 체육관·수영장]
+- 큰 글씨: 영어 한 단어만 [예: TOGETHER]
+- 세로형
+
+원본 포스터의 로고, QR코드, 기업명, 문구는 절대 넣지 마.</pre></div>
+<h3 class="sub">제미나이 · 보고서</h3>
+<div class="copybox short" id="g1-box"><div class="copybox-head"><span>📋 제미나이 보고서 ① 대충 정보만</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="g1">복사</button></div></div><pre id="g1">우리 기관 숏츠 콘텐츠 추진 계획 보고서 초안을 써줘.
+주민들에게 우리 기관 시설과 프로그램을 알리는 내용이야.
+3월부터 6월까지 할 거야.</pre></div><div class="copybox short" id="g2-box"><div class="copybox-head"><span>📋 제미나이 보고서 ② 기준 + 정보 (※ [기준] 전문은 수업 준비자료에서 복사)</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="g2">복사</button></div></div><pre id="g2">아래 [기준]을 지켜서 [정보]로 보고서 초안을 써줘.
+
+[기준]
+(보고서 작성 기준 전문을 여기에 붙여넣기)
+
+[정보]
+- 주제: 우리 기관 숏츠 콘텐츠 추진 계획
+- 내용: 주민들에게 우리 기관 시설과 프로그램을 알리는 숏츠 제작
+- 기간: 3월부터 6월까지
+- 보고 대상: 부서장(결재)</pre></div>
+<div class="note"><b>[기준] 전문</b>은 수업 시간에 안내하는 준비자료에서 복사 버튼으로 한 번에 받습니다. 직접 타이핑하지 않습니다.</div>
+</section>
+
+<section class="group" id="bot"><div class="group-head"><span class="group-num">03</span><h2>나만의 프롬프트 대필 봇 만들기</h2></div>
+<p class="group-desc">클로드에서 <b>새 프로젝트</b>를 만들고, 아래 지침을 <b>지침 칸</b>에 붙여넣으면 끝입니다.</p>
+<div class="tri">
+<div class="tri-card"><span class="tri-num">1</span><strong>프로젝트 만들기</strong><p>클로드에 접속해 새 프로젝트를 만듭니다.</p><span class="role">5분</span></div>
+<div class="tri-card"><span class="tri-num">2</span><strong>지침 붙여넣기</strong><p>아래 지침을 복사해 지침 칸에 붙여넣습니다.</p><span class="role">3분</span></div>
+<div class="tri-card"><span class="tri-num">3</span><strong>테스트·공유</strong><p>대충 쓴 문장 3개를 넣고, 잘 나온 결과를 단톡방에 올립니다.</p><span class="role">17분</span></div>
+</div>
+<div class="copybox short" id="bot-box"><div class="copybox-head"><span>📋 프롬프트 대필 봇 지침 (클로드 프로젝트 지침 칸에 붙여넣기)</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="bot">복사</button></div></div><pre id="bot">너는 '프롬프트 대필 봇'이야. 사용자가 대충 쓴 요청을 PE7 기준으로 완성도 높은 프롬프트로 바꿔 써 준다.
+
+[PE7]
+PE1 Persona: AI에게 줄 전문가 역할 (누가)
+PE2 Identity: 읽는 사람, 또는 나의 신분 (누구에게)
+PE3 Object: 달성할 목표 (뭐 하려고) - 숫자와 기한 포함
+PE4 Procedure: 단계별 순서 (어떤 단계를 거쳐)
+PE5 Sample: 모범 예시 (마치 이것처럼)
+PE6 Ground Data: 기반 자료 (이 안에서만)
+PE7 Format: 결과물 형태 (표, 분량 등)
+
+[작동 방식]
+1. 사용자가 대충 쓴 문장을 받으면 질문하지 말고 바로 완성 프롬프트를 쓴다.
+2. 사용자가 주지 않은 내용은 지어내지 말고 [채워주세요: 설명]으로 빈칸을 남긴다.
+3. 아래 출력 형식으로 답한다.
+
+[출력 형식]
+■ 완성 프롬프트: 다른 AI에 그대로 붙여넣을 수 있는 한 덩어리 글
+■ PE7 체크: PE1~PE7을 각각 한 줄씩 ○(반영) / △(빈칸) 표시
+■ 더 좋아지려면: 추가하면 좋은 샘플·자료 1~2가지
+
+[규칙]
+- 사용자가 준 사실만 쓴다. 없는 수치·법령·사례를 만들지 않는다.
+- 쉬운 말과 존댓말을 쓴다.
+- 설명은 짧게 한다.</pre></div>
+<h3 class="sub">테스트 문장 (같은 주제로 비교)</h3>
+<div class="copybox short" id="t1-box"><div class="copybox-head"><span>📋 테스트 문장 ①</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="t1">복사</button></div></div><pre id="t1">우리 기관 숏츠 보고서 써줘</pre></div><div class="copybox short" id="t2-box"><div class="copybox-head"><span>📋 테스트 문장 ②</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="t2">복사</button></div></div><pre id="t2">숏츠 홍보 문구 써줘</pre></div><div class="copybox short" id="t3-box"><div class="copybox-head"><span>📋 테스트 문장 ③</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="t3">복사</button></div></div><pre id="t3">숏츠 기획 아이디어 줘</pre></div>
+<div class="note"><b>단톡방에 올릴 것</b> : ① 내가 입력한 대충 쓴 문장 ② 봇이 만들어 준 ‘완성 프롬프트’ ③ PE7 체크 줄(○ / △). 시간이 남으면 <b>[채워주세요]</b> 빈칸을 직접 채워 같은 봇에 다시 넣어 보세요.</div>
+</section>
+
+<section class="group" id="homework"><div class="group-head"><span class="group-num">04</span><h2>다음 주까지 설정 숙제</h2></div>
+<div class="homework"><h3>트라이 커넥트 준비 (설정만 해 오세요)</h3>
+<ul>
+<li>크롬에 <b>구글 계정 로그인</b></li>
+<li><b>클로드 인 크롬</b> 확장 프로그램 설치 · 고정 (유료 요금제 전용 · Chrome 웹 스토어에서 ‘Claude’ 검색)</li>
+<li><b>클로드 데스크톱 앱</b> 설치 후 로그인 — claude.com/download</li>
+<li>데스크톱 앱과 <b>같은 클로드 계정</b>인지 확인</li>
+<li>기관 PC는 확장 프로그램 <b>설치 가능 여부</b>를 미리 확인</li>
+</ul></div>
+<div class="steplist" style="margin-top:12px">
+<div class="step"><span class="logo-emoji" aria-hidden="true">🧩</span><div class="txt"><strong>클로드 인 크롬 안내 보기 <span class="pill free">선택</span></strong><span>설치 방법을 그림으로 확인합니다.</span></div><a class="go" href="claude-in-chrome-guide.html" target="_blank" rel="noopener">안내 보기</a></div>
+<div class="step"><span class="logo-emoji" aria-hidden="true">🖥️</span><div class="txt"><strong>클로드 데스크톱 앱 폴더 연결 안내 <span class="pill free">선택</span></strong><span>데스크톱 앱 설치 후 폴더 연결 방법입니다.</span></div><a class="go" href="claude-desktop-folder-guide.html" target="_blank" rel="noopener">안내 보기</a></div>
+</div>
+</section>
+<div class="prepcopy">
+  <!-- 공통 준비 사항 -->
   <div class="group" id="ai-prep">
-    <div class="group-head"><span class="group-num">06</span><h2>생성형 AI 강의 준비사항</h2></div>
+    <div class="group-head"><span class="group-num">05</span><h2>생성형 AI 강의 준비사항</h2></div>
     <p class="group-desc">음악·음성 생성 실습이 포함된 강의는 아래도 함께 준비해주세요.</p>
 
     <div class="item-group">
@@ -685,7 +676,7 @@ PE7 Format: 결과물 형태 (표, 분량 등)
 
   <!-- 디자인 참조 사이트 -->
   <div class="group" id="design-prep">
-    <div class="group-head"><span class="group-num">07</span><h2>디자인 참조 사이트</h2></div>
+    <div class="group-head"><span class="group-num">06</span><h2>디자인 참조 사이트</h2></div>
     <p class="group-desc">자료·카드뉴스·PPT 만들 때 참고하면 좋은 사이트입니다.</p>
 
     <div class="item-group">
