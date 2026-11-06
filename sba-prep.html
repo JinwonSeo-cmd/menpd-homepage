@@ -198,6 +198,16 @@ h3.sub{font-size:17px;font-weight:800;margin:28px 0 10px}
 .caution .warn strong{display:block;font-size:15.5px;margin-bottom:3px}
 .caution .warn p{font-size:14.5px;line-height:1.7}
 .step .txt span.pill{display:inline-block;color:#fff;font-size:12px;line-height:1.4}
+.mdv-btns{display:flex;gap:6px;flex:none;margin-left:auto}.mdv-btns .go{margin:0}
+@media(max-width:600px){.mdv-btns{width:100%;margin-top:4px}.mdv-btns .go{flex:1;text-align:center;justify-content:center}}
+.mdv{position:fixed;inset:0;background:rgba(15,25,30,.55);display:none;align-items:center;justify-content:center;z-index:9999;padding:16px}
+.mdv.on{display:flex}
+.mdv-box{background:#fff;border-radius:16px;width:100%;max-width:760px;max-height:88vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.mdv-head{display:flex;align-items:center;gap:8px;padding:14px 16px;border-bottom:1px solid #e6ecee}
+.mdv-head b{flex:1;font-size:15px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mdv-head button,.mdv-head a{border:0;border-radius:999px;padding:8px 14px;font-weight:700;font-size:13px;cursor:pointer;text-decoration:none;background:#eef2f4;color:#1f2933}
+.mdv-head .pri{background:var(--accent,#2f5d8a);color:#fff}
+.mdv pre{margin:0;padding:18px 20px;overflow:auto;white-space:pre-wrap;word-break:break-word;font:14px/1.7 Pretendard,'Malgun Gothic',sans-serif;color:#1f2933}
 </style>
 <link rel="stylesheet" href="css/depth-motion.css">
 <link rel="stylesheet" href="css/dusk-pages.css?v=20260923b">
@@ -432,6 +442,29 @@ document.querySelectorAll('[data-copy]').forEach(function(btn){
     if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(text).then(ok,fallback)}else{fallback()}
   });
 });
+</script>
+<div class="mdv" id="mdv" role="dialog" aria-modal="true"><div class="mdv-box"><div class="mdv-head"><b id="mdv-t"></b><button type="button" class="pri" id="mdv-c">복사</button><a id="mdv-d" download>받기</a><button type="button" id="mdv-x" aria-label="닫기">✕</button></div><pre id="mdv-p">불러오는 중…</pre></div></div>
+<script>
+(function(){
+var m=document.getElementById('mdv'),pre=document.getElementById('mdv-p'),t=document.getElementById('mdv-t'),d=document.getElementById('mdv-d'),c=document.getElementById('mdv-c');
+function close(){m.classList.remove('on');document.body.style.overflow=''}
+document.getElementById('mdv-x').onclick=close;
+m.addEventListener('click',function(e){if(e.target===m)close()});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')close()});
+c.onclick=function(){var txt=pre.textContent;var ok=function(){c.textContent='복사됨 ✓';setTimeout(function(){c.textContent='복사'},1500)};
+ if(navigator.clipboard)navigator.clipboard.writeText(txt).then(ok,function(){});else{var r=document.createRange();r.selectNodeContents(pre);var sel=getSelection();sel.removeAllRanges();sel.addRange(r);document.execCommand('copy');ok()}};
+document.querySelectorAll('#files a.go[href$=".md"]').forEach(function(a){
+ var wrap=document.createElement('div');wrap.className='mdv-btns';
+ var v=document.createElement('button');v.type='button';v.className='go ghost';v.textContent='보기';
+ a.parentNode.insertBefore(wrap,a);wrap.appendChild(v);wrap.appendChild(a);
+ v.addEventListener('click',function(){
+  var name=a.getAttribute('download')||a.href.split('/').pop();
+  t.textContent=name;d.href=a.getAttribute('href');d.setAttribute('download',name);pre.textContent='불러오는 중…';
+  m.classList.add('on');document.body.style.overflow='hidden';
+  fetch(a.getAttribute('href')).then(function(r){return r.text()}).then(function(x){pre.textContent=x}).catch(function(){pre.textContent='불러오지 못했습니다. 받기를 눌러 주세요.'});
+ });
+});
+})();
 </script>
 </body>
 </html>
