@@ -893,5 +893,23 @@ addEventListener('keydown',function(e){
  var c=(parseInt(location.hash.slice(1))||1)-1;show(e.key==='ArrowDown'?c+1:c-1);
 });
 </script>
+<style>
+.edgenav{position:fixed;top:0;bottom:40px;width:12vw;z-index:50;cursor:pointer;display:flex;align-items:center;opacity:0;transition:opacity .2s;pointer-events:none;font:800 46px Pretendard,sans-serif;color:rgba(31,41,51,.35)}
+.edgenav.l{left:0;justify-content:flex-start;padding-left:14px}.edgenav.r{right:0;justify-content:flex-end;padding-right:14px}
+.edgenav.on{opacity:1}
+</style>
+<div class="edgenav l" id="enL">‹</div><div class="edgenav r" id="enR">›</div>
+<script>
+(function(){
+var Z=0.12,L=document.getElementById('enL'),R=document.getElementById('enR');
+function zone(x){return x<innerWidth*Z?'l':(x>innerWidth*(1-Z)?'r':'')}
+addEventListener('click',function(e){
+  if(e.target.closest&&e.target.closest('a,button,input,textarea,video,#scrub,.fsBtn,#fsBtn'))return;
+  var sel=getSelection&&getSelection().toString();
+  if(sel||!zone(e.clientX)){e.stopPropagation();e.stopImmediatePropagation();}
+},true);
+addEventListener('mousemove',function(e){var z=zone(e.clientX);L.classList.toggle('on',z==='l');R.classList.toggle('on',z==='r');document.body.style.cursor=z?'pointer':''});
+})();
+</script>
 </body>
 </html>
