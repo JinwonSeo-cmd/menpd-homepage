@@ -866,5 +866,13 @@ inp.addEventListener('keydown',function(e){e.preventDefault()});
 setInterval(function(){if(!drag)inp.value=cur()},250);
 })();
 </script>
+<script>
+addEventListener('keydown',function(e){
+ if(e.key!=='ArrowDown'&&e.key!=='ArrowUp')return;
+ var t=e.target;if(t&&(t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.isContentEditable))return;
+ if(typeof show!=='function')return;e.preventDefault();
+ var c=(parseInt(location.hash.slice(1))||1)-1;show(e.key==='ArrowDown'?c+1:c-1);
+});
+</script>
 </body>
 </html>
