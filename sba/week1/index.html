@@ -840,5 +840,30 @@ document.addEventListener('keydown',function(e){if(e.target.closest&&e.target.cl
 new MutationObserver(function(){document.querySelectorAll('.slide:not(.active) video').forEach(function(v){v.pause()})})
  .observe(document.getElementById('stage'),{subtree:true,attributes:true,attributeFilter:['class']});
 </script>
+<style>
+#scrub{position:fixed;left:0;right:64px;bottom:0;height:34px;z-index:9998;display:flex;align-items:center;padding:0 16px;opacity:0;transition:opacity .2s}
+#scrub:hover,#scrub.on{opacity:1}
+#scrub input{flex:1;height:6px;-webkit-appearance:none;appearance:none;background:rgba(110,128,138,.5);border-radius:3px;cursor:pointer;outline:none}
+#scrub input::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:#E8642C;border:3px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4)}
+#scrub input::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:#E8642C;border:3px solid #fff}
+#scrubTip{position:fixed;bottom:40px;transform:translateX(-50%);background:#1F2933;color:#fff;font:600 13px Pretendard,sans-serif;padding:6px 10px;border-radius:6px;white-space:nowrap;pointer-events:none;display:none;z-index:9999;max-width:60vw;overflow:hidden;text-overflow:ellipsis}
+</style>
+<div id="scrub"><input type="range" id="scrubIn" min="1" value="1" aria-label="슬라이드 이동"></div><div id="scrubTip"></div>
+<script>
+(function(){
+var sl=[].slice.call(document.querySelectorAll('.slide')),n=sl.length,box=document.getElementById('scrub'),inp=document.getElementById('scrubIn'),tip=document.getElementById('scrubTip'),drag=false;
+inp.max=n;
+var names=sl.map(function(s,k){var t=s.querySelector('.tt')||s.querySelector('h1,h2');return (k+1)+'. '+(t?t.textContent.replace(/\s+/g,' ').trim():'')});
+function cur(){return parseInt(location.hash.slice(1))||1}
+function tipAt(v){var r=inp.getBoundingClientRect(),x=r.left+(v-1)/(n-1)*r.width;tip.style.left=x+'px';tip.textContent=names[v-1];tip.style.display='block'}
+inp.addEventListener('input',function(){drag=true;box.classList.add('on');var v=+inp.value;tipAt(v);if(typeof show==='function')show(v-1)});
+function end(){drag=false;box.classList.remove('on');tip.style.display='none';inp.blur()}
+inp.addEventListener('change',end);inp.addEventListener('pointerup',end);inp.addEventListener('mouseleave',function(){if(!drag)tip.style.display='none'});
+inp.addEventListener('mousemove',function(e){if(drag)return;var r=inp.getBoundingClientRect();var v=Math.round((e.clientX-r.left)/r.width*(n-1))+1;v=Math.max(1,Math.min(n,v));tipAt(v)});
+inp.addEventListener('keydown',function(e){e.preventDefault()});
+['click','pointerdown','mousedown'].forEach(function(ev){box.addEventListener(ev,function(e){e.stopPropagation()})});
+setInterval(function(){if(!drag)inp.value=cur()},250);
+})();
+</script>
 </body>
 </html>
