@@ -544,5 +544,5 @@ document.querySelectorAll('#prompts a.go[href$=".md"]').forEach(function(a){
 });
 })();
 </script>
-<script>(function(){var n=document.querySelector(".jump"),ph=document.getElementById("jumpPh");if(!n||!ph)return;var home=n.parentNode;function f(){var on=ph.getBoundingClientRect().top<0;if(on&&!n.classList.contains("pin")){ph.style.height=n.offsetHeight+28+"px";document.body.appendChild(n);n.classList.add("pin")}else if(!on&&n.classList.contains("pin")){n.classList.remove("pin");home.insertBefore(n,ph.nextSibling);ph.style.height="0"}}addEventListener("scroll",f,{passive:true});addEventListener("resize",f);f()})();</script></body>
+<script>(function(){var n=document.querySelector(".jump"),ph=document.getElementById("jumpPh");if(!n||!ph)return;var home=n.parentNode;function f(){var on=ph.getBoundingClientRect().top<0;if(on&&!n.classList.contains("pin")){ph.style.height=n.offsetHeight+28+"px";document.body.appendChild(n);n.classList.add("pin")}else if(!on&&n.classList.contains("pin")){n.classList.remove("pin");home.insertBefore(n,ph.nextSibling);ph.style.height="0"}}addEventListener("scroll",f,{passive:true});addEventListener("resize",f);setInterval(f,250);f()})();</script></body>
 </html>
