@@ -178,9 +178,14 @@ h3.sub{font-size:17px;font-weight:800;margin:28px 0 10px}
 .homework ul{margin-left:18px;font-size:14.5px;line-height:1.85}
 
 .jump{display:flex;flex-wrap:wrap;gap:6px;margin-top:28px}
-.jump a{font-size:13px;font-weight:700;color:var(--accent);background:#fff;border:1px solid var(--line);
-  padding:7px 11px;border-radius:999px;text-decoration:none}
-.jump a span{color:var(--accent2);margin-right:4px;font-family:ui-monospace,Menlo,monospace}
+.jump a{font-size:13px;font-weight:700;color:#fff;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.45);border-radius:999px;padding:7px 13px;text-decoration:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:background .15s}
+.jump a:hover{background:rgba(255,255,255,.32)}
+.jump a span{color:#FFE0CC;margin-right:4px;font-family:ui-monospace,Menlo,monospace}
+.jump-ph{height:0}
+.jump.pin{position:fixed;top:10px;left:50%;transform:translateX(-50%);z-index:999;margin:0;padding:8px 10px;background:linear-gradient(90deg,#315b9b 0%,#6286b1 35%,#a6b5bc 67%,#d7ad92 100%);border:1px solid rgba(255,255,255,.5);border-radius:999px;box-shadow:0 8px 22px rgba(30,50,90,.28);flex-wrap:nowrap;max-width:calc(100vw - 20px);overflow-x:auto;scrollbar-width:none}
+.jump.pin::-webkit-scrollbar{display:none}
+.jump.pin a{white-space:nowrap}
+.group{scroll-margin-top:80px}
 
 @media (max-width:720px){
   .tri,.choice{grid-template-columns:1fr}
@@ -239,7 +244,7 @@ h3.sub{font-size:17px;font-weight:800;margin:28px 0 10px}
   <div class="txt"><strong>1주차 교안 · 생성형 AI의 도입</strong><span>생성의 7단계 · PE7 · MD · 봇 · 컴앱웹 · PPT (109쪽)</span></div>
   <div class="btn-line"><a class="go" href="sba/week1/index.html" target="_blank" rel="noopener">웹 교안 보기</a><a class="go ghost" href="downloads/public/sba-week1-slides.pdf" target="_blank" rel="noopener">PDF 보기</a><a class="go ghost" href="downloads/public/sba-week1-summary.pdf" target="_blank" rel="noopener">요약 PDF (10장)</a></div>
 </div>
-<nav class="jump" aria-label="바로가기">
+<div class="jump-ph" id="jumpPh"></div><nav class="jump" aria-label="바로가기">
   <a href="#ready"><span>01</span>준비물</a>
   <a href="#login"><span>02</span>로그인·설치</a>
   <a href="#links"><span>02+</span>참고 링크</a>
@@ -539,5 +544,5 @@ document.querySelectorAll('#prompts a.go[href$=".md"]').forEach(function(a){
 });
 })();
 </script>
-</body>
+<script>(function(){var n=document.querySelector(".jump"),ph=document.getElementById("jumpPh");if(!n||!ph)return;var home=n.parentNode;function f(){var on=ph.getBoundingClientRect().top<0;if(on&&!n.classList.contains("pin")){ph.style.height=n.offsetHeight+28+"px";document.body.appendChild(n);n.classList.add("pin")}else if(!on&&n.classList.contains("pin")){n.classList.remove("pin");home.insertBefore(n,ph.nextSibling);ph.style.height="0"}}addEventListener("scroll",f,{passive:true});addEventListener("resize",f);f()})();</script></body>
 </html>
