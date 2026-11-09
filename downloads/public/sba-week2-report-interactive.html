@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>온도 성수 본점 · 10월 운영 대시보드</title>
+<!--
+  보고서봇 템플릿 ② 인터랙티브형 (폰 · PC 공유용, 화려한 모션)
+  ▶ 봇은 아래 <script id="data"> 안의 DATA 값만 KB 숫자로 바꾼다. 디자인 코드는 건드리지 않는다.
+  ▶ 들어 있는 모션 : 숫자 카운트업 · 스크롤하면 자라는 막대 · 도넛 차트 · 펼쳐지는 메뉴(아코디언) · 흐르는 다이어그램 · 탭 전환
+-->
+<style>
+:root{--br:#4A2C21;--cr:#F5EBDD;--tc:#D9734E;--ink:#2B1A12;--mut:#8A7566;--bg:#FBF6EF}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);font-family:"Pretendard","Apple SD Gothic Neo","Malgun Gothic",sans-serif;color:var(--ink)}
+.wrap{max-width:760px;margin:0 auto;padding:0 18px 80px}
+.hero{background:linear-gradient(140deg,#4A2C21,#7A4A35 60%,#D9734E);color:var(--cr);padding:54px 26px 70px;border-radius:0 0 34px 34px;position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:rgba(245,235,221,.12);animation:float 6s ease-in-out infinite}
+@keyframes float{50%{transform:translate(-20px,24px)}}
+.hero small{color:#F6C6A8;font-weight:700}
+.hero h1{font-size:34px;margin:10px 0;line-height:1.25}
+.hero p{opacity:.85;font-size:15px}
+.tabs{position:sticky;top:0;z-index:5;display:flex;gap:8px;overflow:auto;padding:12px 0;background:var(--bg)}
+.tabs a{flex:none;text-decoration:none;color:var(--br);background:#fff;border:1px solid #E6D9CA;padding:8px 14px;border-radius:999px;font-size:14px;font-weight:700;transition:.2s}
+.tabs a.on{background:var(--br);color:var(--cr)}
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:-44px;position:relative}
+.kpi{background:#fff;border-radius:18px;padding:18px;box-shadow:0 10px 24px rgba(74,44,33,.12);transform:translateY(16px);opacity:0;transition:.6s}
+.kpi.in{transform:none;opacity:1}
+.kpi .l{font-size:13px;color:var(--mut)}.kpi .v{font-size:30px;font-weight:800;color:var(--br);margin:6px 0 2px}.kpi .v span{font-size:15px}.kpi .d{font-size:13px;color:var(--tc);font-weight:700}
+h2{font-size:22px;margin:38px 0 14px;display:flex;align-items:center;gap:10px}
+h2:before{content:"";width:8px;height:22px;border-radius:4px;background:var(--tc)}
+.card{background:#fff;border-radius:18px;padding:20px;margin-bottom:12px}
+.vbars{display:flex;align-items:flex-end;gap:12px;height:200px}
+.vbars div{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%;font-size:12px;color:var(--mut)}
+.vbars i{width:100%;height:0;background:var(--br);border-radius:8px 8px 0 0;transition:height 1.1s cubic-bezier(.2,.8,.2,1)}
+.vbars div:last-child i{background:var(--tc)}
+.vbars b{color:var(--ink);font-size:13px;margin-bottom:4px}
+.hb{margin:10px 0}.hb .t{display:flex;justify-content:space-between;font-size:14px;margin-bottom:5px}
+.hb .tr{height:12px;background:#EFE4D6;border-radius:6px;overflow:hidden}.hb i{display:block;height:100%;width:0;background:var(--br);border-radius:6px;transition:width 1.1s ease}
+.dn{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.lg div{display:flex;gap:8px;align-items:center;font-size:14px;margin:6px 0}.lg s{width:12px;height:12px;border-radius:3px}
+details{background:#fff;border-radius:16px;margin-bottom:10px;overflow:hidden;border:1px solid #EFE4D6}
+summary{list-style:none;cursor:pointer;padding:18px 20px;font-weight:800;display:flex;justify-content:space-between;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";font-size:22px;color:var(--tc);transition:.3s}
+details[open] summary:after{transform:rotate(45deg)}
+details .in{padding:0 20px 18px;animation:drop .45s ease}
+@keyframes drop{from{opacity:0;transform:translateY(-10px)}}
+details li{list-style:none;padding:8px 0;border-top:1px dashed #E6D9CA;font-size:15px}
+.flow{display:flex;flex-direction:column;gap:0}
+.node{background:#fff;border:2px solid var(--br);border-radius:14px;padding:14px 16px;font-weight:700;opacity:.25;transition:.5s}
+.node small{display:block;font-weight:400;color:var(--mut);margin-top:3px}
+.node.on{opacity:1;border-color:var(--tc);box-shadow:0 6px 16px rgba(217,115,78,.25)}
+.pipe{height:34px;width:4px;margin:0 auto;background:repeating-linear-gradient(to bottom,var(--tc) 0 6px,transparent 6px 12px);background-size:4px 12px;animation:flowd .6s linear infinite}
+@keyframes flowd{to{background-position:0 12px}}
+.seg{display:flex;background:#EFE4D6;border-radius:12px;padding:4px;margin-bottom:12px}
+.seg button{flex:1;border:0;background:none;padding:10px;border-radius:9px;font-weight:700;color:var(--mut);cursor:pointer;font-family:inherit}
+.seg button.on{background:#fff;color:var(--br)}
+.tl{position:relative;padding-left:22px}.tl:before{content:"";position:absolute;left:6px;top:4px;bottom:4px;width:2px;background:#E6D9CA}
+.tl div{position:relative;margin:0 0 16px}.tl div:before{content:"";position:absolute;left:-21px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--tc)}
+.tl b{color:var(--tc)}
+.rv{opacity:0;transform:translateY(24px);transition:.7s}.rv.in{opacity:1;transform:none}
+footer{text-align:center;color:var(--mut);font-size:12px;margin-top:40px}
+</style>
+</head>
+<body>
+<script id="data">
+/* ===== 봇은 여기 숫자 · 문구만 바꾼다 (KB 원문 그대로) ===== */
+const DATA={
+  title:"10월 매장 운영 대시보드",
+  sub:"온도(ONDO) 성수 본점 · 2026년 10월",
+  writer:"온도 매장운영팀 · 수업용 가상 데이터",
+  kpi:[["총매출",6840,"만 원","전월 +10.1%"],["영업이익",1650,"만 원","이익률 24.1%"],["일평균 손님",412,"명","객단가 5,355원"],["신규 멤버십",486,"명","전월 +38%"]],
+  monthly:[["7월",5620],["8월",5980],["9월",6210],["10월",6840]],
+  weekly:[["1주",1400],["2주",1500],["3주",1580],["4주",1670],["5주",690]],
+  mix:[["음료",68,"#4A2C21"],["디저트",18,"#D9734E"],["원두 · 굿즈",14,"#C9A27E"]],
+  cost:[["원재료",2050],["인건비",1830],["임대료",750],["공과금",260],["마케팅",180],["기타",120]],
+  menu:[["36.5 라떼",4120],["아메리카노",3860],["온도 블렌드 드립",1940],["바닐라빈 라떼",1310],["말차 라떼",980]],
+  time:[["출근 08~10시",22],["점심 12~14시",26],["오후 14~17시",31],["저녁 17~21시",21]],
+  flow:[["주말 오후 손님 집중","14~17시 비율 31%"],["오후 인원 2명 → 3명","피크 시간 증원"],["고객 반응 확인","평점 4.7 · 리뷰 212건"],["매출 +10.1%","10월 6,840만 원"]],
+  more:[["인력 운영",["정직원 4명 + 파트타이머 8명","총 근무 1,620시간 · 1인 평균 135시간","평일 오전 파트타이머 1명 모집 중","라떼아트 교육 2회 (9명 참여)"]],
+        ["손님",["재방문율 38%","리뷰 평점 4.7 / 5 (212건)","인스타그램 팔로워 +1,240명 (총 18,300명)"]],
+        ["이슈",["고객 의견 1위 : 2층 콘센트 부족 (27건)","2층 냉난방기 교체 — 11월 첫 주 2층 반나절 휴무","원두 납품가 4% 인상 예고 (12월부터)"]]],
+  next:[["11.20 ~ 22","2주년 고마운 온도 주간"],["11.20","겨울 한정 흑임자 라떼 출시"],["11월","2층 콘센트 12구 추가 설치"]]
+};
+</script>
+<div class="hero"><small>${sub}</small><h1>${title}</h1><p>${writer}</p></div>
+<div class="wrap">
+ <div class="kpis" id="kpis"></div>
+ <nav class="tabs" id="tabs"><a href="#s1" class="on">매출</a><a href="#s2">지출</a><a href="#s3">손님 · 메뉴</a><a href="#s4">흐름도</a><a href="#s5">자세히</a><a href="#s6">다음 달</a></nav>
+ <section id="s1"><h2>매출</h2>
+  <div class="card rv"><div class="seg"><button class="on" data-k="monthly">월별</button><button data-k="weekly">주차별</button></div><div class="vbars" id="vb"></div></div>
+  <div class="card rv"><div class="dn" id="dn"></div></div></section>
+ <section id="s2"><h2>지출</h2><div class="card rv" id="cost"></div></section>
+ <section id="s3"><h2>손님 · 메뉴</h2><div class="card rv" id="time"></div><div class="card rv" id="menu"></div></section>
+ <section id="s4"><h2>무엇이 매출을 올렸나</h2><div class="card"><div class="flow" id="flow"></div></div></section>
+ <section id="s5"><h2>자세히 보기</h2><div id="more"></div></section>
+ <section id="s6"><h2>다음 달 계획</h2><div class="card rv"><div class="tl" id="next"></div></div></section>
+ <footer id="ft"></footer>
+</div>
+<script>
+const D=DATA,$=s=>document.querySelector(s),mx=a=>Math.max(...a.map(x=>x[1]));
+document.querySelector('.hero').innerHTML=`<small>${D.sub}</small><h1>${D.title}</h1><p>${D.writer}</p>`;
+$('#ft').textContent=D.sub+' · '+D.writer;
+$('#kpis').innerHTML=D.kpi.map(k=>`<div class="kpi"><div class="l">${k[0]}</div><div class="v" data-n="${k[1]}">0<span> ${k[2]}</span></div><div class="d">${k[3]}</div></div>`).join('');
+const hb=(a,u='')=>a.map((c,i)=>`<div class="hb"><div class="t"><span>${c[0]}</span><b>${c[1].toLocaleString()}${u}</b></div><div class="tr"><i data-w="${c[1]/mx(a)*100}"></i></div></div>`).join('');
+$('#cost').innerHTML='<b>지출 (만 원)</b>'+hb(D.cost);
+$('#time').innerHTML='<b>시간대별 손님</b>'+hb(D.time,'%');
+$('#menu').innerHTML='<b>메뉴 TOP 5 (잔)</b>'+hb(D.menu);
+function vb(k){const a=D[k];$('#vb').innerHTML=a.map(m=>`<div><b>${m[1].toLocaleString()}</b><i data-h="${m[1]/mx(a)*100}"></i>${m[0]}</div>`).join('');grow($('#vb'))}
+document.querySelectorAll('.seg button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.seg button').forEach(x=>x.classList.remove('on'));b.classList.add('on');vb(b.dataset.k)});
+(function(){let o=0,R=70,C=2*Math.PI*R;$('#dn').innerHTML=`<svg width="180" height="180" viewBox="0 0 180 180"><g transform="rotate(-90 90 90)">${D.mix.map(x=>{const l=C*x[1]/100,s=`<circle cx="90" cy="90" r="${R}" fill="none" stroke="${x[2]}" stroke-width="28" stroke-dasharray="0 ${C}" data-d="${l} ${C-l}" stroke-dashoffset="${-o}" style="transition:stroke-dasharray 1.2s ease"/>`;o+=l;return s}).join('')}</g><text x="90" y="98" text-anchor="middle" font-size="22" font-weight="800" fill="#4A2C21">${D.mix[0][1]}%</text></svg><div class="lg"><b>매출 구성</b>${D.mix.map(x=>`<div><s style="background:${x[2]}"></s>${x[0]} ${x[1]}%</div>`).join('')}</div>`})();
+$('#flow').innerHTML=D.flow.map((f,i)=>(i?'<div class="pipe"></div>':'')+`<div class="node">${f[0]}<small>${f[1]}</small></div>`).join('');
+$('#more').innerHTML=D.more.map((m,i)=>`<details${i?'':' open'}><summary>${m[0]}</summary><div class="in"><ul>${m[1].map(x=>`<li>${x}</li>`).join('')}</ul></div></details>`).join('');
+$('#next').innerHTML=D.next.map(n=>`<div><b>${n[0]}</b><br>${n[1]}</div>`).join('');
+function grow(el){el.querySelectorAll('[data-h]').forEach(e=>{e.style.height=0;setTimeout(()=>e.style.height=e.dataset.h+'%',60)});el.querySelectorAll('[data-w]').forEach(e=>{e.style.width=0;setTimeout(()=>e.style.width=e.dataset.w+'%',60)});el.querySelectorAll('[data-d]').forEach(e=>setTimeout(()=>e.setAttribute('stroke-dasharray',e.dataset.d),60))}
+function count(e){const t=+e.dataset.n,u=e.querySelector('span').outerHTML;let k=0;(function f(){k+=1/40;e.innerHTML=Math.round(t*Math.min(k,1)).toLocaleString()+u;if(k<1)requestAnimationFrame(f)})()}
+vb('monthly');
+const io=new IntersectionObserver(es=>es.forEach(en=>{if(!en.isIntersecting)return;const el=en.target;el.classList.add('in');grow(el);if(el.dataset.n)count(el);io.unobserve(el)}),{threshold:.25});
+document.querySelectorAll('.rv,.kpi').forEach(e=>io.observe(e));document.querySelectorAll('.kpi .v').forEach(e=>setTimeout(()=>count(e),300));
+const fio=new IntersectionObserver(es=>es.forEach(en=>{if(!en.isIntersecting)return;[...en.target.querySelectorAll('.node')].forEach((n,i)=>setTimeout(()=>n.classList.add('on'),i*600));fio.unobserve(en.target)}),{threshold:.3});fio.observe($('#flow'));
+const tabs=[...document.querySelectorAll('.tabs a')];
+addEventListener('scroll',()=>{let c=0;tabs.forEach((a,i)=>{if(document.querySelector(a.getAttribute('href')).getBoundingClientRect().top<120)c=i});tabs.forEach((a,i)=>a.classList.toggle('on',i==c))});
+tabs.forEach(a=>a.onclick=e=>{e.preventDefault();document.querySelector(a.getAttribute('href')).scrollIntoView({behavior:'smooth'})});
+</script>
+</body>
+</html>
