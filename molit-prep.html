@@ -82,6 +82,8 @@ h3.sub{font-size:17px;font-weight:800;margin:28px 0 10px}
 .ui{display:inline-block;background:#eef1f6;border:1px solid #d6dce6;color:#2C5F6F;font-weight:700;
   padding:0 7px;border-radius:6px;font-size:.95em}
 
+.pg{display:inline-block;margin-left:8px;background:#E8642C;color:#fff;font-size:12px;font-weight:800;padding:2px 8px;border-radius:999px;vertical-align:2px}
+pre.mdfull{max-height:120px;overflow:auto;font-size:12px!important;opacity:.85}
 /* 복사 박스 */
 .copybox{background:#16313a;border-radius:16px;overflow:hidden;margin-top:14px}
 .copybox-head{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;
@@ -293,40 +295,210 @@ code{font-size:12px;color:#8a93a3}
 <div class="wrap molit"><header class="page-intro"><span class="badge">국토부 · 11.17(화)</span><h1>AI 홍보 TF 미션 키트</h1><p class="lede">오늘 쓸 <b>파일 · 복사 문구 · 사진</b>이 수업 순서대로 있습니다. 글은 <b>[복사하기]</b>, 파일은 <b>[받기]</b>만 누르세요.</p></header>
 <div class="hero-btns"><button class="big-dl" type="button" id="dlAll">📥 오늘 자료 전체 받기<small>파일 4개 · “여러 파일 다운로드” 묻면 <b>허용</b></small></button><div class="hero-sub"><a class="go ghost" href="molit/index.html" target="_blank" rel="noopener">📘 교안 보기</a><a class="go ghost sos-link" href="#sos">🆘 막혔을 때</a></div></div>
 <div class="jump-ph" id="jumpPh"></div><nav class="jump" aria-label="바로가기"><a href="#p1"><span>01</span>준비</a><a href="#p2"><span>02</span>이해</a><a href="#p3"><span>03</span>글</a><a href="#p4"><span>04</span>그림</a><a href="#p5"><span>05</span>노래</a><a href="#p6"><span>06</span>영상</a><a href="#p7"><span>07</span>마무리</a><a href="#sos"><span>🆘</span>막혔을 때</a></nav>
-<section class="group p1" id="p1"><div class="group-head"><span class="pnum">01</span><h2>준비 — 로그인 · 복사 · 받기</h2></div><p class="group-desc">앱 5개 모두 <b>“구글로 계속”</b>으로 로그인합니다.</p><div class="mstep"><div class="mno">①</div><div class="mbody"><h3>앱 5개 로그인</h3><div class="steplist"><div class="step"><img class="service-logo" src="images/service-logos/claude.png" alt=""><div class="txt"><strong>클로드</strong><span>글 · 문서 · 웹페이지</span></div></div><div class="step"><img class="service-logo" src="images/service-logos/chatgpt.png" alt=""><div class="txt"><strong>챗지피티</strong><span>포스터</span></div></div><div class="step"><img class="service-logo" src="images/service-logos/gemini.png" alt=""><div class="txt"><strong>제미나이</strong><span>영상 프롬프트 대필</span></div></div><div class="step"><img class="service-logo" src="images/service-logos/suno.png" alt=""><div class="txt"><strong>수노</strong><span>캠페인송</span></div></div><div class="step"><img class="service-logo" src="images/service-logos/flow.png" alt=""><div class="txt"><strong>구글 플로우</strong><span>마스코트 그림 → 영상</span></div></div></div></div></div><div class="mstep"><div class="mno">②</div><div class="mbody"><h3>복사 · 붙여넣기 연습</h3><p class="hint">[복사하기] → <span class="ui">|||</span> 로 클로드 열기 → 입력 칸 <b>길게 누르기</b> → 붙여넣기</p><div class="copybox short"><div class="copybox-head"><span>📋 연습 문장 <span class="where">클로드에</span></span><button class="copy-btn" type="button" data-copy="mc1">복사하기</button></div><pre id="mc1">안녕하세요. 오늘 하루 겨울철 도로 안전 캠페인 AI 홍보 TF에 합류했습니다.</pre></div></div></div><div class="mstep"><div class="mno">③</div><div class="mbody"><h3>파일 받기</h3><button class="big-dl small" type="button" data-dlall>📥 전체 받기 (4개)</button><div class="steplist"><div class="step"><span class="logo-emoji">📄</span><div class="txt"><strong>팩트 시트</strong><span>캠페인 내용 전부 (보고서 · 포스터 재료) · <code>molit_01_factsheet.md</code></span></div><div class="btn-line"><button class="go ghost mdv-open" type="button" data-src="downloads/public/molit_01_factsheet.md" data-name="molit_01_factsheet.md">보기</button><a class="go" href="downloads/public/molit_01_factsheet.md" download="molit_01_factsheet.md">받기</a></div></div><div class="step"><span class="logo-emoji">📄</span><div class="txt"><strong>보고서 뇌 MD</strong><span>보고서 쓰는 규칙 · <code>molit_02_report_brain.md</code></span></div><div class="btn-line"><button class="go ghost mdv-open" type="button" data-src="downloads/public/molit_02_report_brain.md" data-name="molit_02_report_brain.md">보기</button><a class="go" href="downloads/public/molit_02_report_brain.md" download="molit_02_report_brain.md">받기</a></div></div><div class="step"><span class="logo-emoji">📄</span><div class="txt"><strong>PDF 디자인 MD</strong><span>결재용 PDF 꾸미는 규칙 · <code>molit_03_pdf_design.md</code></span></div><div class="btn-line"><button class="go ghost mdv-open" type="button" data-src="downloads/public/molit_03_pdf_design.md" data-name="molit_03_pdf_design.md">보기</button><a class="go" href="downloads/public/molit_03_pdf_design.md" download="molit_03_pdf_design.md">받기</a></div></div><div class="step"><span class="logo-emoji">📄</span><div class="txt"><strong>HTML 모션 MD</strong><span>움직이는 웹페이지 규칙 · <code>molit_04_html_motion.md</code></span></div><div class="btn-line"><button class="go ghost mdv-open" type="button" data-src="downloads/public/molit_04_html_motion.md" data-name="molit_04_html_motion.md">보기</button><a class="go" href="downloads/public/molit_04_html_motion.md" download="molit_04_html_motion.md">받기</a></div></div></div><p class="hint">받은 파일은 <b>내 파일 › 다운로드</b>에 있습니다.</p></div></div><div class="mstep"><div class="mno">④</div><div class="mbody"><h3>첨부는 이렇게</h3><div class="choice"><div class="choice-card c1"><span class="tag">＋ → 사진</span><strong>사진 · 그림</strong><p>포스터 샘플, 마스코트, 플로우 그림</p></div><div class="choice-card c2"><span class="tag">＋ → 파일</span><strong>문서</strong><p>molit_01 ~ 04 파일 (다운로드 폴더)</p></div></div></div></div><div class="mstep"><div class="mno">⑤</div><div class="mbody"><h3>결과 공유</h3><p class="hint">결과 화면 <b>공유(↗)</b> → <b>카카오톡</b> → 오늘의 단톡방</p></div></div></section>
-<section class="group p2" id="p2"><div class="group-head"><span class="pnum">02</span><h2>이해 — 지도 먼저 보기</h2></div><p class="group-desc">강사 설명을 들으며 보는 곳입니다. 따라 할 것은 없습니다.</p><div class="mstep"><div class="mno">①</div><div class="mbody"><h3>콘텐츠 4대 분류</h3><div class="four"><div>글<small>03 보고서</small></div><div>그림<small>04 포스터</small></div><div>소리<small>05 노래</small></div><div>영상<small>06 클립</small></div></div></div></div><div class="mstep"><div class="mno">②</div><div class="mbody"><h3>생성의 7단계</h3><ol class="lad7"><li class="me"><b>1</b>말로<small>그냥 말로</small></li><li class="me"><b>2</b>샘플<small>샘플 주고</small></li><li class="me"><b>3</b>메타프롬프팅<small>AI가 대필</small></li><li class="me"><b>4</b>MD<small>규칙 파일 첨부</small></li><li class="demo"><b>5</b>봇 · 스킬<small>반복 고정</small></li><li class="demo"><b>6</b>자동화<small>앱끼리 연결</small></li><li class="demo"><b>7</b>바이브 코딩<small>프로그램 제작</small></li></ol><p class="hint"><span class="pill">1~4</span>오늘 직접 · <span class="pill free">5~7</span>강사 시연</p></div></div><div class="mstep"><div class="mno">③</div><div class="mbody"><h3>채팅형 AI 5종</h3><table class="ltb"><tr><th>AI</th><th>잘하는 것</th><th>아쉬운 점</th></tr><tr><td><b>챗지피티</b></td><td>대화 · 글 · 이미지, 기능이 가장 많음</td><td>처음엔 복잡</td></tr><tr><td><b>클로드</b></td><td>긴 글, 규칙 지키기, 파일 · 웹페이지</td><td>무료 사용량 적음</td></tr><tr><td><b>제미나이</b></td><td>이미지, 구글 서비스 연동</td><td>답이 짧을 때 있음</td></tr><tr><td><b>그록</b></td><td>X(트위터) 실시간 소식</td><td>공공 업무엔 톤 주의</td></tr><tr><td><b>퍼플렉시티</b></td><td>출처가 붙는 검색</td><td>긴 글은 약함</td></tr></table></div></div><div class="mstep"><div class="mno">④</div><div class="mbody"><h3>좋은 프롬프트 = PE7</h3><p class="hint">나쁜 예 : “겨울철 도로 안전 보고서 써줘”</p><div class="copybox"><div class="copybox-head"><span>📋 좋은 예 (PE7 7칸) <span class="where">참고용</span></span><button class="copy-btn" type="button" data-copy="mc2">복사하기</button></div><pre id="mc2">[PE1 역할] 너는 20년 경력의 중앙부처 홍보 기획 사무관이야.
+<section class="group p1" id="p1"><div class="group-head"><span class="pnum">01</span><h2>준비 — 로그인 · 복사 · 받기</h2></div><p class="group-desc">앱 5개 모두 <b>“구글로 계속”</b>으로 로그인합니다.</p><div class="mstep"><div class="mno">①</div><div class="mbody"><h3>앱 5개 로그인 <span class="pg">교안 8p</span></h3><div class="steplist"><div class="step"><img class="service-logo" src="images/service-logos/claude.png" alt=""><div class="txt"><strong>클로드</strong><span>글 · 문서 · 웹페이지</span></div></div><div class="step"><img class="service-logo" src="images/service-logos/chatgpt.png" alt=""><div class="txt"><strong>챗지피티</strong><span>포스터 · 노래 프롬프트</span></div></div><div class="step"><img class="service-logo" src="images/service-logos/gemini.png" alt=""><div class="txt"><strong>제미나이</strong><span>노래 · 영상 프롬프트 대필</span></div></div><div class="step"><img class="service-logo" src="images/service-logos/suno.png" alt=""><div class="txt"><strong>수노</strong><span>캠페인송</span></div></div><div class="step"><img class="service-logo" src="images/service-logos/flow.png" alt=""><div class="txt"><strong>구글 플로우</strong><span>마스코트 그림 → 영상</span></div></div></div></div></div><div class="mstep"><div class="mno">②</div><div class="mbody"><h3>복사 · 붙여넣기 연습 <span class="pg">교안 10p</span></h3><p class="hint">[복사하기] → <span class="ui">|||</span> 로 클로드 열기 → 입력 칸 <b>길게 누르기</b> → 붙여넣기</p><div class="copybox short"><div class="copybox-head"><span>📋 연습 문장 <span class="where">클로드에</span></span><button class="copy-btn" type="button" data-copy="mc1">복사하기</button></div><pre id="mc1">안녕하세요. 오늘 하루 겨울철 도로 안전 캠페인 AI 홍보 TF에 합류했습니다.</pre></div></div></div><div class="mstep"><div class="mno">③</div><div class="mbody"><h3>파일 받기 <span class="pg">교안 29p</span></h3><button class="big-dl small" type="button" data-dlall>📥 전체 받기 (4개)</button><div class="steplist"><div class="step"><span class="logo-emoji">📄</span><div class="txt"><strong>팩트 시트</strong><span>캠페인 내용 전부 (보고서 · 포스터 재료) · <code>molit_01_factsheet.md</code></span></div><div class="btn-line"><button class="go ghost mdv-open" type="button" data-src="downloads/public/molit_01_factsheet.md" data-name="molit_01_factsheet.md">보기</button><a class="go" href="downloads/public/molit_01_factsheet.md" download="molit_01_factsheet.md">받기</a></div></div><div class="step"><span class="logo-emoji">📄</span><div class="txt"><strong>보고서 뇌 MD</strong><span>보고서 쓰는 규칙 · <code>molit_02_report_brain.md</code></span></div><div class="btn-line"><button class="go ghost mdv-open" type="button" data-src="downloads/public/molit_02_report_brain.md" data-name="molit_02_report_brain.md">보기</button><a class="go" href="downloads/public/molit_02_report_brain.md" download="molit_02_report_brain.md">받기</a></div></div><div class="step"><span class="logo-emoji">📄</span><div class="txt"><strong>PDF 디자인 MD</strong><span>결재용 PDF 꾸미는 규칙 · <code>molit_03_pdf_design.md</code></span></div><div class="btn-line"><button class="go ghost mdv-open" type="button" data-src="downloads/public/molit_03_pdf_design.md" data-name="molit_03_pdf_design.md">보기</button><a class="go" href="downloads/public/molit_03_pdf_design.md" download="molit_03_pdf_design.md">받기</a></div></div><div class="step"><span class="logo-emoji">📄</span><div class="txt"><strong>HTML 모션 MD</strong><span>움직이는 웹페이지 규칙 · <code>molit_04_html_motion.md</code></span></div><div class="btn-line"><button class="go ghost mdv-open" type="button" data-src="downloads/public/molit_04_html_motion.md" data-name="molit_04_html_motion.md">보기</button><a class="go" href="downloads/public/molit_04_html_motion.md" download="molit_04_html_motion.md">받기</a></div></div></div><p class="hint">받은 파일은 <b>내 파일 › 다운로드</b>에 있습니다.</p></div></div><div class="mstep"><div class="mno">④</div><div class="mbody"><h3>첨부는 이렇게 <span class="pg">교안 10p</span></h3><div class="choice"><div class="choice-card c1"><span class="tag">＋ → 사진</span><strong>사진 · 그림</strong><p>포스터 샘플, 마스코트, 플로우 그림</p></div><div class="choice-card c2"><span class="tag">＋ → 파일</span><strong>문서</strong><p>molit_01 ~ 04 파일 (다운로드 폴더)</p></div></div></div></div><div class="mstep"><div class="mno">⑤</div><div class="mbody"><h3>결과 공유 <span class="pg">교안 35p</span></h3><p class="hint">결과 화면 <b>공유(↗)</b> → <b>카카오톡</b> → 오늘의 단톡방</p></div></div></section>
+<section class="group p2" id="p2"><div class="group-head"><span class="pnum">02</span><h2>이해 — 지도 먼저 보기</h2></div><p class="group-desc">강사 설명을 들으며 보는 곳입니다. 따라 할 것은 없습니다.</p><div class="mstep"><div class="mno">①</div><div class="mbody"><h3>콘텐츠 4대 분류 <span class="pg">교안 15p</span></h3><div class="four"><div>글<small>03 보고서</small></div><div>그림<small>04 포스터</small></div><div>소리<small>05 노래</small></div><div>영상<small>06 클립</small></div></div></div></div><div class="mstep"><div class="mno">②</div><div class="mbody"><h3>생성의 7단계 <span class="pg">교안 17p</span></h3><ol class="lad7"><li class="me"><b>1</b>말로<small>그냥 말로</small></li><li class="me"><b>2</b>샘플<small>샘플 주고</small></li><li class="me"><b>3</b>메타프롬프팅<small>AI가 대필</small></li><li class="me"><b>4</b>MD<small>규칙 파일 첨부</small></li><li class="demo"><b>5</b>봇 · 스킬<small>반복 고정</small></li><li class="demo"><b>6</b>자동화<small>앱끼리 연결</small></li><li class="demo"><b>7</b>바이브 코딩<small>프로그램 제작</small></li></ol><p class="hint"><span class="pill">1~4</span>오늘 직접 · <span class="pill free">5~7</span>강사 시연</p></div></div><div class="mstep"><div class="mno">③</div><div class="mbody"><h3>채팅형 AI 5종 <span class="pg">교안 21p</span></h3><table class="ltb"><tr><th>AI</th><th>잘하는 것</th><th>아쉬운 점</th></tr><tr><td><b>챗지피티</b></td><td>대화 · 글 · 이미지, 기능이 가장 많음</td><td>처음엔 복잡</td></tr><tr><td><b>클로드</b></td><td>긴 글, 규칙 지키기, 파일 · 웹페이지</td><td>무료 사용량 적음</td></tr><tr><td><b>제미나이</b></td><td>이미지, 구글 서비스 연동</td><td>답이 짧을 때 있음</td></tr><tr><td><b>그록</b></td><td>X(트위터) 실시간 소식</td><td>공공 업무엔 톤 주의</td></tr><tr><td><b>퍼플렉시티</b></td><td>출처가 붙는 검색</td><td>긴 글은 약함</td></tr></table></div></div><div class="mstep"><div class="mno">④</div><div class="mbody"><h3>좋은 프롬프트 = PE7 <span class="pg">교안 23p</span></h3><p class="hint">나쁜 예 : “겨울철 도로 안전 보고서 써줘”</p><div class="copybox"><div class="copybox-head"><span>📋 좋은 예 (PE7 7칸) <span class="where">참고용</span></span><button class="copy-btn" type="button" data-copy="mc2">복사하기</button></div><pre id="mc2">[PE1 역할] 너는 20년 경력의 중앙부처 홍보 기획 사무관이야.
 [PE2 나] 나는 겨울철 도로 안전 캠페인 TF에 처음 차출된 국토부 주무관이야.
 [PE3 목표] 팀장님께 올릴 캠페인 기획 보고서 1쪽을 만들고 싶어.
 [PE4 순서] 배경 → 목적 → 5대 수칙 → 홍보 방법 → 기대 효과 순서로 써줘.
 [PE5 샘플] 공문서 개조식(□ ○ -)으로, 문장은 ~함 · ~임으로 끝내줘.
 [PE6 재료] 블랙아이스 위험, 5대 수칙(감속 · 차간거리 · 급제동 금지 · 출발 전 점검 · 위험 구간 주의)만 근거로 써.
 [PE7 형태] A4 1쪽, 5대 수칙은 표로 정리해줘.</pre></div></div></div></section>
-<section class="group p3" id="p3"><div class="group-head"><span class="pnum">03</span><h2>글 — 미션① 보고서 → PDF → HTML</h2></div><p class="group-desc">앱 : <b>클로드</b> <div class="vs"><span class="vs-a">A 말로</span><span class="vs-x">vs</span><span class="vs-b">B MD 넣고</span></div></p><div class="mstep"><div class="mno">①</div><div class="mbody"><h3>A. 말로 시키기</h3><p class="hint">클로드 <b>새 채팅</b>에 붙여넣고 보내기</p><div class="copybox short"><div class="copybox-head"><span>📋 A. 말로 <span class="where">클로드에</span></span><button class="copy-btn" type="button" data-copy="mc3">복사하기</button></div><pre id="mc3">겨울철 도로 안전 캠페인 홍보 보고서 써줘</pre></div></div></div><div class="mstep"><div class="mno">②</div><div class="mbody"><h3>B. MD 넣고 시키기</h3><p class="hint"><b>새 채팅</b> → ＋ → 파일 → 아래 <b>2개</b> 첨부 → 붙여넣고 보내기</p><div class="steplist"><div class="step"><span class="logo-emoji">📄</span><div class="txt"><strong>팩트 시트</strong><span>캠페인 내용 전부 (보고서 · 포스터 재료) · <code>molit_01_factsheet.md</code></span></div><div class="btn-line"><button class="go ghost mdv-open" type="button" data-src="downloads/public/molit_01_factsheet.md" data-name="molit_01_factsheet.md">보기</button><a class="go" href="downloads/public/molit_01_factsheet.md" download="molit_01_factsheet.md">받기</a></div></div><div class="step"><span class="logo-emoji">📄</span><div class="txt"><strong>보고서 뇌 MD</strong><span>보고서 쓰는 규칙 · <code>molit_02_report_brain.md</code></span></div><div class="btn-line"><button class="go ghost mdv-open" type="button" data-src="downloads/public/molit_02_report_brain.md" data-name="molit_02_report_brain.md">보기</button><a class="go" href="downloads/public/molit_02_report_brain.md" download="molit_02_report_brain.md">받기</a></div></div></div><div class="copybox short"><div class="copybox-head"><span>📋 B. MD 넣고 <span class="where">클로드에</span></span><button class="copy-btn" type="button" data-copy="mc4">복사하기</button></div><pre id="mc4">첨부한 두 파일로 보고서를 써줘.
-규칙은 보고서 뇌 파일(molit_02)을 따르고, 내용은 팩트 시트(molit_01)에서만 가져와줘.
+<section class="group p3" id="p3"><div class="group-head"><span class="pnum">03</span><h2>글 — 미션① 보고서 → PDF → HTML</h2></div><p class="group-desc">앱 : <b>클로드</b> · <b>한 채팅 안에서</b> 이어서 진행 <div class="vs"><span class="vs-a">A 말로</span><span class="vs-x">vs</span><span class="vs-b">B MD 넣고</span></div></p><div class="mstep"><div class="mno">①</div><div class="mbody"><h3>A. 말로 시키기 <span class="pg">교안 32p</span></h3><p class="hint">클로드 <b>새 채팅</b>에 붙여넣고 보내기</p><div class="copybox short"><div class="copybox-head"><span>📋 A. 말로 <span class="where">클로드에</span></span><button class="copy-btn" type="button" data-copy="mcA1">복사하기</button></div><pre id="mcA1">이번 겨울에 블랙아이스 때문에 사고가 많다고 해서 우리 과에서 캠페인을 하라는데 다리 위나 터널 쪽이 특히 위험하고 운전자들이 속도를 좀 줄였으면 좋겠고 보고서로 좀 써줘</pre></div></div></div><div class="mstep"><div class="mno">②</div><div class="mbody"><h3>B. 같은 채팅에서 MD 넣고 다시 <span class="pg">교안 33p</span></h3><p class="hint"><b>새 채팅 열지 말고</b> 그대로 → 붙여넣고 보내기 → 바로 아래 새 보고서와 위아래 비교</p><div class="steplist"><div class="step"><span class="logo-emoji">📄</span><div class="txt"><strong>팩트 시트</strong><span>캠페인 내용 전부 · <code>molit_01_factsheet.md</code></span></div><div class="btn-line"><button class="go ghost mdv-open" type="button" data-src="downloads/public/molit_01_factsheet.md" data-name="molit_01_factsheet.md">보기</button><a class="go" href="downloads/public/molit_01_factsheet.md" download="molit_01_factsheet.md">받기</a></div></div><div class="step"><span class="logo-emoji">📄</span><div class="txt"><strong>보고서 뇌 MD</strong><span>결재가 바로 나는 보고서 규칙 · <code>molit_02_report_brain.md</code></span></div><div class="btn-line"><button class="go ghost mdv-open" type="button" data-src="downloads/public/molit_02_report_brain.md" data-name="molit_02_report_brain.md">보기</button><a class="go" href="downloads/public/molit_02_report_brain.md" download="molit_02_report_brain.md">받기</a></div></div></div><p class="hint">[복사하기] 한 번이면 문장 + MD 2개 내용이 통째로 복사됩니다 (파일 첨부 필요 없음)</p><div class="copybox"><div class="copybox-head"><span>📋 B. MD 넣고 (문장 + 팩트 시트 + 보고서 뇌) <span class="where">클로드 같은 채팅에</span></span><button class="copy-btn" type="button" data-copy="mcA2">복사하기</button></div><pre id="mcA2" class="mdfull">이번엔 아래 MD에 맞춰서 다시 해줘봐.
 
-[내 정보] 이름: 홍길동 / 부서: 도로안전과 / 마스코트 이름: 천천이
-(이 줄은 그대로 둬도 됩니다. 바꾸고 싶으면 이름만 고치세요)</pre></div></div></div><div class="mstep"><div class="mno">③</div><div class="mbody"><h3>디자인 PDF로</h3><p class="hint"><b>같은 채팅</b>에서 ＋ → 파일 → 첨부 → 붙여넣고 보내기</p><div class="steplist"><div class="step"><span class="logo-emoji">📄</span><div class="txt"><strong>PDF 디자인 MD</strong><span>결재용 PDF 꾸미는 규칙 · <code>molit_03_pdf_design.md</code></span></div><div class="btn-line"><button class="go ghost mdv-open" type="button" data-src="downloads/public/molit_03_pdf_design.md" data-name="molit_03_pdf_design.md">보기</button><a class="go" href="downloads/public/molit_03_pdf_design.md" download="molit_03_pdf_design.md">받기</a></div></div></div><div class="copybox short"><div class="copybox-head"><span>📋 PDF 만들기 <span class="where">클로드에</span></span><button class="copy-btn" type="button" data-copy="mc5">복사하기</button></div><pre id="mc5">첨부한 PDF 디자인 파일(molit_03)의 규칙대로,
-방금 쓴 보고서를 디자인을 입힌 PDF 파일로 만들어줘.
-보고서 내용은 바꾸지 마.</pre></div></div></div><div class="mstep"><div class="mno">④</div><div class="mbody"><h3>움직이는 HTML로</h3><p class="hint"><b>같은 채팅</b>에서 ＋ → 파일 → 첨부 → 붙여넣고 보내기</p><div class="steplist"><div class="step"><span class="logo-emoji">📄</span><div class="txt"><strong>HTML 모션 MD</strong><span>움직이는 웹페이지 규칙 · <code>molit_04_html_motion.md</code></span></div><div class="btn-line"><button class="go ghost mdv-open" type="button" data-src="downloads/public/molit_04_html_motion.md" data-name="molit_04_html_motion.md">보기</button><a class="go" href="downloads/public/molit_04_html_motion.md" download="molit_04_html_motion.md">받기</a></div></div></div><div class="copybox short"><div class="copybox-head"><span>📋 HTML 만들기 <span class="where">클로드에</span></span><button class="copy-btn" type="button" data-copy="mc6">복사하기</button></div><pre id="mc6">첨부한 HTML 모션 파일(molit_04)의 규칙대로,
-방금 쓴 보고서를 움직이는 HTML 페이지 하나로 만들어줘.
-모션 9가지를 빠짐없이 넣고, 보고서 내용은 바꾸지 마.</pre></div></div></div><div class="mstep"><div class="mno">⑤</div><div class="mbody"><h3>단톡방 공유</h3><p class="hint">A · B 캡처 + PDF + HTML 화면 — 가장 달랐던 점 한 줄</p></div></div></section>
-<section class="group p4" id="p4"><div class="group-head"><span class="pnum">04</span><h2>그림 — 미션② 포스터</h2></div><p class="group-desc">앱 : <b>챗지피티</b> <div class="vs"><span class="vs-a">A 말로</span><span class="vs-x">vs</span><span class="vs-b">B 샘플</span></div></p><div class="mstep"><div class="mno">①</div><div class="mbody"><h3>A. 말로 시키기</h3><div class="copybox short"><div class="copybox-head"><span>📋 A. 말로 <span class="where">챗지피티에</span></span><button class="copy-btn" type="button" data-copy="mc7">복사하기</button></div><pre id="mc7">겨울철 도로 안전 캠페인 포스터 만들어줘</pre></div></div></div><div class="mstep"><div class="mno">②</div><div class="mbody"><h3>샘플 1장 고르기</h3><p class="hint">3초 안에 마음 가는 것 · 못 고르면 <b>1번</b> → [사진 받기]</p><div class="smp-grid g5"><figure class="smp p"><img src="images/molit/poster_02.jpg" alt="3D 클레이" loading="lazy"><figcaption><b>1 · 3D 클레이</b><a class="go" href="images/molit/poster_02.jpg" download="molit_poster_1.jpg">사진 받기</a></figcaption></figure><figure class="smp p"><img src="images/molit/poster_04.jpg" alt="레트로 교통표지판" loading="lazy"><figcaption><b>2 · 레트로 교통표지판</b><a class="go" href="images/molit/poster_04.jpg" download="molit_poster_2.jpg">사진 받기</a></figcaption></figure><figure class="smp p"><img src="images/molit/poster_10.jpg" alt="실사 광고 사진" loading="lazy"><figcaption><b>3 · 실사 광고 사진</b><a class="go" href="images/molit/poster_10.jpg" download="molit_poster_3.jpg">사진 받기</a></figcaption></figure></div></div></div><div class="mstep"><div class="mno">③</div><div class="mbody"><h3>B. 샘플 넣고 시키기</h3><p class="hint"><b>새 채팅</b> → ＋ → <b>사진</b> → 받은 샘플 → 붙여넣고 보내기</p><div class="copybox"><div class="copybox-head"><span>📋 B. 샘플 넣고 <span class="where">챗지피티에</span></span><button class="copy-btn" type="button" data-copy="mc8">복사하기</button></div><pre id="mc8">첨부한 포스터와 같은 스타일(색감 · 구도 · 그림체 · 글씨 배치)로, 내용만 바꿔 세로 포스터를 만들어줘.
+# [교육용 가상 자료] 겨울철 도로 안전 캠페인 팩트 시트
 
-[내용]
-- 큰 제목: 보이지 않는 얼음, 속도를 줄이면 보입니다
-- 작은 글: 감속 운전 · 차간거리 넉넉히 · 급제동 금지
-- 주인공: 노란 안전조끼와 빨간 털모자를 쓴 백곰 마스코트
-- 맨 아래: 겨울철 도로 안전 캠페인
+&gt; 생성형 AI 실습용 **가상 자료**입니다. 실제 정책·통계가 아닙니다.
 
-한글은 위 문구 그대로 정확하게 쓰고, 다른 글자는 넣지 마.</pre></div></div></div><div class="mstep"><div class="mno">④</div><div class="mbody"><h3>단톡방 공유</h3><p class="hint">A · B 두 장을 나란히</p></div></div></section>
-<section class="group p5" id="p5"><div class="group-head"><span class="pnum">05</span><h2>노래 — 미션③ 캠페인송</h2></div><p class="group-desc">앱 : <b>수노</b> · 만들기 → <b>커스텀(Custom)</b> 켜기</p><div class="mstep"><div class="mno">①</div><div class="mbody"><h3>가사 칸에</h3><div class="copybox short"><div class="copybox-head"><span>📋 가사 <span class="where">가사 칸</span></span><button class="copy-btn" type="button" data-copy="mc9">복사하기</button></div><pre id="mc9">[Verse]
-반짝이는 새벽길 그냥 물이 아니야
-보이지 않는 얼음 블랙아이스 조심해
-[Chorus]
-천천히 가도 괜찮아 같이 도착해
-속도는 줄이고 거리는 넉넉히
-겨울 도로 한 박자 늦게</pre></div></div></div><div class="mstep"><div class="mno">②</div><div class="mbody"><h3>스타일 칸에</h3><div class="copybox short"><div class="copybox-head"><span>📋 스타일 <span class="where">스타일 칸</span></span><button class="copy-btn" type="button" data-copy="mc10">복사하기</button></div><pre id="mc10">bright upbeat K-pop jingle, cheerful female vocal, playful synth, hand claps, warm winter feel, catchy chorus, 110 bpm</pre></div></div></div><div class="mstep"><div class="mno">③</div><div class="mbody"><h3>제목 칸에</h3><div class="copybox short"><div class="copybox-head"><span>📋 제목 <span class="where">제목 칸</span></span><button class="copy-btn" type="button" data-copy="mc11">복사하기</button></div><pre id="mc11">천천이의 겨울 도로송</pre></div></div></div><div class="mstep"><div class="mno">④</div><div class="mbody"><h3>만들기 → 1곡 공유</h3><p class="hint">2곡 중 마음에 드는 1곡을 단톡방에 — 반 대표곡은 마지막 시연 배경음악</p></div></div></section>
-<section class="group p6" id="p6"><div class="group-head"><span class="pnum">06</span><h2>영상 — 미션④ 마스코트 클립 3개</h2></div><p class="group-desc">앱 : <b>구글 플로우</b> (+ 제미나이) <div class="vs"><span class="vs-a">A 말로</span><span class="vs-x">vs</span><span class="vs-b">B 프롬프트 얻어오기</span></div></p><h3 class="part-sub">④-1 그림 먼저</h3><div class="mstep"><div class="mno">①</div><div class="mbody"><h3>마스코트 기본 이미지</h3><p class="hint">플로우 → 새 프로젝트 → 이미지 → 붙여넣기 → 1장 고르기</p><div class="copybox"><div class="copybox-head"><span>📋 기본 이미지 <span class="where">플로우에</span></span><button class="copy-btn" type="button" data-copy="mc12">복사하기</button></div><pre id="mc12">Character design of a chubby, cute baby polar bear mascot named &quot;Cheoncheoni&quot;, fluffy snow-white fur, wearing a bright yellow safety vest with silver reflective stripes and a red knitted beanie, big sparkling expressive eyes, rosy cheeks, calm gentle smile, standing upright on two legs, full body, front view, polished 3D animated feature-film style with expressive big eyes and warm cinematic lighting, clean light gray background, even soft lighting, no text, vertical 9:16</pre></div><div class="steplist"><div class="step"><span class="logo-emoji">🐕</span><div class="txt"><strong>예비 마스코트</strong><span>그림이 안 나오면 이걸로</span></div><a class="go" href="images/molit/mascot.jpg" download>마스코트 받기</a></div></div></div></div><div class="mstep"><div class="mno">②</div><div class="mbody"><h3>신1 그림</h3><p class="hint">기본 이미지를 <b>재료로 넣고</b> 붙여넣기</p><div class="copybox"><div class="copybox-head"><span>📋 신1 · 새벽 다리 위 <span class="where">플로우에</span></span><button class="copy-btn" type="button" data-copy="mc13">복사하기</button></div><pre id="mc13">Use the attached mascot image as the exact same character. a chubby, cute baby polar bear mascot named &quot;Cheoncheoni&quot;, fluffy snow-white fur, wearing a bright yellow safety vest with silver reflective stripes and a red knitted beanie, big sparkling expressive eyes, rosy cheeks, calm gentle smile, stopping on a bridge at dawn and looking down in surprise at a thin, glossy, nearly invisible sheet of black ice shining on the asphalt road, cold blue dawn light, light mist, polished 3D animated feature-film style with expressive big eyes and warm cinematic lighting, no text, vertical 9:16</pre></div></div></div><div class="mstep"><div class="mno">③</div><div class="mbody"><h3>신2 그림</h3><div class="copybox"><div class="copybox-head"><span>📋 신2 · 천천히! 손짓 <span class="where">플로우에</span></span><button class="copy-btn" type="button" data-copy="mc14">복사하기</button></div><pre id="mc14">Use the attached mascot image as the exact same character. a chubby, cute baby polar bear mascot named &quot;Cheoncheoni&quot;, fluffy snow-white fur, wearing a bright yellow safety vest with silver reflective stripes and a red knitted beanie, big sparkling expressive eyes, rosy cheeks, calm gentle smile, standing on the snowy roadside next to a slowly moving car, raising one paw in a calm &quot;slow down&quot; gesture toward the driver, snowy winter road, soft morning light, polished 3D animated feature-film style with expressive big eyes and warm cinematic lighting, no text, vertical 9:16</pre></div></div></div><div class="mstep"><div class="mno">④</div><div class="mbody"><h3>신3 그림</h3><div class="copybox"><div class="copybox-head"><span>📋 신3 · 안전 도착 엄지척 <span class="where">플로우에</span></span><button class="copy-btn" type="button" data-copy="mc15">복사하기</button></div><pre id="mc15">Use the attached mascot image as the exact same character. a chubby, cute baby polar bear mascot named &quot;Cheoncheoni&quot;, fluffy snow-white fur, wearing a bright yellow safety vest with silver reflective stripes and a red knitted beanie, big sparkling expressive eyes, rosy cheeks, calm gentle smile, giving a happy paw thumbs-up in front of a car that has safely arrived at a cozy snowy village, warm sunrise light, relieved and cheerful mood, polished 3D animated feature-film style with expressive big eyes and warm cinematic lighting, no text, vertical 9:16</pre></div></div></div><h3 class="part-sub">④-2 그림 → 영상</h3><div class="mstep"><div class="mno">⑤</div><div class="mbody"><h3>A. 말로</h3><p class="hint">신1 그림 → 영상 → 붙여넣기</p><div class="copybox short"><div class="copybox-head"><span>📋 A. 말로 <span class="where">플로우에</span></span><button class="copy-btn" type="button" data-copy="mc16">복사하기</button></div><pre id="mc16">백곰이 다리 위에서 천천히 손짓하는 영상</pre></div></div></div><div class="mstep"><div class="mno">⑥</div><div class="mbody"><h3>B. 프롬프트 얻어오기</h3><p class="hint">① 복사 → <b>제미나이</b>에 붙여넣기 → ② 받은 영어 프롬프트 복사 → ③ <span class="ui">|||</span> 플로우 → 신 그림 → 영상 → 붙여넣기</p><div class="copybox"><div class="copybox-head"><span>📋 신1 대필 요청 <span class="where">제미나이에</span></span><button class="copy-btn" type="button" data-copy="mc17">복사하기</button></div><pre id="mc17">나는 구글 플로우에서 이 이미지로 8초짜리 세로 영상을 만들려고 해.
+## 0. 바꾸는 칸 (기본값, 채팅에서 바꿔도 됨)
+- 내 이름: 홍길동
+- 내 부서명: 도로안전과
+- 마스코트 이름: 천천이 (아기 백곰)
+
+## 1. TF 개요
+- TF명: 겨울철 도로 안전 캠페인 AI 홍보 TF
+- 미션: 시민에게 겨울철 안전운전 수칙을 쉽고 친근하게 알리기
+- 기간: 12월 1일 ~ 2월 28일 (가상)
+- 산출물: 기획 보고서, 홍보 포스터, 캠페인송, 영상 클립 3
+
+## 2. 캠페인 배경
+- 겨울철에는 눈, 결빙, 짧은 일조시간으로 운전 환경이 나빠짐
+- 특히 **블랙아이스**(도로 위 얇은 투명 얼음)는 눈에 잘 보이지 않아 위험
+- 다리 위, 터널 출입구, 그늘진 도로, 새벽·밤 시간대에 자주 생김
+- 많은 운전자가 &quot;눈이 안 오면 괜찮다&quot;고 생각하는 것이 문제
+
+## 3. 핵심 메시지
+&quot;보이지 않는 얼음, 속도를 줄이면 보입니다.&quot;
+
+## 4. 겨울철 안전운전 5대 수칙
+1. **감속 운전**: 평소보다 속도를 충분히 줄이기
+2. **차간거리 넉넉히**: 앞차와 거리를 평소보다 길게
+3. **급제동·급핸들 금지**: 부드럽게 밟고, 천천히 돌리기
+4. **출발 전 점검**: 타이어, 와이퍼, 워셔액, 배터리 확인
+5. **위험 구간 주의**: 다리 위, 터널 입구, 그늘진 도로에서 특히 조심
+
+## 5. 타깃
+- 1순위: 출퇴근 운전자 (30~50대)
+- 2순위: 장거리 귀성·여행 운전자
+- 3순위: 초보 운전자
+
+## 6. 홍보 채널 (가상)
+- 기관 SNS(인스타그램 릴스, 유튜브 쇼츠)
+- 고속도로 휴게소 포스터
+- 지자체 전광판
+
+## 7. 마스코트
+- 아기 백곰, 노란 안전조끼와 빨간 털모자 착용
+- 성격: 밝고 침착함, &quot;천천히 가도 괜찮아&quot;가 입버릇
+- 역할: 운전자 옆에서 수칙을 알려주는 안내견
+
+## 8. 슬로건 후보
+- &quot;천천히 가도, 같이 도착해요&quot;
+- &quot;겨울 도로, 한 박자 늦게&quot;
+- &quot;블랙아이스, 속도가 답입니다&quot;
+
+## 9. 기대 효과 (정성적, 가상)
+- 블랙아이스 위험에 대한 시민 인식 향상
+- 겨울철 감속 운전 습관 확산
+- 기관 SNS 친근한 이미지 강화
+
+## 10. 영상용 3신 줄거리
+- 신1: 새벽 다리 위, 반짝이는 도로를 보고 멈칫하는 백곰
+- 신2: 차 옆에서 &quot;천천히!&quot; 손짓하며 감속을 알리는 백곰
+- 신3: 안전하게 도착한 차 앞에서 엄지척하는 백곰 + 슬로건
+
+
+# 보고서 뇌 (molit_02_report_brain.md)
+
+&gt; AI에게 주는 &quot;결재가 바로 나는 보고서&quot; 작성 규칙입니다. 고치지 말고 그대로 붙여넣으세요.
+
+## 1. 너의 역할
+- 너는 20년 경력의 중앙부처 기획담당 사무관이고, 국장 결재를 한 번에 받는 보고서로 유명하다.
+- 읽는 사람은 바쁜 국장님이다. 첫 5줄만 읽고도 무엇을, 왜, 언제까지 하는지 알아야 한다.
+- 함께 붙여넣은 &quot;팩트 시트&quot;만 근거로 쓴다. 질문하지 말고 바로 완성본을 쓴다.
+
+## 2. 절대 규칙
+- 팩트 시트에 없는 숫자 · 통계 · 예산 · 날짜는 절대 만들지 않는다. 필요하면 &quot;(추후 확정)&quot;으로 쓴다.
+- 주장마다 근거 꼬리표를 단다. 예: &quot;다리 위 · 터널 입구가 가장 위험함 (팩트 2항)&quot;
+- 팩트 시트 &quot;바꾸는 칸&quot;의 이름 · 부서명 · 마스코트 이름을 그대로 쓴다.
+- 맨 위에 &quot;※ 교육용 가상 자료&quot; 한 줄을 넣는다.
+
+## 3. 보고서 잘 쓰는 7원칙 (반드시 지킬 것)
+1. 두괄식 : 결론과 요청 사항이 맨 위. 배경 설명은 그 다음.
+2. 한 줄 한 메시지 : 한 줄에 내용은 하나만. 한 줄은 40자 이내.
+3. 3의 법칙 : 핵심은 3개로 묶는다 (요약 3줄, 전략 3개, 기대 효과 3개).
+4. So What : 모든 항목 끝에 &quot;그래서 무엇을 한다&quot;가 보여야 한다.
+5. 표로 보여 주기 : 비교 · 대상별 · 일정은 반드시 표로 만든다.
+6. 두 가지 말 : 보고서 본문은 공문서 말투, 시민에게 보여 줄 문구는 따옴표 안에 쉬운 말.
+7. 위험까지 먼저 : 예상되는 문제와 대응을 먼저 적어 질문을 막는다.
+
+## 4. 문체
+- 공문서 개조식 : □(대제목) → ○(중제목) → -(세부)
+- 문장 끝은 &quot;~함&quot;, &quot;~임&quot;, &quot;~예정&quot;, &quot;~필요&quot;로 끝낸다.
+- 이모지 쓰지 않는다. 어려운 한자어 대신 쉬운 말.
+
+## 5. 보고서 구성 (이 순서 그대로)
+1. 제목 : 「겨울철 도로 안전 캠페인 AI 홍보 추진계획(안)」 + 보고자(부서명 / 이름 / 오늘 날짜)
+2. [핵심 요약] 박스 3줄 : ① 무엇을 ② 왜 지금 ③ 결정 요청 사항
+3. □ 추진 배경 : 문제 3가지 (보이지 않는 얼음 / 위험 구간 · 시간대 / 운전자의 잘못된 믿음)
+4. □ 추진 방향 : 핵심 메시지 한 줄 + 전략 3개 (알기 쉽게 · 친근하게 · 현장에서)
+5. □ 대상별 홍보 전략 표 : 대상 | 위험 상황 | 전할 메시지(쉬운 말) | 채널 — 대상 3개 모두
+6. □ 안전운전 5대 수칙 표 : 번호 | 수칙 | 시민용 한 줄 문구(따옴표)
+7. □ 홍보 콘텐츠 기획 표 : 콘텐츠 | 내용 | 마스코트 활용 — 포스터 · 캠페인송 · 영상 3신
+8. □ 추진 일정 표 : 12월 · 1월 · 2월에 할 일 (날짜가 없으면 월 단위로만)
+9. □ 기대 효과 3개 + 확인할 지표 이름 (목표 수치는 &quot;(추후 확정)&quot;)
+10. □ 예상 문제와 대응 표 : 문제 | 대응 — 2~3개
+11. □ 협조 요청 사항 : 누구에게 무엇을 — 2줄
+12. 붙임 : 슬로건 후보 3개 비교표 (슬로건 | 장점 | 추천 여부) + &quot;※ 추천 슬로건 :&quot; 한 줄과 이유
+
+## 6. 분량과 마무리
+- A4 2쪽 이내. 표는 4개 이상.
+- 다 쓴 뒤 속으로 점검한다 (출력하지 않음) : 두괄식인가 / 없는 숫자가 없나 / 모든 주장에 근거 꼬리표가 있나 / 표가 4개 이상인가.
+</pre></div></div></div><div class="mstep"><div class="mno">③</div><div class="mbody"><h3>디자인 PDF로 <span class="pg">교안 34p</span></h3><p class="hint"><b>같은 채팅</b>에 이어서 붙여넣고 보내기</p><div class="copybox"><div class="copybox-head"><span>📋 PDF 만들기 (문장 + PDF 디자인 MD) <span class="where">클로드 같은 채팅에</span></span><button class="copy-btn" type="button" data-copy="mcA3">복사하기</button></div><pre id="mcA3" class="mdfull">이번엔 위 보고서를 아래 규칙대로 PDF 파일로 만들어줘. 보고서 내용은 바꾸지 마.
+
+# PDF 디자인 (molit_03_pdf_design.md)
+
+&gt; 보고서를 &quot;인쇄해서 결재 올리는 문서&quot;로 꾸미는 규칙입니다. 고치지 말고 그대로 붙여넣으세요.
+
+## 1. 목표
+- 앞에서 쓴 보고서 내용을 그대로 두고, 디자인만 입혀 PDF 파일 1개로 만든다.
+- 질문하지 말고 바로 PDF 파일을 만든다.
+
+## 2. 판형
+- A4 세로, 1~2쪽, 여백 넉넉히(상하좌우 18mm)
+- 움직임 없음. 인쇄해도 깔끔해야 한다.
+
+## 3. 색
+- 메인: 딥네이비 #1F2A44
+- 포인트: 안전 옐로 #FFC629 (전체의 10% 이하, 강조에만)
+- 바탕: 흰색, 표 머리글만 연한 회색 #F2F4F7
+
+## 4. 글꼴
+- 한글 글꼴을 반드시 파일에 넣는다(Noto Sans KR 또는 나눔고딕). 한글이 네모로 깨지면 안 된다.
+- 제목 20pt 굵게, □ 대제목 13pt 굵게, 본문 10.5pt
+
+## 5. 구성
+1. 맨 위 가로 띠(네이비): 왼쪽 &quot;겨울철 도로 안전 캠페인 AI 홍보 TF&quot;, 오른쪽 부서명
+2. 띠 아래 옐로 얇은 선 1줄
+3. 제목 + 보고자·작성일 한 줄
+4. □ 대제목 앞에 네이비 작은 사각형
+5. 5대 수칙은 표(번호 | 수칙 | 쉬운 설명), 번호 칸은 옐로 원
+6. 핵심 메시지는 옐로 테두리 박스로 한 번만 강조
+7. 맨 아래: &quot;※ 교육용 가상 자료&quot; + 쪽 번호
+
+## 6. 금지
+- 그림·이모지·그라데이션·움직임
+- 보고서에 없는 내용 추가
+</pre></div></div></div><div class="mstep"><div class="mno">④</div><div class="mbody"><h3>움직이는 HTML로 <span class="pg">교안 34p</span></h3><p class="hint"><b>같은 채팅</b>에 이어서 붙여넣고 보내기</p><div class="copybox"><div class="copybox-head"><span>📋 HTML 만들기 (문장 + HTML 모션 MD) <span class="where">클로드 같은 채팅에</span></span><button class="copy-btn" type="button" data-copy="mcA4">복사하기</button></div><pre id="mcA4" class="mdfull">이번엔 위 보고서를 아래 규칙대로 움직이는 HTML 파일 하나로 만들어줘. 모션 9가지를 빠짐없이 넣고, 보고서 내용은 바꾸지 마.
+
+# HTML 모션 디자인 (molit_04_html_motion.md)
+
+&gt; 보고서를 &quot;태블릿에서 만져 보는 캠페인 웹페이지&quot;로 바꾸는 규칙입니다. 고치지 말고 그대로 붙여넣으세요.
+
+## 1. 목표
+- 앞에서 쓴 보고서 내용으로 움직이는 HTML 페이지 1개를 만든다.
+- 질문하지 말고 바로 만든다. 파일 하나에 모두 담는다(외부 라이브러리 없이).
+- 태블릿 세로 화면 기준, 손가락으로 누르기 쉽게(버튼 최소 48px).
+
+## 2. 분위기
+- 겨울 밤 도로: 배경 딥네이비 #0F1B33 → 아래로 갈수록 #1F2A44
+- 포인트: 안전 옐로 #FFC629, 얼음 하늘색 #9FD8FF
+- 글꼴: Noto Sans KR(없으면 기본 고딕), 제목은 아주 크게
+
+## 3. 반드시 넣을 모션 (전부)
+1. 눈 내리는 배경: 작은 흰 점들이 천천히 계속 떨어진다
+2. 옆에서 등장하는 제목: 각 섹션 제목이 화면에 들어올 때 왼쪽에서 미끄러져 들어온다
+3. 타이핑 효과 본문: 맨 위 핵심 메시지가 한 글자씩 타이핑되고 커서가 깜빡인다
+4. 누르면 내려오는 메뉴: 5대 수칙은 아코디언. 수칙 제목을 누르면 설명이 부드럽게 내려오고, 다시 누르면 접힌다
+5. 아래에서 떠오르는 카드: 타깃·채널·기대효과 카드가 스크롤하면 하나씩 떠오른다
+6. 반짝이는 슬로건: 맨 아래 추천 슬로건이 옐로로 천천히 빛났다 꺼졌다 한다
+7. 얼음 반짝임: &quot;블랙아이스&quot; 글자에 하늘색 빛이 스치고 지나간다
+8. 상단 진행 바: 스크롤한 만큼 옐로 바가 차오른다
+9. 맨 위로 버튼: 오른쪽 아래 둥근 버튼, 누르면 부드럽게 맨 위로
+
+## 4. 화면 순서
+1. 첫 화면: 큰 제목 + 타이핑 핵심 메시지 + &quot;아래로&quot; 화살표(통통 튐)
+2. 추진 배경
+3. 5대 수칙(아코디언)
+4. 홍보 방법 카드(타깃·채널·마스코트)
+5. 일정·기대효과 카드
+6. 마무리: 반짝이는 슬로건 + 부서명·이름 + &quot;※ 교육용 가상 자료&quot;
+
+## 5. 금지
+- 보고서에 없는 숫자·통계 추가
+- 너무 빠른 깜빡임(1초에 3번 이상)
+- 글자가 배경에 묻히는 색 조합
+</pre></div></div></div><div class="mstep"><div class="mno">⑤</div><div class="mbody"><h3>단톡방 공유 <span class="pg">교안 35p</span></h3><p class="hint">A · B 보고서 캡처 + PDF + HTML 화면 — 가장 달랐던 점 한 줄</p></div></div></section>
+<section class="group p4" id="p4"><div class="group-head"><span class="pnum">04</span><h2>그림 — 미션② 포스터</h2></div><p class="group-desc">앱 : <b>챗지피티</b> · <b>한 채팅 안에서</b> 이어서 진행 <div class="vs"><span class="vs-a">A 말로</span><span class="vs-x">vs</span><span class="vs-b">B 샘플</span></div></p><div class="mstep"><div class="mno">①</div><div class="mbody"><h3>A. 말로 시키기 <span class="pg">교안 38p</span></h3><p class="hint">챗지피티 <b>새 채팅</b>에 붙여넣고 보내기</p><div class="copybox short"><div class="copybox-head"><span>📋 A. 말로 <span class="where">챗지피티에</span></span><button class="copy-btn" type="button" data-copy="mcB1">복사하기</button></div><pre id="mcB1">겨울철 블랙아이스 조심 포스터를 만들어줘. 대국민 대상, 세로 방향, 예쁘게</pre></div></div></div><div class="mstep"><div class="mno">②</div><div class="mbody"><h3>샘플 1장 고르기 <span class="pg">교안 40p</span></h3><p class="hint">마음 가는 1장 → [사진 받기] (예시는 교안 39p)</p><div class="smp-grid g5"><figure class="smp p"><img src="images/molit/poster_02.jpg" alt="3D 클레이" loading="lazy"><figcaption><b>1 · 3D 클레이</b><a class="go" href="images/molit/poster_02.jpg" download="molit_poster_1.jpg">사진 받기</a></figcaption></figure><figure class="smp p"><img src="images/molit/poster_04.jpg" alt="레트로 교통표지판" loading="lazy"><figcaption><b>2 · 레트로 교통표지판</b><a class="go" href="images/molit/poster_04.jpg" download="molit_poster_2.jpg">사진 받기</a></figcaption></figure><figure class="smp p"><img src="images/molit/poster_10.jpg" alt="실사 광고 사진" loading="lazy"><figcaption><b>3 · 실사 광고 사진</b><a class="go" href="images/molit/poster_10.jpg" download="molit_poster_3.jpg">사진 받기</a></figcaption></figure></div></div></div><div class="mstep"><div class="mno">③</div><div class="mbody"><h3>B. 같은 채팅에 샘플 넣고 다시 <span class="pg">교안 40p</span></h3><p class="hint"><b>같은 채팅</b> → ＋ → <b>사진</b> → 받은 샘플 → 붙여넣고 보내기 → 위아래 비교</p><div class="copybox short"><div class="copybox-head"><span>📋 B. 샘플 넣고 <span class="where">챗지피티 같은 채팅에</span></span><button class="copy-btn" type="button" data-copy="mcB2">복사하기</button></div><pre id="mcB2">이번엔 이 이미지를 참고해서 위 포스터를 다시 만들어줘. 주로 그림체만 따라하고, 샘플 이미지의 내용은 따라하지 마.</pre></div></div></div><div class="mstep"><div class="mno">④</div><div class="mbody"><h3>단톡방 공유 <span class="pg">교안 42p</span></h3><p class="hint">A · B 두 장을 나란히</p></div></div></section>
+<section class="group p5" id="p5"><div class="group-head"><span class="pnum">05</span><h2>노래 — 미션③ 캠페인송</h2></div><p class="group-desc">앱 : <b>수노 · 제미나이</b> (+ 챗지피티) <div class="vs"><span class="vs-a">A 키워드 5개</span><span class="vs-x">vs</span><span class="vs-b">B 내 상황 맞춤</span></div></p><div class="mstep"><div class="mno">①</div><div class="mbody"><h3>A. 키워드 5개만 넣고 뽑기 <span class="pg">교안 45p</span></h3><p class="hint"><b>수노</b> : 만들기 → 심플 모드 → 붙여넣기 → 생성 · <b>제미나이</b> : 도구 → 음악 → 붙여넣기 → 보내기</p><div class="copybox short"><div class="copybox-head"><span>📋 A. 키워드 5개 <span class="where">수노 심플 · 제미나이 음악에</span></span><button class="copy-btn" type="button" data-copy="mcC1">복사하기</button></div><pre id="mcC1">주제 : 겨울철 블랙아이스 조심
+장르 : K-pop 징글
+보컬 : 여성
+빠르기 : 빠르게
+분위기 : 밝고 경쾌하게</pre></div></div></div><div class="mstep"><div class="mno">②</div><div class="mbody"><h3>B. 내 상황에 딱 맞게 — 프롬프트 받아오기 <span class="pg">교안 46p</span></h3><p class="hint"><b>포스터 만든 챗지피티 채팅</b>에 이어서 붙여넣기 (새 창이면 포스터 사진 첨부) → 제목 · 가사 · 스타일 받기</p><div class="copybox"><div class="copybox-head"><span>📋 수노 프롬프트 받아오기 <span class="where">챗지피티 포스터 채팅에</span></span><button class="copy-btn" type="button" data-copy="mcC2">복사하기</button></div><pre id="mcC2">위 포스터와 같은 상황에 쓸 대국민 캠페인송을 만들려고 해.
+수노(커스텀 모드)에 그대로 붙여넣을 수 있게 아래 3가지로 나눠서 써줘.
+① 제목
+② 가사 : 한국어, [Verse] [Chorus] 구분, 1분 분량, 포스터의 핵심 문구가 후렴에 들어가게
+③ 스타일 : 영어, 장르 · 보컬 · 빠르기 · 악기 · 분위기를 200자 이내로</pre></div></div></div><div class="mstep"><div class="mno">③</div><div class="mbody"><h3>받아온 그대로 다시 뽑기 <span class="pg">교안 47p</span></h3><p class="hint"><b>수노</b> 새 창 → 커스텀 모드 → 제목 · 가사 · 스타일 칸에 받아온 내용 붙여넣기<br><b>제미나이</b> 새 채팅 → 음악 → 받아온 가사 + 스타일 함께 붙여넣기</p></div></div><div class="mstep"><div class="mno">④</div><div class="mbody"><h3>1곡 공유 <span class="pg">교안 49p</span></h3><p class="hint">받아온 프롬프트로 만든 곡 1곡 + 키워드 버전과 달라진 점 한 줄 — 반 대표곡은 마지막 시연 배경음악</p></div></div></section>
+<section class="group p6" id="p6"><div class="group-head"><span class="pnum">06</span><h2>영상 — 미션④ 마스코트 클립 3개</h2></div><p class="group-desc">“천천이 캐릭터를 활용해서 우리 SNS에 올릴 캠페인 홍보 숏폼 영상 하나 만들어 보세요.” <span class="pg">교안 51p</span><br>앱 : <b>구글 플로우</b> (+ 제미나이) <div class="vs"><span class="vs-a">A 말로</span><span class="vs-x">vs</span><span class="vs-b">B 프롬프트 얻어오기</span></div></p><h3 class="part-sub">④-1 그림 먼저</h3><div class="mstep"><div class="mno">①</div><div class="mbody"><h3>마스코트 기본 이미지 <span class="pg">교안 52p</span></h3><p class="hint">플로우 → 새 프로젝트 → 이미지 → 붙여넣기 → 1장 고르기</p><div class="copybox"><div class="copybox-head"><span>📋 기본 이미지 <span class="where">플로우에</span></span><button class="copy-btn" type="button" data-copy="mc12">복사하기</button></div><pre id="mc12">Character design of a chubby, cute baby polar bear mascot named &quot;Cheoncheoni&quot;, fluffy snow-white fur, wearing a bright yellow safety vest with silver reflective stripes and a red knitted beanie, big sparkling expressive eyes, rosy cheeks, calm gentle smile, standing upright on two legs, full body, front view, polished 3D animated feature-film style with expressive big eyes and warm cinematic lighting, clean light gray background, even soft lighting, no text, vertical 9:16</pre></div><div class="steplist"><div class="step"><span class="logo-emoji">🐕</span><div class="txt"><strong>예비 마스코트</strong><span>그림이 안 나오면 이걸로</span></div><a class="go" href="images/molit/mascot.jpg" download>마스코트 받기</a></div></div></div></div><div class="mstep"><div class="mno">②</div><div class="mbody"><h3>신1 그림 <span class="pg">교안 52p</span></h3><p class="hint">기본 이미지를 <b>재료로 넣고</b> 붙여넣기</p><div class="copybox"><div class="copybox-head"><span>📋 신1 · 새벽 다리 위 <span class="where">플로우에</span></span><button class="copy-btn" type="button" data-copy="mc13">복사하기</button></div><pre id="mc13">Use the attached mascot image as the exact same character. a chubby, cute baby polar bear mascot named &quot;Cheoncheoni&quot;, fluffy snow-white fur, wearing a bright yellow safety vest with silver reflective stripes and a red knitted beanie, big sparkling expressive eyes, rosy cheeks, calm gentle smile, stopping on a bridge at dawn and looking down in surprise at a thin, glossy, nearly invisible sheet of black ice shining on the asphalt road, cold blue dawn light, light mist, polished 3D animated feature-film style with expressive big eyes and warm cinematic lighting, no text, vertical 9:16</pre></div></div></div><div class="mstep"><div class="mno">③</div><div class="mbody"><h3>신2 그림 <span class="pg">교안 52p</span></h3><div class="copybox"><div class="copybox-head"><span>📋 신2 · 천천히! 손짓 <span class="where">플로우에</span></span><button class="copy-btn" type="button" data-copy="mc14">복사하기</button></div><pre id="mc14">Use the attached mascot image as the exact same character. a chubby, cute baby polar bear mascot named &quot;Cheoncheoni&quot;, fluffy snow-white fur, wearing a bright yellow safety vest with silver reflective stripes and a red knitted beanie, big sparkling expressive eyes, rosy cheeks, calm gentle smile, standing on the snowy roadside next to a slowly moving car, raising one paw in a calm &quot;slow down&quot; gesture toward the driver, snowy winter road, soft morning light, polished 3D animated feature-film style with expressive big eyes and warm cinematic lighting, no text, vertical 9:16</pre></div></div></div><div class="mstep"><div class="mno">④</div><div class="mbody"><h3>신3 그림 <span class="pg">교안 52p</span></h3><div class="copybox"><div class="copybox-head"><span>📋 신3 · 안전 도착 엄지척 <span class="where">플로우에</span></span><button class="copy-btn" type="button" data-copy="mc15">복사하기</button></div><pre id="mc15">Use the attached mascot image as the exact same character. a chubby, cute baby polar bear mascot named &quot;Cheoncheoni&quot;, fluffy snow-white fur, wearing a bright yellow safety vest with silver reflective stripes and a red knitted beanie, big sparkling expressive eyes, rosy cheeks, calm gentle smile, giving a happy paw thumbs-up in front of a car that has safely arrived at a cozy snowy village, warm sunrise light, relieved and cheerful mood, polished 3D animated feature-film style with expressive big eyes and warm cinematic lighting, no text, vertical 9:16</pre></div></div></div><h3 class="part-sub">④-2 그림 → 영상</h3><div class="mstep"><div class="mno">⑤</div><div class="mbody"><h3>A. 말로 <span class="pg">교안 53p</span></h3><p class="hint">신1 그림 → 영상 → 붙여넣기</p><div class="copybox short"><div class="copybox-head"><span>📋 A. 말로 <span class="where">플로우에</span></span><button class="copy-btn" type="button" data-copy="mc16">복사하기</button></div><pre id="mc16">백곰이 다리 위에서 천천히 손짓하는 영상</pre></div></div></div><div class="mstep"><div class="mno">⑥</div><div class="mbody"><h3>B. 프롬프트 얻어오기 <span class="pg">교안 54p</span></h3><p class="hint">① 복사 → <b>제미나이</b>에 붙여넣기 → ② 받은 영어 프롬프트 복사 → ③ <span class="ui">|||</span> 플로우 → 신 그림 → 영상 → 붙여넣기</p><div class="copybox"><div class="copybox-head"><span>📋 신1 대필 요청 <span class="where">제미나이에</span></span><button class="copy-btn" type="button" data-copy="mc17">복사하기</button></div><pre id="mc17">나는 구글 플로우에서 이 이미지로 8초짜리 세로 영상을 만들려고 해.
 아래 장면을 플로우에 바로 붙여넣을 영어 영상 프롬프트로 써줘.
 카메라 움직임, 동작의 시작과 끝, 분위기, 효과음을 넣고 대사는 넣지 마.
 설명 없이 프롬프트 한 덩어리만 줘.
@@ -341,8 +513,8 @@ code{font-size:12px;color:#8a93a3}
 카메라 움직임, 동작의 시작과 끝, 분위기, 효과음을 넣고 대사는 넣지 마.
 설명 없이 프롬프트 한 덩어리만 줘.
 
-[장면] 눈 내린 마을 앞, 안전하게 도착한 자동차 옆에서 백곰이 앞발로 엄지척을 하고 활짝 웃는다. 따뜻한 해가 뜬다.</pre></div></div></div><div class="mstep"><div class="mno">⑦</div><div class="mbody"><h3>클립 3개 공유</h3><p class="hint">세로 9:16 클립을 단톡방에</p></div></div></section>
-<section class="group p7" id="p7"><div class="group-head"><span class="pnum">07</span><h2>마무리 — 로그아웃</h2></div><p class="group-desc">공용 태블릿입니다. <b>꼭</b> 로그아웃해 주세요.</p><ul class="chk big"><li>클로드 · 챗지피티 · 제미나이 · 수노 · 플로우 : 프로필 → 로그아웃</li><li>크롬 : 구글 계정 로그아웃</li><li>내 파일 › 다운로드 : molit 파일 지우기 (선택)</li><li>짝꿍과 서로 확인</li></ul></section>
+[장면] 눈 내린 마을 앞, 안전하게 도착한 자동차 옆에서 백곰이 앞발로 엄지척을 하고 활짝 웃는다. 따뜻한 해가 뜬다.</pre></div></div></div><div class="mstep"><div class="mno">⑦</div><div class="mbody"><h3>클립 3개 공유 <span class="pg">교안 56p</span></h3><p class="hint">세로 9:16 클립을 단톡방에</p></div></div></section>
+<section class="group p7" id="p7"><div class="group-head"><span class="pnum">07</span><h2>마무리 — 로그아웃 <span class="pg">교안 62p</span></h2></div><p class="group-desc">공용 태블릿입니다. <b>꼭</b> 로그아웃해 주세요.</p><ul class="chk big"><li>클로드 · 챗지피티 · 제미나이 · 수노 · 플로우 : 프로필 → 로그아웃</li><li>크롬 : 구글 계정 로그아웃</li><li>내 파일 › 다운로드 : molit 파일 지우기 (선택)</li><li>짝꿍과 서로 확인</li></ul></section>
 <section class="group sos" id="sos"><div class="group-head"><span class="pnum">🆘</span><h2>막혔을 때</h2></div><p class="group-desc">아래에서 찾아보세요.</p><details class="acc fold"><summary><span class="seq">1</span>태블릿 기본 조작법</summary><div class="acc-body"><p>◁ 뒤로 = 방금 화면 · ○ 홈 = 바탕 화면 · ||| = 앱 오가기</p></div></details><details class="acc fold"><summary><span class="seq">2</span>복사 · 붙여넣기가 안 돼요</summary><div class="acc-body"><p>[복사하기]가 “복사 완료”로 바뀌었는지 확인 → 입력 칸을 <b>1초 길게</b> 누르기 → “붙여넣기”</p></div></details><details class="acc fold"><summary><span class="seq">3</span>글자를 써야 해요</summary><div class="acc-body"><p>키보드 한/영 키로 전환, 또는 키보드의 🎤 마이크를 눌러 말로 입력</p></div></details><details class="acc fold"><summary><span class="seq">4</span>받은 파일이 어디 있죠?</summary><div class="acc-body"><p><b>내 파일</b> 앱 → <b>다운로드</b>. 첨부할 때도 ＋ → 파일 → 다운로드</p></div></details><details class="acc fold"><summary><span class="seq">5</span>사진이 저장 안 돼요</summary><div class="acc-body"><p>[사진 받기] 누른 뒤 <b>갤러리 → Download 앨범</b> 확인</p></div></details><details class="acc fold"><summary><span class="seq">6</span>사진 vs 파일 첨부</summary><div class="acc-body"><p>그림은 ＋ → <b>사진</b> / 문서(molit_01~04)는 ＋ → <b>파일</b></p></div></details><details class="acc fold"><summary><span class="seq">7</span>홈피로 돌아가기</summary><div class="acc-body"><p><span class="ui">|||</span> → 크롬, 또는 홈 화면의 홈피 바로가기</p></div></details><details class="acc fold"><summary><span class="seq">8</span>앱으로 튕겨 나가요</summary><div class="acc-body"><p>◁ 뒤로를 누르면 홈피로 돌아옵니다</p></div></details><details class="acc fold"><summary><span class="seq">9</span>로그인이 막혀요</summary><div class="acc-body"><p>“구글로 계속” → 개인 폰의 2단계 인증 확인</p></div></details><details class="acc fold"><summary><span class="seq">10</span>생성이 안 돼요 / 멈췄어요</summary><div class="acc-body"><p>1분 기다리기 → 새 채팅에서 다시. 사용량이 다 됐다면 단톡방의 강사 결과로 이어 가기</p></div></details><details class="acc fold"><summary><span class="seq">11</span>결과 공유</summary><div class="acc-body"><p>결과 화면 공유(↗) → 카카오톡 → 단톡방. 공유가 없으면 화면 캡처</p></div></details><details class="acc fold"><summary><span class="seq">12</span>로그아웃</summary><div class="acc-body"><p>각 앱 프로필 → 로그아웃, 크롬 구글 계정 로그아웃</p></div></details></section></div><div class="mdv" id="mdv"><div class="mdv-box"><div class="mdv-head"><b id="mdv-t"></b><a id="mdv-d" class="pri" href="#" download>받기</a><button id="mdv-x" type="button">닫기</button></div><pre id="mdv-p"></pre></div></div>
 <script>document.querySelectorAll('[data-copy]').forEach(function(btn){btn.addEventListener('click',function(){var el=document.getElementById(btn.getAttribute('data-copy'));var text=el.innerText,label=btn.textContent;function ok(){btn.textContent='복사 완료! ✔︎';btn.classList.add('done');setTimeout(function(){btn.textContent=label;btn.classList.remove('done')},2200)}function fb(){var a=document.createElement('textarea');a.value=text;a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);a.focus();a.select();try{document.execCommand('copy');ok()}catch(e){}a.remove()}if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(text).then(ok,fb)}else{fb()}})});</script><script id="molit-js">(function(){
 function dlAll(btn){var L=['downloads/public/molit_01_factsheet.md','downloads/public/molit_02_report_brain.md','downloads/public/molit_03_pdf_design.md','downloads/public/molit_04_html_motion.md'],i=0;var o=btn.innerHTML;(function nx(){if(i>=L.length){btn.classList.add('done');btn.innerHTML='✔︎ 받기 완료 — 내 파일 › 다운로드 확인';setTimeout(function(){btn.classList.remove('done');btn.innerHTML=o},5000);return}
