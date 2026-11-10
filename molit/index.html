@@ -793,5 +793,57 @@ const L=new Set();S.forEach((s,k)=>{if(s.querySelector('.lad'))L.add(k)});
 let last=-1;
 const _s=show;show=function(n){_s(n);if(i!==last&&L.has(i)){const s=S[i];s.classList.remove('ladIn');void s.offsetWidth;s.classList.add('ladIn')}last=i};
 })();
+// 14쪽 채팅형 AI 5종 — 들어올 때마다 로고 5개가 위에서 차례로 떨어져 통통 튐
+(function(){
+const s=S.find(x=>/채팅형 AI 5종 한눈에/.test(x.innerHTML));if(!s)return;const k0=S.indexOf(s);
+const st=document.createElement('style');st.textContent=`
+.dropIn img{opacity:0;animation:logoDrop .9s cubic-bezier(.3,0,.3,1) forwards}
+@keyframes logoDrop{0%{opacity:0;transform:translateY(-260px)}35%{opacity:1}60%{transform:translateY(0)}72%{transform:translateY(-26px)}84%{transform:translateY(0)}92%{transform:translateY(-7px)}100%{opacity:1;transform:translateY(0)}}`;
+[...s.querySelectorAll("img")].forEach((im,k)=>{im.style.animationDelay=(.15+k*.16)+'s'});
+document.head.appendChild(st);
+let last=-1;
+const _s=show;show=function(n){_s(n);if(i!==last&&i===k0){s.classList.remove('dropIn');void s.offsetWidth;s.classList.add('dropIn')}last=i};
+})();
+// 13쪽 LLM 통역사 — 쪽에 있는 동안 선을 따라 빛 알갱이가 계속 흐름 (나 → LLM → 각 AI)
+(function(){
+const s=S.find(x=>/LLM이 가장 중요한 이유/.test(x.innerHTML));if(!s)return;const v=s.querySelector('svg');if(!v)return;const NS='http://www.w3.org/2000/svg';
+const st=document.createElement('style');st.textContent=`.llmDash{animation:llmDash 1.4s linear infinite}@keyframes llmDash{to{stroke-dashoffset:-24}}.llmRing{animation:llmDash 2s linear infinite}`;document.head.appendChild(st);
+v.querySelectorAll('rect[stroke-dasharray]').forEach(r=>r.classList.add('llmDash'));
+v.querySelectorAll('circle[stroke-dasharray]').forEach(c=>c.classList.add('llmRing'));
+function dots(d,col,n,dur,r){for(let k=0;k<n;k++){const c=document.createElementNS(NS,'circle');c.setAttribute('r',r);c.setAttribute('fill',col);
+ const b=(-dur*k/n)+'s';const a=document.createElementNS(NS,'animateMotion');a.setAttribute('path',d);a.setAttribute('dur',dur+'s');a.setAttribute('repeatCount','indefinite');a.setAttribute('begin',b);
+ const o=document.createElementNS(NS,'animate');o.setAttribute('attributeName','opacity');o.setAttribute('values','0;1;1;0');o.setAttribute('keyTimes','0;.15;.8;1');o.setAttribute('dur',dur+'s');o.setAttribute('repeatCount','indefinite');o.setAttribute('begin',b);
+ c.appendChild(a);c.appendChild(o);v.appendChild(c)}}
+v.querySelectorAll('line,path[fill="none"]').forEach(e=>{const col=e.getAttribute('stroke');if(!col||e.closest('marker'))return;
+ const d=e.tagName==='line'?`M${e.getAttribute('x1')},${e.getAttribute('y1')}L${e.getAttribute('x2')},${e.getAttribute('y2')}`:e.getAttribute('d');
+ const long=e.tagName!=='line'||Math.abs(e.getAttribute('x2')-e.getAttribute('x1'))>80;dots(d,col,long?2:1,long?1.8:1,6)});
+})();
+// 17쪽 PE7 — 들어올 때마다 PE1→PE7 순서대로 빠르게 톡톡 등장
+(function(){
+const s=S.find(x=>/PE7 프레임워크/.test(x.innerHTML)&&x.querySelector('.cir'));if(!s)return;const k0=S.indexOf(s);
+const st=document.createElement('style');st.textContent=`.peIn .cir .i{opacity:0;animation:pePop .38s cubic-bezier(.3,1.5,.5,1) forwards}@keyframes pePop{0%{opacity:0;transform:translateY(24px) scale(.7)}100%{opacity:1;transform:none}}`;
+document.head.appendChild(st);s.querySelectorAll('.cir .i').forEach((e,k)=>e.style.animationDelay=(.1+k*.12)+'s');
+let last=-1;const _s=show;show=function(n){_s(n);if(i!==last&&i===k0){s.classList.remove('peIn');void s.offsetWidth;s.classList.add('peIn')}last=i};
+})();
+// 20쪽 미션 — 단장 · 천천이 카드가 전환 효과 뒤에 차례로 뿅 튀어 오름
+(function(){
+const s=S.find(x=>/MISSION BRIEF/.test(x.innerHTML));if(!s)return;const k0=S.indexOf(s);
+const cards=[...s.children].filter(e=>/COMMANDER|FIELD AGENT/.test(e.textContent)&&e.tagName==='DIV');if(!cards.length)return;
+cards.forEach((c,k)=>{c.classList.add('chp');c.style.setProperty('--d',(1.0+k*.22)+'s')});
+const st=document.createElement('style');st.textContent=`.chpIn>.chp{opacity:0;transform-origin:50% 100%;animation:chpPop .65s cubic-bezier(.3,1.7,.5,1) var(--d) forwards !important}
+@keyframes chpPop{0%{opacity:0;transform:translateY(60px) scale(.6)}60%{opacity:1}100%{opacity:1;transform:none}}`;document.head.appendChild(st);
+let last=-1;const _s=show;show=function(n){_s(n);if(i!==last&&i===k0){s.classList.remove('chpIn');void s.offsetWidth;s.classList.add('chpIn')}last=i};
+})();
+// 미션 카드(31·37·44·53쪽) — 들어올 때마다 박스들이 위에서부터 빠르게 차례로 등장, "지령 접수" 도장은 쾅
+(function(){
+const M=new Map();S.forEach((s,k)=>{if(!/EQUIPMENT · 투입 장비/.test(s.innerHTML))return;const ch=[...s.children].slice(1);
+ ch.forEach((e,j)=>{e.classList.add(/^\s*지령 접수\s*$/.test(e.textContent)?'msStamp':'msBox');e.style.setProperty('--md',(j*.09)+'s')});M.set(k,s)});
+if(!M.size)return;
+const st=document.createElement('style');st.textContent=`.msIn>.msBox{opacity:0;animation:msUp .35s ease-out var(--md) forwards}
+.msIn>.msStamp{opacity:0;animation:msStamp .4s cubic-bezier(.3,1.6,.5,1) calc(var(--md) + .2s) forwards}
+@keyframes msUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes msStamp{0%{opacity:0;scale:2.2}100%{opacity:1;scale:1}}`;document.head.appendChild(st);
+let last=-1;const _s=show;show=function(n){_s(n);if(i!==last&&M.has(i)){const s=M.get(i);s.classList.remove('msIn');void s.offsetWidth;s.classList.add('msIn')}last=i};
+})();
 </script>
 </body></html>
