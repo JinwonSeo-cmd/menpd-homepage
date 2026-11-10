@@ -731,7 +731,13 @@ function start(){if(on)return;on=true;if(au.paused){au.currentTime=0;au.play().c
 function stop(){if(!on)return;on=false;ramp(0,1500,()=>{if(!on)au.pause()})}
 const check=()=>{(i>=A&&i<=B)?start():stop()};
 const _s=show;show=function(n){_s(n);check()};
-addEventListener('keydown',e=>{if(e.key==='m'||e.key==='M'){muted=!muted;if(on)ramp(muted?0:VOL,400)}});
+const btns=[];
+function setMute(m){muted=m;if(on)ramp(muted?0:VOL,400);btns.forEach(b=>{b.textContent=muted?'🔇 음악 켜기':'🔊 음악 끄기';b.classList.toggle('off',muted)})}
+const st=document.createElement('style');st.textContent=`.bgmBtn{position:absolute;right:24px;top:7px;z-index:60;padding:4px 14px;border-radius:999px;border:1.5px solid rgba(111,211,221,.6);background:rgba(12,24,32,.75);color:#fff;font:800 15px Pretendard,sans-serif;cursor:pointer;opacity:.8;transition:opacity .2s}.bgmBtn:hover{opacity:1}.bgmBtn.off{border-color:#B3261E;opacity:.9}`;document.head.appendChild(st);
+for(let k=A;k<=B;k++){const b=document.createElement('button');b.className='bgmBtn';b.textContent='🔊 음악 끄기';b.addEventListener('click',e=>{e.stopPropagation();setMute(!muted)});b.addEventListener('keydown',e=>e.stopPropagation());S[k].appendChild(b);btns.push(b)}
+function place(){btns.forEach(b=>{const sl=b.parentElement;const sp=[...sl.querySelectorAll('span')].find(x=>/교육용 가상/.test(x.textContent));if(!sp||!sl.offsetWidth)return;b.style.right=(sl.offsetWidth-sp.offsetLeft+18)+'px'})}
+const _sp=show;show=function(n){_sp(n);if(i>=A&&i<=B)place()};
+addEventListener('keydown',e=>{if(e.key==='m'||e.key==='M')setMute(!muted)});
 })();
 // 파트 표지 전환 효과 — 띠가 한 번 쓸고 지나가며 "PART 0N"이 떴다가 제목만 남음 (약 1.2초, 효과음 없음)
 (function(){
