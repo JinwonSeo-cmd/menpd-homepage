@@ -856,5 +856,14 @@ const st=document.createElement('style');st.textContent=`.insIn .inL{opacity:0;a
 let last=-1;const _s=show;show=function(n){_s(n);if(i!==last&&i===k0){s.classList.remove('insIn');void s.offsetWidth;s.classList.add('insIn')}last=i};
 if(typeof i!=='undefined'&&i===k0){s.classList.add('insIn');last=k0}
 })();
+// 19쪽 커스텀 봇 — 쪽에 있는 동안 아이콘 · 위 세 박스가 둥둥 호버링, 화살표는 앞으로 살짝 밀림
+(function(){
+const s=S.find(x=>/커스텀 봇 — MD를 한 번 넣어 두면/.test(x.innerHTML));if(!s)return;
+const st=document.createElement('style');st.textContent=`.hvA{animation:hvA 2.6s ease-in-out infinite}.hvB{animation:hvB 3.4s ease-in-out infinite}.hvR{animation:hvR 1.4s ease-in-out infinite}
+@keyframes hvA{0%,100%{translate:0 0}50%{translate:0 -9px}}@keyframes hvB{0%,100%{translate:0 0}50%{translate:0 -5px}}@keyframes hvR{0%,100%{translate:0 0;opacity:.6}50%{translate:7px 0;opacity:1}}`;document.head.appendChild(st);
+[...s.querySelectorAll('div')].filter(d=>d.style.fontSize==='34px').forEach((d,k)=>{d.style.display='inline-block';d.classList.add('hvA');d.style.animationDelay=(-k*.43)+'s'});
+s.querySelectorAll('.fl').forEach((d,k)=>{d.classList.add('hvB');d.style.animationDelay=(-k*.6)+'s'});
+s.querySelectorAll('.arr').forEach((d,k)=>{d.classList.add('hvR');d.style.animationDelay=(-k*.3)+'s'});
+})();
 </script>
 </body></html>
