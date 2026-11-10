@@ -912,5 +912,17 @@ function clicks(){if(window.NO_SPY||cmute)return;try{cac=cac||new (window.AudioC
   const o=cac.createOscillator(),og=cac.createGain();o.frequency.value=1800;og.gain.setValueAtTime(.04,t);og.gain.exponentialRampToValueAtTime(.001,t+.04);o.connect(og).connect(cac.destination);o.start(t);o.stop(t+.05)})}catch(e){}}
 let last=-1;const _s=show;show=function(n){_s(n);if(i!==last&&i===k0){clicks();s.classList.remove('colIn');void s.offsetWidth;s.classList.add('colIn')}last=i};
 })();
+// 마지막 쪽 Thank you — 엔딩곡 「Mission Complete (Growth)」 (-24 LUFS, 3초 페이드인, 떠나면 2초 페이드아웃) · 우상단 음악 끄기 · M 키
+(function(){
+if(window.NO_SPY)return;const k0=S.length-1,s=S[k0];if(!s||!/Thank you/.test(s.textContent))return;
+const VOL=.8,au=new Audio('assets/end_bgm.mp3');au.preload='auto';au.volume=0;let on=false,muted=false,fade=null;
+function ramp(to,ms,done){clearInterval(fade);const from=au.volume,t0=performance.now();fade=setInterval(()=>{const k=Math.min(1,(performance.now()-t0)/ms);au.volume=from+(to-from)*k*k*(3-2*k);if(k>=1){clearInterval(fade);done&&done()}},40)}
+const b=document.createElement('button');b.className='bgmBtn endBtn';b.textContent='🔊 음악 끄기';s.appendChild(b);
+const st=document.createElement('style');st.textContent='.endBtn{top:24px;right:24px}';document.head.appendChild(st);
+function setMute(m){muted=m;if(on)ramp(muted?0:VOL,400);b.textContent=muted?'🔇 음악 켜기':'🔊 음악 끄기';b.classList.toggle('off',muted)}
+b.addEventListener('click',e=>{e.stopPropagation();setMute(!muted)});b.addEventListener('keydown',e=>e.stopPropagation());
+addEventListener('keydown',e=>{if(e.key==='m'||e.key==='M')setMute(!muted)});
+const _s=show;show=function(n){_s(n);if(i===k0){if(!on){on=true;au.currentTime=0;au.play().catch(()=>{});ramp(muted?0:VOL,3000)}}else if(on){on=false;ramp(0,2000,()=>{if(!on)au.pause()})}};
+})();
 </script>
 </body></html>
