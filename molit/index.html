@@ -869,7 +869,10 @@ let dac=null,dmute=false;addEventListener('keydown',e=>{if(e.key==='m'||e.key===
 function boom(t,g,f0){const o=dac.createOscillator(),v=dac.createGain(),lp=dac.createBiquadFilter();o.type='sine';o.frequency.setValueAtTime(f0,t);o.frequency.exponentialRampToValueAtTime(38,t+.5);
  lp.type='lowpass';lp.frequency.value=900;v.gain.setValueAtTime(0,t);v.gain.linearRampToValueAtTime(g,t+.01);v.gain.exponentialRampToValueAtTime(.001,t+1.1);o.connect(lp).connect(v).connect(dac.destination);o.start(t);o.stop(t+1.15);
  const b=dac.createBuffer(1,dac.sampleRate*.08|0,dac.sampleRate),d=b.getChannelData(0);for(let k=0;k<d.length;k++)d[k]=(Math.random()*2-1)*(1-k/d.length);const n=dac.createBufferSource(),nv=dac.createGain(),nf=dac.createBiquadFilter();n.buffer=b;nf.type='lowpass';nf.frequency.value=1500;nv.gain.value=g*.25;n.connect(nf).connect(nv).connect(dac.destination);n.start(t)}
-function dudung(){if(window.NO_SPY||dmute)return;try{dac=dac||new (window.AudioContext||window.webkitAudioContext)();dac.resume();const t=dac.currentTime+.05;boom(t,.32,95);boom(t+.3,.42,80)}catch(e){}}
+function dudung(){if(window.NO_SPY||dmute)return;try{dac=dac||new (window.AudioContext||window.webkitAudioContext)();dac.resume();const t0=dac.currentTime+.05;
+ [[0,2600],[.09,3400]].forEach(([d,f0])=>{const t=t0+d,b=dac.createBuffer(1,dac.sampleRate*.025|0,dac.sampleRate),x=b.getChannelData(0);for(let j=0;j<x.length;j++)x[j]=(Math.random()*2-1)*Math.pow(1-j/x.length,6);
+  const n=dac.createBufferSource(),f=dac.createBiquadFilter(),g=dac.createGain();n.buffer=b;f.type='bandpass';f.frequency.value=f0;f.Q.value=2.5;g.gain.value=.55;n.connect(f).connect(g).connect(dac.destination);n.start(t);
+  const o=dac.createOscillator(),og=dac.createGain();o.type='triangle';o.frequency.value=f0*.6;og.gain.setValueAtTime(.05,t);og.gain.exponentialRampToValueAtTime(.001,t+.05);o.connect(og).connect(dac.destination);o.start(t);o.stop(t+.06)})}catch(e){}}
 let last=-1;const _s=show;show=function(n){_s(n);if(i!==last&&M.has(i)){dudung();const s=M.get(i);s.classList.remove('msIn');void s.offsetWidth;s.classList.add('msIn')}last=i};
 })();
 // 2쪽 강사 소개 — 왼쪽 네 박스는 왼쪽에서, 오른쪽 사진 두 장은 오른쪽에서 차례로 미끄러져 들어옴
