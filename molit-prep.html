@@ -227,6 +227,10 @@ pre.mdall{max-height:360px!important;overflow:auto;font-size:13px!important;line
 .session[open] .session-btn::after{content:'접기 ▴';font-size:13px}
 .session[open]>summary{border-bottom:1px solid var(--line,#d6e2e5)}
 .session-body{padding:8px 20px 40px}
+
+/* 줄바꿈 : 단어 중간에서 끊지 않기 */
+body{word-break:keep-all;overflow-wrap:break-word}
+p,li,h2,h3,figcaption,.hint,.group-desc{text-wrap:pretty}
 </style>
 <link rel="stylesheet" href="css/depth-motion.css">
 <link rel="stylesheet" href="css/dusk-pages.css?v=20260923b">
