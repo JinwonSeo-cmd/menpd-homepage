@@ -808,7 +808,12 @@ for(let k=0;k<7;k++)st.textContent+=`.ladIn .lad .s:nth-child(${k+1}){animation-
 document.head.appendChild(st);
 const L=new Set();S.forEach((s,k)=>{if(s.querySelector('.lad'))L.add(k)});
 let last=-1;
-const _s=show;show=function(n){_s(n);if(i!==last&&L.has(i)){const s=S[i];s.classList.remove('ladIn');void s.offsetWidth;s.classList.add('ladIn')}last=i};
+let zac=null,zmute=false;addEventListener('keydown',e=>{if(e.key==='m'||e.key==='M')zmute=!zmute});
+function zzuk(){if(window.NO_SPY||zmute)return;try{zac=zac||new (window.AudioContext||window.webkitAudioContext)();zac.resume();const t0=zac.currentTime+.05;
+ for(let k=0;k<7;k++){const t=t0+k*.18+.05,f=300*Math.pow(1.12,k),o=zac.createOscillator(),g=zac.createGain();o.type='triangle';
+  o.frequency.setValueAtTime(f,t);o.frequency.exponentialRampToValueAtTime(f*2.2,t+.14);g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.07,t+.02);g.gain.exponentialRampToValueAtTime(.001,t+.18);
+  o.connect(g).connect(zac.destination);o.start(t);o.stop(t+.2)}}catch(e){}}
+const _s=show;show=function(n){_s(n);if(i!==last&&L.has(i)){zzuk();const s=S[i];s.classList.remove('ladIn');void s.offsetWidth;s.classList.add('ladIn')}last=i};
 })();
 // 14쪽 채팅형 AI 5종 — 들어올 때마다 로고 5개가 위에서 차례로 떨어져 통통 튐
 (function(){
