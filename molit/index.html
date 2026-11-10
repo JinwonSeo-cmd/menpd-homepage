@@ -865,5 +865,12 @@ const st=document.createElement('style');st.textContent=`.hvA{animation:hvA 2.6s
 s.querySelectorAll('.fl').forEach((d,k)=>{d.classList.add('hvB');d.style.animationDelay=(-k*.6)+'s'});
 s.querySelectorAll('.arr').forEach((d,k)=>{d.classList.add('hvR');d.style.animationDelay=(-k*.3)+'s'});
 })();
+// 마지막 쪽 Thank you — 강사 사진이 부드럽게 둥둥 호버링 (그림자도 함께 움직임)
+(function(){
+const s=S[S.length-1];const im=s&&s.querySelector('img');if(!im||!/Thank you/.test(s.textContent))return;
+const st=document.createElement('style');st.textContent=`.tyHv{animation:tyHv 3.2s ease-in-out infinite}
+@keyframes tyHv{0%,100%{translate:0 0;box-shadow:0 10px 30px rgba(0,0,0,.25)}50%{translate:0 -12px;box-shadow:0 22px 40px rgba(0,0,0,.18)}}`;document.head.appendChild(st);
+im.classList.add('tyHv');
+})();
 </script>
 </body></html>
