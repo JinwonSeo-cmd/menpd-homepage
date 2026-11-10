@@ -749,7 +749,11 @@ const st=document.createElement('style');st.textContent=`
 document.head.appendChild(st);
 const P={};S.forEach((s,k)=>{const lb=s.querySelector('.cv .lb');const m=lb&&lb.textContent.match(/Part\.?\s*0?(\d+)/i);if(m)P[k]=[m[1].padStart(2,'0'),0];else if(/MISSION BRIEF/.test(s.innerHTML)&&!Object.values(P).some(v=>v[1]))P[k]=['02',1]});
 let last=-1,tm=null;
-function run(k){const s=S[k],[n,all]=P[k];s.querySelectorAll('.pw').forEach(e=>e.remove());s.classList.remove('pwIn','pwAll');void s.offsetWidth;
+let pac=null,pmute=false;addEventListener('keydown',e=>{if(e.key==='m'||e.key==='M')pmute=!pmute});
+function pop(t0){if(window.NO_SPY||pmute)return;try{pac=pac||new (window.AudioContext||window.webkitAudioContext)();pac.resume();const t=pac.currentTime+t0;
+ [[520,1250,0],[780,1870,.0]].forEach(([a,b,d],j)=>{const o=pac.createOscillator(),g=pac.createGain();o.type=j?'triangle':'sine';o.frequency.setValueAtTime(a,t+d);o.frequency.exponentialRampToValueAtTime(b,t+d+.09);
+ g.gain.setValueAtTime(0,t+d);g.gain.linearRampToValueAtTime(j?.06:.22,t+d+.012);g.gain.exponentialRampToValueAtTime(.001,t+d+.22);o.connect(g).connect(pac.destination);o.start(t+d);o.stop(t+d+.25)})}catch(e){}}
+function run(k){pop(.38);const s=S[k],[n,all]=P[k];s.querySelectorAll('.pw').forEach(e=>e.remove());s.classList.remove('pwIn','pwAll');void s.offsetWidth;
  const o=document.createElement('div');o.className='pw';o.innerHTML='<div class="bd"></div><div class="nm">PART<b>'+n+'</b></div>';s.appendChild(o);s.classList.add('pwIn');if(all)s.classList.add('pwAll');
  clearTimeout(tm);tm=setTimeout(()=>{o.remove();s.classList.remove('pwIn','pwAll')},1500)}
 const _s=show;show=function(n){_s(n);if(i!==last&&P[i])run(i);last=i};
