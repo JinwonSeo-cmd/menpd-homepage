@@ -717,41 +717,81 @@ addEventListener('wheel',e=>{if(e.target.closest('iframe,textarea,.pb'))return;e
 addEventListener('keydown',e=>{if(e.key==='ArrowDown'){e.preventDefault();show(i+1)}else if(e.key==='ArrowUp'){e.preventDefault();show(i-1)}});
 })();
 
-// 20~21쪽(오늘의 미션 · 작전 브리핑) 동안만 첩보 분위기 배경음 — 웹오디오로 직접 연주(저작권 없는 자체 곡)
-// 다른 쪽으로 넘어가면 서서히 멈춤 · M 키 = 음소거 켜고 끄기
+// 20~21쪽(오늘의 미션 · 작전 브리핑) 동안만 배경음 — 수노 「Operation Slow Ice」 (음량 평준화 -23 LUFS, 갑자기 커지는 구간 없음)
+// 3초에 걸쳐 서서히 커지고, 다른 쪽으로 넘어가면 1.5초에 걸쳐 멈춤 · 20→21 넘어가도 끊기지 않음 · M 키 = 음소거
 (function(){
 if(window.NO_SPY)return;
 const idx=[];S.forEach((s,k)=>{if(/MISSION BRIEF|OPERATION SLOW ICE/.test(s.innerHTML))idx.push(k)});
 if(!idx.length)return;
-const A=Math.min(...idx),B=Math.max(...idx);
-let ac=null,master=null,timer=null,step=0,nextT=0,on=false,muted=false;
-const BPM=138,E16=60/BPM/4;
-const hz=m=>440*Math.pow(2,(m-69)/12);
-const BASS=[0,0,0,0,1,1,0,0, 0,0,0,0,-1,-1,0,0];          // 8분음표 베이스 (E 기준 반음 긴장)
-function noise(t,dur,f,q,g,type){const b=ac.createBuffer(1,Math.max(1,ac.sampleRate*dur|0),ac.sampleRate),d=b.getChannelData(0);for(let k=0;k<d.length;k++)d[k]=Math.random()*2-1;const s=ac.createBufferSource();s.buffer=b;const bp=ac.createBiquadFilter();bp.type=type||'bandpass';bp.frequency.value=f;bp.Q.value=q;const v=ac.createGain();v.gain.setValueAtTime(g,t);v.gain.exponentialRampToValueAtTime(.001,t+dur);s.connect(bp).connect(v).connect(master);s.start(t);s.stop(t+dur)}
-function tone(t,m,dur,type,g,cut,att){const o=ac.createOscillator();o.type=type;o.frequency.value=hz(m);const lp=ac.createBiquadFilter();lp.type='lowpass';lp.frequency.setValueAtTime(cut,t);lp.frequency.exponentialRampToValueAtTime(Math.max(200,cut/3),t+dur);const v=ac.createGain();v.gain.setValueAtTime(0,t);v.gain.linearRampToValueAtTime(g,t+(att||.008));v.gain.exponentialRampToValueAtTime(.001,t+dur);o.connect(lp).connect(v).connect(master);o.start(t);o.stop(t+dur+.02)}
-function kick(t,g){const o=ac.createOscillator(),v=ac.createGain();o.frequency.setValueAtTime(130,t);o.frequency.exponentialRampToValueAtTime(42,t+.18);v.gain.setValueAtTime(g,t);v.gain.exponentialRampToValueAtTime(.001,t+.3);o.connect(v).connect(master);o.start(t);o.stop(t+.32)}
-function stab(t,dur,g){[52,55,59,63,66].forEach(m=>{tone(t,m,dur,'sawtooth',g,2600);tone(t,m+12,dur,'square',g*.35,2000)})} // Em(maj9) 브라스 스탭
-function sched(){while(nextT<ac.currentTime+.25){const s=step%32,bar=Math.floor(step/16)%8,t=nextT;
- if(s%2===0)tone(t,28+BASS[s/2],E16*1.8,'sawtooth',.42,700);          // 질주하는 베이스
- noise(t,.025,9000,1,s%4===2?.13:.05);                                   // 16분 하이햇
- if(s%8===0)kick(t,.9);                                                   // 킥
- if(s%8===4)noise(t,.12,1900,1.4,.32);                                    // 스네어
- if(bar%4===3&&s>=24&&s%1===0)noise(t,.05,2200,1.2,.08+(s-24)*.03);       // 4마디마다 스네어 롤
- tone(t,(s%2?77:76),E16*.95,'triangle',.035,5000);                        // 높은 현 트릴 (긴장감)
- if(s===0||s===22)stab(t,s===0?.35:.16,.05);                              // 브라스 스탭 (1박 + 엇박)
- if(bar%4===3&&s>=24&&s%2===0)tone(t,[59,60,61,62][(s-24)/2],E16*2,'sawtooth',.09,3000); // 상승 브라스
- if(bar%4===0&&s===0)noise(t,1.2,300,.7,.25,'lowpass');                   // 팀파니 쿵
- nextT+=E16;step++}}
-function start(){if(on)return;on=true;
- if(!ac){ac=new (window.AudioContext||window.webkitAudioContext)();master=ac.createGain();master.gain.value=0;master.connect(ac.destination)}
- ac.resume();step=0;nextT=ac.currentTime+.05;
- master.gain.cancelScheduledValues(ac.currentTime);master.gain.setValueAtTime(master.gain.value,ac.currentTime);master.gain.linearRampToValueAtTime(muted?0:.5,ac.currentTime+.4);
- clearInterval(timer);timer=setInterval(sched,40)}
-function stop(){if(!on)return;on=false;const t=ac.currentTime;master.gain.cancelScheduledValues(t);master.gain.setValueAtTime(master.gain.value,t);master.gain.linearRampToValueAtTime(0,t+1.2);setTimeout(()=>{if(!on)clearInterval(timer)},1300)}
+const A=Math.min(...idx),B=Math.max(...idx),VOL=.8;
+const au=new Audio('assets/spy_bgm.mp3');au.loop=true;au.preload='auto';au.volume=0;
+let on=false,muted=false,fade=null;
+function ramp(to,ms,done){clearInterval(fade);const from=au.volume,t0=performance.now();fade=setInterval(()=>{const k=Math.min(1,(performance.now()-t0)/ms);au.volume=from+(to-from)*k*k*(3-2*k);if(k>=1){clearInterval(fade);done&&done()}},40)}
+function start(){if(on)return;on=true;if(au.paused){au.currentTime=0;au.play().catch(()=>{})}ramp(muted?0:VOL,3000)}
+function stop(){if(!on)return;on=false;ramp(0,1500,()=>{if(!on)au.pause()})}
 const check=()=>{(i>=A&&i<=B)?start():stop()};
 const _s=show;show=function(n){_s(n);check()};
-addEventListener('keydown',e=>{if((e.key==='m'||e.key==='M')&&ac){muted=!muted;if(on){const t=ac.currentTime;master.gain.cancelScheduledValues(t);master.gain.setValueAtTime(master.gain.value,t);master.gain.linearRampToValueAtTime(muted?0:.5,t+.3)}}});
+addEventListener('keydown',e=>{if(e.key==='m'||e.key==='M'){muted=!muted;if(on)ramp(muted?0:VOL,400)}});
+})();
+// 파트 표지 전환 효과 — 띠가 한 번 쓸고 지나가며 "PART 0N"이 떴다가 제목만 남음 (약 1.2초, 효과음 없음)
+(function(){
+const st=document.createElement('style');st.textContent=`
+.pw{position:absolute;inset:0;z-index:50;pointer-events:none;overflow:hidden}
+.pw .bd{position:absolute;top:0;bottom:0;left:0;width:100%;background:#0C1820;box-shadow:inset -10px 0 0 #6FD3DD;transform:translateX(-101%);animation:pwBand 1s cubic-bezier(.7,0,.3,1) forwards}
+.pw .nm{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:150px;letter-spacing:.06em;color:#fff;opacity:0;animation:pwNum 1s ease forwards}
+.pw .nm b{color:#6FD3DD;margin-left:.25em}
+@keyframes pwBand{0%{transform:translateX(-101%)}40%,58%{transform:translateX(0)}100%{transform:translateX(101%)}}
+@keyframes pwNum{0%,22%{opacity:0;transform:scale(1.15)}40%,58%{opacity:1;transform:scale(1)}80%,100%{opacity:0;transform:scale(.96)}}
+.pwIn .cv>*,.pwIn.pwAll>*:not(.pw){opacity:0;animation:pwUp .5s ease forwards}
+.pwIn .cv>*:nth-child(1){animation-delay:.75s}.pwIn .cv>*:nth-child(2){animation-delay:.85s}.pwIn .cv>*:nth-child(3){animation-delay:.95s}
+.pwIn.pwAll>*:not(.pw){animation-delay:.75s}
+@keyframes pwUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}`;
+document.head.appendChild(st);
+const P={};S.forEach((s,k)=>{const lb=s.querySelector('.cv .lb');const m=lb&&lb.textContent.match(/Part\.?\s*0?(\d+)/i);if(m)P[k]=[m[1].padStart(2,'0'),0];else if(/MISSION BRIEF/.test(s.innerHTML)&&!Object.values(P).some(v=>v[1]))P[k]=['02',1]});
+let last=-1,tm=null;
+function run(k){const s=S[k],[n,all]=P[k];s.querySelectorAll('.pw').forEach(e=>e.remove());s.classList.remove('pwIn','pwAll');void s.offsetWidth;
+ const o=document.createElement('div');o.className='pw';o.innerHTML='<div class="bd"></div><div class="nm">PART<b>'+n+'</b></div>';s.appendChild(o);s.classList.add('pwIn');if(all)s.classList.add('pwAll');
+ clearTimeout(tm);tm=setTimeout(()=>{o.remove();s.classList.remove('pwIn','pwAll')},1500)}
+const _s=show;show=function(n){_s(n);if(i!==last&&P[i])run(i);last=i};
+})();
+// 8쪽 컴앱웹 — 쪽에 있는 동안 계속 흐르는 모션 (앱→컴·웹으로 빛 알갱이가 흐르고, 컴↔웹 점선이 흐르고, 가운데 자동화가 돌고, 앱이 숨 쉼)
+(function(){
+const s=S.find(x=>/컴앱웹 — 세 지점/.test(x.innerHTML));if(!s)return;const v=s.querySelector('svg');if(!v)return;
+const NS='http://www.w3.org/2000/svg';
+const st=document.createElement('style');st.textContent=`
+.cawDash{animation:cawDash 1.2s linear infinite}@keyframes cawDash{to{stroke-dashoffset:-36}}
+.cawSpin{animation:cawSpin 6s linear infinite;transform-origin:0 0}@keyframes cawSpin{to{transform:rotate(360deg)}}
+.cawPulse{animation:cawPulse 2.4s ease-out infinite;transform-origin:0 0}@keyframes cawPulse{0%{transform:scale(1);opacity:.55}100%{transform:scale(1.45);opacity:0}}`;
+document.head.appendChild(st);
+// 점선(컴↔웹) 흐름
+v.querySelector('line[stroke-dasharray]').classList.add('cawDash');
+// 가운데 자동화 화살표 회전
+const auto=[...v.querySelectorAll('g')].find(g=>/자동화/.test(g.textContent));
+const arcs=document.createElementNS(NS,'g');arcs.classList.add('cawSpin');auto.querySelectorAll('path').forEach(p=>arcs.appendChild(p));auto.insertBefore(arcs,auto.querySelector('text'));
+// 앱 숨쉬는 링
+const app=[...v.querySelectorAll('g')].find(g=>/데스크톱 앱/.test(g.textContent));
+const ring=document.createElementNS(NS,'circle');ring.setAttribute('r','64');ring.setAttribute('fill','none');ring.setAttribute('stroke','#E8642C');ring.setAttribute('stroke-width','4');ring.classList.add('cawPulse');app.insertBefore(ring,app.firstChild);
+// 빛 알갱이 : 앱→컴, 앱→웹 (주황), 컴→웹 · 웹→컴 (청록)
+const lines=[...v.querySelectorAll('line')];const anchor=v.querySelector('rect');
+function dots(x1,y1,x2,y2,col,n,dur,r){for(let k=0;k<n;k++){const c=document.createElementNS(NS,'circle');c.setAttribute('r',r);c.setAttribute('fill',col);c.setAttribute('opacity','.9');
+ const a=document.createElementNS(NS,'animateMotion');a.setAttribute('path',`M${x1},${y1}L${x2},${y2}`);a.setAttribute('dur',dur+'s');a.setAttribute('repeatCount','indefinite');a.setAttribute('begin',(-dur*k/n)+'s');
+ const o=document.createElementNS(NS,'animate');o.setAttribute('attributeName','opacity');o.setAttribute('values','0;1;1;0');o.setAttribute('keyTimes','0;.15;.8;1');o.setAttribute('dur',dur+'s');o.setAttribute('repeatCount','indefinite');o.setAttribute('begin',(-dur*k/n)+'s');
+ c.appendChild(a);c.appendChild(o);v.insertBefore(c,anchor)}}
+dots(330,135,160,362,'#E8642C',3,2.2,7);dots(410,135,580,362,'#E8642C',3,2.2,7);
+dots(190,430,550,430,'#2D6B7A',2,3,6);dots(550,430,190,430,'#6FD3DD',2,3,6);
+})();
+// 생성의 7단계(12·61쪽) — 들어올 때마다 1→7단계 순서대로 바닥에서 솟아오름
+(function(){
+const st=document.createElement('style');st.textContent=`
+.ladIn .lad .s{clip-path:inset(100% 0 0 0);animation:ladUp .55s cubic-bezier(.2,.8,.2,1) forwards}
+.ladIn .lad .s>*{opacity:0;animation:ladTx .3s ease forwards}
+.ladIn .rg{opacity:0;animation:ladTx .4s ease forwards;animation-delay:1.6s}
+@keyframes ladUp{to{clip-path:inset(0 0 0 0)}}@keyframes ladTx{to{opacity:1}}`;
+for(let k=0;k<7;k++)st.textContent+=`.ladIn .lad .s:nth-child(${k+1}){animation-delay:${(k*.18).toFixed(2)}s}.ladIn .lad .s:nth-child(${k+1})>*{animation-delay:${(k*.18+.35).toFixed(2)}s}`;
+document.head.appendChild(st);
+const L=new Set();S.forEach((s,k)=>{if(s.querySelector('.lad'))L.add(k)});
+let last=-1;
+const _s=show;show=function(n){_s(n);if(i!==last&&L.has(i)){const s=S[i];s.classList.remove('ladIn');void s.offsetWidth;s.classList.add('ladIn')}last=i};
 })();
 </script>
 </body></html>
