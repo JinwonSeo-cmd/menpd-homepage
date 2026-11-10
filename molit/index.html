@@ -697,7 +697,10 @@ addEventListener('keydown',e=>{
 });
 addEventListener('click',e=>{if(e.target.closest('a,button,input,textarea'))return;show(e.clientX>innerWidth/2?i+1:i-1)});
 </script>
-<script>// 국토부 교안 전용 : 마우스 휠 · ↑↓ 키 이동 + 하단 재생바
+<script>// 소리 전체 켜고 끄기 (M 키 · 음악 끄기 버튼 공통) — 한 곳에서 끄면 배경음악 · 엔딩곡 · 효과음 모두 꺼짐
+window.MUTE=false;function toggleMute(){window.MUTE=!window.MUTE;dispatchEvent(new Event('mutechange'))}
+addEventListener('keydown',e=>{if((e.key==='m'||e.key==='M')&&!e.ctrlKey&&!e.metaKey)toggleMute()});
+// 국토부 교안 전용 : 마우스 휠 · ↑↓ 키 이동 + 하단 재생바
 (function(){
 const N=S.length;
 const title=s=>{const t=s.querySelector('.hd .tt,.cv h1,.cv h2,.ins h2');return t?t.textContent.trim():''};
@@ -741,10 +744,10 @@ const _s=show;show=function(n){_s(n);check()};
 const btns=[];
 function setMute(m){muted=m;if(on)ramp(muted?0:VOL,400);btns.forEach(b=>{b.textContent=muted?'🔇 음악 켜기':'🔊 음악 끄기';b.classList.toggle('off',muted)})}
 const st=document.createElement('style');st.textContent=`.bgmBtn{position:absolute;right:24px;top:7px;z-index:60;padding:4px 14px;border-radius:999px;border:1.5px solid rgba(111,211,221,.6);background:rgba(12,24,32,.75);color:#fff;font:800 15px Pretendard,sans-serif;cursor:pointer;opacity:.8;transition:opacity .2s}.bgmBtn:hover{opacity:1}.bgmBtn.off{border-color:#B3261E;opacity:.9}`;document.head.appendChild(st);
-for(let k=A;k<=B;k++){const b=document.createElement('button');b.className='bgmBtn';b.textContent='🔊 음악 끄기';b.addEventListener('click',e=>{e.stopPropagation();setMute(!muted)});b.addEventListener('keydown',e=>e.stopPropagation());S[k].appendChild(b);btns.push(b)}
+for(let k=A;k<=B;k++){const b=document.createElement('button');b.className='bgmBtn';b.textContent='🔊 음악 끄기';b.addEventListener('click',e=>{e.stopPropagation();toggleMute();e.currentTarget.blur()});S[k].appendChild(b);btns.push(b)}
 function place(){btns.forEach(b=>{const sl=b.parentElement;const sp=[...sl.querySelectorAll('span')].find(x=>/교육용 가상/.test(x.textContent));if(!sp||!sl.offsetWidth)return;b.style.right=(sl.offsetWidth-sp.offsetLeft+18)+'px'})}
 const _sp=show;show=function(n){_sp(n);if(i>=A&&i<=B)place()};
-addEventListener('keydown',e=>{if(e.key==='m'||e.key==='M')setMute(!muted)});
+addEventListener('mutechange',()=>setMute(window.MUTE));
 })();
 // 파트 표지 전환 효과 — 띠가 한 번 쓸고 지나가며 "PART 0N"이 떴다가 제목만 남음 (약 1.2초, 효과음 없음)
 (function(){
@@ -762,8 +765,8 @@ const st=document.createElement('style');st.textContent=`
 document.head.appendChild(st);
 const P={};S.forEach((s,k)=>{const lb=s.querySelector('.cv .lb');const m=lb&&lb.textContent.match(/Part\.?\s*0?(\d+)/i);if(m)P[k]=[m[1].padStart(2,'0'),0];else if(/MISSION BRIEF/.test(s.innerHTML)&&!Object.values(P).some(v=>v[1]))P[k]=['02',1]});
 let last=-1,tm=null;
-let pac=null,pmute=false;addEventListener('keydown',e=>{if(e.key==='m'||e.key==='M')pmute=!pmute});
-function pop(t0){if(window.NO_SPY||pmute)return;try{pac=pac||new (window.AudioContext||window.webkitAudioContext)();pac.resume();const t=pac.currentTime+t0;
+let pac=null;
+function pop(t0){if(window.NO_SPY||window.MUTE)return;try{pac=pac||new (window.AudioContext||window.webkitAudioContext)();pac.resume();const t=pac.currentTime+t0;
  [[520,1250,0],[780,1870,.0]].forEach(([a,b,d],j)=>{const o=pac.createOscillator(),g=pac.createGain();o.type=j?'triangle':'sine';o.frequency.setValueAtTime(a,t+d);o.frequency.exponentialRampToValueAtTime(b,t+d+.09);
  g.gain.setValueAtTime(0,t+d);g.gain.linearRampToValueAtTime(j?.06:.22,t+d+.012);g.gain.exponentialRampToValueAtTime(.001,t+d+.22);o.connect(g).connect(pac.destination);o.start(t+d);o.stop(t+d+.25)})}catch(e){}}
 function run(k){pop(.38);const s=S[k],[n,all]=P[k];s.querySelectorAll('.pw').forEach(e=>e.remove());s.classList.remove('pwIn','pwAll');void s.offsetWidth;
@@ -808,8 +811,8 @@ for(let k=0;k<7;k++)st.textContent+=`.ladIn .lad .s:nth-child(${k+1}){animation-
 document.head.appendChild(st);
 const L=new Set();S.forEach((s,k)=>{if(s.querySelector('.lad'))L.add(k)});
 let last=-1;
-let zac=null,zmute=false;addEventListener('keydown',e=>{if(e.key==='m'||e.key==='M')zmute=!zmute});
-function zzuk(){if(window.NO_SPY||zmute)return;try{zac=zac||new (window.AudioContext||window.webkitAudioContext)();zac.resume();const t0=zac.currentTime+.05;
+let zac=null;
+function zzuk(){if(window.NO_SPY||window.MUTE)return;try{zac=zac||new (window.AudioContext||window.webkitAudioContext)();zac.resume();const t0=zac.currentTime+.05;
  for(let k=0;k<7;k++){const t=t0+k*.18+.05,f=300*Math.pow(1.12,k),o=zac.createOscillator(),g=zac.createGain();o.type='triangle';
   o.frequency.setValueAtTime(f,t);o.frequency.exponentialRampToValueAtTime(f*2.2,t+.14);g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.07,t+.02);g.gain.exponentialRampToValueAtTime(.001,t+.18);
   o.connect(g).connect(zac.destination);o.start(t);o.stop(t+.2)}}catch(e){}}
@@ -865,11 +868,11 @@ const st=document.createElement('style');st.textContent=`.msIn>.msBox{opacity:0;
 .msIn>.msStamp{opacity:0;animation:msStamp .4s cubic-bezier(.3,1.6,.5,1) calc(var(--md) + .2s) forwards}
 @keyframes msUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
 @keyframes msStamp{0%{opacity:0;scale:2.2}100%{opacity:1;scale:1}}`;document.head.appendChild(st);
-let dac=null,dmute=false;addEventListener('keydown',e=>{if(e.key==='m'||e.key==='M')dmute=!dmute});
+let dac=null;
 function boom(t,g,f0){const o=dac.createOscillator(),v=dac.createGain(),lp=dac.createBiquadFilter();o.type='sine';o.frequency.setValueAtTime(f0,t);o.frequency.exponentialRampToValueAtTime(38,t+.5);
  lp.type='lowpass';lp.frequency.value=900;v.gain.setValueAtTime(0,t);v.gain.linearRampToValueAtTime(g,t+.01);v.gain.exponentialRampToValueAtTime(.001,t+1.1);o.connect(lp).connect(v).connect(dac.destination);o.start(t);o.stop(t+1.15);
  const b=dac.createBuffer(1,dac.sampleRate*.08|0,dac.sampleRate),d=b.getChannelData(0);for(let k=0;k<d.length;k++)d[k]=(Math.random()*2-1)*(1-k/d.length);const n=dac.createBufferSource(),nv=dac.createGain(),nf=dac.createBiquadFilter();n.buffer=b;nf.type='lowpass';nf.frequency.value=1500;nv.gain.value=g*.25;n.connect(nf).connect(nv).connect(dac.destination);n.start(t)}
-function dudung(){if(window.NO_SPY||dmute)return;try{dac=dac||new (window.AudioContext||window.webkitAudioContext)();dac.resume();const t0=dac.currentTime+.05;
+function dudung(){if(window.NO_SPY||window.MUTE)return;try{dac=dac||new (window.AudioContext||window.webkitAudioContext)();dac.resume();const t0=dac.currentTime+.05;
  [[0,2600],[.09,3400]].forEach(([d,f0])=>{const t=t0+d,b=dac.createBuffer(1,dac.sampleRate*.025|0,dac.sampleRate),x=b.getChannelData(0);for(let j=0;j<x.length;j++)x[j]=(Math.random()*2-1)*Math.pow(1-j/x.length,6);
   const n=dac.createBufferSource(),f=dac.createBiquadFilter(),g=dac.createGain();n.buffer=b;f.type='bandpass';f.frequency.value=f0;f.Q.value=2.5;g.gain.value=.55;n.connect(f).connect(g).connect(dac.destination);n.start(t);
   const o=dac.createOscillator(),og=dac.createGain();o.type='triangle';o.frequency.value=f0*.6;og.gain.setValueAtTime(.05,t);og.gain.exponentialRampToValueAtTime(.001,t+.05);o.connect(og).connect(dac.destination);o.start(t);o.stop(t+.06)})}catch(e){}}
@@ -908,8 +911,8 @@ const s=S.find(x=>/생성형 AI의 4대 분류/.test(x.querySelector('.tt')?.tex
 const cols=[...s.querySelectorAll('.cols>.col')];cols.forEach((c,k)=>c.style.setProperty('--cd',(.1+k*.17)+'s'));
 const st=document.createElement('style');st.textContent=`.colIn .cols>.col{opacity:0;animation:colUp .55s cubic-bezier(.2,1.3,.4,1) var(--cd) forwards}
 @keyframes colUp{0%{opacity:0;translate:0 120px}60%{opacity:1}100%{opacity:1;translate:0 0}}`;document.head.appendChild(st);
-let cac=null,cmute=false;addEventListener('keydown',e=>{if(e.key==='m'||e.key==='M')cmute=!cmute});
-function clicks(){if(window.NO_SPY||cmute)return;try{cac=cac||new (window.AudioContext||window.webkitAudioContext)();cac.resume();const t0=cac.currentTime+.05;
+let cac=null;
+function clicks(){if(window.NO_SPY||window.MUTE)return;try{cac=cac||new (window.AudioContext||window.webkitAudioContext)();cac.resume();const t0=cac.currentTime+.05;
  cols.forEach((c,k)=>{const t=t0+.1+k*.17+.28;const b=cac.createBuffer(1,cac.sampleRate*.03|0,cac.sampleRate),d=b.getChannelData(0);for(let j=0;j<d.length;j++)d[j]=(Math.random()*2-1)*Math.pow(1-j/d.length,6);
   const n=cac.createBufferSource(),f=cac.createBiquadFilter(),g=cac.createGain();n.buffer=b;f.type='bandpass';f.frequency.value=3200;f.Q.value=2;g.gain.value=.5;n.connect(f).connect(g).connect(cac.destination);n.start(t);
   const o=cac.createOscillator(),og=cac.createGain();o.frequency.value=1800;og.gain.setValueAtTime(.04,t);og.gain.exponentialRampToValueAtTime(.001,t+.04);o.connect(og).connect(cac.destination);o.start(t);o.stop(t+.05)})}catch(e){}}
@@ -923,8 +926,8 @@ function ramp(to,ms,done){clearInterval(fade);const from=au.volume,t0=performanc
 const b=document.createElement('button');b.className='bgmBtn endBtn';b.textContent='🔊 음악 끄기';s.appendChild(b);
 const st=document.createElement('style');st.textContent='.endBtn{top:24px;right:24px}';document.head.appendChild(st);
 function setMute(m){muted=m;if(on)ramp(muted?0:VOL,400);b.textContent=muted?'🔇 음악 켜기':'🔊 음악 끄기';b.classList.toggle('off',muted)}
-b.addEventListener('click',e=>{e.stopPropagation();setMute(!muted)});b.addEventListener('keydown',e=>e.stopPropagation());
-addEventListener('keydown',e=>{if(e.key==='m'||e.key==='M')setMute(!muted)});
+b.addEventListener('click',e=>{e.stopPropagation();toggleMute();e.currentTarget.blur()});
+addEventListener('mutechange',()=>setMute(window.MUTE));
 const _s=show;show=function(n){_s(n);if(i===k0){if(!on){on=true;au.currentTime=0;au.play().catch(()=>{});ramp(muted?0:VOL,3000)}}else if(on){on=false;ramp(0,2000,()=>{if(!on)au.pause()})}};
 })();
 </script>
