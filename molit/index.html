@@ -845,5 +845,16 @@ const st=document.createElement('style');st.textContent=`.msIn>.msBox{opacity:0;
 @keyframes msStamp{0%{opacity:0;scale:2.2}100%{opacity:1;scale:1}}`;document.head.appendChild(st);
 let last=-1;const _s=show;show=function(n){_s(n);if(i!==last&&M.has(i)){const s=M.get(i);s.classList.remove('msIn');void s.offsetWidth;s.classList.add('msIn')}last=i};
 })();
+// 2쪽 강사 소개 — 왼쪽 네 박스는 왼쪽에서, 오른쪽 사진 두 장은 오른쪽에서 차례로 미끄러져 들어옴
+(function(){
+const s=S.find(x=>x.querySelector('.ins')&&x.querySelector('img.photo'));if(!s)return;const k0=S.indexOf(s);
+s.querySelectorAll('.ins .card').forEach((e,k)=>{e.classList.add('inL');e.style.setProperty('--id',(.1+k*.12)+'s')});
+s.querySelectorAll('img.photo,img.book').forEach((e,k)=>{e.classList.add('inR');e.style.setProperty('--id',(.25+k*.18)+'s')});
+const st=document.createElement('style');st.textContent=`.insIn .inL{opacity:0;animation:inL .55s cubic-bezier(.2,.8,.2,1) var(--id) forwards}
+.insIn .inR{opacity:0;animation:inR .65s cubic-bezier(.2,.8,.2,1) var(--id) forwards}
+@keyframes inL{from{opacity:0;translate:-120px 0}to{opacity:1;translate:0 0}}@keyframes inR{from{opacity:0;translate:160px 0}to{opacity:1;translate:0 0}}`;document.head.appendChild(st);
+let last=-1;const _s=show;show=function(n){_s(n);if(i!==last&&i===k0){s.classList.remove('insIn');void s.offsetWidth;s.classList.add('insIn')}last=i};
+if(typeof i!=='undefined'&&i===k0){s.classList.add('insIn');last=k0}
+})();
 </script>
 </body></html>
