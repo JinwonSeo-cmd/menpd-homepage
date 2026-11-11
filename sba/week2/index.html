@@ -1166,6 +1166,7 @@ S.forEach(s=>{
   return}
  const ins=s.querySelector('.ins');                          // 강사 소개 : 카드 왼쪽 · 사진 오른쪽 · 책 떨어짐
  if(ins){ins.querySelectorAll('.card').forEach(c=>set(c,'left'));set(s.querySelector('.photo'),'right');set(s.querySelector('.book'),'drop');return}
+ s.querySelectorAll('.lad > .s').forEach(e=>set(e,'grow','zzuk'));  // 생성의 7단계 계단 : 밑에서 위로 차례로 + 쭈욱
  s.querySelectorAll('.fl').forEach(e=>set(e,'rise','click'));  // 흐름도 박스 : 차례로 솟아오름 + 딸깍
  s.querySelectorAll('.arr').forEach(e=>set(e,'nudge'));        // 화살표 : 앞으로 살짝
  s.querySelectorAll('.st3 > .c').forEach(e=>set(e,'pop'));     // 3단 카드 : 톡톡
