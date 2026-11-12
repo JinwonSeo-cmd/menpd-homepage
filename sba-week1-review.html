@@ -441,6 +441,9 @@ h3.sub.n::before{counter-increment:s;content:counter(s,decimal-leading-zero);fon
 .rv-on .tcards.in .kw5 span{opacity:1;transform:none}
 .tcards.in .kw5 span:nth-child(2){transition-delay:.1s}.tcards.in .kw5 span:nth-child(3){transition-delay:.2s}.tcards.in .kw5 span:nth-child(4){transition-delay:.3s}.tcards.in .kw5 span:nth-child(5){transition-delay:.4s}
 /* 06/07 maps */
+.tap-hint{display:inline-block;margin-left:10px;font-size:13px;font-weight:800;color:#fff;background:#D9784A;padding:4px 12px;border-radius:999px;vertical-align:2px;animation:nudge 1.6s ease-in-out infinite}
+@keyframes nudge{50%{transform:translateY(3px)}}
+@media (max-width:720px){.tap-hint{display:table;margin:6px 0 0}}
 .map{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin:6px 0 4px;counter-reset:m}
 .mapc{position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 8px;text-align:center;text-decoration:none;color:var(--ink);transition:transform .2s,box-shadow .2s}
 .mapc span{display:block;font-size:24px}.mapc b{display:block;font-size:13.5px;margin-top:4px}
@@ -591,7 +594,7 @@ h3.sub.n::before{counter-increment:s;content:counter(s,decimal-leading-zero);fon
 제목은 아래에서 올라오고, 카드는 0.15초 간격으로 순서대로.
 숫자는 0부터 올라가게.</pre></div>
 <h3 class="sub n" id="p-out">내보내기</h3><div class="tbl-wrap"><table class="tbl"><thead><tr><th>형식</th><th>방법</th></tr></thead><tbody><tr><td>PDF</td><td>브라우저에서 <b>Ctrl+P</b> → 대상: PDF로 저장 → 레이아웃 가로 → 여백 없음 → <b>배경 그래픽 체크</b></td></tr><tr><td>PPT</td><td>아래 프롬프트로 변환 <small>(일부 모션·효과는 빠질 수 있음)</small></td></tr><tr><td>링크</td><td>홈페이지·노션 등에 올리면 링크로 공유</td></tr></tbody></table></div><div class="copybox short"><div class="copybox-head"><span>📋 PPT로 바꾸기</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="c11">복사</button></div></div><pre id="c11">이 HTML을 같은 디자인의 pptx 파일로 바꿔서 AI작업/결과 폴더에 저장해줘.</pre></div>
-<h3 class="sub n">샘플 보기: 5장 발표자료</h3>
+<h3 class="sub n">샘플 보기: 5장 발표자료 <span class="tap-hint">👆 아래 발표자료의 양 옆을 눌러 보세요</span></h3>
 <div class="demo wide" data-rv><div class="demo-bar"><span>샘플 · AI로 업무 시간 줄이는 법 (화면 클릭 또는 방향키)</span><a class="go" href="sba/review1/slides.html" target="_blank" rel="noopener">새 창으로 크게</a></div><iframe src="sba/review1/slides.html" title="HTML 발표자료 샘플" loading="lazy"></iframe></div>
 </div></section>
 <section class="group" id="html-card"><div class="group-head"><span class="group-num">07</span><h2>HTML로 움직이는 카드뉴스</h2></div><p class="group-desc">이미지 카드뉴스는 멈춰 있지만, HTML 카드뉴스는 <b>글자·숫자·도형이 움직여 영상처럼</b> 보입니다. 화면 녹화하면 바로 릴스가 됩니다.</p><div class="map c7" data-rv><a class="mapc" href="#c-demo"><span>👀</span><b>샘플</b></a><a class="mapc" href="#c-mo"><span>✨</span><b>모션 고르기</b></a><a class="mapc" href="#c-gen"><span>✍️</span><b>생성</b></a><a class="mapc" href="#c-rec"><span>🎥</span><b>영상으로</b></a><a class="mapc" href="#c-reels"><span>📱</span><b>릴스 완성</b></a></div>
