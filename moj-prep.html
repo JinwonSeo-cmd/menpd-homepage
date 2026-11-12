@@ -841,7 +841,7 @@ PE7 Format: 결과물 형태 (표, 분량 등)
 
 <section class="group" id="s2-flow"><div class="group-head"><span class="group-num">01</span><h2>오늘 수업 흐름</h2></div>
 <div class="steplist">
-<div class="step"><span class="logo-emoji" aria-hidden="true">🎬</span><div class="txt"><strong>시연 — 영상 제작 봇</strong><span>① 구성안 제안 → ② 캡컷 웹(시댄스 2.0 미니)으로 생성 3신 → ③ FFmpeg 카드 2신 → ④ 720p 25초 완성. (봇은 공유해 드리니 혼자 해 볼 수 있습니다)</span></div></div>
+<div class="step"><span class="logo-emoji" aria-hidden="true">🎬</span><div class="txt"><strong>시연 — 영상 제작 봇</strong><span>① 구성안 제안 → ② 캡컷 웹(시댄스 2.0 미니)으로 생성 3신 → ③ HTML 카드 2신 → ④ 720p 25초 완성. (봇은 공유해 드리니 혼자 해 볼 수 있습니다)</span></div></div>
 <div style="display:flex;gap:8px;margin:4px 0 6px 52px;max-width:520px"><figure style="flex:1;margin:0;text-align:center"><img src="images/moj/demo_s1.jpg" alt="S1 생성" loading="lazy" style="width:100%;border-radius:8px;border:2px solid #2C5F6F"><figcaption style="font-size:12px;font-weight:700;color:#2C5F6F">S1 · 생성</figcaption></figure><figure style="flex:1;margin:0;text-align:center"><img src="images/moj/demo_s2.jpg" alt="S2 카드" loading="lazy" style="width:100%;border-radius:8px;border:2px solid #E8642C"><figcaption style="font-size:12px;font-weight:700;color:#E8642C">S2 · 카드</figcaption></figure><figure style="flex:1;margin:0;text-align:center"><img src="images/moj/demo_s3.jpg" alt="S3 생성" loading="lazy" style="width:100%;border-radius:8px;border:2px solid #2C5F6F"><figcaption style="font-size:12px;font-weight:700;color:#2C5F6F">S3 · 생성</figcaption></figure><figure style="flex:1;margin:0;text-align:center"><img src="images/moj/demo_s4.jpg" alt="S4 카드" loading="lazy" style="width:100%;border-radius:8px;border:2px solid #E8642C"><figcaption style="font-size:12px;font-weight:700;color:#E8642C">S4 · 카드</figcaption></figure><figure style="flex:1;margin:0;text-align:center"><img src="images/moj/demo_s5.jpg" alt="S5 생성" loading="lazy" style="width:100%;border-radius:8px;border:2px solid #2C5F6F"><figcaption style="font-size:12px;font-weight:700;color:#2C5F6F">S5 · 생성</figcaption></figure></div>
 <div class="step"><span class="logo-emoji" aria-hidden="true">📝</span><div class="txt"><strong>기획안과 구성안</strong><span>기획안은 <b>존재의 이유</b>, 구성안은 <b>한 편의 생김새와 연출법</b>. 실제 기획안 문서도 함께 봅니다.</span></div></div>
 <div class="step"><span class="logo-emoji" aria-hidden="true">🤖</span><div class="txt"><strong>기획구성안 봇 함께 돌리기</strong><span>13개 질문에 번호로 답하고, 기획구성안 PDF를 받습니다.</span></div></div>
@@ -905,7 +905,7 @@ PE7 Format: 결과물 형태 (표, 분량 등)
 <tr><td><b>C. 어떻게</b></td><td>⑩ 캐릭터 ⑪ 그림체 ⑫ 나레이션 목소리 ⑬ 배경음악</td><td><b>구성안 1편</b> + 생성 프롬프트</td></tr>
 </table>
 <div class="scenes">
-<div class="scene gf">S1 생성<small>훅</small></div><div class="scene ff">S2 FFmpeg<small>정보 카드</small></div><div class="scene gf">S3 생성<small>전개</small></div><div class="scene ff">S4 FFmpeg<small>핵심 카드</small></div><div class="scene gf">S5 생성<small>결론 · 급종료</small></div>
+<div class="scene gf">S1 생성<small>훅</small></div><div class="scene ff">S2 HTML<small>정보 카드</small></div><div class="scene gf">S3 생성<small>전개</small></div><div class="scene ff">S4 HTML<small>핵심 카드</small></div><div class="scene gf">S5 생성<small>결론 · 급종료</small></div>
 </div>
 <p class="group-desc" style="margin-top:10px">구성안은 25초 · 5신 고정입니다. 대사는 쉬운 <b>비유</b>를 1~2개 넣어 씁니다.</p>
 <h3 class="sub">결과는 봇 폴더의 ‘결과물’ 안에</h3>
@@ -990,7 +990,7 @@ AGENTS.md를 찾지 못하면 "기획구성안봇 폴더를 연결하거나 AGEN
 <tr><td><b>2</b></td><td>챗GPT로 스토리보드 1장 (5칸)</td><td>✅</td></tr>
 <tr><td><b>3</b></td><td>캡컷 웹에서 S1·S3·S5 생성 시작 (스토리보드 칸을 시작 이미지로)</td><td>✅</td></tr>
 <tr><td><b>4</b></td><td>생성되는 동안 일레븐랩스 나레이션 · 제미나이 배경음악</td><td></td></tr>
-<tr><td><b>5</b></td><td>S2·S4 카드 + FFmpeg 조립 (말 자막 · 법무부 로고)</td><td></td></tr>
+<tr><td><b>5</b></td><td>S2·S4 HTML 카드 영상 + FFmpeg 조립 (말 자막 · 법무부 로고)</td><td></td></tr>
 <tr><td><b>6</b></td><td>완성 영상 링크 + 캡션글(채팅창에 바로 복사)</td><td></td></tr>
 </table>
 <h3 class="sub">화면은 이렇게 나옵니다 (MASSW 디자인)</h3>
