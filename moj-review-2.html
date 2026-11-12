@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>법무부 2회차 복습 · 봇 다시 해보기</title>
+<style>
+:root{--teal:#2D6B7A;--teal-dk:#1A4A56;--ink:#1F2933;--muted:#6B8790;--coral:#F4A88E;--orange:#E8642C;--cream:#FFF8F0;--mint:#E3EEEC;--line:#D9E3E4}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;background:var(--cream);color:var(--ink);line-height:1.65;font-size:16px;-webkit-text-size-adjust:100%}
+.wrap{max-width:720px;margin:0 auto;padding:28px 16px 60px}
+.badge{display:inline-block;background:var(--mint);color:var(--teal-dk);font-weight:800;font-size:13px;padding:4px 12px;border-radius:999px}
+h1{font-size:30px;margin:12px 0 6px;color:var(--teal-dk)}
+.lede{color:var(--muted);font-size:16px}
+.pdfbtn{display:flex;align-items:center;gap:12px;margin-top:18px;background:var(--teal);color:#fff;text-decoration:none;border-radius:14px;padding:14px 16px}
+.pdfbtn .pi{font-size:26px}.pdfbtn .pt{flex:1}.pdfbtn .pt b{display:block;font-size:17px}.pdfbtn .pt small{font-size:13px;opacity:.85}
+.pdfbtn .pg{background:#fff;color:var(--teal-dk);font-weight:800;font-size:14px;padding:8px 14px;border-radius:10px}
+.pdfguide{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-top:10px;text-align:center}
+.pdfguide p{font-size:15px}.pdfguide .pdfsvg{display:block;width:100%;height:auto;margin:8px 0}.pdfguide img{display:block;width:100%;height:auto;border-radius:8px;margin:8px 0}
+.pdfguide .pgl{font-size:17px;color:#c0281b}
+.press{display:flex;gap:12px;background:#fff8d6;border:2px solid #ffd84d;border-radius:14px;padding:14px 16px;margin:20px 0}
+.press b{display:block}
+section{margin-top:34px}
+h2{font-size:21px;color:var(--teal-dk);display:flex;align-items:baseline;gap:10px;margin-bottom:12px}
+h2 .n{font-family:ui-monospace,Menlo,monospace;font-size:14px;color:var(--orange)}
+.tag{font-size:12px;font-weight:800;color:#fff;background:var(--orange);padding:3px 10px;border-radius:999px;vertical-align:2px}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:10px}
+.card b.t{display:block;font-size:16px;margin-bottom:4px}
+.card ul{margin-left:18px;font-size:15px;color:#3b4a52}
+.flow{margin-top:12px;font-weight:800;color:var(--teal-dk);background:var(--mint);border-radius:12px;padding:12px 16px;text-align:center}
+.step{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:10px}
+.step .ic{flex:none;font-size:26px;width:40px;text-align:center}
+.step img{width:40px;height:40px;border-radius:9px;flex:none;object-fit:contain}
+.step .tx{flex:1;min-width:0}.step .tx>b{display:block}.step .tx span{font-size:14px;color:var(--muted)}
+.go{flex:none;background:var(--teal);color:#fff;text-decoration:none;font-weight:700;font-size:14px;padding:9px 14px;border-radius:10px}
+.mini-row{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px}
+.mini{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 13px 6px 8px;text-decoration:none}
+.mini img{width:18px;height:18px;border-radius:4px;object-fit:contain}
+.warn{background:#fdecea;border:2px solid #e4574a;border-radius:14px;padding:14px 16px;color:#8a1f15;font-size:15px}
+.warn b{color:#c0281b}
+.q{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:12px}
+.qt{font-size:16px;margin-bottom:12px}
+.qn{display:inline-block;background:var(--teal);color:#fff;font-weight:800;font-size:13px;padding:2px 9px;border-radius:8px;margin-right:8px}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.opt{font:inherit;font-size:15px;font-weight:700;padding:12px 10px;border-radius:12px;border:2px solid var(--line);background:#fff;color:var(--ink);cursor:pointer}
+.opt:hover{border-color:var(--teal)}
+.opt.ok{background:#dff5e8;border-color:#37b26c;color:#17683a}
+.opt.no{background:#fdecea;border-color:#e4574a;color:#8a1f15}
+.fb{margin-top:10px;font-size:14.5px;font-weight:700;color:#17683a;display:none}
+.fb.retry{color:#8a1f15}
+.cbox{background:#16313a;border-radius:14px;overflow:hidden;margin:2px 0 10px}
+.chead{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 14px;color:#cfe3e8;font-weight:700;font-size:14px;background:#1d4150}
+.cbtn{font:inherit;font-size:14px;font-weight:800;border:none;border-radius:9px;padding:7px 14px;background:var(--coral);color:#3a1d10;cursor:pointer}
+.cbtn.done{background:#5fd39a}
+.cbox pre{white-space:pre-wrap;word-break:keep-all;margin:0;padding:14px;color:#e6f1f4;font-family:inherit;font-size:15px}
+.snlist{display:grid;gap:8px;margin:0 0 10px}
+.sn{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:14px;padding:13px 14px}
+.sn .no{flex:none;display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--teal);color:#fff;font-weight:800;font-size:15px}
+.sn p{font-size:16.5px;line-height:1.6}
+.sn small{display:block;font-size:14px;color:var(--muted);margin-top:2px}
+.next{background:linear-gradient(135deg,var(--teal),#3d7d8f);color:#fff;border-radius:18px;padding:20px 22px}
+.next h3{font-size:18px;margin-bottom:8px}.next li{margin-left:18px}
+@media(max-width:480px){.step{flex-wrap:wrap}.go{width:100%;text-align:center}h1{font-size:26px}}
+
+table.t{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;font-size:14.5px;margin-bottom:10px}
+table.t th{background:var(--mint);color:var(--teal-dk);text-align:left;padding:9px 12px;font-size:13.5px}
+table.t td{padding:9px 12px;border-top:1px solid var(--line);vertical-align:top}
+.part{margin-top:44px;background:var(--teal-dk);color:#fff;border-radius:18px;padding:18px 20px}
+.part small{display:block;font-weight:800;color:var(--coral);font-size:13px;letter-spacing:.08em}
+.part b{font-size:22px}.part p{font-size:14.5px;opacity:.9;margin-top:4px}
+.tree{background:#16313a;color:#e6f1f4;border-radius:14px;padding:14px 16px;font-size:13.5px;line-height:1.75;overflow:auto;white-space:pre;font-family:ui-monospace,Menlo,Consolas,monospace;margin-bottom:10px}
+.imgs{display:flex;gap:10px;flex-wrap:wrap}.imgs a{flex:1;min-width:220px}.imgs img{width:100%;border:1px solid var(--line);border-radius:10px}
+.scenes{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:6px 0 10px}
+.scenes div{border-radius:10px;padding:10px 4px;text-align:center;font-weight:800;font-size:13px;color:#fff}
+.scenes .g{background:var(--teal)}.scenes .h{background:var(--orange)}.scenes small{display:block;font-weight:600;opacity:.9;font-size:11.5px}
+.frames{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}.frames img{width:100%;border-radius:8px}
+.note{font-size:14px;color:var(--muted);margin:4px 0 10px}
+h3{font-size:16.5px;color:var(--teal-dk);margin:18px 0 8px}
+.dl{display:flex;align-items:center;gap:12px;background:#fff;border:2px solid var(--teal);border-radius:14px;padding:14px 16px;margin-bottom:10px;text-decoration:none;color:var(--ink)}
+.dl .pi{font-size:26px}.dl .pt{flex:1}.dl .pt b{display:block;font-size:16.5px}.dl .pt small{font-size:13px;color:var(--muted)}
+.dl .pg{background:var(--teal);color:#fff;font-weight:800;font-size:14px;padding:8px 14px;border-radius:10px}
+</style></head><body><div class="wrap">
+<span class="badge">법무부 · 생성형 AI 중급과정 · 2회차 (11/12)</span>
+<h1>2회차 복습 · 봇 다시 해보기</h1>
+<p class="lede">오늘 배운 <b>기획안 · 구성안</b>을 정리하고, 수업에서 쓴 <b>봇 두 개를 직접 내려받아</b> 혼자 다시 돌려 볼 수 있게 모았습니다.</p>
+<a class="pdfbtn" href="https://menpd.com/downloads/moj/moj3-2_lecture.pdf" target="_blank" rel="noopener"><span class="pi">📄</span><span class="pt"><b>2회차 교안 받기</b><small>PDF 파일 · 42장</small></span><span class="pg">받기 ↓</span></a>
+<div class="pdfguide"><p><b>받기</b>를 누르시고 <b>우상단</b>을 보시면</p><svg class="pdfsvg" viewBox="0 0 360 150" role="img" aria-label="PDF 화면 우상단의 다운로드 버튼 위치">
+<rect width="360" height="150" rx="10" fill="#282828"/>
+<rect width="360" height="48" rx="10" fill="#3c3c3c"/><rect y="38" width="360" height="10" fill="#3c3c3c"/>
+<rect x="0" y="48" width="250" height="102" fill="#245c6a"/>
+<g fill="none" stroke="#e8eaed" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+<path d="M262 14v16m-7-7l7 7 7-7M254 35h16" transform="translate(0,-2)"/>
+<path d="M298 20v-7h14v7M296 20h18a3 3 0 013 3v8h-5v-5h-14v5h-5v-8a3 3 0 013-3zM301 31h12v6h-12z"/>
+</g>
+<g fill="#e8eaed"><circle cx="343" cy="16" r="2.2"/><circle cx="343" cy="24" r="2.2"/><circle cx="343" cy="32" r="2.2"/></g>
+<circle cx="262" cy="24" r="19" fill="none" stroke="#F4A88E" stroke-width="3"/>
+<path d="M120 128 C170 128 215 100 250 56" fill="none" stroke="#F4A88E" stroke-width="7" stroke-linecap="round"/>
+<path d="M240 52 L254 44 L257 62 Z" fill="#F4A88E" stroke="#F4A88E" stroke-width="3" stroke-linejoin="round"/>
+</svg><p class="pgl">☝ <b>다운로드 버튼은 여기에!!</b></p></div>
+<div class="press"><span>💬</span><div><b>막히면 캡처해서 단톡방에 올려 주세요</b>안 되는 부분은 화면을 캡처해서 짧은 설명과 함께 단톡방에 올려 주세요. 살펴보고 답장드릴게요~</div></div>
+
+<div class="mini-row"><a class="mini" href="#p1">① 수업 복습</a><a class="mini" href="#p2">② 기획구성안봇</a><a class="mini" href="#p3">③ 간단 숏폼봇</a></div>
+
+<!-- ================= PART 1 ================= -->
+<div class="part" id="p1"><small>PART 1</small><b>오늘 수업 복습</b><p>기획안은 존재의 이유, 구성안은 생김새와 연출법</p></div>
+
+<section><h2><span class="n">01</span>오늘의 핵심 3가지</h2>
+<div class="card"><b class="t">① 기획안 = 존재의 이유 · 구성안 = 생김새와 연출법</b><ul><li>기획안은 “왜 · 누구에게 · 무엇을”에 답합니다.</li><li>구성안은 “몇 초에 무엇을 보여 주고 말할까”에 답합니다.</li></ul></div>
+<div class="card"><b class="t">② 봇 = 지침(AGENTS.md) + KB</b><ul><li>틀은 고정하고, 답만 바꿉니다. 번호로 답하면 같은 품질이 나옵니다.</li></ul></div>
+<div class="card"><b class="t">③ 봇 폴더 하나에 — 두뇌는 위에, 결과물은 아래에</b><ul><li>바탕화면에 봇 폴더 하나, 챗GPT 프로젝트에 그 폴더 하나만 연결합니다.</li></ul></div>
+</section>
+
+<section><h2><span class="n">02</span>기획안 vs 구성안</h2>
+<table class="t"><tr><th>구분</th><th>기획안</th><th>구성안</th></tr>
+<tr><td><b>한 줄 정의</b></td><td>이 영상(프로그램)의 <b>존재의 이유</b></td><td>한 편의 <b>생김새와 연출법</b></td></tr>
+<tr><td><b>답하는 질문</b></td><td>왜 · 누구에게 · 무엇을</td><td>몇 초에 무엇을 보여 주고 말할까</td></tr>
+<tr><td><b>들어가는 것</b></td><td>8항목 (아래 표)</td><td>시간 · 화면 · 자막 · 대사 · 효과 (5칸)</td></tr>
+<tr><td><b>몇 장?</b></td><td>프로그램당 1장</td><td>편마다 1장</td></tr></table>
+<h3>기획안의 생김새 — 8항목</h3>
+<table class="t"><tr><th>항목</th><th>쓰는 내용</th></tr>
+<tr><td>01 제목</td><td>시리즈 이름</td></tr><tr><td>02 기획 의도</td><td>왜 만드는지 1~2줄</td></tr><tr><td>03 타깃</td><td>누가 보는지 구체적으로</td></tr><tr><td>04 목표</td><td>영상을 보고 할 행동 1개</td></tr><tr><td>05 콘셉트</td><td>시리즈의 차별점 한 줄</td></tr><tr><td>06 포맷</td><td>길이 · 편수 · 고정 오프닝/엔딩</td></tr><tr><td>07 편별 구성</td><td>편 제목 · 핵심 메시지 → 구성안으로 이어짐</td></tr><tr><td>08 기대 효과</td><td>이 시리즈로 얻을 결과</td></tr></table>
+<h3>실제 기획안은 이렇게 생겼습니다 (누르면 크게)</h3>
+<div class="imgs"><a href="images/moj/plan_doc1.jpg" target="_blank"><img src="images/moj/plan_doc1.jpg" alt="기획안 예시 1쪽" loading="lazy"></a><a href="images/moj/plan_doc2.jpg" target="_blank"><img src="images/moj/plan_doc2.jpg" alt="기획안 예시 2쪽" loading="lazy"></a></div>
+<h3>단편 기획 vs 장편 기획</h3>
+<table class="t"><tr><th>구분</th><th>단편</th><th>장편</th></tr>
+<tr><td><b>주로</b></td><td>홍보영상 · 행사 · 캠페인</td><td>유튜브 · 인스타 숏폼 시리즈</td></tr>
+<tr><td><b>핵심</b></td><td>한 편 안에 메시지 하나를 강하게</td><td>채널 정체성 · 고정 캐릭터 · 포맷 · 업로드 주기</td></tr>
+<tr><td><b>문서</b></td><td>기획안 1장 + 구성안 1장</td><td>기획안 1장 + 구성안은 편마다</td></tr></table>
+</section>
+
+<section><h2><span class="n">03</span>구성안 — 25초 · 5신</h2>
+<div class="scenes"><div class="g">S1 생성<small>훅</small></div><div class="h">S2 HTML<small>정보 카드</small></div><div class="g">S3 생성<small>전개</small></div><div class="h">S4 HTML<small>핵심 카드</small></div><div class="g">S5 생성<small>결론·급종료</small></div></div>
+<p class="note">생성은 크레딧이 드는 꼭 필요한 장면 3개에만, 정보는 HTML 카드로 또렷하게. 마지막에 FFmpeg가 자막 · 로고 · 소리를 붙여 조립합니다.</p>
+<h3>구성안의 생김새 — 1편 예시 (구두계약)</h3>
+<table class="t"><tr><th>신</th><th>방식</th><th>화면</th><th>자막·대사</th><th>효과음·BGM</th></tr>
+<tr><td>S1</td><td>생성</td><td>악수하다 "계약서는 없잖아" 하며 손을 뺌</td><td>계약서 없으면 그냥 없던 일?</td><td>악수 "짝" · BGM 시작</td></tr>
+<tr><td>S2</td><td>HTML</td><td>S1 마지막 장면 흐림 + 큰 X</td><td>땡, 틀렸습니다</td><td>오답 버저</td></tr>
+<tr><td>S3</td><td>생성</td><td>김법무가 법전을 펼쳐 짚음</td><td>말로 한 약속도 엄연한 계약입니다</td><td>책장 "촤르륵"</td></tr>
+<tr><td>S4</td><td>HTML</td><td>키워드 카드</td><td>문자 · 녹음 = 증거 — 남겨 두세요</td><td>알림음 "띵"</td></tr>
+<tr><td>S5</td><td>생성</td><td>문자 화면 보여 주며 엄지척 → 컷</td><td>약속은 남겨야 지켜집니다 (급종료)</td><td>"딱" · BGM 하드컷</td></tr></table>
+</section>
+
+<section><h2><span class="n">04</span>3문제로 확인하기</h2>
+<div class="q" data-a="0"><p class="qt"><span class="qn">Q1</span>‘이 영상이 왜 있어야 하는가’에 답하는 문서는?</p><div class="opts"><button class="opt" data-i="0">기획안</button><button class="opt" data-i="1">구성안</button></div><p class="fb" data-ok="정답! 기획안은 존재의 이유입니다."></p></div>
+
+<div class="q" data-a="1"><p class="qt"><span class="qn">Q2</span>구성안에 들어가는 5가지 칸이 아닌 것은?</p><div class="opts"><button class="opt" data-i="0">화면 · 자막</button><button class="opt" data-i="1">기대 효과</button></div><p class="fb" data-ok="정답! 기대 효과는 기획안 항목입니다."></p></div>
+
+<div class="q" data-a="1"><p class="qt"><span class="qn">Q3</span>25초 5신에서 S2 · S4 카드는 무엇으로 만들까요?</p><div class="opts"><button class="opt" data-i="0">캡컷 영상 생성</button><button class="opt" data-i="1">HTML 카드</button></div><p class="fb" data-ok="정답! 크레딧 없이 HTML로 또렷하게 만듭니다."></p></div>
+
+</section>
+
+<!-- ================= PART 2 ================= -->
+<div class="part" id="p2"><small>PART 2</small><b>(법무부) 기획구성안봇 — 직접 다시 해보기</b><p>번호로 답하면 기획안 + 구성안(1편)을 PDF 한 파일로 만들어 줍니다</p></div>
+
+<section><h2><span class="n">05</span>폴더 받기</h2>
+<a class="dl" href="downloads/moj/moj3-2_shortform-bot.zip" download><span class="pi">📦</span><span class="pt"><b>(법무부) 기획구성안봇 폴더 받기</b><small>ZIP · 2.4MB · 압축을 풀어 바탕화면에 두세요</small></span><span class="pg">받기 ↓</span></a>
+<div class="tree">바탕화면/(법무부) 기획구성안봇/
+├ AGENTS.md   ← 봇의 지침 (질문 13개 · 진행 순서)
+├ KB/         ← 기획원칙 · 구성안기준 · 샘플 · 캐릭터성격
+├ 캐릭터/      ← 김 · 박 · 서 · 최법무 시트
+├ 샘플/        ← 좋은 숏폼 캡처 + 메모
+└ 결과물/      ← 봇이 만든 것이 모두 여기에</div>
+<div class="warn">🔒 이 폴더에는 <b>개인정보 · 내부 문서를 넣지 마세요.</b> 연습용 파일만 넣습니다.</div>
+</section>
+
+<section><h2><span class="n">06</span>봇 만들기 — 6단계</h2>
+<div class="step"><span class="ic">1️⃣</span><div class="tx"><b>챗GPT <u>데스크톱 앱</u> → 위쪽 Work 탭</b><span>웹 브라우저가 아니라 PC에 설치한 앱이어야 폴더를 연결할 수 있습니다.</span></div></div>
+
+<div class="step"><span class="ic">2️⃣</span><div class="tx"><b>왼쪽 프로젝트 옆 ＋ → 새 프로젝트</b><span></span></div></div>
+
+<div class="step"><span class="ic">3️⃣</span><div class="tx"><b>이름 : (법무부) 기획구성 봇</b><span>(기관) + 하는 일 + 봇 순서로 지으면 봇이 늘어나도 찾기 쉽습니다.</span></div></div>
+
+<div class="step"><span class="ic">4️⃣</span><div class="tx"><b>소스 폴더 추가 → 이 컴퓨터 → 바탕화면 → (법무부) 기획구성안봇 → 폴더 선택</b><span>폴더 그대로 골라 선택하면 됩니다. 안에 같은 이름 폴더가 또 있으면 <b>AGENTS.md가 보이는 안쪽 폴더</b>를 연결하세요.</span></div></div>
+
+<div class="step"><span class="ic">5️⃣</span><div class="tx"><b>“이 폴더를 신뢰할까요?” → 폴더 신뢰</b><span></span></div></div>
+
+<div class="step"><span class="ic">6️⃣</span><div class="tx"><b>새 채팅에 “시작”</b><span>봇이 <b>질문 1</b>을 보여 주면 성공입니다.</span></div></div>
+
+</section>
+
+<section><h2><span class="n">07</span>이렇게 답하세요</h2>
+<div class="snlist">
+<div class="sn"><span class="no">1</span><p>번호로 답하기<small>선택지 번호만 입력하면 됩니다.</small></p></div>
+<div class="sn"><span class="no">0</span><p>모르겠으면 0<small>봇이 추천해 줍니다.</small></p></div>
+<div class="sn"><span class="no">✏️</span><p>원하는 게 따로 있으면 직접 적기<small>원하는 스타일이나 스토리라인도 써 주세요.</small></p></div>
+</div>
+<h3>질문 13개 미리 보기</h3>
+<table class="t"><tr><th>블록</th><th>질문</th><th>나오는 것</th></tr>
+<tr><td><b>A. 왜</b></td><td>① 누가 볼까 ② 보고 할 행동 하나 ③ 주제 분야 ④ 주제 고르기</td><td>기획 의도 · 타깃 · 목표</td></tr>
+<tr><td><b>B. 무엇을</b></td><td>⑤ 단편/시리즈 ⑥ 전개 방식 ⑦ 느낌 ⑧ 원하는 스타일·스토리라인 ⑨ 첫 3초 훅</td><td>기획안 8항목</td></tr>
+<tr><td><b>C. 어떻게</b></td><td>⑩ 캐릭터 ⑪ 그림체 ⑫ 나레이션 목소리 ⑬ 배경음악</td><td>구성안 1편 + 생성 프롬프트</td></tr></table>
+</section>
+
+<section><h2><span class="n">08</span>캐릭터 4인 — 성격까지 정해 두기</h2>
+<table class="t"><tr><th>캐릭터</th><th>성격</th><th>말투</th><th>잘 맞는 주제</th></tr>
+<tr><td><b>김법무</b><br><small>25 · 신입</small></td><td>호기심 많고 리액션 큰 열정 막내</td><td>"어? 이거 저도 몰랐어요!"</td><td>생활 법률 Q&amp;A · 유쾌</td></tr>
+<tr><td><b>박법무</b><br><small>27 · 2년차</small></td><td>차분하고 다정한 공감형 상담가</td><td>"괜찮아요, 이렇게 하시면 돼요."</td><td>피해자 · 취약계층 지원 · 따뜻</td></tr>
+<tr><td><b>서법무</b><br><small>40 · 아저씨</small></td><td>비유와 아재개그의 유쾌한 아재</td><td>"라떼는 말이야~ 근데 요즘은?"</td><td>사기 · 보이스피싱 예방 · 유쾌</td></tr>
+<tr><td><b>최법무</b><br><small>40 · 팀장</small></td><td>결론부터 말하는 원칙주의자</td><td>"핵심만 말씀드리면, 두 가지입니다."</td><td>법 개정 · 제도 변경 · 진지</td></tr></table>
+<p class="note">둘이 나와도 좋아요 — 김 + 최(신입이 묻고 팀장이 정리) · 서 + 박(아재개그 판을 차분하게 수습)</p>
+<div class="mini-row"><a class="mini" href="images/moj/kim-beopmu-sheet.png" download="김법무.png">김법무 시트 ↓</a><a class="mini" href="images/moj/park-beopmu-sheet.jpg" download="박법무.jpg">박법무 시트 ↓</a><a class="mini" href="images/moj/seo-beopmu-sheet.jpg" download="서법무.jpg">서법무 시트 ↓</a><a class="mini" href="images/moj/choi-beopmu-sheet.jpg" download="최법무.jpg">최법무 시트 ↓</a></div>
+</section>
+
+<section><h2><span class="n">09</span>결과는 봇 폴더의 ‘결과물’ 안에</h2>
+<div class="tree">바탕화면/(법무부) 기획구성안봇/결과물/
+└ 숏폼_주제_월일/
+   ├ 기획구성안_주제.pdf  ← 기획안 → 구성안(1편) 한 파일
+   ├ 01_기획안.md
+   ├ 02_구성안.md
+   ├ 03_생성프롬프트.md
+   └ 04_작업기획.md</div>
+<p class="note">마지막 화면의 링크를 누르면 PDF와 폴더가 바로 열립니다. <b>PDF는 단톡방에 올려 주세요.</b></p>
+</section>
+
+<section><h2><span class="n">10</span>한 단계 더 — KB에 ‘대가의 뇌’ 넣기</h2>
+<div class="step"><span class="ic">1️⃣</span><div class="tx"><b>닮고 싶은 PD · 크리에이터 고르고 자료 모으기</b><span>영상 · 글 · 인터뷰</span></div></div>
+
+<div class="step"><span class="ic">2️⃣</span><div class="tx"><b>아래 프롬프트와 자료를 챗GPT에 넣기</b><span>대가-기획원칙.md로 정리해 줍니다</span></div></div>
+
+<div class="step"><span class="ic">3️⃣</span><div class="tx"><b>(법무부) 기획구성안봇 › KB 폴더에 넣고 새 채팅</b><span>봇이 함께 읽고 우선 따릅니다</span></div></div>
+
+<div class="cbox"><div class="chead"><span>📋 대가의 원칙 뽑는 프롬프트</span><button class="cbtn" data-t="ext">복사</button></div><pre id="ext">첨부한 자료는 [대가 이름]의 숏폼 기획 노하우야.
+이 자료에서 기획 원칙만 뽑아 MD 파일로 정리해줘.
+원문 문장은 그대로 베끼지 말고, 쉬운 말로 요약해줘.
+
+[정리 항목]
+1. 훅 설계 원칙
+2. 구성(기승전결) 원칙
+3. 엔딩 원칙
+4. 자막·말투 원칙
+5. 하지 말아야 할 것
+
+[출력 형식]
+- 제목은 #, 항목은 ##, 내용은 - 글머리 기호
+- 항목마다 3~5줄
+- 파일 이름: 대가-기획원칙.md</pre></div>
+</section>
+
+<section><h2><span class="n">11</span>안 될 때</h2>
+<table class="t"><tr><th>증상</th><th>이렇게 해 보세요</th></tr>
+<tr><td>“시작”에 일반 대화처럼 답함</td><td>폴더 연결 확인 → <b>새 채팅</b>에서 다시 “시작”</td></tr>
+<tr><td>폴더 이름 · 위치를 바꾼 뒤 안 됨</td><td>프로젝트 소스 폴더를 <b>바뀐 폴더로 다시 연결</b></td></tr>
+<tr><td>Work 탭이나 폴더 연결이 안 됨</td><td>일반 프로젝트에 AGENTS.md와 KB 파일을 올리고, 아래 지침을 지침 칸에 붙여넣기</td></tr>
+<tr><td>KB를 넣었는데 반영이 안 됨</td><td>진행 중인 채팅에는 안 들어갑니다 → 새 채팅</td></tr></table>
+<div class="cbox"><div class="chead"><span>📋 일반 프로젝트용 지침 (대신 만들 때)</span><button class="cbtn" data-t="ins">복사</button></div><pre id="ins">너는 '숏폼 기획구성안 봇'이야.
+연결된 폴더(또는 프로젝트 파일)의 AGENTS.md를 가장 먼저 읽고, 그 순서와 규칙을 그대로 따른다.
+KB 폴더의 .md 파일을 기준으로 삼고, 대화마다 질문은 한 번에 하나, 객관식 번호로 진행한다.
+AGENTS.md를 찾지 못하면 "(법무부) 기획구성안봇 폴더를 연결하거나 AGENTS.md를 올려 주세요"라고만 말한다.</pre></div>
+</section>
+
+<!-- ================= PART 3 ================= -->
+<div class="part" id="p3"><small>PART 3</small><b>(법무부) 간단 숏폼봇 — 직접 만들어 보기</b><p>시연에서 본 그 봇 · 상담만 하면 25초 · 720p 숏폼 1편을 끝까지</p></div>
+
+<section><h2><span class="n">12</span>시연 결과물 — 법무부 칭찬할 일 셋</h2>
+<div style="display:flex;gap:14px;flex-wrap:wrap;align-items:flex-start">
+<video src="images/moj/simplebot-sample.mp4" poster="images/moj/simplebot-sample-poster.jpg" controls playsinline preload="none" style="width:200px;border-radius:12px;background:#000"></video>
+<div style="flex:1;min-width:230px"><table class="t"><tr><th>신</th><th>만드는 방법</th></tr>
+<tr><td>S1 · S3 · S5</td><td><b>생성</b> — 캡컷 웹 (시댄스 2.0 미니)</td></tr>
+<tr><td>S2 · S4</td><td><b>HTML 카드</b> — 픽토그램 + 키워드, 모션 넣어 영상으로</td></tr>
+<tr><td>조립</td><td><b>FFmpeg</b> — 말 자막 · 법무부 로고 · 나레이션 · 배경음악</td></tr></table></div></div>
+<div class="frames"><img src="images/moj/demo_s1.jpg" alt="S1"><img src="images/moj/demo_s2.jpg" alt="S2"><img src="images/moj/demo_s3.jpg" alt="S3"><img src="images/moj/demo_s4.jpg" alt="S4"><img src="images/moj/demo_s5.jpg" alt="S5"></div>
+</section>
+
+<section><h2><span class="n">13</span>준비 — 계정 · 로그인</h2>
+<table class="t"><tr><th>사이트</th><th>주소</th><th>용도</th><th>계정</th></tr>
+<tr><td><b>챗GPT 데스크톱 앱</b></td><td>chatgpt.com/download</td><td>봇 (폴더 연결)</td><td>지급 계정</td></tr>
+<tr><td><b>캡컷 웹</b></td><td>capcut.com</td><td>영상 3신 생성</td><td><b>유료</b> (지급 계정)</td></tr>
+<tr><td><b>제미나이</b></td><td>gemini.google.com</td><td>배경음악</td><td>구글 계정</td></tr>
+<tr><td><b>일레븐랩스</b></td><td>elevenlabs.io</td><td>나레이션</td><td>무료</td></tr></table>
+<div class="press"><span>🔑</span><div><b>챗GPT ‘내부 웹’에서 미리 로그인</b>챗GPT 안에서 열리는 웹은 내 크롬과 로그인이 따로입니다. 처음 한 번은 내부 웹에서 세 사이트에 <b>직접</b> 로그인해 두세요. 비밀번호는 채팅창에 쓰지 않습니다.</div></div>
+</section>
+
+<section><h2><span class="n">14</span>폴더 받기 · 봇 만들기</h2>
+<a class="dl" href="downloads/moj/moj3-simple-shortform-bot.zip" download><span class="pi">📦</span><span class="pt"><b>(법무부) 간단숏폼봇 폴더 받기</b><small>ZIP · 5MB · 압축을 풀어 바탕화면에 두세요</small></span><span class="pg">받기 ↓</span></a>
+<div class="tree">바탕화면/(법무부) 간단숏폼봇/
+├ AGENTS.md   ← 봇의 지침 (상담 → 구성안 → 생성 → 조립)
+├ KB/         ← 기획원칙 · 구성안기준 · 디자인(MASSW) · 캡션작성법 · 캐릭터성격
+├ 캐릭터/      ← 김 · 박 · 서 · 최법무 시트
+├ 로고/        ← 법무부 로고 (흰색 · 컬러)
+├ 폰트/        ← Pretendard (자막 · 카드용)
+├ 샘플/
+└ 결과물/      ← 만든 영상이 여기에 쌓임</div>
+<div class="step"><span class="ic">1️⃣</span><div class="tx"><b>챗GPT 데스크톱 앱 → Work 탭 → 새 프로젝트</b><span>이름 : (법무부) 간단 숏폼 봇</span></div></div>
+
+<div class="step"><span class="ic">2️⃣</span><div class="tx"><b>소스 폴더 추가 → 이 컴퓨터 → 바탕화면 → (법무부) 간단숏폼봇 → 폴더 선택 → 폴더 신뢰</b><span>연결하는 폴더는 이것 하나뿐입니다.</span></div></div>
+
+<div class="step"><span class="ic">3️⃣</span><div class="tx"><b>새 채팅에 “시작”</b><span>기획구성안봇에서 받은 <b>PDF가 있으면 “1 네”</b>를 고르고 올리면 바로 이어서 만듭니다.</span></div></div>
+
+</section>
+
+<section><h2><span class="n">15</span>봇이 움직이는 순서</h2>
+<table class="t"><tr><th>단계</th><th>봇이 하는 일</th><th>확인</th></tr>
+<tr><td>0</td><td>기획구성안 PDF가 있으면 받아서 바로 구성안으로</td><td></td></tr>
+<tr><td>1</td><td>주제 · 소재 상담 → 캐릭터 고르기 → 구성안 5신</td><td>✅</td></tr>
+<tr><td>2</td><td>챗GPT로 스토리보드 1장 (5칸)</td><td>✅</td></tr>
+<tr><td>3</td><td>캡컷 웹(시댄스 2.0 미니)에서 S1 · S3 · S5 생성 시작</td><td>✅ 크레딧</td></tr>
+<tr><td>4</td><td>생성되는 동안 일레븐랩스 나레이션 · 제미나이 배경음악</td><td></td></tr>
+<tr><td>5</td><td>S2 · S4 HTML 카드 영상 만들기</td><td></td></tr>
+<tr><td>6</td><td>FFmpeg 조립 — 말 자막 · 법무부 로고 · 소리 → 720p 25초</td><td></td></tr>
+<tr><td>7</td><td>완성 영상 링크 + 캡션글(채팅창에서 바로 복사)</td><td></td></tr></table>
+<p class="note">✅ 표시에서만 확인을 묻고 나머지는 알아서 진행합니다. <b>크레딧이 드는 캡컷 생성은 반드시 먼저 물어봅니다.</b> 생성 시간은 신마다 몇 분 걸릴 수 있어요.</p>
+</section>
+
+<section><h2><span class="n">16</span>안 될 때</h2>
+<table class="t"><tr><th>증상</th><th>이렇게 해 보세요</th></tr>
+<tr><td>“시작”에 일반 대화처럼 답함</td><td>폴더 연결이 끊긴 것 — 소스 폴더 다시 연결 → <b>새 채팅</b></td></tr>
+<tr><td>캡컷 · 제미나이 · 일레븐랩스에서 멈춤</td><td>챗GPT <b>내부 웹</b>에서 그 사이트에 직접 로그인한 뒤 “계속”</td></tr>
+<tr><td>내려받은 파일을 못 찾음</td><td>다운로드 폴더의 파일을 채팅창에 바로 올리기</td></tr>
+<tr><td>카드(S2 · S4)가 정지 화면으로 나옴</td><td>HTML 녹화가 안 되는 환경 — 그대로 써도 되고, “카드 모션 다시”라고 요청</td></tr></table>
+</section>
+
+<div class="next" style="margin-top:36px"><h3>다음 시간까지</h3><ul>
+<li>기획구성안봇으로 만든 <b>PDF를 단톡방에</b> 올려 주세요.</li>
+<li>시간이 되면 그 PDF를 간단 숏폼봇에 넣어 <b>25초 영상 1편</b>을 만들어 보세요.</li>
+<li>막히는 화면은 캡처해서 단톡방으로!</li></ul></div>
+<script>
+document.querySelectorAll('.q').forEach(function(q){
+  var a=+q.dataset.a, fb=q.querySelector('.fb');
+  q.querySelectorAll('.opt').forEach(function(b){
+    b.addEventListener('click',function(){
+      if(q.classList.contains('done'))return;
+      if(+b.dataset.i===a){b.classList.add('ok');q.classList.add('done');fb.textContent=fb.dataset.ok;fb.className='fb';fb.style.display='block'}
+      else{b.classList.add('no');fb.textContent='다시 골라 보세요.';fb.className='fb retry';fb.style.display='block'}
+    });
+  });
+});
+document.querySelectorAll('.cbtn').forEach(function(b){
+b.addEventListener('click',function(){var el=document.getElementById(b.dataset.t),tx=el.innerText,lb=b.textContent;
+function ok(){b.textContent='복사 완료! ✔︎';b.classList.add('done');setTimeout(function(){b.textContent=lb;b.classList.remove('done')},2200)}
+function fb(){var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r);try{document.execCommand('copy');ok()}catch(e){}}
+if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(tx).then(ok,fb)}else{fb()}})});
+</script></body></html>
