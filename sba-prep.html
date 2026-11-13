@@ -273,6 +273,31 @@ h3.sub.n::before{counter-increment:s;content:counter(s,decimal-leading-zero);fon
 .mapc::before{counter-increment:m;content:counter(m);position:absolute;top:6px;left:8px;font:800 11px ui-monospace,Menlo,monospace;color:#D9784A}
 .mapc:not(:last-child)::after{content:'›';position:absolute;right:-8px;top:50%;transform:translateY(-50%);color:#D9784A;font-weight:800;z-index:1}
 .map.c7{grid-template-columns:repeat(5,1fr)}.hx-part{display:flex;align-items:center;gap:10px;margin:26px 0 6px;padding-top:18px;border-top:2px dashed var(--line)}.hx-part h3{font-size:20px;letter-spacing:-.02em}.hx-tag{width:30px;height:30px;border-radius:50%;background:#2C5F6F;color:#fff;display:grid;place-items:center;font-weight:800}.hx-tag.alt{background:#D9784A}@keyframes nudge{50%{transform:translateY(3px)}}@media (max-width:720px){.rs,.cards3,.mo{grid-template-columns:1fr}.map,.map.c7{grid-template-columns:repeat(3,1fr)!important}.mapc::after{display:none}.tap-hint{display:table;margin:6px 0 0}.tbl td:first-child{white-space:normal}}</style>
+<style id="mo-css">
+.wrap{overflow-x:clip}
+.hero-type{margin-top:12px;font-size:17px;font-weight:700;color:#fff;min-height:1.6em;text-shadow:0 1px 3px rgba(0,0,0,.2)}
+.hero-type .lbl{opacity:.75;font-weight:600;margin-right:8px}
+.caret{display:inline-block;width:2px;height:1em;background:currentColor;margin-left:2px;vertical-align:-2px;animation:mblink 1s steps(1) infinite}
+@keyframes mblink{50%{opacity:0}}
+.mo-on .mv{opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .7s cubic-bezier(.2,.8,.2,1),box-shadow .2s}
+.mo-on .mv-l{opacity:0;transform:translateX(-50px);transition:opacity .6s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
+.mo-on .mv-r{opacity:0;transform:translateX(50px);transition:opacity .6s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
+.mo-on .mv.in,.mo-on .mv-l.in,.mo-on .mv-r.in{opacity:1;transform:none}
+.step,.wf,.pn,.wl-st,.wl-box,.r,.mapc,.smp,.pdfpages figure,.w1b,.ovc{transition:transform .2s,box-shadow .2s}
+.step:hover,.wf:hover,.wl-st:hover,.wl-box:hover,.r:hover,.mapc:hover,.smp:hover,.pdfpages figure:hover{transform:translateY(-4px);box-shadow:0 12px 26px rgba(44,95,111,.16)}
+.pn:hover{transform:translateY(-2px)}
+.mo-on .mv.in.step:hover,.mo-on .mv.in.wf:hover,.mo-on .mv.in.wl-st:hover,.mo-on .mv.in.r:hover,.mo-on .mv.in.mapc:hover,.mo-on .mv.in.smp:hover{transform:translateY(-4px)}
+.group-head .group-num{transition:transform .5s cubic-bezier(.3,1.6,.5,1)}
+.mo-on .group-head.mv .group-num{transform:scale(.4)}
+.mo-on .group-head.mv.in .group-num{transform:none}
+.wl-key .k{animation:mbob 2.6s ease-in-out infinite}
+@keyframes mbob{50%{transform:translateY(-5px) rotate(-6deg)}}
+.tap-hint2{animation:mnudge 1.6s ease-in-out infinite}
+@keyframes mnudge{50%{transform:translateY(3px)}}
+.kbd{animation:mpulse 2s ease-in-out infinite}
+@keyframes mpulse{50%{box-shadow:0 0 0 6px rgba(217,120,74,.25)}}
+@media (prefers-reduced-motion:reduce){.mo-on .mv,.mo-on .mv-l,.mo-on .mv-r{opacity:1!important;transform:none!important}*{animation:none!important}}
+</style>
 </head>
 <body class="dusk-page prep-page">
 <div class="top">
@@ -289,6 +314,7 @@ h3.sub.n::before{counter-increment:s;content:counter(s,decimal-leading-zero);fon
 <header class="page-intro">
   <span class="badge">SBA · AI CONTENT</span>
   <h1>SBA 준비사항</h1>
+  <p class="hero-type"><span class="lbl">오늘의 흐름</span><span id="heroType">로그인 · 봇 연결</span><i class="caret"></i></p>
   <p class="lede"><b>AI 이미지·영상 콘텐츠 제작</b> 수강생용 안내 페이지입니다. 수업 순서대로 <b>로그인·설치 → 교안 → 복사용 프롬프트 → MD·KB 파일</b>을 모았습니다. <b>2주차(11/14)</b> 자료는 아래 2주차 칸에 있습니다. 1주차(11/7) 자료는 <b>1주차 다시 보기</b> 페이지로 옮겼습니다.</p>
 </header>
 <div class="press" id="chat-room"><span class="press-ic" aria-hidden="true">💬</span><div><strong>막히면 캡처해서 질문 · 완성하면 공유</strong><p>안 되는 부분은 <b>화면을 캡처해서 강사에게 보여주세요.</b> 결과물은 단톡방에 올려 서로 공유합니다.</p></div></div>
@@ -487,5 +513,20 @@ document.querySelectorAll('#prompts a.go[href$=".md"]').forEach(function(a){
 });
 })();
 </script>
-<script>(function(){var n=document.querySelector(".jump"),ph=document.getElementById("jumpPh");if(!n||!ph)return;var home=n.parentNode;function f(){var on=ph.getBoundingClientRect().top<0;if(on&&!n.classList.contains("pin")){ph.style.height=n.offsetHeight+28+"px";document.body.appendChild(n);n.classList.add("pin")}if(n.classList.contains("pin")){var t=document.querySelector(".top");n.style.top=((t?Math.max(0,t.getBoundingClientRect().bottom):0)+10)+"px"}else if(!on&&n.classList.contains("pin")){n.classList.remove("pin");home.insertBefore(n,ph.nextSibling);ph.style.height="0"}}addEventListener("scroll",f,{passive:true});addEventListener("resize",f);setInterval(f,250);f()})();</script></body>
+<script>(function(){var n=document.querySelector(".jump"),ph=document.getElementById("jumpPh");if(!n||!ph)return;var home=n.parentNode;function f(){var on=ph.getBoundingClientRect().top<0;if(on&&!n.classList.contains("pin")){ph.style.height=n.offsetHeight+28+"px";document.body.appendChild(n);n.classList.add("pin")}if(n.classList.contains("pin")){var t=document.querySelector(".top");n.style.top=((t?Math.max(0,t.getBoundingClientRect().bottom):0)+10)+"px"}else if(!on&&n.classList.contains("pin")){n.classList.remove("pin");home.insertBefore(n,ph.nextSibling);ph.style.height="0"}}addEventListener("scroll",f,{passive:true});addEventListener("resize",f);setInterval(f,250);f()})();</script><script id="mo-js">(function(){
+var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+var ht=document.getElementById('heroType');
+if(ht&&!reduce){var L=['로그인 · 봇 연결','샘플 추가 · 관리','미션: 기획구성안 → 포스터 → 카드뉴스','숏폼 · 보고서 · 캐릭터','HTML로 PPT · 카드뉴스'],i=0,j=0,d=false;(function t(){var w=L[i];if(!d){j++;ht.textContent=w.slice(0,j);if(j===w.length){d=true;return setTimeout(t,1500)}}else{j--;ht.textContent=w.slice(0,j);if(j===0){d=false;i=(i+1)%L.length}}setTimeout(t,d?35:75)})()}
+if(reduce||!('IntersectionObserver' in window))return;
+var up='.group-head,.step,.wf,.pn,.wl-st,.wl-box,.wl-key,.startbox,.pdfpages figure,.rep-ppt a,.rep-int a,.r,.mapc,.copybox,.tbl-wrap,.hdemo,.demo,.acc,.smp,.chips3 .chip3,.mo div,.sm-tree,.sm-rules,.w1card,.review-bar,.cards3,.howto li';
+var side='.note,.press,.point,.warn,.conv';
+var els=[];document.querySelectorAll(up).forEach(function(e){if(e.closest('.top,.jump'))return;e.classList.add('mv');els.push(e)});
+var n=0;document.querySelectorAll(side).forEach(function(e){e.classList.add(n++%2?'mv-r':'mv-l');els.push(e)});
+document.documentElement.classList.add('mo-on');
+var io=new IntersectionObserver(function(es){es.forEach(function(en){if(!en.isIntersecting)return;var t=en.target,sib=[].filter.call(t.parentNode.children,function(c){return c.classList.contains('mv')}),k=Math.max(0,sib.indexOf(t))%8;setTimeout(function(){t.classList.add('in')},k*70);io.unobserve(t)})},{threshold:.12,rootMargin:'0px 0px -30px 0px'});
+els.forEach(function(e){io.observe(e)});
+setTimeout(function(){els.forEach(function(e){if(e.getBoundingClientRect().top<innerHeight)e.classList.add('in')})},60);
+addEventListener('hashchange',function(){els.forEach(function(e){var r=e.getBoundingClientRect();if(r.top<innerHeight*1.5&&r.bottom>-200)e.classList.add('in')})});
+})();</script>
+</body>
 </html>
