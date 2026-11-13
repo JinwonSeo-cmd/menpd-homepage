@@ -219,6 +219,7 @@ h3.sub{font-size:17px;font-weight:800;margin:28px 0 10px}
 .session>summary::-webkit-details-marker{display:none}
 .session-tag{flex:none;background:var(--ink,#1F2933);color:#fff;font-size:12px;font-weight:800;padding:5px 11px;border-radius:999px}
 .session-title{font-size:15px;font-weight:700;color:var(--ink,#1F2933);flex:1;min-width:200px}
+.w1card{display:flex;align-items:center;gap:12px;padding:16px 20px;flex-wrap:wrap}.w1-btns{flex:none;display:flex;gap:8px;flex-wrap:wrap}.w1b{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:800;text-decoration:none;padding:8px 14px;border-radius:999px;background:#fff;color:#2C5F6F;border:1.5px solid #2C5F6F;transition:transform .15s,box-shadow .15s}.w1b.rev{background:#2C5F6F;color:#fff}.w1b i{font-style:normal;font-size:10.5px;background:#D9784A;color:#fff;padding:2px 7px;border-radius:999px}.w1b:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(44,95,111,.2)}
 .session-link{display:flex;align-items:center;gap:12px;padding:18px 20px;flex-wrap:wrap;text-decoration:none;transition:transform .15s,box-shadow .15s}.session-link:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(31,41,51,.12)}.session-go{flex:none;font-size:13px;font-weight:800;color:#fff;background:var(--accent,#E8642C);padding:7px 14px;border-radius:999px}
 .session-btn{flex:none;font-size:13px;font-weight:700;color:var(--accent,#E8642C)}
 .session-btn::after{content:' ▾'}
@@ -497,19 +498,20 @@ h3.sub.n::before{counter-increment:s;content:counter(s,decimal-leading-zero);fon
 </div>
 <div class="press rv-l"><span class="press-ic" aria-hidden="true">💻</span><div><strong>개인 노트북이라면 ②까지 미리!</strong><p>앱에 로그인돼 있어도 <b>내부 웹은 따로</b>입니다. 수업 전에 캡컷·제미나이·일레븐랩스를 내부 웹에서 한 번씩 로그인해 두세요.</p></div></div></section>
 <section class="group" id="folder"><div class="group-head"><span class="group-num">02</span><h2>다시 점검 ② 폴더</h2></div><p class="group-desc">원드라이브·구글 드라이브 같은 <b>클라우드 동기화 폴더</b> 안에 있으면 연결이 안 될 수 있습니다.</p><div class="conn" data-rv>
- <div class="conn-row bad"><div class="cn"><span class="cn-ic">☁️</span><b>원드라이브</b><small>컴퓨터 전체 동기화</small></div><div class="wire broken"><i></i><span class="x">✕</span></div><div class="cn app"><span class="cn-ic">💬</span><b>챗지피티 앱</b><small>연결 실패</small></div></div>
+ <div class="conn-row bad"><div class="cn"><span class="cn-ic">☁️</span><b>클라우드 동기화 폴더</b><small>원드라이브 · 구글 드라이브</small></div><div class="wire broken"><i></i><span class="x">✕</span></div><div class="cn app"><span class="cn-ic">💬</span><b>챗지피티 앱</b><small>연결 실패</small></div></div>
  <div class="conn-row good"><div class="cn hi"><span class="cn-ic">📁</span><b>AI작업</b><small>바탕화면 · 독립 폴더 1개</small></div><div class="wire live"><i></i><span class="ok">✓</span></div><div class="cn app"><span class="cn-ic">💬</span><b>챗지피티 앱</b><small>연결 성공</small></div></div>
 </div>
 <h3 class="sub">주소로 확인하기</h3>
 <div class="paths" data-rv>
  <div class="path bad"><span class="pl">❌</span><code>C:\Users\나\<mark>OneDrive</mark>\바탕 화면\AI작업</code></div>
+ <div class="path bad"><span class="pl">❌</span><code><mark>G:\내 드라이브</mark>\AI작업</code><small>구글 드라이브 데스크톱 앱 폴더</small></div>
  <div class="path good"><span class="pl">✅</span><code>C:\Users\나\Desktop\AI작업</code></div>
  <div class="path good"><span class="pl">✅</span><code>C:\AI작업</code><small>바탕화면 주소에도 OneDrive가 보이면 여기에 만들고, 바탕화면엔 바로가기</small></div>
 </div>
 <h3 class="sub">따라하기 3단계</h3>
 <div class="chips3" data-rv>
  <div class="chip3"><span class="c-n">1</span><span class="c-ic">📁</span><b>새 폴더 만들기</b><small>바탕화면 우클릭 → 새로 만들기 → 폴더 → <span class="key">AI작업</span></small></div>
- <div class="chip3"><span class="c-n">2</span><span class="c-ic">🔍</span><b>주소 확인</b><small>폴더 우클릭 → 속성 → 위치에 <b>OneDrive</b>가 없으면 OK</small></div>
+ <div class="chip3"><span class="c-n">2</span><span class="c-ic">🔍</span><b>주소 확인</b><small>폴더 우클릭 → 속성 → 위치에 <b>OneDrive</b>나 <b>내 드라이브</b>가 없으면 OK</small></div>
  <div class="chip3"><span class="c-n">3</span><span class="c-ic">🔗</span><b>이 폴더만 연결</b><small>챗지피티 앱에서 연결 → “test.txt 만들어줘”로 확인</small></div>
 </div>
 <div class="note rv-l">폴더 안 구성은 1주차와 같습니다: <b>소스 · 샘플 · MD · 결과</b>. <a href="downloads/public/sba-ai-work-template.zip" download>‘AI작업’ 템플릿 zip 받기</a></div></section>
@@ -621,7 +623,7 @@ h3.sub.n::before{counter-increment:s;content:counter(s,decimal-leading-zero);fon
 <h3 class="sub n" id="c-reels">응용: 릴스로 완성</h3>
 <div class="flow"><div class="flow-item"><div class="flow-dot">🎞️</div><div class="flow-body"><strong>움직이는 카드뉴스 녹화</strong><p>위 방법으로 mp4</p></div></div><div class="flow-item"><div class="flow-dot">🎙️</div><div class="flow-body"><strong>일레븐랩스 나레이션</strong><p>즐겨찾기 한 한국어 목소리로</p></div></div><div class="flow-item"><div class="flow-dot">🎵</div><div class="flow-body"><strong>제미나이 BGM</strong><p>5가지 키워드로</p></div></div><div class="flow-item"><div class="flow-dot">✂️</div><div class="flow-body"><strong>캡컷에서 합치기</strong><p>영상 + 나레이션 + BGM → 릴스 1편</p></div></div></div>
 </div></section>
-<section class="group" id="faq"><div class="group-head"><span class="group-num">08</span><h2>막힐 때</h2></div><details class="acc"><summary>폴더 연결이 안 돼요</summary><div class="acc-body">원드라이브 안 폴더인지 확인하세요. 바탕화면에 독립 폴더를 새로 만들어 그것만 연결합니다. (02 참고)</div></details><details class="acc"><summary>앱은 로그인됐는데 웹 작업이 멈춰요</summary><div class="acc-body">내부 웹 로그인은 따로입니다. 앱 안 웹 화면에서 해당 사이트에 로그인하세요.</div></details><details class="acc"><summary>HTML 파일이 글자로만 보여요</summary><div class="acc-body">메모장으로 열린 것입니다. 파일 우클릭 → 연결 프로그램 → 크롬 또는 엣지.</div></details><details class="acc"><summary>모션이 안 움직여요</summary><div class="acc-body">캔버스 미리보기 대신 파일로 저장해 더블클릭으로 여세요.</div></details><details class="acc"><summary>PDF 배경이 하얗게 나와요</summary><div class="acc-body">인쇄 설정 → 더 많은 설정 → <b>배경 그래픽</b> 체크.</div></details><details class="acc"><summary>일레븐랩스 한국어 목소리가 안 보여요</summary><div class="acc-body">보이스 라이브러리에서 언어 필터를 Korean으로 바꾸세요.</div></details><details class="acc"><summary>그래도 안 돼요</summary><div class="acc-body">화면을 캡처해서 단톡방에 질문해 주세요.</div></details></section>
+<section class="group" id="faq"><div class="group-head"><span class="group-num">08</span><h2>막힐 때</h2></div><details class="acc"><summary>폴더 연결이 안 돼요</summary><div class="acc-body">원드라이브·구글 드라이브 같은 클라우드 동기화 폴더 안인지 확인하세요. 바탕화면에 독립 폴더를 새로 만들어 그것만 연결합니다. (02 참고)</div></details><details class="acc"><summary>앱은 로그인됐는데 웹 작업이 멈춰요</summary><div class="acc-body">내부 웹 로그인은 따로입니다. 앱 안 웹 화면에서 해당 사이트에 로그인하세요.</div></details><details class="acc"><summary>HTML 파일이 글자로만 보여요</summary><div class="acc-body">메모장으로 열린 것입니다. 파일 우클릭 → 연결 프로그램 → 크롬 또는 엣지.</div></details><details class="acc"><summary>모션이 안 움직여요</summary><div class="acc-body">캔버스 미리보기 대신 파일로 저장해 더블클릭으로 여세요.</div></details><details class="acc"><summary>PDF 배경이 하얗게 나와요</summary><div class="acc-body">인쇄 설정 → 더 많은 설정 → <b>배경 그래픽</b> 체크.</div></details><details class="acc"><summary>일레븐랩스 한국어 목소리가 안 보여요</summary><div class="acc-body">보이스 라이브러리에서 언어 필터를 Korean으로 바꾸세요.</div></details><details class="acc"><summary>그래도 안 돼요</summary><div class="acc-body">화면을 캡처해서 단톡방에 질문해 주세요.</div></details></section>
 </div><script>
 document.querySelectorAll('[data-copy]').forEach(function(btn){
   btn.addEventListener('click',function(){
