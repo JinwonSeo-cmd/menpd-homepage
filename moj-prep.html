@@ -271,561 +271,17 @@ h3.sub{font-size:17px;font-weight:800;margin:28px 0 10px}
 <header class="page-intro">
   <span class="badge">법무부 · 생성형 AI 중급과정</span>
   <h1>법무부 준비사항</h1>
-  <p class="lede">지난 회차 자료는 <b>맨 위 ‘1회차’ 막대를 누르면</b> 그대로 펼쳐집니다. 그 아래가 이번 주(2회차) 준비입니다.</p>
+  <p class="lede">지난 회차 자료는 <b>맨 위 ‘1회차 강의 다시보기’</b>를 누르면 새 창에서 열립니다. 그 아래가 이번 주(2회차) 준비입니다.</p>
 </header>
 
 <div class="press" id="chat-room"><span class="press-ic" aria-hidden="true">💬</span><div><strong>막히면 캡처해서 단톡방에 올려 주세요</strong><p>안 되는 부분은 <b>화면을 캡처</b>해서 단톡방에 올려 주세요.</p></div></div>
 
-<details class="session" id="session1">
-<summary><span class="session-tag">1회차 · 11/5</span><span class="session-title">1회차 강의 다시보기</span><span class="session-btn">펼쳐 보기</span></summary>
-<div class="session-body">
-<nav class="jump" aria-label="바로가기">
-  <a href="#common-prep"><span>01</span>공통 준비</a>
-  <a href="#ai-prep"><span>02</span>AI 실습 준비</a>
-  <a href="#design-prep"><span>03</span>디자인 참고</a>
-  <a href="#prompts"><span>04</span>복사 프롬프트</a>
-  <a href="#bot"><span>05</span>대필 봇 만들기</a>
-  <a href="#homework"><span>06</span>설정 숙제</a>
-  <a href="#review1"><span>07</span>복습·미리 세팅</a>
-</nav>
-
-
-<div class="press" id="lecture-files"><span class="press-ic" aria-hidden="true">📥</span><div><strong>3차수 1회차 강의 자료</strong><p>강의 PDF와 수업 자료(ZIP)를 내려받을 수 있습니다. ZIP은 압축을 푼 뒤 <b>index.html</b>을 열면 수업 화면 그대로 보입니다.</p><div class="btn-line"><a class="go" href="downloads/moj/moj3-1_lecture.pdf" download="법무부3차수_1회차_강의자료.pdf" style="width:auto;padding:8px 14px">강의 자료 PDF (3MB)</a><a class="go" href="downloads/moj/moj3-1_materials.zip" download="법무부_3차수_1회차_수업자료.zip" style="width:auto;padding:8px 14px">수업 자료 ZIP (56MB)</a></div></div></div>
-
-<div class="prepcopy">
-  <div class="group" id="common-prep">
-    <div class="group-head"><span class="group-num">01</span><h2>공통 준비 사항</h2></div>
-    <p class="group-desc">모든 강의에 공통으로 필요한 준비물입니다.</p>
-
-    <div class="steplist">
-      <div class="step">
-        <img class="service-logo" src="images/service-logos/chrome.svg" alt="" width="40" height="40" loading="lazy" decoding="async">
-        <div class="txt"><strong>크롬 브라우저 설치</strong>
-          <span>아직 크롬이 없다면 아래 링크에서 미리 설치해주세요.</span></div>
-        <a class="go" href="https://www.google.com/intl/ko_kr/chrome/" target="_blank" rel="noopener">다운로드 페이지 ↗</a>
-      </div>
-      <div class="step">
-        <img class="service-logo" src="images/service-logos/google.png" alt="" width="40" height="40" loading="lazy" decoding="async">
-        <div class="txt"><strong>크롬 브라우저에 구글 로그인 <span class="pill">필수</span></strong>
-          <span>강의 실습은 크롬 기준으로 진행됩니다. 미리 구글 계정으로 로그인해두세요.</span></div>
-        <a class="go" href="https://accounts.google.com" target="_blank" rel="noopener">로그인 열기 ↗</a>
-      </div>
-      <div class="step">
-        <img class="service-logo" src="images/service-logos/kakao.png" alt="" width="40" height="40" loading="lazy" decoding="async">
-        <div class="txt"><strong>카카오톡 PC 버전 설치</strong>
-          <span>노트북에 카카오톡을 설치해주세요. 아래 링크에서 PC 버전 다운로드 버튼을 눌러 설치합니다.</span></div>
-        <a class="go" href="https://www.kakaocorp.com/page/service/all" target="_blank" rel="noopener">다운로드 페이지 ↗</a>
-      </div>
-    </div>
-
-    <div class="tip"><span class="ic">💡</span><span>물론 공용 PC로도 진행 가능합니다만, 각종 로그인과 프로그램 설치를 위해 개인 노트북 지참을 권장드립니다.</span></div>
-
-    <p class="group-desc" style="margin:22px 0 10px">아래 AI 서비스와 챗GPT·클로드 데스크톱 앱을 미리 준비해 두세요.</p>
-
-    <div class="item-group">
-      <div class="steplist">
-        <div class="step">
-          <img class="service-logo" src="images/service-logos/claude.png" alt="" width="40" height="40" loading="lazy" decoding="async">
-          <div class="txt"><strong>클로드(Claude) 로그인 <span class="pill free">선택</span></strong>
-            <span>프롬프트 대필 봇(프로젝트)을 만드는 데 사용합니다.</span></div>
-          <a class="go" href="https://claude.ai" target="_blank" rel="noopener">로그인 열기 ↗</a>
-        </div>
-      </div>
-      <details class="acc">
-        <summary>클로드 (Claude) <span class="acc-desc">— 문서 작업과 긴 글에 강함</span><span class="acc-badge">설명 보기</span></summary>
-        <div class="acc-body">
-          <h4>언제 쓰면 좋을까요?</h4>
-          <p>긴 문서 요약·정리, 꼼꼼한 글쓰기, 파일을 올려서 분석을 맡길 때 특히 유용합니다.</p>
-          <h4>시작하는 흐름</h4>
-          <div class="acc-flow">구글/이메일 계정으로 로그인 → 새 대화 시작 → 파일 첨부(선택) → 요청 입력 → 답변 확인 후 이어서 요청</div>
-          <h4>기본 팁</h4>
-          <ul>
-            <li>문서 파일을 통째로 올리고 "이거 요약해줘", "이거 다듬어줘"라고 바로 요청할 수 있습니다.</li>
-            <li>관련된 대화를 묶어서 관리하고 싶으면 '프로젝트' 기능을 활용하세요.</li>
-          </ul>
-        </div>
-      </details>
-    </div>
-
-    <div class="item-group">
-      <div class="steplist">
-        <div class="step">
-          <img class="service-logo" src="images/service-logos/claude.png" alt="" width="40" height="40" loading="lazy" decoding="async">
-          <div class="txt"><strong>클로드(Claude) 데스크톱 앱 설치 <span class="pill free">선택</span></strong>
-            <span>클로드를 노트북에서 바로 사용할 수 있도록 공식 데스크톱 앱을 설치해 주세요.</span></div>
-          <a class="go" href="https://claude.com/download" target="_blank" rel="noopener">다운로드 열기 ↗</a>
-        </div>
-      </div>
-    </div>
-
-        <div class="item-group">
-      <div class="steplist">
-        <div class="step">
-          <img class="service-logo" src="images/service-logos/gemini.png" alt="" width="40" height="40" loading="lazy" decoding="async">
-          <div class="txt"><strong>제미나이(Gemini) 로그인 <span class="pill">필수</span></strong>
-            <span>보고서 초안 실습에 사용합니다.</span></div>
-          <a class="go" href="https://gemini.google.com" target="_blank" rel="noopener">로그인 열기 ↗</a>
-        </div>
-      </div>
-      <details class="acc">
-        <summary>제미나이는? <span class="acc-desc">— 진입장벽이 가장 낮음</span><span class="acc-badge">설명 보기</span></summary>
-        <div class="acc-body">
-          <h4>언제 쓰면 좋을까요?</h4>
-          <p>이미 쓰고 있는 구글 계정으로 바로 시작할 수 있어 처음 AI를 접하는 분께 가장 편합니다.</p>
-          <h4>시작하는 흐름</h4>
-          <div class="acc-flow">구글 계정으로 로그인 → gemini.google.com 접속 → 질문 입력 → 답변 확인</div>
-          <h4>기본 팁</h4>
-          <ul>
-            <li>이미 구글 계정이 있다면 별도 가입 없이 바로 쓸 수 있어 가장 부담이 적습니다.</li>
-          </ul>
-        </div>
-      </details>
-    </div>
-
-    <div class="item-group">
-      <div class="steplist">
-        <div class="step">
-          <img class="service-logo" src="images/service-logos/chatgpt.png" alt="" width="40" height="40" loading="lazy" decoding="async">
-          <div class="txt"><strong>챗GPT(ChatGPT) 로그인 <span class="pill">필수</span></strong>
-            <span>포스터 이미지·컴앱웹 실습의 중심 도구입니다. 유료 라이선스로 진행합니다.</span></div>
-          <a class="go" href="https://chatgpt.com" target="_blank" rel="noopener">로그인 열기 ↗</a>
-        </div>
-      </div>
-      <details class="acc">
-        <summary>챗GPT (ChatGPT) <span class="acc-desc">— 가장 범용적인 대화형 AI</span><span class="acc-badge">설명 보기</span></summary>
-        <div class="acc-body">
-          <h4>언제 쓰면 좋을까요?</h4>
-          <p>질문에 대한 답, 아이디어 브레인스토밍, 글 초안 작성처럼 폭넓은 용도에 두루 씁니다.</p>
-          <h4>시작하는 흐름</h4>
-          <div class="acc-flow">구글 계정으로 로그인 → 새 대화 시작 → 하고 싶은 말을 자연스럽게 입력 → 답변 확인 → 이어서 질문하며 다듬기</div>
-          <h4>기본 팁</h4>
-          <ul>
-            <li>한 번에 완벽한 답을 기대하기보다, 대화를 주고받으며 다듬어가는 도구입니다.</li>
-            <li>"이런 상황에서 이런 톤으로" 처럼 예시를 들어 요청하면 결과가 훨씬 좋아집니다.</li>
-            <li>대화가 길어져 답변이 이상해지면, 새 대화를 여는 게 낫습니다.</li>
-          </ul>
-        </div>
-      </details>
-    </div>
-
-    <div class="item-group">
-      <div class="steplist">
-        <div class="step">
-          <img class="service-logo" src="images/service-logos/chatgpt.png" alt="" width="40" height="40" loading="lazy" decoding="async">
-          <div class="txt"><strong>챗GPT(ChatGPT) 데스크톱 앱 설치 <span class="pill">필수</span></strong>
-            <span>챗GPT를 노트북에서 바로 사용할 수 있도록 공식 데스크톱 앱을 설치하고 로그인해 주세요.</span></div>
-          <a class="go" href="https://chatgpt.com/download" target="_blank" rel="noopener">다운로드 열기 ↗</a>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="item-group">
-      <div class="steplist">
-        <div class="step">
-          <img class="service-logo" src="images/service-logos/perplexity.png" alt="" width="40" height="40" loading="lazy" decoding="async">
-          <div class="txt"><strong>퍼플렉시티(Perplexity) 로그인</strong>
-            <span>출처와 함께 답을 찾아주는 검색형 AI입니다.</span></div>
-          <a class="go" href="https://www.perplexity.ai" target="_blank" rel="noopener">로그인 열기 ↗</a>
-        </div>
-      </div>
-      <details class="acc">
-        <summary>퍼플렉시티 (Perplexity) <span class="acc-desc">— 출처가 함께 나오는 검색형 AI</span><span class="acc-badge">설명 보기</span></summary>
-        <div class="acc-body">
-          <h4>언제 쓰면 좋을까요?</h4>
-          <p>최신 정보를 찾거나, 답변의 출처를 확인해야 하는 리서치에 적합합니다.</p>
-          <h4>시작하는 흐름</h4>
-          <div class="acc-flow">구글 계정으로 로그인 → 검색창에 질문 입력 → 답변과 함께 뜨는 출처 링크 확인</div>
-          <h4>기본 팁</h4>
-          <ul>
-            <li>답변 아래 표시되는 출처 링크를 눌러 원문을 확인하는 습관을 들이면 좋습니다.</li>
-            <li>최신 뉴스나 트렌드 조사에 특히 강합니다.</li>
-          </ul>
-        </div>
-      </details>
-    </div>
-
-    <div class="item-group">
-      <div class="steplist">
-        <div class="step">
-          <img class="service-logo" src="images/service-logos/grok.png" alt="" width="40" height="40" loading="lazy" decoding="async">
-          <div class="txt"><strong>그록(Grok) 로그인</strong>
-            <span>X(트위터)의 실시간 트렌드에 강한 AI입니다.</span></div>
-          <a class="go" href="https://grok.com" target="_blank" rel="noopener">로그인 열기 ↗</a>
-        </div>
-      </div>
-      <details class="acc">
-        <summary>그록 (Grok) <span class="acc-desc">— 실시간 트렌드에 강함</span><span class="acc-badge">설명 보기</span></summary>
-        <div class="acc-body">
-          <h4>언제 쓰면 좋을까요?</h4>
-          <p>X(트위터)의 실시간 반응이나 트렌드를 살펴볼 때 유용합니다.</p>
-          <h4>시작하는 흐름</h4>
-          <div class="acc-flow">X(트위터) 계정으로 로그인 (계정이 없으면 먼저 가입) → 그록 아이콘 클릭 → 질문 입력</div>
-          <h4>기본 팁</h4>
-          <ul>
-            <li>다른 도구와 달리 X 계정이 필요해서, 처음 쓰시는 분은 가입 단계가 하나 더 있습니다.</li>
-            <li>실시간성이 강점이니, "지금 이슈가 되는" 류의 질문에 활용해보세요.</li>
-          </ul>
-        </div>
-      </details>
-    </div>
-
-    <div class="item-group">
-      <div class="steplist">
-        <div class="step">
-          <img class="service-logo" src="images/service-logos/notebooklm.svg" alt="" width="40" height="40" loading="lazy" decoding="async">
-          <div class="txt"><strong>제미나이 노트북(NotebookLM) 로그인</strong>
-            <span>강의 자료를 요약·정리하는 실습에 사용합니다.</span></div>
-          <a class="go" href="https://notebook.google/?hl=ko-KR" target="_blank" rel="noopener">로그인 열기 ↗</a>
-        </div>
-      </div>
-      <details class="acc">
-        <summary>노트북LM은? <span class="acc-desc">— 내가 올린 자료 안에서만 답을 찾아줌</span><span class="acc-badge">설명 보기</span></summary>
-        <div class="acc-body">
-          <h4>언제 쓰면 좋을까요?</h4>
-          <p>강의 자료·회의록처럼 내가 올린 자료 안에서만 정확하게 답을 찾아주는 AI입니다. 자료 요약·정리에 특화되어 있습니다.</p>
-          <h4>시작하는 흐름</h4>
-          <div class="acc-flow">구글 계정으로 로그인 → notebooklm.google.com 접속 → 소스 추가(문서·링크·유튜브 등 업로드) → 소스 기반으로 질문하기 / 오디오 요약 만들기</div>
-          <h4>기본 팁</h4>
-          <ul>
-            <li>여러 자료를 한 노트북에 모아두면 그 안에서만 답변해서 정확도가 특히 높습니다.</li>
-          </ul>
-        </div>
-      </details>
-    </div>
-  </div>
-
-  <!-- 생성형 AI 강의 준비사항 -->
-</div>
-
-<div class="prepcopy">
-  <!-- 공통 준비 사항 -->
-  <div class="group" id="ai-prep">
-    <div class="group-head"><span class="group-num">02</span><h2>생성형 AI 강의 준비사항</h2></div>
-    <p class="group-desc">음악·음성 생성 실습이 포함된 강의는 아래도 함께 준비해주세요.</p>
-
-    <div class="item-group">
-      <div class="steplist">
-        <div class="step">
-          <img class="service-logo" src="images/service-logos/flow.png" alt="" width="40" height="40" loading="lazy" decoding="async">
-          <div class="txt"><strong>구글 플로우(Google Flow) 로그인</strong>
-            <span>AI 이미지·영상 생성 실습에 사용합니다.</span></div>
-          <a class="go" href="https://labs.google/flow" target="_blank" rel="noopener">로그인 열기 ↗</a>
-        </div>
-      </div>
-      <details class="acc">
-        <summary>구글 플로우 (Google Flow) <span class="acc-desc">— 이미지·영상을 만들어주는 구글의 생성 도구</span><span class="acc-badge">설명 보기</span></summary>
-        <div class="acc-body">
-          <h4>언제 쓰면 좋을까요?</h4>
-          <p>문장으로 설명만 하면 이미지나 짧은 영상을 만들어줍니다. 카드뉴스용 이미지, 영상 소재 제작 실습에 사용합니다.</p>
-          <h4>시작하는 흐름</h4>
-          <div class="acc-flow">구글 계정으로 로그인 → labs.google/flow 접속 → 새 프로젝트 만들기 → 원하는 이미지·영상 내용을 문장으로 입력 → 생성 결과 확인 후 다운로드</div>
-          <h4>기본 팁</h4>
-          <ul>
-            <li>스타일·구도·색감처럼 구체적인 표현을 넣을수록 원하는 결과에 가까워집니다.</li>
-            <li>한 번에 여러 버전이 나오니, 마음에 드는 걸 골라 다운로드하면 됩니다.</li>
-          </ul>
-        </div>
-      </details>
-    </div>
-
-    <div class="item-group">
-      <div class="steplist">
-        <div class="step">
-          <img class="service-logo" src="images/service-logos/suno.png" alt="" width="40" height="40" loading="lazy" decoding="async">
-          <div class="txt"><strong>수노(Suno) AI 로그인</strong>
-            <span>AI 음악 생성 실습에 사용합니다.</span></div>
-          <a class="go" href="https://suno.com/create" target="_blank" rel="noopener">로그인 열기 ↗</a>
-        </div>
-        <div class="step" style="flex-wrap:wrap;row-gap:10px">
-          <img class="service-logo" src="images/service-logos/suno.png" alt="" width="40" height="40" loading="lazy" decoding="async">
-          <div class="txt"><strong>수노(Suno) 모바일 앱 다운로드</strong>
-            <span>스마트폰에서도 사용하시려면 미리 설치해두세요.</span></div>
-          <a class="go" href="https://apps.apple.com/us/app/suno-ai-songs-music-lyrics/id6480136315" target="_blank" rel="noopener">iOS (App Store) ↗</a>
-          <a class="go" href="https://play.google.com/store/apps/details?id=com.suno.android&hl=ko" target="_blank" rel="noopener">Android (Play 스토어) ↗</a>
-        </div>
-      </div>
-      <details class="acc">
-        <summary>수노 (Suno) <span class="acc-desc">— 문장만 입력하면 노래를 만들어주는 AI</span><span class="acc-badge">설명 보기</span></summary>
-        <div class="acc-body">
-          <h4>언제 쓰면 좋을까요?</h4>
-          <p>가사와 스타일만 정해주면 실제 노래(보컬+반주)를 완성해줍니다. 강의 오프닝 음악, 홍보 영상 배경음악, 나만의 로고송 만들기 등에 활용합니다.</p>
-          <h4>시작하는 흐름</h4>
-          <div class="acc-flow">구글 계정 또는 이메일로 로그인 → 새 곡 만들기 → 원하는 분위기·가사를 텍스트로 입력 → 생성된 곡 중 마음에 드는 버전 선택 → 다운로드</div>
-          <h4>기본 팁</h4>
-          <ul>
-            <li>장르, 분위기, 보컬 톤(예: "잔잔한 어쿠스틱", "신나는 팝")을 구체적으로 적을수록 원하는 결과에 가까워집니다.</li>
-            <li>한 번에 2가지 버전이 생성되니, 둘 다 들어보고 고르면 됩니다.</li>
-          </ul>
-        </div>
-      </details>
-    </div>
-
-    <div class="item-group">
-      <div class="steplist">
-        <div class="step">
-          <img class="service-logo" src="images/service-logos/elevenlabs.png" alt="" width="40" height="40" loading="lazy" decoding="async">
-          <div class="txt"><strong>일레븐랩스(ElevenLabs) 로그인</strong>
-            <span>AI 음성 생성 실습에 사용합니다.</span></div>
-          <a class="go" href="https://elevenlabs.io/" target="_blank" rel="noopener">로그인 열기 ↗</a>
-        </div>
-      </div>
-      <details class="acc">
-        <summary>일레븐랩스 (ElevenLabs) <span class="acc-desc">— 자연스러운 AI 음성을 만들어주는 도구</span><span class="acc-badge">설명 보기</span></summary>
-        <div class="acc-body">
-          <h4>언제 쓰면 좋을까요?</h4>
-          <p>글로 쓴 대본을 사람 목소리처럼 자연스러운 음성으로 변환합니다. 영상 나레이션, 오디오 콘텐츠, 다국어 더빙 등에 활용합니다.</p>
-          <h4>시작하는 흐름</h4>
-          <div class="acc-flow">구글 계정 또는 이메일로 로그인 → Text to Speech 메뉴 선택 → 대본 텍스트 입력 → 원하는 목소리(보이스) 선택 → 생성 후 오디오 다운로드</div>
-          <h4>기본 팁</h4>
-          <ul>
-            <li>기본 제공되는 목소리 중에서 톤(차분한/발랄한 등)을 미리 들어보고 고르면 원하는 느낌을 빨리 찾을 수 있습니다.</li>
-            <li>무료 이용량에 한도가 있으니, 강의 실습 전에 미리 한 번 테스트해보는 걸 추천합니다.</li>
-          </ul>
-        </div>
-      </details>
-    </div>
-
-    <div class="item-group">
-      <div class="steplist">
-        <div class="step" style="flex-wrap:wrap;row-gap:10px">
-          <img class="service-logo" src="images/service-logos/capcut.png" alt="" width="40" height="40" loading="lazy" decoding="async">
-          <div class="txt"><strong>캡컷(CapCut) 설치</strong>
-            <span>영상 편집 실습에 사용합니다. 노트북 또는 스마트폰에 미리 설치해두세요.</span></div>
-          <a class="go" href="https://www.capcut.com/ko-kr/tools/desktop-video-editor" target="_blank" rel="noopener">데스크톱 다운로드 ↗</a>
-          <a class="go" id="capcut-mobile-link" href="https://www.capcut.com/ko-kr/resource/capcut-app-download" target="_blank" rel="noopener">모바일 다운로드 ↗</a>
-        </div>
-      </div>
-      <details class="acc">
-        <summary>캡컷 (CapCut) <span class="acc-desc">— 쉽고 강력한 영상 편집 도구</span><span class="acc-badge">설명 보기</span></summary>
-        <div class="acc-body">
-          <h4>언제 쓰면 좋을까요?</h4>
-          <p>촬영하거나 AI로 만든 영상 소스를 잘라 붙이고, 자막·음악·효과를 넣어 완성된 영상으로 만들 때 사용합니다. 초보자도 쉽게 배울 수 있는 인터페이스가 특징입니다.</p>
-          <h4>시작하는 흐름</h4>
-          <div class="acc-flow">데스크톱 또는 모바일에 설치 → 구글/이메일 계정으로 로그인(선택) → 새 프로젝트 만들기 → 영상·이미지·음악 파일 불러오기 → 자르기·자막·효과 추가 → 내보내기(저장)</div>
-          <h4>기본 팁</h4>
-          <ul>
-            <li>계정 로그인 없이도 바로 편집을 시작할 수 있지만, 로그인하면 작업 내용이 클라우드에 저장돼 기기 간 이어서 작업하기 편합니다.</li>
-            <li>자막은 자동 생성 기능을 먼저 써보고, 어색한 부분만 손으로 수정하면 시간이 절약됩니다.</li>
-          </ul>
-        </div>
-      </details>
-    </div>
-  </div>
-
-  <!-- 디자인 참조 사이트 -->
-  <div class="group" id="design-prep">
-    <div class="group-head"><span class="group-num">03</span><h2>디자인 참조 사이트</h2></div>
-    <p class="group-desc">자료·카드뉴스·PPT 만들 때 참고하면 좋은 사이트입니다.</p>
-
-    <div class="item-group">
-      <div class="steplist">
-        <div class="step">
-          <img class="service-logo" src="images/service-logos/pinterest.png" alt="" width="40" height="40" loading="lazy" decoding="async">
-          <div class="txt"><strong>핀터레스트</strong>
-            <span>이미지 검색과 무드보드로 디자인 영감을 모으는 사이트입니다.</span></div>
-          <a class="go" href="https://www.pinterest.com" target="_blank" rel="noopener">바로가기 ↗</a>
-        </div>
-      </div>
-      <details class="acc">
-        <summary>핀터레스트 (Pinterest) <span class="acc-desc">— 이미지와 무드보드로 디자인 영감을 모으는 사이트</span><span class="acc-badge">설명 보기</span></summary>
-        <div class="acc-body">
-          <h4>언제 쓰면 좋을까요?</h4>
-          <p>카드뉴스·포스터·슬라이드를 만들기 전, 참고할 만한 이미지나 배치 아이디어를 모을 때 사용합니다.</p>
-          <h4>시작하는 흐름</h4>
-          <div class="acc-flow">구글 계정으로 로그인(선택) → 검색창에 원하는 키워드 입력 → 마음에 드는 이미지를 보드에 저장 → 저장한 보드를 참고자료로 활용</div>
-          <h4>기본 팁</h4>
-          <ul>
-            <li>로그인하지 않아도 검색과 열람은 가능하지만, 로그인하면 이미지를 보드로 저장해 모아볼 수 있습니다.</li>
-            <li>키워드를 영어로 검색하면 훨씬 다양한 레퍼런스가 나옵니다.</li>
-          </ul>
-        </div>
-      </details>
-    </div>
-
-    <div class="item-group">
-      <div class="steplist">
-        <div class="step">
-          <img class="service-logo" src="images/service-logos/unsplash.png" alt="" width="40" height="40" loading="lazy" decoding="async">
-          <div class="txt"><strong>언스플래시</strong>
-            <span>저작권 걱정 없이 쓸 수 있는 무료 고화질 사진 사이트입니다.</span></div>
-          <a class="go" href="https://unsplash.com" target="_blank" rel="noopener">바로가기 ↗</a>
-        </div>
-      </div>
-      <details class="acc">
-        <summary>언스플래시 (Unsplash) <span class="acc-desc">— 저작권 걱정 없는 무료 고화질 사진</span><span class="acc-badge">설명 보기</span></summary>
-        <div class="acc-body">
-          <h4>언제 쓰면 좋을까요?</h4>
-          <p>카드뉴스, 블로그, PPT 배경 이미지가 필요할 때 저작권 걱정 없이 바로 다운로드해 쓸 수 있습니다.</p>
-          <h4>시작하는 흐름</h4>
-          <div class="acc-flow">unsplash.com 접속 → 원하는 키워드로 검색 → 마음에 드는 사진 클릭 → Download 버튼으로 원본 다운로드</div>
-          <h4>기본 팁</h4>
-          <ul>
-            <li>로그인 없이도 대부분의 사진을 무료로 다운로드할 수 있습니다.</li>
-            <li>출처 표기가 필수는 아니지만, 작가명을 함께 적어주면 더 좋습니다.</li>
-          </ul>
-        </div>
-      </details>
-    </div>
-
-    <div class="item-group">
-      <div class="steplist">
-        <div class="step">
-          <img class="service-logo" src="images/service-logos/refero.png" alt="" width="40" height="40" loading="lazy" decoding="async">
-          <div class="txt"><strong>Refero Styles</strong>
-            <span>실제 서비스들의 디자인 시스템(색상·폰트·레이아웃)을 모아둔 레퍼런스 사이트입니다.</span></div>
-          <a class="go" href="https://styles.refero.design" target="_blank" rel="noopener">바로가기 ↗</a>
-        </div>
-      </div>
-      <details class="acc">
-        <summary>Refero Styles <span class="acc-desc">— 실제 서비스의 디자인 시스템 레퍼런스</span><span class="acc-badge">설명 보기</span></summary>
-        <div class="acc-body">
-          <h4>언제 쓰면 좋을까요?</h4>
-          <p>실제 서비스들이 어떤 색상·폰트·여백·버튼 스타일을 쓰는지 참고해 디자인 톤을 정할 때 유용합니다.</p>
-          <h4>시작하는 흐름</h4>
-          <div class="acc-flow">styles.refero.design 접속 → 마음에 드는 서비스·브랜드 카드 선택 → 색상 팔레트·폰트·컴포넌트 스타일 확인 → 우리 자료에 맞게 응용</div>
-          <h4>기본 팁</h4>
-          <ul>
-            <li>완성된 디자인을 그대로 베끼기보다, 색상 조합이나 여백 감각처럼 '원리'를 참고하는 용도로 쓰는 게 좋습니다.</li>
-            <li>마음에 드는 스타일 몇 개를 골라 캡처해두면 나중에 비교하기 편합니다.</li>
-          </ul>
-        </div>
-      </details>
-    </div>
-  </div>
-
-  <p class="note">계정이 없으신 항목은 강의 전 미리 가입해두시면 실습 시간을 아낄 수 있습니다.
-    로그인에 어려움이 있으시면 강의 당일 조금 일찍 접속해 도움을 요청해주세요.</p>
-</div>
-
-<section class="group" id="prompts"><div class="group-head"><span class="group-num">04</span><h2>복사용 프롬프트</h2></div>
-<p class="group-desc">수업 순서대로 복사 버튼을 눌러 붙여넣으면 됩니다. 같은 요청이 어떻게 달라지는지 비교해 보세요.</p>
-<h3 class="sub">챗지피티 · 포스터</h3>
-<div class="copybox short" id="p1-box"><div class="copybox-head"><span>📋 포스터 ① 말로만 요청</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="p1">복사</button></div></div><pre id="p1">우리 기관 시설과 프로그램을 주민들에게 알리는 홍보 포스터를 만들어줘. 세로형이야.</pre></div><div class="copybox short" id="p2-box"><div class="copybox-head"><span>📋 포스터 ② 샘플 넣고 요청 (샘플 포스터 첨부)</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="p2">복사</button></div></div><pre id="p2">첨부한 포스터의 스타일만 참고해서 새 포스터를 만들어줘.
-(참고할 것: 인물 실루엣 안에 풍경이 겹쳐 보이는 이중노출 구성, 푸른 톤, 흰 여백이 넓은 배경)
-
-- 주제: 우리 기관 시설과 프로그램을 주민들에게 알리는 홍보
-- 인물: [예: 운동하는 주민]
-- 실루엣 안에 겹칠 풍경: [예: 우리 기관 체육관·수영장]
-- 큰 글씨: 영어 한 단어만 [예: TOGETHER]
-- 세로형
-
-원본 포스터의 로고, QR코드, 기업명, 문구는 절대 넣지 마.</pre><div class="poster-ref"><img src="images/moj/poster_sample.jpg" alt="샘플 포스터" width="285" height="420"><div class="copybox-actions"><button class="copy-btn" type="button" id="copy-poster-btn">이미지 복사</button><a class="copy-btn" href="images/moj/poster_sample.jpg" download="poster_sample.jpg">다운로드</a></div></div></div>
-<h3 class="sub">제미나이 · 보고서</h3>
-<div class="copybox short" id="g1-box"><div class="copybox-head"><span>📋 제미나이 보고서 ① 대충 정보만</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="g1">복사</button></div></div><pre id="g1">우리 기관 숏츠 콘텐츠 추진 계획 보고서 초안을 써줘.
-
-주민들에게 우리 기관 시설과 프로그램을 알리는 내용이야.
-3월부터 6월까지 할 거야.</pre></div><div class="copybox short" id="g2-box"><div class="copybox-head"><span>📋 제미나이 보고서 ② 기준 + 정보</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="g2">복사</button></div></div><pre id="g2">아래 [기준]을 지켜서 [정보]로 보고서 초안을 써줘.
-
-[기준]
-# 보고서 작성 기준
-
-## 1. 최우선 규칙
-- 제공되지 않은 통계·예산·법령·사례·실적은 절대 만들지 않음
-- 정보가 없으면 [확인 필요], 가정이면 [추정], 계획상 목표치는 [목표(안)]으로 표시
-
-## 2. 핵심 원칙
-1. 독자 중심: 결재권자가 알고 싶은 것을 먼저 쓴다
-2. 두괄식: 결론과 요청 사항을 첫머리에 둔다
-3. 문제 정의: 현상이 아닌 원인을 특정한다
-4. 근거 중심: 수치는 대상·시점·기준을 함께 쓴다
-5. 대안 비교: 2개 이상(현행 유지/개선/신규) 비교하고 비선택 이유도 쓴다
-6. 실행 가능성: 담당·일정·예산·성과지표까지 연결한다
-7. 반론 대응: 예상 비용·실패 가능성을 먼저 검토한다
-8. 인과관계 단정 금지, 예상 효과를 확정 성과처럼 쓰지 않는다
-
-## 3. 기획안 구조
-1) 기획 요약(결론+요청, 2~3문장) 2) 추진 배경과 필요성(왜 필요한가/왜 지금인가/왜 이 방법인가) 3) 목적·목표 4) 추진 방향 5) 세부 과제 6) 일정·역할 7) 예산·자원 8) 기대효과와 성과지표 9) 리스크와 대응 10) 의사결정 요청 사항
-
-## 4. 문체
-- 개조식(~함, ~임, ~필요)으로 쓰고 문체를 섞지 않음
-- 제목은 구체적으로 (나쁜 예: ~에 관한 사항 / 좋은 예: ~시범운영 계획(안))
-- 소제목은 분류어가 아니라 핵심 메시지로
-- 추상 표현 금지 (예: "긴밀히 협력" → "역할을 구분하고 월 1회 점검")
-- '획기적', '압도적' 같은 검증 안 된 평가어 금지
-- 한 문단 한 메시지
-
-## 5. 기대효과·성과지표
-- 추진 활동 → 산출물 → 업무상 변화 → 성과 순서로 쓴다
-- 활동량(게시물 수 등)만으로 지표를 만들지 않고, 효과 지표를 최소 1개 포함
-- 근거 없는 향상률 금지. 기초 자료가 없으면 [목표(안): 사전 측정 후 확정]
-
-## 6. 출력 방식
-- 순서: 제목 → 핵심 요약 → 본문 → 의사결정 요청 사항 → 확인 필요 사항(있을 때만)
-- 분량: A4 1~2쪽
-- 작성법 설명이나 자기평가는 붙이지 않음
-
-[정보]
-- 주제: 우리 기관 숏츠 콘텐츠 추진 계획
-- 내용: 주민들에게 우리 기관 시설과 프로그램을 알리는 숏츠 제작
-- 기간: 3월부터 6월까지
-- 보고 대상: 부서장(결재)</pre></div>
-<div class="note"><b>[기준] 전문</b>이 위 프롬프트에 모두 들어 있습니다. 복사 버튼으로 한 번에 복사하세요. 직접 타이핑하지 않습니다.</div>
-</section>
-
-<section class="group" id="bot"><div class="group-head"><span class="group-num">05</span><h2>나만의 프롬프트 대필 봇 만들기</h2></div>
-<p class="group-desc">클로드에서 <b>새 프로젝트</b>를 만들고, 아래 지침을 <b>지침 칸</b>에 붙여넣으면 끝입니다.</p>
-<div class="tri">
-<div class="tri-card"><span class="tri-num">1</span><strong>프로젝트 만들기</strong><p>클로드에 접속해 새 프로젝트를 만듭니다.</p><span class="role">5분</span></div>
-<div class="tri-card"><span class="tri-num">2</span><strong>지침 붙여넣기</strong><p>아래 지침을 복사해 지침 칸에 붙여넣습니다.</p><span class="role">3분</span></div>
-<div class="tri-card"><span class="tri-num">3</span><strong>테스트·공유</strong><p>대충 쓴 문장 3개를 넣고, 잘 나온 결과를 단톡방에 올립니다.</p><span class="role">17분</span></div>
-</div>
-<div class="copybox short" id="bot-box"><div class="copybox-head"><span>📋 프롬프트 대필 봇 지침 (클로드 프로젝트 지침 칸에 붙여넣기)</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="bot">복사</button></div></div><pre id="bot">너는 '프롬프트 대필 봇'이야. 사용자가 대충 쓴 요청을 PE7 기준으로 완성도 높은 프롬프트로 바꿔 써 준다.
-
-[PE7]
-PE1 Persona: AI에게 줄 전문가 역할 (누가)
-PE2 Identity: 읽는 사람, 또는 나의 신분 (누구에게)
-PE3 Object: 달성할 목표 (뭐 하려고) - 숫자와 기한 포함
-PE4 Procedure: 단계별 순서 (어떤 단계를 거쳐)
-PE5 Sample: 모범 예시 (마치 이것처럼)
-PE6 Ground Data: 기반 자료 (이 안에서만)
-PE7 Format: 결과물 형태 (표, 분량 등)
-
-[작동 방식]
-1. 사용자가 대충 쓴 문장을 받으면 질문하지 말고 바로 완성 프롬프트를 쓴다.
-2. 사용자가 주지 않은 내용은 지어내지 말고 [채워주세요: 설명]으로 빈칸을 남긴다.
-3. 아래 출력 형식으로 답한다.
-
-[출력 형식]
-■ 완성 프롬프트: 다른 AI에 그대로 붙여넣을 수 있는 한 덩어리 글
-■ PE7 체크: PE1~PE7을 각각 한 줄씩 ○(반영) / △(빈칸) 표시
-■ 더 좋아지려면: 추가하면 좋은 샘플·자료 1~2가지
-
-[규칙]
-- 사용자가 준 사실만 쓴다. 없는 수치·법령·사례를 만들지 않는다.
-- 쉬운 말과 존댓말을 쓴다.
-- 설명은 짧게 한다.</pre></div>
-<h3 class="sub">테스트 문장 (같은 주제로 비교)</h3>
-<div class="copybox short" id="t1-box"><div class="copybox-head"><span>📋 테스트 문장 ①</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="t1">복사</button></div></div><pre id="t1">우리 기관 숏츠 보고서 써줘</pre></div><div class="copybox short" id="t2-box"><div class="copybox-head"><span>📋 테스트 문장 ②</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="t2">복사</button></div></div><pre id="t2">숏츠 홍보 문구 써줘</pre></div><div class="copybox short" id="t3-box"><div class="copybox-head"><span>📋 테스트 문장 ③</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="t3">복사</button></div></div><pre id="t3">숏츠 기획 아이디어 줘</pre></div>
-<div class="note"><b>단톡방에 올릴 것</b> : ① 내가 입력한 대충 쓴 문장 ② 봇이 만들어 준 ‘완성 프롬프트’ ③ PE7 체크 줄(○ / △). 시간이 남으면 <b>[채워주세요]</b> 빈칸을 직접 채워 같은 봇에 다시 넣어 보세요.</div>
-</section>
-
-<section class="group" id="homework"><div class="group-head"><span class="group-num">06</span><h2>다음 주까지 설정 숙제</h2></div>
-<div class="homework"><h3>컴앱웹 준비 (설정만 해 오세요)</h3>
-<ul>
-<li><b>컴</b> : 바탕화면에 수업용 폴더 1개 만들기 (이름 예: 법무부AI) — 챗GPT가 <b>컴퓨터 사용(Computer Use)</b>으로 이 폴더를 다룹니다</li>
-<li><b>웹</b> : 챗GPT 안의 <b>내부 웹</b>으로 검색·웹 작업을 합니다 (별도 설치 없음)</li>
-<li><b>앱</b> : <b>챗GPT 데스크톱 앱</b> 설치 후 로그인 — chatgpt.com/download</li>
-<li>컴 + 웹 + 앱이 <b>데스크톱 앱 하나로 이어져 컴앱웹이 완성</b>됩니다 (마지막 시간에 함께 실습)</li>
-<li>기관 PC는 앱 <b>설치 가능 여부</b>와 <b>컴퓨터 사용 허용 여부</b>를 미리 확인</li>
-<li>클로드 데스크톱 앱은 선택 사항입니다 (claude.com/download)</li>
-</ul></div>
-<div class="tip" style="margin-top:10px"><span class="ic">🔒</span><span>수업용 폴더에는 <b>개인정보·내부 문서를 넣지 마세요.</b> 연습용 파일만 넣고, 비밀번호·결제 화면은 직접 조작하세요.</span></div>
-<div class="steplist" style="margin-top:12px">
-<div class="step"><img class="service-logo" src="images/service-logos/capcut.png" alt="" width="42" height="42" loading="lazy"><div class="txt"><strong>캡컷(CapCut) PC 버전 설치 <span class="pill free">선택</span></strong><span>영상 편집 실습에 사용합니다. 노트북에 PC 버전을 미리 설치해 주세요.</span></div><a class="go" href="https://www.capcut.com/ko-kr/tools/desktop-video-editor" target="_blank" rel="noopener">다운로드 ↗</a></div>
-</div>
-</section>
-
-<section class="group" id="review1"><div class="group-head"><span class="group-num">07</span><h2>1회차 복습 · 미리 세팅</h2></div>
-<div class="steplist"><div class="step"><span class="logo-emoji" aria-hidden="true">📘</span><div class="txt"><strong>1회차 복습 · 미리 세팅 <span class="pill">권장</span></strong><span>복습 퀴즈, 컴앱웹 세팅, 만져보며 로그인하기가 한 페이지에 있습니다.</span></div><a class="go" href="moj-review-1.html">들어가기</a></div></div>
-</section>
-
-</div>
-</details>
+<a class="session" id="session1" href="moj-prep-1.html" target="_blank" rel="noopener" style="display:block;text-decoration:none"><div style="display:flex;align-items:center;gap:12px;padding:18px 20px;flex-wrap:wrap"><span class="session-tag">1회차 · 11/5</span><span class="session-title">1회차 강의 다시보기</span><span style="font-size:13px;font-weight:700;color:var(--accent,#E8642C)">새 창에서 열기 ↗</span></div></a>
+<a class="session" id="session2" href="moj-review-2.html" target="_blank" rel="noopener" style="display:block;text-decoration:none"><div style="display:flex;align-items:center;gap:12px;padding:18px 20px;flex-wrap:wrap"><span class="session-tag" style="background:var(--accent,#E8642C)">2회차 · 11/12</span><span class="session-title">2회차 복습 · 기획구성안봇 · 간단 숏폼봇 다시 해보기</span><span style="font-size:13px;font-weight:700;color:var(--accent,#E8642C)">새 창에서 열기 ↗</span></div></a>
 
 <!-- ===== 2회차 (11/12) ===== -->
 <div class="session-now">
-<div class="press" id="s2-files"><span class="press-ic" aria-hidden="true">📥</span><div><strong>3차수 2회차 (11/12 목) — 기획안 · 구성안 · 기획구성안 봇</strong><p>번호로 답하면 <b>기획안 + 구성안(1편)</b>을 <b>PDF 한 파일</b>로 만들어 주는 봇을 함께 돌립니다. 수업 전에 ZIP을 받아 <b>바탕화면</b>에 풀어 두세요.</p><p style="margin-top:10px"><a class="dl-btn" href="downloads/moj/moj3-2_shortform-bot.zip" download>기획구성안봇 폴더 받기 (ZIP)</a></p></div></div>
+<div class="press" id="s2-files"><span class="press-ic" aria-hidden="true">📥</span><div><strong>3차수 2회차 (11/12 목) — 기획안 · 구성안 · 기획구성안 봇</strong><p>번호로 답하면 <b>기획안 + 구성안(1편)</b>을 <b>PDF 한 파일</b>로 만들어 주는 봇을 함께 돌립니다. 수업 전에 ZIP을 받아 <b>바탕화면</b>에 풀어 두세요.</p><p style="margin-top:10px"><a class="dl-btn" href="downloads/moj/moj3-2_shortform-bot.zip" download>(법무부) 기획구성안봇 폴더 받기 (ZIP)</a></p></div></div>
 
 <nav class="jump" aria-label="2회차 바로가기">
   <a href="#s2-flow"><span>01</span>오늘 흐름</a>
@@ -835,13 +291,13 @@ PE7 Format: 결과물 형태 (표, 분량 등)
   <a href="#s2-char"><span>05</span>캐릭터 시트</a>
   <a href="#s2-brain"><span>06</span>KB 넣기</a>
   <a href="#s2-custom"><span>07</span>커스텀봇 짜는 법</a>
-  <a href="#s2-simple"><span>08</span>간단 숏폼봇 (혼자 실습)</a>
-  <a href="#s2-share"><span>09</span>단톡방 공유</a>
+  <a href="#s2-share"><span>08</span>단톡방 공유</a>
+  <a href="#s2-simple"><span>09</span>간단 숏폼봇 (시연 · 혼자 실습)</a>
 </nav>
 
 <section class="group" id="s2-flow"><div class="group-head"><span class="group-num">01</span><h2>오늘 수업 흐름</h2></div>
 <div class="steplist">
-<div class="step"><span class="logo-emoji" aria-hidden="true">🎬</span><div class="txt"><strong>시연 — 영상 제작 봇</strong><span>① 구성안 제안 → ② 캡컷 웹(시댄스 2.0 미니)으로 생성 3신 → ③ FFmpeg 카드 2신 → ④ 720p 25초 완성. (봇은 공유해 드리니 혼자 해 볼 수 있습니다)</span></div></div>
+<div class="step"><span class="logo-emoji" aria-hidden="true">🎬</span><div class="txt"><strong>시연 — 영상 제작 봇</strong><span>① 구성안 제안 → ② 캡컷 웹(시댄스 2.0 미니)으로 생성 3신 → ③ HTML 카드 2신 → ④ 720p 25초 완성. (봇은 공유해 드리니 혼자 해 볼 수 있습니다)</span></div></div>
 <div style="display:flex;gap:8px;margin:4px 0 6px 52px;max-width:520px"><figure style="flex:1;margin:0;text-align:center"><img src="images/moj/demo_s1.jpg" alt="S1 생성" loading="lazy" style="width:100%;border-radius:8px;border:2px solid #2C5F6F"><figcaption style="font-size:12px;font-weight:700;color:#2C5F6F">S1 · 생성</figcaption></figure><figure style="flex:1;margin:0;text-align:center"><img src="images/moj/demo_s2.jpg" alt="S2 카드" loading="lazy" style="width:100%;border-radius:8px;border:2px solid #E8642C"><figcaption style="font-size:12px;font-weight:700;color:#E8642C">S2 · 카드</figcaption></figure><figure style="flex:1;margin:0;text-align:center"><img src="images/moj/demo_s3.jpg" alt="S3 생성" loading="lazy" style="width:100%;border-radius:8px;border:2px solid #2C5F6F"><figcaption style="font-size:12px;font-weight:700;color:#2C5F6F">S3 · 생성</figcaption></figure><figure style="flex:1;margin:0;text-align:center"><img src="images/moj/demo_s4.jpg" alt="S4 카드" loading="lazy" style="width:100%;border-radius:8px;border:2px solid #E8642C"><figcaption style="font-size:12px;font-weight:700;color:#E8642C">S4 · 카드</figcaption></figure><figure style="flex:1;margin:0;text-align:center"><img src="images/moj/demo_s5.jpg" alt="S5 생성" loading="lazy" style="width:100%;border-radius:8px;border:2px solid #2C5F6F"><figcaption style="font-size:12px;font-weight:700;color:#2C5F6F">S5 · 생성</figcaption></figure></div>
 <div class="step"><span class="logo-emoji" aria-hidden="true">📝</span><div class="txt"><strong>기획안과 구성안</strong><span>기획안은 <b>존재의 이유</b>, 구성안은 <b>한 편의 생김새와 연출법</b>. 실제 기획안 문서도 함께 봅니다.</span></div></div>
 <div class="step"><span class="logo-emoji" aria-hidden="true">🤖</span><div class="txt"><strong>기획구성안 봇 함께 돌리기</strong><span>13개 질문에 번호로 답하고, 기획구성안 PDF를 받습니다.</span></div></div>
@@ -858,10 +314,10 @@ PE7 Format: 결과물 형태 (표, 분량 등)
 <tr><td><b>들어가는 것</b></td><td>제목 · 기획 의도 · 타깃 · 목표 · 콘셉트 · 포맷 · 편별 구성 · 기대 효과 (8항목)</td><td>시간 · 화면 · 자막 · 대사 · 효과 (5칸)</td></tr>
 <tr><td><b>몇 장?</b></td><td>프로그램당 1장</td><td>편마다 1장</td></tr>
 </table>
-<p class="group-desc" style="margin-top:14px"><b>실제 기획안 예시</b> — 단편 숏폼 「매일 늘던 가산세, 계산법이 바뀐다」 (누르면 크게 보입니다)</p>
+<p class="group-desc" style="margin-top:14px"><b>실제 생김새</b> — 단편 숏폼 「신입 원두의 자리 이동 신청」 기획안 · 구성안 (누르면 크게 보입니다)</p>
 <div style="display:flex;gap:10px;flex-wrap:wrap">
-<a href="images/moj/plan_doc1.jpg" target="_blank" style="flex:1;min-width:240px"><img src="images/moj/plan_doc1.jpg" alt="기획안 1쪽" loading="lazy" style="width:100%;border:1px solid #CFE3E7;border-radius:8px"></a>
-<a href="images/moj/plan_doc2.jpg" target="_blank" style="flex:1;min-width:240px"><img src="images/moj/plan_doc2.jpg" alt="기획안 2쪽" loading="lazy" style="width:100%;border:1px solid #CFE3E7;border-radius:8px"></a>
+<a href="images/moj/sample_plan.jpg" target="_blank" style="flex:1;min-width:240px"><img src="images/moj/sample_plan.jpg" alt="기획안 예시" loading="lazy" style="width:100%;border:1px solid #CFE3E7;border-radius:8px"></a>
+<a href="images/moj/sample_script.jpg" target="_blank" style="flex:1.4;min-width:260px"><img src="images/moj/sample_script.jpg" alt="구성안 1편 예시" loading="lazy" style="width:100%;border:1px solid #CFE3E7;border-radius:8px"></a>
 </div>
 <table class="qtable" style="margin-top:12px">
 <tr><th>구분</th><th>단편 기획</th><th>장편 기획</th></tr>
@@ -871,12 +327,12 @@ PE7 Format: 결과물 형태 (표, 분량 등)
 </table>
 </section>
 
-<section class="group" id="s2-folder"><div class="group-head"><span class="group-num">03</span><h2>기획구성안봇 폴더 받기</h2></div>
+<section class="group" id="s2-folder"><div class="group-head"><span class="group-num">03</span><h2>(법무부) 기획구성안봇 폴더 받기</h2></div>
 <p class="group-desc"><b>바탕화면</b>에 그대로 풀어 둡니다. 이 폴더 하나가 봇이고, 결과물도 이 안에 쌓입니다.</p>
 <div class="steplist">
-<div class="step"><span class="logo-emoji" aria-hidden="true">📦</span><div class="txt"><strong>ZIP 내려받기 → 바탕화면에 압축 풀기</strong><span>압축을 풀면 바탕화면에 <b>기획구성안봇</b> 폴더가 생깁니다.</span></div><a class="go" href="downloads/moj/moj3-2_shortform-bot.zip" download>받기 ↓</a></div>
+<div class="step"><span class="logo-emoji" aria-hidden="true">📦</span><div class="txt"><strong>ZIP 내려받기 → 바탕화면에 압축 풀기</strong><span>압축을 풀면 바탕화면에 <b>(법무부) 기획구성안봇</b> 폴더가 생깁니다.</span></div><a class="go" href="downloads/moj/moj3-2_shortform-bot.zip" download>받기 ↓</a></div>
 </div>
-<pre class="tree">바탕화면/기획구성안봇/
+<pre class="tree">바탕화면/(법무부) 기획구성안봇/
 ├ AGENTS.md   ← 봇의 지침 (질문 13개 · 진행 순서)
 ├ KB/         ← 기획 원칙 · 구성안 기준 · 샘플 (대가의 뇌를 넣는 곳)
 ├ 캐릭터/     ← 김법무 · 박법무 · 서법무 · 최법무
@@ -891,8 +347,8 @@ PE7 Format: 결과물 형태 (표, 분량 등)
 <div class="step"><span class="logo-emoji" aria-hidden="true">1️⃣</span><div class="txt"><strong>챗GPT <b>데스크톱 앱</b> 열기 → 위쪽 <b>Work</b> 탭</strong><span>웹 브라우저(chatgpt.com)가 아니라 PC에 설치한 앱이어야 폴더를 연결할 수 있습니다. 로그인까지 해 둡니다.</span></div></div>
 <div class="step"><span class="logo-emoji" aria-hidden="true">2️⃣</span><div class="txt"><strong>왼쪽 <b>프로젝트</b> 옆 <b>＋</b> → 새 프로젝트</strong><span>Work 탭 왼쪽 목록에서 프로젝트를 새로 만듭니다.</span></div></div>
 <div class="step"><span class="logo-emoji" aria-hidden="true">3️⃣</span><div class="txt"><strong>이름 짓기 : <b>(법무부) 기획구성 봇</b></strong><span><b>(기관) + 하는 일 + 봇</b> 순서로 지으면 봇이 늘어나도 찾기 쉽습니다. 예) (법무부) 간단 숏폼 봇, (우리팀) 보도자료 봇</span></div></div>
-<div class="step"><span class="logo-emoji" aria-hidden="true">4️⃣</span><div class="txt"><strong>소스 폴더 추가 → <b>이 컴퓨터</b> → 바탕화면 → <b>기획구성안봇</b> 선택 → <b>폴더 선택</b></strong><span>폴더 창에서 기획구성안봇을 <b>한 번만 클릭</b>(들어가지 말고) 한 뒤 폴더 선택을 누릅니다. 연결하는 폴더는 이것 하나뿐입니다.</span></div></div>
-<div class="step"><span class="logo-emoji" aria-hidden="true">⚠️</span><div class="txt"><strong>폴더 안에 <b>같은 이름의 폴더가 또</b> 있다면?</strong><span>압축을 풀 때 <code>기획구성안봇/기획구성안봇</code>처럼 두 겹이 되는 경우가 있습니다. <b>AGENTS.md가 바로 보이는 안쪽 폴더</b>를 연결하세요.</span></div></div>
+<div class="step"><span class="logo-emoji" aria-hidden="true">4️⃣</span><div class="txt"><strong>소스 폴더 추가 → <b>이 컴퓨터</b> → 바탕화면 → <b>(법무부) 기획구성안봇</b> 선택 → <b>폴더 선택</b></strong><span>바탕화면에 있는 <b>(법무부) 기획구성안봇 폴더 그대로</b> 골라 폴더 선택을 누르면 됩니다. 연결하는 폴더는 이것 하나뿐입니다.</span></div></div>
+<div class="step"><span class="logo-emoji" aria-hidden="true">⚠️</span><div class="txt"><strong>폴더 안에 <b>같은 이름의 폴더가 또</b> 있다면?</strong><span>압축을 풀 때 <code>(법무부) 기획구성안봇/(법무부) 기획구성안봇</code>처럼 두 겹이 되는 경우가 있습니다. <b>AGENTS.md가 바로 보이는 안쪽 폴더</b>를 연결하세요.</span></div></div>
 <div class="step"><span class="logo-emoji" aria-hidden="true">5️⃣</span><div class="txt"><strong>“이 폴더를 신뢰할까요?” → <b>폴더 신뢰</b></strong><span>신뢰해야 챗GPT가 폴더 안의 AGENTS.md를 읽고, 결과물을 이 폴더에 저장할 수 있습니다.</span></div></div>
 <div class="step"><span class="logo-emoji" aria-hidden="true">6️⃣</span><div class="txt"><strong>프로젝트 안에서 <b>새 채팅</b> → <b>시작</b> 입력</strong><span>봇이 <b>“질문 1”</b>을 보여 주면 연결 성공입니다. 일반 대화처럼 답하면 폴더 연결부터 다시 확인하세요.</span></div></div>
 <div class="step"><span class="logo-emoji" aria-hidden="true">7️⃣</span><div class="txt"><strong>번호로 답하기</strong><span><b>0</b> = 모르겠어요(봇이 추천) · 원하는 게 따로 있으면 <b>직접 적어도</b> 됩니다 · 시리즈라면 구성안은 <b>1편 기준</b>.</span></div></div>
@@ -905,11 +361,11 @@ PE7 Format: 결과물 형태 (표, 분량 등)
 <tr><td><b>C. 어떻게</b></td><td>⑩ 캐릭터 ⑪ 그림체 ⑫ 나레이션 목소리 ⑬ 배경음악</td><td><b>구성안 1편</b> + 생성 프롬프트</td></tr>
 </table>
 <div class="scenes">
-<div class="scene gf">S1 생성<small>훅</small></div><div class="scene ff">S2 FFmpeg<small>정보 카드</small></div><div class="scene gf">S3 생성<small>전개</small></div><div class="scene ff">S4 FFmpeg<small>핵심 카드</small></div><div class="scene gf">S5 생성<small>결론 · 급종료</small></div>
+<div class="scene gf">S1 생성<small>훅</small></div><div class="scene ff">S2 HTML<small>정보 카드</small></div><div class="scene gf">S3 생성<small>전개</small></div><div class="scene ff">S4 HTML<small>핵심 카드</small></div><div class="scene gf">S5 생성<small>결론 · 급종료</small></div>
 </div>
 <p class="group-desc" style="margin-top:10px">구성안은 25초 · 5신 고정입니다. 대사는 쉬운 <b>비유</b>를 1~2개 넣어 씁니다.</p>
 <h3 class="sub">결과는 봇 폴더의 ‘결과물’ 안에</h3>
-<pre class="tree">바탕화면/기획구성안봇/결과물/
+<pre class="tree">바탕화면/(법무부) 기획구성안봇/결과물/
 └ 숏폼_주제_월일/         ← 주제가 정해지면 봇이 만듭니다
    ├ 기획구성안_주제.pdf  ← 기획안 → 구성안(1편) 한 파일
    ├ 01_기획안.md
@@ -919,14 +375,14 @@ PE7 Format: 결과물 형태 (표, 분량 등)
    ├ 캐릭터/
    └ 소스/</pre>
 <details class="acc"><summary>Work 탭이나 폴더 연결이 안 될 때 <span class="acc-desc">— 일반 프로젝트로 대신 만들기</span></summary>
-<div class="acc-body"><p>① 일반 프로젝트를 만들고 ② 기획구성안봇 폴더의 <b>AGENTS.md</b>와 <b>KB 폴더의 .md 파일</b>을 프로젝트 파일로 올린 뒤 ③ 아래 지침을 지침 칸에 붙여넣습니다.</p>
+<div class="acc-body"><p>① 일반 프로젝트를 만들고 ② (법무부) 기획구성안봇 폴더의 <b>AGENTS.md</b>와 <b>KB 폴더의 .md 파일</b>을 프로젝트 파일로 올린 뒤 ③ 아래 지침을 지침 칸에 붙여넣습니다.</p>
 <div class="copybox short" id="s2ins-box"><div class="copybox-head"><span>📋 프로젝트 지침 (지침 칸에 붙여넣기)</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="s2ins">복사</button></div></div><pre id="s2ins">너는 '숏폼 기획구성안 봇'이야.
 연결된 폴더(또는 프로젝트 파일)의 AGENTS.md를 가장 먼저 읽고, 그 순서와 규칙을 그대로 따른다.
 KB 폴더의 .md 파일을 기준으로 삼고, 대화마다 질문은 한 번에 하나, 객관식 번호로 진행한다.
-AGENTS.md를 찾지 못하면 "기획구성안봇 폴더를 연결하거나 AGENTS.md를 올려 주세요"라고만 말한다.</pre></div></div></details>
+AGENTS.md를 찾지 못하면 "(법무부) 기획구성안봇 폴더를 연결하거나 AGENTS.md를 올려 주세요"라고만 말한다.</pre></div></div></details>
 </section>
 
-<section class="group" id="s2-char"><div class="group-head"><span class="group-num">05</span><h2>기본 캐릭터 시트</h2></div>
+<section class="group" id="s2-char"><div class="group-head"><span class="group-num">05</span><h2>기본 캐릭터 시트 · 성격</h2></div>
 <p class="group-desc">ZIP 안의 <b>캐릭터</b> 폴더에 이미 들어 있습니다. 없으면 아래에서 받아 넣어 주세요.</p>
 <div class="chars">
 <a href="images/moj/kim-beopmu-sheet.png" download="김법무.png"><img src="images/moj/kim-beopmu-sheet-thumb.jpg" alt="김법무 캐릭터 시트" loading="lazy"><span>김법무 ↓</span></a>
@@ -934,10 +390,18 @@ AGENTS.md를 찾지 못하면 "기획구성안봇 폴더를 연결하거나 AGEN
 <a href="images/moj/seo-beopmu-sheet.jpg" download="서법무.jpg"><img src="images/moj/seo-beopmu-sheet.jpg" alt="서법무 캐릭터 시트" loading="lazy"><span>서법무 ↓</span></a>
 <a href="images/moj/choi-beopmu-sheet.jpg" download="최법무.jpg"><img src="images/moj/choi-beopmu-sheet.jpg" alt="최법무 캐릭터 시트" loading="lazy"><span>최법무 ↓</span></a>
 </div>
+<table class="qtable" style="margin-top:14px">
+<tr><th>캐릭터</th><th>성격</th><th>말투</th><th>잘 맞는 주제</th></tr>
+<tr><td><b>김법무</b><br><small>25 · 신입</small></td><td>호기심 많고 리액션 큰 열정 막내</td><td>"어? 이거 저도 몰랐어요!"</td><td>생활 법률 Q&amp;A · 유쾌</td></tr>
+<tr><td><b>박법무</b><br><small>27 · 2년차</small></td><td>차분하고 다정한 공감형 상담가</td><td>"괜찮아요, 이렇게 하시면 돼요."</td><td>피해자 · 취약계층 지원 · 따뜻</td></tr>
+<tr><td><b>서법무</b><br><small>40 · 아저씨</small></td><td>비유와 아재개그의 유쾌한 아재</td><td>"라떼는 말이야~ 근데 요즘은?"</td><td>사기 · 보이스피싱 예방 · 유쾌</td></tr>
+<tr><td><b>최법무</b><br><small>40 · 팀장</small></td><td>결론부터 말하는 원칙주의자</td><td>"핵심만 말씀드리면, 두 가지입니다."</td><td>법 개정 · 제도 변경 · 진지</td></tr>
+</table>
+<p class="group-desc" style="margin-top:8px">둘이 나와도 좋아요 — <b>김 + 최</b>(신입이 묻고 팀장이 정리) · <b>서 + 박</b>(아재개그 판을 차분하게 수습)</p>
 </section>
 
 <section class="group" id="s2-brain"><div class="group-head"><span class="group-num">06</span><h2>KB 넣기 — 대가의 뇌</h2></div>
-<p class="group-desc">봇은 <b>지침(AGENTS.md)</b>으로 일하는 순서를, <b>KB</b>로 기준을 정합니다. 닮고 싶은 PD·크리에이터의 원칙을 MD로 만들어 <b>기획구성안봇 › KB</b> 폴더에 넣으면 봇이 함께 읽고 우선 따릅니다.</p>
+<p class="group-desc">봇은 <b>지침(AGENTS.md)</b>으로 일하는 순서를, <b>KB</b>로 기준을 정합니다. 닮고 싶은 PD·크리에이터의 원칙을 MD로 만들어 <b>(법무부) 기획구성안봇 › KB</b> 폴더에 넣으면 봇이 함께 읽고 우선 따릅니다.</p>
 <div class="steplist">
 <div class="step"><span class="logo-emoji" aria-hidden="true">1️⃣</span><div class="txt"><strong>대가 고르고 자료 모으기</strong><span>영상 · 글 · 인터뷰 자료</span></div></div>
 <div class="step"><span class="logo-emoji" aria-hidden="true">2️⃣</span><div class="txt"><strong>아래 프롬프트로 원칙 뽑기</strong><span>챗GPT가 대가-기획원칙.md로 정리</span></div></div>
@@ -971,16 +435,42 @@ AGENTS.md를 찾지 못하면 "기획구성안봇 폴더를 연결하거나 AGEN
 <h3 class="sub">폴더 구성법 — 바탕화면에 봇 폴더 하나, 안에서 두뇌와 결과물을 나눈다</h3>
 <table class="qtable">
 <tr><th>구분</th><th>두뇌 (위쪽)</th><th>결과물 (아래쪽)</th></tr>
-<tr><td><b>위치</b></td><td>기획구성안봇/ 바로 안</td><td>기획구성안봇/결과물/</td></tr>
+<tr><td><b>위치</b></td><td>(법무부) 기획구성안봇/ 바로 안</td><td>(법무부) 기획구성안봇/결과물/</td></tr>
 <tr><td><b>담는 것</b></td><td>AGENTS.md(지침) · KB/ · 샘플/ · 캐릭터/</td><td>주제별 폴더: 기획안 · 구성안 · PDF · 소스/ · 최종 영상</td></tr>
 <tr><td><b>언제 여나</b></td><td>봇을 고칠 때만</td><td>일할 때마다 새로 쌓임</td></tr>
 </table>
 </section>
 
-<section class="group" id="s2-simple"><div class="group-head"><span class="group-num">08</span><h2>간단 숏폼봇 — 혼자 해 보는 실습용</h2></div>
-<p class="group-desc">상담만 하면 <b>25초 · 720p 숏폼 1편</b>을 끝까지 만들어 주는 봇입니다. 수업 시간에는 <b>시연만</b> 보고, 봇은 공유해 드리니 <b>혼자 편할 때</b> 돌려 보세요.</p>
+<section class="group" id="s2-share"><div class="group-head"><span class="group-num">08</span><h2>단톡방에 올릴 것</h2></div>
+<div class="note">봇이 만든 <b>기획구성안 PDF</b> 하나만 올려 주세요.</div>
+</section>
+
+<section class="group" id="s2-simple"><div class="group-head"><span class="group-num">09</span><h2>(법무부) 간단 숏폼봇 — 시연한 봇, 혼자 해 보기</h2></div>
+<p class="group-desc">오늘 시연에서 본 그 봇입니다. 상담만 하면 <b>25초 · 720p 숏폼 1편</b>을 끝까지 만들어 줍니다. 기획구성안봇에서 받은 <b>PDF를 넣으면 바로 이어서</b> 만들 수 있어요. 수업 뒤 <b>혼자 편할 때</b> 돌려 보세요.</p>
+<h3 class="sub">시연 결과물 (법무부 칭찬할 일 셋)</h3>
+<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start">
+<video src="images/moj/simplebot-sample.mp4" poster="images/moj/simplebot-sample-poster.jpg" controls playsinline preload="none" style="width:220px;border-radius:12px;background:#000"></video>
+<div style="flex:1;min-width:240px"><table class="qtable"><tr><th>신</th><th>만드는 방법</th></tr>
+<tr><td>S1 · S3 · S5</td><td><b>생성</b> — 캡컷 웹(시댄스 2.0 미니)</td></tr>
+<tr><td>S2 · S4</td><td><b>HTML 카드</b> — 픽토그램 + 키워드, 모션 넣어 영상으로</td></tr>
+<tr><td>조립</td><td><b>FFmpeg</b> — 말 자막 · 법무부 로고 · 나레이션 · 배경음악</td></tr></table></div>
+</div>
 <div class="steplist">
-<div class="step"><span class="logo-emoji" aria-hidden="true">📦</span><div class="txt"><strong>간단숏폼봇 폴더 받기</strong><span>캐릭터 4인 · 법무부 로고 · 글꼴까지 들어 있습니다. 기획구성안봇과 같은 방법입니다: <b>바탕화면</b>에 풀고 → Work 탭 새 프로젝트 → <b>간단숏폼봇</b> 폴더 하나 연결 → "시작". 결과물은 그 안 <b>결과물</b> 폴더에 쌓입니다.</span></div><a class="go" href="downloads/moj/moj3-simple-shortform-bot.zip" download>받기 ↓</a></div>
+<div class="step"><span class="logo-emoji" aria-hidden="true">📦</span><div class="txt"><strong>(법무부) 간단숏폼봇 폴더 받기 (ZIP · 5MB)</strong><span>압축을 풀면 <b>(법무부) 간단숏폼봇</b> 폴더가 생깁니다. <b>바탕화면</b>에 두세요.</span></div><a class="go" href="downloads/moj/moj3-simple-shortform-bot.zip" download>받기 ↓</a></div>
+</div>
+<pre class="tree" style="background:#18323B;color:#E8F1F2;border-radius:14px;padding:16px 18px;font-size:13.5px;line-height:1.75;overflow:auto;margin-top:10px">바탕화면/(법무부) 간단숏폼봇/
+├ AGENTS.md   ← 봇의 지침 (상담 → 구성안 → 생성 → 조립 순서)
+├ KB/         ← 기획원칙 · 구성안기준 · 디자인(MASSW) · 캡션작성법 · 캐릭터성격
+├ 캐릭터/      ← 김 · 박 · 서 · 최법무 시트
+├ 로고/        ← 법무부 로고 (흰색 · 컬러)
+├ 폰트/        ← Pretendard (자막 · 카드용)
+├ 샘플/        ← 좋은 숏폼 캡처를 넣어 두면 참고
+└ 결과물/      ← 만든 영상이 여기에 쌓임</pre>
+<h3 class="sub">봇 만들기 — 기획구성안봇과 같은 방법</h3>
+<div class="steplist">
+<div class="step"><span class="logo-emoji" aria-hidden="true">1️⃣</span><div class="txt"><strong>챗GPT 데스크톱 앱 → Work 탭 → 새 프로젝트</strong><span>이름은 <b>(법무부) 간단 숏폼 봇</b></span></div></div>
+<div class="step"><span class="logo-emoji" aria-hidden="true">2️⃣</span><div class="txt"><strong>소스 폴더 추가 → 이 컴퓨터 → 바탕화면 → (법무부) 간단숏폼봇 → 폴더 선택 → 폴더 신뢰</strong><span>연결하는 폴더는 이것 하나뿐입니다.</span></div></div>
+<div class="step"><span class="logo-emoji" aria-hidden="true">3️⃣</span><div class="txt"><strong>새 채팅에 “시작”</strong><span>기획구성안 PDF가 있으면 “1 네”를 고르고 올리면 됩니다.</span></div></div>
 </div>
 <h3 class="sub">이렇게 움직입니다</h3>
 <table class="qtable">
@@ -990,9 +480,10 @@ AGENTS.md를 찾지 못하면 "기획구성안봇 폴더를 연결하거나 AGEN
 <tr><td><b>2</b></td><td>챗GPT로 스토리보드 1장 (5칸)</td><td>✅</td></tr>
 <tr><td><b>3</b></td><td>캡컷 웹에서 S1·S3·S5 생성 시작 (스토리보드 칸을 시작 이미지로)</td><td>✅</td></tr>
 <tr><td><b>4</b></td><td>생성되는 동안 일레븐랩스 나레이션 · 제미나이 배경음악</td><td></td></tr>
-<tr><td><b>5</b></td><td>S2·S4 카드 + FFmpeg 조립 (말 자막 · 법무부 로고)</td><td></td></tr>
+<tr><td><b>5</b></td><td>S2·S4 HTML 카드 영상 + FFmpeg 조립 (말 자막 · 법무부 로고)</td><td></td></tr>
 <tr><td><b>6</b></td><td>완성 영상 링크 + 캡션글(채팅창에 바로 복사)</td><td></td></tr>
 </table>
+<p class="group-desc" style="margin-top:8px">✅ 표시 단계에서만 확인을 묻고, 나머지는 알아서 진행합니다. 크레딧이 드는 캡컷 생성은 반드시 먼저 물어봅니다.</p>
 <h3 class="sub">화면은 이렇게 나옵니다 (MASSW 디자인)</h3>
 <img src="images/moj/simplebot-layout.jpg" alt="간단 숏폼봇 화면 시안: 생성 장면, 틸 카드, 코랄 카드" loading="lazy" style="width:100%;border-radius:14px;border:1px solid var(--line);margin-top:6px">
 <p class="group-desc" style="margin-top:8px">말 자막은 중앙보다 약간 아래, 법무부 로고는 하단 중앙. 상단 제목은 넣지 않습니다.</p>
@@ -1004,10 +495,14 @@ AGENTS.md를 찾지 못하면 "기획구성안봇 폴더를 연결하거나 AGEN
 <tr><td><b>일레븐랩스</b></td><td>elevenlabs.io</td><td>나레이션 (무료)</td></tr>
 </table>
 <div class="tip"><span class="ic">🔑</span><span>챗GPT 내부 웹은 내 크롬과 <b>로그인이 따로</b>입니다. 처음 한 번은 내부 웹에서 <b>직접</b> 로그인해 두세요. 비밀번호는 채팅창에 쓰지 않습니다.</span></div>
-</section>
-
-<section class="group" id="s2-share"><div class="group-head"><span class="group-num">09</span><h2>단톡방에 올릴 것</h2></div>
-<div class="note">봇이 만든 <b>기획구성안 PDF</b> 하나만 올려 주세요.</div>
+<h3 class="sub">안 될 때</h3>
+<table class="qtable">
+<tr><th>증상</th><th>이렇게 해 보세요</th></tr>
+<tr><td>“시작”에 봇이 일반 대화처럼 답함</td><td>폴더 연결이 끊긴 것 — 프로젝트 소스 폴더를 <b>다시 연결</b>하고 <b>새 채팅</b></td></tr>
+<tr><td>폴더 이름·위치를 바꾼 뒤 안 됨</td><td>바뀐 폴더로 다시 연결 (챗GPT는 예전 경로를 기억함)</td></tr>
+<tr><td>캡컷 · 제미나이 · 일레븐랩스에서 멈춤</td><td>챗GPT <b>내부 웹</b>에서 그 사이트에 직접 로그인한 뒤 “계속”</td></tr>
+<tr><td>내려받은 파일을 못 찾음</td><td>다운로드 폴더의 파일을 채팅창에 바로 올리기</td></tr>
+</table>
 </section>
 </div>
 

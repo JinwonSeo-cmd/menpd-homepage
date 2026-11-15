@@ -1,0 +1,99 @@
+<!DOCTYPE html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>샘플 · HTML 발표자료</title><style>@font-face{font-family:P;font-weight:400;src:url(../week1/kit/fonts/Pretendard-Regular.woff2) format('woff2')}
+@font-face{font-family:P;font-weight:600;src:url(../week1/kit/fonts/Pretendard-SemiBold.woff2) format('woff2')}
+@font-face{font-family:P;font-weight:800;src:url(../week1/kit/fonts/Pretendard-ExtraBold.woff2) format('woff2')}
+:root{--teal:#2C5F6F;--teal2:#3d7d8f;--cream:#FBF6EE;--coral:#E07A52;--ink:#1d2a30;--muted:#5f6f75;--line:#e5ddd0}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#0f1d22;overflow:hidden}
+body{font-family:P,'Pretendard','Malgun Gothic',system-ui,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
+#vp{position:fixed;inset:0}
+#stage{position:absolute;left:50%;top:calc(50% - 18px);transform-origin:center center;overflow:hidden;background:var(--cream);box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.s{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .45s,transform .45s}
+.s.on{opacity:1;visibility:visible}
+.a{opacity:0}
+.s.play .a{animation:var(--an,up) .7s cubic-bezier(.2,.8,.2,1) both;animation-delay:var(--d,0s)}
+@keyframes up{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+@keyframes pop{0%{opacity:0;transform:scale(.6)}70%{opacity:1;transform:scale(1.08)}100%{opacity:1;transform:none}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes left{from{opacity:0;transform:translateX(-80px)}to{opacity:1;transform:none}}
+@keyframes right{from{opacity:0;transform:translateX(80px)}to{opacity:1;transform:none}}
+.hl{background:linear-gradient(transparent 62%,rgba(224,122,82,.45) 62%) no-repeat 0 0/0% 100%}
+.s.play .hl{animation:hl .8s ease forwards;animation-delay:var(--hd,1s)}
+@keyframes hl{to{background-size:100% 100%}}
+.draw path,.draw line{stroke-dasharray:var(--len,600);stroke-dashoffset:var(--len,600)}
+.s.play .draw path,.s.play .draw line{animation:draw .8s ease forwards;animation-delay:var(--d,0s)}
+@keyframes draw{to{stroke-dashoffset:0}}
+.hint{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);color:#cfe0e4;font:600 13px P,sans-serif;opacity:.75;white-space:nowrap}
+#stage{width:1280px;height:720px}
+.s{padding:64px 80px;display:flex;flex-direction:column}
+.s .kpis,.s .flow3,.s .cmp{margin-top:auto;margin-bottom:auto}
+.tag{display:inline-block;font-size:18px;font-weight:800;letter-spacing:.06em;color:var(--coral)}
+.s h2{font-size:52px;font-weight:800;letter-spacing:-.03em;line-height:1.2;margin-top:10px}
+.pg{position:absolute;right:40px;bottom:28px;font-size:16px;font-weight:600;color:var(--muted)}
+.bar{position:absolute;left:0;bottom:0;height:6px;background:var(--coral);transition:width .4s}
+.cover{background:linear-gradient(135deg,#2C5F6F,#3d7d8f);color:#fff;display:flex;flex-direction:column;justify-content:center}
+.cover h1{font-size:84px;font-weight:800;letter-spacing:-.04em;line-height:1.12}
+.cover p{font-size:26px;opacity:.85;margin-top:22px}
+.cover .tag{color:#FFC9B3}
+.blob{position:absolute;border-radius:50%;background:rgba(255,255,255,.08)}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:24px;padding:34px 30px}
+.kpi b{display:block;font-size:76px;font-weight:800;color:var(--teal);letter-spacing:-.04em;line-height:1}
+.kpi b small{font-size:30px;margin-left:4px}
+.kpi>span{display:block;margin-top:14px;font-size:22px;color:var(--muted);line-height:1.5}
+.flow3{display:flex;align-items:center;margin-top:70px}
+.fs{flex:1;background:#fff;border:2px solid var(--teal);border-radius:24px;padding:34px 26px;text-align:center}
+.fs i{display:inline-grid;place-items:center;width:56px;height:56px;border-radius:50%;background:var(--teal);color:#fff;font-style:normal;font-weight:800;font-size:26px}
+.fs b{display:block;font-size:32px;margin-top:16px}
+.fs span{display:block;font-size:20px;color:var(--muted);margin-top:8px;line-height:1.5}
+.arr{width:80px;flex:none}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:50px}
+.cc{border-radius:24px;padding:34px}
+.cc.before{background:#ece7de;color:#6d6a63}
+.cc.after{background:var(--teal);color:#fff}
+.cc h3{font-size:30px;margin-bottom:18px}
+.cc li{list-style:none;font-size:24px;line-height:1.9}
+.cc.before li::before{content:'✕  ';color:#b2a99a}
+.cc.after li::before{content:'✓  ';color:#FFC9B3}
+.end{background:var(--cream);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.end h2{font-size:64px}
+.end p{font-size:26px;color:var(--muted);margin-top:24px}
+.pill{display:inline-block;margin-top:40px;background:var(--coral);color:#fff;font-size:24px;font-weight:800;padding:16px 34px;border-radius:999px}
+</style></head><body>
+<div id="vp"><div id="stage">
+<section class="s cover"><div class="blob" style="width:520px;height:520px;right:-120px;top:-160px"></div><div class="blob" style="width:300px;height:300px;right:180px;bottom:-140px"></div>
+<span class="tag a">SAMPLE · HTML 발표자료</span>
+<h1 class="a" style="--d:.15s">AI로<br>업무 시간 줄이는 법</h1>
+<p class="a" style="--d:.35s">말로 시키고, 샘플 주고, 규칙으로 고정하기</p></section>
+
+<section class="s"><span class="tag a">01 · 현황</span><h2 class="a" style="--d:.1s">하루 업무, <span class="hl">반복 작업</span>이 절반입니다</h2>
+<div class="kpis"><div class="kpi a" style="--d:.3s;--an:pop"><b><span data-count="52" data-delay=".3">0</span><small>%</small></b><span>문서·보고서 작성에<br>쓰는 시간 (예시)</span></div>
+<div class="kpi a" style="--d:.45s;--an:pop"><b><span data-count="5" data-delay=".45">0</span><small>회</small></b><span>보고서 한 건당<br>평균 수정 횟수 (예시)</span></div>
+<div class="kpi a" style="--d:.6s;--an:pop"><b><span data-count="120" data-delay=".6">0</span><small>분</small></b><span>보고서 1건<br>작성 시간 (예시)</span></div></div>
+<div class="pg">2 / 5</div></section>
+
+<section class="s"><span class="tag a">02 · 방법</span><h2 class="a" style="--d:.1s">AI에게 일 시키는 3단계</h2>
+<div class="flow3"><div class="fs a" style="--d:.3s"><i>1</i><b>말로</b><span>원하는 걸<br>한 줄로 말하기</span></div>
+<svg class="arr draw" viewBox="0 0 80 40"><line x1="8" y1="20" x2="66" y2="20" stroke="#E07A52" stroke-width="5" stroke-linecap="round" style="--len:60;--d:0.6s"/><path d="M56 9 L70 20 L56 31" fill="none" stroke="#E07A52" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" style="--len:40;--d:0.9s"/></svg>
+<div class="fs a" style="--d:.9s"><i>2</i><b>샘플로</b><span>마음에 드는 예시<br>1장 첨부하기</span></div>
+<svg class="arr draw" viewBox="0 0 80 40"><line x1="8" y1="20" x2="66" y2="20" stroke="#E07A52" stroke-width="5" stroke-linecap="round" style="--len:60;--d:1.2s"/><path d="M56 9 L70 20 L56 31" fill="none" stroke="#E07A52" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" style="--len:40;--d:1.5s"/></svg>
+<div class="fs a" style="--d:1.5s"><i>3</i><b>MD로</b><span>규칙을 파일로<br>고정하기</span></div></div>
+<div class="pg">3 / 5</div></section>
+
+<section class="s"><span class="tag a">03 · 효과</span><h2 class="a" style="--d:.1s">전과 후, 이렇게 달라집니다</h2>
+<div class="cmp"><div class="cc before a" style="--d:.3s;--an:left"><h3>전 · 매번 처음부터</h3><ul><li>빈 화면에서 시작</li><li>디자인 매번 다름</li><li>수정 요청 5번</li></ul></div>
+<div class="cc after a" style="--d:.6s;--an:right"><h3>후 · 규칙대로 한 번에</h3><ul><li>한 줄 지시로 초안</li><li>디자인 MD로 같은 톤</li><li>수정은 장 번호로 콕</li></ul></div></div>
+<div class="pg">4 / 5</div></section>
+
+<section class="s end"><h2 class="a">반복은 AI에게,<br><span class="hl" style="--hd:.9s">판단은 사람이.</span></h2>
+<p class="a" style="--d:.3s">오늘 배운 3단계로 내 업무 하나만 바꿔 보세요</p>
+<span class="pill a" style="--d:.55s;--an:pop">← → 방향키로 넘겨 보세요</span><div class="pg">5 / 5</div></section>
+<div class="bar" id="bar"></div></div></div><div class="hint">← → 방향키 또는 화면 클릭으로 넘기기</div>
+<script>window.HINT=1</script><script>
+function fit(){var st=document.getElementById('stage'),W=st.offsetWidth,H=st.offsetHeight,k=Math.min(innerWidth/W,(innerHeight-(window.HINT?40:0))/H)*.96;st.style.transform='translate(-50%,-50%) scale('+k+')';}
+addEventListener('resize',fit);fit();
+function count(sl){sl.querySelectorAll('[data-count]').forEach(function(e){var to=+e.dataset.count,from=+(e.dataset.from||0),t0=null,dur=1200,dl=(parseFloat(e.dataset.delay)||0)*1000;e.textContent=from;setTimeout(function(){requestAnimationFrame(function f(t){if(!t0)t0=t;var p=Math.min(1,(t-t0)/dur);p=1-Math.pow(1-p,3);e.textContent=Math.round(from+(to-from)*p).toLocaleString();if(p<1)requestAnimationFrame(f)})},dl)})}
+function show(list,i){list.forEach(function(s,j){s.classList.toggle('on',j===i);s.classList.remove('play')});void list[i].offsetWidth;list[i].classList.add('play');count(list[i])}
+</script><script>var L=[].slice.call(document.querySelectorAll('.s')),i=0;function go(n){i=Math.max(0,Math.min(L.length-1,n));show(L,i);document.getElementById('bar').style.width=((i+1)/L.length*100)+'%'}
+addEventListener('keydown',function(e){if(['ArrowRight','PageDown',' '].indexOf(e.key)>-1){e.preventDefault();go(i+1)}if(['ArrowLeft','PageUp'].indexOf(e.key)>-1)go(i-1)});
+document.getElementById('stage').addEventListener('click',function(e){var r=this.getBoundingClientRect();go(e.clientX<r.left+r.width/3?i-1:i+1)});go(0);</script></body></html>
