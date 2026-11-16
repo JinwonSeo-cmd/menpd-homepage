@@ -977,10 +977,10 @@ addEventListener('mutechange',()=>setMute(window.MUTE));
 const _s=show;show=function(n){_s(n);if(i===k0){if(!on){on=true;au.currentTime=0;au.play().catch(()=>{});ramp(muted?0:VOL,3000)}}else if(on){on=false;ramp(0,2000,()=>{if(!on)au.pause()})}};
 })();
 </script>
-<style>#fsbtn{position:fixed;right:70px;bottom:4px;z-index:99999;width:36px;height:36px;border:0;border-radius:12px;background:rgba(44,95,111,.8);color:#fff;font-size:18px;line-height:36px;text-align:center;cursor:pointer;opacity:.55;transition:opacity .2s,background .2s,transform .15s;backdrop-filter:blur(4px)}#fsbtn:hover{opacity:1;background:rgba(232,100,44,.92);transform:scale(1.08)}#fsbtn svg{width:20px;height:20px;vertical-align:middle;fill:none;stroke:#fff;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}</style>
-<button id="fsbtn" type="button" title="전체화면 (F)" aria-label="전체화면"><svg viewBox="0 0 24 24"><path class="e" d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/><path class="x" d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5" style="display:none"/></svg></button>
+<style>#fsbtn{position:fixed;right:12px;top:3px;z-index:99999;height:24px;padding:0 10px 0 8px;border:0;border-radius:999px;background:rgba(44,95,111,.85);color:#fff;font:700 13px/24px "Pretendard Variable","Malgun Gothic",sans-serif;cursor:pointer;opacity:.6;transition:opacity .2s,background .2s,transform .15s;white-space:nowrap}#fsbtn:hover{opacity:1;background:rgba(232,100,44,.95);transform:scale(1.06)}#fsbtn svg{width:14px;height:14px;vertical-align:-2px;margin-right:4px;fill:none;stroke:#fff;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}</style>
+<button id="fsbtn" type="button" title="전체화면 (F)" aria-label="전체화면"><svg viewBox="0 0 24 24"><path class="e" d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/><path class="x" d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5" style="display:none"/></svg><span id="fslb">전체화면</span></button>
 <script>(function(){var b=document.getElementById('fsbtn'),de=document.documentElement;if(!de.requestFullscreen){b.style.display='none';return}
-function sync(){var f=!!document.fullscreenElement;b.querySelector('.e').style.display=f?'none':'';b.querySelector('.x').style.display=f?'':'none';b.title=f?'전체화면 해제 (F)':'전체화면 (F)'}
+function sync(){var f=!!document.fullscreenElement;b.querySelector('.e').style.display=f?'none':'';b.querySelector('.x').style.display=f?'':'none';b.title=f?'전체화면 해제 (F)':'전체화면 (F)';document.getElementById('fslb').textContent=f?'전체화면 해제':'전체화면'}
 b.addEventListener('click',function(e){e.stopPropagation();if(document.fullscreenElement)document.exitFullscreen();else de.requestFullscreen();b.blur()});
 document.addEventListener('fullscreenchange',sync);sync()})();</script>
 </body></html>
