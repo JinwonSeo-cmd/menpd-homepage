@@ -7,6 +7,8 @@
 <meta name="description" content="국토부 AI 홍보 TF 미션 키트 — 파일 받기, 복사 문구, 포스터 샘플">
 <link rel="stylesheet" href="css/styles.css">
 <style>
+html,body{overflow-x:clip;max-width:100%}@supports not (overflow:clip){body{overflow-x:hidden}}
+
 :root{
   --accent:#2C5F6F; --accent2:#D9784A; --ink:#1d1d1f; --wash:#f5f5f7;
   --paper:#FFFFFF; --line:#E4E6EB; --muted:#5f6672; --hl:#F4A88E;
@@ -291,7 +293,8 @@ p,li,h2,h3,figcaption,.hint,.group-desc{text-wrap:pretty}
 .four small{display:block;font-size:13px;color:#5f6672;font-weight:600;margin-top:4px}
 .lad7{list-style:none;display:flex;align-items:flex-end;gap:5px;margin:4px 0 8px}
 .lad7 li{flex:1;border-radius:10px 10px 0 0;color:#fff;padding:8px 5px;font-size:13px;font-weight:800;line-height:1.3;background:#2C5F6F}
-.lad7 li b{display:block;font-size:20px}.lad7 li small{display:block;font-weight:500;font-size:11px;opacity:.9}
+.lad7 li b{display:block;font-size:20px}
+.lad7 li{min-width:0}@media(max-width:520px){.lad7{gap:3px}.lad7 li{padding:6px 3px;font-size:10.5px;word-break:break-all}.lad7 li b{font-size:16px}.lad7 li small{font-size:9.5px}}.lad7 li small{display:block;font-weight:500;font-size:11px;opacity:.9}
 .lad7 li:nth-child(1){height:90px}.lad7 li:nth-child(2){height:104px}.lad7 li:nth-child(3){height:118px}.lad7 li:nth-child(4){height:132px;background:#E8642C}.lad7 li:nth-child(5){height:146px}.lad7 li:nth-child(6){height:160px}.lad7 li:nth-child(7){height:174px}
 .lad7 li.demo{background:#c9d1d4}
 .ltb{width:100%;border-collapse:collapse;background:#fff;border-radius:14px;overflow:hidden;font-size:15px}
@@ -322,7 +325,7 @@ code{font-size:12px;color:#8a93a3}
 @keyframes popIn{from{opacity:0;transform:scale(.7)}to{opacity:1;transform:none}}
 .big-dl{animation:pulse 2.6s ease-in-out 3s infinite}
 @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(217,120,74,.45)}50%{box-shadow:0 0 0 14px rgba(217,120,74,0)}}
-.ticker{overflow:hidden;margin:26px -16px 0;padding:10px 0;background:var(--ink);color:#fff;font-weight:800;font-size:18px;letter-spacing:.04em;white-space:nowrap;transform:rotate(-1.2deg)}
+.ticker{overflow:hidden;margin:26px -16px 0;padding:10px 0;background:var(--ink);color:#fff;font-weight:800;font-size:18px;letter-spacing:.04em;white-space:nowrap}
 .ticker .tk{display:inline-block;padding-left:0;animation:tk 22s linear infinite}
 .ticker .tk span{margin:0 18px}.ticker .tk i{color:#F4A88E;font-style:normal}
 @keyframes tk{to{transform:translateX(-50%)}}
@@ -431,7 +434,7 @@ code{font-size:12px;color:#8a93a3}
     <a href="resources.html">자료실</a>
   </nav>
 </div>
-<div class="wrap molit"><header class="page-intro"><span class="badge">국토부 · 11.17(화)</span><h1>AI 홍보 TF 미션 키트</h1><p class="lede">오늘 쓸 <b>파일 · 복사 문구 · 사진</b>이 수업 순서대로 있습니다. 글은 <b>[복사하기]</b>, 파일은 <b>[받기]</b>만 누르세요.</p><div class="hero-mascot"><div class="bubble">안녕하세요! 천천이예요 ❄️</div><img class="mc" src="images/molit/mascot-cut.png" alt="천천이 (아기 백곰)" width="150" height="260"><div class="shadow"></div></div><div class="stats"><div><b class="cu" data-to="4">4</b><span>미션</span></div><div><b class="cu" data-to="5">5</b><span>앱</span></div><div><b class="cu" data-to="68">68</b><span>교안 장</span></div><div><b class="cu" data-to="4">4</b><span>시간</span></div></div></header>
+<div class="wrap molit"><header class="page-intro"><span class="badge">국토부 · 11.17(화)</span><h1>AI 홍보 TF 미션 키트</h1><p class="lede">오늘 쓸 <b>파일 · 복사 문구 · 사진</b>이 수업 순서대로 있습니다. 글은 <b>[복사하기]</b>, 파일은 <b>[받기]</b>만 누르세요.</p><div class="hero-mascot"><div class="bubble">안녕하세요! 천천이예요 ❄️</div><img class="mc" src="images/molit/mascot-cut.png" alt="천천이 (아기 백곰)" width="150" height="260"><div class="shadow"></div></div><div class="stats"><div><b class="cu" data-to="4">4</b><span>미션</span></div><div><b class="cu" data-to="5">5</b><span>앱</span></div><div><b class="cu" data-to="63">63</b><span>교안 장</span></div><div><b class="cu" data-to="4">4</b><span>시간</span></div></div></header>
 <div class="hero-btns"><button class="big-dl" type="button" id="dlAll">📥 오늘 자료 전체 받기<small>MD 4개 합본 · 파일 1개</small></button><div class="hero-sub"><a class="go ghost" href="molit/index.html" target="_blank" rel="noopener">📘 교안 보기</a><a class="go ghost" href="downloads/public/molit-slides.pdf" download="국토부_생성형AI_교안_261117.pdf">📄 교안 PDF 받기</a><a class="go ghost" href="molit-game.html" target="_blank" rel="noopener">🎮 복습 게임</a><a class="go ghost sos-link" href="#sos">🆘 막혔을 때</a></div></div>
 <div class="jump-ph" id="jumpPh"></div><nav class="jump" aria-label="바로가기"><a href="#p2"><span>01</span>이해</a><a href="#p1"><span>02</span>준비</a><a href="#p3"><span>03</span>글</a><a href="#p4"><span>04</span>그림</a><a href="#p5"><span>05</span>노래</a><a href="#p6"><span>06</span>영상</a><a href="#p7"><span>07</span>HTML</a><a href="#sos"><span>🆘</span>막혔을 때</a></nav>
 <section class="group flow" id="flow"><div class="group-head"><span class="pnum">🗺️</span><h2>오늘의 강의 흐름</h2></div><p class="group-desc">주황 칸이 미션 4개입니다. 칸을 누르면 그 단계로 이동합니다.</p><div class="fl-row"><div class="fl-i"><b>도입</b><span>예시 영상</span><em>교안 1~5p</em></div><i class="fl-ar">›</i><a href="#p2" class="fl-i"><b>01 이해</b><span>지도 먼저 보기</span><em>교안 6~18p</em></a><i class="fl-ar">›</i><a href="#p1" class="fl-i"><b>02 준비</b><span>TF · 로그인</span><em>교안 19~26p</em></a><i class="fl-ar">›</i><a href="#p3" class="fl-i mis"><b>03 글</b><span>보고서 · PDF</span><em>교안 27~34p</em></a><i class="fl-ar">›</i><a href="#p4" class="fl-i mis"><b>04 그림</b><span>포스터</span><em>교안 35~41p</em></a><i class="fl-ar">›</i><a href="#p5" class="fl-i mis"><b>05 노래</b><span>캠페인송</span><em>교안 42~51p</em></a><i class="fl-ar">›</i><a href="#p6" class="fl-i mis"><b>06 영상</b><span>천천이 영상</span><em>교안 52~58p</em></a><i class="fl-ar">›</i><div class="fl-i"><b>마무리</b><span>편집 시연</span><em>교안 59~63p</em></div></div></section>
