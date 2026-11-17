@@ -741,7 +741,7 @@ addEventListener('keydown',e=>{
   else if(e.key==='b'||e.key==='B'||e.key==='.'){blk=!blk;st.style.visibility=blk?'hidden':'visible'}
   else if(e.key==='f'||e.key==='F'){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()}
 });
-addEventListener('click',e=>{if(e.target.closest('a,button,input,textarea'))return;show(e.clientX>innerWidth/2?i+1:i-1)});
+addEventListener('click',e=>{if(e.target.closest('a,button,input,textarea'))return;if(String(getSelection()).length)return;const x=e.clientX/innerWidth;if(x>=.2&&x<=.8)return;show(x>.5?i+1:i-1)});
 </script>
 <script>// 소리 전체 켜고 끄기 (M 키 · 음악 끄기 버튼 공통) — 한 곳에서 끄면 배경음악 · 엔딩곡 · 효과음 모두 꺼짐
 window.MUTE=false;function toggleMute(){window.MUTE=!window.MUTE;dispatchEvent(new Event('mutechange'))}
