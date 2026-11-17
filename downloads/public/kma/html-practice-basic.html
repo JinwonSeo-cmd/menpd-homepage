@@ -1,0 +1,14 @@
+<!DOCTYPE html><html lang="ko"><head><meta charset="utf-8"><title>이든 AI 도입 보고 (기본)</title><style>
+html,body{margin:0;height:100%;background:#ddd;overflow:hidden;font-family:Arial,sans-serif;color:#333}
+#st{position:absolute;left:50%;top:50%;width:1280px;height:720px;transform:translate(-50%,-50%) scale(var(--k,1))}
+.s{position:absolute;inset:0;background:#fff;padding:70px 90px;box-sizing:border-box;display:none}
+.s.on{display:block}
+h1{font-size:44px;margin:0 0 16px}h2{font-size:26px;font-weight:normal;color:#666;margin:0 0 30px}
+p,li{font-size:28px;line-height:1.7}.big{font-size:40px;font-weight:bold}
+.pg{position:absolute;right:30px;bottom:20px;font-size:16px;color:#999}
+</style></head><body><div id="st"><section class="s"><h1>이든 생성형 AI 도입 검토 보고</h1><h2>AI 도입 TF · 2026년 12월</h2><p>※ 교육용 가상 자료</p><div class="pg">1 / 6</div></section><section class="s"><h1>현황 — 반복 문서 업무가 많다</h1><h2>직원 1인당 주 9.5시간</h2><ul><li>보고서 4.2시간</li><li>공문 2.8시간</li><li>홍보물 2.5시간</li></ul><div class="pg">2 / 6</div></section><section class="s"><h1>시범 도입 결과</h1><h2>홍보팀 12명 · 4주</h2><p class="big">문서 작성 시간 38% 단축</p><div class="pg">3 / 6</div></section><section class="s"><h1>직원 인식</h1><h2>"업무에 AI를 쓰고 싶다" 72% (응답 846명)</h2><ul><li>우려 1 · 보안 46%</li><li>우려 2 · 정확성 31%</li><li>우려 3 · 사용법 23%</li></ul><div class="pg">4 / 6</div></section><section class="s"><h1>도입 방안 — 전략 3가지</h1><ol><li>보안 가이드 먼저 배포</li><li>시범 부서 → 전사 단계적 확산</li><li>부서별 AI 도입 TF 운영</li></ol><div class="pg">5 / 6</div></section><section class="s"><h1>결정 요청</h1><ul><li>2단계(전 부서 확산) 추진 승인</li><li>보안 가이드 제정 — 정보보안팀 협조</li></ul><div class="pg">6 / 6</div></section></div><script>
+var s=document.querySelectorAll('.s'),c=0;function go(n){c=Math.max(0,Math.min(s.length-1,n));s.forEach(function(x,i){x.classList.toggle('on',i==c)})}
+function fit(){document.getElementById('st').style.setProperty('--k',Math.min(innerWidth/1280,innerHeight/720))}
+addEventListener('keydown',function(e){if(['ArrowRight','ArrowDown',' ','PageDown'].includes(e.key))go(c+1);if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key))go(c-1)});
+addEventListener('resize',fit);fit();go(0);
+</script></body></html>
