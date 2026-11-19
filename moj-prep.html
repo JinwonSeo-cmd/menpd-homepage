@@ -256,6 +256,7 @@ h3.sub{font-size:17px;font-weight:800;margin:28px 0 10px}
 .prepcopy .go{background:var(--ink)}.prepcopy .go:hover{background:var(--accent)}
 </style>
 <style>.poster-ref{padding:4px 16px 18px;text-align:center}.poster-ref img{display:block;margin:0 auto 12px;max-width:285px;width:100%;height:auto;border-radius:10px;border:1.5px solid rgba(255,255,255,.25);background:#fff}.poster-ref .copybox-actions{justify-content:center}a.copy-btn{display:inline-flex;align-items:center;text-decoration:none}</style>
+<style>.game-btn{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,#1F3A5F,#2D6B7A);color:#fff;text-decoration:none;border-radius:16px;padding:14px 18px;box-shadow:0 6px 16px rgba(31,58,95,.25)}.game-btn .gi{font-size:30px}.game-btn .gt{flex:1}.game-btn .gt b{display:block;font-size:17px}.game-btn .gt small{font-size:13px;opacity:.85}.game-btn .gg{background:#F4A88E;color:#3a1d10;font-weight:900;font-size:14px;padding:8px 14px;border-radius:10px;white-space:nowrap}</style>
 </head>
 <body class="dusk-page prep-page">
 <div class="top">
@@ -271,238 +272,108 @@ h3.sub{font-size:17px;font-weight:800;margin:28px 0 10px}
 <header class="page-intro">
   <span class="badge">법무부 · 생성형 AI 중급과정</span>
   <h1>법무부 준비사항</h1>
-  <p class="lede">지난 회차 자료는 <b>맨 위 ‘1회차 강의 다시보기’</b>를 누르면 새 창에서 열립니다. 그 아래가 이번 주(2회차) 준비입니다.</p>
+  <p class="lede">지난 회차 자료는 아래 <b>회차별 막대</b>를 누르면 새 창에서 열립니다. 그 아래가 이번 주(3회차) 준비입니다.</p>
 </header>
+<a class="game-btn" style="margin:0 0 18px" href="moj-game.html" target="_blank" rel="noopener"><span class="gi">⏰</span><span class="gt"><b>복습 게임 · 김법무의 칼퇴 대작전</b><small>퀴즈를 맞혀 업무 8건 처리! 틀리면 퇴근 10분 늦어짐</small></span><span class="gg">게임 시작 ▶</span></a>
 
 <div class="press" id="chat-room"><span class="press-ic" aria-hidden="true">💬</span><div><strong>막히면 캡처해서 단톡방에 올려 주세요</strong><p>안 되는 부분은 <b>화면을 캡처</b>해서 단톡방에 올려 주세요.</p></div></div>
 
 <a class="session" id="session1" href="moj-prep-1.html" target="_blank" rel="noopener" style="display:block;text-decoration:none"><div style="display:flex;align-items:center;gap:12px;padding:18px 20px;flex-wrap:wrap"><span class="session-tag">1회차 · 11/5</span><span class="session-title">1회차 강의 다시보기</span><span style="font-size:13px;font-weight:700;color:var(--accent,#E8642C)">새 창에서 열기 ↗</span></div></a>
 <a class="session" id="session2" href="moj-review-2.html" target="_blank" rel="noopener" style="display:block;text-decoration:none"><div style="display:flex;align-items:center;gap:12px;padding:18px 20px;flex-wrap:wrap"><span class="session-tag" style="background:var(--accent,#E8642C)">2회차 · 11/12</span><span class="session-title">2회차 복습 · 기획구성안봇 · 간단 숏폼봇 다시 해보기</span><span style="font-size:13px;font-weight:700;color:var(--accent,#E8642C)">새 창에서 열기 ↗</span></div></a>
 
-<!-- ===== 2회차 (11/12) ===== -->
-<div class="session-now">
-<div class="press" id="s2-files"><span class="press-ic" aria-hidden="true">📥</span><div><strong>3차수 2회차 (11/12 목) — 기획안 · 구성안 · 기획구성안 봇</strong><p>번호로 답하면 <b>기획안 + 구성안(1편)</b>을 <b>PDF 한 파일</b>로 만들어 주는 봇을 함께 돌립니다. 수업 전에 ZIP을 받아 <b>바탕화면</b>에 풀어 두세요.</p><p style="margin-top:10px"><a class="dl-btn" href="downloads/moj/moj3-2_shortform-bot.zip" download>(법무부) 기획구성안봇 폴더 받기 (ZIP)</a></p></div></div>
+<a class="session" id="session3" href="moj-review-3.html" target="_blank" rel="noopener" style="display:block;text-decoration:none"><div style="display:flex;align-items:center;gap:12px;padding:18px 20px;flex-wrap:wrap"><span class="session-tag" style="background:#1F3A5F">3회차 · 11/19</span><span class="session-title">3회차 복습 · 포스터봇 · 카드뉴스봇 · 샘플 따기</span><span style="font-size:13px;font-weight:700;color:var(--accent,#E8642C)">새 창에서 열기 ↗</span></div></a>
 
-<nav class="jump" aria-label="2회차 바로가기">
-  <a href="#s2-flow"><span>01</span>오늘 흐름</a>
-  <a href="#s2-plan"><span>02</span>기획안·구성안</a>
-  <a href="#s2-folder"><span>03</span>봇 폴더 받기</a>
-  <a href="#s2-make"><span>04</span>봇 함께 돌리기</a>
-  <a href="#s2-char"><span>05</span>캐릭터 시트</a>
-  <a href="#s2-brain"><span>06</span>KB 넣기</a>
-  <a href="#s2-custom"><span>07</span>커스텀봇 짜는 법</a>
-  <a href="#s2-share"><span>08</span>단톡방 공유</a>
-  <a href="#s2-simple"><span>09</span>간단 숏폼봇 (시연 · 혼자 실습)</a>
+<!-- ===== 3회차 (11/19) ===== -->
+<div class="session-now">
+<div class="press" id="s3-files"><span class="press-ic" aria-hidden="true">📥</span><div><strong>3차수 3회차 (11/19 목) — 이미지 생성 · 포스터봇 · 카드뉴스봇</strong><p>폴더 하나에 봇 여러 개가 들어 있는 <b>(법무부) 종합 콘텐츠 봇</b>을 씁니다. 수업 전에 ZIP을 받아 <b>바탕화면</b>에 풀어 두세요.</p><p style="margin-top:10px"><a class="dl-btn" href="downloads/moj/moj3-3_content-bot.zip" download>(법무부) 종합 콘텐츠 봇 받기 (ZIP · 41MB)</a></p></div></div>
+
+<nav class="jump" aria-label="3회차 바로가기">
+  <a href="#s3-flow"><span>01</span>오늘 흐름</a>
+  <a href="#s3-folder"><span>02</span>종합 봇 폴더</a>
+  <a href="#s3-make"><span>03</span>봇 연결하기</a>
+  <a href="#s3-sample"><span>04</span>샘플 따기</a>
+  <a href="#s3-brain"><span>05</span>대가의 뇌</a>
+  <a href="#s3-share"><span>06</span>단톡방 공유</a>
 </nav>
 
-<section class="group" id="s2-flow"><div class="group-head"><span class="group-num">01</span><h2>오늘 수업 흐름</h2></div>
+<section class="group" id="s3-flow"><div class="group-head"><span class="group-num">01</span><h2>오늘 수업 흐름</h2></div>
 <div class="steplist">
-<div class="step"><span class="logo-emoji" aria-hidden="true">🎬</span><div class="txt"><strong>시연 — 영상 제작 봇</strong><span>① 구성안 제안 → ② 캡컷 웹(시댄스 2.0 미니)으로 생성 3신 → ③ HTML 카드 2신 → ④ 720p 25초 완성. (봇은 공유해 드리니 혼자 해 볼 수 있습니다)</span></div></div>
-<div style="display:flex;gap:8px;margin:4px 0 6px 52px;max-width:520px"><figure style="flex:1;margin:0;text-align:center"><img src="images/moj/demo_s1.jpg" alt="S1 생성" loading="lazy" style="width:100%;border-radius:8px;border:2px solid #2C5F6F"><figcaption style="font-size:12px;font-weight:700;color:#2C5F6F">S1 · 생성</figcaption></figure><figure style="flex:1;margin:0;text-align:center"><img src="images/moj/demo_s2.jpg" alt="S2 카드" loading="lazy" style="width:100%;border-radius:8px;border:2px solid #E8642C"><figcaption style="font-size:12px;font-weight:700;color:#E8642C">S2 · 카드</figcaption></figure><figure style="flex:1;margin:0;text-align:center"><img src="images/moj/demo_s3.jpg" alt="S3 생성" loading="lazy" style="width:100%;border-radius:8px;border:2px solid #2C5F6F"><figcaption style="font-size:12px;font-weight:700;color:#2C5F6F">S3 · 생성</figcaption></figure><figure style="flex:1;margin:0;text-align:center"><img src="images/moj/demo_s4.jpg" alt="S4 카드" loading="lazy" style="width:100%;border-radius:8px;border:2px solid #E8642C"><figcaption style="font-size:12px;font-weight:700;color:#E8642C">S4 · 카드</figcaption></figure><figure style="flex:1;margin:0;text-align:center"><img src="images/moj/demo_s5.jpg" alt="S5 생성" loading="lazy" style="width:100%;border-radius:8px;border:2px solid #2C5F6F"><figcaption style="font-size:12px;font-weight:700;color:#2C5F6F">S5 · 생성</figcaption></figure></div>
-<div class="step"><span class="logo-emoji" aria-hidden="true">📝</span><div class="txt"><strong>기획안과 구성안</strong><span>기획안은 <b>존재의 이유</b>, 구성안은 <b>한 편의 생김새와 연출법</b>. 실제 기획안 문서도 함께 봅니다.</span></div></div>
-<div class="step"><span class="logo-emoji" aria-hidden="true">🤖</span><div class="txt"><strong>기획구성안 봇 함께 돌리기</strong><span>13개 질문에 번호로 답하고, 기획구성안 PDF를 받습니다.</span></div></div>
-<div class="step"><span class="logo-emoji" aria-hidden="true">💬</span><div class="txt"><strong>피드백 · 봇은 이렇게 짰다</strong><span>올라온 PDF로 피드백하고, 봇의 구조(지침 · KB)를 뜯어 봅니다.</span></div></div>
-<div class="step"><span class="logo-emoji" aria-hidden="true">🧩</span><div class="txt"><strong>챗GPT 커스텀봇 짜는 법</strong><span>프로젝트 만들기, 지침 쓰기, 폴더 구성법.</span></div></div>
+<div class="step"><span class="logo-emoji" aria-hidden="true">🧪</span><div class="txt"><strong>같은 포스터, 4가지 방법</strong><span>말로 → 샘플 → 프롬프트 · MD → 봇. 공통 주제 : 마을변호사 무료 법률상담의 날</span></div></div>
+<div class="step"><span class="logo-emoji" aria-hidden="true">📌</span><div class="txt"><strong>샘플 관리 · 샘플 따기</strong><span>핀터레스트 · 레페로 스타일즈에서 따서 이름 붙여 봇 폴더에</span></div></div>
+<div class="step"><span class="logo-emoji" aria-hidden="true">🤖</span><div class="txt"><strong>포스터봇 · 카드뉴스봇 돌리기</strong><span>스타일 메뉴판에서 번호로 고르고, 내 샘플을 더해 다시</span></div></div>
+<div class="step"><span class="logo-emoji" aria-hidden="true">🧠</span><div class="txt"><strong>KB에 디자인 대가의 뇌 심기</strong><span>원칙을 숫자로 — KB 넣기 전 · 후 비교</span></div></div>
 </div>
 </section>
 
-<section class="group" id="s2-plan"><div class="group-head"><span class="group-num">02</span><h2>기획안과 구성안</h2></div>
-<table class="qtable">
-<tr><th>구분</th><th>기획안</th><th>구성안</th></tr>
-<tr><td><b>한 줄 정의</b></td><td>이 영상(프로그램)의 <b>존재의 이유</b></td><td>한 편의 <b>생김새와 연출법</b></td></tr>
-<tr><td><b>답하는 질문</b></td><td>왜 · 누구에게 · 무엇을</td><td>몇 초에 무엇을 보여 주고 말할까</td></tr>
-<tr><td><b>들어가는 것</b></td><td>제목 · 기획 의도 · 타깃 · 목표 · 콘셉트 · 포맷 · 편별 구성 · 기대 효과 (8항목)</td><td>시간 · 화면 · 자막 · 대사 · 효과 (5칸)</td></tr>
-<tr><td><b>몇 장?</b></td><td>프로그램당 1장</td><td>편마다 1장</td></tr>
-</table>
-<p class="group-desc" style="margin-top:14px"><b>실제 생김새</b> — 단편 숏폼 「신입 원두의 자리 이동 신청」 기획안 · 구성안 (누르면 크게 보입니다)</p>
-<div style="display:flex;gap:10px;flex-wrap:wrap">
-<a href="images/moj/sample_plan.jpg" target="_blank" style="flex:1;min-width:240px"><img src="images/moj/sample_plan.jpg" alt="기획안 예시" loading="lazy" style="width:100%;border:1px solid #CFE3E7;border-radius:8px"></a>
-<a href="images/moj/sample_script.jpg" target="_blank" style="flex:1.4;min-width:260px"><img src="images/moj/sample_script.jpg" alt="구성안 1편 예시" loading="lazy" style="width:100%;border:1px solid #CFE3E7;border-radius:8px"></a>
-</div>
-<table class="qtable" style="margin-top:12px">
-<tr><th>구분</th><th>단편 기획</th><th>장편 기획</th></tr>
-<tr><td><b>주로</b></td><td>홍보영상 · 행사 · 캠페인</td><td>유튜브 · 인스타 숏폼 시리즈</td></tr>
-<tr><td><b>핵심</b></td><td>한 편 안에 메시지 하나를 강하게</td><td>채널 정체성 · 고정 캐릭터 · 포맷 · 업로드 주기</td></tr>
-<tr><td><b>문서</b></td><td>기획안 1장 + 구성안 1장</td><td>기획안 1장 + 구성안은 편마다</td></tr>
-</table>
+<section class="group" id="s3-folder"><div class="group-head"><span class="group-num">02</span><h2>(법무부) 종합 콘텐츠 봇 폴더</h2></div>
+<p class="group-desc">봇 여러 개가 사는 <b>건물</b>입니다. 맨 위 AGENTS.md가 안내 데스크, <b>공통/</b>은 모든 봇이 함께 쓰는 창고예요.</p>
+<div class="steplist"><div class="step"><span class="logo-emoji" aria-hidden="true">📦</span><div class="txt"><strong>ZIP 내려받기 → 바탕화면에 압축 풀기</strong><span>지난주 기획구성안봇도 이 안에 함께 들어 있습니다.</span></div><a class="go" href="downloads/moj/moj3-3_content-bot.zip" download>받기 ↓</a></div></div>
+<pre class="tree">바탕화면/(법무부) 종합 콘텐츠 봇/
+├ AGENTS.md     ← 안내 데스크 (프로젝트 이름으로 봇 고르기)
+├ README.txt    ← 사용법
+├ 공통/          ← 모든 봇이 함께 쓰는 재료
+│  ├ 로고/        법무부 로고 (컬러 · 흰색)
+│  ├ 캐릭터/      김 · 최 · 박 · 서법무 시트
+│  ├ 폰트/        한글 · 영문 서체 + 견본
+│  └ KB/          기관 · 캐릭터 · 디자인원칙(대가의 뇌) · 법률상담의 날 · 구두계약
+├ 기획구성안봇/   ← 지난주 봇 (기획안 + 구성안 PDF)
+├ 포스터봇/       ← AGENTS.md · KB/ · 샘플/(스타일 17종) · 결과물/
+└ 카드뉴스봇/     ← AGENTS.md · KB/ · 샘플/(스타일 7종) · 결과물/</pre>
+<div class="tip"><span class="ic">🔒</span><span>이 폴더에는 <b>개인정보·내부 문서를 넣지 마세요.</b> 샘플의 일부 견본은 외부 레퍼런스라 분위기 참고용으로만 씁니다.</span></div>
 </section>
 
-<section class="group" id="s2-folder"><div class="group-head"><span class="group-num">03</span><h2>(법무부) 기획구성안봇 폴더 받기</h2></div>
-<p class="group-desc"><b>바탕화면</b>에 그대로 풀어 둡니다. 이 폴더 하나가 봇이고, 결과물도 이 안에 쌓입니다.</p>
+<section class="group" id="s3-make"><div class="group-head"><span class="group-num">03</span><h2>봇 연결하기 — 봇마다 프로젝트 하나, 폴더는 같은 것 하나</h2></div>
 <div class="steplist">
-<div class="step"><span class="logo-emoji" aria-hidden="true">📦</span><div class="txt"><strong>ZIP 내려받기 → 바탕화면에 압축 풀기</strong><span>압축을 풀면 바탕화면에 <b>(법무부) 기획구성안봇</b> 폴더가 생깁니다.</span></div><a class="go" href="downloads/moj/moj3-2_shortform-bot.zip" download>받기 ↓</a></div>
+<div class="step"><span class="logo-emoji" aria-hidden="true">1️⃣</span><div class="txt"><strong>챗GPT <b>데스크톱 앱</b> → Work 탭 → 프로젝트 ＋</strong><span>웹 브라우저가 아니라 PC에 설치한 앱이어야 합니다.</span></div></div>
+<div class="step"><span class="logo-emoji" aria-hidden="true">2️⃣</span><div class="txt"><strong>이름 : <b>(법무부) 포스터봇</b></strong><span>봇 이름이 꼭 들어가야 안내 데스크가 알맞은 봇으로 연결합니다. 카드뉴스는 (법무부) 카드뉴스봇.</span></div></div>
+<div class="step"><span class="logo-emoji" aria-hidden="true">3️⃣</span><div class="txt"><strong>소스 폴더 추가 → 이 컴퓨터 → 바탕화면 → <b>(법무부) 종합 콘텐츠 봇</b> → 폴더 선택 → 폴더 신뢰</strong><span>봇 폴더를 따로 고르지 않습니다. 종합 폴더 하나만.</span></div></div>
+<div class="step"><span class="logo-emoji" aria-hidden="true">4️⃣</span><div class="txt"><strong>새 채팅에 <b>시작</b></strong><span>“📍 포스터봇으로 시작할게요”가 나오면 성공. 번호로만 답하면 됩니다.</span></div></div>
 </div>
-<pre class="tree">바탕화면/(법무부) 기획구성안봇/
-├ AGENTS.md   ← 봇의 지침 (질문 13개 · 진행 순서)
-├ KB/         ← 기획 원칙 · 구성안 기준 · 샘플 (대가의 뇌를 넣는 곳)
-├ 캐릭터/     ← 김법무 · 박법무 · 서법무 · 최법무
-├ 샘플/       ← 좋은 숏폼 캡처 + 메모
-└ 결과물/     ← 봇이 만든 것이 모두 여기에</pre>
-<div class="tip"><span class="ic">🔒</span><span>이 폴더에는 <b>개인정보·내부 문서를 넣지 마세요.</b> 연습용 파일만 넣습니다.</span></div>
+<div class="chars" style="grid-template-columns:1fr"><img src="images/moj/moj3-poster-menu.jpg" alt="포스터 스타일 메뉴판 17종" loading="lazy" style="width:100%;border-radius:12px;border:1px solid var(--line)"></div>
+<p class="group-desc" style="margin-top:8px">포스터봇 스타일 메뉴판 (17종) — 번호로 고르고, 0이면 봇이 추천합니다.</p>
 </section>
 
-<section class="group" id="s2-make"><div class="group-head"><span class="group-num">04</span><h2>기획구성안 봇 함께 돌리기</h2></div>
-<p class="group-desc">지침을 붙여넣지 않습니다. <b>폴더를 연결하면</b> 챗GPT가 폴더 안의 AGENTS.md를 읽고 봇이 됩니다.</p>
-<div class="steplist">
-<div class="step"><span class="logo-emoji" aria-hidden="true">1️⃣</span><div class="txt"><strong>챗GPT <b>데스크톱 앱</b> 열기 → 위쪽 <b>Work</b> 탭</strong><span>웹 브라우저(chatgpt.com)가 아니라 PC에 설치한 앱이어야 폴더를 연결할 수 있습니다. 로그인까지 해 둡니다.</span></div></div>
-<div class="step"><span class="logo-emoji" aria-hidden="true">2️⃣</span><div class="txt"><strong>왼쪽 <b>프로젝트</b> 옆 <b>＋</b> → 새 프로젝트</strong><span>Work 탭 왼쪽 목록에서 프로젝트를 새로 만듭니다.</span></div></div>
-<div class="step"><span class="logo-emoji" aria-hidden="true">3️⃣</span><div class="txt"><strong>이름 짓기 : <b>(법무부) 기획구성 봇</b></strong><span><b>(기관) + 하는 일 + 봇</b> 순서로 지으면 봇이 늘어나도 찾기 쉽습니다. 예) (법무부) 간단 숏폼 봇, (우리팀) 보도자료 봇</span></div></div>
-<div class="step"><span class="logo-emoji" aria-hidden="true">4️⃣</span><div class="txt"><strong>소스 폴더 추가 → <b>이 컴퓨터</b> → 바탕화면 → <b>(법무부) 기획구성안봇</b> 선택 → <b>폴더 선택</b></strong><span>바탕화면에 있는 <b>(법무부) 기획구성안봇 폴더 그대로</b> 골라 폴더 선택을 누르면 됩니다. 연결하는 폴더는 이것 하나뿐입니다.</span></div></div>
-<div class="step"><span class="logo-emoji" aria-hidden="true">⚠️</span><div class="txt"><strong>폴더 안에 <b>같은 이름의 폴더가 또</b> 있다면?</strong><span>압축을 풀 때 <code>(법무부) 기획구성안봇/(법무부) 기획구성안봇</code>처럼 두 겹이 되는 경우가 있습니다. <b>AGENTS.md가 바로 보이는 안쪽 폴더</b>를 연결하세요.</span></div></div>
-<div class="step"><span class="logo-emoji" aria-hidden="true">5️⃣</span><div class="txt"><strong>“이 폴더를 신뢰할까요?” → <b>폴더 신뢰</b></strong><span>신뢰해야 챗GPT가 폴더 안의 AGENTS.md를 읽고, 결과물을 이 폴더에 저장할 수 있습니다.</span></div></div>
-<div class="step"><span class="logo-emoji" aria-hidden="true">6️⃣</span><div class="txt"><strong>프로젝트 안에서 <b>새 채팅</b> → <b>시작</b> 입력</strong><span>봇이 <b>“질문 1”</b>을 보여 주면 연결 성공입니다. 일반 대화처럼 답하면 폴더 연결부터 다시 확인하세요.</span></div></div>
-<div class="step"><span class="logo-emoji" aria-hidden="true">7️⃣</span><div class="txt"><strong>번호로 답하기</strong><span><b>0</b> = 모르겠어요(봇이 추천) · 원하는 게 따로 있으면 <b>직접 적어도</b> 됩니다 · 시리즈라면 구성안은 <b>1편 기준</b>.</span></div></div>
-</div>
-<h3 class="sub">질문 13개 미리 보기</h3>
-<table class="qtable">
-<tr><th>블록</th><th>질문</th><th>나오는 것</th></tr>
-<tr><td><b>A. 왜</b></td><td>① 누가 볼까 ② 보고 할 행동 하나 ③ 주제 분야 ④ 주제 고르기</td><td>기획 의도 · 타깃 · 목표</td></tr>
-<tr><td><b>B. 무엇을</b></td><td>⑤ 단편/시리즈 ⑥ 전개 방식 ⑦ 느낌 ⑧ 원하는 스타일·스토리라인 ⑨ 첫 3초 훅</td><td><b>기획안 8항목</b></td></tr>
-<tr><td><b>C. 어떻게</b></td><td>⑩ 캐릭터 ⑪ 그림체 ⑫ 나레이션 목소리 ⑬ 배경음악</td><td><b>구성안 1편</b> + 생성 프롬프트</td></tr>
+<section class="group" id="s3-sample"><div class="group-head"><span class="group-num">04</span><h2>샘플 따기 — 포스터는 파일, 카드뉴스는 폴더</h2></div>
+<img src="images/moj/moj3-pinterest.jpg" alt="핀터레스트" loading="lazy" style="width:100%;border-radius:12px;border:1px solid var(--line)">
+<table class="qtable" style="margin-top:10px">
+<tr><th>구분</th><th>포스터</th><th>카드뉴스</th></tr>
+<tr><td><b>단위</b></td><td>한 장 = 파일 하나</td><td>여러 장 = 폴더 하나</td></tr>
+<tr><td><b>따는 법</b></td><td>핀 → 이미지 다운로드 → 이름을 특징으로</td><td>공유 → 링크 복사 → 카드뉴스봇에 붙여넣기 → 전 장 캡처</td></tr>
+<tr><td><b>이름 예</b></td><td>스타일_18_네이비정책.png</td><td>스타일_08_인포아이콘/01.jpg ~</td></tr>
 </table>
-<div class="scenes">
-<div class="scene gf">S1 생성<small>훅</small></div><div class="scene ff">S2 HTML<small>정보 카드</small></div><div class="scene gf">S3 생성<small>전개</small></div><div class="scene ff">S4 HTML<small>핵심 카드</small></div><div class="scene gf">S5 생성<small>결론 · 급종료</small></div>
-</div>
-<p class="group-desc" style="margin-top:10px">구성안은 25초 · 5신 고정입니다. 대사는 쉬운 <b>비유</b>를 1~2개 넣어 씁니다.</p>
-<h3 class="sub">결과는 봇 폴더의 ‘결과물’ 안에</h3>
-<pre class="tree">바탕화면/(법무부) 기획구성안봇/결과물/
-└ 숏폼_주제_월일/         ← 주제가 정해지면 봇이 만듭니다
-   ├ 기획구성안_주제.pdf  ← 기획안 → 구성안(1편) 한 파일
-   ├ 01_기획안.md
-   ├ 02_구성안.md
-   ├ 03_생성프롬프트.md
-   ├ 04_작업기획.md
-   ├ 캐릭터/
-   └ 소스/</pre>
-<details class="acc"><summary>Work 탭이나 폴더 연결이 안 될 때 <span class="acc-desc">— 일반 프로젝트로 대신 만들기</span></summary>
-<div class="acc-body"><p>① 일반 프로젝트를 만들고 ② (법무부) 기획구성안봇 폴더의 <b>AGENTS.md</b>와 <b>KB 폴더의 .md 파일</b>을 프로젝트 파일로 올린 뒤 ③ 아래 지침을 지침 칸에 붙여넣습니다.</p>
-<div class="copybox short" id="s2ins-box"><div class="copybox-head"><span>📋 프로젝트 지침 (지침 칸에 붙여넣기)</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="s2ins">복사</button></div></div><pre id="s2ins">너는 '숏폼 기획구성안 봇'이야.
-연결된 폴더(또는 프로젝트 파일)의 AGENTS.md를 가장 먼저 읽고, 그 순서와 규칙을 그대로 따른다.
-KB 폴더의 .md 파일을 기준으로 삼고, 대화마다 질문은 한 번에 하나, 객관식 번호로 진행한다.
-AGENTS.md를 찾지 못하면 "(법무부) 기획구성안봇 폴더를 연결하거나 AGENTS.md를 올려 주세요"라고만 말한다.</pre></div></div></details>
+<div class="copybox short" id="s3pin-box"><div class="copybox-head"><span>📋 카드뉴스봇에 — 링크로 전 장 따기</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="s3pin">복사</button></div></div><pre id="s3pin">이 핀터레스트 게시물 링크를 내부 웹으로 열어서 1장부터 마지막 장까지 전 장을 모두 캡처해줘.
+카드뉴스봇/샘플/ 안에 '스타일_번호_특징이름' 폴더를 만들어 01.jpg, 02.jpg … 순서로 넣고, 표지는 같은 이름의 .png로도 저장해줘.
+특징 이름(2~4단어)과 특징 3줄(색 · 레이아웃 · 글씨 느낌)을 스타일목록.md에 추가하고, 링크는 링크모음.md에 남겨줘.
+[링크 붙여넣기]</pre></div>
+<div class="copybox short" id="s3pos-box"><div class="copybox-head"><span>📋 포스터봇에 — 내려받은 파일 이름 정리</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="s3pos">복사</button></div></div><pre id="s3pos">포스터봇/샘플/ 폴더에 새로 넣은 포스터 파일을 보고, 특징 이름(2~4단어)을 지어 '스타일_번호_특징이름.png'로 바꿔줘.
+스타일목록.md에 색 · 구도 · 글씨 느낌 3줄로 추가하고, 메뉴판을 다시 만들어 보여줘.</pre></div>
+<h3 class="sub">레페로 스타일즈 — 좋아하는 디자인을 MD 한 장으로</h3>
+<img src="images/moj/moj3-refero.jpg" alt="레페로 스타일즈" loading="lazy" style="width:100%;border-radius:12px;border:1px solid var(--line)">
+<p class="group-desc" style="margin-top:8px"><b>styles.refero.design</b> → 느낌으로 검색 → 스타일 열기 → <b>DESIGN.md 복사</b> → 아래 문장과 함께 봇에 붙여넣기 → KB/에 저장 → 새 채팅</p>
+<div class="copybox short" id="s3ref-box"><div class="copybox-head"><span>📋 DESIGN.md → 포스터 · 카드뉴스용 스타일 MD</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="s3ref">복사</button></div></div><pre id="s3ref">아래 DESIGN.md는 웹사이트 디자인 규칙이야. 이걸 포스터 · 카드뉴스에 쓸 '스타일MD_[이름].md'로 바꿔줘.
+색(헥스 3개 이하) · 글꼴 느낌 · 여백 · 정렬 · 금지할 것만 숫자로 남기고, 버튼 · 메뉴 같은 웹 요소는 빼줘.
+포스터봇/KB/에 저장해줘.
+[DESIGN.md 붙여넣기]</pre></div>
 </section>
 
-<section class="group" id="s2-char"><div class="group-head"><span class="group-num">05</span><h2>기본 캐릭터 시트 · 성격</h2></div>
-<p class="group-desc">ZIP 안의 <b>캐릭터</b> 폴더에 이미 들어 있습니다. 없으면 아래에서 받아 넣어 주세요.</p>
-<div class="chars">
-<a href="images/moj/kim-beopmu-sheet.png" download="김법무.png"><img src="images/moj/kim-beopmu-sheet-thumb.jpg" alt="김법무 캐릭터 시트" loading="lazy"><span>김법무 ↓</span></a>
-<a href="images/moj/park-beopmu-sheet.jpg" download="박법무.jpg"><img src="images/moj/park-beopmu-sheet.jpg" alt="박법무 캐릭터 시트" loading="lazy"><span>박법무 ↓</span></a>
-<a href="images/moj/seo-beopmu-sheet.jpg" download="서법무.jpg"><img src="images/moj/seo-beopmu-sheet.jpg" alt="서법무 캐릭터 시트" loading="lazy"><span>서법무 ↓</span></a>
-<a href="images/moj/choi-beopmu-sheet.jpg" download="최법무.jpg"><img src="images/moj/choi-beopmu-sheet.jpg" alt="최법무 캐릭터 시트" loading="lazy"><span>최법무 ↓</span></a>
-</div>
-<table class="qtable" style="margin-top:14px">
-<tr><th>캐릭터</th><th>성격</th><th>말투</th><th>잘 맞는 주제</th></tr>
-<tr><td><b>김법무</b><br><small>25 · 신입</small></td><td>호기심 많고 리액션 큰 열정 막내</td><td>"어? 이거 저도 몰랐어요!"</td><td>생활 법률 Q&amp;A · 유쾌</td></tr>
-<tr><td><b>박법무</b><br><small>27 · 2년차</small></td><td>차분하고 다정한 공감형 상담가</td><td>"괜찮아요, 이렇게 하시면 돼요."</td><td>피해자 · 취약계층 지원 · 따뜻</td></tr>
-<tr><td><b>서법무</b><br><small>40 · 아저씨</small></td><td>비유와 아재개그의 유쾌한 아재</td><td>"라떼는 말이야~ 근데 요즘은?"</td><td>사기 · 보이스피싱 예방 · 유쾌</td></tr>
-<tr><td><b>최법무</b><br><small>40 · 팀장</small></td><td>결론부터 말하는 원칙주의자</td><td>"핵심만 말씀드리면, 두 가지입니다."</td><td>법 개정 · 제도 변경 · 진지</td></tr>
-</table>
-<p class="group-desc" style="margin-top:8px">둘이 나와도 좋아요 — <b>김 + 최</b>(신입이 묻고 팀장이 정리) · <b>서 + 박</b>(아재개그 판을 차분하게 수습)</p>
-</section>
-
-<section class="group" id="s2-brain"><div class="group-head"><span class="group-num">06</span><h2>KB 넣기 — 대가의 뇌</h2></div>
-<p class="group-desc">봇은 <b>지침(AGENTS.md)</b>으로 일하는 순서를, <b>KB</b>로 기준을 정합니다. 닮고 싶은 PD·크리에이터의 원칙을 MD로 만들어 <b>(법무부) 기획구성안봇 › KB</b> 폴더에 넣으면 봇이 함께 읽고 우선 따릅니다.</p>
-<div class="steplist">
-<div class="step"><span class="logo-emoji" aria-hidden="true">1️⃣</span><div class="txt"><strong>대가 고르고 자료 모으기</strong><span>영상 · 글 · 인터뷰 자료</span></div></div>
-<div class="step"><span class="logo-emoji" aria-hidden="true">2️⃣</span><div class="txt"><strong>아래 프롬프트로 원칙 뽑기</strong><span>챗GPT가 대가-기획원칙.md로 정리</span></div></div>
-<div class="step"><span class="logo-emoji" aria-hidden="true">3️⃣</span><div class="txt"><strong>KB 폴더에 넣고 새 채팅</strong><span>진행 중인 채팅에는 반영되지 않습니다</span></div></div>
-</div>
-<div class="copybox short" id="s2ext-box"><div class="copybox-head"><span>📋 대가의 원칙 뽑는 프롬프트 (자료와 함께 붙여넣기)</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="s2ext">복사</button></div></div><pre id="s2ext">첨부한 자료는 [대가 이름]의 숏폼 기획 노하우야.
-이 자료에서 기획 원칙만 뽑아 MD 파일로 정리해줘.
-원문 문장은 그대로 베끼지 말고, 쉬운 말로 요약해줘.
+<section class="group" id="s3-brain"><div class="group-head"><span class="group-num">05</span><h2>KB에 디자인 대가의 뇌 심기</h2></div>
+<p class="group-desc">샘플이 <b>눈</b>이라면 KB는 <b>뇌</b>. 자료를 모으는 것만 사람이 하고, 정리는 챗GPT가 합니다. 받은 MD는 <b>포스터봇/KB/</b>에 넣고 새 채팅에서 “시작”.</p>
+<div class="copybox short" id="s3mas-box"><div class="copybox-head"><span>📋 대가의 디자인 원칙 뽑는 프롬프트 (자료와 함께)</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="s3mas">복사</button></div></div><pre id="s3mas">첨부한 자료는 [대가 이름]의 디자인 원칙이야. 포스터 · 카드뉴스에 쓸 규칙만 뽑아 MD 파일로 정리해줘.
+원문 문장은 베끼지 말고 쉬운 말로 요약해줘.
 
 [정리 항목]
-1. 훅 설계 원칙
-2. 구성(기승전결) 원칙
-3. 엔딩 원칙
-4. 자막·말투 원칙
-5. 하지 말아야 할 것
+1. 글자 크기 위계 (몇 단계, 몇 배)
+2. 여백 · 정렬 (화면 비율 %)
+3. 한 장의 정보량 (줄 수 · 글자 수)
+4. 색 · 대비 (색 개수, 대비 비율)
+5. 생성 후 셀프 점검 5개
 
-[출력 형식]
-- 제목은 #, 항목은 ##, 내용은 - 글머리 기호
-- 항목마다 3~5줄
-- 파일 이름: 대가-기획원칙.md</pre></div>
+[규칙] 형용사 대신 숫자로 쓴다.
+파일 이름 : 대가-디자인원칙.md</pre></div>
 </section>
 
-<section class="group" id="s2-custom"><div class="group-head"><span class="group-num">07</span><h2>챗GPT 커스텀봇 짜는 법</h2></div>
-<p class="group-desc">챗GPT는 <b>연결한 폴더 안에만</b> 파일을 쓸 수 있습니다. 그래서 봇 폴더 하나에 두뇌와 결과물을 함께 둡니다. 오늘 쓴 봇도 이 순서로 만들었습니다. <b>틀은 고정하고, 답만 바꾸게</b> 짜는 것이 핵심입니다.</p>
-<div class="steplist">
-<div class="step"><span class="logo-emoji" aria-hidden="true">1️⃣</span><div class="txt"><strong>이름 짓고 폴더 연결</strong><span>Work 탭 새 프로젝트 → 이름은 <b>(기관) 하는 일 봇</b> → 바탕화면 봇 폴더 연결 → 폴더 신뢰</span></div></div>
-<div class="step"><span class="logo-emoji" aria-hidden="true">2️⃣</span><div class="txt"><strong>지침 쓰기 — AGENTS.md</strong><span>역할 · 질문 · 진행 순서 · 출력 형식 · 하지 말 것</span></div></div>
-<div class="step"><span class="logo-emoji" aria-hidden="true">3️⃣</span><div class="txt"><strong>KB · 샘플 넣기</strong><span>기준 문서와 좋은 예를 파일로</span></div></div>
-<div class="step"><span class="logo-emoji" aria-hidden="true">4️⃣</span><div class="txt"><strong>돌려 보고 고치기</strong><span>이상한 답이 나오면 지침이나 KB를 고칩니다</span></div></div>
-</div>
-<h3 class="sub">폴더 구성법 — 바탕화면에 봇 폴더 하나, 안에서 두뇌와 결과물을 나눈다</h3>
-<table class="qtable">
-<tr><th>구분</th><th>두뇌 (위쪽)</th><th>결과물 (아래쪽)</th></tr>
-<tr><td><b>위치</b></td><td>(법무부) 기획구성안봇/ 바로 안</td><td>(법무부) 기획구성안봇/결과물/</td></tr>
-<tr><td><b>담는 것</b></td><td>AGENTS.md(지침) · KB/ · 샘플/ · 캐릭터/</td><td>주제별 폴더: 기획안 · 구성안 · PDF · 소스/ · 최종 영상</td></tr>
-<tr><td><b>언제 여나</b></td><td>봇을 고칠 때만</td><td>일할 때마다 새로 쌓임</td></tr>
-</table>
-</section>
-
-<section class="group" id="s2-share"><div class="group-head"><span class="group-num">08</span><h2>단톡방에 올릴 것</h2></div>
-<div class="note">봇이 만든 <b>기획구성안 PDF</b> 하나만 올려 주세요.</div>
-</section>
-
-<section class="group" id="s2-simple"><div class="group-head"><span class="group-num">09</span><h2>(법무부) 간단 숏폼봇 — 시연한 봇, 혼자 해 보기</h2></div>
-<p class="group-desc">오늘 시연에서 본 그 봇입니다. 상담만 하면 <b>25초 · 720p 숏폼 1편</b>을 끝까지 만들어 줍니다. 기획구성안봇에서 받은 <b>PDF를 넣으면 바로 이어서</b> 만들 수 있어요. 수업 뒤 <b>혼자 편할 때</b> 돌려 보세요.</p>
-<h3 class="sub">시연 결과물 (법무부 칭찬할 일 셋)</h3>
-<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start">
-<video src="images/moj/simplebot-sample.mp4" poster="images/moj/simplebot-sample-poster.jpg" controls playsinline preload="none" style="width:220px;border-radius:12px;background:#000"></video>
-<div style="flex:1;min-width:240px"><table class="qtable"><tr><th>신</th><th>만드는 방법</th></tr>
-<tr><td>S1 · S3 · S5</td><td><b>생성</b> — 캡컷 웹(시댄스 2.0 미니)</td></tr>
-<tr><td>S2 · S4</td><td><b>HTML 카드</b> — 픽토그램 + 키워드, 모션 넣어 영상으로</td></tr>
-<tr><td>조립</td><td><b>FFmpeg</b> — 말 자막 · 법무부 로고 · 나레이션 · 배경음악</td></tr></table></div>
-</div>
-<div class="steplist">
-<div class="step"><span class="logo-emoji" aria-hidden="true">📦</span><div class="txt"><strong>(법무부) 간단숏폼봇 폴더 받기 (ZIP · 5MB)</strong><span>압축을 풀면 <b>(법무부) 간단숏폼봇</b> 폴더가 생깁니다. <b>바탕화면</b>에 두세요.</span></div><a class="go" href="downloads/moj/moj3-simple-shortform-bot.zip" download>받기 ↓</a></div>
-</div>
-<pre class="tree" style="background:#18323B;color:#E8F1F2;border-radius:14px;padding:16px 18px;font-size:13.5px;line-height:1.75;overflow:auto;margin-top:10px">바탕화면/(법무부) 간단숏폼봇/
-├ AGENTS.md   ← 봇의 지침 (상담 → 구성안 → 생성 → 조립 순서)
-├ KB/         ← 기획원칙 · 구성안기준 · 디자인(MASSW) · 캡션작성법 · 캐릭터성격
-├ 캐릭터/      ← 김 · 박 · 서 · 최법무 시트
-├ 로고/        ← 법무부 로고 (흰색 · 컬러)
-├ 폰트/        ← Pretendard (자막 · 카드용)
-├ 샘플/        ← 좋은 숏폼 캡처를 넣어 두면 참고
-└ 결과물/      ← 만든 영상이 여기에 쌓임</pre>
-<h3 class="sub">봇 만들기 — 기획구성안봇과 같은 방법</h3>
-<div class="steplist">
-<div class="step"><span class="logo-emoji" aria-hidden="true">1️⃣</span><div class="txt"><strong>챗GPT 데스크톱 앱 → Work 탭 → 새 프로젝트</strong><span>이름은 <b>(법무부) 간단 숏폼 봇</b></span></div></div>
-<div class="step"><span class="logo-emoji" aria-hidden="true">2️⃣</span><div class="txt"><strong>소스 폴더 추가 → 이 컴퓨터 → 바탕화면 → (법무부) 간단숏폼봇 → 폴더 선택 → 폴더 신뢰</strong><span>연결하는 폴더는 이것 하나뿐입니다.</span></div></div>
-<div class="step"><span class="logo-emoji" aria-hidden="true">3️⃣</span><div class="txt"><strong>새 채팅에 “시작”</strong><span>기획구성안 PDF가 있으면 “1 네”를 고르고 올리면 됩니다.</span></div></div>
-</div>
-<h3 class="sub">이렇게 움직입니다</h3>
-<table class="qtable">
-<tr><th>단계</th><th>봇이 하는 일</th><th>확인</th></tr>
-<tr><td><b>0</b></td><td>기획구성안 PDF가 있으면 받아서 바로 구성안으로</td><td></td></tr>
-<tr><td><b>1</b></td><td>주제·소재 상담 → 캐릭터 고르기 → 구성안 5신</td><td>✅</td></tr>
-<tr><td><b>2</b></td><td>챗GPT로 스토리보드 1장 (5칸)</td><td>✅</td></tr>
-<tr><td><b>3</b></td><td>캡컷 웹에서 S1·S3·S5 생성 시작 (스토리보드 칸을 시작 이미지로)</td><td>✅</td></tr>
-<tr><td><b>4</b></td><td>생성되는 동안 일레븐랩스 나레이션 · 제미나이 배경음악</td><td></td></tr>
-<tr><td><b>5</b></td><td>S2·S4 HTML 카드 영상 + FFmpeg 조립 (말 자막 · 법무부 로고)</td><td></td></tr>
-<tr><td><b>6</b></td><td>완성 영상 링크 + 캡션글(채팅창에 바로 복사)</td><td></td></tr>
-</table>
-<p class="group-desc" style="margin-top:8px">✅ 표시 단계에서만 확인을 묻고, 나머지는 알아서 진행합니다. 크레딧이 드는 캡컷 생성은 반드시 먼저 물어봅니다.</p>
-<h3 class="sub">화면은 이렇게 나옵니다 (MASSW 디자인)</h3>
-<img src="images/moj/simplebot-layout.jpg" alt="간단 숏폼봇 화면 시안: 생성 장면, 틸 카드, 코랄 카드" loading="lazy" style="width:100%;border-radius:14px;border:1px solid var(--line);margin-top:6px">
-<p class="group-desc" style="margin-top:8px">말 자막은 중앙보다 약간 아래, 법무부 로고는 하단 중앙. 상단 제목은 넣지 않습니다.</p>
-<h3 class="sub">미리 해 둘 것 — 챗GPT 내부 웹 로그인</h3>
-<table class="qtable">
-<tr><th>사이트</th><th>주소</th><th>용도</th></tr>
-<tr><td><b>캡컷 웹</b></td><td>capcut.com</td><td>영상 3신 생성 (유료 계정)</td></tr>
-<tr><td><b>제미나이</b></td><td>gemini.google.com</td><td>배경음악</td></tr>
-<tr><td><b>일레븐랩스</b></td><td>elevenlabs.io</td><td>나레이션 (무료)</td></tr>
-</table>
-<div class="tip"><span class="ic">🔑</span><span>챗GPT 내부 웹은 내 크롬과 <b>로그인이 따로</b>입니다. 처음 한 번은 내부 웹에서 <b>직접</b> 로그인해 두세요. 비밀번호는 채팅창에 쓰지 않습니다.</span></div>
-<h3 class="sub">안 될 때</h3>
-<table class="qtable">
-<tr><th>증상</th><th>이렇게 해 보세요</th></tr>
-<tr><td>“시작”에 봇이 일반 대화처럼 답함</td><td>폴더 연결이 끊긴 것 — 프로젝트 소스 폴더를 <b>다시 연결</b>하고 <b>새 채팅</b></td></tr>
-<tr><td>폴더 이름·위치를 바꾼 뒤 안 됨</td><td>바뀐 폴더로 다시 연결 (챗GPT는 예전 경로를 기억함)</td></tr>
-<tr><td>캡컷 · 제미나이 · 일레븐랩스에서 멈춤</td><td>챗GPT <b>내부 웹</b>에서 그 사이트에 직접 로그인한 뒤 “계속”</td></tr>
-<tr><td>내려받은 파일을 못 찾음</td><td>다운로드 폴더의 파일을 채팅창에 바로 올리기</td></tr>
-</table>
+<section class="group" id="s3-share"><div class="group-head"><span class="group-num">06</span><h2>단톡방에 올릴 것</h2></div>
+<div class="note">① 4가지 방법 포스터 비교 캡처 · ② 포스터봇 기본 스타일 1장 + 내 샘플 스타일 1장 · ③ 카드뉴스 4장(시간이 부족하면 표지 1장) · ④ KB 넣기 전 · 후 두 장</div>
 </section>
 </div>
 

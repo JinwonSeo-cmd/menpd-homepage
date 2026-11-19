@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>법무부 3회차 복습 · 포스터봇 · 카드뉴스봇</title>
+<style>
+:root{--teal:#2D6B7A;--teal-dk:#1A4A56;--ink:#1F2933;--muted:#6B8790;--coral:#F4A88E;--orange:#E8642C;--cream:#FFF8F0;--mint:#E3EEEC;--line:#D9E3E4}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;background:var(--cream);color:var(--ink);line-height:1.65;font-size:16px;-webkit-text-size-adjust:100%}
+.wrap{max-width:720px;margin:0 auto;padding:28px 16px 60px}
+.badge{display:inline-block;background:var(--mint);color:var(--teal-dk);font-weight:800;font-size:13px;padding:4px 12px;border-radius:999px}
+h1{font-size:30px;margin:12px 0 6px;color:var(--teal-dk)}
+.lede{color:var(--muted);font-size:16px}
+.pdfbtn{display:flex;align-items:center;gap:12px;margin-top:18px;background:var(--teal);color:#fff;text-decoration:none;border-radius:14px;padding:14px 16px}
+.pdfbtn .pi{font-size:26px}.pdfbtn .pt{flex:1}.pdfbtn .pt b{display:block;font-size:17px}.pdfbtn .pt small{font-size:13px;opacity:.85}
+.pdfbtn .pg{background:#fff;color:var(--teal-dk);font-weight:800;font-size:14px;padding:8px 14px;border-radius:10px}
+.pdfguide{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-top:10px;text-align:center}
+.pdfguide p{font-size:15px}.pdfguide .pdfsvg{display:block;width:100%;height:auto;margin:8px 0}.pdfguide img{display:block;width:100%;height:auto;border-radius:8px;margin:8px 0}
+.pdfguide .pgl{font-size:17px;color:#c0281b}
+.press{display:flex;gap:12px;background:#fff8d6;border:2px solid #ffd84d;border-radius:14px;padding:14px 16px;margin:20px 0}
+.press b{display:block}
+section{margin-top:34px}
+h2{font-size:21px;color:var(--teal-dk);display:flex;align-items:baseline;gap:10px;margin-bottom:12px}
+h2 .n{font-family:ui-monospace,Menlo,monospace;font-size:14px;color:var(--orange)}
+.tag{font-size:12px;font-weight:800;color:#fff;background:var(--orange);padding:3px 10px;border-radius:999px;vertical-align:2px}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:10px}
+.card b.t{display:block;font-size:16px;margin-bottom:4px}
+.card ul{margin-left:18px;font-size:15px;color:#3b4a52}
+.flow{margin-top:12px;font-weight:800;color:var(--teal-dk);background:var(--mint);border-radius:12px;padding:12px 16px;text-align:center}
+.step{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:10px}
+.step .ic{flex:none;font-size:26px;width:40px;text-align:center}
+.step img{width:40px;height:40px;border-radius:9px;flex:none;object-fit:contain}
+.step .tx{flex:1;min-width:0}.step .tx>b{display:block}.step .tx span{font-size:14px;color:var(--muted)}
+.go{flex:none;background:var(--teal);color:#fff;text-decoration:none;font-weight:700;font-size:14px;padding:9px 14px;border-radius:10px}
+.mini-row{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px}
+.mini{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 13px 6px 8px;text-decoration:none}
+.mini img{width:18px;height:18px;border-radius:4px;object-fit:contain}
+.warn{background:#fdecea;border:2px solid #e4574a;border-radius:14px;padding:14px 16px;color:#8a1f15;font-size:15px}
+.warn b{color:#c0281b}
+.q{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:12px}
+.qt{font-size:16px;margin-bottom:12px}
+.qn{display:inline-block;background:var(--teal);color:#fff;font-weight:800;font-size:13px;padding:2px 9px;border-radius:8px;margin-right:8px}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.opt{font:inherit;font-size:15px;font-weight:700;padding:12px 10px;border-radius:12px;border:2px solid var(--line);background:#fff;color:var(--ink);cursor:pointer}
+.opt:hover{border-color:var(--teal)}
+.opt.ok{background:#dff5e8;border-color:#37b26c;color:#17683a}
+.opt.no{background:#fdecea;border-color:#e4574a;color:#8a1f15}
+.fb{margin-top:10px;font-size:14.5px;font-weight:700;color:#17683a;display:none}
+.fb.retry{color:#8a1f15}
+.cbox{background:#16313a;border-radius:14px;overflow:hidden;margin:2px 0 10px}
+.chead{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 14px;color:#cfe3e8;font-weight:700;font-size:14px;background:#1d4150}
+.cbtn{font:inherit;font-size:14px;font-weight:800;border:none;border-radius:9px;padding:7px 14px;background:var(--coral);color:#3a1d10;cursor:pointer}
+.cbtn.done{background:#5fd39a}
+.cbox pre{white-space:pre-wrap;word-break:keep-all;margin:0;padding:14px;color:#e6f1f4;font-family:inherit;font-size:15px}
+.snlist{display:grid;gap:8px;margin:0 0 10px}
+.sn{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:14px;padding:13px 14px}
+.sn .no{flex:none;display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--teal);color:#fff;font-weight:800;font-size:15px}
+.sn p{font-size:16.5px;line-height:1.6}
+.sn small{display:block;font-size:14px;color:var(--muted);margin-top:2px}
+.next{background:linear-gradient(135deg,var(--teal),#3d7d8f);color:#fff;border-radius:18px;padding:20px 22px}
+.next h3{font-size:18px;margin-bottom:8px}.next li{margin-left:18px}
+@media(max-width:480px){.step{flex-wrap:wrap}.go{width:100%;text-align:center}h1{font-size:26px}}
+
+table.t{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;font-size:14.5px;margin-bottom:10px}
+table.t th{background:var(--mint);color:var(--teal-dk);text-align:left;padding:9px 12px;font-size:13.5px}
+table.t td{padding:9px 12px;border-top:1px solid var(--line);vertical-align:top}
+.part{margin-top:44px;background:var(--teal-dk);color:#fff;border-radius:18px;padding:18px 20px}
+.part small{display:block;font-weight:800;color:var(--coral);font-size:13px;letter-spacing:.08em}
+.part b{font-size:22px}.part p{font-size:14.5px;opacity:.9;margin-top:4px}
+.tree{background:#16313a;color:#e6f1f4;border-radius:14px;padding:14px 16px;font-size:13.5px;line-height:1.75;overflow:auto;white-space:pre;font-family:ui-monospace,Menlo,Consolas,monospace;margin-bottom:10px}
+.imgs{display:flex;gap:10px;flex-wrap:wrap}.imgs a{flex:1;min-width:220px}.imgs img{width:100%;border:1px solid var(--line);border-radius:10px}
+.scenes{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:6px 0 10px}
+.scenes div{border-radius:10px;padding:10px 4px;text-align:center;font-weight:800;font-size:13px;color:#fff}
+.scenes .g{background:var(--teal)}.scenes .h{background:var(--orange)}.scenes small{display:block;font-weight:600;opacity:.9;font-size:11.5px}
+.frames{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}.frames img{width:100%;border-radius:8px}
+.note{font-size:14px;color:var(--muted);margin:4px 0 10px}
+h3{font-size:16.5px;color:var(--teal-dk);margin:18px 0 8px}
+.dl{display:flex;align-items:center;gap:12px;background:#fff;border:2px solid var(--teal);border-radius:14px;padding:14px 16px;margin-bottom:10px;text-decoration:none;color:var(--ink)}
+.dl .pi{font-size:26px}.dl .pt{flex:1}.dl .pt b{display:block;font-size:16.5px}.dl .pt small{font-size:13px;color:var(--muted)}
+.dl .pg{background:var(--teal);color:#fff;font-weight:800;font-size:14px;padding:8px 14px;border-radius:10px}
+</style><style>
+.game-btn{display:flex;align-items:center;gap:14px;margin-top:16px;background:linear-gradient(135deg,#1F3A5F,#2D6B7A);color:#fff;text-decoration:none;border-radius:16px;padding:14px 16px;box-shadow:0 6px 16px rgba(31,58,95,.25)}
+.game-btn .gi{font-size:30px}.game-btn .gt{flex:1}.game-btn .gt b{display:block;font-size:17px}.game-btn .gt small{font-size:13px;opacity:.85}
+.game-btn .gg{background:#F4A88E;color:#3a1d10;font-weight:900;font-size:14px;padding:8px 14px;border-radius:10px;white-space:nowrap}
+.shot{width:100%;border:1px solid var(--line);border-radius:12px;margin:6px 0 10px;display:block}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}@media(max-width:560px){.two{grid-template-columns:1fr}}
+.two .card{margin:0}
+</style>
+</head><body><div class="wrap">
+<span class="badge">법무부 · 생성형 AI 중급과정 · 3회차 (11/19)</span>
+<h1>3회차 복습 · 포스터봇 · 카드뉴스봇</h1>
+<p class="lede">같은 포스터를 <b>말로 → 샘플 → MD → 봇</b>으로 만들어 비교하고, <b>샘플을 따서</b> 봇을 키웠습니다. 수업에서 쓴 <b>(법무부) 종합 콘텐츠 봇</b>을 내려받아 혼자 다시 돌려 보세요.</p>
+<a class="game-btn" href="moj-game.html" target="_blank" rel="noopener"><span class="gi">⏰</span><span class="gt"><b>복습 게임 · 김법무의 칼퇴 대작전</b><small>퀴즈를 맞혀 업무 8건 처리! 틀리면 퇴근 10분 늦어짐</small></span><span class="gg">게임 시작 ▶</span></a>
+<div class="press"><span>💬</span><div><b>막히면 캡처해서 단톡방에 올려 주세요</b>안 되는 부분은 화면을 캡처해서 짧은 설명과 함께 단톡방에 올려 주세요. 살펴보고 답장드릴게요~</div></div>
+<div class="mini-row"><a class="mini" href="#p1">① 수업 복습</a><a class="mini" href="#p2">② 샘플 따기</a><a class="mini" href="#p3">③ 종합 콘텐츠 봇</a><a class="mini" href="#p4">④ 대가의 뇌</a></div>
+
+<div class="part" id="p1"><small>PART 1</small><b>오늘 수업 복습</b><p>품질은 샘플이, 일관성은 MD가, 편리함은 봇이 만든다</p></div>
+<section><h2><span class="n">01</span>오늘의 핵심 3가지</h2>
+<div class="card"><b class="t">① 말로 → 샘플 → MD → 봇 : 갈수록 일정하고 편해진다</b><ul><li>한 줄로만 요청하면 어떤 포스터가 나올지는 AI가 정합니다.</li><li>샘플 + MD + KB를 폴더 하나에 넣어 두면 — 그게 봇입니다.</li></ul></div>
+<div class="card"><b class="t">② 봇의 실력은 정리된 샘플에서</b><ul><li>포스터는 <b>파일 하나</b>, 카드뉴스는 <b>폴더 하나</b>. 이름은 <b>스타일_번호_특징</b>.</li></ul></div>
+<div class="card"><b class="t">③ 샘플은 눈, KB는 뇌</b><ul><li>대가의 원칙을 <b>숫자</b>로 KB에 심으면 어떤 스타일을 골라도 품질의 바닥이 올라갑니다.</li></ul></div>
+</section>
+<section><h2><span class="n">02</span>같은 포스터, 4가지 방법</h2>
+<table class="t"><tr><th>방법</th><th>내가 할 일</th><th>결과</th><th>다시 쓰기</th></tr>
+<tr><td><b>① 말로</b></td><td>한 줄 입력</td><td>매번 다름</td><td>✕</td></tr>
+<tr><td><b>② 샘플</b></td><td>샘플 찾기 + 내용</td><td>샘플을 따라감</td><td>△</td></tr>
+<tr><td><b>③ MD</b></td><td>MD 첨부 + 내용</td><td>규칙대로 일정</td><td>○</td></tr>
+<tr><td><b>④ 봇</b></td><td>“시작” + 번호</td><td>늘 같은 품질</td><td>◎ 누구나, 계속</td></tr></table>
+<p class="note">공통 주제 : 마을변호사 무료 법률상담의 날 · 11월 27일(목) 14~17시 · ○○구청 1층 민원실 (실습용 가상 정보)</p>
+</section>
+<section><h2><span class="n">03</span>형용사 풀어 쓰기 — AI는 가치판단을 못 합니다</h2>
+<table class="t"><tr><th>형용사</th><th>풀어 쓴 지시 (숫자 · 규칙)</th></tr>
+<tr><td><b>세련되게</b></td><td>색 3개 이하 · 여백 화면의 40% 이상 · 장식 2개 이하</td></tr>
+<tr><td><b>신뢰감 있게</b></td><td>네이비 바탕 · 흰 글씨 · 왼쪽 정렬 · 기관 로고 오른쪽 아래</td></tr>
+<tr><td><b>눈에 띄게</b></td><td>제목 높이 화면의 15% · 바탕과 명도 대비 7 : 1 이상</td></tr>
+<tr><td><b>깔끔하게</b></td><td>정보 4줄 이하 · 글꼴 2종 이하 · 정렬 한 가지</td></tr>
+<tr><td><b>따뜻하게</b></td><td>크림 · 주황 계열 · 오후 햇살 · 사람 얼굴이 보이는 사진</td></tr></table>
+</section>
+<section><h2><span class="n">04</span>3문제로 확인하기</h2>
+<div class="q" data-a="3"><div class="qt"><span class="qn">Q1</span>주제 한 줄이면 늘 같은 품질이 나오는 방법은?</div><div class="opts"><button class="opt" data-i="0">말로</button><button class="opt" data-i="1">샘플</button><button class="opt" data-i="2">MD</button><button class="opt" data-i="3">봇</button></div><div class="fb" data-ok="정답! 샘플 + MD + KB를 폴더 하나에 넣은 것이 봇입니다."></div></div>
+<div class="q" data-a="1"><div class="qt"><span class="qn">Q2</span>여러 장짜리 카드뉴스 샘플은 어떻게 정리할까요?</div><div class="opts"><button class="opt" data-i="0">첫 장만 저장</button><button class="opt" data-i="1">스타일 하나 = 폴더 하나로 전 장 저장</button><button class="opt" data-i="2">파일 이름은 아무렇게나</button><button class="opt" data-i="3">바탕화면에 그대로</button></div><div class="fb" data-ok="정답! 공유 링크를 주면 봇이 전 장을 캡처해 폴더로 넣습니다."></div></div>
+<div class="q" data-a="1"><div class="qt"><span class="qn">Q3</span>샘플은 눈, KB는?</div><div class="opts"><button class="opt" data-i="0">손</button><button class="opt" data-i="1">뇌</button><button class="opt" data-i="2">귀</button><button class="opt" data-i="3">발</button></div><div class="fb" data-ok="정답! KB에는 대가의 원칙을 숫자로 적어 둡니다."></div></div>
+</section>
+
+<div class="part" id="p2"><small>PART 2</small><b>샘플 따기 — 핀터레스트 · 레페로 스타일즈</b><p>포스터는 내려받아 이름만, 카드뉴스는 링크만 주면 봇이 전 장을</p></div>
+<section><h2><span class="n">05</span>핀터레스트에서 따기</h2>
+<img class="shot" src="images/moj/moj3-pinterest.jpg" alt="핀터레스트 검색 화면" loading="lazy">
+<p class="note"><b>pinterest.co.kr</b> → 검색 : 공공 포스터 · 정책 카드뉴스 · campaign poster → 마음에 드는 핀을 누르면 비슷한 핀이 계속 따라 나옵니다.</p>
+<div class="two">
+<div class="card"><b class="t">🖼️ 포스터 — 한 장 = 파일 하나</b><ul><li>핀 열기 → ⋯ → <b>이미지 다운로드</b></li><li>파일 이름을 <b>특징</b>으로 바꾸기 (폴더 필요 없음)</li><li><b>포스터봇/샘플/</b>에 넣기</li><li>예) 스타일_18_네이비정책.png</li></ul></div>
+<div class="card"><b class="t">🗂️ 카드뉴스 — 여러 장 = 폴더 하나</b><ul><li>게시물 <b>공유 → 링크 복사</b></li><li>카드뉴스봇 채팅에 링크 + 아래 문장</li><li>챗GPT가 1장 ~ 마지막 장을 캡처해 폴더로</li><li>예) 스타일_08_인포아이콘/01.jpg ~</li></ul></div>
+</div>
+<h3>카드뉴스봇 채팅에 — 링크로 전 장 따기</h3><div class="cbox"><div class="chead"><span>📋 카드뉴스 · 링크로 전 장</span><button class="cbtn" data-t="c1">복사</button></div><pre id="c1">이 핀터레스트 게시물 링크를 내부 웹으로 열어서 1장부터 마지막 장까지 전 장을 모두 캡처해줘.
+카드뉴스봇/샘플/ 안에 '스타일_번호_특징이름' 폴더를 만들어 01.jpg, 02.jpg … 순서로 넣고, 표지는 같은 이름의 .png로도 저장해줘.
+특징 이름(2~4단어)과 특징 3줄(색 · 레이아웃 · 글씨 느낌)을 스타일목록.md에 추가하고, 링크는 링크모음.md에 남겨줘.
+[링크 붙여넣기]</pre></div>
+<h3>포스터봇 채팅에 — 내려받은 파일 이름 정리</h3><div class="cbox"><div class="chead"><span>📋 포스터 · 내려받고 이름만</span><button class="cbtn" data-t="c2">복사</button></div><pre id="c2">포스터봇/샘플/ 폴더에 새로 넣은 포스터 파일을 보고, 특징 이름(2~4단어)을 지어 '스타일_번호_특징이름.png'로 바꿔줘.
+스타일목록.md에 색 · 구도 · 글씨 느낌 3줄로 추가하고, 메뉴판을 다시 만들어 보여줘.</pre></div>
+<p class="note">로그인 · 보안 때문에 링크가 안 열리면 <b>Win + Shift + S</b>로 캡처해 채팅창에 붙여넣고 “이 스타일도 추가해줘”.</p>
+</section>
+<section><h2><span class="n">06</span>레페로 스타일즈에서 따기 — 디자인을 MD 한 장으로</h2>
+<img class="shot" src="images/moj/moj3-refero.jpg" alt="레페로 스타일즈 화면" loading="lazy">
+<div class="snlist">
+<div class="sn"><span class="no">1</span><p><b>styles.refero.design</b> 접속 → 검색<small>Bauhaus geometry · Soft pastel 처럼 느낌으로 찾습니다.</small></p></div>
+<div class="sn"><span class="no">2</span><p>마음에 드는 스타일 열기 → <b>DESIGN.md 복사</b><small>실제 사이트의 색 · 글꼴 · 간격이 정리된 파일입니다.</small></p></div>
+<div class="sn"><span class="no">3</span><p>봇 채팅에 붙여넣고 <b>포스터 · 카드뉴스용 MD</b>로 바꾸기<small>아래 문장 + DESIGN.md를 함께 붙여넣으세요.</small></p></div>
+<div class="sn"><span class="no">4</span><p><b>KB/</b>에 스타일MD_이름.md로 저장 → <b>새 채팅</b>에서 “시작”</p></div>
+</div>
+<div class="cbox"><div class="chead"><span>📋 레페로 DESIGN.md → 스타일 MD</span><button class="cbtn" data-t="c3">복사</button></div><pre id="c3">아래 DESIGN.md는 웹사이트 디자인 규칙이야. 이걸 포스터 · 카드뉴스에 쓸 '스타일MD_[이름].md'로 바꿔줘.
+색(헥스 3개 이하) · 글꼴 느낌 · 여백 · 정렬 · 금지할 것만 숫자로 남기고, 버튼 · 메뉴 같은 웹 요소는 빼줘.
+포스터봇/KB/에 저장해줘.
+[DESIGN.md 붙여넣기]</pre></div>
+</section>
+<section><h2><span class="n">07</span>이름 붙이기 규칙 — 종류_번호_특징</h2>
+<table class="t"><tr><th>나쁜 이름</th><th>좋은 이름</th></tr>
+<tr><td>IMG_2031.jpg</td><td>스타일_18_네이비정책.png</td></tr>
+<tr><td>최종_진짜최종.png</td><td>스타일_19_손글씨일러스트.png</td></tr>
+<tr><td>캡처(3).png</td><td>스타일_08_인포아이콘/01.jpg</td></tr>
+<tr><td>새 문서.md</td><td>KB_행사_법률상담의날.md</td></tr></table>
+<p class="note">사람이 보고 알면, 봇도 보고 압니다. 번호가 곧 메뉴판 순서예요.</p>
+</section>
+
+<div class="part" id="p3"><small>PART 3</small><b>(법무부) 종합 콘텐츠 봇 — 직접 다시 해보기</b><p>폴더 하나에 봇 여러 개 — 기획구성안봇 · 포스터봇 · 카드뉴스봇 (숏폼봇은 다음에 추가)</p></div>
+<section><h2><span class="n">08</span>폴더 받기</h2>
+<a class="dl" href="downloads/moj/moj3-3_content-bot.zip" download><span class="pi">📦</span><span class="pt"><b>(법무부) 종합 콘텐츠 봇 받기</b><small>ZIP · 41MB · 압축을 풀어 바탕화면에 두세요</small></span><span class="pg">받기 ↓</span></a>
+<div class="tree">바탕화면/(법무부) 종합 콘텐츠 봇/
+├ AGENTS.md     ← 안내 데스크 (프로젝트 이름으로 봇 고르기)
+├ README.txt    ← 사용법
+├ 공통/          ← 모든 봇이 함께 쓰는 재료
+│  ├ 로고/        법무부 로고 (컬러 · 흰색)
+│  ├ 캐릭터/      김 · 최 · 박 · 서법무 시트
+│  ├ 폰트/        한글 · 영문 서체 + 견본
+│  └ KB/          기관 · 캐릭터 · 디자인원칙(대가의 뇌) · 법률상담의 날 · 구두계약
+├ 기획구성안봇/   ← 지난주 봇 (기획안 + 구성안 PDF)
+├ 포스터봇/       ← AGENTS.md · KB/ · 샘플/(스타일 17종) · 결과물/
+└ 카드뉴스봇/     ← AGENTS.md · KB/ · 샘플/(스타일 7종) · 결과물/</div>
+<div class="warn">🔒 이 폴더에는 <b>개인정보 · 내부 문서를 넣지 마세요.</b> 샘플/의 일부 견본은 외부 레퍼런스라 <b>실습용 · 분위기 참고용</b>으로만 씁니다.</div>
+</section>
+<section><h2><span class="n">09</span>봇 만들기 — 6단계 (봇마다 프로젝트 하나)</h2><div class="step"><span class="ic">1️⃣</span><div class="tx"><b>챗GPT <u>데스크톱 앱</u> → 위쪽 Work 탭</b><span>웹 브라우저가 아니라 PC에 설치한 앱이어야 폴더를 연결할 수 있습니다.</span></div></div><div class="step"><span class="ic">2️⃣</span><div class="tx"><b>왼쪽 프로젝트 옆 ＋ → 새 프로젝트</b><span></span></div></div><div class="step"><span class="ic">3️⃣</span><div class="tx"><b>이름 : (법무부) 포스터봇</b><span><b>봇 이름이 꼭 들어가야</b> 안내 데스크가 알맞은 봇으로 연결합니다. 카드뉴스는 (법무부) 카드뉴스봇.</span></div></div><div class="step"><span class="ic">4️⃣</span><div class="tx"><b>소스 폴더 추가 → 이 컴퓨터 → 바탕화면 → (법무부) 종합 콘텐츠 봇 → 폴더 선택</b><span>봇마다 폴더를 따로 고르지 않습니다. <b>종합 폴더 하나</b>만 연결 (안에 같은 이름 폴더가 또 있으면 AGENTS.md가 보이는 안쪽).</span></div></div><div class="step"><span class="ic">5️⃣</span><div class="tx"><b>“이 폴더를 신뢰할까요?” → 폴더 신뢰</b><span></span></div></div><div class="step"><span class="ic">6️⃣</span><div class="tx"><b>새 채팅에 “시작”</b><span>“📍 포스터봇으로 시작할게요”가 나오면 성공입니다.</span></div></div>
+<p class="note">카드뉴스봇 · 기획구성안봇도 똑같이 — 이름만 바꾸고, 폴더는 같은 <b>종합 콘텐츠 봇</b> 하나.</p>
+</section>
+<section><h2><span class="n">10</span>포스터봇 — 5단계 · 스타일 17종</h2>
+<div class="scenes"><div class="g">① 알릴 것<small>KB 번호</small></div><div class="g">② 스타일<small>메뉴판</small></div><div class="h">③ 문구 ✅<small>KB 그대로</small></div><div class="h">④ 시안 ✅<small>3:4 생성</small></div><div class="h">⑤ 완성 ✅<small>수정 반영</small></div></div>
+<img class="shot" src="images/moj/moj3-poster-menu.jpg" alt="포스터 스타일 메뉴판 17종" loading="lazy">
+<p class="note">✅ 세 번만 확인 — 글씨까지 챗GPT 안에서 한 번에 만듭니다. 결과는 <b>포스터봇/결과물/</b>에.</p>
+</section>
+<section><h2><span class="n">11</span>카드뉴스봇 — 6단계 · 스타일 7종</h2>
+<div class="scenes"><div class="g">① 주제 KB<small>정보 파일</small></div><div class="h">② 구성안 ✅<small>4장 문구</small></div><div class="g">③ 스타일<small>메뉴판</small></div><div class="h">④ 1장 시안 ✅<small>표지 먼저</small></div><div class="h">⑤ 4장 ✅<small>+ 캡션</small></div></div>
+<img class="shot" src="images/moj/moj3-card-menu.jpg" alt="카드뉴스 스타일 메뉴판 7종" loading="lazy">
+<table class="t"><tr><th>장</th><th>역할</th><th>문구 (예시 · 말로 한 약속도 계약입니다)</th></tr>
+<tr><td>1</td><td>표지</td><td>계약서 없으면 없던 일?</td></tr><tr><td>2</td><td>본문</td><td>말로 한 약속도 엄연한 계약입니다</td></tr>
+<tr><td>3</td><td>본문</td><td>문자 · 녹음 = 증거, 꼭 남겨 두세요</td></tr><tr><td>4</td><td>마무리</td><td>헷갈리면 마을변호사에게 물어보세요</td></tr></table>
+<p class="note">왜 1장 시안을 먼저? 4장을 다 만들고 고치면 생성이 네 배로 듭니다.</p>
+</section>
+
+<div class="part" id="p4"><small>PART 4</small><b>KB에 디자인 대가의 뇌 심기</b><p>대가의 말은 멋진 문장 — 봇에게는 숫자로 옮겨 줘야 합니다</p></div>
+<section><h2><span class="n">12</span>대가의 디자인 원칙 뽑기</h2>
+<table class="t"><tr><th>원칙</th><th>KB에 적는 규칙 (포스터 3:4)</th></tr>
+<tr><td><b>크기 3단계</b></td><td>제목은 본문의 4배 · 부제 1.6배 — 제목과 본문 차이 최소 3배</td></tr>
+<tr><td><b>여백</b></td><td>가장자리 = 가로 폭의 8% · 화면의 40% 이상 비우기</td></tr>
+<tr><td><b>정보량</b></td><td>제목 최대 2줄 · 정보 최대 4줄 · 전체 70자 이내</td></tr>
+<tr><td><b>색 · 대비</b></td><td>한 장에 3색 · 본문 대비 4.5 : 1 이상</td></tr>
+<tr><td><b>정렬</b></td><td>기본 왼쪽 · 한 장에 정렬 한 가지 · 로고 오른쪽 아래 폭 18%</td></tr></table>
+<div class="cbox"><div class="chead"><span>📋 대가의 디자인 원칙 뽑는 프롬프트 (자료와 함께)</span><button class="cbtn" data-t="c4">복사</button></div><pre id="c4">첨부한 자료는 [대가 이름]의 디자인 원칙이야. 포스터 · 카드뉴스에 쓸 규칙만 뽑아 MD 파일로 정리해줘.
+원문 문장은 베끼지 말고 쉬운 말로 요약해줘.
+
+[정리 항목]
+1. 글자 크기 위계 (몇 단계, 몇 배)
+2. 여백 · 정렬 (화면 비율 %)
+3. 한 장의 정보량 (줄 수 · 글자 수)
+4. 색 · 대비 (색 개수, 대비 비율)
+5. 생성 후 셀프 점검 5개
+
+[규칙] 형용사 대신 숫자로 쓴다.
+파일 이름 : 대가-디자인원칙.md</pre></div>
+<p class="note">받은 <b>대가-디자인원칙.md</b>를 <b>포스터봇/KB/</b>에 넣고 <b>새 채팅</b>에서 같은 번호로 다시 뽑아 전 · 후를 비교해 보세요. (종합 봇의 공통/KB/KB_디자인원칙.md에 5인의 원칙이 이미 들어 있습니다)</p>
+</section>
+<section><h2><span class="n">13</span>안 될 때</h2>
+<table class="t"><tr><th>증상</th><th>이렇게 해 보세요</th></tr>
+<tr><td>“시작”에 봇 메뉴가 나옴</td><td>프로젝트 이름에 봇 이름이 없을 때 — 번호로 고르면 됩니다</td></tr>
+<tr><td>일반 대화처럼 답함</td><td>폴더 연결이 끊긴 것 — 소스 폴더 다시 연결 → <b>새 채팅</b></td></tr>
+<tr><td>한글이 깨지거나 틀림</td><td>“제목 글자를 KB와 한 글자씩 대조해서 다시 만들어줘”</td></tr>
+<tr><td>로고 위치가 매번 다름</td><td>AGENTS.md 맨 아래에 “로고는 오른쪽 아래 폭 18%” 한 줄 추가</td></tr>
+<tr><td>링크가 안 열림 (핀터레스트)</td><td>Win + Shift + S 캡처 → 채팅창에 붙여넣기</td></tr></table>
+</section>
+<div class="next" style="margin-top:34px"><h3>다음 시간 예고</h3><ul><li>종합 콘텐츠 봇에 <b>숏폼봇</b>을 추가해 영상까지 한 폴더에서</li></ul></div>
+
+<script>
+document.querySelectorAll('.q').forEach(function(q){
+  var a=+q.dataset.a, fb=q.querySelector('.fb');
+  q.querySelectorAll('.opt').forEach(function(b){
+    b.addEventListener('click',function(){
+      if(q.classList.contains('done'))return;
+      if(+b.dataset.i===a){b.classList.add('ok');q.classList.add('done');fb.textContent=fb.dataset.ok;fb.className='fb';fb.style.display='block'}
+      else{b.classList.add('no');fb.textContent='다시 골라 보세요.';fb.className='fb retry';fb.style.display='block'}
+    });
+  });
+});
+document.querySelectorAll('.cbtn').forEach(function(b){
+b.addEventListener('click',function(){var el=document.getElementById(b.dataset.t),tx=el.innerText,lb=b.textContent;
+function ok(){b.textContent='복사 완료! ✔︎';b.classList.add('done');setTimeout(function(){b.textContent=lb;b.classList.remove('done')},2200)}
+function fb(){var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r);try{document.execCommand('copy');ok()}catch(e){}}
+if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(tx).then(ok,fb)}else{fb()}})});
+</script></body></html>
