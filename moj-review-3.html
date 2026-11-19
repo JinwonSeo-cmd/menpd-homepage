@@ -125,14 +125,14 @@ h3{font-size:16.5px;color:var(--teal-dk);margin:18px 0 8px}
 <img class="shot" src="images/moj/moj3-pinterest.jpg" alt="핀터레스트 검색 화면" loading="lazy">
 <p class="note"><b>pinterest.co.kr</b> → 검색 : 공공 포스터 · 정책 카드뉴스 · campaign poster → 마음에 드는 핀을 누르면 비슷한 핀이 계속 따라 나옵니다.</p>
 <div class="two">
-<div class="card"><b class="t">🖼️ 포스터 — 한 장 = 파일 하나</b><ul><li>핀 열기 → ⋯ → <b>이미지 다운로드</b></li><li>파일 이름을 <b>특징</b>으로 바꾸기 (폴더 필요 없음)</li><li><b>포스터봇/샘플/</b>에 넣기</li><li>예) 스타일_18_네이비정책.png</li></ul></div>
+<div class="card"><b class="t">🖼️ 포스터 — 한 장 = 파일 하나</b><ul><li>핀 열기 → ⋯ → <b>이미지 다운로드</b></li><li>파일 이름을 <b>특징</b>으로 바꾸기 (폴더 필요 없음)</li><li><b>2_포스터봇/샘플/</b>에 넣기</li><li>예) 스타일_18_네이비정책.png</li></ul></div>
 <div class="card"><b class="t">🗂️ 카드뉴스 — 여러 장 = 폴더 하나</b><ul><li>게시물 <b>공유 → 링크 복사</b></li><li>카드뉴스봇 채팅에 링크 + 아래 문장</li><li>챗GPT가 1장 ~ 마지막 장을 캡처해 폴더로</li><li>예) 스타일_08_인포아이콘/01.jpg ~</li></ul></div>
 </div>
 <h3>카드뉴스봇 채팅에 — 링크로 전 장 따기</h3><div class="cbox"><div class="chead"><span>📋 카드뉴스 · 링크로 전 장</span><button class="cbtn" data-t="c1">복사</button></div><pre id="c1">이 핀터레스트 게시물 링크를 내부 웹으로 열어서 1장부터 마지막 장까지 전 장을 모두 캡처해줘.
-카드뉴스봇/샘플/ 안에 '스타일_번호_특징이름' 폴더를 만들어 01.jpg, 02.jpg … 순서로 넣고, 표지는 같은 이름의 .png로도 저장해줘.
+3_카드뉴스봇/샘플/ 안에 '스타일_번호_특징이름' 폴더를 만들어 01.jpg, 02.jpg … 순서로 넣고, 표지는 같은 이름의 .png로도 저장해줘.
 특징 이름(2~4단어)과 특징 3줄(색 · 레이아웃 · 글씨 느낌)을 스타일목록.md에 추가하고, 링크는 링크모음.md에 남겨줘.
 [링크 붙여넣기]</pre></div>
-<h3>포스터봇 채팅에 — 내려받은 파일 이름 정리</h3><div class="cbox"><div class="chead"><span>📋 포스터 · 내려받고 이름만</span><button class="cbtn" data-t="c2">복사</button></div><pre id="c2">포스터봇/샘플/ 폴더에 새로 넣은 포스터 파일을 보고, 특징 이름(2~4단어)을 지어 '스타일_번호_특징이름.png'로 바꿔줘.
+<h3>포스터봇 채팅에 — 내려받은 파일 이름 정리</h3><div class="cbox"><div class="chead"><span>📋 포스터 · 내려받고 이름만</span><button class="cbtn" data-t="c2">복사</button></div><pre id="c2">2_포스터봇/샘플/ 폴더에 새로 넣은 포스터 파일을 보고, 특징 이름(2~4단어)을 지어 '스타일_번호_특징이름.png'로 바꿔줘.
 스타일목록.md에 색 · 구도 · 글씨 느낌 3줄로 추가하고, 메뉴판을 다시 만들어 보여줘.</pre></div>
 <p class="note">로그인 · 보안 때문에 링크가 안 열리면 <b>Win + Shift + S</b>로 캡처해 채팅창에 붙여넣고 “이 스타일도 추가해줘”.</p>
 </section>
@@ -146,7 +146,7 @@ h3{font-size:16.5px;color:var(--teal-dk);margin:18px 0 8px}
 </div>
 <div class="cbox"><div class="chead"><span>📋 레페로 DESIGN.md → 스타일 MD</span><button class="cbtn" data-t="c3">복사</button></div><pre id="c3">아래 DESIGN.md는 웹사이트 디자인 규칙이야. 이걸 포스터 · 카드뉴스에 쓸 '스타일MD_[이름].md'로 바꿔줘.
 색(헥스 3개 이하) · 글꼴 느낌 · 여백 · 정렬 · 금지할 것만 숫자로 남기고, 버튼 · 메뉴 같은 웹 요소는 빼줘.
-포스터봇/KB/에 저장해줘.
+2_포스터봇/KB/에 저장해줘.
 [DESIGN.md 붙여넣기]</pre></div>
 </section>
 <section><h2><span class="n">07</span>이름 붙이기 규칙 — 종류_번호_특징</h2>
@@ -169,18 +169,18 @@ h3{font-size:16.5px;color:var(--teal-dk);margin:18px 0 8px}
 │  ├ 캐릭터/      김 · 최 · 박 · 서법무 시트
 │  ├ 폰트/        한글 · 영문 서체 + 견본
 │  └ KB/          기관 · 캐릭터 · 디자인원칙(대가의 뇌) · 법률상담의 날 · 구두계약
-├ 기획구성안봇/   ← 지난주 봇 (기획안 + 구성안 PDF)
-├ 포스터봇/       ← AGENTS.md · KB/ · 샘플/(스타일 17종) · 결과물/
-└ 카드뉴스봇/     ← AGENTS.md · KB/ · 샘플/(스타일 7종) · 결과물/</div>
+├ 1_기획구성안봇/ ← 지난주 봇 (기획안 + 구성안 PDF)
+├ 2_포스터봇/       ← AGENTS.md · KB/ · 샘플/(스타일 17종) · 결과물/
+└ 3_카드뉴스봇/     ← AGENTS.md · KB/ · 샘플/(스타일 7종) · 결과물/</div>
 <div class="warn">🔒 이 폴더에는 <b>개인정보 · 내부 문서를 넣지 마세요.</b> 샘플/의 일부 견본은 외부 레퍼런스라 <b>실습용 · 분위기 참고용</b>으로만 씁니다.</div>
 </section>
-<section><h2><span class="n">09</span>봇 만들기 — 6단계 (봇마다 프로젝트 하나)</h2><div class="step"><span class="ic">1️⃣</span><div class="tx"><b>챗GPT <u>데스크톱 앱</u> → 위쪽 Work 탭</b><span>웹 브라우저가 아니라 PC에 설치한 앱이어야 폴더를 연결할 수 있습니다.</span></div></div><div class="step"><span class="ic">2️⃣</span><div class="tx"><b>왼쪽 프로젝트 옆 ＋ → 새 프로젝트</b><span></span></div></div><div class="step"><span class="ic">3️⃣</span><div class="tx"><b>이름 : (법무부) 포스터봇</b><span><b>봇 이름이 꼭 들어가야</b> 안내 데스크가 알맞은 봇으로 연결합니다. 카드뉴스는 (법무부) 카드뉴스봇.</span></div></div><div class="step"><span class="ic">4️⃣</span><div class="tx"><b>소스 폴더 추가 → 이 컴퓨터 → 바탕화면 → (법무부) 종합 콘텐츠 봇 → 폴더 선택</b><span>봇마다 폴더를 따로 고르지 않습니다. <b>종합 폴더 하나</b>만 연결 (안에 같은 이름 폴더가 또 있으면 AGENTS.md가 보이는 안쪽).</span></div></div><div class="step"><span class="ic">5️⃣</span><div class="tx"><b>“이 폴더를 신뢰할까요?” → 폴더 신뢰</b><span></span></div></div><div class="step"><span class="ic">6️⃣</span><div class="tx"><b>새 채팅에 “시작”</b><span>“📍 포스터봇으로 시작할게요”가 나오면 성공입니다.</span></div></div>
+<section><h2><span class="n">09</span>봇 만들기 — 6단계 (봇마다 프로젝트 하나)</h2><div class="step"><span class="ic">1️⃣</span><div class="tx"><b>챗GPT <u>데스크톱 앱</u> → 위쪽 Work 탭</b><span>웹 브라우저가 아니라 PC에 설치한 앱이어야 폴더를 연결할 수 있습니다.</span></div></div><div class="step"><span class="ic">2️⃣</span><div class="tx"><b>왼쪽 프로젝트 옆 ＋ → 새 프로젝트</b><span></span></div></div><div class="step"><span class="ic">3️⃣</span><div class="tx"><b>이름 : (법무부) 2 포스터봇</b><span><b>봇 이름이 꼭 들어가야</b> 안내 데스크가 알맞은 봇으로 연결합니다. 카드뉴스는 (법무부) 3 카드뉴스봇.</span></div></div><div class="step"><span class="ic">4️⃣</span><div class="tx"><b>소스 폴더 추가 → 이 컴퓨터 → 바탕화면 → (법무부) 종합 콘텐츠 봇 → 폴더 선택</b><span>봇마다 폴더를 따로 고르지 않습니다. <b>종합 폴더 하나</b>만 연결 (안에 같은 이름 폴더가 또 있으면 AGENTS.md가 보이는 안쪽).</span></div></div><div class="step"><span class="ic">5️⃣</span><div class="tx"><b>“이 폴더를 신뢰할까요?” → 폴더 신뢰</b><span></span></div></div><div class="step"><span class="ic">6️⃣</span><div class="tx"><b>새 채팅에 “시작”</b><span>“📍 포스터봇으로 시작할게요”가 나오면 성공입니다.</span></div></div>
 <p class="note">카드뉴스봇 · 기획구성안봇도 똑같이 — 이름만 바꾸고, 폴더는 같은 <b>종합 콘텐츠 봇</b> 하나.</p>
 </section>
 <section><h2><span class="n">10</span>포스터봇 — 5단계 · 스타일 17종</h2>
 <div class="scenes"><div class="g">① 알릴 것<small>KB 번호</small></div><div class="g">② 스타일<small>메뉴판</small></div><div class="h">③ 문구 ✅<small>KB 그대로</small></div><div class="h">④ 시안 ✅<small>3:4 생성</small></div><div class="h">⑤ 완성 ✅<small>수정 반영</small></div></div>
 <img class="shot" src="images/moj/moj3-poster-menu.jpg" alt="포스터 스타일 메뉴판 17종" loading="lazy">
-<p class="note">✅ 세 번만 확인 — 글씨까지 챗GPT 안에서 한 번에 만듭니다. 결과는 <b>포스터봇/결과물/</b>에.</p>
+<p class="note">✅ 세 번만 확인 — 글씨까지 챗GPT 안에서 한 번에 만듭니다. 결과는 <b>2_포스터봇/결과물/</b>에.</p>
 </section>
 <section><h2><span class="n">11</span>카드뉴스봇 — 6단계 · 스타일 7종</h2>
 <div class="scenes"><div class="g">① 주제 KB<small>정보 파일</small></div><div class="h">② 구성안 ✅<small>4장 문구</small></div><div class="g">③ 스타일<small>메뉴판</small></div><div class="h">④ 1장 시안 ✅<small>표지 먼저</small></div><div class="h">⑤ 4장 ✅<small>+ 캡션</small></div></div>
@@ -211,7 +211,7 @@ h3{font-size:16.5px;color:var(--teal-dk);margin:18px 0 8px}
 
 [규칙] 형용사 대신 숫자로 쓴다.
 파일 이름 : 대가-디자인원칙.md</pre></div>
-<p class="note">받은 <b>대가-디자인원칙.md</b>를 <b>포스터봇/KB/</b>에 넣고 <b>새 채팅</b>에서 같은 번호로 다시 뽑아 전 · 후를 비교해 보세요. (종합 봇의 공통/KB/KB_디자인원칙.md에 5인의 원칙이 이미 들어 있습니다)</p>
+<p class="note">받은 <b>대가-디자인원칙.md</b>를 <b>2_포스터봇/KB/</b>에 넣고 <b>새 채팅</b>에서 같은 번호로 다시 뽑아 전 · 후를 비교해 보세요. (종합 봇의 공통/KB/KB_디자인원칙.md에 5인의 원칙이 이미 들어 있습니다)</p>
 </section>
 <section><h2><span class="n">13</span>안 될 때</h2>
 <table class="t"><tr><th>증상</th><th>이렇게 해 보세요</th></tr>

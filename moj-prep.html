@@ -316,16 +316,16 @@ h3.sub{font-size:17px;font-weight:800;margin:28px 0 10px}
 │  ├ 캐릭터/      김 · 최 · 박 · 서법무 시트
 │  ├ 폰트/        한글 · 영문 서체 + 견본
 │  └ KB/          기관 · 캐릭터 · 디자인원칙(대가의 뇌) · 법률상담의 날 · 구두계약
-├ 기획구성안봇/   ← 지난주 봇 (기획안 + 구성안 PDF)
-├ 포스터봇/       ← AGENTS.md · KB/ · 샘플/(스타일 17종) · 결과물/
-└ 카드뉴스봇/     ← AGENTS.md · KB/ · 샘플/(스타일 7종) · 결과물/</pre>
+├ 1_기획구성안봇/   ← 지난주 봇 (기획안 + 구성안 PDF)
+├ 2_포스터봇/       ← AGENTS.md · KB/ · 샘플/(스타일 17종) · 결과물/
+└ 3_카드뉴스봇/     ← AGENTS.md · KB/ · 샘플/(스타일 7종) · 결과물/</pre>
 <div class="tip"><span class="ic">🔒</span><span>이 폴더에는 <b>개인정보·내부 문서를 넣지 마세요.</b> 샘플의 일부 견본은 외부 레퍼런스라 분위기 참고용으로만 씁니다.</span></div>
 </section>
 
 <section class="group" id="s3-make"><div class="group-head"><span class="group-num">03</span><h2>봇 연결하기 — 봇마다 프로젝트 하나, 폴더는 같은 것 하나</h2></div>
 <div class="steplist">
 <div class="step"><span class="logo-emoji" aria-hidden="true">1️⃣</span><div class="txt"><strong>챗GPT <b>데스크톱 앱</b> → Work 탭 → 프로젝트 ＋</strong><span>웹 브라우저가 아니라 PC에 설치한 앱이어야 합니다.</span></div></div>
-<div class="step"><span class="logo-emoji" aria-hidden="true">2️⃣</span><div class="txt"><strong>이름 : <b>(법무부) 포스터봇</b></strong><span>봇 이름이 꼭 들어가야 안내 데스크가 알맞은 봇으로 연결합니다. 카드뉴스는 (법무부) 카드뉴스봇.</span></div></div>
+<div class="step"><span class="logo-emoji" aria-hidden="true">2️⃣</span><div class="txt"><strong>이름 : <b>(법무부) 2 포스터봇</b></strong><span>봇 이름이 꼭 들어가야 안내 데스크가 알맞은 봇으로 연결합니다. 카드뉴스는 (법무부) 3 카드뉴스봇.</span></div></div>
 <div class="step"><span class="logo-emoji" aria-hidden="true">3️⃣</span><div class="txt"><strong>소스 폴더 추가 → 이 컴퓨터 → 바탕화면 → <b>(법무부) 종합 콘텐츠 봇</b> → 폴더 선택 → 폴더 신뢰</strong><span>봇 폴더를 따로 고르지 않습니다. 종합 폴더 하나만.</span></div></div>
 <div class="step"><span class="logo-emoji" aria-hidden="true">4️⃣</span><div class="txt"><strong>새 채팅에 <b>시작</b></strong><span>“📍 포스터봇으로 시작할게요”가 나오면 성공. 번호로만 답하면 됩니다.</span></div></div>
 </div>
@@ -342,22 +342,22 @@ h3.sub{font-size:17px;font-weight:800;margin:28px 0 10px}
 <tr><td><b>이름 예</b></td><td>스타일_18_네이비정책.png</td><td>스타일_08_인포아이콘/01.jpg ~</td></tr>
 </table>
 <div class="copybox short" id="s3pin-box"><div class="copybox-head"><span>📋 카드뉴스봇에 — 링크로 전 장 따기</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="s3pin">복사</button></div></div><pre id="s3pin">이 핀터레스트 게시물 링크를 내부 웹으로 열어서 1장부터 마지막 장까지 전 장을 모두 캡처해줘.
-카드뉴스봇/샘플/ 안에 '스타일_번호_특징이름' 폴더를 만들어 01.jpg, 02.jpg … 순서로 넣고, 표지는 같은 이름의 .png로도 저장해줘.
+3_카드뉴스봇/샘플/ 안에 '스타일_번호_특징이름' 폴더를 만들어 01.jpg, 02.jpg … 순서로 넣고, 표지는 같은 이름의 .png로도 저장해줘.
 특징 이름(2~4단어)과 특징 3줄(색 · 레이아웃 · 글씨 느낌)을 스타일목록.md에 추가하고, 링크는 링크모음.md에 남겨줘.
 [링크 붙여넣기]</pre></div>
-<div class="copybox short" id="s3pos-box"><div class="copybox-head"><span>📋 포스터봇에 — 내려받은 파일 이름 정리</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="s3pos">복사</button></div></div><pre id="s3pos">포스터봇/샘플/ 폴더에 새로 넣은 포스터 파일을 보고, 특징 이름(2~4단어)을 지어 '스타일_번호_특징이름.png'로 바꿔줘.
+<div class="copybox short" id="s3pos-box"><div class="copybox-head"><span>📋 포스터봇에 — 내려받은 파일 이름 정리</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="s3pos">복사</button></div></div><pre id="s3pos">2_포스터봇/샘플/ 폴더에 새로 넣은 포스터 파일을 보고, 특징 이름(2~4단어)을 지어 '스타일_번호_특징이름.png'로 바꿔줘.
 스타일목록.md에 색 · 구도 · 글씨 느낌 3줄로 추가하고, 메뉴판을 다시 만들어 보여줘.</pre></div>
 <h3 class="sub">레페로 스타일즈 — 좋아하는 디자인을 MD 한 장으로</h3>
 <img src="images/moj/moj3-refero.jpg" alt="레페로 스타일즈" loading="lazy" style="width:100%;border-radius:12px;border:1px solid var(--line)">
 <p class="group-desc" style="margin-top:8px"><b>styles.refero.design</b> → 느낌으로 검색 → 스타일 열기 → <b>DESIGN.md 복사</b> → 아래 문장과 함께 봇에 붙여넣기 → KB/에 저장 → 새 채팅</p>
 <div class="copybox short" id="s3ref-box"><div class="copybox-head"><span>📋 DESIGN.md → 포스터 · 카드뉴스용 스타일 MD</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="s3ref">복사</button></div></div><pre id="s3ref">아래 DESIGN.md는 웹사이트 디자인 규칙이야. 이걸 포스터 · 카드뉴스에 쓸 '스타일MD_[이름].md'로 바꿔줘.
 색(헥스 3개 이하) · 글꼴 느낌 · 여백 · 정렬 · 금지할 것만 숫자로 남기고, 버튼 · 메뉴 같은 웹 요소는 빼줘.
-포스터봇/KB/에 저장해줘.
+2_포스터봇/KB/에 저장해줘.
 [DESIGN.md 붙여넣기]</pre></div>
 </section>
 
 <section class="group" id="s3-brain"><div class="group-head"><span class="group-num">05</span><h2>KB에 디자인 대가의 뇌 심기</h2></div>
-<p class="group-desc">샘플이 <b>눈</b>이라면 KB는 <b>뇌</b>. 자료를 모으는 것만 사람이 하고, 정리는 챗GPT가 합니다. 받은 MD는 <b>포스터봇/KB/</b>에 넣고 새 채팅에서 “시작”.</p>
+<p class="group-desc">샘플이 <b>눈</b>이라면 KB는 <b>뇌</b>. 자료를 모으는 것만 사람이 하고, 정리는 챗GPT가 합니다. 받은 MD는 <b>2_포스터봇/KB/</b>에 넣고 새 채팅에서 “시작”.</p>
 <div class="copybox short" id="s3mas-box"><div class="copybox-head"><span>📋 대가의 디자인 원칙 뽑는 프롬프트 (자료와 함께)</span><div class="copybox-actions"><button class="copy-btn" type="button" data-copy="s3mas">복사</button></div></div><pre id="s3mas">첨부한 자료는 [대가 이름]의 디자인 원칙이야. 포스터 · 카드뉴스에 쓸 규칙만 뽑아 MD 파일로 정리해줘.
 원문 문장은 베끼지 말고 쉬운 말로 요약해줘.
 
