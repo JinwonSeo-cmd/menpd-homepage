@@ -163,7 +163,7 @@ function finish(){document.querySelectorAll('.st').forEach(e=>e.classList.remove
   $('ov').innerHTML=`<div class="card intro res"><div class="hero"><img src="${img}" style="height:140px;${img===SP.wave?'':'border-radius:50%'}"></div><h2 style="color:${col}">${title}</h2>
   <div class="big">${lv}</div><div class="sub">${sub}</div><div class="sub" style="font-weight:600;color:#6b7c84">정답 ${8-wrong} / 8</div>
   ${wrong?`<div class="list">${log.filter(l=>!l[1]).map(l=>`<div class="w">❌ ${l[0]}<br>→ <b>${l[2]}</b></div>`).join('')}</div>`:''}
-  <button class="btn" id="again">다시 도전 (새 문제) ↻</button> <a class="btn sec" href="moj-review-3.html" style="display:inline-block;text-decoration:none">3회차 복습 보기</a></div>`;
+  <button class="btn" id="again">다시 도전 (새 문제) ↻</button> <a class="btn sec" href="moj-prep.html" style="display:inline-block;text-decoration:none">법무부 준비사항으로</a></div>`;
   $('ov').classList.add('on');$('again').onclick=start})}
 $('startBtn').onclick=start;place(START);clock();
 </script></body></html>
