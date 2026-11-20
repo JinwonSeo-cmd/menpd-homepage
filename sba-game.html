@@ -44,6 +44,8 @@ button{font-family:inherit;font-size:inherit;color:inherit;cursor:pointer;border
 .tbtns{display:flex;gap:5px}
 .tbtns button{width:2.3em;height:2.3em;border-radius:6px;background:rgba(16,12,24,.8);border:1px solid #5b4a2c;font-size:1em;line-height:1}
 .tbtns button:active{transform:translateY(1px)}
+.tbtns button.off{opacity:.38;filter:grayscale(1)}.tbtns button.low{opacity:.6}
+#bMusicT{display:inline-block;margin-top:.7em;padding:.25em .9em;border:1px solid #5b4a2c;border-radius:999px;background:rgba(16,12,24,.6);color:#d9c9a6;font-size:.95em}
 #bossBar{position:absolute;left:50%;top:max(10px,env(safe-area-inset-top));transform:translateX(-50%);width:min(52vw,460px);text-align:center;text-shadow:0 2px 0 #000}
 #bossName{font-weight:bold;color:#ffb347;font-size:.95em;margin-bottom:3px}
 #bossBar .bar{height:.8em;background:#1a0f14;border:2px solid #8a6d3b;border-radius:3px;overflow:hidden}
@@ -162,7 +164,7 @@ button{font-family:inherit;font-size:inherit;color:inherit;cursor:pointer;border
   <div id="hurt"></div>
   <div id="hud" class="hidden">
     <div id="topL"><div id="floorName"></div><div id="obj"></div><div id="runeRow"><span class="rn" title="질서의 룬 (첫 도전에 맞힌 문제 수)"><i></i><b id="runeN">0</b>/20</span><span id="staffRow"></span></div></div>
-    <div id="topR"><canvas id="mini" width="96" height="60"></canvas><div class="tbtns"><button id="bChar" title="캐릭터 (C)">🎒</button><button id="bHelp" title="도움말 (H)">❓</button><button id="bMute" title="소리 (M)">🔊</button><button id="bFull" title="전체 화면 (F)">⛶</button></div></div>
+    <div id="topR"><canvas id="mini" width="96" height="60"></canvas><div class="tbtns"><button id="bChar" title="캐릭터 (C)">🎒</button><button id="bHelp" title="도움말 (H)">❓</button><button id="bMusic" title="배경음악 (B)">🎵</button><button id="bMute" title="소리 (M)">🔊</button><button id="bFull" title="전체 화면 (F)">⛶</button></div></div>
     <div id="bossBar" class="hidden"><div id="bossName"></div><div class="bar"><i id="bossFill"></i></div><div id="bossVeil"></div></div>
     <div id="toasts"></div>
     <div id="bannerWrap"></div>
@@ -188,7 +190,7 @@ button{font-family:inherit;font-size:inherit;color:inherit;cursor:pointer;border
     <div class="sub">여섯 직원을 구하고, 혼돈의 군주 「뒤죽박죽」을 봉인하라</div>
     <div class="cast" id="cast"></div>
     <button class="btn" id="bStart">모험 시작</button>
-    <div class="foot">퀴즈를 맞히면 장비 · 물약 · 룬을 얻습니다 · 약 15~20분<br><a id="lkPrep" href="sba-prep.html#w3-flow">← SBA 준비사항으로</a></div>
+    <div class="foot">퀴즈를 맞히면 장비 · 물약 · 룬을 얻습니다 · 약 15~20분<br><a id="lkPrep" href="sba-prep.html#w3-flow">← SBA 준비사항으로</a><br><button id="bMusicT" type="button">🎵 배경음악 : 보통</button></div>
   </div>
   <div id="select" class="screen hidden">
     <h2>직업을 고르세요</h2>
@@ -211,20 +213,23 @@ function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
 /* ---------- 소리 (WebAudio 합성, 외부 파일 없음) ---------- */
-const AU={ctx:null,mute:false,master:null,last:{}};
+const AU={ctx:null,mute:false,master:null,last:{},vol:.78}; // 리미터의 자동 보정(+3.5dB)까지 더해 예전(.55)보다 약 6.5dB 크게
 try{AU.mute=localStorage.getItem('chaosMute')==='1'}catch(e){}
 function auInit(){
-  if(AU.ctx){ if(AU.ctx.state==='suspended') AU.ctx.resume(); return; }
+  if(AU.ctx){ if(AU.ctx.state!=='running'&&AU.ctx.resume) AU.ctx.resume(); return; }
   try{
     const C=window.AudioContext||window.webkitAudioContext; if(!C) return;
-    AU.ctx=new C(); AU.master=AU.ctx.createGain(); AU.master.gain.value=AU.mute?0:.55; AU.master.connect(AU.ctx.destination);
+    AU.ctx=new C(); AU.master=AU.ctx.createGain(); AU.master.gain.value=AU.mute?0:AU.vol;
+    try{ const cp=AU.ctx.createDynamicsCompressor(); cp.threshold.value=-9; cp.knee.value=6; cp.ratio.value=8; cp.attack.value=.003; cp.release.value=.18; AU.master.connect(cp); cp.connect(AU.ctx.destination); } // 소리가 겹쳐도 찢어지지 않게
+    catch(e){ AU.master.connect(AU.ctx.destination); }
     // 낮게 깔리는 던전 드론
-    const g=AU.ctx.createGain(); g.gain.value=.05; const f=AU.ctx.createBiquadFilter(); f.type='lowpass'; f.frequency.value=220; f.connect(g); g.connect(AU.master);
+    const g=AU.ctx.createGain(); g.gain.value=.05; AU.drone=g; const f=AU.ctx.createBiquadFilter(); f.type='lowpass'; f.frequency.value=220; f.connect(g); g.connect(AU.master);
     [55,82.4,110.3].forEach((hz,i)=>{ const o=AU.ctx.createOscillator(); o.type=i?'sine':'sawtooth'; o.frequency.value=hz; const og=AU.ctx.createGain(); og.gain.value=i?.5:.25; o.connect(og); og.connect(f); o.start();
       const l=AU.ctx.createOscillator(), lg=AU.ctx.createGain(); l.frequency.value=.07+i*.05; lg.gain.value=.25; l.connect(lg); lg.connect(og.gain); l.start(); });
+    muInit(); music(MU.want); // 배경음악 (15_music.js)
   }catch(e){}
 }
-function setMute(m){ AU.mute=m; if(AU.master) AU.master.gain.value=m?0:.55; try{localStorage.setItem('chaosMute',m?'1':'0')}catch(e){} }
+function setMute(m){ AU.mute=m; if(AU.master) AU.master.gain.value=m?0:AU.vol; try{localStorage.setItem('chaosMute',m?'1':'0')}catch(e){} }
 function tone(f0,f1,dur,type,vol,delay){
   if(!AU.ctx) return; const t=AU.ctx.currentTime+(delay||0), o=AU.ctx.createOscillator(), g=AU.ctx.createGain();
   o.type=type||'square'; o.frequency.setValueAtTime(f0,t); if(f1!==f0) o.frequency.exponentialRampToValueAtTime(Math.max(1,f1),t+dur);
@@ -269,6 +274,124 @@ function sfx(n){
   if(AU.mute||!AU.ctx) return; const now=performance.now(); if(AU.last[n]&&now-AU.last[n]<45) return; AU.last[n]=now;
   const f=SFX[n]; if(f) try{f()}catch(e){}
 }
+/* ---------- 배경음악 (WebAudio 합성 · 외부 파일 없음) ----------
+   6/8박 느린 하프 분산화음 + 현악 패드 + 피리 선율. 층마다 조(선법)가 다르다.
+   title 길드의 노래(G 믹솔리디안) · f0 묘지(A 에올리안) · f1 서고(D 도리안)
+   f2 회랑(길드의 노래 재현) · f3 옥좌(E 프리지안) · boss(E 에올리안) · win(D 장조) */
+const MU={on:true,lvl:1,bus:null,dry:null,revIn:null,ses:null,cur:null,want:'title',timer:0,duck:1,vol:.48,wet:1.6}; // lvl : 1 보통 · .5 작게 · 0 끔
+try{ const v=localStorage.getItem('chaosMusic'); if(v==='0'||v==='0.5'){ MU.lvl=+v; MU.on=MU.lvl>0; } }catch(e){}
+const NOTE_PC={C:0,D:2,E:4,F:5,G:7,A:9,B:11};
+function nn(s){ const m=/^([A-G])([#b]?)(-?\d)$/.exec(s); return NOTE_PC[m[1]]+(m[2]==='#'?1:m[2]==='b'?-1:0)+12*(+m[3]+1); }
+const hz=m=>440*Math.pow(2,(m-69)/12);
+function chordOf(name){ // 'Dm' → 베이스 · 패드 · 하프 사다리 음(MIDI)
+  const m=/^([A-G])([#b]?)(m?)$/.exec(name), r=(NOTE_PC[m[1]]+(m[2]==='#'?1:m[2]==='b'?-1:0)+12)%12, iv=m[3]?[0,3,7]:[0,4,7];
+  const R=r+(r>=7?36:48);
+  return { bass:r+(r>=5?36:48), pad:iv.map(i=>55+((r+i-7+24)%12)), lad:[R,R+iv[2],R+12,R+12+iv[1],R+12+iv[2],R+24] };
+}
+/* 선율 표기 : 마디마다 '음:길이(8분음표 수)' 를 띄어 쓴다. '-' 는 쉼표. 한 마디 = 6 */
+const MUS={
+  title:{ st:.40, lead:'flute', form:['A','B','A','a'],
+    chA:['G','F','C','G','Em','C','Dm','G'],
+    melA:['D4:3 G4:2 A4:1','C5:3 A4:3','G4:3 E4:2 F4:1','G4:6','B4:3 G4:2 E4:1','E4:3 G4:3','A4:3 F4:2 E4:1','G4:6'],
+    chB:['C','G','Am','Em','F','C','Dm','G'],
+    melB:['E5:3 C5:3','D5:3 B4:3','C5:3 A4:2 B4:1','B4:6','A4:3 C5:3','G4:3 E4:3','F4:3 A4:2 G4:1','G4:6'] },
+  f0:{ st:.46, lead:'voice', form:['a','A','a','A'], sparse:1, padCut:620,
+    chA:['Am','F','C','Em','Am','F','Em','Am'],
+    melA:['E4:3 A4:3','C5:4 A4:2','G4:3 E4:3','G4:6','A4:3 C5:3','A4:3 F4:3','G4:3 B4:3','A4:6'] },
+  f1:{ st:.42, lead:'flute', form:['a','A','B','A'],
+    chA:['Dm','F','C','G','Dm','F','C','Dm'],
+    melA:['A4:3 F4:2 G4:1','A4:6','G4:3 E4:2 F4:1','D4:3 G4:3','A4:3 D5:2 C5:1','A4:3 F4:3','G4:3 E4:3','D4:6'],
+    chB:['F','C','G','Dm','F','C','Am','Dm'],
+    melB:['C5:3 A4:3','G4:3 C5:3','B4:3 D5:2 B4:1','A4:6','C5:3 A4:2 G4:1','E4:3 G4:3','A4:3 E4:3','D4:6'] },
+  f2:{ st:.40, lead:'flute', form:['a','A','B','A'], same:'title' },
+  f3:{ st:.50, lead:'horn', form:['a','A','a','A'], sparse:1, padCut:540,
+    chA:['Em','F','Em','Dm','Em','F','G','Em'],
+    melA:['B3:6','C4:6','B3:3 E4:3','D4:6','E4:3 G4:3','F4:3 A4:3','G4:3 D4:3','E4:6'] },
+  boss:{ st:.30, lead:'horn', lv:.055, hv:.62, form:['a','A','A','a'], drum:1, padCut:700,
+    chA:['Em','C','D','Em','G','D','C','Bm'],
+    melA:['E4:6','G4:6','F#4:3 A4:3','G4:6','B4:6','A4:3 F#4:3','G4:3 E4:3','F#4:6'] },
+  win:{ st:.42, lead:'flute', form:['A','a','A','a'],
+    chA:['D','A','Bm','G','D','A','G','D'],
+    melA:['A4:3 D5:3','C#5:3 A4:3','B4:3 D5:3','B4:6','A4:3 F#4:3','E4:3 A4:3','B4:3 G4:2 E4:1','D4:6'] },
+};
+const ARP={ a:[0,1,2,3,2,1], b:[0,1,3,4,3,1], up:[0,1,2,3,4,5], sp1:[0,null,2,null,3,null], sp2:[0,1,2,null,3,null] };
+function muPrep(th){ // 화음 · 선율을 한 번만 풀어 둔다
+  if(th.ready) return th; if(th.same){ const o=muPrep(MUS[th.same]); for(const k of ['cA','cB','mA','mB']) th[k]=o[k]; th.ready=1; return th; }
+  const mel=a=>a&&a.map(bar=>{ let p=0; const out=[]; for(const tok of bar.split(' ')){ const [n,l]=tok.split(':'); if(n!=='-') out.push([p,nn(n),+l]); p+=+l; } return out; });
+  th.cA=th.chA.map(chordOf); th.cB=(th.chB||th.chA).map(chordOf); th.mA=mel(th.melA); th.mB=mel(th.melB)||th.mA; th.ready=1; return th;
+}
+function muIR(c){ // 잔향용 임펄스 응답 (어두워지며 사라지는 잡음)
+  const sr=c.sampleRate,len=Math.floor(sr*2.2),b=c.createBuffer(2,len,sr),fi=sr*.004;
+  for(let ch=0;ch<2;ch++){ const d=b.getChannelData(ch); let lp=0; for(let i=0;i<len;i++){ const t=i/len; lp+=((Math.random()*2-1)-lp)*(.5-.38*t); d[i]=lp*Math.pow(1-t,2.6)*(i<fi?i/fi:1); } }
+  return b;
+}
+function muInit(){ // auInit 안에서 한 번
+  const c=AU.ctx; if(!c||MU.bus) return;
+  try{
+    MU.bus=c.createGain(); MU.bus.gain.value=MU.vol*(MU.lvl||1)*MU.duck; const lp=c.createBiquadFilter(); lp.type='lowpass'; lp.frequency.value=5200; lp.connect(MU.bus); MU.bus.connect(AU.master);
+    MU.dry=c.createGain(); MU.dry.gain.value=1; MU.dry.connect(lp); MU.revIn=c.createGain(); MU.revIn.gain.value=.5;
+    try{ const cv=c.createConvolver(); cv.buffer=muIR(c); const w=c.createGain(); w.gain.value=MU.wet; MU.revIn.connect(cv); cv.connect(w); w.connect(lp); }catch(e){}
+    if(!MU.timer&&typeof setInterval==='function') MU.timer=setInterval(muTick,110);
+    document.addEventListener('visibilitychange',()=>{ const x=AU.ctx; if(!x||!x.suspend) return; try{ if(document.hidden) x.suspend(); else x.resume(); }catch(e){} });
+    muDrone();
+  }catch(e){}
+}
+function muDrone(){ if(AU.drone) AU.drone.gain.value=MU.on?0:.05; } // 음악이 켜져 있으면 낮은 드론은 쉰다
+/* ----- 악기 ----- */
+function muEnv(g,t,a,v){ g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(v,t+a); }
+function muOsc(c,type,f,t,end,dest,det){ const o=c.createOscillator(); o.type=type; o.frequency.value=f; if(det) o.detune.value=det; o.connect(dest); o.start(t); o.stop(end); return o; }
+function muVoice(s,kind,m,t,dur,vel){
+  const c=AU.ctx,f=hz(m),g=c.createGain(); g.connect(s.g);
+  if(kind==='harp'){ // 뜯는 소리 : 빠르게 울리고 천천히 사라진다
+    const tau=m<60?.6:.44; muEnv(g,t,.006,vel); g.gain.setTargetAtTime(0,t+.006,tau); const e=t+tau*4.2;
+    muOsc(c,'triangle',f,t,e,g); // 몸통
+    const lp=c.createBiquadFilter(), g2=c.createGain(); lp.type='lowpass'; lp.Q.value=.6; lp.frequency.setValueAtTime(Math.min(5200,f*9),t); lp.frequency.exponentialRampToValueAtTime(Math.max(500,f*1.6),t+.3); // 뜯는 순간만 밝게
+    g2.gain.value=.3; lp.connect(g2); g2.connect(g); muOsc(c,'sawtooth',f,t,e,lp);
+  } else if(kind==='bass'){
+    muEnv(g,t,.14,vel); g.gain.setTargetAtTime(0,t+dur,.4); const e=t+dur+1.7; muOsc(c,'sine',f,t,e,g); const g2=c.createGain(); g2.gain.value=.18; g2.connect(g); muOsc(c,'triangle',f,t,e,g2);
+  } else if(kind==='drum'){ // 부드러운 큰북
+    const o=c.createOscillator(); o.type='sine'; o.frequency.setValueAtTime(96,t); o.frequency.exponentialRampToValueAtTime(46,t+.17); muEnv(g,t,.005,vel); g.gain.setTargetAtTime(0,t+.02,.1); o.connect(g); o.start(t); o.stop(t+.8);
+  } else { // 선율 : flute(피리) · voice(먼 목소리) · horn(낮은 호른)
+    const at=kind==='flute'?.07:kind==='voice'?.22:.16, rl=kind==='flute'?.1:kind==='voice'?.3:.22, e=t+dur+rl*7;
+    muEnv(g,t,at,vel); g.gain.setTargetAtTime(0,t+Math.max(at,dur-.05),rl);
+    let dest=g; if(kind==='horn'){ const lp=c.createBiquadFilter(); lp.type='lowpass'; lp.frequency.value=640; lp.connect(g); dest=lp; }
+    const o1=muOsc(c,kind==='horn'?'triangle':'sine',f,t,e,dest), g2=c.createGain(); g2.gain.value=kind==='flute'?.24:kind==='voice'?.1:.2; g2.connect(dest);
+    const o2=muOsc(c,kind==='flute'?'triangle':kind==='voice'?'sine':'sawtooth',kind==='voice'?f*2:f,t,e,g2);
+    const l=c.createOscillator(), lg=c.createGain(); l.frequency.value=kind==='horn'?4.4:5.1; lg.gain.setValueAtTime(0,t); lg.gain.linearRampToValueAtTime(f*.0038,t+.4); l.connect(lg); lg.connect(o1.frequency); lg.connect(o2.frequency); l.start(t); l.stop(e);
+  }
+}
+function muPad(s,notes,t,dur,vel,cut){ // 현악 패드 : 천천히 부풀고 다음 화음과 겹치며 사라진다
+  const c=AU.ctx,f=c.createBiquadFilter(),g=c.createGain(); f.type='lowpass'; f.frequency.value=cut; f.Q.value=.4; f.connect(g); g.connect(s.g);
+  muEnv(g,t,dur*.45,vel); g.gain.setTargetAtTime(0,t+dur,.85); const e=t+dur+2.8;
+  for(const m of notes){ muOsc(c,'sawtooth',hz(m),t,e,f,-6); muOsc(c,'sawtooth',hz(m),t,e,f,7); }
+}
+/* ----- 순서기 : 8분음표 한 칸씩 ----- */
+function muStep(s,k,t){
+  const th=s.th, bar=Math.floor(k/6), st=k%6, b=bar%8, sec=th.form[Math.floor(bar/8)%th.form.length], up=sec.toUpperCase();
+  const ch=(up==='B'?th.cB:th.cA)[b], bt=th.st*6, hum=()=>.9+Math.random()*.2;
+  if(st===0){ muPad(s,ch.pad,t,bt,.0215,th.padCut||780); muVoice(s,'bass',ch.bass,t,bt*.92,.039); }
+  const pat=th.sparse?(b%2?ARP.sp2:ARP.sp1):b===7?ARP.up:up==='B'?ARP.b:ARP.a, ix=pat[st];
+  if(ix!=null) muVoice(s,'harp',ch.lad[ix],t+Math.random()*.012,0,(st===0?.125:st===3?.105:.085)*(th.hv||(th.sparse?1:.81))*hum());
+  if(sec===up){ const mel=(up==='B'?th.mB:th.mA)[b]; for(const n of mel) if(n[0]===st) muVoice(s,th.lead,n[1],t,n[2]*th.st*.96,(th.lv||(th.lead==='flute'?.042:th.lead==='voice'?.052:.05))*hum()); }
+  if(th.drum&&(st===0||st===3)) muVoice(s,'drum',0,t,0,st===0?.16:.1);
+}
+function muTick(){
+  const c=AU.ctx,s=MU.ses; if(!c||!s||c.state!=='running') return; const now=c.currentTime;
+  if(s.nextT<now-.05) s.nextT=now+.05; // 화면이 멈췄다 돌아왔을 때 몰아서 울리지 않게
+  while(s.nextT<now+.5){ try{muStep(s,s.k,s.nextT)}catch(e){MU.err=String(e&&e.message||e)} s.nextT+=s.th.st; s.k++; }
+}
+/* ----- 바깥에서 쓰는 것 ----- */
+function music(name){ // 곡 바꾸기 (null = 멈춤). 소리가 아직 안 켜졌으면 기억만 해 둔다
+  MU.want=name; const c=AU.ctx; if(!c||!MU.bus) return; const play=MU.on?name:null; if(MU.cur===play) return; MU.cur=play; const now=c.currentTime;
+  if(MU.ses){ const o=MU.ses; MU.ses=null; try{o.g.gain.cancelScheduledValues(now);o.g.gain.setTargetAtTime(0,now,.45)}catch(e){} setTimeout(()=>{try{o.g.disconnect()}catch(e){}},7000); }
+  if(!play||!MUS[play]) return;
+  const g=c.createGain(); g.gain.setValueAtTime(0,now); g.gain.setTargetAtTime(1,now+.5,.7); g.connect(MU.dry); g.connect(MU.revIn);
+  MU.ses={th:muPrep(MUS[play]),g,k:0,nextT:now+.7};
+}
+function muGain(tc){ if(MU.bus&&AU.ctx) MU.bus.gain.setTargetAtTime(MU.vol*(MU.lvl||1)*MU.duck,AU.ctx.currentTime,tc); }
+function musicDuck(v){ MU.duck=v; muGain(.3); } // 쓰러졌을 때 등 잠깐 줄이기
+function setMusicLevel(v){ MU.lvl=v; MU.on=v>0; try{localStorage.setItem('chaosMusic',String(v))}catch(e){} muDrone(); muGain(.15); music(MU.want); }
+const musicLabel=()=>MU.lvl>=1?'보통':MU.lvl>0?'작게':'끔';
 /* ---------- 그림: 전부 코드로 그리는 픽셀 아트 (외부 이미지 없음) ---------- */
 const SPR={}, SIL={};
 function mk(w,h){const c=document.createElement('canvas');c.width=w;c.height=h;return c}
@@ -934,12 +1057,12 @@ function bless(){ const p=G.p; G.fl.blessed=true; p.hp=pMaxHp(p); p.mp=pMaxMp(p)
 function enterFloor(i,first){
   G.fi=i; const fl=G.fl=G.floors[i],p=G.p; p.x=fl.def.spawn[0]; p.y=fl.def.spawn[1]; p.path=null;p.tgt=null;p.itgt=null;p.tk=-1; p.inv=1;
   G.projs=[];G.tele=[];G.parts=[];G.texts=[];G.bubbles=[];G.rings=[]; computeFOV(fl,p.x,p.y); G.cam.x=p.x*16-G.VW/2; G.cam.y=p.y*16-G.VH/2;
-  hudBossHide(); banner(fl.def.name,fl.def.sub); hudFloor(); if(!first) sfx('gate'); G.stats.floor=i+1;
+  hudBossHide(); banner(fl.def.name,fl.def.sub); hudFloor(); if(!first){ sfx('gate'); music('f'+i); } G.stats.floor=i+1;
 }
 function sweepLoot(){ const p=G.p; for(const o of G.fl.loot){ if(o.k==='gold'){p.gold+=o.v;G.stats.gold+=o.v} else if(o.k==='hp')p.pot.hp++; else if(o.k==='mp')p.pot.mp++; else if(o.k==='gear')equip(o.slot,o.v); } G.fl.loot=[]; }
 function nextFloor(){ if(G.fi>=G.floors.length-1) return; sweepLoot(); G.state='fade'; fade(()=>{enterFloor(G.fi+1);G.state='play'}); }
 function playerDie(){
-  const p=G.p; p.dead=true; p.path=null; p.tgt=null; G.stats.deaths++; sfx('dead'); burst(p.x,p.y-.5,'#e0483f',30,5); shake(8); G.state='dead'; later(1.1,showDeath);
+  const p=G.p; p.dead=true; p.path=null; p.tgt=null; G.stats.deaths++; sfx('dead'); musicDuck(.3); burst(p.x,p.y-.5,'#e0483f',30,5); shake(8); G.state='dead'; later(1.1,showDeath);
 }
 function respawn(){
   const p=G.p,fl=G.fl; p.dead=false; p.hp=Math.max(p.hp,Math.round(pMaxHp(p)*.5)); p.mp=Math.max(p.mp,Math.round(pMaxMp(p)*.5));
@@ -947,14 +1070,14 @@ function respawn(){
   p.x=fl.def.spawn[0]; p.y=fl.def.spawn[1]; p.path=null;p.tgt=null;p.itgt=null;p.inv=1.5;p.kbx=p.kby=0;p.dash=null;p.tk=-1;
   G.projs=[];G.tele=[]; if(G.bf) resetBoss();
   fl.mons=fl.mons.filter(m=>!m.sum); fl.mons.forEach(m=>{ if(m.dead)return; m.aggro=false;m.wind=null;m.chg=null;m.path=null;m.x=m.hx;m.y=m.hy;m.frz=0;m.stun=0; });
-  hudBossHide(); G.state='play'; computeFOV(fl,p.x,p.y);
+  hudBossHide(); G.state='play'; computeFOV(fl,p.x,p.y); musicDuck(1); music('f'+G.fi);
 }
 function resetBoss(){ const fl=G.fl; fl.mons=fl.mons.filter(m=>!m.d.boss&&!m.sum); G.bf=null; fl.bdoorOpen=false; }
 function enterBoss(){
   sweepLoot(); const fl=G.fl,p=G.p,def=fl.def; p.x=(def.bossDoor.x0+def.bossDoor.x1+1)/2; p.y=def.arena[1]+def.arena[3]-1.3; p.path=null;p.tgt=null;p.itgt=null;p.tk=-1; computeFOV(fl,p.x,p.y);
   const b=spawnMon(fl,'boss',def.boss[0],def.boss[1],1); b.aggro=true; b.cds=[2.5,5,1.5];
   G.bf={boss:b,pot0:{hp:p.pot.hp,mp:p.pot.mp},t:0,phase:0,asked:[false,false],sum:[false,false,false],enr:1,dmgUp:0,invuln:false,staffT:STAFF.map((s,i)=>2+i*1.0),warned:false,qok:0,qn:0,pool:shuffle(BOSS_POOL)};
-  G.state='play'; sfx('roar'); shake(10); banner('혼돈의 군주 「뒤죽박죽」','폴더는 흩어져야 제맛이지…!'); bossBar(b); later(.8,()=>bubble(b,'정리 따위… 내가 다 흩어 주마!'));
+  G.state='play'; sfx('roar'); music('boss'); shake(10); banner('혼돈의 군주 「뒤죽박죽」','폴더는 흩어져야 제맛이지…!'); bossBar(b); later(.8,()=>bubble(b,'정리 따위… 내가 다 흩어 주마!'));
   const v=bossVeil(); if(v>0) later(2.2,()=>toast(`혼돈의 장막 — 룬이 부족해 주는 피해가 ${Math.round(v*100)}% 줄어듭니다`,'warn'));
 }
 function updBoss(dt){
@@ -975,10 +1098,10 @@ function bossQuizResult(ok){
 }
 function bossDefeated(m){
   const bf=G.bf; bf.won=true; G.projs=[];G.tele=[]; G.fl.mons.forEach(o=>{if(o.sum&&!o.dead){o.dead=true;burst(o.x,o.y-.3,o.d.col,10,3)}});
-  G.hitStop=.25; shake(14); sfx('roar'); G.stats.time=G.t; hudBossHide();
+  G.hitStop=.25; shake(14); sfx('roar'); music(null); G.stats.time=G.t; hudBossHide();
   for(let i=0;i<6;i++) later(.25*i,()=>{burst(m.x+rf(-1.2,1.2),m.y-rf(0,2),pick(['#c58bff','#ffb347','#59d8ff','#ffe066']),30,7,{glow:1});sfx('boom');shake(5)});
   for(let i=0;i<24;i++) dropLoot('gold',m.x,m.y,ri(10,25));
-  later(1.4,()=>sfx('win')); later(3.2,()=>{G.state='win';showResult(true)});
+  later(1.4,()=>sfx('win')); later(3.2,()=>{G.state='win';music('win');showResult(true)});
 }
 /* ----- 한 프레임 ----- */
 function update(dt){
@@ -1276,10 +1399,12 @@ function openChar(){
 }
 function openHelp(){
   const st=G.state; if(st!=='play'&&st!=='title'&&st!=='select') return;
-  dialog(`<h2>도움말</h2><div class="keys"><kbd>클릭 · 탭</kbd><span>이동 · 공격 · 궤 열기 (누르고 있으면 계속 이동)</span><kbd>Space · ⚔</kbd><span>가까운 적 공격 / 앞의 물건 열기</span><kbd>Q · W</kbd><span>기술 (마력 소모)</span><kbd>1 · 2</kbd><span>체력 물약 · 마력 물약</span><kbd>방향키</kbd><span>직접 이동</span><kbd>C · M · F</kbd><span>캐릭터 창 · 소리 · 전체 화면</span></div>
+  dialog(`<h2>도움말</h2><div class="keys"><kbd>클릭 · 탭</kbd><span>이동 · 공격 · 궤 열기 (누르고 있으면 계속 이동)</span><kbd>Space · ⚔</kbd><span>가까운 적 공격 / 앞의 물건 열기</span><kbd>Q · W</kbd><span>기술 (마력 소모)</span><kbd>1 · 2</kbd><span>체력 물약 · 마력 물약</span><kbd>방향키</kbd><span>직접 이동</span><kbd>C · M · B · F</kbd><span>캐릭터 창 · 소리 · 배경음악 · 전체 화면</span></div>
   <h3>규칙</h3><p>· 빛나는 <b>봉인된 궤</b>를 열면 수업 내용 퀴즈가 나옵니다.<br>· <b>첫 도전에 맞히면</b> 질서의 룬 · 장비 · 물약을 얻습니다. 틀리면 저주를 받고 보상이 없습니다.<br>· 틀린 문제는 <b>기억의 제단</b>에서 복습할 수 있습니다 (물약 보상).<br>· 층마다 궤를 모두 열고 문지기를 쓰러뜨려야 계단이 열립니다.<br>· 룬이 <b>${RUNE_NEED}개</b>보다 적으면 혼돈의 군주에게 피해를 제대로 줄 수 없습니다.</p>`,[{t:'닫기'}],{ret:st});
 }
 function toggleMute(){ setMute(!AU.mute); $('#bMute').textContent=AU.mute?'🔇':'🔊'; }
+function musicBtns(){ const b=$('#bMusic'); b.classList.toggle('off',MU.lvl<=0); b.classList.toggle('low',MU.lvl>0&&MU.lvl<1); b.title='배경음악 : '+musicLabel()+' (B)'; const t=$('#bMusicT'); if(t) t.textContent='🎵 배경음악 : '+musicLabel(); }
+function toggleMusic(){ auInit(); setMusicLevel(MU.lvl>=1?.5:MU.lvl>0?0:1); musicBtns(); if(G.state==='play') toast('🎵 배경음악 : '+musicLabel()); }
 function toggleFull(){ const d=document; if(d.fullscreenElement) d.exitFullscreen(); else if(d.documentElement.requestFullscreen) d.documentElement.requestFullscreen().catch(()=>{}); }
 /* ----- 타이틀 · 직업 선택 · 시작 ----- */
 function sprCanvas(names,scale,w,h){ // 미리보기용 확대 그림
@@ -1291,7 +1416,7 @@ function initTitle(){
   const cast=$('#cast'),nar=innerWidth<470,sc=nar?3:4; ['knight','mage','ranger'].forEach(k=>cast.appendChild(heroCanvas(k,sc)));
   if(!nar){const vs=document.createElement('div'); vs.className='vs'; vs.textContent='VS'; cast.appendChild(vs)} else cast.style.gap='4px'; cast.appendChild(sprCanvas([['boss',0,0]],sc,34,32));
   $('#bStart').onclick=()=>{auInit();sfx('ui');hide($('#title'));showSelect()};
-  $('#bMute').textContent=AU.mute?'🔇':'🔊';
+  $('#bMute').textContent=AU.mute?'🔇':'🔊'; musicBtns(); $('#bMusicT').onclick=e=>{e.stopPropagation();toggleMusic()};
 }
 function showSelect(){
   G.state='select'; const box=$('#cards'); box.innerHTML='';
@@ -1302,18 +1427,18 @@ function showSelect(){
   });
   show($('#select')); $('#select').scrollTop=0;
 }
-function toSelect(){ hide($('#modal')); hide($('#hud')); hudBossHide(); G.fl=null; G.p=null; G.bf=null; wg.fillStyle='#000'; wg.fillRect(0,0,G.VW,G.VH); fg.setTransform(1,0,0,1,0,0); fg.clearRect(0,0,fc.width,fc.height); showSelect(); }
+function toSelect(){ musicDuck(1); music('title'); hide($('#modal')); hide($('#hud')); hudBossHide(); G.fl=null; G.p=null; G.bf=null; wg.fillStyle='#000'; wg.fillRect(0,0,G.VW,G.VH); fg.setTransform(1,0,0,1,0,0); fg.clearRect(0,0,fc.width,fc.height); showSelect(); }
 function startGame(cls,skipIntro){
   hide($('#select')); hide($('#title'));
   G.floors=FLOORS.map((d,i)=>buildFloor(d,i)); G.p=newPlayer(cls); G.qr={}; G.staffFree=[0,0,0,0,0,0]; G.bf=null; G.t=0; G.streak=0; G.after=[]; G.hints={}; G.barMon=null;
   G.stats={first:0,asked:0,deaths:0,kills:0,dmg:0,taken:0,gold:0,pots:0,skills:0,lvl:1,floor:1,time:0,log:[]};
   hudInit(); enterFloor(0,true); G.state='play';
-  if(skipIntro) return;
+  if(skipIntro){ music('f0'); return; }
   const pages=[
     `<h2>혼돈의 성</h2><p>평화롭던 콘텐츠 왕국에 혼돈의 군주 <b>「뒤죽박죽」</b>이 나타났습니다.</p><p>폴더는 흩어지고, 지침서는 찢기고, 길드의 <b>여섯 직원</b>은 지하 성채에 갇혔습니다.</p><p>그대는 신임 <b>팀장</b>. 성채로 내려가 질서를 되찾으십시오.</p>`,
     `<h2>질서의 시험</h2><p>성채 곳곳의 <b>봉인된 궤</b>에는 수업 내용 퀴즈가 걸려 있습니다.</p><p>· <b>첫 도전에 맞히면</b> — 질서의 룬 · 장비 · 물약<br>· <b>틀리면</b> — 혼돈의 저주, 보상 없음</p><p>물약과 장비가 없으면 깊은 층에서 버틸 수 없습니다. 그리고 룬이 <b>${RUNE_NEED}개</b>보다 적으면 군주의 <b>장막</b>을 뚫지 못합니다.</p>`,
     `<h2>조작법</h2><div class="keys"><kbd>클릭 · 탭</kbd><span>이동 · 공격 · 궤 열기</span><kbd>Space · ⚔</kbd><span>가까운 적 공격</span><kbd>Q · W</kbd><span>기술</span><kbd>1 · 2</kbd><span>체력 · 마력 물약</span></div><p class="c" style="margin-top:8px">먼저 가까운 <b>빛나는 궤</b>를 찾아가 보세요.</p>`];
-  let i=0; const next=()=>{ if(i>=pages.length){ later(.6,()=>toast('바닥을 클릭(탭)하면 이동합니다. 몬스터를 누르면 공격!')); return; } const last=i===pages.length-1; dialog(pages[i++],[{t:last?'모험 시작':'다음',fn:next}]); };
+  let i=0; const next=()=>{ if(i>=pages.length){ music('f0'); later(.6,()=>toast('바닥을 클릭(탭)하면 이동합니다. 몬스터를 누르면 공격!')); return; } const last=i===pages.length-1; dialog(pages[i++],[{t:last?'모험 시작':'다음',fn:next}]); };
   next();
 }
 /* ---------- 입력 · 메인 루프 · 시작 ---------- */
@@ -1335,7 +1460,8 @@ function bindInput(){
   fc.addEventListener('contextmenu',e=>e.preventDefault());
   const tap=(id,fn)=>{$(id).addEventListener('pointerdown',e=>{e.preventDefault();e.stopPropagation();auInit();fn()})};
   tap('#bAtk',attackNearest); tap('#bQ',()=>castSkill('q')); tap('#bW',()=>castSkill('w')); tap('#bHp',()=>usePotion('hp')); tap('#bMp',()=>usePotion('mp'));
-  $('#bChar').onclick=openChar; $('#bHelp').onclick=openHelp; $('#bMute').onclick=toggleMute; $('#bFull').onclick=toggleFull; if(!document.documentElement.requestFullscreen) $('#bFull').classList.add('hidden'); // 아이폰 사파리 등 전체 화면 미지원
+  $('#bChar').onclick=openChar; $('#bHelp').onclick=openHelp; $('#bMute').onclick=toggleMute; $('#bMusic').onclick=toggleMusic; $('#bFull').onclick=toggleFull; if(!document.documentElement.requestFullscreen) $('#bFull').classList.add('hidden'); // 아이폰 사파리 등 전체 화면 미지원
+  addEventListener('pointerdown',()=>auInit(),{capture:true,once:true}); // 첫 터치에 소리 · 배경음악 켜기
   addEventListener('keydown',e=>{
     const c=e.code;
     if(G.state==='quiz'){ const n=c.startsWith('Digit')?+c.slice(5):c.startsWith('Numpad')?+c.slice(6):0; if(QC&&!QC.done&&n>=1&&n<=4){answer(n-1);e.preventDefault()} else if(QC&&QC.done&&(c==='Enter'||c==='Space'||c==='NumpadEnter')){closeQuiz();e.preventDefault()} return; }
@@ -1344,7 +1470,7 @@ function bindInput(){
     if(G.state!=='play'||e.repeat&&c!=='Space') return;
     if(c==='KeyQ')castSkill('q'); else if(c==='KeyW')castSkill('w'); else if(c==='Digit1'||c==='Numpad1')usePotion('hp'); else if(c==='Digit2'||c==='Numpad2')usePotion('mp');
     else if(c==='Space'){attackNearest();e.preventDefault()} else if(c==='KeyE'){const o=nearestInter(2.4);if(o){G.p.itgt=o;G.p.tgt=null;goAdj(o)}}
-    else if(c==='KeyC'||c==='KeyI')openChar(); else if(c==='KeyH')openHelp(); else if(c==='KeyM')toggleMute(); else if(c==='KeyF')toggleFull();
+    else if(c==='KeyC'||c==='KeyI')openChar(); else if(c==='KeyH')openHelp(); else if(c==='KeyM')toggleMute(); else if(c==='KeyB')toggleMusic(); else if(c==='KeyF')toggleFull();
   });
   addEventListener('keyup',e=>{if(e.code.startsWith('Arrow'))G.keys[e.code]=false});
   addEventListener('blur',()=>{G.keys={};G.ptr.down=false});
