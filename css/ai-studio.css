@@ -879,3 +879,9 @@ section:not(.hero) { padding-top: clamp(64px, 7vw, 92px); padding-bottom: clamp(
   #prep-teaser .quicklink-card,
   #prep-teaser .quicklink-card.quicklink-card-kakao { min-height: 0; }
 }
+
+/* 히어로 제목이 오른쪽 인물 사진을 가리지 않게 */
+.hero-headline .headline-script.hl-fit { font-size: clamp(36px, 3.6vw, 58px); }
+@media (max-width: 760px) {
+  .hero-headline .headline-script.hl-fit { font-size: clamp(30px, 8.4vw, 44px); white-space: normal; }
+}
