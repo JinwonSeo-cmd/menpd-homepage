@@ -135,11 +135,11 @@ body {
 }
 .btn-hero-primary::after,
 .btn-hero-outline::after { content: "↗"; margin-left: 16px; font-size: 17px; line-height: 1; }
-.btn-hero-primary { background: #fffaf5; border-color: #fffaf5; color: #29496f; }
+.btn-hero-primary { background: #ffd400; border-color: #ffd400; color: #111; }
 .btn-hero-outline { background: rgba(255,255,255,.13); border-color: rgba(255,255,255,.55); color: #fff; backdrop-filter: blur(8px); }
 .btn-hero-primary:hover,
 .btn-hero-outline:hover { transform: translateY(-3px); opacity: 1; }
-.btn-hero-primary:hover { background: #edf3fb; }
+.btn-hero-primary:hover { background: #ffe14d; }
 .btn-hero-outline:hover { background: rgba(255,255,255,.24); }
 .btn-hero-primary:active,
 .btn-hero-outline:active { transform: translateY(0); }
