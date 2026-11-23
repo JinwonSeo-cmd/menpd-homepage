@@ -1,0 +1,141 @@
+/* ================================================================
+   멘피디 AI 동적교재 공통 테마
+   기준: claude-desktop-folder-guide.html (클로드 데스크톱 앱 설치 교재)
+   - 파랑→피치 그라데이션 히어로 + 유리 알약 메뉴
+   - 웜 오프화이트 배경 · 흰 카드(22px 라운드 + 소프트 섀도) · 네이비 포인트
+   - Noto Sans KR
+   각 교재의 기존 변수를 이 토큰으로 다시 연결하는 방식이라, 교재 HTML 구조는 그대로 둡니다.
+   ================================================================ */
+:root{
+  --tb-bg:#f7f5f1; --tb-card:#ffffff; --tb-fg:#1d2738; --tb-muted:#6a7280; --tb-line:#e4e2dd;
+  --tb-navy:#2f5a96; --tb-navy2:#5b82bb; --tb-peach:#d9a487;
+  --tb-eyebrow-bg:#e8eef8; --tb-eyebrow-fg:#2f5a96;
+  --tb-hot:#e5322d; --tb-ok:#1c8a52; --tb-ok-bg:#e4f4eb; --tb-help-bg:#fff6e3; --tb-help-line:#ecc26a;
+  --tb-screen:#eef1f5;
+  --tb-shadow:0 10px 30px rgb(40 60 100 / .08);
+  --tb-font:"Noto Sans KR","Pretendard","Malgun Gothic","Apple SD Gothic Neo",sans-serif;
+  --tb-hero:linear-gradient(180deg,#2f5a96 0%,#5378ad 45%,#a9a3ac 78%,#d9a487 100%);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --tb-bg:#12171f; --tb-card:#1b222d; --tb-fg:#eef2f7; --tb-muted:#a3adba; --tb-line:#2d3644;
+  --tb-eyebrow-bg:#22324a; --tb-eyebrow-fg:#a9c4ee; --tb-navy2:#7fa2d6;
+  --tb-hot:#ff5f58; --tb-ok:#53d08b; --tb-ok-bg:#15342a; --tb-help-bg:#3a2f16; --tb-help-line:#c99b3a;
+  --tb-screen:#232c38; --tb-shadow:0 10px 30px rgb(0 0 0 / .35)}}
+:root[data-theme="dark"]{
+  --tb-bg:#12171f; --tb-card:#1b222d; --tb-fg:#eef2f7; --tb-muted:#a3adba; --tb-line:#2d3644;
+  --tb-eyebrow-bg:#22324a; --tb-eyebrow-fg:#a9c4ee; --tb-navy2:#7fa2d6;
+  --tb-hot:#ff5f58; --tb-ok:#53d08b; --tb-ok-bg:#15342a; --tb-help-bg:#3a2f16; --tb-help-line:#c99b3a;
+  --tb-screen:#232c38; --tb-shadow:0 10px 30px rgb(0 0 0 / .35)}
+
+body.tb{background:var(--tb-bg)!important;color:var(--tb-fg)!important;font-family:var(--tb-font)!important}
+body.tb h1,body.tb h2,body.tb h3{font-family:var(--tb-font)!important;letter-spacing:-.02em}
+
+/* ---------- 공통: 유리 알약 메뉴 ---------- */
+.tb-navwrap{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;padding-block:12px;margin-bottom:-76px}
+.tb-inner{max-width:980px;margin:0 auto;padding-inline:16px}
+.tb-pill{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between;background:rgb(70 92 130 / .72);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgb(255 255 255 / .25);border-radius:20px;padding:10px 20px;color:#fff;font-family:var(--tb-font)}
+.tb-logo{font-weight:800;font-size:1rem;letter-spacing:-.01em;white-space:nowrap;color:#fff;text-decoration:none}
+.tb-logo small{font-weight:400;opacity:.8;margin-left:8px;font-size:.75rem}
+.tb-links{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.tb-links a{font-size:.8rem;font-weight:500;color:#fff;text-decoration:none;border:1px solid rgb(255 255 255 / .35);border-radius:999px;padding:7px 14px;min-height:36px;display:inline-flex;align-items:center}
+.tb-links a:hover{background:#fff;color:var(--tb-navy)}
+
+/* ---------- 공통: 그라데이션 히어로 ---------- */
+.tb-hero{background:var(--tb-hero);color:#fff;padding-top:110px;padding-bottom:56px;font-family:var(--tb-font)}
+.tb-hero .tb-inner{display:flex;flex-direction:column;gap:20px}
+.tb-chip{align-self:flex-start;border:1px solid rgb(255 255 255 / .6);border-radius:999px;padding:6px 16px;font-size:.8rem;font-weight:700;color:#fff;letter-spacing:0;text-transform:none;background:transparent;margin:0}
+.tb-hero h1{font-weight:500!important;font-size:clamp(2rem,6vw,3.2rem)!important;line-height:1.2!important;margin:0!important;color:#fff;text-wrap:balance}
+.tb-hero p{margin:0;max-width:36em;opacity:.92;color:#fff!important;font-size:1.02rem}
+
+/* ================================================================
+   1) 바이브 코딩 · AX 입문 (같은 구조)
+   ================================================================ */
+body.tb-doc{
+  --paper:var(--tb-bg); --paper-2:var(--tb-screen); --ink:var(--tb-fg); --ink-soft:var(--tb-muted); --line:var(--tb-line);
+  --accent:var(--tb-navy); --accent-soft:var(--tb-eyebrow-bg); --card:var(--tb-card);
+  padding-inline:0!important; line-height:1.7
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) body.tb-doc{--accent:var(--tb-navy2)}}
+:root[data-theme="dark"] body.tb-doc{--accent:var(--tb-navy2)}
+body.tb-doc .wrap{max-width:980px;padding-inline:16px;padding-top:48px}
+body.tb-doc .section{background:var(--tb-card);border:1px solid var(--tb-line);border-radius:22px;box-shadow:var(--tb-shadow);padding:28px 26px;margin-bottom:26px}
+body.tb-doc .section-num{display:inline-block;background:var(--tb-navy);color:#fff;border-radius:999px;padding:4px 14px;font-size:.72rem;font-weight:700;letter-spacing:.08em;margin-bottom:10px}
+body.tb-doc h2{font-size:1.5rem;font-weight:800}
+body.tb-doc .compare-card,body.tb-doc .proj-card,body.tb-doc .concept-card,body.tb-doc .signal,body.tb-doc .diagram{background:var(--tb-bg);border-radius:16px}
+body.tb-doc .compare-card.new,body.tb-doc .concept-card.ax{border-color:var(--tb-navy);border-width:2px}
+body.tb-doc .step-num{background:var(--tb-navy);color:#fff;border-radius:999px;font-family:var(--tb-font)}
+body.tb-doc .tag,body.tb-doc .lvl{border-radius:999px}
+body.tb-doc .progress-bar{background:var(--tb-card);border:1px solid var(--tb-line);border-radius:16px;padding:12px 16px;margin:0 0 16px;top:84px}
+body.tb-doc .progress-fill{background:var(--tb-ok)}
+body.tb-doc .item input{accent-color:var(--tb-ok)}
+body.tb-doc .item.checked label{color:var(--tb-ok)}
+body.tb-doc .cat-title{color:var(--tb-navy)}
+body.tb-doc footer{border-top:0;justify-content:center;text-align:center}
+body.tb-doc footer a{color:var(--tb-navy);font-weight:700}
+
+/* ================================================================
+   2) 캐릭터 스타일 아틀라스
+   ================================================================ */
+body.tb-atlas{
+  --paper:var(--tb-bg); --card:var(--tb-card); --ink:var(--tb-fg); --muted:var(--tb-muted); --line:var(--tb-line);
+  --green:var(--tb-navy); --lime:#f3dccd; --orange:var(--tb-hot); --radius:22px; --shadow:var(--tb-shadow)
+}
+body.tb-atlas .topbar{display:none}
+body.tb-atlas .tb-navwrap{margin-bottom:0;position:sticky}
+body.tb-atlas .tb-navwrap.tb-over{margin-bottom:-76px}
+body.tb-atlas .hero{position:relative;color:#fff;padding:120px 0 60px}
+body.tb-atlas .hero::before{content:"";position:absolute;z-index:-1;top:0;bottom:0;left:50%;width:100vw;transform:translateX(-50%);background:var(--tb-hero)}
+body.tb-atlas main{position:relative;z-index:0}
+body.tb-atlas .hero h1{color:#fff;font-weight:500;letter-spacing:-.02em}
+body.tb-atlas .hero h1 em{color:#ffe2cf;font-weight:700}
+body.tb-atlas .hero-lead,body.tb-atlas .meta-line{color:#fff!important;opacity:.9}
+body.tb-atlas .tiny-label{display:inline-block;border:1px solid rgb(255 255 255 / .6);border-radius:999px;padding:6px 16px;color:#fff;letter-spacing:.04em}
+body.tb-atlas .btn{border-radius:999px;padding:12px 22px;min-height:46px}
+body.tb-atlas .hero .btn{background:transparent;color:#fff;border-color:rgb(255 255 255 / .6)}
+body.tb-atlas .hero .btn.primary{background:#fff;color:var(--tb-fg);border-color:#fff}
+body.tb-atlas .hero-visual{background:rgb(255 255 255 / .16);border:1px solid rgb(255 255 255 / .3)}
+body.tb-atlas .hero-stamp{background:var(--tb-navy)}
+body.tb-atlas .tiny-label:not(.hero .tiny-label){background:var(--tb-eyebrow-bg);color:var(--tb-eyebrow-fg);border:0}
+body.tb-atlas .hero .tiny-label{background:transparent}
+body.tb-atlas .section h2{font-weight:800}
+body.tb-atlas .filter{border-radius:999px}
+body.tb-atlas .filter.active{background:var(--tb-navy);border-color:var(--tb-navy)}
+body.tb-atlas .style-card,body.tb-atlas .lesson,body.tb-atlas .reference{border-radius:22px;box-shadow:var(--tb-shadow)}
+
+/* ================================================================
+   3) 캡컷 왕초보 워크북 (다크 레일형 → 밝은 홈페이지 톤)
+   ================================================================ */
+body.tb-capcut{
+  --void:var(--tb-bg); --panel:var(--tb-card); --panel-soft:var(--tb-screen); --panel-line:var(--tb-line);
+  --ink:var(--tb-fg); --ink-soft:var(--tb-muted); --ink-faint:var(--tb-muted);
+  --teal:var(--tb-navy); --teal-soft:var(--tb-eyebrow-bg); --coral:var(--tb-hot); --coral-soft:#fde7e4; --green:var(--tb-ok)
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) body.tb-capcut{--teal:var(--tb-navy2);--coral-soft:#3a2020}}
+:root[data-theme="dark"] body.tb-capcut{--teal:var(--tb-navy2);--coral-soft:#3a2020}
+body.tb-capcut .tb-navwrap{margin-bottom:0}
+body.tb-capcut .shell{max-width:1280px}
+body.tb-capcut .rail{top:76px;height:calc(100vh - 76px);border-right:0;padding-top:12px}
+body.tb-capcut .brand{background:var(--tb-hero);color:#fff;border-radius:22px;padding:20px 18px;box-shadow:var(--tb-shadow)}
+body.tb-capcut .brand .kicker{color:#fff!important;opacity:.85}
+body.tb-capcut .brand h1{color:#fff!important}
+body.tb-capcut .stage{background:var(--tb-card);border:1px solid var(--tb-line);border-radius:22px;box-shadow:var(--tb-shadow);margin:12px 16px 40px 0;padding:34px 40px 60px}
+body.tb-capcut .step.done .dot{color:#fff}
+body.tb-capcut .callout-note{color:var(--tb-fg);border-radius:16px}
+body.tb-capcut .practice-box{border-color:var(--tb-help-line);background:var(--tb-help-bg);border-radius:16px}
+body.tb-capcut .practice-item{border-bottom-color:var(--tb-line)}
+body.tb-capcut .practice-item .chk{border-color:var(--tb-help-line)}
+body.tb-capcut .practice-item.checked .chk{color:#fff}
+body.tb-capcut .practice-box .ptitle{color:#b5502f}
+body.tb-capcut .pin{color:#fff;background:var(--tb-hot);box-shadow:0 0 0 4px rgb(229 50 45 / .22)}
+body.tb-capcut .nbtn{border-radius:999px;padding:12px 22px}
+body.tb-capcut .nbtn.primary{color:#fff}
+body.tb-capcut .shot-frame,body.tb-capcut .diagram-card,body.tb-capcut .skill-card{border-radius:16px}
+@media (max-width:880px){
+  body.tb-capcut .rail{top:0;height:auto}
+  body.tb-capcut .stage{margin:12px 12px 40px;padding:24px 18px 50px}
+}
+
+/* 좁은 화면: 메뉴는 '교재 목록'만 남겨 한 줄 유지 */
+@media (max-width:700px){
+  .tb-links a:not(:last-child){display:none}
+}
