@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="ChatGPT 크롬 확장을 설치해 내 크롬에서 수노·일레븐랩스·제미나이 작업을 시키는 따라하기 안내">
+<style>[hidden]{display:none!important}img{max-width:100%}</style>
+<title>ChatGPT 크롬 확장 따라하기</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;800&display=swap">
+<style>
+/* Layout: 멘피디 AI 홈페이지 톤 — 파랑→피치 그라데이션 히어로 + 유리 알약 메뉴, 이어서 단계 카드가 세로로 쭉 이어지는 스크롤형 교재 */
+:root{
+  --bg:#f7f5f1; --card:#ffffff; --fg:#1d2738; --muted:#6a7280; --line:#e4e2dd;
+  --navy:#2f5a96; --navy2:#5b82bb; --peach:#d9a487;
+  --eyebrow-bg:#e8eef8; --eyebrow-fg:#2f5a96;
+  --hot:#e5322d; --ok:#1c8a52; --ok-bg:#e4f4eb; --help-bg:#fff6e3; --help-line:#ecc26a;
+  --screen:#eef1f5; --chrome:#e1e6ec; --chrome2:#f7f9fb; --ph:#d5dbe2;
+  --shadow:0 10px 30px rgb(40 60 100 / .08);
+  --font:"Noto Sans KR","Pretendard","Malgun Gothic","Apple SD Gothic Neo",sans-serif;
+  font-size:19px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#12171f; --card:#1b222d; --fg:#eef2f7; --muted:#a3adba; --line:#2d3644;
+  --eyebrow-bg:#22324a; --eyebrow-fg:#a9c4ee;
+  --hot:#ff5f58; --ok:#53d08b; --ok-bg:#15342a; --help-bg:#3a2f16; --help-line:#c99b3a;
+  --screen:#232c38; --chrome:#2b3644; --chrome2:#323e4d; --ph:#3c4859;
+  --shadow:0 10px 30px rgb(0 0 0 / .35); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#12171f; --card:#1b222d; --fg:#eef2f7; --muted:#a3adba; --line:#2d3644;
+  --eyebrow-bg:#22324a; --eyebrow-fg:#a9c4ee;
+  --hot:#ff5f58; --ok:#53d08b; --ok-bg:#15342a; --help-bg:#3a2f16; --help-line:#c99b3a;
+  --screen:#232c38; --chrome:#2b3644; --chrome2:#323e4d; --ph:#3c4859;
+  --shadow:0 10px 30px rgb(0 0 0 / .35); color-scheme:dark}
+:root.big{font-size:22px} :root.bigger{font-size:26px}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--font);font-size:1rem;line-height:1.65;margin:0}
+.inner{max-width:980px;margin:0 auto;padding-inline:16px}
+
+/* glass pill nav */
+.navwrap{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;padding-block:12px;background:var(--bg)}
+.navwrap.on-hero{background:transparent}
+nav.pill{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between;background:rgb(70 92 130 / .72);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgb(255 255 255 / .25);border-radius:20px;padding:10px 20px;color:#fff}
+.logo{font-weight:800;font-size:1rem;letter-spacing:-.01em;white-space:nowrap}
+.logo small{font-weight:400;opacity:.8;margin-left:8px;font-size:.75rem}
+.ctrls{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.seg{display:flex;border:1px solid rgb(255 255 255 / .35);border-radius:999px;overflow:hidden}
+.seg button{font:inherit;font-size:.72rem;font-weight:500;border:0;background:transparent;color:#fff;padding:7px 13px;cursor:pointer;min-height:40px}
+.seg button[aria-pressed="true"]{background:#fff;color:#2f5a96;font-weight:700}
+.prog{font-size:.72rem;font-weight:700;background:rgb(255 255 255 / .18);border-radius:999px;padding:7px 13px;white-space:nowrap;font-variant-numeric:tabular-nums}
+
+/* hero */
+.hero{background:linear-gradient(180deg,#2f5a96 0%,#5378ad 45%,#a9a3ac 78%,var(--peach) 100%);color:#fff;margin-top:-76px;padding-top:96px;padding-bottom:56px}
+.hero .inner{display:flex;flex-direction:column;gap:22px}
+.chip{align-self:flex-start;border:1px solid rgb(255 255 255 / .6);border-radius:999px;padding:6px 16px;font-size:.72rem;font-weight:700}
+.hero h1{font-weight:400;font-size:clamp(2rem,6vw,3.3rem);line-height:1.18;margin:0;letter-spacing:-.02em;text-wrap:balance}
+.hero h1 b{font-weight:500;font-size:1.12em;display:block}
+.hero p{margin:0;max-width:34em;opacity:.92}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:10px;border-radius:999px;padding:12px 24px;font:inherit;font-size:.85rem;font-weight:500;text-decoration:none;cursor:pointer;min-height:48px}
+.btn.w{background:#fff;color:#1d2738;border:0}
+.btn.o{background:transparent;color:#fff;border:1px solid rgb(255 255 255 / .6)}
+.glass{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:10px}
+.glass div{background:rgb(255 255 255 / .16);border:1px solid rgb(255 255 255 / .3);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-radius:16px;padding:16px 18px;display:flex;flex-direction:column;gap:2px}
+.glass span{font-size:.7rem;opacity:.85}
+.glass strong{font-weight:700;font-size:.92rem}
+
+/* sections */
+section.band{padding-block:56px}
+.eyebrow{display:inline-block;background:var(--eyebrow-bg);color:var(--eyebrow-fg);border-radius:999px;padding:4px 14px;font-size:.66rem;font-weight:700;letter-spacing:.1em}
+.head{display:flex;flex-direction:column;gap:10px;margin-bottom:26px}
+.head h2{margin:0;font-size:1.55rem;font-weight:800;letter-spacing:-.02em}
+.head p{margin:0;color:var(--muted)}
+.steps{display:flex;flex-direction:column;gap:22px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);padding:26px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:26px;align-items:start;scroll-margin-top:110px;transition:border-color .3s,box-shadow .3s}
+.card.done{border-color:var(--ok)}
+.txt{display:flex;flex-direction:column;gap:14px;min-width:0}
+.num{display:flex;align-items:center;gap:10px}
+.num .eyebrow{background:var(--navy);color:#fff}
+.num .ok{display:none;color:var(--ok);font-weight:800;font-size:.8rem}
+.card.done .num .ok{display:inline}
+.txt h3{margin:0;font-size:1.3rem;font-weight:800;letter-spacing:-.02em;line-height:1.35;text-wrap:balance}
+.txt p{margin:0}
+.txt p b{color:var(--hot);font-weight:700}
+.note{color:var(--muted);font-size:.82rem}
+.answer{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px}
+.answer button{font:inherit;font-weight:700;font-size:.92rem;border-radius:999px;padding:12px;cursor:pointer;min-height:54px}
+.yes{background:var(--ok-bg);color:var(--ok);border:2px solid var(--ok)}
+.no{background:var(--help-bg);color:var(--fg);border:2px solid var(--help-line)}
+.help{background:var(--help-bg);border:1px solid var(--help-line);border-radius:16px;padding:14px 18px}
+.help strong{display:block;margin-bottom:4px}
+.help ul{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:6px;font-size:.92rem}
+.link{align-self:flex-start;display:inline-flex;gap:8px;background:var(--navy);color:#fff;text-decoration:none;font-weight:700;border-radius:999px;padding:10px 20px;font-size:.88rem}
+ol.do{margin:0;padding-left:1.4em;display:flex;flex-direction:column;gap:8px}
+ol.do b{color:var(--hot)}
+.biglink{align-self:stretch;justify-content:center;font-size:1.05rem;padding:16px 22px;min-height:60px}
+.chk{border-radius:14px;padding:12px 16px;font-weight:500;font-size:.92rem}
+.chk.good{background:var(--ok-bg);color:var(--ok);border:1px solid var(--ok)}
+.chk.bad{background:var(--help-bg);color:var(--fg);border:2px solid var(--help-line);display:flex;flex-direction:column;gap:8px}
+.chk.bad strong{font-size:1.02rem}
+.chk.ask{background:var(--eyebrow-bg);color:var(--fg);border:2px solid var(--navy2);display:flex;flex-direction:column;gap:8px}
+.chk.ask strong{font-size:1.02rem;color:var(--eyebrow-fg)}
+.chk.ask b{color:var(--hot)}
+.chk details{display:flex;flex-direction:column;gap:8px}
+.chk summary{cursor:pointer;font-weight:700;color:var(--navy);text-decoration:underline;min-height:40px;display:flex;align-items:center}
+.chk details[open] .fix{margin-block:6px 8px}
+.fix{margin:0;padding-left:1.3em;display:flex;flex-direction:column;gap:8px}
+.fix b{color:var(--hot)}
+.addrbig{display:inline-block;font-size:1.15rem;font-weight:800;background:var(--card);border:2px solid var(--navy);color:var(--navy);border-radius:10px;padding:1px 10px;letter-spacing:.02em}
+.nochrome{align-self:flex-start;font-size:.85rem;font-weight:700;color:var(--navy);text-decoration:underline}
+.sample{display:flex;gap:10px;align-items:center;flex-wrap:wrap;background:var(--screen);border-radius:14px;padding:10px 14px}
+.sample span{font-weight:700}
+.copy{font:inherit;font-size:.75rem;border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:999px;padding:6px 14px;cursor:pointer}
+
+/* screen + generic browser mock */
+.screen{position:relative;background:var(--screen);border-radius:16px;padding:14px;overflow:hidden;min-width:0}
+.screen img{display:block;width:100%;border-radius:10px}
+.real{position:relative;background:#fff;border-radius:10px;overflow:visible}
+.real img{border-radius:10px;border:1px solid var(--line)}
+.hotbox{position:absolute;border:4px solid var(--hot);border-radius:999px;pointer-events:none}
+.hotbox em{position:absolute;left:-26px;top:50%;transform:translateY(-50%);font-style:normal;font-weight:800;color:#fff;background:var(--hot);border-radius:50%;width:22px;height:22px;display:grid;place-items:center;font-size:.7rem}
+.after{display:flex;flex-direction:column;gap:8px}
+.after p{margin:0;font-size:.85rem;font-weight:700;color:var(--fg)}
+.after p::before{content:"그다음 → ";color:var(--ok)}
+.optbar{background:var(--eyebrow-bg);border:2px dashed var(--navy2);border-radius:16px;padding:14px 18px;display:flex;flex-direction:column;gap:4px}
+.optbar strong{font-size:1.25rem;font-weight:800;color:var(--eyebrow-fg)}
+.optbar span{font-size:.9rem}
+.optbar b{color:var(--eyebrow-fg)}
+.num .eyebrow{white-space:nowrap}
+.skip{background:var(--card);color:var(--fg);border:2px solid var(--line)}
+.try{margin-top:16px;background:rgb(255 255 255 / .14);border:1px solid rgb(255 255 255 / .3);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:8px}
+.try strong{font-size:1.05rem}
+.try>span{font-size:.9rem;opacity:.9}
+.trybox{display:flex;flex-wrap:wrap;gap:10px;align-items:center;background:#fff;color:#1d2738;border-radius:12px;padding:10px 14px}
+.trybox span{font-weight:700}
+.shotcol{display:flex;flex-direction:column;gap:14px;min-width:0}
+.tag{position:absolute;right:10px;bottom:8px;font-size:.58rem;color:var(--muted);background:var(--card);border-radius:6px;padding:1px 8px}
+.win{background:var(--chrome2);border-radius:10px;border:1px solid var(--line);overflow:hidden;font-size:.68rem;position:relative}
+.bar{display:flex;align-items:center;gap:8px;background:var(--chrome);padding:8px 10px}
+.dots{display:flex;gap:5px}.dots i{width:9px;height:9px;border-radius:50%;background:var(--ph);display:block}
+.addr{flex:1;min-width:0;background:var(--chrome2);border-radius:20px;padding:3px 12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ico{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;position:relative;flex:none}
+.ico svg{width:17px;height:17px;fill:none;stroke:var(--fg);stroke-width:2}
+.page{padding:16px;min-height:180px;display:flex;flex-direction:column;gap:9px;position:relative}
+.ph{height:9px;border-radius:5px;background:var(--ph)}
+.mbtn{align-self:flex-start;background:#1a73e8;color:#fff;font-weight:700;border-radius:20px;padding:7px 16px;position:relative}
+.ext{display:flex;gap:12px;align-items:center}
+.lg{width:48px;height:48px;border-radius:12px;background:var(--ph);display:grid;place-items:center;font-weight:800;flex:none}
+.dialog{position:absolute;inset:auto 8% 16px 8%;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;box-shadow:0 10px 30px rgb(0 0 0 / .22);display:flex;flex-direction:column;gap:7px}
+.dialog .r{display:flex;justify-content:flex-end;gap:8px;flex-wrap:wrap}
+.p{border-radius:16px;padding:5px 13px;font-weight:700;border:1px solid var(--line);position:relative}
+.p.pri{background:#1a73e8;color:#fff;border-color:#1a73e8}
+.menu{position:absolute;right:10px;top:46px;width:min(230px,72%);background:var(--card);border:1px solid var(--line);border-radius:10px;box-shadow:0 10px 24px rgb(0 0 0 / .18);padding:8px;display:flex;flex-direction:column;gap:4px}
+.menu .it{display:flex;align-items:center;gap:8px;padding:6px;border-radius:6px}
+.menu .it.sel{background:var(--screen)}
+.menu .sq{width:18px;height:18px;border-radius:5px;background:var(--ph);flex:none}
+.menu .nm{flex:1}
+.side{position:absolute;right:0;top:0;bottom:0;width:44%;background:var(--card);border-left:1px solid var(--line);padding:12px;display:flex;flex-direction:column;gap:8px}
+.side .in{margin-top:auto;border:2px solid var(--navy2);border-radius:10px;padding:7px;position:relative}
+.taskbar{display:flex;justify-content:center;gap:10px;background:var(--chrome);border-radius:10px;padding:10px;margin-top:110px}
+.taskbar.mac{border-radius:18px;width:max-content;max-width:100%;margin-inline:auto;padding:10px 16px}
+.app{width:38px;height:38px;border-radius:10px;background:var(--ph);position:relative}
+.app.round{border-radius:50%;background:conic-gradient(#e5322d 0 33%,#f2b705 0 66%,#1c8a52 0)}
+.app.round::after{content:"";position:absolute;inset:11px;border-radius:50%;background:#1a73e8;border:3px solid #fff}
+.hot::before{content:"";position:absolute;inset:-9px;border:4px solid var(--hot);border-radius:999px;animation:pulse 1.4s ease-out infinite;pointer-events:none}
+@keyframes pulse{0%{transform:scale(.9);opacity:1}100%{transform:scale(1.35);opacity:0}}
+@media (prefers-reduced-motion:reduce){.hot::before{animation:none}}
+
+/* safety band + done */
+.blue{background:linear-gradient(135deg,#3561a0,#6488bf);color:#fff}
+.blue .eyebrow{background:transparent;border:1px solid rgb(255 255 255 / .6);color:#fff}
+.blue .head p{color:rgb(255 255 255 / .85)}
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;list-style:none;margin:0;padding:0}
+.rules li{background:rgb(255 255 255 / .14);border:1px solid rgb(255 255 255 / .3);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:4px}
+.rules strong{font-size:1rem}
+.rules span{font-size:.88rem;opacity:.9}
+.blue .head p b{color:#fff;font-weight:800}
+.blue .head h2{line-height:1.35}
+.when{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.when .w{background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);padding:20px;display:flex;flex-direction:column;gap:6px}
+.when .w.need{border:2px solid var(--navy)}
+.when .mark{align-self:flex-start;border-radius:999px;padding:3px 12px;font-size:.72rem;font-weight:800;background:var(--screen);color:var(--muted)}
+.when .need .mark{background:var(--navy);color:#fff}
+.when strong{font-size:1.02rem;line-height:1.45}
+.when span:last-child{color:var(--muted);font-size:.88rem}
+.finish{text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px}
+.stamp{width:170px;height:170px;border:7px double var(--hot);border-radius:50%;display:grid;place-items:center;color:var(--hot);font-weight:800;font-size:1.35rem;line-height:1.25;transform:rotate(-12deg);opacity:.35;transition:opacity .4s}
+.stamp.on{opacity:1}
+.finish p{margin:0;color:var(--muted)}
+button:focus-visible,a:focus-visible{outline:3px solid var(--hot);outline-offset:3px}
+@media (max-width:760px){.card{grid-template-columns:1fr;padding:20px}.answer{grid-template-columns:1fr 1fr}}
+@media (max-width:420px){.answer{grid-template-columns:1fr}.side{width:56%}}
+</style>
+</head>
+<body>
+<header class="hero"><div class="inner">
+  <span class="chip">안내 · ChatGPT 크롬 확장</span>
+  <h1>내 크롬에서<b>ChatGPT에게 일 시키기</b></h1>
+  <p>수노 · 일레븐랩스 · 제미나이 · 캡컷 같은 사이트 작업을, 내가 로그인해 둔 크롬 그대로 ChatGPT가 대신 해 줍니다. 봇 작업도 모두 이 방식으로 합니다.</p>
+  <div class="cta">
+    <a class="btn w" href="#steps">따라하기 시작 ↓</a>
+    <a class="btn o" href="https://chromewebstore.google.com/detail/chatgpt/hehggadaopoacecdllhhajmbjkdcmajg" target="_blank" rel="noopener">설치 페이지 열기 ↗</a>
+  </div>
+  <div class="glass">
+    <div><span>준비물 1</span><strong>크롬 브라우저</strong></div>
+    <div><span>준비물 2</span><strong>ChatGPT 계정</strong></div>
+    <div><span>걸리는 시간</span><strong>약 5분 · 4단계</strong></div>
+    <div><span>공식 이름</span><strong>ChatGPT (OpenAI)</strong></div>
+  </div>
+</div></header>
+<section class="band" id="steps"><div class="inner">
+  <div class="head"><span class="eyebrow">FOLLOW ALONG</span><h2>설치 4단계</h2><p>위에서부터 하나씩 하면 됩니다.</p></div>
+  <ul class="rules"><li><strong>① 설치</strong><span>위 [설치 페이지 열기] → <b>Chrome에 추가</b> → 확장 프로그램 추가</span></li><li><strong>② 고정</strong><span>크롬 오른쪽 위 퍼즐 🧩 아이콘 → ChatGPT 옆 📌 눌러 고정</span></li><li><strong>③ 사이트 로그인</strong><span>내 크롬에서 직접 로그인 : suno.com · elevenlabs.io · gemini.google.com · capcut.com</span></li><li><strong>④ @Chrome 으로 시키기</strong><span>ChatGPT(웹 또는 데스크톱 앱) 채팅에 <b>@Chrome</b> 을 붙이고 할 일을 적습니다. 권한을 묻는 창이 뜨면 읽고 허용</span></li></ul>
+</div></section>
+<section class="band blue"><div class="inner">
+  <div class="head"><span class="eyebrow">TRY</span><h2>바로 써 보기</h2><p>복사해서 ChatGPT 채팅창에 붙여 넣으세요.</p></div>
+  <div class="try" style="margin-top:14px"><strong>일레븐랩스 — 나레이션</strong><span>한 문장을 목소리로 만들어 mp3로 받습니다.</span><div class="trybox"><span id="t1">@Chrome 일레븐랩스를 열고, 한국어 남성 목소리로 "마을변호사 무료 법률상담, 이번 주 목요일입니다."를 생성해서 mp3로 받아줘.</span><button class="copy" onclick="cp('t1',this)">글자 복사</button></div></div>
+  <div class="try" style="margin-top:14px"><strong>수노 — 주제곡</strong><span>키워드 5개로 노래를 만들고 링크를 받아 옵니다.</span><div class="trybox"><span id="t2">@Chrome 수노를 열고 심플 모드에 "주제 : 마을변호사 무료 법률상담 / 장르 : K-pop 징글 / 보컬 : 여성 / 빠르기 : 빠르게 / 분위기 : 밝고 따뜻하게"를 넣어 생성하고, 곡 공유 링크를 알려줘.</span><button class="copy" onclick="cp('t2',this)">글자 복사</button></div></div>
+  <div class="try" style="margin-top:14px"><strong>제미나이 — 배경음악</strong><span>가사 없는 BGM을 만듭니다.</span><div class="trybox"><span id="t3">@Chrome 제미나이를 열고 음악 만들기로 "공공기관 홍보 숏폼 배경음악, 가사 없이, 밝고 따뜻하게, 보통 빠르기, 피아노와 가벼운 현악, 30초"를 생성해줘.</span><button class="copy" onclick="cp('t3',this)">글자 복사</button></div></div>
+</div></section>
+<section class="band"><div class="inner">
+  <div class="head"><span class="eyebrow">GOOD TO KNOW</span><h2>알아 둘 것</h2></div>
+  <ul class="rules"><li><strong>화면은 안 움직여요</strong><span>ChatGPT가 뒤에서 일하고 결과만 보여 줍니다. 내 작업을 방해하지 않습니다.</span></li><li><strong>내 로그인 그대로</strong><span>크롬에 로그인해 둔 계정을 씁니다. 시작 전 계정이 맞는지 확인하세요.</span></li><li><strong>비밀번호는 채팅에 쓰지 않기</strong><span>로그인은 크롬 화면에서 직접 합니다.</span></li><li><strong>결제 · 제출은 직접</strong><span>돈이 오가거나 되돌리기 어려운 일은 내가 확인하고 누릅니다.</span></li></ul>
+  <p class="note" style="margin-top:16px">로그인이 필요 없는 공개 페이지나 앱 안에서만 할 작업은, 데스크톱 앱의 내장 브라우저(@Browser)로도 됩니다. 내 계정이 필요한 사이트는 크롬 확장이 편합니다.</p>
+</div></section>
+<script>function cp(id,b){navigator.clipboard.writeText(document.getElementById(id).innerText).then(()=>{b.textContent='복사됨 ✓';setTimeout(()=>b.textContent='글자 복사',1500)})}</script>
+</body></html>
